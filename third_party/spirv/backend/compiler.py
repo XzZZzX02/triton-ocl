@@ -18,6 +18,7 @@ from triton.runtime.build import _build
 @dataclass(frozen=True)
 class SPIRVOptions:
     backend_name: str = "spirv"
+    source_lang: str = "opencl"
     num_warps: int = 0
     num_stages: int = 0
     num_ctas: int = 0
@@ -136,11 +137,42 @@ class SPIRVBackend(BaseBackend):
                 os.remove(opencl_file)
         return opencl_src
 
+    @staticmethod
+    def emit_sycl(src, metadata, opt):
+        import re
+        names = re.findall(r"func\.func @(\w+)\(", str(src))
+        assert len(names) == 1
+        metadata["name"] = names[0]
+        import triton._C as tc
+        spirv_translate = os.path.join(tc.__path__[0], 'triton-spirv-translate')
+        with tempfile.NamedTemporaryFile(delete=False, mode='w', suffix='.memir') as fsrc:
+            fsrc.write(str(src))
+            fsrc.flush()
+            sycl_file = fsrc.name + '.sycl'
+            emit_sycl_cmd = [
+                spirv_translate,
+                fsrc.name,
+                '-triton-spirv-emit-sycl',
+                '-o',
+                sycl_file
+            ]
+            subprocess.run(emit_sycl_cmd, check=True, close_fds=False)
+            with open(sycl_file, 'rb') as f:
+                sycl_src = f.read()
+            if os.path.exists(sycl_file):
+                os.remove(sycl_file)
+        return sycl_src
+
     def add_stages(self, stages, options):
         stages["ttir"] = lambda src, metadata: self.make_ttir(src, metadata, options)
         stages["lair"] = lambda src, metadata: self.make_lair(src, metadata, options)
         stages["memir"] = lambda src, metadata: self.make_memir(src, metadata, options)
-        stages["cl"] = lambda src, metadata: self.emit_opencl(src, metadata, options)
+        if options.source_lang == "sycl":
+            self.binary_ext = "sycl"
+            stages["sycl"] = lambda src, metadata: self.emit_sycl(src, metadata, options)
+        else:
+            self.binary_ext = "cl"
+            stages["cl"] = lambda src, metadata: self.emit_opencl(src, metadata, options)
 
 
     @functools.lru_cache()

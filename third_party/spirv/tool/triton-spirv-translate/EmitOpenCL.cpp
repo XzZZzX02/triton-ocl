@@ -10,6 +10,9 @@
 
 using namespace mlir;
 
+LogicalResult emitSYCL(ModuleOp module, llvm::raw_ostream &os);
+void registerEmitSYCLTranslation();
+
 void ModuleEmitter::emitOneAssign(arith::IndexCastOp op) {
   addAlias(op.getOperand(), op.getResult());
 }
@@ -43,24 +46,31 @@ void ModuleEmitter::emitCall(func::CallOp op) {
   // Emit the function call.
   indent() << op.getCallee() << "(";
 
+  bool needComma = false;
+  if (state.target == EmitTarget::SYCL) {
+    os << "item";
+    needComma = true;
+  }
+
   // Handle input arguments.
-  unsigned argIdx = 0;
   for (auto arg : op.getOperands()) {
+    if (needComma)
+      os << ", ";
     emitValue(arg);
 
-    if (argIdx++ != op.getNumOperands() - 1)
-      os << ", ";
+    needComma = true;
   }
 
   // Handle output arguments.
   for (auto result : op.getResults()) {
-    // The address should be passed in for scalar result arguments.
-    if (mlir::isa<ShapedType>(result.getType()))
+    if (needComma)
       os << ", ";
-    else
-      os << ", &";
+    // The address should be passed in for scalar result arguments.
+    if (!mlir::isa<ShapedType>(result.getType()))
+      os << "&";
 
     emitValue(result);
+    needComma = true;
   }
 
   os << ");";
@@ -523,7 +533,9 @@ template <typename OpType> void ModuleEmitter::emitAlloc(OpType op) {
   if (!op.getType().hasStaticShape())
     emitError(op, "is unranked or has dynamic shape.");
 
-  indent() << "__local ";
+  indent();
+  if (state.target == EmitTarget::OpenCL)
+    os << "__local ";
   emitArrayDecl(op.getResult());
   os << ";";
   emitInfoAndNewLine(op);
@@ -648,6 +660,84 @@ void ModuleEmitter::emitAsyncCopyWithConstant(Value target, Value source,
 }
 
 void ModuleEmitter::emitMemCpy(memref::CopyOp op) {
+  if (state.target == EmitTarget::SYCL) {
+    auto sourceSubView = getSubviewOp(op.getSource());
+    auto targetSubView = getSubviewOp(op.getTarget());
+    bool isCopySubView = false;
+    if (sourceSubView || targetSubView) {
+      assert(checkSubViewOffsetAndStride(sourceSubView) &&
+             "source subview not support");
+      assert(checkSubViewOffsetAndStride(targetSubView) &&
+             "target subview not support");
+      isCopySubView = true;
+    }
+
+    auto targetMemref =
+        mlir::dyn_cast<mlir::MemRefType>(op.getTarget().getType());
+    assert(lessOrEqual2D(targetMemref) && "mecpy unsupported not support > 2D");
+
+    auto emitLinearCopy = [&](Value target, Value source, OpFoldResult num) {
+      indent() << "for (int i = 0; i < ";
+      emitOpFoldResult(num);
+      os << "; i += 1) {\n";
+      addIndent();
+      indent();
+      emitMemCpyValue(target);
+      os << "[i] = ";
+      emitMemCpyValue(source);
+      os << "[i];\n";
+      reduceIndent();
+      indent() << "}\n";
+    };
+
+    auto emitRowCopy = [&](Value target, Value source, OpFoldResult rows,
+                           OpFoldResult cols) {
+      indent() << "for (int i = 0; i < ";
+      emitOpFoldResult(rows);
+      os << "; i += 1) {\n";
+      addIndent();
+      indent() << "for (int j = 0; j < ";
+      emitOpFoldResult(cols);
+      os << "; j += 1) {\n";
+      addIndent();
+      indent();
+      emitMemCpyValue(target);
+      os << "[j] = ";
+      emitMemCpyValue(source);
+      os << "[j];\n";
+      reduceIndent();
+      indent() << "}\n";
+      reduceIndent();
+      indent() << "}\n";
+    };
+
+    if (isCopySubView) {
+      if (is1D(targetMemref)) {
+        emitLinearCopy(targetSubView.getSource(), sourceSubView.getSource(),
+                       targetSubView.getMixedSizes()[0]);
+      } else if (is2D(targetMemref)) {
+        emitRowCopy(targetSubView.getSource(), sourceSubView.getSource(),
+                    targetSubView.getMixedSizes()[0],
+                    targetSubView.getMixedSizes()[1]);
+      }
+    } else {
+      if (isSimilar1D(targetMemref)) {
+        auto idxType = IndexType::get(op.getContext());
+        OpFoldResult numElements =
+            IntegerAttr::get(idxType, targetMemref.getNumElements());
+        emitLinearCopy(op.getTarget(), op.getSource(), numElements);
+      } else if (is2D(targetMemref)) {
+        if (auto castOp =
+                op.getSource().getDefiningOp<memref::ReinterpretCastOp>()) {
+          emitRowCopy(op.getTarget(), op.getSource(),
+                      castOp.getMixedSizes()[0], castOp.getMixedSizes()[1]);
+        }
+      }
+    }
+    emitInfoAndNewLine(op);
+    return;
+  }
+
   auto sourceSubView = getSubviewOp(op.getSource());
   auto targetSubView = getSubviewOp(op.getTarget());
   bool isCopySubView = false;
@@ -819,15 +909,25 @@ void ModuleEmitter::emitFunction(func::FuncOp func) {
     emitError(func, "has zero or more than one basic blocks.");
 
   // Emit function signature.
-  os << "__kernel void " << func.getName() << "(\n";
+  if (state.target == EmitTarget::SYCL)
+    os << "inline void " << func.getName() << "(\n";
+  else
+    os << "__kernel void " << func.getName() << "(\n";
   addIndent();
 
   // This vector is to record all ports of the function.
   SmallVector<Value, 8> portList;
 
+  bool needComma = false;
+  if (state.target == EmitTarget::SYCL) {
+    indent() << "sycl::nd_item<3> item";
+    needComma = true;
+  }
+
   // Emit input arguments.
-  unsigned argIdx = 0;
   for (auto &arg : func.getArguments()) {
+    if (needComma)
+      os << ",\n";
     indent();
     auto type = arg.getType();
 
@@ -837,8 +937,7 @@ void ModuleEmitter::emitFunction(func::FuncOp func) {
       emitValue(arg);
 
     portList.push_back(arg);
-    if (argIdx++ != func.getNumArguments() - 1)
-      os << ",\n";
+    needComma = true;
   }
 
   reduceIndent();
@@ -847,8 +946,9 @@ void ModuleEmitter::emitFunction(func::FuncOp func) {
 
   // Emit function body.
   addIndent();
-  // Emit event
-  indent() << "event_t ev = 0;\n";
+  // Emit event for OpenCL async copies.
+  if (state.target == EmitTarget::OpenCL)
+    indent() << "event_t ev = 0;\n";
 
   emitBlock(func.front());
   reduceIndent();
@@ -860,7 +960,10 @@ void ModuleEmitter::emitFunction(func::FuncOp func) {
 void ModuleEmitter::emitGlobalId(gpu::GlobalIdOp op) {
   indent();
   emitValue(op.getResult());
-  os << " = get_global_id(";
+  if (state.target == EmitTarget::SYCL)
+    os << " = item.get_global_id(";
+  else
+    os << " = get_global_id(";
   gpu::Dimension dim = op.getDimension();
   os << static_cast<int64_t>(dim);
   os << ");\n";
@@ -868,13 +971,25 @@ void ModuleEmitter::emitGlobalId(gpu::GlobalIdOp op) {
 
 /// Top-level MLIR module emitter.
 void ModuleEmitter::emitModule(ModuleOp module) {
-  os << R"XXX(//===------------------------------------------------------------*- C++ -*-===//
+  if (state.target == EmitTarget::SYCL) {
+    os << R"XXX(//===------------------------------------------------------------*- C++ -*-===//
+//
+// Automatically generated file for SYCL
+//
+//===----------------------------------------------------------------------===//
+
+#include <sycl/sycl.hpp>
+
+)XXX";
+  } else {
+    os << R"XXX(//===------------------------------------------------------------*- C++ -*-===//
 //
 // Automatically generated file for OpenCL
 //
 //===----------------------------------------------------------------------===//
 
 )XXX";
+  }
 
   // Emit all functions in the call graph in a post order.
   CallGraph graph(module);
@@ -904,7 +1019,13 @@ void ModuleEmitter::emitModule(ModuleOp module) {
 //===----------------------------------------------------------------------===//
 
 LogicalResult emitOpenCL(ModuleOp module, llvm::raw_ostream &os) {
-  ScaleHLSEmitterState state(os);
+  ScaleHLSEmitterState state(os, EmitTarget::OpenCL);
+  ModuleEmitter(state).emitModule(module);
+  return failure(state.encounteredError);
+}
+
+LogicalResult emitSYCL(ModuleOp module, llvm::raw_ostream &os) {
+  ScaleHLSEmitterState state(os, EmitTarget::SYCL);
   ModuleEmitter(state).emitModule(module);
   return failure(state.encounteredError);
 }
@@ -920,8 +1041,20 @@ void registerEmitOpenCLTranslation() {
       });
 }
 
+void registerEmitSYCLTranslation() {
+  static TranslateFromMLIRRegistration toSYCL(
+      "triton-spirv-emit-sycl", "Translate MLIR into SYCL", emitSYCL,
+      [&](DialectRegistry &registry) {
+        registry.insert<mlir::math::MathDialect, mlir::arith::ArithDialect,
+                        mlir::scf::SCFDialect, mlir::func::FuncDialect,
+                        mlir::memref::MemRefDialect, ::mlir::gpu::GPUDialect,
+                        mlir::affine::AffineDialect>();
+      });
+}
+
 int main(int argc, char **argv) {
   registerEmitOpenCLTranslation();
+  registerEmitSYCLTranslation();
 
   return mlir::failed(
       mlir::mlirTranslateMain(argc, argv, "SPIRV Translation Tool"));

@@ -53,16 +53,22 @@ SmallVector<int64_t, 8> getIntArrayAttrValue(Operation *op, StringRef name) {
     return SmallVector<int64_t, 8>();
 }
 
-static std::string getDataTypeName(Type type) {
+enum class EmitTarget {
+  OpenCL,
+  SYCL,
+};
+
+static std::string getDataTypeName(Type type, EmitTarget target) {
   auto valType = type;
 
   // Handle aggregated types, including memref, vector, and stream.
   if (auto arrayType = mlir::dyn_cast<MemRefType>(valType))
-    return getDataTypeName(arrayType.getElementType());
+    return getDataTypeName(arrayType.getElementType(), target);
 
   // TODO: UnrankedMemRefType only use in argument
   if (auto arrayType = mlir::dyn_cast<UnrankedMemRefType>(valType))
-    return "__global " + getDataTypeName(arrayType.getElementType()) + "*";
+    return (target == EmitTarget::OpenCL ? "__global " : "") +
+           getDataTypeName(arrayType.getElementType(), target) + "*";
 
   // Refer to
   // https://registry.khronos.org/OpenCL/specs/3.0-unified/pdf/OpenCL_C.pdf
@@ -273,10 +279,12 @@ namespace {
 /// various emitters.
 class ScaleHLSEmitterState {
 public:
-  explicit ScaleHLSEmitterState(raw_ostream &os) : os(os) {}
+  explicit ScaleHLSEmitterState(raw_ostream &os, EmitTarget target)
+      : os(os), target(target) {}
 
   // The stream to emit to.
   raw_ostream &os;
+  EmitTarget target;
 
   bool encounteredError = false;
   unsigned currentIndent = 0;
@@ -792,7 +800,7 @@ void ModuleEmitter::emitValue(Value val, unsigned rank, bool isPtr,
   }
 
   // Emit the type of the value.
-  os << getDataTypeName(val.getType()) << " ";
+  os << getDataTypeName(val.getType(), state.target) << " ";
   if (isRef)
     os << "&";
 
