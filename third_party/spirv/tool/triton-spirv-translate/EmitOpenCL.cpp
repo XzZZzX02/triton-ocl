@@ -733,9 +733,16 @@ void ModuleEmitter::emitMemCpy(memref::CopyOp op) {
     assert(lessOrEqual2D(targetMemref) && "mecpy unsupported not support > 2D");
 
     auto emitLinearCopy = [&](Value target, Value source, OpFoldResult num) {
-      indent() << "for (int i = 0; i < ";
-      emitOpFoldResult(num);
-      os << "; i += 1) {\n";
+      if (state.target == EmitTarget::SYCL) {
+        // Coalesced access: each work-item loads/stores strided elements
+        indent() << "for (int i = item.get_local_id(0); i < ";
+        emitOpFoldResult(num);
+        os << "; i += item.get_local_range(0)) {\n";
+      } else {
+        indent() << "for (int i = 0; i < ";
+        emitOpFoldResult(num);
+        os << "; i += 1) {\n";
+      }
       addIndent();
       indent();
       emitMemCpyValue(target);
@@ -752,9 +759,18 @@ void ModuleEmitter::emitMemCpy(memref::CopyOp op) {
       emitOpFoldResult(rows);
       os << "; i += 1) {\n";
       addIndent();
-      indent() << "for (int j = 0; j < ";
-      emitOpFoldResult(cols);
-      os << "; j += 1) {\n";
+
+      if (state.target == EmitTarget::SYCL) {
+        // Coalesced access on inner dimension
+        indent() << "for (int j = item.get_local_id(0); j < ";
+        emitOpFoldResult(cols);
+        os << "; j += item.get_local_range(0)) {\n";
+      } else {
+        indent() << "for (int j = 0; j < ";
+        emitOpFoldResult(cols);
+        os << "; j += 1) {\n";
+      }
+
       addIndent();
       indent();
       emitMemCpyValue(target);
@@ -791,6 +807,8 @@ void ModuleEmitter::emitMemCpy(memref::CopyOp op) {
       }
     }
     emitInfoAndNewLine(op);
+    if (state.target == EmitTarget::SYCL)
+      indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
     return;
   }
 
@@ -845,7 +863,10 @@ void ModuleEmitter::emitMemCpy(memref::CopyOp op) {
     }
   }
   emitInfoAndNewLine(op);
-  indent() << "wait_group_events(1, &ev);\n";
+  if (state.target == EmitTarget::SYCL)
+    indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
+  else
+    indent() << "wait_group_events(1, &ev);\n";
 }
 
 template <typename OpType> void ModuleEmitter::emitReshape(OpType op) {
@@ -1053,6 +1074,14 @@ void ModuleEmitter::emitGlobalId(gpu::GlobalIdOp op) {
   gpu::Dimension dim = op.getDimension();
   os << static_cast<int64_t>(dim);
   os << ");\n";
+}
+
+void ModuleEmitter::emitBarrier(gpu::BarrierOp op) {
+  indent();
+  if (state.target == EmitTarget::SYCL)
+    os << "item.barrier(sycl::access::fence_space::local_space);\n";
+  else
+    os << "barrier(CLK_LOCAL_MEM_FENCE);\n";
 }
 
 /// Top-level MLIR module emitter.

@@ -470,6 +470,7 @@ public:
 
   // Gpu op emitters.
   void emitGlobalId(gpu::GlobalIdOp op);
+  void emitBarrier(gpu::BarrierOp op);
 
   void emitOneAssign(arith::IndexCastOp op);
 
@@ -890,6 +891,11 @@ void ModuleEmitter::emitInfoAndNewLine(Operation *op) {
 /// MLIR component and HLS C++ pragma emitters.
 void ModuleEmitter::emitBlock(Block &block) {
   for (auto &op : block) {
+    if (mlir::isa<gpu::BarrierOp>(op)) {
+      emitBarrier(mlir::cast<gpu::BarrierOp>(op));
+      continue;
+    }
+
     if (ExprVisitor(*this).dispatchVisitor(&op))
       continue;
 

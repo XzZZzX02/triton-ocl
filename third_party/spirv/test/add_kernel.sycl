@@ -22,14 +22,16 @@ inline void add_kernel(
   int var_12 = std::min(var_10, var_3);	// L47
   int var_13 = std::max(var_12, var_8);	// L47
   int var_14 = var_13 - var_8;	// L47
-  for (int i = 0; i < var_14; i += 1) {
+  for (int i = item.get_local_id(0); i < var_14; i += item.get_local_range(0)) {
     var_4[i] = (var_0 + var_8)[i];
   }
 	// L47
-  for (int i = 0; i < var_14; i += 1) {
+  item.barrier(sycl::access::fence_space::local_space);
+  for (int i = item.get_local_id(0); i < var_14; i += item.get_local_range(0)) {
     var_5[i] = (var_1 + var_8)[i];
   }
 	// L48
+  item.barrier(sycl::access::fence_space::local_space);
   int var_15 = item.get_local_id(0);	// L49
   if (var_15 < 1024) {
     float var_16 = var_4[var_15];	// L49
@@ -37,9 +39,10 @@ inline void add_kernel(
     float var_18 = var_16 + var_17;	// L49
     var_4[var_15] = var_18;	// L49
   }
-  for (int i = 0; i < var_14; i += 1) {
+  for (int i = item.get_local_id(0); i < var_14; i += item.get_local_range(0)) {
     (var_2 + var_8)[i] = var_4[i];
   }
 	// L51
+  item.barrier(sycl::access::fence_space::local_space);
 }
 
