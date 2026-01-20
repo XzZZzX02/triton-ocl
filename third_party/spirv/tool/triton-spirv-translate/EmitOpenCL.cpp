@@ -195,6 +195,51 @@ void ModuleEmitter::emitScfYield(scf::YieldOp op) {
 
 /// Affine statement emitters.
 void ModuleEmitter::emitAffineFor(affine::AffineForOp op) {
+  // For SYCL target, try to emit SIMT parallel code instead of serial loops
+  if (state.target == EmitTarget::SYCL) {
+    auto lowerMap = op.getLowerBoundMap();
+    auto upperMap = op.getUpperBoundMap();
+
+    // Check if loop is parallelizable:
+    // - Lower bound is constant 0
+    // - Upper bound is constant
+    // - Step is 1
+    // - No loop-carried dependencies (simple element-wise ops)
+    bool lowerIsZero =
+        (lowerMap.getNumResults() == 1 &&
+         llvm::isa<AffineConstantExpr>(lowerMap.getResult(0)) &&
+         llvm::cast<AffineConstantExpr>(lowerMap.getResult(0)).getValue() == 0);
+    bool upperIsConst = (upperMap.getNumResults() == 1 &&
+                         llvm::isa<AffineConstantExpr>(upperMap.getResult(0)));
+    bool stepIsOne = (op.getStep() == 1);
+
+    // Now that local_accessor is used, SIMT transformation should work
+    if (lowerIsZero && upperIsConst && stepIsOne) {
+      auto iterVar = op.getInductionVar();
+      int64_t upperBound =
+          llvm::cast<AffineConstantExpr>(upperMap.getResult(0)).getValue();
+
+      // Emit SIMT code: use get_local_id(0) as the loop index
+      indent();
+      emitValue(iterVar);
+      os << " = item.get_local_id(0);";
+      emitInfoAndNewLine(op);
+
+      // Emit bounds check guard
+      indent() << "if (";
+      emitValue(iterVar);
+      os << " < " << upperBound << ") {\n";
+
+      addIndent();
+      emitBlock(*op.getBody());
+      reduceIndent();
+
+      indent() << "}\n";
+      return;
+    }
+  }
+
+  // Fall back to original serial loop emission
   indent() << "for (";
   auto iterVar = op.getInductionVar();
 
@@ -208,7 +253,7 @@ void ModuleEmitter::emitAffineFor(affine::AffineForOp op) {
     lowerEmitter.emitAffineExpr(lowerMap.getResult(0));
   else {
     for (unsigned i = 0, e = lowerMap.getNumResults() - 1; i < e; ++i)
-      os << "max(";
+      os << (state.target == EmitTarget::SYCL ? "std::max(" : "max(");
     lowerEmitter.emitAffineExpr(lowerMap.getResult(0));
     for (auto &expr : llvm::drop_begin(lowerMap.getResults(), 1)) {
       os << ", ";
@@ -228,7 +273,7 @@ void ModuleEmitter::emitAffineFor(affine::AffineForOp op) {
     upperEmitter.emitAffineExpr(upperMap.getResult(0));
   else {
     for (unsigned i = 0, e = upperMap.getNumResults() - 1; i < e; ++i)
-      os << "min(";
+      os << (state.target == EmitTarget::SYCL ? "std::min(" : "min(");
     upperEmitter.emitAffineExpr(upperMap.getResult(0));
     for (auto &expr : llvm::drop_begin(upperMap.getResults(), 1)) {
       os << ", ";
@@ -526,6 +571,8 @@ getTransferCondition(TransferOpType op,
 template <typename OpType> void ModuleEmitter::emitAlloc(OpType op) {
   // A declared result indicates that the memref is output of the function, and
   // has been declared in the function signature.
+  // For SYCL, local allocations are passed as local_accessor parameters,
+  // so isDeclared() will return true (addName was called in emitFunction).
   if (isDeclared(op.getResult()))
     return;
 
@@ -610,6 +657,10 @@ bool isSimilar1D(MemRefType memref) {
 void ModuleEmitter::emitMemCpyValue(Value val) {
   auto memrefType = mlir::cast<MemRefType>(val.getType());
   if (auto castOp = val.getDefiningOp<memref::ReinterpretCastOp>()) {
+    // Wrap pointer arithmetic in parentheses to ensure correct operator
+    // precedence when followed by array indexing: (var_0 + offset)[i] instead
+    // of var_0 + offset[i]
+    os << "(";
     emitValue(castOp.getSource());
     os << " + ";
     emitOpFoldResult(castOp.getMixedOffsets()[0]);
@@ -617,10 +668,15 @@ void ModuleEmitter::emitMemCpyValue(Value val) {
       os << " + i * ";
       emitOpFoldResult(castOp.getMixedStrides()[0]);
     }
+    os << ")";
   } else if (auto allocOp = val.getDefiningOp<memref::AllocOp>()) {
-    emitValue(val);
     if (!isSimilar1D(memrefType)) {
-      os << " + i";
+      // Wrap in parentheses for consistency
+      os << "(";
+      emitValue(val);
+      os << " + i)";
+    } else {
+      emitValue(val);
     }
   } else if (auto blockArg = mlir::dyn_cast<BlockArgument>(val)) {
     emitValue(val);
@@ -729,8 +785,8 @@ void ModuleEmitter::emitMemCpy(memref::CopyOp op) {
       } else if (is2D(targetMemref)) {
         if (auto castOp =
                 op.getSource().getDefiningOp<memref::ReinterpretCastOp>()) {
-          emitRowCopy(op.getTarget(), op.getSource(),
-                      castOp.getMixedSizes()[0], castOp.getMixedSizes()[1]);
+          emitRowCopy(op.getTarget(), op.getSource(), castOp.getMixedSizes()[0],
+                      castOp.getMixedSizes()[1]);
         }
       }
     }
@@ -846,7 +902,11 @@ void ModuleEmitter::emitMaxMin(OpType op, const char *syntax) {
   auto rank = emitNestedLoopHeader(op.getResult());
   indent();
   emitValue(op.getResult());
-  os << " = " << syntax << "(";
+  // Use std:: prefix for SYCL, plain function for OpenCL
+  if (state.target == EmitTarget::SYCL)
+    os << " = std::" << syntax << "(";
+  else
+    os << " = " << syntax << "(";
   emitValue(op.getLhs(), rank);
   os << ", ";
   emitValue(op.getRhs(), rank);
@@ -908,6 +968,16 @@ void ModuleEmitter::emitFunction(func::FuncOp func) {
   if (func.getBlocks().size() != 1)
     emitError(func, "has zero or more than one basic blocks.");
 
+  // For SYCL, scan for local allocations first
+  localAllocs.clear();
+  if (state.target == EmitTarget::SYCL) {
+    func.walk([&](memref::AllocOp allocOp) {
+      if (allocOp.getType().hasStaticShape()) {
+        localAllocs.push_back(allocOp);
+      }
+    });
+  }
+
   // Emit function signature.
   if (state.target == EmitTarget::SYCL)
     os << "inline void " << func.getName() << "(\n";
@@ -940,6 +1010,20 @@ void ModuleEmitter::emitFunction(func::FuncOp func) {
     needComma = true;
   }
 
+  // For SYCL, emit local_accessor parameters for each local allocation
+  if (state.target == EmitTarget::SYCL) {
+    for (auto allocOp : localAllocs) {
+      if (needComma)
+        os << ",\n";
+      indent();
+      auto memrefType = allocOp.getType();
+      auto elemType = memrefType.getElementType();
+      os << "sycl::local_accessor<" << getDataTypeName(elemType, state.target)
+         << ", 1> " << addName(allocOp.getResult());
+      needComma = true;
+    }
+  }
+
   reduceIndent();
   os << "\n) {";
   emitInfoAndNewLine(func);
@@ -961,9 +1045,11 @@ void ModuleEmitter::emitGlobalId(gpu::GlobalIdOp op) {
   indent();
   emitValue(op.getResult());
   if (state.target == EmitTarget::SYCL)
-    os << " = item.get_global_id(";
+    // Triton's program_id corresponds to SYCL work-group ID (not global
+    // work-item ID)
+    os << " = item.get_group(";
   else
-    os << " = get_global_id(";
+    os << " = get_group_id(";
   gpu::Dimension dim = op.getDimension();
   os << static_cast<int64_t>(dim);
   os << ");\n";
@@ -979,6 +1065,7 @@ void ModuleEmitter::emitModule(ModuleOp module) {
 //===----------------------------------------------------------------------===//
 
 #include <sycl/sycl.hpp>
+#include <algorithm>
 
 )XXX";
   } else {

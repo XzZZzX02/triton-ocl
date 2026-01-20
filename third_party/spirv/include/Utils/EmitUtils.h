@@ -453,7 +453,8 @@ public:
   void emitMemCpyValue(Value val);
   void emitOpFoldResult(OpFoldResult opFoldResult);
   void emitAsyncCopy(Value target, Value source);
-  void emitAsyncCopyWithOpFoldResult(Value target, Value source, OpFoldResult num);
+  void emitAsyncCopyWithOpFoldResult(Value target, Value source,
+                                     OpFoldResult num);
   void emitAsyncCopyWithConstant(Value target, Value source, int num);
   void emitMemCpy(memref::CopyOp op);
   template <typename OpType> void emitReshape(OpType op);
@@ -491,6 +492,9 @@ private:
   /// MLIR component and HLS C++ pragma emitters.
   void emitBlock(Block &block);
   void emitFunction(func::FuncOp func);
+
+  /// Track local allocations for SYCL local_accessor generation
+  SmallVector<memref::AllocOp, 4> localAllocs;
 
   unsigned numDSPs = 0;
 };
@@ -720,7 +724,9 @@ public:
   /// Special expressions.
   bool visitOp(arith::SelectOp op) { return emitter.emitSelect(op), true; }
   bool visitOp(arith::ConstantOp op) { return emitter.emitConstant(op), true; }
-  bool visitOp(arith::IndexCastOp op) { return emitter.emitOneAssign(op), true; }
+  bool visitOp(arith::IndexCastOp op) {
+    return emitter.emitOneAssign(op), true;
+  }
   bool visitOp(arith::UIToFPOp op) { return emitter.emitAssign(op), true; }
   bool visitOp(arith::SIToFPOp op) { return emitter.emitAssign(op), true; }
   bool visitOp(arith::FPToUIOp op) { return emitter.emitAssign(op), true; }
