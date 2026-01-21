@@ -467,7 +467,7 @@ class CompiledKernel:
             return
         # not enough shared memory to run the kernel
         max_shared = max_shared_mem(device)
-        if self.metadata.shared > max_shared:
+        if getattr(self.metadata, 'shared', 0) > max_shared:
             raise OutOfResources(self.metadata.shared, max_shared, "shared memory")
         if hasattr(self.metadata, "tmem_size") and self.metadata.tmem_size is not None:
             # Use blackwell max tmem size for now, this should be moved in device properties
@@ -476,7 +476,7 @@ class CompiledKernel:
                 raise OutOfResources(self.metadata.tmem_size, max_tmem_size, "tensor memory")
         # TODO: n_regs, n_spills should be metadata generated when calling `ptxas`
         self.module, self.function, self.n_regs, self.n_spills, self.n_max_threads = driver.active.utils.load_binary(
-            self.name, self.kernel, self.metadata.shared, device)
+            self.name, self.kernel, getattr(self.metadata, 'shared', 0), device)
         warp_size = driver.active.get_current_target().warp_size
         if self.metadata.num_warps * warp_size > self.n_max_threads:
             raise OutOfResources(self.metadata.num_warps * warp_size, self.n_max_threads, "threads")

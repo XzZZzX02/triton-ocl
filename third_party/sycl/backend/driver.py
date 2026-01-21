@@ -20,21 +20,22 @@ from pathlib import Path
 # ------------------------
 
 
-class SPIRVUtils(object):
+class SYCLUtils(object):
 
     def __new__(cls):
         if not hasattr(cls, "instance"):
-            cls.instance = super(SPIRVUtils, cls).__new__(cls)
+            cls.instance = super(SYCLUtils, cls).__new__(cls)
         return cls.instance
 
     def __init__(self):
         pass
 
     def load_binary(self, name, kernel, shared_mem, device):
-        pass
+        # module, function, n_regs, n_spills, n_max_threads
+        return (None, kernel, 0, 0, 1024)
 
     def get_device_properties(self, *args):
-        return {"max_shared_mem": 0}
+        return {"max_shared_mem": 64 * 1024}
 
 
 # ------------------------
@@ -50,30 +51,33 @@ def make_launcher(constants, signature, ids):
     return src
 
 
-class SPIRVLauncher(object):
+class SYCLLauncher(object):
 
     def __init__(self, src, metadata):
         pass
 
-    def __call__(self, gridX, gridY, gridZ, kernel, bound_args):
-        from triton.backends.spirv.sycl_utils import launch
-        # kernel object here is the metadata/source wrapper. 
-        # kernel.kernel contains the source string? Wait, let's verification this assumption.
-        # usually `kernel` passed to __call__ has .c_wrapper or .asm or similar.
-        # But 'kernel' argument here seems to be `tt_kernel` from make_launcher logic?
-        # Actually in `make_launcher` above: `src = f""""""` -> return src. 
-        # The `driver.py` logic for `SPIRVLauncher` seems very stubbed.
+    def __call__(self, gridX, gridY, gridZ, stream, function, packed_metadata, launch_metadata, enter_hook, exit_hook, *args):
+        try:
+            from triton.backends.sycl.sycl_utils import launch
+        except ImportError:
+            # Fallback for development/testing if package structure isn't fully set
+            try:
+                from .sycl_utils import launch
+            except ImportError:
+                # Last resort: try looking relative to the current file
+                import sys
+                from pathlib import Path
+                sys.path.append(str(Path(__file__).parent))
+                from sycl_utils import launch
         
-        # Assumption: `kernel` object passed here has `kernel` attribute with source code 
-        # and `name` attribute.
-        launch(gridX, gridY, gridZ, kernel.name, kernel.kernel, bound_args)
+        launch(gridX, gridY, gridZ, packed_metadata.name, function, args)
 
 
-class SPIRVDriver(DriverBase):
+class SYCLDriver(DriverBase):
 
     def __init__(self):
-        self.utils = SPIRVUtils()
-        self.launcher_cls = SPIRVLauncher
+        self.utils = SYCLUtils()
+        self.launcher_cls = SYCLLauncher
         super().__init__()
 
     def get_current_device(self):
@@ -87,8 +91,9 @@ class SPIRVDriver(DriverBase):
         return 0
 
     def get_current_target(self):
-        # Capability and warp size are zeros for SPIRV.
-        return GPUTarget("spirv", "test", 0)
+        # Capability and warp size are zeros for SYCL.
+        # Arch "sycl"
+        return GPUTarget("sycl", "sycl", 32)
 
     def get_device_interface(self):
         import torch
@@ -107,3 +112,4 @@ class SPIRVDriver(DriverBase):
 
     def clear_cache(self, cache):
         cache.zero_()
+

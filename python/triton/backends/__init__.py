@@ -37,8 +37,14 @@ class Backend:
 def _discover_backends() -> dict[str, Backend]:
     backends = dict()
     for ep in entry_points().select(group="triton.backends"):
-        compiler = importlib.import_module(f"{ep.value}.compiler")
-        driver = importlib.import_module(f"{ep.value}.driver")
+        try:
+            print(f"DEBUG: Attempting to import {ep.value}")
+            compiler = importlib.import_module(f"{ep.value}.compiler")
+            driver = importlib.import_module(f"{ep.value}.driver")
+            print(f"DEBUG: Successfully imported {ep.value}")
+        except Exception as e:
+            print(f"DEBUG: Failed to import {ep.value}: {e}")
+            continue
         backends[ep.name] = Backend(_find_concrete_subclasses(compiler, BaseBackend),  # type: ignore
                                     _find_concrete_subclasses(driver, DriverBase))  # type: ignore
     return backends

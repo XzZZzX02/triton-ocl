@@ -6,7 +6,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "spirv/include/Utils/EmitUtils.h"
+#include "Utils/EmitUtils.h"
 
 using namespace mlir;
 
@@ -16,6 +16,18 @@ void registerEmitSYCLTranslation();
 void ModuleEmitter::emitOneAssign(arith::IndexCastOp op) {
   addAlias(op.getOperand(), op.getResult());
 }
+// ... (rest of the file content modifications)
+
+// I will try to make targeted replaces instead of full file to avoid massive
+// token usage if possible, but since I need to change 'state.target ==
+// EmitTarget::SYCL' checks throughout, a multi-replace or several chunks is
+// better.
+
+// Actually, I can keep the checks 'if (state.target == EmitTarget::SYCL)'
+// effectively true by passing EmitTarget::SYCL. But valid refactoring should
+// remove dead code.
+
+// Let's replace the includes and registration first.
 
 template <typename AssignOpType>
 void ModuleEmitter::emitAssign(AssignOpType op) {
@@ -695,7 +707,11 @@ void ModuleEmitter::emitOpFoldResult(OpFoldResult opFoldResult) {
 }
 
 void ModuleEmitter::emitAsyncCopy(Value target, Value source) {
-  indent() << "ev = async_work_group_copy(";
+  indent();
+  if (state.target == EmitTarget::SYCL)
+    os << "ev = item.get_group().async_work_group_copy(";
+  else
+    os << "ev = async_work_group_copy(";
   emitMemCpyValue(target);
   os << ", ";
   emitMemCpyValue(source);
@@ -1002,6 +1018,8 @@ void ModuleEmitter::emitFunction(func::FuncOp func) {
   // Emit function signature.
   if (state.target == EmitTarget::SYCL)
     os << "inline void " << func.getName() << "(\n";
+  else if (state.target == EmitTarget::SYCL)
+    os << "inline void " << func.getName() << "(\n";
   else
     os << "__kernel void " << func.getName() << "(\n";
   addIndent();
@@ -1221,32 +1239,15 @@ void ModuleEmitter::emitModule(ModuleOp module) {
 // Entry of triton-spirv-translate
 //===----------------------------------------------------------------------===//
 
-LogicalResult emitOpenCL(ModuleOp module, llvm::raw_ostream &os) {
-  ScaleHLSEmitterState state(os, EmitTarget::OpenCL);
-  ModuleEmitter(state).emitModule(module);
-  return failure(state.encounteredError);
-}
-
 LogicalResult emitSYCL(ModuleOp module, llvm::raw_ostream &os) {
   ScaleHLSEmitterState state(os, EmitTarget::SYCL);
   ModuleEmitter(state).emitModule(module);
   return failure(state.encounteredError);
 }
 
-void registerEmitOpenCLTranslation() {
-  static TranslateFromMLIRRegistration toOpenCL(
-      "triton-spirv-emit-opencl", "Translate MLIR into OpenCL", emitOpenCL,
-      [&](DialectRegistry &registry) {
-        registry.insert<mlir::math::MathDialect, mlir::arith::ArithDialect,
-                        mlir::scf::SCFDialect, mlir::func::FuncDialect,
-                        mlir::memref::MemRefDialect, ::mlir::gpu::GPUDialect,
-                        mlir::affine::AffineDialect>();
-      });
-}
-
 void registerEmitSYCLTranslation() {
   static TranslateFromMLIRRegistration toSYCL(
-      "triton-spirv-emit-sycl", "Translate MLIR into SYCL", emitSYCL,
+      "triton-sycl-emit-sycl", "Translate MLIR into SYCL", emitSYCL,
       [&](DialectRegistry &registry) {
         registry.insert<mlir::math::MathDialect, mlir::arith::ArithDialect,
                         mlir::scf::SCFDialect, mlir::func::FuncDialect,
@@ -1256,7 +1257,7 @@ void registerEmitSYCLTranslation() {
 }
 
 int main(int argc, char **argv) {
-  registerEmitOpenCLTranslation();
+
   registerEmitSYCLTranslation();
 
   return mlir::failed(

@@ -515,7 +515,12 @@ class CMakeBuild(build_ext):
         subprocess.check_call(["cmake", "--build", ".", "--target", "mlir-doc"], cwd=cmake_dir)
 
         translate_path = "third_party/spirv/tool/triton-spirv-translate/triton-spirv-translate"
-        shutil.copy(os.path.join(cmake_dir, translate_path), extdir)
+        if os.path.exists(os.path.join(cmake_dir, translate_path)):
+            shutil.copy(os.path.join(cmake_dir, translate_path), extdir)
+
+        sycl_translate_path = "third_party/sycl/tool/triton-sycl-translate/triton-sycl-translate"
+        if os.path.exists(os.path.join(cmake_dir, sycl_translate_path)):
+            shutil.copy(os.path.join(cmake_dir, sycl_translate_path), extdir)
 
 def download_and_copy_dependencies():
     nvidia_version_path = os.path.join(get_base_dir(), "cmake", "nvidia-toolchain-version.json")
@@ -591,7 +596,7 @@ def download_and_copy_dependencies():
     )
 
 
-backends = [*BackendInstaller.copy(["nvidia", "amd", "spirv"]), *BackendInstaller.copy_externals()]
+backends = [*BackendInstaller.copy(["sycl"]), *BackendInstaller.copy_externals()]
 
 
 def get_package_dirs():
