@@ -1,3 +1,4 @@
+if(NOT TARGET TritonToLinalgSYCL)
 add_triton_library(TritonToLinalgSYCL
   TritonToLinalg.cpp
 
@@ -9,3 +10,4 @@ add_triton_library(TritonToLinalgSYCL
   MLIRLinalgTransforms
   TritonSharedAnalysisSYCL
 )
+endif()

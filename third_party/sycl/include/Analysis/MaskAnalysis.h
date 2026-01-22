@@ -5,8 +5,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef TRITON_ANALYSIS_MASKANALYSIS_H
-#define TRITON_ANALYSIS_MASKANALYSIS_H
+#ifndef TRITON_SYCL_ANALYSIS_MASKANALYSIS_H
+#define TRITON_SYCL_ANALYSIS_MASKANALYSIS_H
 
 #include "mlir/Dialect/Arith/IR/Arith.h"
 #include "mlir/Dialect/MemRef/IR/MemRef.h"
@@ -20,9 +20,10 @@
 
 namespace mlir {
 
-class OpBuilder;
+#include "mlir/IR/Builders.h"
 
 namespace triton {
+namespace sycl {
 // Data structure used to decode the pattern in a mask used for load and store.
 // start and end field represent the start and end index of a range (produced
 // by make_range, addi, etc.). While multi-dimensional data is possible, we
@@ -90,8 +91,9 @@ private:
   LogicalResult addStates(const MaskState &lhsState, const MaskState &rhsState,
                           Location loc, OpBuilder &builder);
 
-  LogicalResult minStateScalar(const MaskState &lhsState, const MaskState &rhsState,
-                          Location loc, OpBuilder &builder);
+  LogicalResult minStateScalar(const MaskState &lhsState,
+                               const MaskState &rhsState, Location loc,
+                               OpBuilder &builder);
 
   LogicalResult minStates(const MaskState &lhsState, const MaskState &rhsState,
                           Location loc, OpBuilder &builder);
@@ -159,6 +161,7 @@ private:
                                  OpBuilder &builder);
 };
 
+} // namespace sycl
 } // namespace triton
 
 } // namespace mlir

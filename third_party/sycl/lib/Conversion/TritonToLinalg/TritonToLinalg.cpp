@@ -1,22 +1,22 @@
 #include "mlir/Pass/PassManager.h"
 #include "mlir/Transforms/GreedyPatternRewriteDriver.h"
 #include "mlir/Transforms/Passes.h"
-#include "spirv/include/Analysis/UseAnalysis.h"
-#include "spirv/include/Conversion/TritonToLinalg/ConversionPatterns.hpp"
-#include "spirv/include/Conversion/TritonToLinalg/Passes.h"
+#include "sycl/include/Analysis/UseAnalysis.h"
+#include "sycl/include/Conversion/TritonToLinalg/ConversionPatterns.hpp"
+#include "sycl/include/Conversion/TritonToLinalg/Passes.h"
 
 #include "llvm/Support/Debug.h"
 
 #define DEBUG_TYPE "triton-to-linalg"
 
-namespace mlir::triton::spirv {
+namespace mlir::triton::sycl {
 #define GEN_PASS_DEF_TRITONTOLINALG
-#include "spirv/include/Conversion/TritonToLinalg/Passes.h.inc"
-} // namespace mlir::triton::spirv
+#include "sycl/include/Conversion/TritonToLinalg/Passes.h.inc"
+} // namespace mlir::triton::sycl
 
 using namespace mlir;
 using namespace mlir::triton;
-using namespace mlir::triton::spirv;
+using namespace mlir::triton::sycl;
 
 namespace {
 
@@ -56,7 +56,7 @@ public:
 };
 
 struct TritonToLinalg
-    : public mlir::triton::spirv::impl::TritonToLinalgBase<TritonToLinalg> {
+    : public mlir::triton::sycl::impl::TritonToLinalgBase<TritonToLinalg> {
 
   void getDependentDialects(DialectRegistry &registry) const override {
     registry
@@ -70,7 +70,7 @@ struct TritonToLinalg
     auto moduleOp = getOperation();
 
     moduleOp.walk([this](triton::FuncOp op) {
-      if (failed(runUseAnalysis(op))) {
+      if (failed(mlir::triton::sycl::runUseAnalysis(op))) {
         signalPassFailure();
       }
     });
@@ -188,10 +188,10 @@ struct TritonToLinalg
 
 } // namespace
 
-namespace mlir::triton::spirv {
+namespace mlir::triton::sycl {
 
 std::unique_ptr<OperationPass<ModuleOp>> createTritonToLinalgPass() {
   return std::make_unique<TritonToLinalg>();
 }
 
-} // namespace mlir::triton::spirv
+} // namespace mlir::triton::sycl

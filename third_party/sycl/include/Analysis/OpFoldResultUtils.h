@@ -5,18 +5,20 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef TRITON_ANALYSIS_OPFOLDRESULT_UTILS_H
-#define TRITON_ANALYSIS_OPFOLDRESULT_UTILS_H
+#ifndef TRITON_SYCL_ANALYSIS_OPFOLDRESULT_UTILS_H
+#define TRITON_SYCL_ANALYSIS_OPFOLDRESULT_UTILS_H
 
+#include "mlir/Dialect/Arith/IR/Arith.h"
 #include "mlir/IR/Location.h"
 #include "mlir/IR/OpDefinition.h"
-#include "mlir/Dialect/Arith/IR/Arith.h"
 
 #include <optional>
 
 namespace mlir {
+namespace triton {
+namespace sycl {
 
-class OpBuilder;
+#include "mlir/IR/Builders.h"
 
 // Return integer if ofr is an IntegerAttr. Note that this function differs
 // from getConstantIntValue, which returns an integer if ofr is the constant
@@ -55,7 +57,7 @@ OpFoldResult subOFRs(const OpFoldResult lhs, const OpFoldResult rhs,
 // result is an Integer Attribtue. Otherwise, insert the arith.muli
 // instruction if needed and use its result Value.
 OpFoldResult mulOFRs(const OpFoldResult lhs, const OpFoldResult rhs,
-                         const Location loc, OpBuilder &b);
+                     const Location loc, OpBuilder &b);
 
 OpFoldResult minOFRs(const OpFoldResult lhs, const OpFoldResult rhs,
                      const Location loc, OpBuilder &b);
@@ -64,8 +66,12 @@ OpFoldResult maxOFRs(const OpFoldResult lhs, const OpFoldResult rhs,
                      const Location loc, OpBuilder &b);
 
 OpFoldResult compareOFRs(const OpFoldResult lhs, const OpFoldResult rhs,
-                    const arith::CmpIPredicate pred, const OpFoldResult trueVal,
-                    const OpFoldResult falseVal, const Location loc, OpBuilder &b);
+                         const arith::CmpIPredicate pred,
+                         const OpFoldResult trueVal,
+                         const OpFoldResult falseVal, const Location loc,
+                         OpBuilder &b);
+} // namespace sycl
+} // namespace triton
 } // namespace mlir
 
 #endif

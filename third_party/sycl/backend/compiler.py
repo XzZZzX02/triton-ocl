@@ -211,13 +211,6 @@ class SYCLBackend(BaseBackend):
         pm.run(mod)
         return mod
 
-    @staticmethod
-    def make_llvmspvir(mod, metadata, opt):
-        pm = ir.pass_manager(mod.context)
-        pm.enable_debug()
-        sycl.passes.llvmspvir.affine_to_llvmspv(pm)
-        pm.run(mod)
-        return mod
 
     @staticmethod
     def emit_sycl(src, metadata, opt):

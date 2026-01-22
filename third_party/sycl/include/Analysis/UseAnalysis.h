@@ -5,8 +5,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef TRITON_ANALYSIS_USEANALYSIS_H
-#define TRITON_ANALYSIS_USEANALYSIS_H
+#ifndef TRITON_SYCL_ANALYSIS_USEANALYSIS_H
+#define TRITON_SYCL_ANALYSIS_USEANALYSIS_H
 
 #include "mlir/Analysis/DataFlow/SparseAnalysis.h"
 #include "mlir/Pass/Pass.h"
@@ -15,6 +15,7 @@
 
 namespace mlir {
 namespace triton {
+namespace sycl {
 
 std::unique_ptr<Pass> createTritonUseAnalysisPass();
 
@@ -113,6 +114,7 @@ private:
 // delete meta data producers.
 LogicalResult runUseAnalysis(triton::FuncOp &funcOp);
 
+} // namespace sycl
 } // namespace triton
 } // namespace mlir
 

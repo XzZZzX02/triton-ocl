@@ -5,8 +5,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef TRITON_ANALYSIS_PTRANALYSIS_H
-#define TRITON_ANALYSIS_PTRANALYSIS_H
+#ifndef TRITON_SYCL_ANALYSIS_PTRANALYSIS_H
+#define TRITON_SYCL_ANALYSIS_PTRANALYSIS_H
 
 #include "mlir/Dialect/Arith/IR/Arith.h"
 #include "mlir/Dialect/MemRef/IR/MemRef.h"
@@ -21,6 +21,7 @@ namespace mlir {
 class ConversionPatternRewriter;
 
 namespace triton {
+namespace sycl {
 
 struct ModuloState {
   Value size;
@@ -264,6 +265,7 @@ public:
                                ConversionPatternRewriter &rewriter);
 };
 
+} // namespace sycl
 } // namespace triton
 
 } // namespace mlir

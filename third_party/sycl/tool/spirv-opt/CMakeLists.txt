@@ -6,9 +6,9 @@ add_llvm_executable(triton-sycl-opt spirv-opt.cpp PARTIAL_SOURCES_INTENDED)
 llvm_update_compile_flags(triton-sycl-opt)
 target_link_libraries(triton-sycl-opt PRIVATE
   TritonTransforms
-  AffineToLLVMSYCL
-  LinalgToAffineLoopsSYCL
-  TritonToLinalgSYCL
+  AffineToLLVMSPV
+  LinalgToAffineLoops
+  TritonToLinalg
   ${dialect_libs}
   ${conversion_libs}
   # MLIR core

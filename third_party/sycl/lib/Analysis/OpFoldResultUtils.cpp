@@ -5,7 +5,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "spirv/include/Analysis/OpFoldResultUtils.h"
+#include "sycl/include/Analysis/OpFoldResultUtils.h"
 
 #include "mlir/Dialect/Arith/IR/Arith.h"
 #include "mlir/IR/BuiltinAttributes.h"
@@ -15,6 +15,8 @@
 #include "triton/Dialect/Triton/IR/Dialect.h"
 
 namespace mlir {
+namespace triton {
+namespace sycl {
 
 std::optional<int64_t> getIntAttr(const OpFoldResult ofr) {
   if (isa<Attribute>(ofr) && isa<IntegerAttr>(cast<Attribute>(ofr)))
@@ -101,7 +103,8 @@ OpFoldResult expandOFRIndex(OpFoldResult ofr, OpFoldResult targetForTy,
 
   Value v = dyn_cast<Value>(ofr);
   if (!v)
-    v = b.create<arith::ConstantOp>(loc, cast<IntegerAttr>(cast<Attribute>(ofr)));
+    v = b.create<arith::ConstantOp>(loc,
+                                    cast<IntegerAttr>(cast<Attribute>(ofr)));
 
   Type ty = v.getType();
   if (targetTy == ty)
@@ -204,7 +207,7 @@ OpFoldResult subOFRs(const OpFoldResult lhs, const OpFoldResult rhs,
 }
 
 OpFoldResult mulOFRs(const OpFoldResult lhs, const OpFoldResult rhs,
-                         const Location loc, OpBuilder &b) {
+                     const Location loc, OpBuilder &b) {
   auto lhsIntAttr = getIntAttr(lhs);
   auto rhsIntAttr = getIntAttr(rhs);
 
@@ -313,32 +316,34 @@ OpFoldResult maxOFRs(const OpFoldResult lhs, const OpFoldResult rhs,
 }
 
 OpFoldResult compareOFRs(const OpFoldResult lhs, const OpFoldResult rhs,
-                    const arith::CmpIPredicate pred, const OpFoldResult trueOFR,
-                    const OpFoldResult falseOFR, const Location loc, OpBuilder &b) {
+                         const arith::CmpIPredicate pred,
+                         const OpFoldResult trueOFR,
+                         const OpFoldResult falseOFR, const Location loc,
+                         OpBuilder &b) {
   auto lhsIntAttr = getIntAttr(lhs);
   auto rhsIntAttr = getIntAttr(rhs);
 
   // both lhs and rhs are constants, return the result directly
   if (lhsIntAttr && rhsIntAttr) {
     switch (pred) {
-      case arith::CmpIPredicate::eq:
-        return *lhsIntAttr == *rhsIntAttr ? trueOFR : falseOFR;
-      case arith::CmpIPredicate::ne:
-        return *lhsIntAttr != *rhsIntAttr ? trueOFR : falseOFR;
-      case arith::CmpIPredicate::slt:
-      case arith::CmpIPredicate::ult:
-        return *lhsIntAttr < *rhsIntAttr ? trueOFR : falseOFR;
-      case arith::CmpIPredicate::sle:
-      case arith::CmpIPredicate::ule:
-        return *lhsIntAttr <= *rhsIntAttr ? trueOFR : falseOFR;
-      case arith::CmpIPredicate::sgt:
-      case arith::CmpIPredicate::ugt:
-        return *lhsIntAttr > *rhsIntAttr ? trueOFR : falseOFR;
-      case arith::CmpIPredicate::sge:
-      case arith::CmpIPredicate::uge:
-        return *lhsIntAttr >= *rhsIntAttr ? trueOFR : falseOFR;
-      default:
-        llvm_unreachable("Unsupported predicate");
+    case arith::CmpIPredicate::eq:
+      return *lhsIntAttr == *rhsIntAttr ? trueOFR : falseOFR;
+    case arith::CmpIPredicate::ne:
+      return *lhsIntAttr != *rhsIntAttr ? trueOFR : falseOFR;
+    case arith::CmpIPredicate::slt:
+    case arith::CmpIPredicate::ult:
+      return *lhsIntAttr < *rhsIntAttr ? trueOFR : falseOFR;
+    case arith::CmpIPredicate::sle:
+    case arith::CmpIPredicate::ule:
+      return *lhsIntAttr <= *rhsIntAttr ? trueOFR : falseOFR;
+    case arith::CmpIPredicate::sgt:
+    case arith::CmpIPredicate::ugt:
+      return *lhsIntAttr > *rhsIntAttr ? trueOFR : falseOFR;
+    case arith::CmpIPredicate::sge:
+    case arith::CmpIPredicate::uge:
+      return *lhsIntAttr >= *rhsIntAttr ? trueOFR : falseOFR;
+    default:
+      llvm_unreachable("Unsupported predicate");
     }
   }
 
@@ -351,4 +356,6 @@ OpFoldResult compareOFRs(const OpFoldResult lhs, const OpFoldResult rhs,
   auto selectOp = b.create<arith::SelectOp>(loc, cmpOp, trueValue, falseValue);
   return selectOp.getResult();
 }
+} // namespace sycl
+} // namespace triton
 } // namespace mlir

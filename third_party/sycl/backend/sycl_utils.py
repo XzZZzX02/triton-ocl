@@ -244,6 +244,7 @@ def run_standalone(gridX, gridY, gridZ, kernel_name, source_code, bound_args):
     # 2. Compile
     # Remove -x c++ to avoid compiling linked libraries (like libomp) as source
     cmd = [ACPP_PATH, "--acpp-targets=omp", "-O2", "-std=c++17", src_path, "-o", exe_path]
+    print(f"Compiling with command: {' '.join(cmd)}")
     result = subprocess.run(cmd, capture_output=True, text=True)
     if result.returncode != 0:
         print(f"Failed to compile standalone executable. Exit code: {result.returncode}")

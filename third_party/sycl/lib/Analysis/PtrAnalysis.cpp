@@ -5,8 +5,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "spirv/include/Analysis/PtrAnalysis.h"
-#include "spirv/include/Analysis/OpFoldResultUtils.h"
+#include "sycl/include/Analysis/PtrAnalysis.h"
+#include "sycl/include/Analysis/OpFoldResultUtils.h"
 
 #include "mlir/IR/IRMapping.h"
 #include "mlir/Transforms/DialectConversion.h"
@@ -19,6 +19,7 @@
 namespace mlir {
 
 namespace triton {
+namespace sycl {
 
 static void assertValidUnrealizedCast(UnrealizedConversionCastOp op) {
   assert(op && op->hasAttr(ModuloState::WraparoundAttr) &&
@@ -1371,5 +1372,6 @@ Value PtrAnalysis::getScalarMemRef(Value ptr, Value memRef, const Location loc,
   return castOp.getResult();
 }
 
+} // namespace sycl
 } // namespace triton
 } // namespace mlir

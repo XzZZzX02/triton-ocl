@@ -1,3 +1,4 @@
+if(NOT TARGET LinalgToAffineLoopsSYCL)
 add_triton_library(LinalgToAffineLoopsSYCL
   LinalgToAffineLoops.cpp
 
@@ -8,3 +9,4 @@ add_triton_library(LinalgToAffineLoopsSYCL
   MLIRPass
   MLIRLinalgTransforms
 )
+endif()

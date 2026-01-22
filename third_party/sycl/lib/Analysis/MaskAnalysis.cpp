@@ -5,12 +5,12 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "spirv/include/Analysis/MaskAnalysis.h"
+#include "sycl/include/Analysis/MaskAnalysis.h"
 #include "mlir/Dialect/Arith/IR/Arith.h"
 #include "mlir/Dialect/SCF/IR/SCF.h"
 #include "mlir/Support/LogicalResult.h"
 
-#include "spirv/include/Analysis/OpFoldResultUtils.h"
+#include "sycl/include/Analysis/OpFoldResultUtils.h"
 
 #include "triton/Dialect/Triton/IR/Dialect.h"
 
@@ -24,6 +24,7 @@
 namespace mlir {
 
 namespace triton {
+namespace sycl {
 
 LogicalResult MaskState::parse(Value operand, const Location loc,
                                OpBuilder &builder) {
@@ -233,7 +234,8 @@ LogicalResult MaskState::minStateScalar(const MaskState &lhsState,
     }
   } else {
     InFlightDiagnostic diag =
-        emitError(loc) << "Unexpected case where both lhs and rhs are not scalars";
+        emitError(loc)
+        << "Unexpected case where both lhs and rhs are not scalars";
     return failure();
   }
   return success();
@@ -327,7 +329,7 @@ LogicalResult MaskState::parseAnd(arith::AndIOp andOp, const Location loc,
   if (failed(rhsState.parse(andOp.getRhs(), loc, builder)))
     return failure();
 
-  if(!lhsState.isMask() || !rhsState.isMask()) {
+  if (!lhsState.isMask() || !rhsState.isMask()) {
     return this->minStateScalar(lhsState, rhsState, loc, builder);
   }
   return this->minStates(lhsState, rhsState, loc, builder);
@@ -361,8 +363,8 @@ LogicalResult MaskState::parseCmp(arith::CmpIOp cmpOp, const Location loc,
   // We only support sge against 0 for lower bounds. Dims already has an
   // implicit assumption that the lower bound is 0, so if we see this, assume
   // the comparison evaluates to true.
-  if (cmpOp.getPredicate() == arith::CmpIPredicate::sge
-    && !(rhsState.scalar && hasConstZero(rhsState.scalar))) {
+  if (cmpOp.getPredicate() == arith::CmpIPredicate::sge &&
+      !(rhsState.scalar && hasConstZero(rhsState.scalar))) {
     InFlightDiagnostic diag = emitError(loc)
                               << "Unsupported cmpi with rhs not equal to 0";
     return failure();
@@ -395,10 +397,10 @@ LogicalResult MaskState::parseCmp(arith::CmpIOp cmpOp, const Location loc,
     // should be loaded/stored by inserting a comparison + select:
     //    dim = lhs < rhs ? lhs.dim : 0
     newDim = compareOFRs(lhsState.scalar, rhsState.scalar, cmpOp.getPredicate(),
-                  lhsState.dims[cmpDim], builder.getIndexAttr(0),
-                  loc, builder);
+                         lhsState.dims[cmpDim], builder.getIndexAttr(0), loc,
+                         builder);
   } else if (cmpOp.getPredicate() == arith::CmpIPredicate::slt ||
-    cmpOp.getPredicate() == arith::CmpIPredicate::ult) {
+             cmpOp.getPredicate() == arith::CmpIPredicate::ult) {
     // Important:
     // In the case where the values we are loading are entirely masked off like
     // the following:
@@ -416,8 +418,8 @@ LogicalResult MaskState::parseCmp(arith::CmpIOp cmpOp, const Location loc,
     newEnd = maxOFRs(newEnd, lhsState.start, loc, builder);
     newDim = subOFRs(newEnd, lhsState.start, loc, builder);
   } else {
-    assert(cmpOp.getPredicate() == arith::CmpIPredicate::sge && rhsState.scalar
-           && hasConstZero(rhsState.scalar));
+    assert(cmpOp.getPredicate() == arith::CmpIPredicate::sge &&
+           rhsState.scalar && hasConstZero(rhsState.scalar));
     newDim = lhsState.dims[cmpDim];
   }
 
@@ -584,5 +586,6 @@ LogicalResult MaskState::parseExpandDims(triton::ExpandDimsOp expandDimsOp,
   return success();
 }
 
+} // namespace sycl
 } // namespace triton
 } // namespace mlir

@@ -15,9 +15,8 @@
 #include "mlir/Dialect/SCF/IR/SCF.h"
 #include "mlir/Dialect/SCF/Transforms/BufferizableOpInterfaceImpl.h"
 #include "mlir/Dialect/Tensor/Transforms/BufferizableOpInterfaceImpl.h"
-#include "spirv/include/Conversion/AffineToLLVMSPV/Passes.h"
-#include "spirv/include/Conversion/LinalgToAffineLoops/Passes.h"
-#include "spirv/include/Conversion/TritonToLinalg/Passes.h"
+#include "sycl/include/Conversion/LinalgToAffineLoops/Passes.h"
+#include "sycl/include/Conversion/TritonToLinalg/Passes.h"
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <pybind11/stl_bind.h>
@@ -26,7 +25,7 @@ namespace py = pybind11;
 
 void init_triton_sycl_passes_lair(py::module &&m) {
   m.def("triton_to_linalg", [](mlir::PassManager &pm) {
-    pm.addPass(mlir::triton::spirv::createTritonToLinalgPass());
+    pm.addPass(mlir::triton::sycl::createTritonToLinalgPass());
   });
 }
 
@@ -35,7 +34,7 @@ void init_triton_sycl_passes_memir(py::module &&m) {
     pm.addPass(mlir::bufferization::createOneShotBufferizePass());
   });
   m.def("linalg_to_affine_loops", [](mlir::PassManager &pm) {
-    pm.addPass(mlir::triton::spirv::createLinalgToAffineLoopsPass());
+    pm.addPass(mlir::triton::sycl::createLinalgToAffineLoopsPass());
   });
   m.def("buffer_loop_hoisting", [](mlir::PassManager &pm) {
     mlir::OpPassManager &funcPM = pm.nest<mlir::func::FuncOp>();
@@ -43,16 +42,9 @@ void init_triton_sycl_passes_memir(py::module &&m) {
   });
 }
 
-void init_triton_sycl_passes_llvmspvir(py::module &&m) {
-  m.def("affine_to_llvmspv", [](mlir::PassManager &pm) {
-    pm.addPass(mlir::triton::spirv::createAffineToLLVMSPVPass());
-  });
-}
-
 void init_triton_sycl(py::module &&m) {
   auto passes = m.def_submodule("passes");
   init_triton_sycl_passes_lair(passes.def_submodule("lair"));
-  init_triton_sycl_passes_llvmspvir(passes.def_submodule("llvmspvir"));
 
   // load dialects
   m.def("load_dialects", [](mlir::MLIRContext &context) {

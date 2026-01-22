@@ -2,25 +2,25 @@
 #include "mlir/Dialect/Linalg/Transforms/Transforms.h"
 #include "mlir/Pass/PassManager.h"
 #include "mlir/Transforms/Passes.h"
-#include "spirv/include/Conversion/LinalgToAffineLoops/Passes.h"
+#include "sycl/include/Conversion/LinalgToAffineLoops/Passes.h"
 #include "llvm/ADT/SmallVector.h"
 #include "llvm/Support/Debug.h"
 
 #define DEBUG_TYPE "linalg-to-affine-loops"
 
-namespace mlir::triton::spirv {
+namespace mlir::triton::sycl {
 #define GEN_PASS_DEF_LINALGTOAFFINELOOPS
-#include "spirv/include/Conversion/LinalgToAffineLoops/Passes.h.inc"
-} // namespace mlir::triton::spirv
+#include "sycl/include/Conversion/LinalgToAffineLoops/Passes.h.inc"
+} // namespace mlir::triton::sycl
 
 using namespace mlir;
 using namespace mlir::triton;
-using namespace mlir::triton::spirv;
+using namespace mlir::triton::sycl;
 
 namespace {
 
 struct LinalgToAffineLoops
-    : public mlir::triton::spirv::impl::LinalgToAffineLoopsBase<
+    : public mlir::triton::sycl::impl::LinalgToAffineLoopsBase<
           LinalgToAffineLoops> {
 
   void runOnOperation() override {
@@ -28,8 +28,7 @@ struct LinalgToAffineLoops
     SmallVector<linalg::LinalgOp> linalgOps;
     moduleOp.walk(
         [&](linalg::GenericOp genericOp) { linalgOps.push_back(genericOp); });
-    moduleOp.walk(
-        [&](linalg::FillOp fillOp) { linalgOps.push_back(fillOp); });
+    moduleOp.walk([&](linalg::FillOp fillOp) { linalgOps.push_back(fillOp); });
     PatternRewriter rewriter(&getContext());
     for (auto linalgOp : linalgOps) {
       rewriter.setInsertionPoint(linalgOp);
@@ -44,10 +43,10 @@ struct LinalgToAffineLoops
 
 } // namespace
 
-namespace mlir::triton::spirv {
+namespace mlir::triton::sycl {
 
 std::unique_ptr<OperationPass<ModuleOp>> createLinalgToAffineLoopsPass() {
   return std::make_unique<LinalgToAffineLoops>();
 }
 
-} // namespace mlir::triton::spirv
+} // namespace mlir::triton::sycl

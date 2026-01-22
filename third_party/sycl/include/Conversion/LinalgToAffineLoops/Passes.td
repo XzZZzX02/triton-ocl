@@ -5,7 +5,7 @@ include "mlir/Pass/PassBase.td"
 
 def LinalgToAffineLoops : Pass<"triton-linalg-to-affine-loops", "mlir::ModuleOp"> {
   let summary = "Convert linalg to affine dialect";
-  let constructor = "mlir::triton::spirv::createLinalgToAffineLoopsPass()";
+  let constructor = "mlir::triton::sycl::createLinalgToAffineLoopsPass()";
 }
 
 #endif

@@ -1,6 +1,6 @@
-#include "spirv/include/Analysis/MaskAnalysis.h"
-#include "spirv/include/Analysis/OpFoldResultUtils.h"
-#include "spirv/include/Analysis/PtrAnalysis.h"
+#include "sycl/include/Analysis/MaskAnalysis.h"
+#include "sycl/include/Analysis/OpFoldResultUtils.h"
+#include "sycl/include/Analysis/PtrAnalysis.h"
 
 #include "triton/Dialect/Triton/IR/Dialect.h"
 
@@ -18,6 +18,7 @@
 
 using namespace mlir;
 using namespace triton;
+using namespace mlir::triton::sycl;
 
 //===----------------------------------------------------------------------===//
 // Utilities
@@ -92,7 +93,7 @@ static Value getScalarValue(Value operand, Location loc,
   return nullptr;
 }
 
-bool isPtrTypeLike(Type t) {
+inline bool isPtrTypeLike(Type t) {
   if (auto tensorType = dyn_cast<RankedTensorType>(t)) {
     return isa<triton::PointerType>(tensorType.getElementType());
   }

@@ -596,7 +596,7 @@ def download_and_copy_dependencies():
     )
 
 
-backends = [*BackendInstaller.copy(["sycl"]), *BackendInstaller.copy_externals()]
+backends = [*BackendInstaller.copy(["spirv", "sycl"]), *BackendInstaller.copy_externals()]
 
 
 def get_package_dirs():

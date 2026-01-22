@@ -5,7 +5,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "spirv/include/Analysis/UseAnalysis.h"
+#include "sycl/include/Analysis/UseAnalysis.h"
 
 #include "triton/Dialect/Triton/IR/Dialect.h"
 
@@ -16,8 +16,12 @@
 #include "llvm/Support/Debug.h"
 
 using namespace mlir;
-using namespace triton;
-using namespace dataflow;
+using namespace mlir::dataflow;
+using namespace mlir::triton;
+
+namespace mlir {
+namespace triton {
+namespace sycl {
 
 #define DEBUG_TYPE "triton-use-analysis"
 
@@ -25,9 +29,9 @@ using namespace dataflow;
 // Use Analysis
 // Note that logic below should evolve with triton-to-affine pass
 //===----------------------------------------------------------------------===//
-LogicalResult
-triton::UseAnalysis::visitOperation(Operation *op, ArrayRef<UseInfo *> operands,
-                                    ArrayRef<const UseInfo *> results) {
+LogicalResult UseAnalysis::visitOperation(Operation *op,
+                                          ArrayRef<UseInfo *> operands,
+                                          ArrayRef<const UseInfo *> results) {
   // If an op only produces pointer, all its operands are used as meta data.
   // This accounts for scenarios such as addptr in a loop whose result is
   // yielded. In this case, if the loop returns data tensors, addptr will be
@@ -88,7 +92,7 @@ triton::UseAnalysis::visitOperation(Operation *op, ArrayRef<UseInfo *> operands,
   return success();
 }
 
-LogicalResult triton::runUseAnalysis(triton::FuncOp &funcOp) {
+LogicalResult runUseAnalysis(FuncOp &funcOp) {
   MLIRContext *context = funcOp.getContext();
   SymbolTableCollection symbolTable;
 
@@ -218,3 +222,7 @@ LogicalResult triton::runUseAnalysis(triton::FuncOp &funcOp) {
 
   return success();
 }
+
+} // namespace sycl
+} // namespace triton
+} // namespace mlir
