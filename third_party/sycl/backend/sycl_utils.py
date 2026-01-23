@@ -8,6 +8,7 @@ from pathlib import Path
 # Hardcoded path to AdaptiveCpp - in a real scenario this should be configurable
 DEFAULT_ACPP_PATH = "/Users/dxm/codes/AdaptiveCpp/install/bin/acpp"
 ACPP_PATH = os.getenv("TRITON_SYCL_ACPP_PATH", os.getenv("ACPP_PATH", DEFAULT_ACPP_PATH))
+ACPP_TARGETS = os.getenv("TRITON_SYCL_ACPP_TARGETS", "omp")
 
 class SYCLContext:
     _instance = None
@@ -48,7 +49,7 @@ class SYCLContext:
             f.write(src)
             src_path = f.name
         lib_path = src_path.replace(".cpp", ".so")
-        cmd = [ACPP_PATH, "--acpp-targets=omp", "-shared", "-fPIC", "-O2", src_path, "-o", lib_path]
+        cmd = [ACPP_PATH, f"--acpp-targets={ACPP_TARGETS}", "-shared", "-fPIC", "-O2", src_path, "-o", lib_path]
         try:
             subprocess.check_call(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         except subprocess.CalledProcessError as e:
@@ -68,7 +69,7 @@ def compile_and_load(kernel_name, source_code):
         f.write(source_code)
         src_path = f.name
     lib_path = src_path + ".so"
-    cmd = [ACPP_PATH, "--acpp-targets=omp", "-shared", "-fPIC", "-O2", "-x", "c++", src_path, "-o", lib_path]
+    cmd = [ACPP_PATH, f"--acpp-targets={ACPP_TARGETS}", "-shared", "-fPIC", "-O2", "-x", "c++", src_path, "-o", lib_path]
     try: subprocess.check_call(cmd)
     except subprocess.CalledProcessError as e:
         print(f"Failed to compile kernel {kernel_name}: {e}")
@@ -244,7 +245,7 @@ def run_standalone(gridX, gridY, gridZ, kernel_name, source_code, bound_args):
     
     # 2. Compile
     # Remove -x c++ to avoid compiling linked libraries (like libomp) as source
-    cmd = [ACPP_PATH, "--acpp-targets=omp", "-O2", "-std=c++17", src_path, "-o", exe_path]
+    cmd = [ACPP_PATH, f"--acpp-targets={ACPP_TARGETS}", "-O2", "-std=c++17", src_path, "-o", exe_path]
     print(f"Compiling with command: {' '.join(cmd)}")
     result = subprocess.run(cmd, capture_output=True, text=True)
     if result.returncode != 0:
