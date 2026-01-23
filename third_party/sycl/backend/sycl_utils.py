@@ -6,7 +6,8 @@ import tempfile
 from pathlib import Path
 
 # Hardcoded path to AdaptiveCpp - in a real scenario this should be configurable
-ACPP_PATH = "/Users/dxm/codes/AdaptiveCpp/install/bin/acpp"
+DEFAULT_ACPP_PATH = "/Users/dxm/codes/AdaptiveCpp/install/bin/acpp"
+ACPP_PATH = os.getenv("TRITON_SYCL_ACPP_PATH", os.getenv("ACPP_PATH", DEFAULT_ACPP_PATH))
 
 class SYCLContext:
     _instance = None
