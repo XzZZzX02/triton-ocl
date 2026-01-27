@@ -79,7 +79,8 @@ def compile_and_load(kernel_name, source_code):
     return lib
 
 def launch(gridX, gridY, gridZ, kernel_name, source_code, bound_args):
-    print(f"DEBUG: launch called with {len(bound_args)} args: {bound_args}")
+    print(f"DEBUG: launch called with {len(bound_args)} args.")
+    print(f"DEBUG: Triton Grid: ({gridX}, {gridY}, {gridZ})")
     # Try out-of-process execution to avoid LLVM conflicts
     try:
         run_standalone(gridX, gridY, gridZ, kernel_name, source_code, bound_args)
@@ -94,12 +95,20 @@ def _launch_in_process(gridX, gridY, gridZ, kernel_name, source_code, bound_args
     lib = compile_and_load(kernel_name, source_code)
     launch_fn = getattr(lib, f"launch_{kernel_name}")
     
-    blockX, blockY, blockZ = 1024, 1, 1
+    blockX, blockY, blockZ = 16, 16, 1
     c_args = [ctypes.c_void_p(queue), ctypes.c_size_t(gridX), ctypes.c_size_t(gridY), ctypes.c_size_t(gridZ),
               ctypes.c_size_t(blockX), ctypes.c_size_t(blockY), ctypes.c_size_t(blockZ)]
     
     for arg in bound_args:
-        if hasattr(arg, 'data_ptr'): c_args.append(ctypes.c_void_p(arg.data_ptr()))
+        if hasattr(arg, 'data_ptr'): 
+            c_args.append(ctypes.c_void_p(arg.data_ptr()))
+            # Append strides
+            # Note: Triton/torch strides are in bytes? No, elements.
+            # SYCL/MLIR expects elements?
+            # Triton usually works in elements for strides.
+            # PyTorch stride() returns elements.
+            for i in range(arg.dim()):
+                c_args.append(ctypes.c_int(arg.stride(i)))
         elif isinstance(arg, int): c_args.append(ctypes.c_int(arg))
         elif isinstance(arg, float): c_args.append(ctypes.c_float(arg))
         else: c_args.append(arg)
@@ -136,10 +145,6 @@ def generate_standalone_wrapper(kernel_name, source_code, bound_args):
     # In a real generic implementation, we would need the full function signature metadata.
     # For this task, we will inspect bound_args.
     
-    # Since we don't know the size of each buffer without metadata, 
-    # we will rely on the fact that for simple elementwise ops, tensors have same size?
-    # Or we construct the binary file with header: [SizeInBytes][Data]...
-    
     import textwrap
     cpp_src = f"""
     #include <sycl/sycl.hpp>
@@ -160,8 +165,12 @@ def generate_standalone_wrapper(kernel_name, source_code, bound_args):
         
         sycl::queue q(sycl::default_selector_v);
 
-        size_t gridX = 0;
+        size_t gridX = 0, gridY = 0, gridZ = 0;
         infile.read(reinterpret_cast<char*>(&gridX), sizeof(size_t));
+        infile.read(reinterpret_cast<char*>(&gridY), sizeof(size_t));
+        infile.read(reinterpret_cast<char*>(&gridZ), sizeof(size_t));
+        
+        std::cout << "SYCL Grid: (" << gridX << ", " << gridY << ", " << gridZ << ")" << std::endl;
     """
     
     # Parse signature to find expected argument count
@@ -189,7 +198,8 @@ def generate_standalone_wrapper(kernel_name, source_code, bound_args):
     # This assumes constexprs/specialized args are at the end, or we simply take positional args matching kernel.
     filtered_args = bound_args[:expected_arg_count]
     
-    call_args = ["&q", "gridX", "1", "1", "1024", "1", "1"] 
+    # HARDCODED BLOCK SIZE 16x16 for 02-matmul test
+    call_args = ["&q", "gridX", "gridY", "gridZ", "16", "16", "1"] 
     
     # ... (Generated logic) ...
     buffer_idx = 0
@@ -212,6 +222,7 @@ def generate_standalone_wrapper(kernel_name, source_code, bound_args):
                 cpp_src += f"        float arg_{i} = {val}f;\n"
             else:
                 cpp_src += f"        auto arg_{i} = {val};\n"
+            cpp_src += f'        std::cout << "Arg {i}: " << arg_{i} << std::endl;\n'
             call_args.append(f"arg_{i}")
 
     cpp_src += f"""
@@ -266,8 +277,10 @@ def run_standalone(gridX, gridY, gridZ, kernel_name, source_code, bound_args):
     output_bin = src_path + ".out"
     
     with open(input_bin, "wb") as f:
-        # Header: GridX
+        # Header: GridX, GridY, GridZ
         f.write(ctypes.c_size_t(gridX))
+        f.write(ctypes.c_size_t(gridY))
+        f.write(ctypes.c_size_t(gridZ))
         
         for arg in bound_args:
             if hasattr(arg, 'data_ptr'):

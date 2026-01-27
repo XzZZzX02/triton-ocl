@@ -1,9 +1,12 @@
 import triton
 import triton.language as tl
+print(f"TRITON IMPORTED FROM: {triton.__file__}")
 
 @triton.jit
 def matmul_kernel(
-    a_ptr, b_ptr, c_ptr,
+    a_ptr, a_s0, a_s1,
+    b_ptr, b_s0, b_s1,
+    c_ptr, c_s0, c_s1,
     M, N, K,
     stride_am, stride_ak,
     stride_bk, stride_bn,
@@ -50,7 +53,9 @@ def matmul(a, b):
     # 1D launch kernel where each block gets its own program.
     grid = lambda META: (triton.cdiv(N, META['BLOCK_SIZE_N']), triton.cdiv(M, META['BLOCK_SIZE_M']), )
     matmul_kernel[grid](
-        a, b, c,
+        a, a.stride(0), a.stride(1),
+        b, b.stride(0), b.stride(1),
+        c, c.stride(0), c.stride(1),
         M, N, K,
         a.stride(0), a.stride(1),
         b.stride(0), b.stride(1),
@@ -64,19 +69,37 @@ def matmul(a, b):
 
 import torch
 
-DEVICE = "cuda"
+DEVICE = "cpu"
 
 import os
 if os.getenv("TRITON_SPIRV_BACKEND", "0") == "1":
     DEVICE = "cpu"
 
 torch.manual_seed(0)
-a = torch.randn((128, 256), device=DEVICE, dtype=torch.float32)
-b = torch.randn((256, 512), device=DEVICE, dtype=torch.float32)
+# a = torch.randn((128, 256), device=DEVICE, dtype=torch.float32)
+# b = torch.randn((256, 512), device=DEVICE, dtype=torch.float32)
+a = torch.ones((128, 256), device=DEVICE, dtype=torch.float32)
+b = torch.ones((256, 512), device=DEVICE, dtype=torch.float32)
 torch_output = torch.matmul(a, b)
 triton_output = matmul(a, b)
+print(f"Sample Triton Output [0,0]: {triton_output[0,0]}")
+print(f"Sample Torch Output [0,0]: {torch_output[0,0]}")
 
 if torch.allclose(triton_output, torch_output, atol=1e-2, rtol=0):
     print("✅ Triton and Torch match")
 else:
     print("❌ Triton and Torch differ")
+    diff = (triton_output - torch_output).abs()
+    print(f"Max difference: {diff.max()}")
+    print(f"Mean difference: {diff.mean()}")
+    
+    # Print the first few mismatches
+    mismatch_indices = torch.nonzero(diff > 1e-2)
+    if len(mismatch_indices) > 0:
+        print(f"Number of mismatches (> 1e-2): {len(mismatch_indices)}")
+        print("First 10 mismatches:")
+        for idx in mismatch_indices[:10]:
+            i, j = idx[0].item(), idx[1].item()
+            print(f"  at [{i}, {j}]: Torch={torch_output[i, j].item()}, Triton={triton_output[i, j].item()}, Diff={diff[i, j].item()}")
+    else:
+         print("Differences are small but > 1e-2? (Check logic)")

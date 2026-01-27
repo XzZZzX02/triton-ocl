@@ -15,6 +15,8 @@ from triton._C.libtriton import sycl, ir, llvm, passes
 from triton.runtime.build import _build
 
 
+print(f"SYCL COMPILER LOADED FROM: {__file__}")
+
 @dataclass(frozen=True)
 class SYCLOptions:
     backend_name: str = "sycl"

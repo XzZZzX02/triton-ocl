@@ -126,6 +126,8 @@ void ModuleEmitter::emitScfFor(scf::ForOp op) {
   emitBlock(*op.getBody());
   reduceIndent();
 
+  if (state.target == EmitTarget::SYCL)
+    indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
   indent() << "}\n";
 
   for (auto [arg, result] :
@@ -206,6 +208,34 @@ void ModuleEmitter::emitScfYield(scf::YieldOp op) {
 }
 
 /// Affine statement emitters.
+
+unsigned ModuleEmitter::getParallelLoopDepth(affine::AffineForOp op) {
+  unsigned depth = 0;
+  // Look for a nested AffineForOp in the body
+  for (auto &nestedOp : op.getBody()->getOperations()) {
+    if (auto nestedFor = llvm::dyn_cast<affine::AffineForOp>(nestedOp)) {
+      // Check if this nested loop is also parallelizable (same criteria as
+      // emitAffineFor)
+      auto lowerMap = nestedFor.getLowerBoundMap();
+      auto upperMap = nestedFor.getUpperBoundMap();
+      bool lowerIsZero =
+          (lowerMap.getNumResults() == 1 &&
+           llvm::isa<AffineConstantExpr>(lowerMap.getResult(0)) &&
+           llvm::cast<AffineConstantExpr>(lowerMap.getResult(0)).getValue() ==
+               0);
+      bool upperIsSimple = (upperMap.getNumResults() >= 1);
+      bool stepIsOne = (nestedFor.getStep() == 1);
+
+      if (lowerIsZero && upperIsSimple && stepIsOne) {
+        // If we found a nested parallel loop, our depth is 1 + its depth
+        // We assume strict nesting for now (one child)
+        depth = std::max(depth, 1 + getParallelLoopDepth(nestedFor));
+      }
+    }
+  }
+  return depth;
+}
+
 void ModuleEmitter::emitAffineFor(affine::AffineForOp op) {
   // For SYCL target, try to emit SIMT parallel code instead of serial loops
   if (state.target == EmitTarget::SYCL) {
@@ -221,32 +251,51 @@ void ModuleEmitter::emitAffineFor(affine::AffineForOp op) {
         (lowerMap.getNumResults() == 1 &&
          llvm::isa<AffineConstantExpr>(lowerMap.getResult(0)) &&
          llvm::cast<AffineConstantExpr>(lowerMap.getResult(0)).getValue() == 0);
-    bool upperIsConst = (upperMap.getNumResults() == 1 &&
-                         llvm::isa<AffineConstantExpr>(upperMap.getResult(0)));
+    bool upperIsSimple = (upperMap.getNumResults() >= 1);
     bool stepIsOne = (op.getStep() == 1);
 
     // Now that local_accessor is used, SIMT transformation should work
-    if (lowerIsZero && upperIsConst && stepIsOne) {
+    if (lowerIsZero && upperIsSimple && stepIsOne) {
       auto iterVar = op.getInductionVar();
-      int64_t upperBound =
-          llvm::cast<AffineConstantExpr>(upperMap.getResult(0)).getValue();
 
-      // Emit SIMT code: use get_local_id(0) as the loop index
+      // Emit SIMT code: use get_local_id(depth) as the loop index
+      unsigned depth = getParallelLoopDepth(op);
+
       indent();
       emitValue(iterVar);
-      os << " = item.get_local_id(0);";
+      os << " = item.get_local_id(" << depth << ");";
       emitInfoAndNewLine(op);
 
       // Emit bounds check guard
       indent() << "if (";
       emitValue(iterVar);
-      os << " < " << upperBound << ") {\n";
+      os << " < ";
+
+      // Emit upper bound expression (const or dynamic, handling min/max)
+      AffineExprEmitter upperEmitter(state, upperMap.getNumDims(),
+                                     op.getUpperBoundOperands());
+      if (upperMap.getNumResults() == 1)
+        upperEmitter.emitAffineExpr(upperMap.getResult(0));
+      else {
+        for (unsigned i = 0, e = upperMap.getNumResults() - 1; i < e; ++i)
+          os << (state.target == EmitTarget::SYCL ? "std::min(" : "min(");
+        upperEmitter.emitAffineExpr(upperMap.getResult(0));
+        for (auto &expr : llvm::drop_begin(upperMap.getResults(), 1)) {
+          os << ", ";
+          upperEmitter.emitAffineExpr(expr);
+          os << ")";
+        }
+      }
+
+      os << ") {\n";
 
       addIndent();
       emitBlock(*op.getBody());
       reduceIndent();
 
       indent() << "}\n";
+      if (state.target == EmitTarget::SYCL)
+        indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
       return;
     }
   }
@@ -306,6 +355,8 @@ void ModuleEmitter::emitAffineFor(affine::AffineForOp op) {
   reduceIndent();
 
   indent() << "}\n";
+  if (state.target == EmitTarget::SYCL)
+    indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
 }
 
 void ModuleEmitter::emitAffineIf(affine::AffineIfOp op) {
@@ -678,20 +729,58 @@ void ModuleEmitter::emitMemCpyValue(Value val) {
     emitOpFoldResult(castOp.getMixedOffsets()[0]);
     if (!isSimilar1D(memrefType)) {
       os << " + i * ";
-      emitOpFoldResult(castOp.getMixedStrides()[0]);
+      // Force usage of implicit stride argument if source is a kernel argument
+      bool injected = false;
+      if (auto blockArg = mlir::dyn_cast<BlockArgument>(castOp.getSource())) {
+        if (blockArg.getOwner()->isEntryBlock()) {
+          unsigned argIdx = blockArg.getArgNumber();
+          os << "arg" << argIdx << "_stride_0";
+          injected = true;
+        }
+      }
+      if (!injected)
+        emitOpFoldResult(castOp.getMixedStrides()[0]);
     }
     os << ")";
   } else if (auto allocOp = val.getDefiningOp<memref::AllocOp>()) {
     if (!isSimilar1D(memrefType)) {
-      // Wrap in parentheses for consistency
-      os << "(";
+      if (state.target == EmitTarget::SYCL) {
+        // For SYCL local_accessor, we must use operator[] for multi-dimensional
+        // access. Pointer arithmetic (val + i) does not work for accessors or
+        // their subarrays.
+        emitValue(val);
+        os << "[i]";
+      } else {
+        // Wrap in parentheses for consistency
+        os << "(";
+        emitValue(val);
+        os << " + i)";
+      }
+    } else {
+      if (state.target == EmitTarget::SYCL) {
+        // For linear access to an ND accessor (e.g. 1x16), we decay to pointer
+        // &val[0]...[0] so that [i] indexing works as expected on the flat
+        // buffer.
+        os << "(&";
+        emitValue(val);
+        for (int k = 0; k < memrefType.getRank(); ++k)
+          os << "[0]";
+        os << ")";
+      } else {
+        emitValue(val);
+      }
+    }
+  } else if (auto blockArg = mlir::dyn_cast<BlockArgument>(val)) {
+    if (state.target == EmitTarget::SYCL && isSimilar1D(memrefType)) {
+      // Same logic for block arguments (local accessors)
+      os << "(&";
       emitValue(val);
-      os << " + i)";
+      for (int k = 0; k < memrefType.getRank(); ++k)
+        os << "[0]";
+      os << ")";
     } else {
       emitValue(val);
     }
-  } else if (auto blockArg = mlir::dyn_cast<BlockArgument>(val)) {
-    emitValue(val);
   } else {
     val.dump();
     llvm_unreachable("mecpy unsupported subview targetOp");
@@ -1040,10 +1129,19 @@ void ModuleEmitter::emitFunction(func::FuncOp func) {
     indent();
     auto type = arg.getType();
 
-    if (mlir::isa<MemRefType>(type))
+    if (auto memRefType = mlir::dyn_cast<MemRefType>(type)) {
       emitArrayDecl(arg);
-    else
+      // Emit stride arguments for each dimension
+      auto [strides, offset] = memRefType.getStridesAndOffset();
+      unsigned argIdx = arg.getArgNumber();
+      for (size_t i = 0; i < strides.size(); ++i) {
+        os << ",\n";
+        indent();
+        os << "int arg" << argIdx << "_stride_" << i;
+      }
+    } else {
       emitValue(arg);
+    }
 
     portList.push_back(arg);
     needComma = true;
@@ -1057,8 +1155,9 @@ void ModuleEmitter::emitFunction(func::FuncOp func) {
       indent();
       auto memrefType = allocOp.getType();
       auto elemType = memrefType.getElementType();
+      auto rank = memrefType.getRank();
       os << "sycl::local_accessor<" << getDataTypeName(elemType, state.target)
-         << ", 1> " << addName(allocOp.getResult());
+         << ", " << rank << "> " << addName(allocOp.getResult());
       needComma = true;
     }
   }
@@ -1083,14 +1182,16 @@ void ModuleEmitter::emitFunction(func::FuncOp func) {
 void ModuleEmitter::emitGlobalId(gpu::GlobalIdOp op) {
   indent();
   emitValue(op.getResult());
-  if (state.target == EmitTarget::SYCL)
+  gpu::Dimension dim = op.getDimension();
+  if (state.target == EmitTarget::SYCL) {
     // Triton's program_id corresponds to SYCL work-group ID (not global
     // work-item ID)
     os << " = item.get_group(";
-  else
+    os << static_cast<int64_t>(dim);
+  } else {
     os << " = get_group_id(";
-  gpu::Dimension dim = op.getDimension();
-  os << static_cast<int64_t>(dim);
+    os << static_cast<int64_t>(dim);
+  }
   os << ");\n";
 }
 
@@ -1123,8 +1224,13 @@ void ModuleEmitter::emitHostWrapper(func::FuncOp func) {
   for (auto &arg : func.getArguments()) {
     os << ", ";
     auto type = arg.getType();
-    if (mlir::isa<MemRefType>(type)) {
+    if (auto memRefType = mlir::dyn_cast<MemRefType>(type)) {
       emitArrayDecl(arg); // This emits Type Name
+      // Emit implicit strides in wrapper signature
+      auto rank = memRefType.getRank();
+      for (int i = 0; i < rank; ++i) {
+        os << ", int " << getName(arg) << "_stride_" << i;
+      }
     } else {
       // Emit scalar type and name
       if (type.isIntOrIndex()) {
@@ -1153,10 +1259,17 @@ void ModuleEmitter::emitHostWrapper(func::FuncOp func) {
     indent();
     auto memrefType = allocOp.getType();
     auto elemType = memrefType.getElementType();
-    int64_t numElements = memrefType.getNumElements();
+    auto rank = memrefType.getRank();
     os << "sycl::local_accessor<" << getDataTypeName(elemType, state.target)
-       << ", 1> " << getName(allocOp.getResult()) << "(sycl::range<1>("
-       << numElements << "), h);\n";
+       << ", " << rank << "> " << getName(allocOp.getResult())
+       << "(sycl::range<" << rank << ">(";
+    auto shape = memrefType.getShape();
+    for (unsigned i = 0; i < rank; ++i) {
+      os << shape[i];
+      if (i != rank - 1)
+        os << ", ";
+    }
+    os << "), h);\n";
   }
 
   indent()
@@ -1168,6 +1281,13 @@ void ModuleEmitter::emitHostWrapper(func::FuncOp func) {
   indent() << func.getName() << "(item";
   for (auto &arg : func.getArguments()) {
     os << ", " << getName(arg);
+    // Pass implicit strides to kernel
+    if (auto memRefType = mlir::dyn_cast<MemRefType>(arg.getType())) {
+      auto rank = memRefType.getRank();
+      for (int i = 0; i < rank; ++i) {
+        os << ", " << getName(arg) << "_stride_" << i;
+      }
+    }
   }
   for (auto allocOp : hostLocalAllocs) {
     os << ", " << getName(allocOp.getResult());
