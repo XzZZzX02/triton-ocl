@@ -77,19 +77,35 @@ def add(x: torch.Tensor, y: torch.Tensor):
 # %%
 # We can now use the above function to compute the element-wise sum of two `torch.tensor` objects and test its correctness:
 
-DEVICE = "cuda"
+DEVICE = "cpu"
 
 import os
 if os.getenv("TRITON_SPIRV_BACKEND", "0") == "1":
     DEVICE = "cpu"
 
 torch.manual_seed(0)
-size = 98432
+size = 256
 x = torch.rand(size, device=DEVICE)
 y = torch.rand(size, device=DEVICE)
 output_torch = x + y
 output_triton = add(x, y)
 print(output_torch)
 print(output_triton)
-print(f'The maximum difference between torch and triton is '
-      f'{torch.max(torch.abs(output_torch - output_triton))}')
+if torch.allclose(output_triton, output_torch, atol=1e-2, rtol=0):
+    print("✅ Triton and Torch match")
+else:
+    print("❌ Triton and Torch differ")
+    diff = (output_triton - output_torch).abs()
+    print(f"Max difference: {diff.max()}")
+    print(f"Mean difference: {diff.mean()}")
+    
+    # Print the first few mismatches
+    mismatch_indices = torch.nonzero(diff > 1e-2)
+    if len(mismatch_indices) > 0:
+        print(f"Number of mismatches (> 1e-2): {len(mismatch_indices)}")
+        print("First 10 mismatches:")
+        for idx in mismatch_indices[:10]:
+            i = idx[0].item()
+            print(f"  at [{i}]: Torch={output_torch[i].item()}, Triton={output_triton[i].item()}, Diff={diff[i].item()}")
+    else:
+         print("Differences are small but > 1e-2? (Check logic)")

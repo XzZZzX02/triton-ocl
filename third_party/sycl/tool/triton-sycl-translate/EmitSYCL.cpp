@@ -258,25 +258,24 @@ void ModuleEmitter::emitAffineFor(affine::AffineForOp op) {
     if (lowerIsZero && upperIsSimple && stepIsOne) {
       auto iterVar = op.getInductionVar();
 
-      // Emit SIMT code: use get_local_id(depth) as the loop index
+      // Emit SIMT code: Grid-Stride Loop
+      // usage: for (int iv = get_local_id(depth); iv < upper_bound; iv +=
+      // get_local_range(depth)) { ... }
       unsigned depth = getParallelLoopDepth(op);
 
-      indent();
+      indent() << "for (";
       emitValue(iterVar);
-      os << " = item.get_local_id(" << depth << ");";
-      emitInfoAndNewLine(op);
+      os << " = item.get_local_id(" << depth << "); ";
 
-      // Emit bounds check guard
-      indent() << "if (";
       emitValue(iterVar);
       os << " < ";
-
-      // Emit upper bound expression (const or dynamic, handling min/max)
+      // Emit upper bound expression
       AffineExprEmitter upperEmitter(state, upperMap.getNumDims(),
                                      op.getUpperBoundOperands());
       if (upperMap.getNumResults() == 1)
         upperEmitter.emitAffineExpr(upperMap.getResult(0));
       else {
+        // Handle min(a, b)
         for (unsigned i = 0, e = upperMap.getNumResults() - 1; i < e; ++i)
           os << (state.target == EmitTarget::SYCL ? "std::min(" : "min(");
         upperEmitter.emitAffineExpr(upperMap.getResult(0));
@@ -286,8 +285,11 @@ void ModuleEmitter::emitAffineFor(affine::AffineForOp op) {
           os << ")";
         }
       }
+      os << "; ";
 
-      os << ") {\n";
+      emitValue(iterVar);
+      os << " += item.get_local_range(" << depth
+         << ")) {\n"; // Stride by local range
 
       addIndent();
       emitBlock(*op.getBody());
@@ -729,17 +731,7 @@ void ModuleEmitter::emitMemCpyValue(Value val) {
     emitOpFoldResult(castOp.getMixedOffsets()[0]);
     if (!isSimilar1D(memrefType)) {
       os << " + i * ";
-      // Force usage of implicit stride argument if source is a kernel argument
-      bool injected = false;
-      if (auto blockArg = mlir::dyn_cast<BlockArgument>(castOp.getSource())) {
-        if (blockArg.getOwner()->isEntryBlock()) {
-          unsigned argIdx = blockArg.getArgNumber();
-          os << "arg" << argIdx << "_stride_0";
-          injected = true;
-        }
-      }
-      if (!injected)
-        emitOpFoldResult(castOp.getMixedStrides()[0]);
+      emitOpFoldResult(castOp.getMixedStrides()[0]);
     }
     os << ")";
   } else if (auto allocOp = val.getDefiningOp<memref::AllocOp>()) {
@@ -1129,19 +1121,10 @@ void ModuleEmitter::emitFunction(func::FuncOp func) {
     indent();
     auto type = arg.getType();
 
-    if (auto memRefType = mlir::dyn_cast<MemRefType>(type)) {
+    if (mlir::isa<MemRefType>(type))
       emitArrayDecl(arg);
-      // Emit stride arguments for each dimension
-      auto [strides, offset] = memRefType.getStridesAndOffset();
-      unsigned argIdx = arg.getArgNumber();
-      for (size_t i = 0; i < strides.size(); ++i) {
-        os << ",\n";
-        indent();
-        os << "int arg" << argIdx << "_stride_" << i;
-      }
-    } else {
+    else
       emitValue(arg);
-    }
 
     portList.push_back(arg);
     needComma = true;
@@ -1224,13 +1207,8 @@ void ModuleEmitter::emitHostWrapper(func::FuncOp func) {
   for (auto &arg : func.getArguments()) {
     os << ", ";
     auto type = arg.getType();
-    if (auto memRefType = mlir::dyn_cast<MemRefType>(type)) {
+    if (mlir::isa<MemRefType>(type)) {
       emitArrayDecl(arg); // This emits Type Name
-      // Emit implicit strides in wrapper signature
-      auto rank = memRefType.getRank();
-      for (int i = 0; i < rank; ++i) {
-        os << ", int " << getName(arg) << "_stride_" << i;
-      }
     } else {
       // Emit scalar type and name
       if (type.isIntOrIndex()) {
@@ -1281,13 +1259,6 @@ void ModuleEmitter::emitHostWrapper(func::FuncOp func) {
   indent() << func.getName() << "(item";
   for (auto &arg : func.getArguments()) {
     os << ", " << getName(arg);
-    // Pass implicit strides to kernel
-    if (auto memRefType = mlir::dyn_cast<MemRefType>(arg.getType())) {
-      auto rank = memRefType.getRank();
-      for (int i = 0; i < rank; ++i) {
-        os << ", " << getName(arg) << "_stride_" << i;
-      }
-    }
   }
   for (auto allocOp : hostLocalAllocs) {
     os << ", " << getName(allocOp.getResult());

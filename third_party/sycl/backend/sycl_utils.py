@@ -95,20 +95,17 @@ def _launch_in_process(gridX, gridY, gridZ, kernel_name, source_code, bound_args
     lib = compile_and_load(kernel_name, source_code)
     launch_fn = getattr(lib, f"launch_{kernel_name}")
     
-    blockX, blockY, blockZ = 16, 16, 1
+    # Use standard block size or derive from metadata if possible.
+    # Defaulting to 128 (4 warps) matches Triton's usual expectation.
+    blockX = 128
+    blockY = 1
+    blockZ = 1
+
     c_args = [ctypes.c_void_p(queue), ctypes.c_size_t(gridX), ctypes.c_size_t(gridY), ctypes.c_size_t(gridZ),
               ctypes.c_size_t(blockX), ctypes.c_size_t(blockY), ctypes.c_size_t(blockZ)]
     
     for arg in bound_args:
-        if hasattr(arg, 'data_ptr'): 
-            c_args.append(ctypes.c_void_p(arg.data_ptr()))
-            # Append strides
-            # Note: Triton/torch strides are in bytes? No, elements.
-            # SYCL/MLIR expects elements?
-            # Triton usually works in elements for strides.
-            # PyTorch stride() returns elements.
-            for i in range(arg.dim()):
-                c_args.append(ctypes.c_int(arg.stride(i)))
+        if hasattr(arg, 'data_ptr'): c_args.append(ctypes.c_void_p(arg.data_ptr()))
         elif isinstance(arg, int): c_args.append(ctypes.c_int(arg))
         elif isinstance(arg, float): c_args.append(ctypes.c_float(arg))
         else: c_args.append(arg)
@@ -171,6 +168,8 @@ def generate_standalone_wrapper(kernel_name, source_code, bound_args):
         infile.read(reinterpret_cast<char*>(&gridZ), sizeof(size_t));
         
         std::cout << "SYCL Grid: (" << gridX << ", " << gridY << ", " << gridZ << ")" << std::endl;
+        
+        size_t blockX = 128, blockY = 1, blockZ = 1;
     """
     
     # Parse signature to find expected argument count
@@ -198,8 +197,8 @@ def generate_standalone_wrapper(kernel_name, source_code, bound_args):
     # This assumes constexprs/specialized args are at the end, or we simply take positional args matching kernel.
     filtered_args = bound_args[:expected_arg_count]
     
-    # HARDCODED BLOCK SIZE 16x16 for 02-matmul test
-    call_args = ["&q", "gridX", "gridY", "gridZ", "16", "16", "1"] 
+    # HARDCODED BLOCK SIZE replaced by C++ heuristic
+    call_args = ["&q", "gridX", "gridY", "gridZ", "blockX", "blockY", "blockZ"] 
     
     # ... (Generated logic) ...
     buffer_idx = 0

@@ -4,9 +4,7 @@ print(f"TRITON IMPORTED FROM: {triton.__file__}")
 
 @triton.jit
 def matmul_kernel(
-    a_ptr, a_s0, a_s1,
-    b_ptr, b_s0, b_s1,
-    c_ptr, c_s0, c_s1,
+    a_ptr, b_ptr, c_ptr,
     M, N, K,
     stride_am, stride_ak,
     stride_bk, stride_bn,
@@ -53,9 +51,7 @@ def matmul(a, b):
     # 1D launch kernel where each block gets its own program.
     grid = lambda META: (triton.cdiv(N, META['BLOCK_SIZE_N']), triton.cdiv(M, META['BLOCK_SIZE_M']), )
     matmul_kernel[grid](
-        a, a.stride(0), a.stride(1),
-        b, b.stride(0), b.stride(1),
-        c, c.stride(0), c.stride(1),
+        a, b, c,
         M, N, K,
         a.stride(0), a.stride(1),
         b.stride(0), b.stride(1),
