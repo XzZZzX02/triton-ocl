@@ -450,6 +450,7 @@ public:
   template <typename OpType> void emitAlloc(OpType op);
   void emitLoad(memref::LoadOp op);
   void emitStore(memref::StoreOp op);
+  void emitMemRefAccess(Value memref, ValueRange indices);
   void emitMemCpyValue(Value val);
   void emitOpFoldResult(OpFoldResult opFoldResult);
   void emitAsyncCopy(Value target, Value source);

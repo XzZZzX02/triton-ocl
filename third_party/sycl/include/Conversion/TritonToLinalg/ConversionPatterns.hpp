@@ -12,6 +12,7 @@
 #include "mlir/Dialect/Utils/ReshapeOpsUtils.h"
 
 #include "mlir/Dialect/GPU/IR/GPUDialect.h"
+#include "mlir/IR/IRMapping.h"
 
 #include "llvm/ADT/SmallVectorExtras.h"
 #include "llvm/ADT/TypeSwitch.h"
@@ -102,6 +103,44 @@ inline bool isPtrTypeLike(Type t) {
 
 static SmallVector<utils::IteratorType> getNParallelLoopsAttrs(unsigned n) {
   return SmallVector<utils::IteratorType>(n, utils::IteratorType::parallel);
+}
+
+static Value createZeroValue(Type type, Location loc,
+                             ConversionPatternRewriter &rewriter) {
+  if (isa<FloatType>(type))
+    return rewriter.create<arith::ConstantOp>(
+        loc, rewriter.getFloatAttr(type, 0.0));
+  if (isa<IntegerType>(type))
+    return rewriter.create<arith::ConstantOp>(
+        loc, rewriter.getIntegerAttr(type, 0));
+  return nullptr;
+}
+
+static Value castDotOperand(Value value, Type targetType, Location loc,
+                            OpBuilder &builder) {
+  Type sourceType = value.getType();
+  if (sourceType == targetType)
+    return value;
+
+  auto sourceFloat = dyn_cast<FloatType>(sourceType);
+  auto targetFloat = dyn_cast<FloatType>(targetType);
+  if (sourceFloat && targetFloat) {
+    if (sourceFloat.getWidth() < targetFloat.getWidth())
+      return builder.create<arith::ExtFOp>(loc, targetType, value);
+    if (sourceFloat.getWidth() > targetFloat.getWidth())
+      return builder.create<arith::TruncFOp>(loc, targetType, value);
+  }
+
+  auto sourceInteger = dyn_cast<IntegerType>(sourceType);
+  auto targetInteger = dyn_cast<IntegerType>(targetType);
+  if (sourceInteger && targetInteger) {
+    if (sourceInteger.getWidth() < targetInteger.getWidth())
+      return builder.create<arith::ExtSIOp>(loc, targetType, value);
+    if (sourceInteger.getWidth() > targetInteger.getWidth())
+      return builder.create<arith::TruncIOp>(loc, targetType, value);
+  }
+
+  return nullptr;
 }
 
 struct LegacyAddPtrConverter : public OpConversionPattern<triton::AddPtrOp> {
@@ -573,6 +612,187 @@ public:
                           getBroadcastDims(sourceType, resultType)));
 
     rewriter.replaceOp(op, linalgOp->getResults());
+    return success();
+  }
+};
+
+struct DotConverter : public OpConversionPattern<triton::DotOp> {
+  using OpConversionPattern<triton::DotOp>::OpConversionPattern;
+
+  LogicalResult
+  matchAndRewrite(triton::DotOp op, OpAdaptor adaptor,
+                  ConversionPatternRewriter &rewriter) const override {
+    auto aType = cast<RankedTensorType>(op.getA().getType());
+    auto bType = cast<RankedTensorType>(op.getB().getType());
+    auto cType = cast<RankedTensorType>(op.getC().getType());
+    unsigned rank = aType.getRank();
+    if (rank != 2 && rank != 3)
+      return rewriter.notifyMatchFailure(op, "only 2D and 3D dot are supported");
+
+    auto a = adaptor.getA();
+    auto b = adaptor.getB();
+    auto c = adaptor.getC();
+    auto asTensor = [&](Value value, RankedTensorType type) -> Value {
+      if (isa<RankedTensorType>(value.getType()))
+        return value;
+      if (auto memrefType = dyn_cast<MemRefType>(value.getType())) {
+        if (memrefType.getShape() != type.getShape())
+          return nullptr;
+        return rewriter.create<bufferization::ToTensorOp>(
+            op.getLoc(), type, value, true /* restrict */, true /* writable */);
+      }
+      return nullptr;
+    };
+
+    a = asTensor(a, aType);
+    b = asTensor(b, bType);
+    c = asTensor(c, cType);
+    if (!a || !b || !c)
+      return rewriter.notifyMatchFailure(
+          op, "dot operands must be ranked tensors or static memrefs");
+
+    MLIRContext *context = op.getContext();
+    SmallVector<AffineExpr> aExprs, bExprs, cExprs;
+    unsigned loopRank;
+    if (rank == 2) {
+      loopRank = 3; // M, N, K
+      aExprs = {getAffineDimExpr(0, context), getAffineDimExpr(2, context)};
+      bExprs = {getAffineDimExpr(2, context), getAffineDimExpr(1, context)};
+      cExprs = {getAffineDimExpr(0, context), getAffineDimExpr(1, context)};
+    } else {
+      loopRank = 4; // B, M, N, K
+      aExprs = {getAffineDimExpr(0, context), getAffineDimExpr(1, context),
+                getAffineDimExpr(3, context)};
+      bExprs = {getAffineDimExpr(0, context), getAffineDimExpr(3, context),
+                getAffineDimExpr(2, context)};
+      cExprs = {getAffineDimExpr(0, context), getAffineDimExpr(1, context),
+                getAffineDimExpr(2, context)};
+    }
+
+    SmallVector<AffineMap> indexingMaps = {
+        AffineMap::get(loopRank, 0, aExprs, context),
+        AffineMap::get(loopRank, 0, bExprs, context),
+        AffineMap::get(loopRank, 0, cExprs, context)};
+    SmallVector<utils::IteratorType> iteratorTypes(
+        loopRank - 1, utils::IteratorType::parallel);
+    iteratorTypes.push_back(utils::IteratorType::reduction);
+
+    Type accumulatorType = cType.getElementType();
+    if (!isa<FloatType, IntegerType>(accumulatorType))
+      return rewriter.notifyMatchFailure(
+          op, "dot accumulator must use an integer or floating-point type");
+    auto linalgOp = rewriter.create<linalg::GenericOp>(
+        op.getLoc(), TypeRange{op->getResult(0).getType()}, ValueRange{a, b},
+        ValueRange{c},
+        indexingMaps, iteratorTypes,
+        [&](OpBuilder &builder, Location loc, ValueRange args) {
+          Value lhs = castDotOperand(args[0], accumulatorType, loc, builder);
+          Value rhs = castDotOperand(args[1], accumulatorType, loc, builder);
+          assert(lhs && rhs && "unsupported dot operand type conversion");
+
+          Value product;
+          if (isa<FloatType>(accumulatorType))
+            product = builder.create<arith::MulFOp>(loc, lhs, rhs);
+          else if (isa<IntegerType>(accumulatorType))
+            product = builder.create<arith::MulIOp>(loc, lhs, rhs);
+
+          Value result = args[2];
+          if (isa<FloatType>(accumulatorType))
+            result = builder.create<arith::AddFOp>(loc, result, product);
+          else
+            result = builder.create<arith::AddIOp>(loc, result, product);
+          builder.create<linalg::YieldOp>(loc, result);
+        });
+
+    rewriter.replaceOp(op, linalgOp->getResults());
+    return success();
+  }
+};
+
+struct ReduceConverter : public OpConversionPattern<triton::ReduceOp> {
+  using OpConversionPattern<triton::ReduceOp>::OpConversionPattern;
+
+  LogicalResult
+  matchAndRewrite(triton::ReduceOp op, OpAdaptor adaptor,
+                  ConversionPatternRewriter &rewriter) const override {
+    if (op.getNumOperands() != 1 || op.getNumResults() != 1)
+      return rewriter.notifyMatchFailure(
+          op, "only single-input single-output reductions are supported");
+
+    auto inputType = cast<RankedTensorType>(op.getSrcs()[0].getType());
+    Type originalResultType = op->getResult(0).getType();
+    auto resultType = dyn_cast<RankedTensorType>(originalResultType);
+    bool resultIsScalar = !resultType;
+    RankedTensorType resultTensorType = resultType;
+    if (resultIsScalar)
+      resultTensorType = RankedTensorType::get({}, originalResultType);
+    int64_t axis = op.getAxis();
+    if (axis < 0 || axis >= inputType.getRank() ||
+        resultTensorType.getRank() != inputType.getRank() - 1)
+      return rewriter.notifyMatchFailure(op, "invalid reduction axis");
+
+    Value input = adaptor.getSrcs()[0];
+    if (!isa<RankedTensorType>(input.getType())) {
+      auto memrefType = dyn_cast<MemRefType>(input.getType());
+      if (!memrefType || memrefType.getShape() != inputType.getShape())
+        return rewriter.notifyMatchFailure(
+            op, "reduction input must be a ranked tensor or static memref");
+      input = rewriter.create<bufferization::ToTensorOp>(
+          op.getLoc(), inputType, input, true /* restrict */, true /* writable */);
+    }
+
+    SmallVector<AffineExpr> inputExprs;
+    SmallVector<AffineExpr> resultExprs;
+    for (unsigned i = 0; i < inputType.getRank(); ++i) {
+      inputExprs.push_back(getAffineDimExpr(i, op.getContext()));
+      if (i != static_cast<unsigned>(axis))
+        resultExprs.push_back(getAffineDimExpr(
+            resultExprs.size(), op.getContext()));
+    }
+
+    unsigned rank = inputType.getRank();
+    SmallVector<utils::IteratorType> iteratorTypes(
+        rank, utils::IteratorType::parallel);
+    iteratorTypes[axis] = utils::IteratorType::reduction;
+    auto init = rewriter.create<tensor::EmptyOp>(
+        op.getLoc(), resultTensorType.getShape(),
+        resultTensorType.getElementType());
+    Value zero = createZeroValue(resultTensorType.getElementType(), op.getLoc(),
+                                 rewriter);
+    if (!zero)
+      return rewriter.notifyMatchFailure(op, "unsupported reduction element type");
+    auto filled = rewriter.create<linalg::FillOp>(
+        op.getLoc(), ValueRange{zero}, ValueRange{init});
+
+    auto linalgOp = rewriter.create<linalg::GenericOp>(
+        op.getLoc(), TypeRange{resultTensorType}, ValueRange{input},
+        ValueRange{filled.result()},
+        SmallVector<AffineMap>{
+            AffineMap::get(rank, 0, inputExprs, op.getContext()),
+            AffineMap::get(rank, 0, resultExprs, op.getContext())},
+        iteratorTypes,
+        [&](OpBuilder &builder, Location loc, ValueRange args) {
+          Block &combiner = op.getCombineOp().front();
+          IRMapping mapping;
+          mapping.map(combiner.getArgument(0), args[1]);
+          mapping.map(combiner.getArgument(1), args[0]);
+          for (Operation &inner : combiner.without_terminator())
+            builder.clone(inner, mapping);
+
+          auto *terminator = combiner.getTerminator();
+          if (terminator->getNumOperands() != 1)
+            return;
+          Value result = mapping.lookupOrDefault(terminator->getOperand(0));
+          builder.create<linalg::YieldOp>(loc, result);
+        });
+
+    if (resultIsScalar) {
+      auto scalar = rewriter.create<tensor::ExtractOp>(
+          op.getLoc(), linalgOp->getResult(0), ValueRange{});
+      rewriter.replaceOp(op, scalar.getResult());
+    } else {
+      rewriter.replaceOp(op, linalgOp->getResults());
+    }
     return success();
   }
 };

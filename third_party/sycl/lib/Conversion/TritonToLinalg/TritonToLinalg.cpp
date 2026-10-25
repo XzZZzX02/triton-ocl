@@ -32,6 +32,8 @@ void populateTritonToLinalgConversionPatterns(TypeConverter &typeConverter,
   patterns.add<LoadConverter>(patterns.getContext());
   patterns.add<LoopConverter>(patterns.getContext());
   patterns.add<BroadcastConverter>(patterns.getContext());
+  patterns.add<DotConverter>(patterns.getContext());
+  patterns.add<ReduceConverter>(patterns.getContext());
   patterns.add<SplatConverter>(patterns.getContext());
   patterns.add<DenseConstantConverter>(patterns.getContext());
   linalg::populateElementwiseToLinalgConversionPatterns(patterns);
@@ -87,6 +89,7 @@ struct TritonToLinalg
                            memref::MemRefDialect, ::mlir::gpu::GPUDialect>();
 
     target.addIllegalOp<triton::GetProgramIdOp>();
+    target.addIllegalOp<triton::DotOp, triton::ReduceOp>();
 
     target.addLegalOp<ModuleOp>();
 

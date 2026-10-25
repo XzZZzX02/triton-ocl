@@ -21,6 +21,8 @@ print(f"SYCL COMPILER LOADED FROM: {__file__}")
 class SYCLOptions:
     backend_name: str = "sycl"
     source_lang: str = "sycl"
+    default_dot_input_precision: str = "ieee"
+    allowed_dot_input_precisions: Tuple[str, ...] = ("ieee",)
     num_warps: int = 0
     num_stages: int = 0
     num_ctas: int = 0
@@ -69,7 +71,9 @@ class SYCLBackend(BaseBackend):
         return SYCLMetadata(**args)
 
     def get_codegen_implementation(self, options):
-        pass
+        # SYCL lowers dot operations to scalar/vector arithmetic, so there is
+        # no hardware tile-size restriction at the Triton frontend boundary.
+        return {"min_dot_size": lambda lhs_type, rhs_type: (1, 1, 1)}
 
     def get_module_map(self) -> Dict[str, ModuleType]:
         # TODO: Add SYCL specific libdevice if needed
@@ -167,7 +171,9 @@ class SYCLBackend(BaseBackend):
 
 
     def get_codegen_implementation(self, options):
-        pass
+        # Keep this duplicate definition consistent with the legacy backend
+        # block below; the latter definition is the one Python uses.
+        return {"min_dot_size": lambda lhs_type, rhs_type: (1, 1, 1)}
 
     def get_module_map(self) -> Dict[str, ModuleType]:
         # TODO: Add SYCL specific libdevice if needed

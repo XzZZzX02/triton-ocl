@@ -13,6 +13,38 @@ using namespace mlir;
 LogicalResult emitSYCL(ModuleOp module, llvm::raw_ostream &os);
 void registerEmitSYCLTranslation();
 
+static bool isReductionLoop(affine::AffineForOp op) {
+  auto inductionVar = op.getInductionVar();
+  SmallVector<affine::AffineLoadOp> loads;
+  SmallVector<affine::AffineStoreOp> stores;
+  for (Operation &nested : op.getBody()->getOperations()) {
+    if (auto load = dyn_cast<affine::AffineLoadOp>(&nested))
+      loads.push_back(load);
+    if (auto store = dyn_cast<affine::AffineStoreOp>(&nested))
+      stores.push_back(store);
+  }
+
+  for (auto store : stores) {
+    if (llvm::is_contained(store.getMapOperands(), inductionVar))
+      continue;
+    for (auto load : loads) {
+      if (load.getMemRef() != store.getMemRef())
+        continue;
+      if (!llvm::is_contained(load.getMapOperands(), inductionVar))
+        return true;
+    }
+  }
+  return false;
+}
+
+static bool hasParallelAffineParent(affine::AffineForOp op) {
+  return op->getParentOfType<affine::AffineForOp>() != nullptr;
+}
+
+static unsigned getSYCLAccessorRank(MemRefType type) {
+  return std::max<unsigned>(type.getRank(), 1);
+}
+
 void ModuleEmitter::emitOneAssign(arith::IndexCastOp op) {
   addAlias(op.getOperand(), op.getResult());
 }
@@ -214,6 +246,8 @@ unsigned ModuleEmitter::getParallelLoopDepth(affine::AffineForOp op) {
   // Look for a nested AffineForOp in the body
   for (auto &nestedOp : op.getBody()->getOperations()) {
     if (auto nestedFor = llvm::dyn_cast<affine::AffineForOp>(nestedOp)) {
+      if (isReductionLoop(nestedFor))
+        continue;
       // Check if this nested loop is also parallelizable (same criteria as
       // emitAffineFor)
       auto lowerMap = nestedFor.getLowerBoundMap();
@@ -237,8 +271,10 @@ unsigned ModuleEmitter::getParallelLoopDepth(affine::AffineForOp op) {
 }
 
 void ModuleEmitter::emitAffineFor(affine::AffineForOp op) {
+  bool reductionLoop = isReductionLoop(op);
+
   // For SYCL target, try to emit SIMT parallel code instead of serial loops
-  if (state.target == EmitTarget::SYCL) {
+  if (state.target == EmitTarget::SYCL && !reductionLoop) {
     auto lowerMap = op.getLowerBoundMap();
     auto upperMap = op.getUpperBoundMap();
 
@@ -302,6 +338,17 @@ void ModuleEmitter::emitAffineFor(affine::AffineForOp op) {
     }
   }
 
+  // Reduction loops carry a loop-carried dependency and must remain serial.
+  // A scalar reduction has no outer parallel loop, so only one work-item in
+  // the work-group is allowed to execute it.
+  bool guardScalarReduction = reductionLoop && !hasParallelAffineParent(op);
+  if (guardScalarReduction) {
+    indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
+    indent() << "if (item.get_local_id(0) == 0 && item.get_local_id(1) == 0 && "
+                 "item.get_local_id(2) == 0) {\n";
+    addIndent();
+  }
+
   // Fall back to original serial loop emission
   indent() << "for (";
   auto iterVar = op.getInductionVar();
@@ -357,6 +404,10 @@ void ModuleEmitter::emitAffineFor(affine::AffineForOp op) {
   reduceIndent();
 
   indent() << "}\n";
+  if (guardScalarReduction) {
+    reduceIndent();
+    indent() << "}\n";
+  }
   if (state.target == EmitTarget::SYCL)
     indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
 }
@@ -498,14 +549,34 @@ void ModuleEmitter::emitAffineLoad(affine::AffineLoadOp op) {
   indent();
   emitValue(op.getResult());
   os << " = ";
-  emitValue(op.getMemRef());
   auto affineMap = op.getAffineMap();
   AffineExprEmitter affineEmitter(state, affineMap.getNumDims(),
                                   op.getMapOperands());
-  for (auto index : affineMap.getResults()) {
-    os << "[";
-    affineEmitter.emitAffineExpr(index);
-    os << "]";
+  if (auto reinterpretCast =
+          op.getMemRef().getDefiningOp<memref::ReinterpretCastOp>()) {
+    os << "(";
+    emitValue(reinterpretCast.getSource());
+    os << " + ";
+    emitOpFoldResult(reinterpretCast.getMixedOffsets().front());
+    auto strides = reinterpretCast.getMixedStrides();
+    for (auto [index, stride] : llvm::zip(affineMap.getResults(), strides)) {
+      os << " + (";
+      affineEmitter.emitAffineExpr(index);
+      os << ") * ";
+      emitOpFoldResult(stride);
+    }
+    os << ")[0]";
+  } else {
+    emitValue(op.getMemRef());
+    if (affineMap.getNumResults() == 0) {
+      os << "[0]";
+    } else {
+      for (auto index : affineMap.getResults()) {
+        os << "[";
+        affineEmitter.emitAffineExpr(index);
+        os << "]";
+      }
+    }
   }
   os << ";";
   emitInfoAndNewLine(op);
@@ -513,14 +584,34 @@ void ModuleEmitter::emitAffineLoad(affine::AffineLoadOp op) {
 
 void ModuleEmitter::emitAffineStore(affine::AffineStoreOp op) {
   indent();
-  emitValue(op.getMemRef());
   auto affineMap = op.getAffineMap();
   AffineExprEmitter affineEmitter(state, affineMap.getNumDims(),
                                   op.getMapOperands());
-  for (auto index : affineMap.getResults()) {
-    os << "[";
-    affineEmitter.emitAffineExpr(index);
-    os << "]";
+  if (auto reinterpretCast =
+          op.getMemRef().getDefiningOp<memref::ReinterpretCastOp>()) {
+    os << "(";
+    emitValue(reinterpretCast.getSource());
+    os << " + ";
+    emitOpFoldResult(reinterpretCast.getMixedOffsets().front());
+    auto strides = reinterpretCast.getMixedStrides();
+    for (auto [index, stride] : llvm::zip(affineMap.getResults(), strides)) {
+      os << " + (";
+      affineEmitter.emitAffineExpr(index);
+      os << ") * ";
+      emitOpFoldResult(stride);
+    }
+    os << ")[0]";
+  } else {
+    emitValue(op.getMemRef());
+    if (affineMap.getNumResults() == 0) {
+      os << "[0]";
+    } else {
+      for (auto index : affineMap.getResults()) {
+        os << "[";
+        affineEmitter.emitAffineExpr(index);
+        os << "]";
+      }
+    }
   }
   os << " = ";
   emitValue(op.getValueToStore());
@@ -657,28 +748,48 @@ void ModuleEmitter::emitLoad(memref::LoadOp op) {
   indent();
   emitValue(op.getResult());
   os << " = ";
-  emitValue(op.getMemRef());
-  for (auto index : op.getIndices()) {
-    os << "[";
-    emitValue(index);
-    os << "]";
-  }
+  emitMemRefAccess(op.getMemRef(), op.getIndices());
   os << ";";
   emitInfoAndNewLine(op);
 }
 
 void ModuleEmitter::emitStore(memref::StoreOp op) {
   indent();
-  emitValue(op.getMemRef());
-  for (auto index : op.getIndices()) {
-    os << "[";
-    emitValue(index);
-    os << "]";
-  }
+  emitMemRefAccess(op.getMemRef(), op.getIndices());
   os << " = ";
   emitValue(op.getValueToStore());
   os << ";";
   emitInfoAndNewLine(op);
+}
+
+void ModuleEmitter::emitMemRefAccess(Value memref, ValueRange indices) {
+  auto memrefType = cast<MemRefType>(memref.getType());
+  if (auto reinterpretCast = memref.getDefiningOp<memref::ReinterpretCastOp>()) {
+    os << "(";
+    emitValue(reinterpretCast.getSource());
+    os << " + ";
+    emitOpFoldResult(reinterpretCast.getMixedOffsets().front());
+    for (auto [index, stride] : llvm::zip(indices,
+                                           reinterpretCast.getMixedStrides())) {
+      os << " + ";
+      emitValue(index);
+      os << " * ";
+      emitOpFoldResult(stride);
+    }
+    os << ")[0]";
+    return;
+  }
+
+  emitValue(memref);
+  if (memrefType.getRank() == 0) {
+    os << "[0]";
+    return;
+  }
+  for (auto index : indices) {
+    os << "[";
+    emitValue(index);
+    os << "]";
+  }
 }
 
 memref::SubViewOp getSubviewOp(Value val) {
@@ -896,11 +1007,18 @@ void ModuleEmitter::emitMemCpy(memref::CopyOp op) {
             IntegerAttr::get(idxType, targetMemref.getNumElements());
         emitLinearCopy(op.getTarget(), op.getSource(), numElements);
       } else if (is2D(targetMemref)) {
-        if (auto castOp =
-                op.getSource().getDefiningOp<memref::ReinterpretCastOp>()) {
-          emitRowCopy(op.getTarget(), op.getSource(), castOp.getMixedSizes()[0],
-                      castOp.getMixedSizes()[1]);
-        }
+        auto targetCast =
+            op.getTarget().getDefiningOp<memref::ReinterpretCastOp>();
+        auto sourceCast =
+            op.getSource().getDefiningOp<memref::ReinterpretCastOp>();
+        if (targetCast)
+          emitRowCopy(op.getTarget(), op.getSource(),
+                      targetCast.getMixedSizes()[0],
+                      targetCast.getMixedSizes()[1]);
+        else if (sourceCast)
+          emitRowCopy(op.getTarget(), op.getSource(),
+                      sourceCast.getMixedSizes()[0],
+                      sourceCast.getMixedSizes()[1]);
       }
     }
     emitInfoAndNewLine(op);
@@ -1138,7 +1256,7 @@ void ModuleEmitter::emitFunction(func::FuncOp func) {
       indent();
       auto memrefType = allocOp.getType();
       auto elemType = memrefType.getElementType();
-      auto rank = memrefType.getRank();
+      auto rank = getSYCLAccessorRank(memrefType);
       os << "sycl::local_accessor<" << getDataTypeName(elemType, state.target)
          << ", " << rank << "> " << addName(allocOp.getResult());
       needComma = true;
@@ -1237,15 +1355,19 @@ void ModuleEmitter::emitHostWrapper(func::FuncOp func) {
     indent();
     auto memrefType = allocOp.getType();
     auto elemType = memrefType.getElementType();
-    auto rank = memrefType.getRank();
+    auto rank = getSYCLAccessorRank(memrefType);
     os << "sycl::local_accessor<" << getDataTypeName(elemType, state.target)
        << ", " << rank << "> " << getName(allocOp.getResult())
        << "(sycl::range<" << rank << ">(";
     auto shape = memrefType.getShape();
-    for (unsigned i = 0; i < rank; ++i) {
-      os << shape[i];
-      if (i != rank - 1)
-        os << ", ";
+    if (memrefType.getRank() == 0) {
+      os << "1";
+    } else {
+      for (unsigned i = 0; i < rank; ++i) {
+        os << shape[i];
+        if (i != rank - 1)
+          os << ", ";
+      }
     }
     os << "), h);\n";
   }
