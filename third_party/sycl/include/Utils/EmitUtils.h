@@ -77,19 +77,34 @@ static std::string getDataTypeName(Type type, EmitTarget target) {
     return "float";
   else if (mlir::isa<Float64Type>(valType))
     return "double";
+  else if (mlir::isa<Float16Type>(valType))
+    return target == EmitTarget::SYCL ? "sycl::half" : "half";
+  else if (mlir::isa<BFloat16Type>(valType))
+    return target == EmitTarget::SYCL ? "sycl::ext::oneapi::bfloat16" : "ushort";
   else if (mlir::isa<IndexType>(valType))
     return "int";
   else if (auto intType = mlir::dyn_cast<IntegerType>(valType)) {
     if (intType.getWidth() == 1)
       return "bool";
-    if (intType.getWidth() == 32 && !intType.isUnsigned())
-      return "int";
-    if (intType.getWidth() == 64 && !intType.isUnsigned())
-      return "long";
-    if (intType.getWidth() == 32 && intType.isUnsigned())
-      return "unit";
-    if (intType.getWidth() == 64 && intType.isUnsigned())
-      return "ulong";
+    if (intType.isUnsigned()) {
+      if (intType.getWidth() == 8)
+        return "uint8_t";
+      if (intType.getWidth() == 16)
+        return "uint16_t";
+      if (intType.getWidth() == 32)
+        return "uint32_t";
+      if (intType.getWidth() == 64)
+        return "uint64_t";
+    } else {
+      if (intType.getWidth() == 8)
+        return "int8_t";
+      if (intType.getWidth() == 16)
+        return "int16_t";
+      if (intType.getWidth() == 32)
+        return "int32_t";
+      if (intType.getWidth() == 64)
+        return "int64_t";
+    }
   }
   llvm_unreachable("Unsupported type.");
 }
@@ -129,6 +144,7 @@ public:
             // Float binary expressions.
             arith::CmpFOp, arith::AddFOp, arith::SubFOp, arith::MulFOp,
             arith::DivFOp, arith::RemFOp, arith::MaximumFOp, arith::MinimumFOp,
+            arith::MaxNumFOp, arith::MinNumFOp,
             math::PowFOp,
 
             // Integer binary expressions.
@@ -229,6 +245,8 @@ public:
   HANDLE(arith::RemFOp);
   HANDLE(arith::MaximumFOp);
   HANDLE(arith::MinimumFOp);
+  HANDLE(arith::MaxNumFOp);
+  HANDLE(arith::MinNumFOp);
   HANDLE(math::PowFOp);
 
   // Integer binary expressions.
@@ -692,10 +710,16 @@ public:
   bool visitOp(arith::DivFOp op) { return emitter.emitBinary(op, "/"), true; }
   bool visitOp(arith::RemFOp op) { return emitter.emitBinary(op, "%"), true; }
   bool visitOp(arith::MaximumFOp op) {
-    return emitter.emitMaxMin(op, "max"), true;
+    return emitter.emitMaxMin(op, "maximum"), true;
   }
   bool visitOp(arith::MinimumFOp op) {
-    return emitter.emitMaxMin(op, "min"), true;
+    return emitter.emitMaxMin(op, "minimum"), true;
+  }
+  bool visitOp(arith::MaxNumFOp op) {
+    return emitter.emitMaxMin(op, "fmax"), true;
+  }
+  bool visitOp(arith::MinNumFOp op) {
+    return emitter.emitMaxMin(op, "fmin"), true;
   }
   bool visitOp(math::PowFOp op) { return emitter.emitMaxMin(op, "pow"), true; }
 

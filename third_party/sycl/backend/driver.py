@@ -54,7 +54,8 @@ def make_launcher(constants, signature, ids):
 class SYCLLauncher(object):
 
     def __init__(self, src, metadata):
-        pass
+        self.src = src
+        self.metadata = metadata
 
     def __call__(self, gridX, gridY, gridZ, stream, function, packed_metadata, launch_metadata, enter_hook, exit_hook, *args):
         try:
@@ -70,7 +71,18 @@ class SYCLLauncher(object):
                 sys.path.append(str(Path(__file__).parent))
                 from sycl_utils import launch
         
-        launch(gridX, gridY, gridZ, packed_metadata.name, function, args)
+        # The generated source does not carry Python objects, so pass the
+        # specialized Triton signature explicitly for ABI construction.
+        launch(
+            gridX,
+            gridY,
+            gridZ,
+            packed_metadata.name,
+            function,
+            args,
+            signature=self.src.signature,
+            metadata=self.metadata,
+        )
 
 
 class SYCLDriver(DriverBase):

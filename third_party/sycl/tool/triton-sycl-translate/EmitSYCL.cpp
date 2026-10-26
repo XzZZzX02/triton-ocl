@@ -14,6 +14,8 @@ LogicalResult emitSYCL(ModuleOp module, llvm::raw_ostream &os);
 void registerEmitSYCLTranslation();
 
 static bool isReductionLoop(affine::AffineForOp op) {
+  if (op->hasAttr("sycl.reduction"))
+    return true;
   auto inductionVar = op.getInductionVar();
   SmallVector<affine::AffineLoadOp> loads;
   SmallVector<affine::AffineStoreOp> stores;
@@ -1138,8 +1140,11 @@ void ModuleEmitter::emitMaxMin(OpType op, const char *syntax) {
   auto rank = emitNestedLoopHeader(op.getResult());
   indent();
   emitValue(op.getResult());
-  // Use std:: prefix for SYCL, plain function for OpenCL
-  if (state.target == EmitTarget::SYCL)
+  // SYCL maximum/minimum propagate NaNs; fmax/fmin implement maxnum/minnum.
+  if (state.target == EmitTarget::SYCL &&
+      isa<arith::MaximumFOp, arith::MinimumFOp, arith::MaxNumFOp, arith::MinNumFOp>(op.getOperation()))
+    os << " = sycl::" << syntax << "(";
+  else if (state.target == EmitTarget::SYCL)
     os << " = std::" << syntax << "(";
   else
     os << " = " << syntax << "(";
@@ -1317,84 +1322,87 @@ void ModuleEmitter::emitHostWrapper(func::FuncOp func) {
     }
   });
 
-  os << "extern \"C\" void launch_" << func.getName() << "(";
-  os << "sycl::queue* q, size_t gridX, size_t gridY, size_t gridZ, ";
-  os << "size_t blockX, size_t blockY, size_t blockZ";
+  // Emit both the normal asynchronous launcher and a profiling launcher.
+  // The latter returns the device event duration and is used by benchmarks to
+  // exclude Python, process startup, and compilation time.
+  auto emitHostFunction = [&](StringRef wrapperName, bool profile) {
+    os << "extern \"C\" void " << wrapperName << "(";
+    os << "sycl::queue* q, size_t gridX, size_t gridY, size_t gridZ, ";
+    os << "size_t blockX, size_t blockY, size_t blockZ";
 
-  // Emit input arguments.
-  for (auto &arg : func.getArguments()) {
-    os << ", ";
-    auto type = arg.getType();
-    if (mlir::isa<MemRefType>(type)) {
-      emitArrayDecl(arg); // This emits Type Name
-    } else {
-      // Emit scalar type and name
-      if (type.isIntOrIndex()) {
-        os << "int"; // Simply cast all integer-like to int for simplicity in
-                     // C-wrapper or check width
-      } else if (mlir::isa<Float32Type>(type)) {
-        os << "float";
-      } else if (mlir::isa<Float64Type>(type)) {
-        os << "double";
+    for (auto &arg : func.getArguments()) {
+      os << ", ";
+      auto type = arg.getType();
+      if (mlir::isa<MemRefType>(type)) {
+        // Use a pointer in the host ABI for both ranked and unranked memrefs.
+        // The generated kernel's array parameters decay to the same pointer.
+        os << getDataTypeName(type, state.target) << "* " << getName(arg);
       } else {
-        os << getDataTypeName(type, state.target);
-      }
-      os << " " << getName(arg);
-    }
-  }
-  os << ") {\n";
-  addIndent();
-
-  indent() << "q->submit([&](sycl::handler &h) {\n";
-  addIndent();
-
-  // Allocate local memory accessors
-  // Using getName() ensures we use the same names as generated in the kernel
-  // function
-  for (auto allocOp : hostLocalAllocs) {
-    indent();
-    auto memrefType = allocOp.getType();
-    auto elemType = memrefType.getElementType();
-    auto rank = getSYCLAccessorRank(memrefType);
-    os << "sycl::local_accessor<" << getDataTypeName(elemType, state.target)
-       << ", " << rank << "> " << getName(allocOp.getResult())
-       << "(sycl::range<" << rank << ">(";
-    auto shape = memrefType.getShape();
-    if (memrefType.getRank() == 0) {
-      os << "1";
-    } else {
-      for (unsigned i = 0; i < rank; ++i) {
-        os << shape[i];
-        if (i != rank - 1)
-          os << ", ";
+        os << getDataTypeName(type, state.target) << " " << getName(arg);
       }
     }
-    os << "), h);\n";
-  }
+    if (profile)
+      os << ", uint64_t* elapsed_ns";
+    os << ") {\n";
+    addIndent();
 
-  indent()
-      << "h.parallel_for(sycl::nd_range<3>(sycl::range<3>(gridX, gridY, gridZ) "
-         "* sycl::range<3>(blockX, blockY, blockZ), sycl::range<3>(blockX, "
-         "blockY, blockZ)), [=](sycl::nd_item<3> item) {\n";
-  addIndent();
+    if (profile)
+      indent() << "sycl::event kernel_event = q->submit([&](sycl::handler &h) {\n";
+    else
+      indent() << "q->submit([&](sycl::handler &h) {\n";
+    addIndent();
 
-  indent() << func.getName() << "(item";
-  for (auto &arg : func.getArguments()) {
-    os << ", " << getName(arg);
-  }
-  for (auto allocOp : hostLocalAllocs) {
-    os << ", " << getName(allocOp.getResult());
-  }
-  os << ");\n";
+    for (auto allocOp : hostLocalAllocs) {
+      indent();
+      auto memrefType = allocOp.getType();
+      auto elemType = memrefType.getElementType();
+      auto rank = getSYCLAccessorRank(memrefType);
+      os << "sycl::local_accessor<" << getDataTypeName(elemType, state.target)
+         << ", " << rank << "> " << getName(allocOp.getResult())
+         << "(sycl::range<" << rank << ">(";
+      auto shape = memrefType.getShape();
+      if (memrefType.getRank() == 0) {
+        os << "1";
+      } else {
+        for (unsigned i = 0; i < rank; ++i) {
+          os << shape[i];
+          if (i != rank - 1)
+            os << ", ";
+        }
+      }
+      os << "), h);\n";
+    }
 
-  reduceIndent();
-  indent() << "});\n"; // End parallel_for
+    indent()
+        << "h.parallel_for(sycl::nd_range<3>(sycl::range<3>(gridX, gridY, gridZ) "
+           "* sycl::range<3>(blockX, blockY, blockZ), sycl::range<3>(blockX, "
+           "blockY, blockZ)), [=](sycl::nd_item<3> item) {\n";
+    addIndent();
 
-  reduceIndent();
-  indent() << "});\n"; // End submit
+    indent() << func.getName() << "(item";
+    for (auto &arg : func.getArguments())
+      os << ", " << getName(arg);
+    for (auto allocOp : hostLocalAllocs)
+      os << ", " << getName(allocOp.getResult());
+    os << ");\n";
 
-  reduceIndent();
-  os << "}\n\n";
+    reduceIndent();
+    indent() << "});\n";
+    reduceIndent();
+    indent() << "});\n";
+    if (profile) {
+      indent() << "kernel_event.wait();\n";
+      indent() << "*elapsed_ns = kernel_event.get_profiling_info<"
+               << "sycl::info::event_profiling::command_end>() - "
+               << "kernel_event.get_profiling_info<"
+               << "sycl::info::event_profiling::command_start>();\n";
+    }
+    reduceIndent();
+    os << "}\n\n";
+  };
+
+  emitHostFunction("launch_" + func.getName().str(), false);
+  emitHostFunction("profile_" + func.getName().str(), true);
 }
 
 /// Top-level MLIR module emitter.
@@ -1408,6 +1416,7 @@ void ModuleEmitter::emitModule(ModuleOp module) {
 
 #include <sycl/sycl.hpp>
 #include <algorithm>
+#include <cstdint>
 
 )XXX";
   } else {

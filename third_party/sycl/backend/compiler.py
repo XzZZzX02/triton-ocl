@@ -49,6 +49,8 @@ class SYCLMetadata:
     shared: int = 0
     num_warps: int = 4
     num_ctas: int = 1
+    # In SYCL this is the explicitly requested one-dimensional local range.
+    num_threads: int = 0
 
 
 class SYCLBackend(BaseBackend):
