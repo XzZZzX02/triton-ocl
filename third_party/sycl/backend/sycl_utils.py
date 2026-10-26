@@ -104,6 +104,11 @@ def _pointer_element_type(type_repr, arg):
 
 
 def _actual_element_type(arg):
+    # ctypes carries half bits in uint16; the explicit Triton dtype
+    # distinguishes this storage from an integer tensor.
+    if (hasattr(arg, "c_array") and arg.c_array._type_ is ctypes.c_uint16
+            and str(getattr(arg, "dtype", "")) in ("fp16", "float16", "torch.float16")):
+        return "fp16"
     if hasattr(arg, "c_array") and hasattr(arg.c_array, "_type_"):
         for name, info in _TYPE_INFO.items():
             if info.ctypes_type is arg.c_array._type_:

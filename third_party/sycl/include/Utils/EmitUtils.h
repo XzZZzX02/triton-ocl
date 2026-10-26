@@ -156,7 +156,7 @@ public:
 
             // Special expressions.
             arith::SelectOp, arith::ConstantOp, arith::TruncIOp,
-            arith::TruncFOp, arith::ExtUIOp, arith::ExtSIOp, arith::IndexCastOp,
+            arith::TruncFOp, arith::ExtFOp, arith::ExtUIOp, arith::ExtSIOp, arith::IndexCastOp,
             arith::UIToFPOp, arith::SIToFPOp, arith::FPToSIOp, arith::FPToUIOp,
 
             // GPU expressions.
@@ -393,7 +393,7 @@ static SmallString<8> getConstantString(Type type, Attribute attr) {
     string.append(std::to_string(value));
 
   } else if (auto floatType = mlir::dyn_cast<FloatType>(type)) {
-    if (floatType.getWidth() == 32) {
+    if (floatType.getWidth() <= 32) {
       auto value = mlir::cast<FloatAttr>(attr).getValue().convertToFloat();
       string.append(std::isfinite(value)
                         ? std::to_string(value)

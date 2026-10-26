@@ -686,6 +686,28 @@ struct ExpandConverter : public OpConversionPattern<triton::ExpandDimsOp> {
   }
 };
 
+struct TransposeConverter : public OpConversionPattern<triton::TransOp> {
+  using OpConversionPattern<triton::TransOp>::OpConversionPattern;
+  LogicalResult matchAndRewrite(triton::TransOp op, OpAdaptor adaptor,
+      ConversionPatternRewriter &rewriter) const override {
+    auto type = op.getType();
+    unsigned rank = type.getRank();
+    SmallVector<AffineExpr> input(rank);
+    for (auto [i, axis] : llvm::enumerate(op.getOrder()))
+      input[axis] = getAffineDimExpr(i, op.getContext());
+    Value init = rewriter.create<tensor::EmptyOp>(op.getLoc(), type.getShape(), type.getElementType());
+    auto generic = rewriter.create<linalg::GenericOp>(
+        op.getLoc(), TypeRange{type}, ValueRange{adaptor.getSrc()}, ValueRange{init},
+        SmallVector<AffineMap>{AffineMap::get(rank, 0, input, op.getContext()),
+                              rewriter.getMultiDimIdentityMap(rank)},
+        getNParallelLoopsAttrs(rank), [](OpBuilder &builder, Location loc, ValueRange args) {
+          builder.create<linalg::YieldOp>(loc, args[0]);
+        });
+    rewriter.replaceOp(op, generic.getResults());
+    return success();
+  }
+};
+
 struct DotConverter : public OpConversionPattern<triton::DotOp> {
   using OpConversionPattern<triton::DotOp>::OpConversionPattern;
 
