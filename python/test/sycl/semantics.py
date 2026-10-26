@@ -5,6 +5,7 @@ Use --python /path/to/loader-wrapper when Python needs a custom ELF loader.
 Each case runs in a subprocess so a baseline compiler abort is recorded.
 """
 import argparse
+import concurrent.futures
 import ctypes
 import json
 import math
@@ -186,6 +187,7 @@ def main():
     parser.add_argument("--python", default=sys.executable)
     parser.add_argument("--repeats", type=int, default=9)
     parser.add_argument("--timeout", type=int, default=180)
+    parser.add_argument("--jobs", type=int, default=1)
     args = parser.parse_args()
     if args.case:
         result = run_case(args.case, args.mode, args.repeats)
@@ -195,7 +197,7 @@ def main():
         parser.error("choose --all or --case")
     results = []
     selected = REDUCTION_CASES if args.group == "reduction" else (MEMORY_CASES if args.group == "memory" else (DOT_CASES if args.group == "dot" else CASES))
-    for name in selected:
+    def isolated(name):
         command = [args.python, str(pathlib.Path(__file__).resolve()), "--case", name,
                    "--mode", args.mode, "--repeats", str(args.repeats)]
         start = time.perf_counter()
@@ -209,10 +211,16 @@ def main():
         except subprocess.TimeoutExpired as exc:
             entry = {"case": name, "status": "TIMEOUT", "output_tail": str(exc.stdout)[-1500:]}
         entry["wall_seconds"] = time.perf_counter() - start
-        results.append(entry)
-        print(json.dumps(entry), flush=True)
-        if args.output:
-            pathlib.Path(args.output).write_text(json.dumps(results, indent=2) + "\n")
+        return entry
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1,args.jobs)) as executor:
+        futures = {executor.submit(isolated,name):name for name in selected}
+        for future in concurrent.futures.as_completed(futures):
+            entry = future.result()
+            results.append(entry)
+            print(json.dumps(entry), flush=True)
+            if args.output:
+                ordered = sorted(results,key=lambda row:selected.index(row["case"]))
+                pathlib.Path(args.output).write_text(json.dumps(ordered, indent=2) + "\n")
     raise SystemExit(any(row["status"] != "PASS" for row in results))
 
 

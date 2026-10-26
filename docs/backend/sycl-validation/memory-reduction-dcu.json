@@ -1,0 +1,138 @@
+[
+  {
+    "case": "reduce_sum_axis0",
+    "status": "PASS",
+    "compile_ms": 772.2395025193691,
+    "max_abs_error": 0,
+    "wall_seconds": 14.173621906898916
+  },
+  {
+    "case": "reduce_sum_axis1",
+    "status": "PASS",
+    "compile_ms": 727.9051458463073,
+    "max_abs_error": 0,
+    "wall_seconds": 14.72833417262882
+  },
+  {
+    "case": "reduce_max_axis0",
+    "status": "PASS",
+    "compile_ms": 1617.0882256701589,
+    "max_abs_error": 0,
+    "wall_seconds": 15.980758895166218
+  },
+  {
+    "case": "reduce_max_axis1",
+    "status": "PASS",
+    "compile_ms": 755.4934481158853,
+    "max_abs_error": 0,
+    "wall_seconds": 13.16096147056669
+  },
+  {
+    "case": "reduce_min_axis0",
+    "status": "PASS",
+    "compile_ms": 805.5158006027341,
+    "max_abs_error": 0,
+    "wall_seconds": 13.140568479895592
+  },
+  {
+    "case": "reduce_min_axis1",
+    "status": "PASS",
+    "compile_ms": 756.287781521678,
+    "max_abs_error": 0,
+    "wall_seconds": 13.103521502576768
+  },
+  {
+    "case": "reduce_and_axis0",
+    "status": "PASS",
+    "compile_ms": 772.016623057425,
+    "max_abs_error": 0,
+    "wall_seconds": 13.16466755233705
+  },
+  {
+    "case": "reduce_and_axis1",
+    "status": "PASS",
+    "compile_ms": 743.9028602093458,
+    "max_abs_error": 0,
+    "wall_seconds": 13.105825149454176
+  },
+  {
+    "case": "reduce_or_axis0",
+    "status": "PASS",
+    "compile_ms": 794.3950025364757,
+    "max_abs_error": 0,
+    "wall_seconds": 13.079378753900528
+  },
+  {
+    "case": "reduce_or_axis1",
+    "status": "PASS",
+    "compile_ms": 763.6985201388597,
+    "max_abs_error": 0,
+    "wall_seconds": 13.144914658740163
+  },
+  {
+    "case": "reduce_xor_axis0",
+    "status": "PASS",
+    "compile_ms": 759.8519045859575,
+    "max_abs_error": 0,
+    "wall_seconds": 13.048741736449301
+  },
+  {
+    "case": "reduce_xor_axis1",
+    "status": "PASS",
+    "compile_ms": 758.1192646175623,
+    "max_abs_error": 0,
+    "wall_seconds": 13.053788664750755
+  },
+  {
+    "case": "reduce_tuple_axis0",
+    "status": "PASS",
+    "compile_ms": 754.198526032269,
+    "max_abs_error": 0,
+    "wall_seconds": 13.158843004144728
+  },
+  {
+    "case": "reduce_tuple_axis1",
+    "status": "PASS",
+    "compile_ms": 772.8019952774048,
+    "max_abs_error": 0,
+    "wall_seconds": 13.237191377207637
+  },
+  {
+    "case": "reduce_argmax_axis0",
+    "status": "PASS",
+    "compile_ms": 749.2423057556152,
+    "max_abs_error": 0,
+    "wall_seconds": 13.464783372357488
+  },
+  {
+    "case": "reduce_argmax_axis1",
+    "status": "PASS",
+    "compile_ms": 734.6843117848039,
+    "max_abs_error": 0,
+    "wall_seconds": 13.542235461995006
+  },
+  {
+    "case": "reduce_sum_rank1",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 13.030401951633394
+  },
+  {
+    "case": "reduce_sum_rank3axis0",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 13.213324782438576
+  },
+  {
+    "case": "reduce_sum_rank3axis1",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 13.234515662305057
+  },
+  {
+    "case": "reduce_sum_rank3axis2",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 13.261485640890896
+  }
+]
