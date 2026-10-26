@@ -149,320 +149,89 @@ struct LegacyAddPtrConverter : public OpConversionPattern<triton::AddPtrOp> {
   LogicalResult
   matchAndRewrite(triton::AddPtrOp op, OpAdaptor adaptor,
                   ConversionPatternRewriter &rewriter) const override {
-    llvm::SmallDenseMap<Value, PtrState> knownPtrs;
-    PtrAnalysis::rewriteAddptrOp(op, rewriter, knownPtrs);
+    if (isa<RankedTensorType>(op.getType()))
+      return rewriter.notifyMatchFailure(op, "tensor pointers must be scalarized before conversion");
+    Value base = adaptor.getPtr(), offset = adaptor.getOffset();
+    if (!offset.getType().isIndex())
+      offset = rewriter.create<arith::IndexCastOp>(op.getLoc(), rewriter.getIndexType(), offset);
+    while (auto previous = base.getDefiningOp<memref::ReinterpretCastOp>()) {
+      auto previousOffset = previous.getMixedOffsets().front();
+      Value value = getValueOrCreateConstantIndexOp(rewriter, op.getLoc(), previousOffset);
+      offset = rewriter.create<arith::AddIOp>(op.getLoc(), offset, value);
+      base = previous.getSource();
+    }
+    auto pointer = cast<triton::PointerType>(op.getType());
+    auto type = MemRefType::get({1}, pointer.getPointeeType(),
+        StridedLayoutAttr::get(op.getContext(), ShapedType::kDynamic, {1}));
+    auto cast = rewriter.create<memref::ReinterpretCastOp>(op.getLoc(), type,
+        base, offset, SmallVector<OpFoldResult>{rewriter.getIndexAttr(1)},
+        SmallVector<OpFoldResult>{rewriter.getIndexAttr(1)});
+    rewriter.replaceOp(op, cast.getResult());
     return success();
   }
 };
 
+// Tensor memory operations have already been scalarized with exact predicates.
+static FailureOr<Value> scalarMemoryRef(Value pointer, Type element, Location loc,
+                                        ConversionPatternRewriter &rewriter) {
+  if (auto type = dyn_cast<MemRefType>(pointer.getType())) {
+    if (type.getRank() == 1 && type.getElementType() == element) return pointer;
+    return failure();
+  }
+  if (!isa<UnrankedMemRefType>(pointer.getType())) return failure();
+  auto type = MemRefType::get({1}, element);
+  return rewriter.create<memref::ReinterpretCastOp>(loc, type, pointer,
+      rewriter.getIndexAttr(0), SmallVector<OpFoldResult>{rewriter.getIndexAttr(1)},
+      SmallVector<OpFoldResult>{rewriter.getIndexAttr(1)}).getResult();
+}
+
 struct LoadConverter : public OpConversionPattern<triton::LoadOp> {
-private:
   using OpConversionPattern<triton::LoadOp>::OpConversionPattern;
-
-  void createSideBySideCopies(Value block1, Value block2, Value dst,
-                              Location loc,
-                              ConversionPatternRewriter &rewriter) const {
-
-    auto zero =
-        rewriter.create<arith::ConstantOp>(loc, rewriter.getIndexAttr(0));
-
-    auto one =
-        rewriter.create<arith::ConstantOp>(loc, rewriter.getIndexAttr(1));
-
-    Value block1Row = rewriter.create<memref::DimOp>(loc, block1, 0);
-    Value block1Col = rewriter.create<memref::DimOp>(loc, block1, 1);
-
-    Value block2Row = rewriter.create<memref::DimOp>(loc, block2, 0);
-    Value block2Col = rewriter.create<memref::DimOp>(loc, block2, 1);
-
-    auto block1Dst =
-        rewriter.create<memref::SubViewOp>(loc, dst, /* offsets */
-                                           ValueRange{zero, zero},
-                                           /* sizes */
-                                           ValueRange{block1Row, block1Col},
-                                           /* strides */
-                                           ValueRange{one, one});
-
-    auto block2Dst =
-        rewriter.create<memref::SubViewOp>(loc, dst,
-                                           /* offsets */
-                                           ValueRange{zero, block1Col},
-                                           /* sizes */
-                                           ValueRange{block2Row, block2Col},
-                                           /* strides */
-                                           ValueRange{one, one});
-
-    rewriter.create<memref::CopyOp>(loc, block1, block1Dst);
-    rewriter.create<memref::CopyOp>(loc, block2, block2Dst);
-  }
-
-  void createStackedCopies(Value block1, Value block2, Value dst, Location loc,
-                           ConversionPatternRewriter &rewriter) const {
-
-    auto zero =
-        rewriter.create<arith::ConstantOp>(loc, rewriter.getIndexAttr(0));
-    auto one =
-        rewriter.create<arith::ConstantOp>(loc, rewriter.getIndexAttr(1));
-
-    Value block1Row = rewriter.create<memref::DimOp>(loc, block1, 0);
-    Value block1Col = rewriter.create<memref::DimOp>(loc, block1, 1);
-
-    Value block2Row = rewriter.create<memref::DimOp>(loc, block2, 0);
-    Value block2Col = rewriter.create<memref::DimOp>(loc, block2, 1);
-
-    auto block1Dst =
-        rewriter.create<memref::SubViewOp>(loc, dst, /* offsets */
-                                           ValueRange{zero, zero},
-                                           /* sizes */
-                                           ValueRange{block1Row, block1Col},
-                                           /* strides */
-                                           ValueRange{one, one});
-
-    auto block2Dst =
-        rewriter.create<memref::SubViewOp>(loc, dst,
-                                           /* offsets */
-                                           ValueRange{block1Row, zero},
-                                           /* sizes */
-                                           ValueRange{block2Row, block2Col},
-                                           /* strides */
-                                           ValueRange{one, one});
-
-    rewriter.create<memref::CopyOp>(loc, block1, block1Dst);
-    rewriter.create<memref::CopyOp>(loc, block2, block2Dst);
-  }
-
-public:
-  LogicalResult
-  matchAndRewrite(triton::LoadOp op, OpAdaptor adaptor,
-                  ConversionPatternRewriter &rewriter) const override {
-    auto ptr = adaptor.getPtr();
-    auto mask = op.getMask();
-    auto other = op.getOther();
+  LogicalResult matchAndRewrite(triton::LoadOp op, OpAdaptor adaptor,
+      ConversionPatternRewriter &rewriter) const override {
+    if (isa<ShapedType>(op.getType()))
+      return rewriter.notifyMatchFailure(op, "tensor load was not scalarized");
     auto loc = op.getLoc();
-
-    // 0. Shortcut for scalar loads
-    if (!isa<ShapedType>(op.getResult().getType())) {
-      auto sMemRef = PtrAnalysis::getScalarMemRef(op.getPtr(), adaptor.getPtr(),
-                                                  loc, rewriter);
-      auto index =
-          rewriter.create<arith::ConstantOp>(loc, rewriter.getIndexAttr(0))
-              .getResult();
-      Value value;
-      if (adaptor.getMask()) {
-        auto guarded = rewriter.create<scf::IfOp>(loc, TypeRange{op.getType()}, adaptor.getMask(), true);
-        {
-          OpBuilder::InsertionGuard guard(rewriter);
-          rewriter.setInsertionPointToStart(&guarded.getThenRegion().front());
-          Value loaded = rewriter.create<memref::LoadOp>(loc, sMemRef, index);
-          rewriter.create<scf::YieldOp>(loc, loaded);
-          rewriter.setInsertionPointToStart(&guarded.getElseRegion().front());
-          Value other = adaptor.getOther();
-          if (!other)
-            other = rewriter.create<arith::ConstantOp>(loc, rewriter.getZeroAttr(op.getType()));
-          rewriter.create<scf::YieldOp>(loc, other);
-        }
-        value = guarded.getResult(0);
-      } else {
-        value = rewriter.create<memref::LoadOp>(loc, sMemRef, index);
+    auto pointer = scalarMemoryRef(adaptor.getPtr(), op.getType(), loc, rewriter);
+    if (failed(pointer)) return rewriter.notifyMatchFailure(op, "invalid scalar load pointer");
+    Value zero = rewriter.create<arith::ConstantIndexOp>(loc, 0), value;
+    if (adaptor.getMask()) {
+      auto guarded = rewriter.create<scf::IfOp>(loc, TypeRange{op.getType()}, adaptor.getMask(), true);
+      {
+        OpBuilder::InsertionGuard guard(rewriter);
+        rewriter.setInsertionPointToStart(&guarded.getThenRegion().front());
+        Value loaded = rewriter.create<memref::LoadOp>(loc, *pointer, zero);
+        rewriter.create<scf::YieldOp>(loc, loaded);
+        rewriter.setInsertionPointToStart(&guarded.getElseRegion().front());
+        Value other = adaptor.getOther();
+        if (!other) other = rewriter.create<arith::ConstantOp>(loc, rewriter.getZeroAttr(op.getType()));
+        rewriter.create<scf::YieldOp>(loc, other);
       }
-      rewriter.replaceOp(op, value);
-      return success();
-    }
-
-    // 1. Simple case where no mask is used.
-    auto type = dyn_cast<MemRefType>(ptr.getType());
-    if (!type) {
-      // Seen when implicit broadcasting is done late in a chain of operations.
-      // The workaround is to broadcast the pointers early in the address
-      // calculation. A proper fix is complicated, but at least we can provide a
-      // better error message.
-      return rewriter.notifyMatchFailure(
-          op, "LoadOp expects a memref, not a memref of pointers");
-    }
-
-    auto tensorType =
-        RankedTensorType::get(type.getShape(), type.getElementType());
-    auto alloc = rewriter.create<memref::AllocOp>(
-        loc, MemRefType::get(type.getShape(), type.getElementType()));
-
-    if (!mask) {
-      assert(!other && "other value used in non-masked load");
-      if (auto unrealizedCast =
-              ptr.getDefiningOp<UnrealizedConversionCastOp>()) {
-        if (auto wrapType = unrealizedCast->getAttrOfType<StringAttr>(
-                ModuloState::WraparoundAttr)) {
-
-          auto memrefs = unrealizedCast.getOperands();
-          auto block1 = memrefs[0];
-          auto block2 = memrefs[1];
-
-          if (wrapType.getValue() == ModuloState::WraparoundSideBySide) {
-            createSideBySideCopies(block1, block2, alloc, loc, rewriter);
-          } else if (wrapType.getValue() == ModuloState::WraparoundStacked) {
-            createStackedCopies(block1, block2, alloc, loc, rewriter);
-          } else {
-            llvm_unreachable("unexpected wraparound type");
-          }
-        } else {
-          llvm_unreachable("unexpected unrealized cast op");
-        }
-
-      } else {
-        rewriter.create<memref::CopyOp>(loc, ptr, alloc);
-      }
-
-      Value tensor = rewriter.create<bufferization::ToTensorOp>(
-          loc, tensorType, alloc, true /* restrict */, true /* writable */);
-      rewriter.replaceOp(op, tensor);
-
-      return success();
-    }
-
-    // 2. Continuous masked loads.
-    // Analyze the mask operand to determine at runtime the size of the data we
-    // are moving.
-    MaskState mstate;
-    auto isContMask = mstate.parse(mask, loc, rewriter);
-
-    if (isContMask.failed()) {
-      return rewriter.notifyMatchFailure(
-          op, "Cannot lower continuous masked loads");
-    }
-
-    // fill load destination with other value
-    if (other) {
-      auto scalarOther = getScalarValue(other, loc, rewriter);
-      assert(scalarOther && "other value used in masked load produced by "
-                            "unsupported instruction");
-
-      // For each dimension check if mstate.dims[i] < shape[i], or-accumulate
-      // the result
-      auto shape = type.getShape();
-      auto accBase =
-          rewriter.create<arith::ConstantOp>(loc, rewriter.getBoolAttr(false))
-              .getResult();
-      for (size_t i = 0; i < type.getShape().size(); i++) {
-        auto shapei = rewriter.create<arith::ConstantOp>(
-            loc, rewriter.getIndexAttr(shape[i]));
-
-        Value dimi = dyn_cast<Value>(mstate.dims[i]);
-        if (!dimi) {
-          dimi = rewriter.create<arith::ConstantOp>(
-              loc, cast<IntegerAttr>(cast<Attribute>(mstate.dims[i])));
-        }
-
-        auto cmpOp = rewriter.create<arith::CmpIOp>(
-            loc, arith::CmpIPredicate::slt, dimi, shapei);
-        accBase = rewriter.create<arith::OrIOp>(loc, accBase, cmpOp.getResult())
-                      .getResult();
-      }
-
-      // condition the memset on the or-accumulation
-      // initialize with padding prior to CopyOp
-      rewriter.create<scf::IfOp>(
-          loc, accBase, [&](OpBuilder &builder, Location loc) {
-            builder.create<linalg::FillOp>(loc, ValueRange{scalarOther},
-                                           ValueRange{alloc});
-            builder.create<scf::YieldOp>(loc);
-          });
-    }
-
-    if (auto unrealizedCast = ptr.getDefiningOp<UnrealizedConversionCastOp>()) {
-      if (auto wrapType = unrealizedCast->getAttrOfType<StringAttr>(
-              ModuloState::WraparoundAttr)) {
-
-        auto memrefs = unrealizedCast.getOperands();
-        auto block1 = memrefs[0];
-        auto block2 = memrefs[1];
-
-        if (wrapType.getValue() == ModuloState::WraparoundSideBySide) {
-          auto [subview1, subview2] =
-              mstate.getSideBySideSubviews(block1, block2, loc, rewriter);
-
-          createSideBySideCopies(subview1, subview2, alloc, loc, rewriter);
-        } else if (wrapType.getValue() == ModuloState::WraparoundStacked) {
-          auto [subview1, subview2] =
-              mstate.getStackedSubviews(block1, block2, loc, rewriter);
-
-          createStackedCopies(subview1, subview2, alloc, loc, rewriter);
-        } else {
-          llvm_unreachable("unexpected wraparound type");
-        }
-
-      } else {
-        llvm_unreachable("unexpected unrealized cast op");
-      }
-
-    } else {
-      memref::SubViewOp srcSubview = mstate.getSubview(ptr, loc, rewriter);
-      memref::SubViewOp dstSubview = mstate.getSubview(alloc, loc, rewriter);
-      rewriter.create<memref::CopyOp>(loc, srcSubview, dstSubview);
-    }
-
-    Value tensor = rewriter.create<bufferization::ToTensorOp>(
-        loc, tensorType, alloc, true /* restrict */, true /* writable */);
-    rewriter.replaceOp(op, tensor);
-
+      value = guarded.getResult(0);
+    } else value = rewriter.create<memref::LoadOp>(loc, *pointer, zero);
+    rewriter.replaceOp(op, value);
     return success();
   }
 };
 
 struct StoreConverter : public OpConversionPattern<triton::StoreOp> {
   using OpConversionPattern<triton::StoreOp>::OpConversionPattern;
-
-  LogicalResult
-  matchAndRewrite(triton::StoreOp op, OpAdaptor adaptor,
-                  ConversionPatternRewriter &rewriter) const override {
-    auto ptr = adaptor.getPtr();
-    auto val = adaptor.getValue();
-    auto mask = op.getMask();
+  LogicalResult matchAndRewrite(triton::StoreOp op, OpAdaptor adaptor,
+      ConversionPatternRewriter &rewriter) const override {
+    Value value = adaptor.getValue();
+    if (isa<ShapedType>(value.getType()))
+      return rewriter.notifyMatchFailure(op, "tensor store was not scalarized");
     auto loc = op.getLoc();
-
-    // 0. Shortcut for scalar stores
-    if (!isa<ShapedType>(val.getType())) {
-      auto sMemRef =
-          PtrAnalysis::getScalarMemRef(op.getPtr(), ptr, loc, rewriter);
-      auto index =
-          rewriter.create<arith::ConstantOp>(loc, rewriter.getIndexAttr(0))
-              .getResult();
-      if (adaptor.getMask()) {
-        rewriter.create<scf::IfOp>(loc, adaptor.getMask(), [&](OpBuilder &builder, Location here) {
-          builder.create<memref::StoreOp>(here, val, sMemRef, index);
-          builder.create<scf::YieldOp>(here);
-        });
-      } else {
-        rewriter.create<memref::StoreOp>(loc, val, sMemRef, index);
-      }
-      rewriter.eraseOp(op);
-      return success();
-    }
-
-    // 1. Simple case where no mask is used.
-    if (!mask) {
-      auto storeOp = rewriter.create<bufferization::MaterializeInDestinationOp>(
-          loc, val, ptr);
-      storeOp.setWritable(true);
-      rewriter.eraseOp(op);
-      return success();
-    }
-
-    // 2. Continuous masked stores.
-    // Analyze the mask operand to determine at runtime the size of the data we
-    // are moving.
-    MaskState mstate;
-    auto isContMask = mstate.parse(mask, loc, rewriter);
-
-    if (isContMask.failed())
-      return failure();
-
-    auto srcSlice = mstate.getExtractSlice(val, loc, rewriter);
-    auto dstSubview = mstate.getSubview(ptr, loc, rewriter);
-
-    auto storeOp = rewriter.create<bufferization::MaterializeInDestinationOp>(
-        loc, srcSlice, dstSubview);
-    storeOp.setWritable(true);
+    auto pointer = scalarMemoryRef(adaptor.getPtr(), value.getType(), loc, rewriter);
+    if (failed(pointer)) return rewriter.notifyMatchFailure(op, "invalid scalar store pointer");
+    Value zero = rewriter.create<arith::ConstantIndexOp>(loc, 0);
+    if (adaptor.getMask()) {
+      rewriter.create<scf::IfOp>(loc, adaptor.getMask(), [&](OpBuilder &builder, Location here) {
+        builder.create<memref::StoreOp>(here, value, *pointer, zero);
+        builder.create<scf::YieldOp>(here);
+      });
+    } else rewriter.create<memref::StoreOp>(loc, value, *pointer, zero);
     rewriter.eraseOp(op);
-
     return success();
   }
 };
@@ -473,12 +242,7 @@ struct LoopConverter : public OpConversionPattern<scf::ForOp> {
   LogicalResult
   matchAndRewrite(scf::ForOp op, OpAdaptor adaptor,
                   ConversionPatternRewriter &rewriter) const override {
-    llvm::SmallDenseMap<Value, PtrState> knownPtrs;
-    PtrAnalysis::IndexMapSet
-        levelToBlockArgIndex; // level -> set of block arg index to be replaced
-
-    PtrAnalysis::rewriteForOp(op, rewriter, levelToBlockArgIndex, 0, knownPtrs);
-    return success();
+    return rewriter.notifyMatchFailure(op, "unresolved pointer loop; normalize to scalar base and offsets");
   }
 };
 
@@ -773,6 +537,12 @@ struct DotConverter : public OpConversionPattern<triton::DotOp> {
     if (!isa<FloatType, IntegerType>(accumulatorType))
       return rewriter.notifyMatchFailure(
           op, "dot accumulator must use an integer or floating-point type");
+    auto compatible = [&](Type input) {
+      return (isa<FloatType>(input) && isa<FloatType>(accumulatorType)) ||
+             (isa<IntegerType>(input) && isa<IntegerType>(accumulatorType));
+    };
+    if (!compatible(aType.getElementType()) || !compatible(bType.getElementType()))
+      return rewriter.notifyMatchFailure(op, "dot input/accumulator numeric families must match");
     auto linalgOp = rewriter.create<linalg::GenericOp>(
         op.getLoc(), TypeRange{op->getResult(0).getType()}, ValueRange{a, b},
         ValueRange{c},
@@ -780,7 +550,7 @@ struct DotConverter : public OpConversionPattern<triton::DotOp> {
         [&](OpBuilder &builder, Location loc, ValueRange args) {
           Value lhs = castDotOperand(args[0], accumulatorType, loc, builder);
           Value rhs = castDotOperand(args[1], accumulatorType, loc, builder);
-          assert(lhs && rhs && "unsupported dot operand type conversion");
+          // Conversions are validated before creating the combiner.
 
           Value product;
           if (isa<FloatType>(accumulatorType))

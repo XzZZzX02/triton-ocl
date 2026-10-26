@@ -106,7 +106,7 @@ static std::string getDataTypeName(Type type, EmitTarget target) {
         return "int64_t";
     }
   }
-  llvm_unreachable("Unsupported type.");
+  return "/* unsupported type */ void";
 }
 
 template <typename ConcreteType, typename ResultType, typename... ExtraArgs>
@@ -170,8 +170,7 @@ public:
 
   /// This callback is invoked on any invalid operations.
   ResultType visitInvalidOp(Operation *op, ExtraArgs... args) {
-    op->emitOpError("is unsupported operation.");
-    abort();
+    return ResultType();
   }
 
   /// This callback is invoked on any operations that are not handled by the

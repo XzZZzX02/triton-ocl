@@ -237,7 +237,7 @@ void ModuleEmitter::emitScfYield(scf::YieldOp op) {
       emitInfoAndNewLine(op);
     }
   } else {
-    llvm_unreachable("Unsupported this scf::YieldOp op");
+    emitError(op, "unsupported scf.yield parent");
   }
 }
 
@@ -687,7 +687,10 @@ ModuleEmitter::getTransferIndices(TransferOpType op) {
   // Get the head indices of the transfer read/write.
   SmallVector<SmallString<8>, 4> indices;
   for (auto index : op.getIndices()) {
-    assert(isDeclared(index) && "index has not been declared");
+    if (!isDeclared(index)) {
+      emitError(op, "undeclared memory index");
+      return {};
+    }
     indices.push_back(getName(index));
   }
   // Construct the physical indices.
@@ -925,7 +928,8 @@ void ModuleEmitter::emitMemCpyValue(Value val) {
     }
   } else {
     val.dump();
-    llvm_unreachable("mecpy unsupported subview targetOp");
+    emitError(val.getDefiningOp(), "unsupported memcpy view");
+    return;
   }
 }
 
@@ -1000,16 +1004,21 @@ void ModuleEmitter::emitMemCpy(memref::CopyOp op) {
     auto targetSubView = getSubviewOp(op.getTarget());
     bool isCopySubView = false;
     if (sourceSubView || targetSubView) {
-      assert(checkSubViewOffsetAndStride(sourceSubView) &&
-             "source subview not support");
-      assert(checkSubViewOffsetAndStride(targetSubView) &&
-             "target subview not support");
+      if (!sourceSubView || !targetSubView ||
+          !checkSubViewOffsetAndStride(sourceSubView) ||
+          !checkSubViewOffsetAndStride(targetSubView)) {
+        emitError(op, "unsupported SYCL copy subview offsets/strides");
+        return;
+      }
       isCopySubView = true;
     }
 
     auto targetMemref =
         mlir::dyn_cast<mlir::MemRefType>(op.getTarget().getType());
-    assert(lessOrEqual2D(targetMemref) && "mecpy unsupported not support > 2D");
+    if (!targetMemref || !lessOrEqual2D(targetMemref)) {
+      emitError(op, "unsupported SYCL copy rank");
+      return;
+    }
 
     auto emitLinearCopy = [&](Value target, Value source, OpFoldResult num) {
       if (state.target == EmitTarget::SYCL) {
@@ -1275,8 +1284,10 @@ template <typename OpType> void ModuleEmitter::emitConstant(OpType op) {
 }
 
 void ModuleEmitter::emitFunction(func::FuncOp func) {
-  if (func.getBlocks().size() != 1)
-    emitError(func, "has zero or more than one basic blocks.");
+  if (func.getBlocks().size() != 1) {
+    emitError(func, "needs exactly one basic block");
+    return;
+  }
 
   // For SYCL, scan for local allocations first
   localAllocs.clear();
@@ -1460,7 +1471,7 @@ void ModuleEmitter::emitHostWrapper(func::FuncOp func) {
     reduceIndent();
     indent() << "});\n";
     if (profile) {
-      indent() << "kernel_event.wait();\n";
+      indent() << "kernel_event.wait_and_throw();\n";
       indent() << "*elapsed_ns = kernel_event.get_profiling_info<"
                << "sycl::info::event_profiling::command_end>() - "
                << "kernel_event.get_profiling_info<"
@@ -1531,6 +1542,22 @@ void ModuleEmitter::emitModule(ModuleOp module) {
 //===----------------------------------------------------------------------===//
 
 LogicalResult emitSYCL(ModuleOp module, llvm::raw_ostream &os) {
+  bool invalid = false;
+  module.walk([&](Operation *op) {
+    auto check = [&](Type type) {
+      if (auto shaped = dyn_cast<ShapedType>(type)) type = shaped.getElementType();
+      if (getDataTypeName(type, EmitTarget::SYCL).find("unsupported") != std::string::npos) {
+        op->emitError("unsupported SYCL source type: ") << type;
+        invalid = true;
+      }
+    };
+    for (Type type : op->getOperandTypes()) check(type);
+    for (Type type : op->getResultTypes()) check(type);
+    for (Region &region : op->getRegions())
+      for (Block &block : region)
+        for (BlockArgument arg : block.getArguments()) check(arg.getType());
+  });
+  if (invalid) return failure();
   ScaleHLSEmitterState state(os, EmitTarget::SYCL);
   ModuleEmitter(state).emitModule(module);
   return failure(state.encounteredError);

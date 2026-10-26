@@ -100,6 +100,8 @@ struct TritonToLinalg
                            bufferization::BufferizationDialect,
                            memref::MemRefDialect, ::mlir::gpu::GPUDialect>();
 
+    target.addIllegalDialect<triton::TritonDialect>();
+    target.addLegalOp<triton::ReturnOp>();
     target.addIllegalOp<triton::GetProgramIdOp>();
     target.addIllegalOp<triton::DotOp, triton::ReduceOp, triton::TransOp>();
 
@@ -133,8 +135,7 @@ struct TritonToLinalg
         if (auto shapedType = dyn_cast<ShapedType>(t)) {
           return shapedType.getElementType().isIntOrFloat();
         }
-        assert(t.isIntOrIndexOrFloat());
-        return true;
+        return t.isIntOrIndexOrFloat();
       });
     });
 
@@ -158,8 +159,10 @@ struct TritonToLinalg
 
     populateTritonToLinalgConversionPatterns(tritonTypeConverter, patterns);
 
-    if (failed(applyPartialConversion(moduleOp, target, std::move(patterns))))
+    if (failed(applyPartialConversion(moduleOp, target, std::move(patterns)))) {
       signalPassFailure();
+      return;
+    }
 
     // Convert tt.func and tt.return into func's counterparts
     moduleOp.walk([&](triton::FuncOp func) {

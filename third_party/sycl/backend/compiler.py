@@ -15,7 +15,6 @@ from triton._C.libtriton import sycl, ir, llvm, passes
 from triton.runtime.build import _build
 
 
-print(f"SYCL COMPILER LOADED FROM: {__file__}")
 
 @dataclass(frozen=True)
 class SYCLOptions:
@@ -73,108 +72,7 @@ class SYCLBackend(BaseBackend):
         return SYCLMetadata(**args)
 
     def get_codegen_implementation(self, options):
-        # SYCL lowers dot operations to scalar/vector arithmetic, so there is
-        # no hardware tile-size restriction at the Triton frontend boundary.
-        return {"min_dot_size": lambda lhs_type, rhs_type: (1, 1, 1)}
-
-    def get_module_map(self) -> Dict[str, ModuleType]:
-        # TODO: Add SYCL specific libdevice if needed
-        return {}
-
-    def load_dialects(self, ctx):
-        sycl.load_dialects(ctx)
-
-    @staticmethod
-    def make_ttir(mod, metadata, opt):
-        pm = ir.pass_manager(mod.context)
-        pm.enable_debug()
-        passes.common.add_inliner(pm)
-        passes.ttir.add_rewrite_tensor_pointer(pm)
-        # passes.common.add_canonicalizer(pm)
-        passes.ttir.add_combine(pm)
-        passes.ttir.add_reorder_broadcast(pm)
-        # passes.common.add_cse(pm)
-        # passes.common.add_symbol_dce(pm)
-        passes.ttir.add_loop_unroll(pm)
-        pm.run(mod)
-        return mod
-
-    @staticmethod
-    def make_lair(mod, metadata, opt):
-        pm = ir.pass_manager(mod.context)
-        pm.enable_debug()
-        sycl.passes.lair.triton_to_linalg(pm)
-        pm.run(mod)
-        return mod
-
-    @staticmethod
-    def make_memir(mod, metadata, opt):
-        pm = ir.pass_manager(mod.context)
-        pm.enable_debug()
-        sycl.passes.memir.one_shot_bufferize(pm)
-        sycl.passes.memir.linalg_to_affine_loops(pm)
-        # passes.common.add_canonicalizer(pm)
-        sycl.passes.memir.buffer_loop_hoisting(pm)
-        # passes.common.add_canonicalizer(pm)
-        # passes.common.add_cse(pm)
-        # passes.common.add_symbol_dce(pm)
-        pm.run(mod)
-        return mod
-
-    @staticmethod
-    def make_llvmspvir(mod, metadata, opt):
-        pm = ir.pass_manager(mod.context)
-        pm.enable_debug()
-        sycl.passes.llvmspvir.affine_to_llvmspv(pm)
-        pm.run(mod)
-        return mod
-
-    @staticmethod
-    def emit_sycl(src, metadata, opt):
-        print("DEBUG: Executing emit_sycl")
-        import re
-        names = re.findall(r"func\.func @(\w+)\(", str(src))
-        assert len(names) == 1
-        metadata["name"] = names[0]
-        if "shared" not in metadata:
-            metadata["shared"] = 0
-        if "num_warps" not in metadata:
-            metadata["num_warps"] = 4
-        if "num_ctas" not in metadata:
-            metadata["num_ctas"] = 1
-        import triton._C as tc
-        # Use triton-sycl-translate
-        sycl_translate = os.path.join(tc.__path__[0], 'triton-sycl-translate')
-        with tempfile.NamedTemporaryFile(delete=False, mode='w', suffix='.memir') as fsrc:
-            fsrc.write(str(src))
-            fsrc.flush()
-            sycl_file = fsrc.name + '.sycl'
-            emit_sycl_cmd = [
-                sycl_translate,
-                fsrc.name,
-                '-triton-sycl-emit-sycl',
-                '-o',
-                sycl_file
-            ]
-            subprocess.run(emit_sycl_cmd, check=True, close_fds=False)
-            with open(sycl_file, 'rb') as f:
-                sycl_src = f.read().decode("utf-8")
-            if os.path.exists(sycl_file):
-                os.remove(sycl_file)
-        return sycl_src
-
-    def add_stages(self, stages, options):
-        print("DEBUG: add_stages called")
-        stages["ttir"] = lambda src, metadata: self.make_ttir(src, metadata, options)
-        stages["lair"] = lambda src, metadata: self.make_lair(src, metadata, options)
-        stages["memir"] = lambda src, metadata: self.make_memir(src, metadata, options)
-        stages["sycl"] = lambda src, metadata: self.emit_sycl(src, metadata, options)
-
-
-
-    def get_codegen_implementation(self, options):
-        # Keep this duplicate definition consistent with the legacy backend
-        # block below; the latter definition is the one Python uses.
+        # Scalar dot lowering has no frontend hardware tile constraint.
         return {"min_dot_size": lambda lhs_type, rhs_type: (1, 1, 1)}
 
     def get_module_map(self) -> Dict[str, ModuleType]:
@@ -225,29 +123,29 @@ class SYCLBackend(BaseBackend):
     @staticmethod
     def emit_sycl(src, metadata, opt):
         import re
-        names = re.findall(r"func\.func @(\w+)\(", str(src))
-        assert len(names) == 1
+        names = re.findall(r"func\.func @([\w.$-]+)\(", str(src))
+        if len(names) != 1:
+            raise RuntimeError(f"SYCL translation needs exactly one kernel, found {len(names)}")
         metadata["name"] = names[0]
         import triton._C as tc
-        # Use triton-sycl-translate
-        sycl_translate = os.path.join(tc.__path__[0], 'triton-sycl-translate')
-        with tempfile.NamedTemporaryFile(delete=False, mode='w', suffix='.memir') as fsrc:
-            fsrc.write(str(src))
-            fsrc.flush()
-            sycl_file = fsrc.name + '.sycl'
-            emit_sycl_cmd = [
-                sycl_translate,
-                fsrc.name,
-                '-triton-sycl-emit-sycl',
-                '-o',
-                sycl_file
-            ]
-            subprocess.run(emit_sycl_cmd, check=True, close_fds=False)
-            with open(sycl_file, 'rb') as f:
-                sycl_src = f.read().decode("utf-8")
-            if os.path.exists(sycl_file):
-                os.remove(sycl_file)
-        return sycl_src
+        translator = Path(tc.__path__[0]) / "triton-sycl-translate"
+        timeout = float(os.environ.get("TRITON_SYCL_TRANSLATE_TIMEOUT", "120"))
+        with tempfile.TemporaryDirectory(prefix="triton-sycl-translate-") as directory:
+            source, output = Path(directory)/"kernel.memir", Path(directory)/"kernel.sycl"
+            source.write_text(str(src))
+            command = [str(translator), str(source), "-triton-sycl-emit-sycl", "-o", str(output)]
+            try:
+                result = subprocess.run(command, capture_output=True, text=True, timeout=timeout)
+            except subprocess.TimeoutExpired as error:
+                raise RuntimeError(f"SYCL translation of {names[0]} timed out after {timeout:g}s") from error
+            except OSError as error:
+                raise RuntimeError(f"cannot run SYCL translator {translator}: {error}") from error
+            if result.returncode:
+                diagnostic = (result.stderr or result.stdout)[-12000:]
+                raise RuntimeError(f"SYCL translation of {names[0]} failed (exit {result.returncode}):\n{diagnostic}")
+            if not output.is_file() or not output.stat().st_size:
+                raise RuntimeError(f"SYCL translator produced no source for {names[0]}")
+            return output.read_text()
 
     def add_stages(self, stages, options):
         stages["ttir"] = lambda src, metadata: self.make_ttir(src, metadata, options)

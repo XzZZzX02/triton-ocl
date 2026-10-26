@@ -323,6 +323,7 @@ class SYCLContext:
         src = """
         #include <sycl/sycl.hpp>
         #include <iostream>
+    #include <vector>
         extern "C" {
           void* create_queue() { try { return new sycl::queue(sycl::default_selector_v,
             sycl::property::queue::enable_profiling{}); }
@@ -441,7 +442,8 @@ def launch(gridX, gridY, gridZ, kernel_name, source_code, bound_args, *, signatu
     try:
         run_standalone(*grid, kernel_name, source_code, bound_args, signature=signature, metadata=metadata, block_size=block_size)
     except Exception as standalone_error:
-        if os.getenv("TRITON_SYCL_DISABLE_INPROCESS_FALLBACK", "0") == "1":
+        if (os.getenv("TRITON_SYCL_ENABLE_INPROCESS_FALLBACK", "0") != "1"
+                or os.getenv("TRITON_SYCL_DISABLE_INPROCESS_FALLBACK", "0") == "1"):
             raise
         print(f"SYCL standalone launch failed ({standalone_error}); falling back to ctypes")
         _launch_in_process(*grid, kernel_name, source_code, bound_args, signature=signature, metadata=metadata, block_size=block_size)
@@ -472,8 +474,8 @@ def generate_standalone_wrapper(kernel_name, source_code, bound_args, *, signatu
             declarations.append(
                 f"        size_t size_{index} = 0;\n"
                 f"        infile.read(reinterpret_cast<char*>(&size_{index}), sizeof(size_{index}));\n"
-                f"        if (!infile || size_{index} == 0 || size_{index} % sizeof({info.cxx}) != 0) return 2;\n"
-                f"        {info.cxx}* arg_{index} = sycl::malloc_shared<{info.cxx}>(size_{index} / sizeof({info.cxx}), q);\n"
+                f"        if (!infile || size_{index} % sizeof({info.cxx}) != 0) return 2;\n"
+                f"        {info.cxx}* arg_{index} = sycl::malloc_shared<{info.cxx}>(std::max<size_t>(1, size_{index} / sizeof({info.cxx})), q);\n"
                 f"        if (!arg_{index}) return 3;\n"
                 f"        infile.read(reinterpret_cast<char*>(arg_{index}), size_{index});\n"
                 f"        if (!infile) return 4;\n"
@@ -500,8 +502,11 @@ def generate_standalone_wrapper(kernel_name, source_code, bound_args, *, signatu
     #include <sycl/sycl.hpp>
     #include <cstdint>
     #include <fstream>
+    #include <iostream>
+    #include <vector>
     {source_code}
     int main(int argc, char** argv) {{
+      try {{
         if (argc != 3) return 1;
         std::ifstream infile(argv[1], std::ios::binary);
         if (!infile) return 1;
@@ -514,7 +519,7 @@ def generate_standalone_wrapper(kernel_name, source_code, bound_args, *, signatu
         size_t blockX = {block.x}, blockY = {block.y}, blockZ = {block.z};
 {''.join(declarations)}
 {timing_decl}        {launch_call}({', '.join(call_args)});
-        q.wait();
+        q.wait_and_throw();
         std::ofstream outfile(argv[2], std::ios::binary);
         if (!outfile) return 5;
 {''.join(output_writes)}
@@ -522,26 +527,52 @@ def generate_standalone_wrapper(kernel_name, source_code, bound_args, *, signatu
         outfile.close();
 {''.join(cleanup)}
         return outfile ? 0 : 6;
+      }} catch (const std::exception& error) {{
+        std::cerr << "SYCL kernel exception: " << error.what() << std::endl;
+        return 7;
+      }}
     }}
     """
 
 
 def _standalone_executable(main_src):
-    source_hash = hashlib.sha256(main_src.encode()).hexdigest()
+    # Include toolchain/target in the key; publish complete executables atomically.
+    # Parallel regression runners must never execute a partially overwritten ELF.
+    key = ACPP_PATH + "\n" + ACPP_TARGETS + "\n" + main_src
+    source_hash = hashlib.sha256(key.encode()).hexdigest()
     cached = _standalone_cache.get(source_hash)
     if cached and os.path.exists(cached):
         return cached
     cache_dir = os.path.join(tempfile.gettempdir(), "triton-sycl-cache")
     os.makedirs(cache_dir, exist_ok=True)
-    src_path, exe_path = os.path.join(cache_dir, source_hash + ".cpp"), os.path.join(cache_dir, source_hash)
+    exe_path = os.path.join(cache_dir, source_hash)
     if not os.path.exists(exe_path):
-        Path(src_path).write_text(main_src)
-        cmd = [ACPP_PATH, f"--acpp-targets={ACPP_TARGETS}", "-O2", "-std=c++17", src_path, "-o", exe_path]
-        result = subprocess.run(cmd, capture_output=True, text=True)
-        if result.returncode:
-            raise RuntimeError("standalone SYCL compilation failed:\n" + "\n".join(result.stderr.splitlines()[:80]))
+        with tempfile.TemporaryDirectory(prefix="compile-", dir=cache_dir) as directory:
+            src_path, temporary_exe = os.path.join(directory, "kernel.cpp"), os.path.join(directory, "kernel")
+            Path(src_path).write_text(main_src)
+            cmd = [ACPP_PATH, f"--acpp-targets={ACPP_TARGETS}", "-O2", "-std=c++17", src_path, "-o", temporary_exe]
+            try:
+                result = subprocess.run(cmd, capture_output=True, text=True,
+                    timeout=float(os.getenv("TRITON_SYCL_COMPILE_TIMEOUT", "300")))
+            except subprocess.TimeoutExpired as error:
+                raise RuntimeError("standalone SYCL compilation timed out") from error
+            if result.returncode:
+                raise RuntimeError("standalone SYCL compilation failed:\n" + result.stderr[-12000:])
+            os.replace(temporary_exe, exe_path)
     _standalone_cache[source_hash] = exe_path
     return exe_path
+
+
+def _run_executable(executable, input_bin, output_bin):
+    timeout = float(os.getenv("TRITON_SYCL_RUN_TIMEOUT", "120"))
+    try:
+        result = subprocess.run([executable, input_bin, output_bin], capture_output=True,
+                                text=True, timeout=timeout)
+    except subprocess.TimeoutExpired as error:
+        raise RuntimeError(f"SYCL kernel process timed out after {timeout:g}s") from error
+    if result.returncode:
+        detail = (result.stderr or result.stdout)[-12000:]
+        raise RuntimeError(f"SYCL kernel process failed (exit {result.returncode}):\n{detail}")
 
 
 def run_standalone(gridX, gridY, gridZ, kernel_name, source_code, bound_args, *, signature=None, metadata=None, block_size=None):
@@ -558,7 +589,7 @@ def run_standalone(gridX, gridY, gridZ, kernel_name, source_code, bound_args, *,
                 if _is_pointer_type(type_repr):
                     stream.write(ctypes.c_size_t(size))
                     stream.write(_buffer_bytes(arg, size))
-        subprocess.check_call([executable, input_bin, output_bin])
+        _run_executable(executable, input_bin, output_bin)
         with open(output_bin, "rb") as stream:
             for _, type_repr, _, arg, size in runtime_args:
                 if _is_pointer_type(type_repr):
@@ -586,7 +617,7 @@ def profile_standalone(gridX, gridY, gridZ, kernel_name, source_code, bound_args
                 if _is_pointer_type(type_repr):
                     stream.write(ctypes.c_size_t(size))
                     stream.write(_buffer_bytes(arg, size))
-        subprocess.check_call([executable, input_bin, output_bin])
+        _run_executable(executable, input_bin, output_bin)
         with open(output_bin, "rb") as stream:
             for _, type_repr, _, arg, size in runtime_args:
                 if _is_pointer_type(type_repr):
@@ -594,7 +625,7 @@ def profile_standalone(gridX, gridY, gridZ, kernel_name, source_code, bound_args
                     if len(data) != size:
                         raise RuntimeError("profiling SYCL output is shorter than a pointer argument")
                     ctypes.memmove(arg.data_ptr(), data, size)
-            timing = stream.read(ctypes.sizeof(ctypes.c_uint64))
-            if len(timing) != ctypes.sizeof(ctypes.c_uint64):
+            timing = stream.read(8)
+            if len(timing) != 8:
                 raise RuntimeError("profiling SYCL output did not contain an event duration")
             return int(struct.unpack("<Q", timing)[0])
