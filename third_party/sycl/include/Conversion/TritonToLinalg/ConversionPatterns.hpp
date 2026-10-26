@@ -616,6 +616,52 @@ public:
   }
 };
 
+// Data indices are needed by argmin/argmax, not only address metadata.
+struct RangeConverter : public OpConversionPattern<triton::MakeRangeOp> {
+  using OpConversionPattern<triton::MakeRangeOp>::OpConversionPattern;
+  LogicalResult matchAndRewrite(triton::MakeRangeOp op, OpAdaptor,
+                                 ConversionPatternRewriter &rewriter) const override {
+    auto type = op.getType();
+    Value init = rewriter.create<tensor::EmptyOp>(op.getLoc(), type.getShape(), type.getElementType());
+    auto generic = rewriter.create<linalg::GenericOp>(
+        op.getLoc(), TypeRange{type}, ValueRange{}, ValueRange{init},
+        SmallVector<AffineMap>{rewriter.getMultiDimIdentityMap(1)},
+        getNParallelLoopsAttrs(1), [&](OpBuilder &builder, Location loc, ValueRange) {
+          Value index = builder.create<linalg::IndexOp>(loc, 0);
+          Value value = builder.create<arith::IndexCastOp>(loc, type.getElementType(), index);
+          if (op.getStart()) {
+            Value start = builder.create<arith::ConstantIntOp>(loc, op.getStart(), 32);
+            value = builder.create<arith::AddIOp>(loc, value, start);
+          }
+          builder.create<linalg::YieldOp>(loc, value);
+        });
+    rewriter.replaceOp(op, generic.getResults());
+    return success();
+  }
+};
+struct ExpandConverter : public OpConversionPattern<triton::ExpandDimsOp> {
+  using OpConversionPattern<triton::ExpandDimsOp>::OpConversionPattern;
+  LogicalResult matchAndRewrite(triton::ExpandDimsOp op, OpAdaptor adaptor,
+                                 ConversionPatternRewriter &rewriter) const override {
+    auto type = op.getType();
+    unsigned rank = type.getRank();
+    SmallVector<AffineExpr> exprs;
+    for (unsigned i = 0; i < rank; ++i)
+      if (i != op.getAxis())
+        exprs.push_back(getAffineDimExpr(i, op.getContext()));
+    Value init = rewriter.create<tensor::EmptyOp>(op.getLoc(), type.getShape(), type.getElementType());
+    auto generic = rewriter.create<linalg::GenericOp>(
+        op.getLoc(), TypeRange{type}, ValueRange{adaptor.getSrc()}, ValueRange{init},
+        SmallVector<AffineMap>{AffineMap::get(rank, 0, exprs, op.getContext()),
+                              rewriter.getMultiDimIdentityMap(rank)},
+        getNParallelLoopsAttrs(rank), [&](OpBuilder &builder, Location loc, ValueRange args) {
+          builder.create<linalg::YieldOp>(loc, args[0]);
+        });
+    rewriter.replaceOp(op, generic.getResults());
+    return success();
+  }
+};
+
 struct DotConverter : public OpConversionPattern<triton::DotOp> {
   using OpConversionPattern<triton::DotOp>::OpConversionPattern;
 
@@ -715,84 +761,142 @@ struct ReduceConverter : public OpConversionPattern<triton::ReduceOp> {
   LogicalResult
   matchAndRewrite(triton::ReduceOp op, OpAdaptor adaptor,
                   ConversionPatternRewriter &rewriter) const override {
-    if (op.getNumOperands() != 1 || op.getNumResults() != 1)
-      return rewriter.notifyMatchFailure(
-          op, "only single-input single-output reductions are supported");
-
-    auto inputType = cast<RankedTensorType>(op.getSrcs()[0].getType());
-    Type originalResultType = op->getResult(0).getType();
-    auto resultType = dyn_cast<RankedTensorType>(originalResultType);
-    bool resultIsScalar = !resultType;
-    RankedTensorType resultTensorType = resultType;
-    if (resultIsScalar)
-      resultTensorType = RankedTensorType::get({}, originalResultType);
+    unsigned count = op.getNumOperands();
+    if (!count || count != op.getNumResults())
+      return rewriter.notifyMatchFailure(op, "reduction needs matching inputs and outputs");
+    auto inputType = dyn_cast<RankedTensorType>(op.getSrcs()[0].getType());
     int64_t axis = op.getAxis();
-    if (axis < 0 || axis >= inputType.getRank() ||
-        resultTensorType.getRank() != inputType.getRank() - 1)
-      return rewriter.notifyMatchFailure(op, "invalid reduction axis");
+    if (!inputType || !inputType.hasStaticShape() || axis < 0 ||
+        axis >= inputType.getRank() || inputType.getDimSize(axis) == 0)
+      return rewriter.notifyMatchFailure(op, "reduction requires a nonempty static axis");
+    if (!llvm::hasSingleElement(op.getCombineOp()))
+      return rewriter.notifyMatchFailure(op, "reduction needs a single combiner block");
+    Block &combiner = op.getCombineOp().front();
+    auto *terminator = combiner.getTerminator();
+    if (combiner.getNumArguments() != 2 * count ||
+        terminator->getNumOperands() != count)
+      return rewriter.notifyMatchFailure(op, "invalid reduction combiner signature");
 
-    Value input = adaptor.getSrcs()[0];
-    if (!isa<RankedTensorType>(input.getType())) {
-      auto memrefType = dyn_cast<MemRefType>(input.getType());
-      if (!memrefType || memrefType.getShape() != inputType.getShape())
-        return rewriter.notifyMatchFailure(
-            op, "reduction input must be a ranked tensor or static memref");
-      input = rewriter.create<bufferization::ToTensorOp>(
-          op.getLoc(), inputType, input, true /* restrict */, true /* writable */);
-    }
-
-    SmallVector<AffineExpr> inputExprs;
-    SmallVector<AffineExpr> resultExprs;
-    for (unsigned i = 0; i < inputType.getRank(); ++i) {
-      inputExprs.push_back(getAffineDimExpr(i, op.getContext()));
-      if (i != static_cast<unsigned>(axis))
-        resultExprs.push_back(getAffineDimExpr(
-            resultExprs.size(), op.getContext()));
-    }
-
+    auto loc = op.getLoc();
     unsigned rank = inputType.getRank();
-    SmallVector<utils::IteratorType> iteratorTypes(
-        rank, utils::IteratorType::parallel);
-    iteratorTypes[axis] = utils::IteratorType::reduction;
-    auto init = rewriter.create<tensor::EmptyOp>(
-        op.getLoc(), resultTensorType.getShape(),
-        resultTensorType.getElementType());
-    Value zero = createZeroValue(resultTensorType.getElementType(), op.getLoc(),
-                                 rewriter);
-    if (!zero)
-      return rewriter.notifyMatchFailure(op, "unsupported reduction element type");
-    auto filled = rewriter.create<linalg::FillOp>(
-        op.getLoc(), ValueRange{zero}, ValueRange{init});
-
-    auto linalgOp = rewriter.create<linalg::GenericOp>(
-        op.getLoc(), TypeRange{resultTensorType}, ValueRange{input},
-        ValueRange{filled.result()},
-        SmallVector<AffineMap>{
-            AffineMap::get(rank, 0, inputExprs, op.getContext()),
-            AffineMap::get(rank, 0, resultExprs, op.getContext())},
-        iteratorTypes,
-        [&](OpBuilder &builder, Location loc, ValueRange args) {
-          Block &combiner = op.getCombineOp().front();
-          IRMapping mapping;
-          mapping.map(combiner.getArgument(0), args[1]);
-          mapping.map(combiner.getArgument(1), args[0]);
-          for (Operation &inner : combiner.without_terminator())
-            builder.clone(inner, mapping);
-
-          auto *terminator = combiner.getTerminator();
-          if (terminator->getNumOperands() != 1)
-            return;
-          Value result = mapping.lookupOrDefault(terminator->getOperand(0));
-          builder.create<linalg::YieldOp>(loc, result);
-        });
-
-    if (resultIsScalar) {
-      auto scalar = rewriter.create<tensor::ExtractOp>(
-          op.getLoc(), linalgOp->getResult(0), ValueRange{});
-      rewriter.replaceOp(op, scalar.getResult());
-    } else {
-      rewriter.replaceOp(op, linalgOp->getResults());
+    SmallVector<int64_t> resultShape(inputType.getShape());
+    resultShape.erase(resultShape.begin() + axis);
+    SmallVector<RankedTensorType> resultTypes;
+    SmallVector<Value> inputs, inits;
+    // Put parallel dimensions first, reduction last. This also keeps the
+    // emitter's work-item distribution outside the serial combiner loop.
+    SmallVector<AffineExpr> resultExprs, inputExprs;
+    for (unsigned i = 0; i < rank; ++i) {
+      unsigned position = i == static_cast<unsigned>(axis) ? rank - 1
+                          : i < static_cast<unsigned>(axis) ? i : i - 1;
+      inputExprs.push_back(getAffineDimExpr(position, op.getContext()));
+      if (i + 1 < rank)
+        resultExprs.push_back(getAffineDimExpr(i, op.getContext()));
     }
+    AffineMap outputMap = AffineMap::get(rank, 0, resultExprs, op.getContext());
+    SmallVector<AffineMap> maps(
+        count, AffineMap::get(rank, 0, inputExprs, op.getContext()));
+    maps.append(count, outputMap);
+
+    // Independent binary combiners use their real neutral element. Coupled
+    // tuple combiners (argmax, etc.) start from the first input tuple: there is
+    // no generally inferable identity for an arbitrary user-defined combiner.
+    SmallVector<TypedAttr> identities;
+    bool seedFirst = false;
+    for (unsigned i = 0; i < count; ++i) {
+      auto type = dyn_cast<RankedTensorType>(op.getSrcs()[i].getType());
+      Type element = getElementTypeOrSelf(op->getResult(i).getType());
+      if (!type || type.getShape() != inputType.getShape() ||
+          type.getElementType() != element || !element.isIntOrFloat())
+        return rewriter.notifyMatchFailure(op, "reduction input/output type mismatch");
+      auto resultType = RankedTensorType::get(resultShape, element);
+      if (auto declared = dyn_cast<RankedTensorType>(op->getResult(i).getType())) {
+        if (declared != resultType)
+          return rewriter.notifyMatchFailure(op, "invalid reduction result shape");
+      } else if (!resultShape.empty()) {
+        return rewriter.notifyMatchFailure(op, "nonscalar reduction needs tensor result");
+      }
+      resultTypes.push_back(resultType);
+      Operation *binary = terminator->getOperand(i).getDefiningOp();
+      std::optional<TypedAttr> identity;
+      if (binary && binary->getNumOperands() == 2 &&
+          ((binary->getOperand(0) == combiner.getArgument(i) &&
+            binary->getOperand(1) == combiner.getArgument(count + i)) ||
+           (binary->getOperand(1) == combiner.getArgument(i) &&
+            binary->getOperand(0) == combiner.getArgument(count + i))))
+        identity = arith::getNeutralElement(binary);
+      identities.push_back(identity ? *identity : TypedAttr{});
+      seedFirst |= !identity.has_value();
+    }
+    for (unsigned i = 0; i < count; ++i) {
+      Value input = adaptor.getSrcs()[i];
+      if (!isa<RankedTensorType>(input.getType())) {
+        auto type = dyn_cast<MemRefType>(input.getType());
+        if (!type || type.getShape() != inputType.getShape())
+          return rewriter.notifyMatchFailure(op, "reduction input must be tensor or ranked memref");
+        input = rewriter.create<bufferization::ToTensorOp>(
+            loc, op.getSrcs()[i].getType(), input, true, true);
+      }
+      inputs.push_back(input);
+      Value init = rewriter.create<tensor::EmptyOp>(
+          loc, resultShape, resultTypes[i].getElementType());
+      Value identity = seedFirst
+          ? createZeroValue(resultTypes[i].getElementType(), loc, rewriter)
+          : rewriter.create<arith::ConstantOp>(loc, identities[i]).getResult();
+      inits.push_back(rewriter.create<linalg::FillOp>(
+          loc, ValueRange{identity}, ValueRange{init}).result());
+    }
+    SmallVector<utils::IteratorType> iterators(rank, utils::IteratorType::parallel);
+    iterators.back() = utils::IteratorType::reduction;
+    SmallVector<Type> outputTypes(resultTypes.begin(), resultTypes.end());
+    auto generic = rewriter.create<linalg::GenericOp>(
+        loc, outputTypes, inputs, inits, maps, iterators,
+        [&](OpBuilder &builder, Location nestedLoc, ValueRange args) {
+          auto combine = [&](OpBuilder &nested) {
+            IRMapping mapping;
+            for (unsigned i = 0; i < count; ++i) {
+              mapping.map(combiner.getArgument(i), args[count + i]);
+              mapping.map(combiner.getArgument(count + i), args[i]);
+            }
+            for (Operation &inner : combiner.without_terminator())
+              nested.clone(inner, mapping);
+            SmallVector<Value> values;
+            for (Value value : terminator->getOperands())
+              values.push_back(mapping.lookupOrDefault(value));
+            return values;
+          };
+          SmallVector<Value> values;
+          if (seedFirst) {
+            Value index = builder.create<linalg::IndexOp>(nestedLoc, rank - 1);
+            Value zero = builder.create<arith::ConstantIndexOp>(nestedLoc, 0);
+            Value first = builder.create<arith::CmpIOp>(
+                nestedLoc, arith::CmpIPredicate::eq, index, zero);
+            SmallVector<Type> types;
+            for (auto type : resultTypes)
+              types.push_back(type.getElementType());
+            auto select = builder.create<scf::IfOp>(nestedLoc, types, first, true);
+            {
+              OpBuilder::InsertionGuard guard(builder);
+              builder.setInsertionPointToStart(&select.getThenRegion().front());
+              builder.create<scf::YieldOp>(nestedLoc, args.take_front(count));
+              builder.setInsertionPointToStart(&select.getElseRegion().front());
+              builder.create<scf::YieldOp>(nestedLoc, combine(builder));
+            }
+            values.append(select.getResults().begin(), select.getResults().end());
+          } else {
+            values = combine(builder);
+          }
+          builder.create<linalg::YieldOp>(nestedLoc, values);
+        });
+    generic->setAttr("sycl.reduction_axis", rewriter.getI64IntegerAttr(rank - 1));
+    SmallVector<Value> results;
+    for (unsigned i = 0; i < count; ++i) {
+      Value result = generic->getResult(i);
+      if (!isa<RankedTensorType>(op->getResult(i).getType()))
+        result = rewriter.create<tensor::ExtractOp>(loc, result, ValueRange{});
+      results.push_back(result);
+    }
+    rewriter.replaceOp(op, results);
     return success();
   }
 };

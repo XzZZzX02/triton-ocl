@@ -34,6 +34,7 @@ void populateTritonToLinalgConversionPatterns(TypeConverter &typeConverter,
   patterns.add<BroadcastConverter>(patterns.getContext());
   patterns.add<DotConverter>(patterns.getContext());
   patterns.add<ReduceConverter>(patterns.getContext());
+  patterns.add<RangeConverter, ExpandConverter>(patterns.getContext());
   patterns.add<SplatConverter>(patterns.getContext());
   patterns.add<DenseConstantConverter>(patterns.getContext());
   linalg::populateElementwiseToLinalgConversionPatterns(patterns);

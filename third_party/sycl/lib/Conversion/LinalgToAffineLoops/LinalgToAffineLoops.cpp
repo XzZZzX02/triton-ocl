@@ -32,10 +32,14 @@ struct LinalgToAffineLoops
     PatternRewriter rewriter(&getContext());
     for (auto linalgOp : linalgOps) {
       rewriter.setInsertionPoint(linalgOp);
-      if (failed(linalg::linalgOpToAffineLoops(rewriter, linalgOp))) {
-        llvm::errs() << "Failed to lower to affine loops.\n";
+      auto loops = linalg::linalgOpToAffineLoops(rewriter, linalgOp);
+      if (failed(loops)) {
+        linalgOp.emitError("failed to lower to affine loops");
+        signalPassFailure();
         return;
       }
+      if (auto axis = linalgOp->getAttrOfType<IntegerAttr>("sycl.reduction_axis"))
+        (*loops)[axis.getInt()]->setAttr("sycl.reduction", rewriter.getUnitAttr());
       rewriter.eraseOp(linalgOp);
     }
   }

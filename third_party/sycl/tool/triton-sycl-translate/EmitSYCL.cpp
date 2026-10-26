@@ -334,7 +334,7 @@ void ModuleEmitter::emitAffineFor(affine::AffineForOp op) {
       reduceIndent();
 
       indent() << "}\n";
-      if (state.target == EmitTarget::SYCL)
+      if (state.target == EmitTarget::SYCL && !op->getParentOfType<affine::AffineForOp>())
         indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
       return;
     }
@@ -410,7 +410,7 @@ void ModuleEmitter::emitAffineFor(affine::AffineForOp op) {
     reduceIndent();
     indent() << "}\n";
   }
-  if (state.target == EmitTarget::SYCL)
+  if (state.target == EmitTarget::SYCL && !op->getParentOfType<affine::AffineForOp>())
     indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
 }
 
@@ -764,6 +764,43 @@ void ModuleEmitter::emitStore(memref::StoreOp op) {
   emitInfoAndNewLine(op);
 }
 
+void ModuleEmitter::emitIndexedMemRef(Value value, ArrayRef<std::string> indices) {
+  if (auto castOp = value.getDefiningOp<memref::ReinterpretCastOp>()) {
+    os << "(";
+    emitValue(castOp.getSource());
+    os << " + ";
+    emitOpFoldResult(castOp.getMixedOffsets().front());
+    for (auto [index, stride] : llvm::zip(indices, castOp.getMixedStrides())) {
+      os << " + (" << index << ") * ";
+      emitOpFoldResult(stride);
+    }
+    os << ")[0]";
+    return;
+  }
+  if (auto subview = value.getDefiningOp<memref::SubViewOp>()) {
+    auto sourceType = cast<MemRefType>(subview.getSource().getType());
+    auto offsets = subview.getStaticOffsets();
+    auto strides = subview.getStaticStrides();
+    if (sourceType.getRank() != indices.size() ||
+        llvm::is_contained(offsets, ShapedType::kDynamic) ||
+        llvm::is_contained(strides, ShapedType::kDynamic)) {
+      emitError(subview, "unsupported dynamic or rank-reduced copy subview");
+      return;
+    }
+    SmallVector<std::string> sourceIndices;
+    for (unsigned i = 0; i < indices.size(); ++i)
+      sourceIndices.push_back("(" + std::to_string(offsets[i]) + " + (" +
+                              indices[i] + ") * " + std::to_string(strides[i]) + ")");
+    emitIndexedMemRef(subview.getSource(), sourceIndices);
+    return;
+  }
+  emitValue(value);
+  if (indices.empty())
+    os << "[0]";
+  for (const auto &index : indices)
+    os << "[" << index << "]";
+}
+
 void ModuleEmitter::emitMemRefAccess(Value memref, ValueRange indices) {
   auto memrefType = cast<MemRefType>(memref.getType());
   if (auto reinterpretCast = memref.getDefiningOp<memref::ReinterpretCastOp>()) {
@@ -926,6 +963,38 @@ void ModuleEmitter::emitAsyncCopyWithConstant(Value target, Value source,
 }
 
 void ModuleEmitter::emitMemCpy(memref::CopyOp op) {
+  if (state.target == EmitTarget::SYCL &&
+      cast<MemRefType>(op.getTarget().getType()).getRank() > 2) {
+    auto type = cast<MemRefType>(op.getTarget().getType());
+    if (!type.hasStaticShape()) {
+      emitError(op, "SYCL copy needs a static logical block shape");
+      return;
+    }
+    SmallVector<std::string> indices;
+    unsigned rank = type.getRank();
+    for (unsigned i = 0; i < rank; ++i) {
+      std::string index = "copy_i" + std::to_string(i);
+      indices.push_back(index);
+      indent() << "for (int64_t " << index << " = ";
+      os << (i + 1 == rank ? "item.get_local_id(0)" : "0");
+      os << "; " << index << " < " << type.getDimSize(i) << "; " << index << " += ";
+      os << (i + 1 == rank ? "item.get_local_range(0)" : "1");
+      os << ") {\n";
+      addIndent();
+    }
+    indent();
+    emitIndexedMemRef(op.getTarget(), indices);
+    os << " = ";
+    emitIndexedMemRef(op.getSource(), indices);
+    os << ";\n";
+    for (unsigned i = 0; i < rank; ++i) {
+      reduceIndent();
+      indent() << "}\n";
+    }
+    if (!op->getParentOfType<affine::AffineForOp>())
+      indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
+    return;
+  }
   if (state.target == EmitTarget::SYCL) {
     auto sourceSubView = getSubviewOp(op.getSource());
     auto targetSubView = getSubviewOp(op.getTarget());

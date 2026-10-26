@@ -397,12 +397,12 @@ static SmallString<8> getConstantString(Type type, Attribute attr) {
       auto value = mlir::cast<FloatAttr>(attr).getValue().convertToFloat();
       string.append(std::isfinite(value)
                         ? std::to_string(value)
-                        : (value > 0 ? "INFINITY" : "-INFINITY"));
+                        : (std::isnan(value) ? "NAN" : (value > 0 ? "INFINITY" : "-INFINITY")));
     } else if (floatType.getWidth() == 64) {
       auto value = mlir::cast<FloatAttr>(attr).getValue().convertToDouble();
       string.append(std::isfinite(value)
                         ? std::to_string(value)
-                        : (value > 0 ? "INFINITY" : "-INFINITY"));
+                        : (std::isnan(value) ? "NAN" : (value > 0 ? "INFINITY" : "-INFINITY")));
     }
   } else if (auto intType = mlir::dyn_cast<IntegerType>(type)) {
     if (intType.isSigned()) {
@@ -469,6 +469,7 @@ public:
   void emitLoad(memref::LoadOp op);
   void emitStore(memref::StoreOp op);
   void emitMemRefAccess(Value memref, ValueRange indices);
+  void emitIndexedMemRef(Value memref, ArrayRef<std::string> indices);
   void emitMemCpyValue(Value val);
   void emitOpFoldResult(OpFoldResult opFoldResult);
   void emitAsyncCopy(Value target, Value source);

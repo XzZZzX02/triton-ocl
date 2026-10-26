@@ -1,0 +1,362 @@
+[
+  {
+    "case": "reduce_sum_axis0",
+    "status": "PASS",
+    "compile_ms": 822.4912750010844,
+    "max_abs_error": 0,
+    "kernel_ns": [
+      2660667,
+      2657833,
+      4150487,
+      2748158,
+      2683836,
+      2733408,
+      2704659,
+      2709250,
+      2852150,
+      2722714,
+      2706141
+    ],
+    "median_kernel_ns": 2709250,
+    "wall_seconds": 27.860938444006024
+  },
+  {
+    "case": "reduce_sum_axis1",
+    "status": "PASS",
+    "compile_ms": 711.3056519883685,
+    "max_abs_error": 0,
+    "kernel_ns": [
+      2767890,
+      2644685,
+      4362955,
+      2646291,
+      2670131,
+      2677164,
+      2719409,
+      2647561,
+      2639889,
+      2641010,
+      2690117
+    ],
+    "median_kernel_ns": 2670131,
+    "wall_seconds": 16.037857345014345
+  },
+  {
+    "case": "reduce_max_axis0",
+    "status": "PASS",
+    "compile_ms": 707.2083659877535,
+    "max_abs_error": 0,
+    "kernel_ns": [
+      2687738,
+      4196705,
+      2642762,
+      2679408,
+      2689634,
+      2682131,
+      2807402,
+      2691563,
+      2679544,
+      2676201,
+      2667254
+    ],
+    "median_kernel_ns": 2682131,
+    "wall_seconds": 16.123180295981
+  },
+  {
+    "case": "reduce_max_axis1",
+    "status": "PASS",
+    "compile_ms": 711.9993249943946,
+    "max_abs_error": 0,
+    "kernel_ns": [
+      2783899,
+      4074314,
+      2675241,
+      2665320,
+      2718921,
+      2823082,
+      2733639,
+      2676520,
+      2706100,
+      2695245,
+      2653636
+    ],
+    "median_kernel_ns": 2706100,
+    "wall_seconds": 16.024027459992794
+  },
+  {
+    "case": "reduce_min_axis0",
+    "status": "PASS",
+    "compile_ms": 717.9512429866008,
+    "max_abs_error": 0,
+    "kernel_ns": [
+      4031604,
+      2697319,
+      2841639,
+      2641328,
+      2692851,
+      2720836,
+      2869605,
+      2718922,
+      2666928,
+      2747731,
+      2657802
+    ],
+    "median_kernel_ns": 2718922,
+    "wall_seconds": 16.15878456700011
+  },
+  {
+    "case": "reduce_min_axis1",
+    "status": "PASS",
+    "compile_ms": 702.3512930027209,
+    "max_abs_error": 0,
+    "kernel_ns": [
+      4052370,
+      2691243,
+      2810439,
+      2713312,
+      2671086,
+      2719247,
+      2685149,
+      2771564,
+      2664836,
+      2696516,
+      2653956
+    ],
+    "median_kernel_ns": 2696516,
+    "wall_seconds": 16.181187901995145
+  },
+  {
+    "case": "reduce_and_axis0",
+    "status": "PASS",
+    "compile_ms": 703.1548619852401,
+    "max_abs_error": 0,
+    "kernel_ns": [
+      2772043,
+      2743867,
+      2616361,
+      2746125,
+      2792686,
+      3740370,
+      2808043,
+      2703076,
+      2719559,
+      2681327,
+      2711408
+    ],
+    "median_kernel_ns": 2743867,
+    "wall_seconds": 15.987151068024104
+  },
+  {
+    "case": "reduce_and_axis1",
+    "status": "PASS",
+    "compile_ms": 709.7984870197251,
+    "max_abs_error": 0,
+    "kernel_ns": [
+      2615352,
+      4099623,
+      2724279,
+      2711005,
+      2715958,
+      2754188,
+      3267703,
+      2609775,
+      2651190,
+      2733244,
+      2807430
+    ],
+    "median_kernel_ns": 2724279,
+    "wall_seconds": 16.087649683002383
+  },
+  {
+    "case": "reduce_or_axis0",
+    "status": "PASS",
+    "compile_ms": 730.0122839806136,
+    "max_abs_error": 0,
+    "kernel_ns": [
+      2696522,
+      2704522,
+      4191429,
+      2695078,
+      2792835,
+      2728836,
+      2726752,
+      2696356,
+      2699728,
+      2768362,
+      2737962
+    ],
+    "median_kernel_ns": 2726752,
+    "wall_seconds": 16.026711445010733
+  },
+  {
+    "case": "reduce_or_axis1",
+    "status": "PASS",
+    "compile_ms": 704.1052760032471,
+    "max_abs_error": 0,
+    "kernel_ns": [
+      2735248,
+      2741343,
+      4115450,
+      2725968,
+      2749973,
+      2711585,
+      3442820,
+      2797695,
+      2661537,
+      2763814,
+      2831342
+    ],
+    "median_kernel_ns": 2749973,
+    "wall_seconds": 16.119339718017727
+  },
+  {
+    "case": "reduce_xor_axis0",
+    "status": "PASS",
+    "compile_ms": 708.8505949941464,
+    "max_abs_error": 0,
+    "kernel_ns": [
+      2683575,
+      2710619,
+      4534485,
+      2702613,
+      2742302,
+      2681806,
+      2859740,
+      2665321,
+      5303614,
+      2722461,
+      2714136
+    ],
+    "median_kernel_ns": 2714136,
+    "wall_seconds": 16.076096186006907
+  },
+  {
+    "case": "reduce_xor_axis1",
+    "status": "PASS",
+    "compile_ms": 703.1252450251486,
+    "max_abs_error": 0,
+    "kernel_ns": [
+      2661152,
+      4416261,
+      2775075,
+      2672930,
+      2717750,
+      2743015,
+      2765974,
+      2662481,
+      2725360,
+      2720844,
+      2790962
+    ],
+    "median_kernel_ns": 2725360,
+    "wall_seconds": 16.010759616998257
+  },
+  {
+    "case": "reduce_tuple_axis0",
+    "status": "PASS",
+    "compile_ms": 720.6574399897363,
+    "max_abs_error": 0,
+    "kernel_ns": [
+      2672535,
+      4144720,
+      2683413,
+      2645334,
+      2724847,
+      2673016,
+      2684215,
+      2757814,
+      2734145,
+      3123419,
+      2779735
+    ],
+    "median_kernel_ns": 2724847,
+    "wall_seconds": 16.122915008018026
+  },
+  {
+    "case": "reduce_tuple_axis1",
+    "status": "PASS",
+    "compile_ms": 699.3387439870276,
+    "max_abs_error": 0,
+    "kernel_ns": [
+      4156978,
+      2715737,
+      2660858,
+      2878280,
+      3216702,
+      2722293,
+      2659248,
+      2725333,
+      2650762,
+      2809652,
+      2665953
+    ],
+    "median_kernel_ns": 2722293,
+    "wall_seconds": 16.192563225980848
+  },
+  {
+    "case": "reduce_argmax_axis0",
+    "status": "PASS",
+    "compile_ms": 826.6236979980022,
+    "max_abs_error": 0,
+    "kernel_ns": [
+      2825501,
+      3842480,
+      3285974,
+      2689176,
+      3208227,
+      2648049,
+      2738454,
+      2710127,
+      2693971,
+      2911574,
+      2669655
+    ],
+    "median_kernel_ns": 2738454,
+    "wall_seconds": 16.805834394006524
+  },
+  {
+    "case": "reduce_argmax_axis1",
+    "status": "PASS",
+    "compile_ms": 715.1721600093879,
+    "max_abs_error": 0,
+    "kernel_ns": [
+      2753664,
+      2671413,
+      2730601,
+      2621330,
+      3867284,
+      2729333,
+      3119427,
+      2656055,
+      2711237,
+      2705972,
+      2628047
+    ],
+    "median_kernel_ns": 2711237,
+    "wall_seconds": 16.687864574982086
+  },
+  {
+    "case": "reduce_sum_rank1",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 1.2408704870031215
+  },
+  {
+    "case": "reduce_sum_rank3axis0",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 1.2098208680108655
+  },
+  {
+    "case": "reduce_sum_rank3axis1",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 1.2453176620183513
+  },
+  {
+    "case": "reduce_sum_rank3axis2",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 1.2535816479939967
+  }
+]
