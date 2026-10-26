@@ -82,7 +82,7 @@ static std::string getDataTypeName(Type type, EmitTarget target) {
   else if (mlir::isa<BFloat16Type>(valType))
     return target == EmitTarget::SYCL ? "sycl::ext::oneapi::bfloat16" : "ushort";
   else if (mlir::isa<IndexType>(valType))
-    return "int";
+    return "int64_t";
   else if (auto intType = mlir::dyn_cast<IntegerType>(valType)) {
     if (intType.getWidth() == 1)
       return "bool";

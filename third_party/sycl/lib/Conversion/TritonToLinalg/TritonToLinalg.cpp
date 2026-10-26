@@ -4,6 +4,7 @@
 #include "sycl/include/Analysis/UseAnalysis.h"
 #include "sycl/include/Conversion/TritonToLinalg/ConversionPatterns.hpp"
 #include "sycl/include/Conversion/TritonToLinalg/Passes.h"
+#include "sycl/include/Conversion/TritonToLinalg/ScalarMemory.hpp"
 
 #include "llvm/Support/Debug.h"
 
@@ -72,11 +73,21 @@ struct TritonToLinalg
   void runOnOperation() override {
     auto moduleOp = getOperation();
 
-    moduleOp.walk([this](triton::FuncOp op) {
-      if (failed(mlir::triton::sycl::runUseAnalysis(op))) {
-        signalPassFailure();
-      }
-    });
+    if (failed(lowerScalarMemory(moduleOp))) {
+      signalPassFailure();
+      return;
+    }
+    // Dead tensor address expressions must disappear before legacy metadata
+    // analysis; only the executable scalar address expressions remain.
+    PassManager cleanup(&getContext(), moduleOp.getOperationName());
+    cleanup.addPass(createCanonicalizerPass());
+    if (failed(runPipeline(cleanup, moduleOp))) {
+      signalPassFailure();
+      return;
+    }
+
+    // Executable scalar addresses may extract loop-carried offset tensors.
+    // Legacy metadata-only use analysis would erase those live tensors.
 
     RewritePatternSet patterns(&getContext());
     ConversionTarget target(getContext());

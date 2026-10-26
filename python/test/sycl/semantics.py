@@ -19,10 +19,14 @@ import time
 REDUCTION_CASES = [f"reduce_{kind}_axis{axis}" for kind in
                    ("sum", "max", "min", "and", "or", "xor", "tuple", "argmax")
                    for axis in (0, 1)] + ["reduce_sum_rank1", "reduce_sum_rank3axis0", "reduce_sum_rank3axis1", "reduce_sum_rank3axis2"]
-CASES = REDUCTION_CASES
+MEMORY_CASES = ["memory_"+kind for kind in ("holes","or","lower","negative","stride","modulo","gather","other","loops","ptrloop","masked_scalar","grid","empty","tail")]
+CASES = REDUCTION_CASES + MEMORY_CASES
 
 
 def run_case(name, mode, repeats):
+    if name.startswith("memory_"):
+        from memory_semantics import run
+        return run(name, mode, repeats)
     import triton
     import triton.language as tl
     from triton.backends.sycl.sycl_utils import profile_standalone
@@ -172,7 +176,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--case", choices=CASES)
     parser.add_argument("--all", action="store_true")
-    parser.add_argument("--group", choices=("reduction",))
+    parser.add_argument("--group", choices=("reduction", "memory"))
     parser.add_argument("--mode", choices=("compile", "run", "bench"), default="run")
     parser.add_argument("--output")
     parser.add_argument("--python", default=sys.executable)
@@ -186,7 +190,7 @@ def main():
     if not args.all:
         parser.error("choose --all or --case")
     results = []
-    selected = REDUCTION_CASES
+    selected = REDUCTION_CASES if args.group == "reduction" else (MEMORY_CASES if args.group == "memory" else CASES)
     for name in selected:
         command = [args.python, str(pathlib.Path(__file__).resolve()), "--case", name,
                    "--mode", args.mode, "--repeats", str(args.repeats)]

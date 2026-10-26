@@ -1,0 +1,86 @@
+[
+  {
+    "case": "memory_holes",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 2.2875506887212396
+  },
+  {
+    "case": "memory_or",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 1.5093282088637352
+  },
+  {
+    "case": "memory_lower",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 1.5220056343823671
+  },
+  {
+    "case": "memory_negative",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 1.532091099768877
+  },
+  {
+    "case": "memory_stride",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 1.5561282746493816
+  },
+  {
+    "case": "memory_modulo",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 1.5406651608645916
+  },
+  {
+    "case": "memory_gather",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 1.6727475626394153
+  },
+  {
+    "case": "memory_other",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 1.5402177944779396
+  },
+  {
+    "case": "memory_loops",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 1.5594164952635765
+  },
+  {
+    "case": "memory_ptrloop",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 1.6015706220641732
+  },
+  {
+    "case": "memory_masked_scalar",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 1.5441853385418653
+  },
+  {
+    "case": "memory_grid",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 1.598545934073627
+  },
+  {
+    "case": "memory_empty",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 1.501328393816948
+  },
+  {
+    "case": "memory_tail",
+    "status": "PASS",
+    "max_abs_error": 0,
+    "wall_seconds": 1.5106501961126924
+  }
+]

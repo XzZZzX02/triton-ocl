@@ -247,8 +247,25 @@ public:
       auto index =
           rewriter.create<arith::ConstantOp>(loc, rewriter.getIndexAttr(0))
               .getResult();
-      auto loadOp = rewriter.create<memref::LoadOp>(loc, sMemRef, index);
-      rewriter.replaceOp(op, loadOp.getResult());
+      Value value;
+      if (adaptor.getMask()) {
+        auto guarded = rewriter.create<scf::IfOp>(loc, TypeRange{op.getType()}, adaptor.getMask(), true);
+        {
+          OpBuilder::InsertionGuard guard(rewriter);
+          rewriter.setInsertionPointToStart(&guarded.getThenRegion().front());
+          Value loaded = rewriter.create<memref::LoadOp>(loc, sMemRef, index);
+          rewriter.create<scf::YieldOp>(loc, loaded);
+          rewriter.setInsertionPointToStart(&guarded.getElseRegion().front());
+          Value other = adaptor.getOther();
+          if (!other)
+            other = rewriter.create<arith::ConstantOp>(loc, rewriter.getZeroAttr(op.getType()));
+          rewriter.create<scf::YieldOp>(loc, other);
+        }
+        value = guarded.getResult(0);
+      } else {
+        value = rewriter.create<memref::LoadOp>(loc, sMemRef, index);
+      }
+      rewriter.replaceOp(op, value);
       return success();
     }
 
@@ -408,7 +425,14 @@ struct StoreConverter : public OpConversionPattern<triton::StoreOp> {
       auto index =
           rewriter.create<arith::ConstantOp>(loc, rewriter.getIndexAttr(0))
               .getResult();
-      rewriter.create<memref::StoreOp>(loc, val, sMemRef, index);
+      if (adaptor.getMask()) {
+        rewriter.create<scf::IfOp>(loc, adaptor.getMask(), [&](OpBuilder &builder, Location here) {
+          builder.create<memref::StoreOp>(here, val, sMemRef, index);
+          builder.create<scf::YieldOp>(here);
+        });
+      } else {
+        rewriter.create<memref::StoreOp>(loc, val, sMemRef, index);
+      }
       rewriter.eraseOp(op);
       return success();
     }
