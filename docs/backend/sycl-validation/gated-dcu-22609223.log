@@ -1,0 +1,331 @@
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+g09r1n10
+acpp-info
+=================Backend information===================
+Loaded backend 0: HIP
+  Found device: Device 66a1
+Loaded backend 1: OpenMP
+  Found device: AdaptiveCpp OpenMP host device
+
+=================Device information===================
+***************** Devices for backend HIP *****************
+Device 0:
+ General device information:
+  Name: Device 66a1
+  Backend: HIP
+  Platform: Backend 1 / Platform 0
+  Vendor: AMD
+  Arch: gfx906:sramecc-:xnack-
+  Driver version: 60326113
+  Is CPU: 0
+  Is GPU: 1
+ Default executor information:
+  Is in-order queue: 0
+  Is out-of-order queue: 1
+  Is task graph: 0
+ Device support queries:
+  images: 0
+  error_correction: 0
+  host_unified_memory: 0
+  little_endian: 1
+  global_mem_cache: 1
+  global_mem_cache_read_only: 0
+  global_mem_cache_read_write: 1
+  emulated_local_memory: 0
+  sub_group_independent_forward_progress: 1
+  usm_device_allocations: 1
+  usm_host_allocations: 1
+  usm_atomic_host_allocations: 0
+  usm_shared_allocations: 1
+  usm_atomic_shared_allocations: 0
+  usm_system_allocations: 0
+  execution_timestamps: 1
+  sscp_kernels: 0
+ Device properties:
+  max_compute_units: 64
+  max_work_group_range0: 2147483647
+  max_work_group_range1: 2147483647
+  max_work_group_range2: 2147483647
+  max_work_group_range_size: 18446744073709551615
+  max_global_size0: 2199023254528
+  max_global_size1: 2199023254528
+  max_global_size2: 2199023254528
+  max_group_size: 1024
+  max_num_sub_groups: 16
+  preferred_vector_width_char: 4
+  preferred_vector_width_double: 1
+  preferred_vector_width_float: 1
+  preferred_vector_width_half: 2
+  preferred_vector_width_int: 1
+  preferred_vector_width_long: 1
+  preferred_vector_width_short: 2
+  native_vector_width_char: 4
+  native_vector_width_double: 1
+  native_vector_width_float: 1
+  native_vector_width_half: 2
+  native_vector_width_int: 1
+  native_vector_width_long: 1
+  native_vector_width_short: 2
+  max_clock_speed: 1700
+  max_malloc_size: 17163091968
+  address_bits: 64
+  max_read_image_args: 0
+  max_write_image_args: 0
+  image2d_max_width: 0
+  image2d_max_height: 0
+  image3d_max_width: 0
+  image3d_max_height: 0
+  image3d_max_depth: 0
+  image_max_buffer_size: 0
+  image_max_array_size: 0
+  max_samplers: 0
+  max_parameter_size: 18446744073709551615
+  mem_base_addr_align: 8
+  global_mem_cache_line_size: 128
+  global_mem_cache_size: 0
+  global_mem_size: 17163091968
+  max_constant_buffer_size: 2147483647
+  max_constant_args: 18446744073709551615
+  local_mem_size: 65536
+  printf_buffer_size: 18446744073709551615
+  partition_max_sub_devices: 0
+  vendor_id: 1022
+  sub_group_sizes: 64
+
+
+***************** Devices for backend OpenMP *****************
+Device 0:
+ General device information:
+  Name: AdaptiveCpp OpenMP host device
+  Backend: OpenMP
+  Platform: Backend 4 / Platform 0
+  Vendor: the AdaptiveCpp project
+  Arch: <native-cpu>
+  Driver version: 1.2
+  Is CPU: 1
+  Is GPU: 0
+ Default executor information:
+  Is in-order queue: 0
+  Is out-of-order queue: 1
+  Is task graph: 0
+ Device support queries:
+  images: 0
+  error_correction: 0
+  host_unified_memory: 1
+  little_endian: 1
+  global_mem_cache: 1
+  global_mem_cache_read_only: 0
+  global_mem_cache_read_write: 1
+  emulated_local_memory: 1
+  sub_group_independent_forward_progress: 0
+  usm_device_allocations: 1
+  usm_host_allocations: 1
+  usm_atomic_host_allocations: 1
+  usm_shared_allocations: 1
+  usm_atomic_shared_allocations: 1
+  usm_system_allocations: 1
+  execution_timestamps: 1
+  sscp_kernels: 0
+ Device properties:
+  max_compute_units: 8
+  max_work_group_range0: 18446744073709551615
+  max_work_group_range1: 18446744073709551615
+  max_work_group_range2: 18446744073709551615
+  max_work_group_range_size: 18446744073709551615
+  max_global_size0: 18446744073709551615
+  max_global_size1: 18446744073709551615
+  max_global_size2: 18446744073709551615
+  max_group_size: 1024
+  max_num_sub_groups: 18446744073709551615
+  preferred_vector_width_char: 4
+  preferred_vector_width_double: 1
+  preferred_vector_width_float: 1
+  preferred_vector_width_half: 2
+  preferred_vector_width_int: 1
+  preferred_vector_width_long: 1
+  preferred_vector_width_short: 2
+  native_vector_width_char: 4
+  native_vector_width_double: 1
+  native_vector_width_float: 1
+  native_vector_width_half: 2
+  native_vector_width_int: 1
+  native_vector_width_long: 1
+  native_vector_width_short: 2
+  max_clock_speed: 0
+  max_malloc_size: 18446744073709551615
+  address_bits: 64
+  max_read_image_args: 0
+  max_write_image_args: 0
+  image2d_max_width: 0
+  image2d_max_height: 0
+  image3d_max_width: 0
+  image3d_max_height: 0
+  image3d_max_depth: 0
+  image_max_buffer_size: 0
+  image_max_array_size: 0
+  max_samplers: 0
+  max_parameter_size: 18446744073709551615
+  mem_base_addr_align: 8
+  global_mem_cache_line_size: 64
+  global_mem_cache_size: 1
+  global_mem_size: 132687073280
+  max_constant_buffer_size: 18446744073709551615
+  max_constant_args: 18446744073709551615
+  local_mem_size: 18446744073709551615
+  printf_buffer_size: 18446744073709551615
+  partition_max_sub_devices: 0
+  vendor_id: 18446744073709551615
+  sub_group_sizes: 1
+
+
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"case": "sequential", "block": 48, "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 1024}
+{"case": "sequential", "block": [8, 8], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 1024}
+{"case": "sequential", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 1024}
+{"case": "overlap", "block": 48, "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 2048}
+{"case": "overlap", "block": [8, 8], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 2048}
+{"case": "overlap", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 2048}
+{"case": "masked", "block": 48, "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}
+{"case": "masked", "block": [8, 8], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}
+{"case": "masked", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}
+{"case": "copy", "block": 48, "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}
+{"case": "copy", "block": [8, 8], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}
+{"case": "copy", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}
+{"case": "mixed_tree_random", "block": 48, "status": "PASS", "max_abs_error": 2.7894857339560986e-06}
+{"case": "mixed_tree_random", "block": [8, 8], "status": "PASS", "max_abs_error": 1.0252115316689014e-06}
+{"case": "mixed_tree_random", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 1.0252115316689014e-06}
+[{"case": "sequential", "block": 48, "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 1024}, {"case": "sequential", "block": [8, 8], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 1024}, {"case": "sequential", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 1024}, {"case": "overlap", "block": 48, "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 2048}, {"case": "overlap", "block": [8, 8], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 2048}, {"case": "overlap", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 2048}, {"case": "masked", "block": 48, "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}, {"case": "masked", "block": [8, 8], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}, {"case": "masked", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}, {"case": "copy", "block": 48, "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}, {"case": "copy", "block": [8, 8], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}, {"case": "copy", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}, {"case": "mixed_tree_random", "block": 48, "status": "PASS", "max_abs_error": 2.7894857339560986e-06}, {"case": "mixed_tree_random", "block": [8, 8], "status": "PASS", "max_abs_error": 1.0252115316689014e-06}, {"case": "mixed_tree_random", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 1.0252115316689014e-06}]
+{"case": "reduce_max_axis1", "status": "PASS", "compile_ms": 779.2693162336946, "max_abs_error": 0, "wall_seconds": 13.193415075540543}
+{"case": "reduce_sum_axis1", "status": "PASS", "compile_ms": 784.283728338778, "max_abs_error": 0, "wall_seconds": 13.258968934416771}
+{"case": "reduce_max_axis0", "status": "PASS", "compile_ms": 780.2591286599636, "max_abs_error": 0, "wall_seconds": 13.27476185746491}
+{"case": "reduce_sum_axis0", "status": "PASS", "compile_ms": 781.3665410503745, "max_abs_error": 0, "wall_seconds": 13.280390066094697}
+{"case": "reduce_min_axis0", "status": "PASS", "compile_ms": 753.5265116021037, "max_abs_error": 0, "wall_seconds": 13.606170724146068}
+{"case": "reduce_min_axis1", "status": "PASS", "compile_ms": 741.6310189291835, "max_abs_error": 0, "wall_seconds": 13.581360981799662}
+{"case": "reduce_and_axis0", "status": "PASS", "compile_ms": 752.6607280597091, "max_abs_error": 0, "wall_seconds": 13.5936997840181}
+{"case": "reduce_and_axis1", "status": "PASS", "compile_ms": 747.0121793448925, "max_abs_error": 0, "wall_seconds": 13.589107232168317}
+{"case": "reduce_or_axis1", "status": "PASS", "compile_ms": 781.8929813802242, "max_abs_error": 0, "wall_seconds": 13.332055578939617}
+{"case": "reduce_or_axis0", "status": "PASS", "compile_ms": 834.1844556853175, "max_abs_error": 0, "wall_seconds": 13.379607744514942}
+{"case": "reduce_xor_axis0", "status": "PASS", "compile_ms": 806.5825086086988, "max_abs_error": 0, "wall_seconds": 13.311650060117245}
+{"case": "reduce_xor_axis1", "status": "PASS", "compile_ms": 784.643298946321, "max_abs_error": 0, "wall_seconds": 13.311334987170994}
+{"case": "reduce_tuple_axis0", "status": "PASS", "compile_ms": 738.6541869491339, "max_abs_error": 0, "wall_seconds": 13.204722759313881}
+{"case": "reduce_tuple_axis1", "status": "PASS", "compile_ms": 793.895835056901, "max_abs_error": 0, "wall_seconds": 13.296496499329805}
+{"case": "reduce_argmax_axis0", "status": "PASS", "compile_ms": 808.0737665295601, "max_abs_error": 0, "wall_seconds": 13.601659465581179}
+{"case": "reduce_argmax_axis1", "status": "PASS", "compile_ms": 804.666880518198, "max_abs_error": 0, "wall_seconds": 13.681780776008964}
+{"case": "reduce_sum_rank1", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.139280235394835}
+{"case": "reduce_sum_rank3axis0", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.160144278779626}
+{"case": "reduce_sum_rank3axis2", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.201283191330731}
+{"case": "reduce_sum_rank3axis1", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.307425955310464}
+{"case": "memory_negative", "status": "PASS", "max_abs_error": 0, "wall_seconds": 12.89842857979238}
+{"case": "memory_holes", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.472633382305503}
+{"case": "memory_or", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.351446664892137}
+{"case": "memory_lower", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.262870236299932}
+{"case": "memory_stride", "status": "PASS", "max_abs_error": 0, "wall_seconds": 12.82190458662808}
+{"case": "memory_modulo", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.237183270975947}
+{"case": "memory_gather", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.417812657542527}
+{"case": "memory_other", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.167848411947489}
+{"case": "memory_loops", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.2561686495319}
+{"case": "memory_masked_scalar", "status": "PASS", "max_abs_error": 0, "wall_seconds": 12.86088439449668}
+{"case": "memory_grid", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.015673391520977}
+{"case": "memory_ptrloop", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.479359548538923}
+{"case": "memory_empty", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.264855582267046}
+{"case": "memory_tail", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.22240393050015}
+{"case": "dot_2d_nn_fp32", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.10715996939689}
+{"case": "dot_2d_nn_fp16", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.637391384691}
+{"case": "dot_2d_nn_stride", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.463226036168635}
+{"case": "dot_2d_tn_fp32", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.405485420487821}
+{"case": "dot_2d_tn_fp16", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.513242085464299}
+{"case": "dot_2d_tn_stride", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.422910495661199}
+{"case": "dot_2d_nt_fp32", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.505979655310512}
+{"case": "dot_2d_nt_fp16", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.478499861434102}
+{"case": "dot_2d_nt_stride", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.46834159642458}
+{"case": "dot_2d_tt_fp32", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.547997456975281}
+{"case": "dot_3d_nn_fp32", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.269767375662923}
+{"case": "dot_2d_tt_fp16", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.616226136684418}
+{"case": "dot_2d_tt_stride", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.652577185072005}
+{"case": "dot_3d_nn_fp16", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.475443741306663}
+{"case": "dot_3d_nn_stride", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.566011213697493}
+{"case": "dot_3d_tn_fp32", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.51748590823263}
+{"case": "dot_3d_tn_fp16", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.500876232981682}
+{"case": "dot_3d_tn_stride", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.500339144840837}
+{"case": "dot_3d_nt_stride", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.514107561670244}
+{"case": "dot_3d_nt_fp32", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.612823319621384}
+{"case": "dot_3d_nt_fp16", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.632202658802271}
+{"case": "dot_3d_tt_fp32", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.587071051821113}
+{"case": "dot_3d_tt_stride", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.491776393726468}
+{"case": "dot_3d_tt_fp16", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.519521142356098}
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"kind": "sum", "block": 48, "status": "RUNNING"}
+{"kind": "sum", "block": 48, "status": "PASS", "max_abs_error": 0}
+{"kind": "sum", "block": 64, "status": "RUNNING"}
+{"kind": "sum", "block": 64, "status": "PASS", "max_abs_error": 0}
+{"kind": "sum", "block": 128, "status": "RUNNING"}
+{"kind": "sum", "block": 128, "status": "PASS", "max_abs_error": 0}
+{"kind": "max", "block": 48, "status": "RUNNING"}
+{"kind": "max", "block": 48, "status": "PASS", "max_abs_error": 0}
+{"kind": "max", "block": 64, "status": "RUNNING"}
+{"kind": "max", "block": 64, "status": "PASS", "max_abs_error": 0}
+{"kind": "max", "block": 128, "status": "RUNNING"}
+{"kind": "max", "block": 128, "status": "PASS", "max_abs_error": 0}
+{"kind": "min", "block": 48, "status": "RUNNING"}
+{"kind": "min", "block": 48, "status": "PASS", "max_abs_error": 0}
+{"kind": "min", "block": 64, "status": "RUNNING"}
+{"kind": "min", "block": 64, "status": "PASS", "max_abs_error": 0}
+{"kind": "min", "block": 128, "status": "RUNNING"}
+{"kind": "min", "block": 128, "status": "PASS", "max_abs_error": 0}
+{"kind": "and", "block": 48, "status": "RUNNING"}
+{"kind": "and", "block": 48, "status": "PASS", "max_abs_error": 0}
+{"kind": "and", "block": 64, "status": "RUNNING"}
+{"kind": "and", "block": 64, "status": "PASS", "max_abs_error": 0}
+{"kind": "and", "block": 128, "status": "RUNNING"}
+{"kind": "and", "block": 128, "status": "PASS", "max_abs_error": 0}
+{"kind": "or", "block": 48, "status": "RUNNING"}
+{"kind": "or", "block": 48, "status": "PASS", "max_abs_error": 0}
+{"kind": "or", "block": 64, "status": "RUNNING"}
+{"kind": "or", "block": 64, "status": "PASS", "max_abs_error": 0}
+{"kind": "or", "block": 128, "status": "RUNNING"}
+{"kind": "or", "block": 128, "status": "PASS", "max_abs_error": 0}
+{"kind": "xor", "block": 48, "status": "RUNNING"}
+{"kind": "xor", "block": 48, "status": "PASS", "max_abs_error": 0}
+{"kind": "xor", "block": 64, "status": "RUNNING"}
+{"kind": "xor", "block": 64, "status": "PASS", "max_abs_error": 0}
+{"kind": "xor", "block": 128, "status": "RUNNING"}
+{"kind": "xor", "block": 128, "status": "PASS", "max_abs_error": 0}
+[{"kind": "sum", "block": 48, "status": "PASS", "max_abs_error": 0}, {"kind": "sum", "block": 64, "status": "PASS", "max_abs_error": 0}, {"kind": "sum", "block": 128, "status": "PASS", "max_abs_error": 0}, {"kind": "max", "block": 48, "status": "PASS", "max_abs_error": 0}, {"kind": "max", "block": 64, "status": "PASS", "max_abs_error": 0}, {"kind": "max", "block": 128, "status": "PASS", "max_abs_error": 0}, {"kind": "min", "block": 48, "status": "PASS", "max_abs_error": 0}, {"kind": "min", "block": 64, "status": "PASS", "max_abs_error": 0}, {"kind": "min", "block": 128, "status": "PASS", "max_abs_error": 0}, {"kind": "and", "block": 48, "status": "PASS", "max_abs_error": 0}, {"kind": "and", "block": 64, "status": "PASS", "max_abs_error": 0}, {"kind": "and", "block": 128, "status": "PASS", "max_abs_error": 0}, {"kind": "or", "block": 48, "status": "PASS", "max_abs_error": 0}, {"kind": "or", "block": 64, "status": "PASS", "max_abs_error": 0}, {"kind": "or", "block": 128, "status": "PASS", "max_abs_error": 0}, {"kind": "xor", "block": 48, "status": "PASS", "max_abs_error": 0}, {"kind": "xor", "block": 64, "status": "PASS", "max_abs_error": 0}, {"kind": "xor", "block": 128, "status": "PASS", "max_abs_error": 0}]
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"kind": "vector", "n": 262144, "block": 64, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [194564, 200324, 186724, 195524, 186883, 196963, 187203, 187363, 183203, 188004, 187043, 193444, 184963, 186883, 195683, 190883, 194563, 185763, 195523, 194884, 184324, 192003, 199363, 193123, 184323, 190563, 186083, 198403, 185603, 190884, 186723], "median_ns": 190563, "min_ns": 183203}
+{"kind": "vector", "n": 262144, "block": 128, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [183043, 189123, 186563, 187203, 186083, 185123, 188003, 187043, 185124, 186244, 194403, 188643, 190403, 188163, 183043, 192003, 182723, 195683, 192803, 183683, 183843, 184003, 191843, 190083, 190723, 189444, 191204, 189764, 189124, 188804, 191524], "median_ns": 188643, "min_ns": 182723}
+{"kind": "vector", "n": 262144, "block": 256, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [186402, 188322, 185922, 187362, 182402, 186242, 183522, 184642, 183522, 185442, 186562, 188002, 184322, 185442, 183202, 184002, 187042, 187842, 188643, 187683, 190563, 181922, 187683, 183523, 182723, 191683, 184963, 187683, 188163, 186083, 182883], "median_ns": 186083, "min_ns": 181922}
+{"kind": "matrix", "n": 262144, "block": 64, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [191681, 192642, 191842, 188641, 183841, 193282, 200641, 192001, 187842, 183041, 189921, 190561, 199042, 185761, 195841, 196321, 192962, 187361, 190721, 199682, 190562, 193601, 185601, 202242, 193921, 193601, 191202, 194242, 188161, 190721, 195202], "median_ns": 191842, "min_ns": 183041}
+{"kind": "matrix", "n": 262144, "block": 128, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [192483, 188963, 187203, 191043, 186723, 187042, 191362, 188802, 191042, 184482, 194403, 186882, 195523, 187522, 186402, 188002, 187042, 189922, 186722, 184642, 190882, 186562, 188482, 191683, 189442, 186563, 188643, 189763, 195043, 188483, 195203], "median_ns": 188643, "min_ns": 184482}
+{"kind": "matrix", "n": 262144, "block": 256, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [185923, 191363, 183363, 189923, 183683, 187524, 190404, 189603, 190403, 184963, 199043, 193603, 193923, 190403, 197763, 194883, 189923, 190723, 184163, 189283, 187203, 188163, 188804, 187204, 197284, 193604, 184803, 185123, 188643, 191843, 185443], "median_ns": 189603, "min_ns": 183363}
+{"kind": "sum", "n": 262144, "block": 64, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [156322, 157603, 155682, 158563, 157443, 159842, 160803, 158882, 160483, 156643, 164483, 160802, 154723, 155842, 157923, 157123, 162883, 163843, 156962, 161283, 159362, 164483, 161122, 157763, 156162, 158083, 164323, 156163, 159843, 158402, 156803], "median_ns": 158402, "min_ns": 154723}
+{"kind": "sum", "n": 262144, "block": 128, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [159843, 165603, 159203, 156803, 159043, 155842, 159043, 159203, 160163, 158243, 160163, 160963, 160003, 159843, 157283, 159043, 161283, 160003, 159203, 159523, 157123, 164323, 161763, 155683, 157443, 158243, 155522, 158883, 158563, 158083, 159043], "median_ns": 159043, "min_ns": 155522}
+{"kind": "sum", "n": 262144, "block": 256, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [157122, 158882, 160802, 161283, 161603, 161603, 161763, 157762, 161122, 161442, 159362, 158402, 158882, 160322, 160162, 161602, 157603, 158243, 160002, 160002, 161602, 159522, 158722, 160162, 164002, 161602, 158083, 158723, 158082, 158562, 157122], "median_ns": 160002, "min_ns": 157122}
+{"kind": "copy", "n": 262144, "block": 64, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [195203, 191844, 191684, 191204, 194883, 190563, 192804, 191844, 194563, 189763, 192804, 194403, 194723, 193284, 191524, 195203, 195363, 194084, 198084, 191363, 188963, 195684, 193924, 196163, 197443, 192964, 194724, 192003, 195684, 194884, 195683], "median_ns": 194084, "min_ns": 188963}
+{"kind": "copy", "n": 262144, "block": 128, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [183203, 183523, 183843, 184323, 184964, 189764, 184163, 184323, 185923, 184163, 190563, 184323, 190084, 185284, 187523, 184003, 187043, 188324, 189444, 188003, 184163, 184163, 183524, 189604, 186083, 189763, 186083, 190564, 183684, 186883, 184643], "median_ns": 185284, "min_ns": 183203}
+{"kind": "copy", "n": 262144, "block": 256, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [191844, 190563, 185924, 191363, 190724, 191204, 190723, 191844, 192644, 188803, 191843, 190564, 191363, 189123, 190884, 190083, 191204, 190884, 191363, 190884, 191203, 190884, 193124, 191844, 190564, 190243, 191364, 192163, 190084, 192164, 189603], "median_ns": 190884, "min_ns": 185924}
+{"kind": "reuse", "n": 262144, "block": 64, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [313926, 319845, 315846, 329606, 322886, 319525, 324326, 317766, 317446, 315366, 317446, 318246, 315846, 319686, 317286, 322886, 316165, 326726, 334726, 313926, 330246, 319846, 322726, 315686, 328486, 312645, 322886, 322886, 324806, 312485, 324646], "median_ns": 319686, "min_ns": 312485}
+{"kind": "reuse", "n": 262144, "block": 128, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [330726, 331206, 333927, 330247, 330246, 333446, 335687, 332326, 331206, 334727, 331686, 334087, 334247, 332806, 331687, 329926, 330407, 326087, 332806, 328646, 334407, 328166, 326726, 329926, 334407, 331047, 328807, 336166, 337767, 329767, 332486], "median_ns": 331686, "min_ns": 326087}
+{"kind": "reuse", "n": 262144, "block": 256, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [320166, 327846, 316325, 332326, 325446, 329766, 325766, 315525, 324806, 320006, 326085, 323366, 310725, 330406, 315205, 323366, 322085, 321126, 322405, 319526, 321285, 312486, 313926, 329286, 323046, 320006, 326726, 318726, 322406, 327046, 324646], "median_ns": 322406, "min_ns": 310725}
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"kind": "vector", "n": 262144, "block": 64, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [188803, 195363, 191843, 191363, 195363, 188323, 188003, 193604, 195364, 186884, 192643, 195683, 194883, 194403, 193284, 193124, 189764, 196324, 191044, 191204, 193604, 192003, 195523, 193603, 188483, 186563, 188003, 190563, 197603, 192803, 196484], "median_ns": 192803, "min_ns": 186563}
+{"kind": "vector", "n": 262144, "block": 128, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [196483, 197283, 193764, 190724, 194884, 189924, 190884, 196164, 194083, 189763, 191844, 188644, 190564, 190084, 192484, 196003, 190563, 193923, 187203, 191523, 191203, 194404, 190404, 195044, 186404, 189924, 189124, 191043, 190403, 189923, 190563], "median_ns": 190884, "min_ns": 186404}
+{"kind": "vector", "n": 262144, "block": 256, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [184003, 187843, 187203, 191523, 182083, 186883, 183203, 186243, 183683, 185443, 190724, 191204, 189923, 189923, 183523, 186563, 190563, 188323, 186723, 186403, 185603, 188483, 186563, 188963, 190243, 189604, 187204, 187524, 184164, 186084, 189924], "median_ns": 187203, "min_ns": 182083}
+{"kind": "matrix", "n": 262144, "block": 64, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [197664, 194145, 193185, 197183, 199423, 198623, 188388, 195585, 195904, 192066, 196704, 192226, 198303, 192546, 191746, 194305, 194624, 194465, 190946, 198623, 195905, 198463, 192706, 193506, 195105, 193346, 195265, 193985, 196704, 195744, 196384], "median_ns": 195105, "min_ns": 188388}
+{"kind": "matrix", "n": 262144, "block": 128, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [186403, 187203, 187363, 188803, 188803, 205283, 192483, 187524, 187683, 186243, 191363, 191363, 192324, 191203, 191843, 187043, 190563, 187203, 186723, 186083, 189283, 192163, 187683, 186563, 190563, 191363, 187843, 187524, 187203, 188803, 191523], "median_ns": 188803, "min_ns": 186083}
+{"kind": "matrix", "n": 262144, "block": 256, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [189603, 188963, 188323, 190723, 188483, 188163, 189443, 187523, 189123, 190723, 187683, 189443, 189123, 187363, 187523, 188643, 188803, 190083, 188483, 188003, 189443, 188643, 188003, 188163, 186243, 190723, 187363, 187043, 190403, 188963, 187363], "median_ns": 188643, "min_ns": 186243}
+{"kind": "sum", "n": 262144, "block": 64, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [104162, 105122, 105441, 104321, 104322, 105282, 104801, 105442, 103522, 104481, 104482, 104001, 104642, 102882, 104161, 104322, 105122, 104321, 104322, 104642, 104641, 103522, 105282, 104801, 103682, 103842, 105441, 105282, 104322, 104641, 104642], "median_ns": 104482, "min_ns": 102882}
+{"kind": "sum", "n": 262144, "block": 128, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [103042, 104002, 103681, 104322, 103361, 103042, 103842, 104322, 103362, 103361, 103201, 102882, 103362, 104002, 103682, 102722, 102882, 102721, 104162, 103361, 103042, 104001, 105122, 103521, 104322, 103842, 102882, 103842, 103362, 103362, 103201], "median_ns": 103362, "min_ns": 102721}
+{"kind": "sum", "n": 262144, "block": 256, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [97122, 97921, 100961, 101281, 96801, 96321, 96962, 96802, 97281, 101921, 102241, 101441, 101281, 100961, 96641, 100802, 100642, 101122, 101121, 96961, 101921, 97121, 101121, 96962, 101602, 100642, 101601, 97121, 101121, 100801, 96961], "median_ns": 100801, "min_ns": 96321}
+{"kind": "copy", "n": 262144, "block": 64, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [191044, 191044, 190564, 189925, 190404, 191044, 192644, 191204, 189444, 191204, 191204, 193284, 191204, 186404, 193924, 190724, 190244, 192164, 192004, 196324, 190244, 191044, 191524, 196164, 192964, 191044, 190244, 194085, 191044, 192004, 190724], "median_ns": 191044, "min_ns": 186404}
+{"kind": "copy", "n": 262144, "block": 128, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [189603, 187843, 188002, 188643, 187843, 192323, 191203, 187843, 187363, 188803, 191843, 190243, 192963, 185923, 192323, 187363, 186883, 188323, 187043, 191683, 187843, 188483, 187523, 191523, 188643, 187843, 188483, 187683, 192163, 187843, 187043], "median_ns": 188323, "min_ns": 185923}
+{"kind": "copy", "n": 262144, "block": 256, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [191746, 186309, 187429, 190467, 186309, 188228, 190627, 186149, 189028, 191107, 191427, 190307, 191267, 191746, 189828, 190307, 190946, 189188, 184870, 190307, 183750, 191106, 190627, 185830, 187268, 190947, 187908, 191266, 186949, 185030, 190947], "median_ns": 190307, "min_ns": 183750}
+{"kind": "reuse", "n": 262144, "block": 64, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [325605, 315685, 319685, 322245, 323525, 314885, 321925, 316485, 313445, 322085, 320964, 323204, 324004, 317764, 324004, 323044, 320004, 316644, 320325, 320965, 322885, 322085, 328485, 320485, 325285, 323845, 317924, 318724, 319045, 317285, 316645], "median_ns": 320964, "min_ns": 313445}
+{"kind": "reuse", "n": 262144, "block": 128, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [329924, 333444, 328164, 328964, 328964, 328164, 327204, 328484, 330244, 331204, 329604, 334084, 327844, 329764, 332964, 337924, 332644, 330884, 333604, 332964, 334244, 330404, 336804, 330084, 328964, 329124, 321605, 326405, 335365, 333124, 329765], "median_ns": 330084, "min_ns": 321605}
+{"kind": "reuse", "n": 262144, "block": 256, "repeats": 31, "warmup": 10, "max_abs_error": 0.0, "kernel_ns": [329766, 322565, 321446, 321286, 324326, 314885, 324326, 327366, 332326, 325926, 330406, 324646, 326566, 331047, 332647, 324646, 330886, 330246, 327846, 317125, 318566, 324166, 324327, 328486, 326086, 333446, 313765, 328166, 327846, 323206, 330086], "median_ns": 326086, "min_ns": 313765}

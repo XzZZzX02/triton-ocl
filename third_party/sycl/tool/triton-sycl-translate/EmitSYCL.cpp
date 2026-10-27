@@ -7,6 +7,11 @@
 //===----------------------------------------------------------------------===//
 
 #include "Utils/EmitUtils.h"
+#include "llvm/Support/CommandLine.h"
+
+static llvm::cl::opt<bool> vectorMemory(
+    "sycl-vector-memory", llvm::cl::init(false),
+    llvm::cl::desc("Enable experimental four-element global memory copies"));
 
 using namespace mlir;
 
@@ -41,6 +46,18 @@ static bool isReductionLoop(affine::AffineForOp op) {
 
 static bool hasParallelAffineParent(affine::AffineForOp op) {
   return op->getParentOfType<affine::AffineForOp>() != nullptr;
+}
+
+static Type groupReductionElementType(affine::AffineForOp loop) {
+  if (loop->getParentOfType<affine::AffineForOp>() || !isReductionLoop(loop)) return {};
+  Type result;
+  for (Operation &op : loop.getBody()->without_terminator()) {
+    if (auto store = dyn_cast<affine::AffineStoreOp>(op)) {
+      if (result) return {};
+      result = store.getValueToStore().getType();
+    }
+  }
+  return result;
 }
 
 static unsigned getSYCLAccessorRank(MemRefType type) {
@@ -272,8 +289,222 @@ unsigned ModuleEmitter::getParallelLoopDepth(affine::AffineForOp op) {
   return depth;
 }
 
+// Use a portable work-group tree for recognized independent scalar reductions.
+// User-defined tuple combiners retain their serial ordering and seed semantics.
+bool ModuleEmitter::emitGroupReduction(affine::AffineForOp op) {
+  if (op->getParentOfType<affine::AffineForOp>() || !op.hasConstantBounds() ||
+      op.getConstantLowerBound() != 0 || op.getStep() != 1) return false;
+  SmallVector<affine::AffineLoadOp> loads;
+  affine::AffineStoreOp store;
+  Operation *combine = nullptr;
+  for (Operation &inner : op.getBody()->without_terminator()) {
+    if (auto load = dyn_cast<affine::AffineLoadOp>(&inner)) loads.push_back(load);
+    else if (auto write = dyn_cast<affine::AffineStoreOp>(&inner)) {
+      if (store) return false;
+      store = write;
+    } else {
+      if (combine) return false;
+      combine = &inner;
+    }
+  }
+  if (!store || !combine || loads.size() != 2 ||
+      combine->getNumOperands() != 2 || combine->getNumResults() != 1 ||
+      store.getValueToStore() != combine->getResult(0)) return false;
+  affine::AffineLoadOp input, accumulator;
+  for (auto load : loads) {
+    if (load.getMemRef() == store.getMemRef() && load.getMapOperands().empty()) accumulator = load;
+    else input = load;
+  }
+  if (!input || !accumulator || !store.getMapOperands().empty() ||
+      !llvm::is_contained(input.getMapOperands(), op.getInductionVar())) return false;
+  if (!((combine->getOperand(0) == input.getResult() && combine->getOperand(1) == accumulator.getResult()) ||
+        (combine->getOperand(1) == input.getResult() && combine->getOperand(0) == accumulator.getResult()))) return false;
+  auto identity = arith::getNeutralElement(combine);
+  if (!identity) return false;
+  StringRef symbol, function;
+  if (isa<arith::AddFOp, arith::AddIOp>(combine)) symbol = "+";
+  else if (isa<arith::MulFOp, arith::MulIOp>(combine)) symbol = "*";
+  else if (isa<arith::AndIOp>(combine)) symbol = "&";
+  else if (isa<arith::OrIOp>(combine)) symbol = "|";
+  else if (isa<arith::XOrIOp>(combine)) symbol = "^";
+  else if (isa<arith::MaxNumFOp>(combine)) function = "sycl::fmax";
+  else if (isa<arith::MinNumFOp>(combine)) function = "sycl::fmin";
+  else return false;
+  auto found = llvm::find(groupReductions, op);
+  if (found == groupReductions.end()) return false;
+  std::string scratch = "reduction_scratch_" + std::to_string(found - groupReductions.begin());
+  std::string type = getDataTypeName(combine->getResult(0).getType(), state.target);
+  auto expression = [&](StringRef lhs, StringRef rhs) {
+    if (!function.empty()) os << function << "(" << lhs << ", " << rhs << ")";
+    else os << "(" << lhs << " " << symbol << " " << rhs << ")";
+  };
+  indent() << "{\n"; addIndent();
+  indent() << type << " partial = " << getConstantString(identity->getType(), *identity) << ";\n";
+  indent() << "for ("; emitValue(op.getInductionVar());
+  os << " = item.get_local_linear_id(); "; emitValue(op.getInductionVar());
+  os << " < " << op.getConstantUpperBound() << "; "; emitValue(op.getInductionVar());
+  os << " += item.get_local_range().size()) {\n"; addIndent();
+  emitAffineLoad(input);
+  indent() << "partial = "; expression("partial", getName(input.getResult())); os << ";\n";
+  reduceIndent(); indent() << "}\n";
+  indent() << scratch << "[item.get_local_linear_id()] = partial;\n";
+  indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
+  indent() << "for (size_t active = item.get_local_range().size(); active > 1; active = (active + 1) / 2) {\n";
+  addIndent();
+  indent() << "size_t next = (active + 1) / 2;\n";
+  indent() << "if (item.get_local_linear_id() < active - next) {\n"; addIndent();
+  indent() << scratch << "[item.get_local_linear_id()] = ";
+  expression(scratch + "[item.get_local_linear_id()]", scratch + "[item.get_local_linear_id() + next]"); os << ";\n";
+  reduceIndent(); indent() << "}\n";
+  indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
+  reduceIndent(); indent() << "}\n";
+  indent() << "if (item.get_local_linear_id() == 0) {\n"; addIndent();
+  emitAffineLoad(accumulator);
+  indent(); emitValue(combine->getResult(0)); os << " = ";
+  expression(getName(accumulator.getResult()), scratch + "[0]"); os << ";\n";
+  emitAffineStore(store);
+  reduceIndent(); indent() << "}\n";
+  indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
+  reduceIndent(); indent() << "}\n";
+  return true;
+}
+
+// Vectorize proven unit-stride, unmasked global/local copies. Arbitrary masks,
+// strides, and gather expressions continue through the scalar semantic path.
+bool ModuleEmitter::emitVectorCopy(affine::AffineForOp loop) {
+  if (loop->getParentOfType<affine::AffineForOp>() || !loop.hasConstantBounds() ||
+      loop.getConstantLowerBound() != 0 || loop.getStep() != 1 ||
+      loop.getConstantUpperBound() % 4 != 0) return false;
+  memref::LoadOp load;
+  memref::StoreOp store;
+  for (Operation &inner : loop.getBody()->without_terminator()) {
+    if (auto read = dyn_cast<memref::LoadOp>(inner)) {
+      if (load) return false;
+      load = read;
+    } else if (auto write = dyn_cast<memref::StoreOp>(inner)) {
+      if (store) return false;
+      store = write;
+    } else if (!isa<memref::ReinterpretCastOp>(inner) &&
+               inner.getName().getDialectNamespace() != "arith") return false;
+  }
+  if (!load || !store || store.getValueToStore() != load.getResult() ||
+      !(load.getType().isF32() || load.getType().isInteger(32))) return false;
+  auto source = load.getMemRef().getDefiningOp<memref::ReinterpretCastOp>();
+  auto target = store.getMemRef().getDefiningOp<memref::ReinterpretCastOp>();
+  if (bool(source) == bool(target)) return false;
+  auto external = source ? source : target;
+  Value local = source ? store.getMemRef() : load.getMemRef();
+  auto localType = dyn_cast<MemRefType>(local.getType());
+  auto localIndices = source ? store.getIndices() : load.getIndices();
+  auto externalIndices = source ? load.getIndices() : store.getIndices();
+  if (!isa<UnrankedMemRefType>(external.getSource().getType()) ||
+      !localType || localType.getRank() != 1 || !local.getDefiningOp<memref::AllocOp>() ||
+      localIndices.size() != 1 || localIndices[0] != loop.getInductionVar() ||
+      externalIndices.size() != 1 ||
+      getConstantIntValue(externalIndices[0]) != std::optional<int64_t>(0) ||
+      getConstantIntValue(external.getMixedStrides()[0]) != std::optional<int64_t>(1)) return false;
+  auto offset = dyn_cast<Value>(external.getMixedOffsets()[0]);
+  if (!offset) return false;
+  std::function<std::optional<int64_t>(Value)> coefficient = [&](Value value) -> std::optional<int64_t> {
+    if (value == loop.getInductionVar()) return 1;
+    Operation *def = value.getDefiningOp();
+    if (!def || !loop->isProperAncestor(def)) return 0;
+    if (auto cast = dyn_cast<arith::IndexCastOp>(def)) return coefficient(cast.getIn());
+    if (isa<arith::ConstantOp>(def)) return 0;
+    if (isa<arith::AddIOp, arith::SubIOp>(def)) {
+      auto lhs = coefficient(def->getOperand(0)), rhs = coefficient(def->getOperand(1));
+      if (lhs && rhs) return *lhs + (isa<arith::AddIOp>(def) ? *rhs : -*rhs);
+    }
+    return std::nullopt;
+  };
+  if (coefficient(offset) != std::optional<int64_t>(1)) return false;
+  for (Operation &inner : loop.getBody()->without_terminator())
+    if (&inner != store.getOperation() && &inner != load.getOperation())
+      for (Value operand : inner.getOperands()) if (operand == load.getResult()) return false;
+  indent() << "for ("; emitValue(loop.getInductionVar());
+  os << " = 4 * item.get_local_linear_id(); "; emitValue(loop.getInductionVar());
+  os << " < " << loop.getConstantUpperBound() << "; "; emitValue(loop.getInductionVar());
+  os << " += 4 * item.get_local_range().size()) {\n"; addIndent();
+  for (Operation &inner : loop.getBody()->without_terminator()) {
+    if (&inner == load.getOperation() || &inner == store.getOperation()) continue;
+    if (!ExprVisitor(*this).dispatchVisitor(&inner)) StmtVisitor(*this).dispatchVisitor(&inner);
+  }
+  std::string type = getDataTypeName(load.getType(), state.target);
+  indent() << "sycl::vec<" << type << ", 4> packed;\n";
+  if (source) {
+    indent() << "packed.load(0, sycl::multi_ptr<const " << type
+             << ", sycl::access::address_space::global_space>(&";
+    emitMemRefAccess(load.getMemRef(), load.getIndices()); os << "));\n";
+  }
+  for (unsigned lane = 0; lane < 4; ++lane) {
+    indent();
+    if (!source) os << "packed[" << lane << "] = ";
+    emitValue(local); os << "["; emitValue(loop.getInductionVar()); os << " + " << lane << "]";
+    if (source) os << " = packed[" << lane << "]";
+    os << ";\n";
+  }
+  if (target) {
+    indent() << "packed.store(0, sycl::multi_ptr<" << type
+             << ", sycl::access::address_space::global_space>(&";
+    emitMemRefAccess(store.getMemRef(), store.getIndices()); os << "));\n";
+  }
+  reduceIndent(); indent() << "}\n";
+  indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
+  return true;
+}
+
+// Flatten perfect parallel nests onto the work-group's linear local index.
+// The contiguous dimension varies fastest, including rank3 and 2D local ranges.
+bool ModuleEmitter::emitParallelAffineNest(affine::AffineForOp op) {
+  if (op->getParentOfType<affine::AffineForOp>()) return false;
+  SmallVector<affine::AffineForOp> loops;
+  SmallVector<int64_t> sizes;
+  auto current = op;
+  while (current && !isReductionLoop(current) && current.hasConstantBounds() &&
+         current.getConstantLowerBound() == 0 && current.getStep() == 1 &&
+         current.getNumResults() == 0) {
+    int64_t size = current.getConstantUpperBound();
+    if (size <= 0) return false;
+    loops.push_back(current); sizes.push_back(size);
+    auto &operations = current.getBody()->getOperations();
+    if (operations.size() != 2) break;
+    current = dyn_cast<affine::AffineForOp>(&operations.front());
+  }
+  if (loops.empty()) return false;
+  bool partialParallelNest = false;
+  loops.back().walk([&](affine::AffineForOp nested) {
+    if (nested != loops.back() && !isReductionLoop(nested)) partialParallelNest = true;
+  });
+  if (partialParallelNest) return false;
+
+  int64_t total = 1;
+  for (int64_t size : sizes) {
+    if (total > INT64_MAX / size) return false;
+    total *= size;
+  }
+  std::string flat = "linear_" + std::to_string(state.currentIndent);
+  // The actual induction variables retain their SSA names inside the body.
+  indent() << "for (int64_t " << flat << " = item.get_local_linear_id(); "
+           << flat << " < " << total << "; " << flat
+           << " += item.get_local_range().size()) {\n";
+  addIndent();
+  int64_t stride = total;
+  for (auto [loop, size] : llvm::zip(loops, sizes)) {
+    stride /= size;
+    indent(); emitValue(loop.getInductionVar());
+    os << " = (" << flat << " / " << stride << ") % " << size << ";\n";
+  }
+  emitBlock(*loops.back().getBody());
+  reduceIndent(); indent() << "}\n";
+  indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
+  return true;
+}
+
 void ModuleEmitter::emitAffineFor(affine::AffineForOp op) {
+  if (state.target == EmitTarget::SYCL && vectorMemory && emitVectorCopy(op)) return;
+  if (state.target == EmitTarget::SYCL && emitParallelAffineNest(op)) return;
   bool reductionLoop = isReductionLoop(op);
+  if (state.target == EmitTarget::SYCL && reductionLoop && emitGroupReduction(op)) return;
 
   // For SYCL target, try to emit SIMT parallel code instead of serial loops
   if (state.target == EmitTarget::SYCL && !reductionLoop) {
@@ -585,6 +816,12 @@ void ModuleEmitter::emitAffineLoad(affine::AffineLoadOp op) {
 }
 
 void ModuleEmitter::emitAffineStore(affine::AffineStoreOp op) {
+  bool scalarOwner = state.target == EmitTarget::SYCL &&
+      !op->getParentOfType<affine::AffineForOp>();
+  if (scalarOwner) {
+    indent() << "if (item.get_local_linear_id() == 0) {\n";
+    addIndent();
+  }
   indent();
   auto affineMap = op.getAffineMap();
   AffineExprEmitter affineEmitter(state, affineMap.getNumDims(),
@@ -619,6 +856,11 @@ void ModuleEmitter::emitAffineStore(affine::AffineStoreOp op) {
   emitValue(op.getValueToStore());
   os << ";";
   emitInfoAndNewLine(op);
+  if (scalarOwner) {
+    reduceIndent();
+    indent() << "}\n";
+    indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
+  }
 }
 
 // TODO: For now, all values created in the AffineIf region will be declared
@@ -759,12 +1001,23 @@ void ModuleEmitter::emitLoad(memref::LoadOp op) {
 }
 
 void ModuleEmitter::emitStore(memref::StoreOp op) {
+  bool scalarOwner = state.target == EmitTarget::SYCL &&
+      !op->getParentOfType<affine::AffineForOp>();
+  if (scalarOwner) {
+    indent() << "if (item.get_local_linear_id() == 0) {\n";
+    addIndent();
+  }
   indent();
   emitMemRefAccess(op.getMemRef(), op.getIndices());
   os << " = ";
   emitValue(op.getValueToStore());
   os << ";";
   emitInfoAndNewLine(op);
+  if (scalarOwner) {
+    reduceIndent();
+    indent() << "}\n";
+    indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
+  }
 }
 
 void ModuleEmitter::emitIndexedMemRef(Value value, ArrayRef<std::string> indices) {
@@ -1283,6 +1536,49 @@ template <typename OpType> void ModuleEmitter::emitConstant(OpType op) {
     emitError(op, "has unsupported constant type.");
 }
 
+// Color equal-sized local allocations only when every use has a bounded,
+// barrier-terminated top-level affine phase. Escapes and overlapping phases
+// conservatively retain separate storage.
+void ModuleEmitter::planLocalBuffers(func::FuncOp func) {
+  struct Interval { memref::AllocOp alloc; unsigned begin, end; bool safe; };
+  SmallVector<Interval> intervals;
+  DenseMap<Operation *, unsigned> order;
+  unsigned position = 0;
+  for (Operation &op : func.front()) order[&op] = position++;
+  uint64_t before = 0, after = 0;
+  for (auto alloc : localAllocs) {
+    Interval range{alloc, position, 0, alloc->getBlock() == &func.front()};
+    before += alloc.getType().getNumElements() * alloc.getType().getElementTypeBitWidth() / 8;
+    for (Operation *user : alloc.getResult().getUsers()) {
+      if (isa<memref::DeallocOp>(user)) continue;
+      if (!isa<memref::LoadOp, memref::StoreOp, affine::AffineLoadOp, affine::AffineStoreOp>(user)) range.safe = false;
+      Operation *phase = user;
+      while (phase && phase->getBlock() != &func.front()) phase = phase->getParentOp();
+      if (!phase || !isa<affine::AffineForOp>(phase)) { range.safe = false; continue; }
+      range.begin = std::min(range.begin, order[phase]);
+      range.end = std::max(range.end, order[phase]);
+    }
+    intervals.push_back(range);
+  }
+  llvm::stable_sort(intervals, [](const Interval &a, const Interval &b) { return a.begin < b.begin; });
+  localAllocs.clear(); localAliases.clear();
+  SmallVector<Interval> slots;
+  for (auto interval : intervals) {
+    auto slot = llvm::find_if(slots, [&](const Interval &previous) {
+      return interval.safe && previous.safe && previous.end < interval.begin &&
+             previous.alloc->getResult(0).getType() == interval.alloc.getType();
+    });
+    if (slot == slots.end()) {
+      slots.push_back(interval); localAllocs.push_back(interval.alloc);
+      after += interval.alloc.getType().getNumElements() * interval.alloc.getType().getElementTypeBitWidth() / 8;
+    } else {
+      localAliases.emplace_back(slot->alloc.getResult(), interval.alloc.getResult());
+      slot->end = interval.end;
+    }
+  }
+  os << "// SYCL local storage: " << before << " -> " << after << " bytes (phase reuse)\n";
+}
+
 void ModuleEmitter::emitFunction(func::FuncOp func) {
   if (func.getBlocks().size() != 1) {
     emitError(func, "needs exactly one basic block");
@@ -1298,6 +1594,8 @@ void ModuleEmitter::emitFunction(func::FuncOp func) {
       }
     });
   }
+
+  planLocalBuffers(func);
 
   // Emit function signature.
   if (state.target == EmitTarget::SYCL)
@@ -1348,6 +1646,19 @@ void ModuleEmitter::emitFunction(func::FuncOp func) {
     }
   }
 
+  for (auto [source, alias] : localAliases) addAlias(source, alias);
+
+  groupReductions.clear();
+  if (state.target == EmitTarget::SYCL) {
+    func.walk([&](affine::AffineForOp loop) {
+      if (groupReductionElementType(loop)) groupReductions.push_back(loop);
+    });
+    for (auto [i, loop] : llvm::enumerate(groupReductions)) {
+      os << ",\n"; indent() << "sycl::local_accessor<"
+          << getDataTypeName(groupReductionElementType(loop), state.target)
+          << ", 1> reduction_scratch_" << i;
+    }
+  }
   reduceIndent();
   os << "\n) {";
   emitInfoAndNewLine(func);
@@ -1395,12 +1706,7 @@ void ModuleEmitter::emitHostWrapper(func::FuncOp func) {
 
   // Scan for local allocations again (or reuse localAllocs if scope is
   // preserved, but best to rescan to be safe/stateless)
-  SmallVector<memref::AllocOp, 4> hostLocalAllocs;
-  func.walk([&](memref::AllocOp allocOp) {
-    if (allocOp.getType().hasStaticShape()) {
-      hostLocalAllocs.push_back(allocOp);
-    }
-  });
+  auto hostLocalAllocs = localAllocs;
 
   // Emit both the normal asynchronous launcher and a profiling launcher.
   // The latter returns the device event duration and is used by benchmarks to
@@ -1432,6 +1738,9 @@ void ModuleEmitter::emitHostWrapper(func::FuncOp func) {
       indent() << "q->submit([&](sycl::handler &h) {\n";
     addIndent();
 
+    for (auto [i, loop] : llvm::enumerate(groupReductions))
+      indent() << "sycl::local_accessor<" << getDataTypeName(groupReductionElementType(loop), state.target)
+          << ", 1> reduction_scratch_" << i << "(sycl::range<1>(blockX * blockY * blockZ), h);\n";
     for (auto allocOp : hostLocalAllocs) {
       indent();
       auto memrefType = allocOp.getType();
@@ -1464,6 +1773,7 @@ void ModuleEmitter::emitHostWrapper(func::FuncOp func) {
       os << ", " << getName(arg);
     for (auto allocOp : hostLocalAllocs)
       os << ", " << getName(allocOp.getResult());
+    for (unsigned i = 0; i < groupReductions.size(); ++i) os << ", reduction_scratch_" << i;
     os << ");\n";
 
     reduceIndent();

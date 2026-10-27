@@ -7,6 +7,7 @@ element types, scalar widths, buffer sizes, and local ranges explicit.
 
 from dataclasses import dataclass
 import ctypes
+import fcntl
 import hashlib
 import os
 import re
@@ -462,7 +463,7 @@ def _cpp_scalar_declaration(index, type_repr, value):
 
 
 def generate_standalone_wrapper(kernel_name, source_code, bound_args, *, signature=None,
-                                metadata=None, block_size=None, profile=False):
+                                metadata=None, block_size=None, profile=False, profile_repeats=1, profile_warmup=0):
     source_code = source_code.decode("utf-8") if isinstance(source_code, bytes) else source_code
     runtime_args = _runtime_arguments(kernel_name, source_code, list(bound_args), signature)
     block = resolve_block_size(metadata, block_size, source_code)
@@ -498,6 +499,16 @@ def generate_standalone_wrapper(kernel_name, source_code, bound_args, *, signatu
         if profile else ""
     )
     launch_call = f"profile_{kernel_name}" if profile else f"launch_{kernel_name}"
+    invocation = f"        {launch_call}({', '.join(call_args)});\n"
+    if profile and (profile_repeats > 1 or profile_warmup):
+        invocation = (
+            f"        std::vector<uint64_t> samples;\n"
+            f"        for (int iteration = 0; iteration < {profile_repeats + profile_warmup}; ++iteration) {{\n"
+            + invocation
+            + f"          if (iteration >= {profile_warmup}) samples.push_back(elapsed_ns);\n"
+            + "        }\n")
+        timing_write = "        outfile.write(reinterpret_cast<const char*>(samples.data()), samples.size()*sizeof(uint64_t));\n"
+
     return f"""
     #include <sycl/sycl.hpp>
     #include <cstdint>
@@ -518,7 +529,7 @@ def generate_standalone_wrapper(kernel_name, source_code, bound_args, *, signatu
         if (!infile || gridX == 0 || gridY == 0 || gridZ == 0) return 1;
         size_t blockX = {block.x}, blockY = {block.y}, blockZ = {block.z};
 {''.join(declarations)}
-{timing_decl}        {launch_call}({', '.join(call_args)});
+{timing_decl}{invocation}
         q.wait_and_throw();
         std::ofstream outfile(argv[2], std::ios::binary);
         if (!outfile) return 5;
@@ -565,11 +576,19 @@ def _standalone_executable(main_src):
 
 def _run_executable(executable, input_bin, output_bin):
     timeout = float(os.getenv("TRITON_SYCL_RUN_TIMEOUT", "120"))
-    try:
-        result = subprocess.run([executable, input_bin, output_bin], capture_output=True,
-                                text=True, timeout=timeout)
-    except subprocess.TimeoutExpired as error:
-        raise RuntimeError(f"SYCL kernel process timed out after {timeout:g}s") from error
+    # AdaptiveCpp's persistent JIT database is mutable. Separate unrelated
+    # executable images and serialize same-image JIT publication across processes.
+    database_root = os.getenv("ACPP_APPDB_DIR", os.path.join(tempfile.gettempdir(), "triton-sycl-appdb"))
+    database = os.path.join(database_root, Path(executable).name)
+    os.makedirs(database, exist_ok=True)
+    environment = dict(os.environ, ACPP_APPDB_DIR=database)
+    with open(os.path.join(database, ".runtime.lock"), "a") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        try:
+            result = subprocess.run([executable, input_bin, output_bin], capture_output=True,
+                                    text=True, timeout=timeout, env=environment)
+        except subprocess.TimeoutExpired as error:
+            raise RuntimeError(f"SYCL kernel process timed out after {timeout:g}s") from error
     if result.returncode:
         detail = (result.stderr or result.stdout)[-12000:]
         raise RuntimeError(f"SYCL kernel process failed (exit {result.returncode}):\n{detail}")
@@ -600,12 +619,15 @@ def run_standalone(gridX, gridY, gridZ, kernel_name, source_code, bound_args, *,
 
 
 def profile_standalone(gridX, gridY, gridZ, kernel_name, source_code, bound_args,
-                       signature=None, metadata=None, block_size=None):
+                       signature=None, metadata=None, block_size=None, repeats=1, warmup=0):
     """Run the profiling wrapper and return only the device event duration."""
+    if repeats < 1 or warmup < 0:
+        raise ValueError("profiling requires repeats >= 1 and warmup >= 0")
     source_code = source_code.decode("utf-8") if isinstance(source_code, bytes) else source_code
     main_src = generate_standalone_wrapper(
         kernel_name, source_code, bound_args,
-        signature=signature, metadata=metadata, block_size=block_size, profile=True)
+        signature=signature, metadata=metadata, block_size=block_size, profile=True,
+        profile_repeats=repeats, profile_warmup=warmup)
     executable = _standalone_executable(main_src)
     runtime_args = _runtime_arguments(kernel_name, source_code, list(bound_args), signature)
     with tempfile.TemporaryDirectory(prefix="triton_sycl_profile_") as run_dir:
@@ -625,7 +647,8 @@ def profile_standalone(gridX, gridY, gridZ, kernel_name, source_code, bound_args
                     if len(data) != size:
                         raise RuntimeError("profiling SYCL output is shorter than a pointer argument")
                     ctypes.memmove(arg.data_ptr(), data, size)
-            timing = stream.read(8)
-            if len(timing) != 8:
+            timing = stream.read(8*repeats)
+            if len(timing) != 8*repeats:
                 raise RuntimeError("profiling SYCL output did not contain an event duration")
-            return int(struct.unpack("<Q", timing)[0])
+            samples = list(struct.unpack("<"+"Q"*repeats, timing))
+            return samples[0] if repeats == 1 else samples

@@ -33,5 +33,6 @@ jump host); direct `ssh dfcs` currently requests password authentication.
 - Reliability: 3cb4418f; host negative contracts 9/9, translator diagnostic exit=1,
   full functional suite CPU/gfx906 58/58.
 - Fixed repository test suite: 58 semantics + 9 host failures + translator negative.
-- Performance work in progress: contiguous-dimension work distribution,
-  group tree reduction, same-process warm event measurement.
+- Performance: default CPU/gfx906 58/58; optimization safety 15/15 and long
+  reductions 18/18 on both. gfx906 warm sum improves 1.52–1.59x; experimental
+  vector copies remain disabled after a measured regression. See performance report.

@@ -1,0 +1,118 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"case": "sequential", "block": 48, "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 1024}
+{"case": "sequential", "block": [8, 8], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 1024}
+{"case": "sequential", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 1024}
+{"case": "overlap", "block": 48, "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 2048}
+{"case": "overlap", "block": [8, 8], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 2048}
+{"case": "overlap", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 2048}
+{"case": "masked", "block": 48, "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}
+{"case": "masked", "block": [8, 8], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}
+{"case": "masked", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}
+{"case": "copy", "block": 48, "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}
+{"case": "copy", "block": [8, 8], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}
+{"case": "copy", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}
+{"case": "mixed_tree_random", "block": 48, "status": "PASS", "max_abs_error": 2.7894857339560986e-06}
+{"case": "mixed_tree_random", "block": [8, 8], "status": "PASS", "max_abs_error": 1.0252115316689014e-06}
+{"case": "mixed_tree_random", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 1.0252115316689014e-06}
+[{"case": "sequential", "block": 48, "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 1024}, {"case": "sequential", "block": [8, 8], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 1024}, {"case": "sequential", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 1024}, {"case": "overlap", "block": 48, "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 2048}, {"case": "overlap", "block": [8, 8], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 2048}, {"case": "overlap", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 2048}, {"case": "masked", "block": 48, "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}, {"case": "masked", "block": [8, 8], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}, {"case": "masked", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}, {"case": "copy", "block": 48, "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}, {"case": "copy", "block": [8, 8], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}, {"case": "copy", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 1024, "local_bytes_after": 1024}, {"case": "mixed_tree_random", "block": 48, "status": "PASS", "max_abs_error": 2.7894857339560986e-06}, {"case": "mixed_tree_random", "block": [8, 8], "status": "PASS", "max_abs_error": 1.0252115316689014e-06}, {"case": "mixed_tree_random", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 1.0252115316689014e-06}]
+{"case": "reduce_sum_axis0", "status": "PASS", "compile_ms": 1245.3354429453611, "max_abs_error": 0, "wall_seconds": 15.768616210669279}
+{"case": "reduce_max_axis0", "status": "PASS", "compile_ms": 1233.7035555392504, "max_abs_error": 0, "wall_seconds": 15.781037485226989}
+{"case": "reduce_sum_axis1", "status": "PASS", "compile_ms": 1249.1102237254381, "max_abs_error": 0, "wall_seconds": 16.320725042372942}
+{"case": "reduce_max_axis1", "status": "PASS", "compile_ms": 1251.9438173621893, "max_abs_error": 0, "wall_seconds": 16.836828354746103}
+{"case": "reduce_and_axis0", "status": "PASS", "compile_ms": 939.7747553884983, "max_abs_error": 0, "wall_seconds": 15.049638075754046}
+{"case": "reduce_min_axis0", "status": "PASS", "compile_ms": 963.756000623107, "max_abs_error": 0, "wall_seconds": 15.604284340515733}
+{"case": "reduce_min_axis1", "status": "PASS", "compile_ms": 924.7992318123579, "max_abs_error": 0, "wall_seconds": 15.63361468538642}
+{"case": "reduce_and_axis1", "status": "PASS", "compile_ms": 966.8089412152767, "max_abs_error": 0, "wall_seconds": 16.112729884684086}
+{"case": "reduce_xor_axis0", "status": "PASS", "compile_ms": 1009.3149207532406, "max_abs_error": 0, "wall_seconds": 15.509070634841919}
+{"case": "reduce_or_axis1", "status": "PASS", "compile_ms": 971.5151321142912, "max_abs_error": 0, "wall_seconds": 15.550810404121876}
+{"case": "reduce_or_axis0", "status": "PASS", "compile_ms": 1039.7342965006828, "max_abs_error": 0, "wall_seconds": 15.552481267601252}
+{"case": "reduce_xor_axis1", "status": "PASS", "compile_ms": 916.8203864246607, "max_abs_error": 0, "wall_seconds": 15.472702898085117}
+{"case": "reduce_tuple_axis1", "status": "PASS", "compile_ms": 930.1853030920029, "max_abs_error": 0, "wall_seconds": 15.529036544263363}
+{"case": "reduce_tuple_axis0", "status": "PASS", "compile_ms": 986.9372192770243, "max_abs_error": 0, "wall_seconds": 15.542283141985536}
+{"case": "reduce_argmax_axis0", "status": "PASS", "compile_ms": 957.3915358632803, "max_abs_error": 0, "wall_seconds": 16.213066641241312}
+{"case": "reduce_argmax_axis1", "status": "PASS", "compile_ms": 904.3844118714333, "max_abs_error": 0, "wall_seconds": 15.746462658047676}
+{"case": "reduce_sum_rank3axis0", "status": "PASS", "max_abs_error": 0, "wall_seconds": 14.053278550505638}
+{"case": "reduce_sum_rank3axis1", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.607859758660197}
+{"case": "reduce_sum_rank1", "status": "PASS", "max_abs_error": 0, "wall_seconds": 14.731636084616184}
+{"case": "reduce_sum_rank3axis2", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.709788268432021}
+{"case": "memory_holes", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.60874111764133}
+{"case": "memory_or", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.960072625428438}
+{"case": "memory_lower", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.716108540073037}
+{"case": "memory_negative", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.75849749147892}
+{"case": "memory_stride", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.753558607771993}
+{"case": "memory_modulo", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.726714266464114}
+{"case": "memory_gather", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.545842180028558}
+{"case": "memory_other", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.769913516938686}
+{"case": "memory_loops", "status": "PASS", "max_abs_error": 0, "wall_seconds": 14.195217497646809}
+{"case": "memory_masked_scalar", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.722453612834215}
+{"case": "memory_ptrloop", "status": "PASS", "max_abs_error": 0, "wall_seconds": 15.226452499628067}
+{"case": "memory_grid", "status": "PASS", "max_abs_error": 0, "wall_seconds": 14.717952838167548}
+{"case": "memory_empty", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.872774753719568}
+{"case": "memory_tail", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.93273845501244}
+{"case": "dot_2d_nn_fp32", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 14.537398751825094}
+{"case": "dot_2d_nn_fp16", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 14.360133398324251}
+{"case": "dot_2d_nn_stride", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.881609033793211}
+{"case": "dot_2d_tn_fp32", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 14.082881484180689}
+{"case": "dot_2d_tn_fp16", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 14.36944942176342}
+{"case": "dot_2d_tn_stride", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 14.349890615791082}
+{"case": "dot_2d_nt_fp32", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.844223219901323}
+{"case": "dot_2d_nt_fp16", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 14.070590995252132}
+{"case": "dot_2d_nt_stride", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 14.548936355859041}
+{"case": "dot_2d_tt_fp32", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 14.356191631406546}
+{"case": "dot_2d_tt_fp16", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.820107620209455}
+{"case": "dot_2d_tt_stride", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.864877061918378}
+{"case": "dot_3d_nn_fp32", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.80442308075726}
+{"case": "dot_3d_nn_fp16", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.794866317883134}
+{"case": "dot_3d_nn_stride", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.881753828376532}
+{"case": "dot_3d_tn_fp32", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 14.851122492924333}
+{"case": "dot_3d_tn_fp16", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.816595079377294}
+{"case": "dot_3d_tn_stride", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.92715678177774}
+{"case": "dot_3d_nt_fp32", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.830628667026758}
+{"case": "dot_3d_nt_fp16", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 14.288647243753076}
+{"case": "dot_3d_nt_stride", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.918575899675488}
+{"case": "dot_3d_tt_fp32", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 14.023188775405288}
+{"case": "dot_3d_tt_fp16", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 14.484071286395192}
+{"case": "dot_3d_tt_stride", "status": "PASS", "max_abs_error": 0.0, "wall_seconds": 13.779082860797644}
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"kind": "sum", "block": 48, "status": "RUNNING"}
+{"kind": "sum", "block": 48, "status": "PASS", "max_abs_error": 0}
+{"kind": "sum", "block": 64, "status": "RUNNING"}
+{"kind": "sum", "block": 64, "status": "PASS", "max_abs_error": 0}
+{"kind": "sum", "block": 128, "status": "RUNNING"}
+{"kind": "sum", "block": 128, "status": "PASS", "max_abs_error": 0}
+{"kind": "max", "block": 48, "status": "RUNNING"}
+{"kind": "max", "block": 48, "status": "PASS", "max_abs_error": 0}
+{"kind": "max", "block": 64, "status": "RUNNING"}
+{"kind": "max", "block": 64, "status": "PASS", "max_abs_error": 0}
+{"kind": "max", "block": 128, "status": "RUNNING"}
+{"kind": "max", "block": 128, "status": "PASS", "max_abs_error": 0}
+{"kind": "min", "block": 48, "status": "RUNNING"}
+{"kind": "min", "block": 48, "status": "PASS", "max_abs_error": 0}
+{"kind": "min", "block": 64, "status": "RUNNING"}
+{"kind": "min", "block": 64, "status": "PASS", "max_abs_error": 0}
+{"kind": "min", "block": 128, "status": "RUNNING"}
+{"kind": "min", "block": 128, "status": "PASS", "max_abs_error": 0}
+{"kind": "and", "block": 48, "status": "RUNNING"}
+{"kind": "and", "block": 48, "status": "PASS", "max_abs_error": 0}
+{"kind": "and", "block": 64, "status": "RUNNING"}
+{"kind": "and", "block": 64, "status": "PASS", "max_abs_error": 0}
+{"kind": "and", "block": 128, "status": "RUNNING"}
+{"kind": "and", "block": 128, "status": "PASS", "max_abs_error": 0}
+{"kind": "or", "block": 48, "status": "RUNNING"}
+{"kind": "or", "block": 48, "status": "PASS", "max_abs_error": 0}
+{"kind": "or", "block": 64, "status": "RUNNING"}
+{"kind": "or", "block": 64, "status": "PASS", "max_abs_error": 0}
+{"kind": "or", "block": 128, "status": "RUNNING"}
+{"kind": "or", "block": 128, "status": "PASS", "max_abs_error": 0}
+{"kind": "xor", "block": 48, "status": "RUNNING"}
+{"kind": "xor", "block": 48, "status": "PASS", "max_abs_error": 0}
+{"kind": "xor", "block": 64, "status": "RUNNING"}
+{"kind": "xor", "block": 64, "status": "PASS", "max_abs_error": 0}
+{"kind": "xor", "block": 128, "status": "RUNNING"}
+{"kind": "xor", "block": 128, "status": "PASS", "max_abs_error": 0}
+[{"kind": "sum", "block": 48, "status": "PASS", "max_abs_error": 0}, {"kind": "sum", "block": 64, "status": "PASS", "max_abs_error": 0}, {"kind": "sum", "block": 128, "status": "PASS", "max_abs_error": 0}, {"kind": "max", "block": 48, "status": "PASS", "max_abs_error": 0}, {"kind": "max", "block": 64, "status": "PASS", "max_abs_error": 0}, {"kind": "max", "block": 128, "status": "PASS", "max_abs_error": 0}, {"kind": "min", "block": 48, "status": "PASS", "max_abs_error": 0}, {"kind": "min", "block": 64, "status": "PASS", "max_abs_error": 0}, {"kind": "min", "block": 128, "status": "PASS", "max_abs_error": 0}, {"kind": "and", "block": 48, "status": "PASS", "max_abs_error": 0}, {"kind": "and", "block": 64, "status": "PASS", "max_abs_error": 0}, {"kind": "and", "block": 128, "status": "PASS", "max_abs_error": 0}, {"kind": "or", "block": 48, "status": "PASS", "max_abs_error": 0}, {"kind": "or", "block": 64, "status": "PASS", "max_abs_error": 0}, {"kind": "or", "block": 128, "status": "PASS", "max_abs_error": 0}, {"kind": "xor", "block": 48, "status": "PASS", "max_abs_error": 0}, {"kind": "xor", "block": 64, "status": "PASS", "max_abs_error": 0}, {"kind": "xor", "block": 128, "status": "PASS", "max_abs_error": 0}]

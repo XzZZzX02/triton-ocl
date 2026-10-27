@@ -1,0 +1,110 @@
+[
+  {
+    "kind": "sum",
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "kind": "sum",
+    "block": 64,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "kind": "sum",
+    "block": 128,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "kind": "max",
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "kind": "max",
+    "block": 64,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "kind": "max",
+    "block": 128,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "kind": "min",
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "kind": "min",
+    "block": 64,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "kind": "min",
+    "block": 128,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "kind": "and",
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "kind": "and",
+    "block": 64,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "kind": "and",
+    "block": 128,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "kind": "or",
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "kind": "or",
+    "block": 64,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "kind": "or",
+    "block": 128,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "kind": "xor",
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "kind": "xor",
+    "block": 64,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "kind": "xor",
+    "block": 128,
+    "status": "PASS",
+    "max_abs_error": 0
+  }
+]

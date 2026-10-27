@@ -1,0 +1,151 @@
+[
+  {
+    "case": "sequential",
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0,
+    "local_bytes_before": 2048,
+    "local_bytes_after": 1024
+  },
+  {
+    "case": "sequential",
+    "block": [
+      8,
+      8
+    ],
+    "status": "PASS",
+    "max_abs_error": 0,
+    "local_bytes_before": 2048,
+    "local_bytes_after": 1024
+  },
+  {
+    "case": "sequential",
+    "block": [
+      4,
+      4,
+      4
+    ],
+    "status": "PASS",
+    "max_abs_error": 0,
+    "local_bytes_before": 2048,
+    "local_bytes_after": 1024
+  },
+  {
+    "case": "overlap",
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0,
+    "local_bytes_before": 2048,
+    "local_bytes_after": 2048
+  },
+  {
+    "case": "overlap",
+    "block": [
+      8,
+      8
+    ],
+    "status": "PASS",
+    "max_abs_error": 0,
+    "local_bytes_before": 2048,
+    "local_bytes_after": 2048
+  },
+  {
+    "case": "overlap",
+    "block": [
+      4,
+      4,
+      4
+    ],
+    "status": "PASS",
+    "max_abs_error": 0,
+    "local_bytes_before": 2048,
+    "local_bytes_after": 2048
+  },
+  {
+    "case": "masked",
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0,
+    "local_bytes_before": 1024,
+    "local_bytes_after": 1024
+  },
+  {
+    "case": "masked",
+    "block": [
+      8,
+      8
+    ],
+    "status": "PASS",
+    "max_abs_error": 0,
+    "local_bytes_before": 1024,
+    "local_bytes_after": 1024
+  },
+  {
+    "case": "masked",
+    "block": [
+      4,
+      4,
+      4
+    ],
+    "status": "PASS",
+    "max_abs_error": 0,
+    "local_bytes_before": 1024,
+    "local_bytes_after": 1024
+  },
+  {
+    "case": "copy",
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0,
+    "local_bytes_before": 1024,
+    "local_bytes_after": 1024
+  },
+  {
+    "case": "copy",
+    "block": [
+      8,
+      8
+    ],
+    "status": "PASS",
+    "max_abs_error": 0,
+    "local_bytes_before": 1024,
+    "local_bytes_after": 1024
+  },
+  {
+    "case": "copy",
+    "block": [
+      4,
+      4,
+      4
+    ],
+    "status": "PASS",
+    "max_abs_error": 0,
+    "local_bytes_before": 1024,
+    "local_bytes_after": 1024
+  },
+  {
+    "case": "mixed_tree_random",
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 2.7894857339560986e-06
+  },
+  {
+    "case": "mixed_tree_random",
+    "block": [
+      8,
+      8
+    ],
+    "status": "PASS",
+    "max_abs_error": 1.0252115316689014e-06
+  },
+  {
+    "case": "mixed_tree_random",
+    "block": [
+      4,
+      4,
+      4
+    ],
+    "status": "PASS",
+    "max_abs_error": 1.0252115316689014e-06
+  }
+]

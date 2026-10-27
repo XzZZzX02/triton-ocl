@@ -32,6 +32,7 @@ class SYCLOptions:
     launch_cooperative_grid: bool = False
     max_num_imprecise_acc_default: int = 0
     sanitize_overflow: bool = False
+    vectorize_memory: bool = False
 
     def __post_init__(self):
         pass
@@ -134,6 +135,8 @@ class SYCLBackend(BaseBackend):
             source, output = Path(directory)/"kernel.memir", Path(directory)/"kernel.sycl"
             source.write_text(str(src))
             command = [str(translator), str(source), "-triton-sycl-emit-sycl", "-o", str(output)]
+            if opt.vectorize_memory:
+                command.append("--sycl-vector-memory")
             try:
                 result = subprocess.run(command, capture_output=True, text=True, timeout=timeout)
             except subprocess.TimeoutExpired as error:

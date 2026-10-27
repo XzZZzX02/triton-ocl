@@ -454,6 +454,10 @@ public:
 
   /// Affine statement emitters.
   void emitAffineFor(affine::AffineForOp op);
+  bool emitParallelAffineNest(affine::AffineForOp op);
+  bool emitVectorCopy(affine::AffineForOp op);
+  void planLocalBuffers(func::FuncOp func);
+  bool emitGroupReduction(affine::AffineForOp op);
   void emitAffineIf(affine::AffineIfOp op);
   void emitAffineParallel(affine::AffineParallelOp op);
   void emitAffineApply(affine::AffineApplyOp op);
@@ -516,6 +520,8 @@ private:
 
   /// Track local allocations for SYCL local_accessor generation
   SmallVector<memref::AllocOp, 4> localAllocs;
+  SmallVector<affine::AffineForOp> groupReductions;
+  SmallVector<std::pair<Value, Value>> localAliases;
 
   unsigned numDSPs = 0;
 

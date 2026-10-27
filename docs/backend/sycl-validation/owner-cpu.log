@@ -1,0 +1,22 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"case": "sequential", "block": 48, "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 1024}
+{"case": "sequential", "block": [8, 8], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 1024}
+{"case": "sequential", "block": [4, 4, 4], "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 1024}
+{"case": "overlap", "block": 48, "status": "PASS", "max_abs_error": 0, "local_bytes_before": 2048, "local_bytes_after": 2048}
+Traceback (most recent call last):
+  File "/public/home/dtune/zzx/triton/gap-validation/optimization_semantics.py", line 112, in <module>
+    main()
+  File "/public/home/dtune/zzx/triton/gap-validation/optimization_semantics.py", line 87, in main
+    launch(c, [x, z, y, mode], (2, 1, 1), block)
+  File "/public/home/dtune/zzx/triton/gap-validation/optimization_semantics.py", line 51, in launch
+    run_standalone(*grid, compiled.name, compiled.asm['sycl'], args,
+  File "/public/home/dtune/zzx/triton/gap-validation/owner-python/triton/backends/sycl/sycl_utils.py", line 611, in run_standalone
+    _run_executable(executable, input_bin, output_bin)
+  File "/public/home/dtune/zzx/triton/gap-validation/owner-python/triton/backends/sycl/sycl_utils.py", line 594, in _run_executable
+    raise RuntimeError(f"SYCL kernel process failed (exit {result.returncode}):\n{detail}")
+RuntimeError: SYCL kernel process failed (exit -7):
+get hyhal driver version error!

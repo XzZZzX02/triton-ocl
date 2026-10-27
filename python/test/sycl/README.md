@@ -42,3 +42,21 @@ For performance use performance.py, which runs ten warmups and 31 event samples
 inside each process. It verifies output before timing, varies local sizes
 64/128/256, and writes raw samples. Report compilation/launch overhead separately
 from the device event interval; do not infer kernel speedup from failed baselines.
+
+Optimization safety regressions:
+
+    python-triton optimization_semantics.py
+    python-triton optimized_reductions.py
+
+These check vector copies, masked fallback, buffer reuse versus overlapping
+lifetimes, mixed f32/i32 scratch, random floating inputs, and 1D/2D/3D local
+ranges. Long reductions cover 48/64/128 lanes. On DFCS, use node-local TMPDIR
+and ACPP_APPDB_DIR when possible. A shared-filesystem CPU run produced SIGBUS
+even with per-executable publication locks; that failure is recorded separately.
+
+Four-element vector memory copies are experimental and disabled by default.
+Enable them explicitly with vectorize_memory=True in the Triton compile options.
+The safety test enables this option to exercise the generated vector load/store
+paths. gfx906 measurements showed a copy regression with that option enabled;
+default performance measurements keep it disabled. Tree reductions and proven
+non-overlapping local-buffer lifetime reuse remain enabled.
