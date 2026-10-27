@@ -1,0 +1,78 @@
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+g09r1n10
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"select": false, "loops": 0, "stride": 3, "block": 48, "status": "PASS", "max_abs_error": 0}
+{"select": false, "loops": 0, "stride": 3, "block": [8, 8], "status": "PASS", "max_abs_error": 0}
+{"select": false, "loops": 0, "stride": -2, "block": 48, "status": "PASS", "max_abs_error": 0}
+{"select": false, "loops": 0, "stride": -2, "block": [8, 8], "status": "PASS", "max_abs_error": 0}
+{"select": false, "loops": 3, "stride": 3, "block": 48, "status": "PASS", "max_abs_error": 0}
+{"select": false, "loops": 3, "stride": 3, "block": [8, 8], "status": "PASS", "max_abs_error": 0}
+{"select": false, "loops": 3, "stride": -2, "block": 48, "status": "PASS", "max_abs_error": 0}
+{"select": false, "loops": 3, "stride": -2, "block": [8, 8], "status": "PASS", "max_abs_error": 0}
+{"select": true, "loops": 0, "stride": 3, "block": 48, "status": "PASS", "max_abs_error": 0}
+{"select": true, "loops": 0, "stride": 3, "block": [8, 8], "status": "PASS", "max_abs_error": 0}
+{"select": true, "loops": 0, "stride": -2, "block": 48, "status": "PASS", "max_abs_error": 0}
+{"select": true, "loops": 0, "stride": -2, "block": [8, 8], "status": "PASS", "max_abs_error": 0}
+{"select": true, "loops": 3, "stride": 3, "block": 48, "status": "PASS", "max_abs_error": 0}
+{"select": true, "loops": 3, "stride": 3, "block": [8, 8], "status": "PASS", "max_abs_error": 0}
+{"select": true, "loops": 3, "stride": -2, "block": 48, "status": "PASS", "max_abs_error": 0}
+{"select": true, "loops": 3, "stride": -2, "block": [8, 8], "status": "PASS", "max_abs_error": 0}
+{"case": "mixed_scalar_tensor", "loops": 0, "stride": 3, "block": 48, "status": "PASS", "max_abs_error": 0}
+{"case": "mixed_scalar_tensor", "loops": 0, "stride": 3, "block": [8, 8], "status": "PASS", "max_abs_error": 0}
+{"case": "mixed_scalar_tensor", "loops": 0, "stride": -2, "block": 48, "status": "PASS", "max_abs_error": 0}
+{"case": "mixed_scalar_tensor", "loops": 0, "stride": -2, "block": [8, 8], "status": "PASS", "max_abs_error": 0}
+{"case": "mixed_scalar_tensor", "loops": 3, "stride": 3, "block": 48, "status": "PASS", "max_abs_error": 0}
+{"case": "mixed_scalar_tensor", "loops": 3, "stride": 3, "block": [8, 8], "status": "PASS", "max_abs_error": 0}
+{"case": "mixed_scalar_tensor", "loops": 3, "stride": -2, "block": 48, "status": "PASS", "max_abs_error": 0}
+{"case": "mixed_scalar_tensor", "loops": 3, "stride": -2, "block": [8, 8], "status": "PASS", "max_abs_error": 0}
+/public/home/dtune/zzx/triton/gap-validation/scalar_pointer_final.py:47:19: error: SYCL loop-carried pointer changes its base allocation
+    for i in range(loops):
+                  ^
+module {
+  tt.func public @allocation_switch(%arg0: !tt.ptr<f32> {tt.divisibility = 16 : i32}, %arg1: !tt.ptr<f32> {tt.divisibility = 16 : i32}, %arg2: !tt.ptr<f32> {tt.divisibility = 16 : i32}, %arg3: i32) attributes {noinline = false} {
+    %c2_i32 = arith.constant 2 : i32
+    %c0_i32 = arith.constant 0 : i32
+    %c1_i32 = arith.constant 1 : i32
+    %0 = scf.for %arg4 = %c0_i32 to %arg3 step %c1_i32 iter_args(%arg5 = %arg0) -> (!tt.ptr<f32>)  : i32 {
+      %2 = arith.remsi %arg4, %c2_i32 : i32
+      %3 = arith.cmpi eq, %2, %c0_i32 : i32
+      %4 = arith.select %3, %arg0, %arg1 : !tt.ptr<f32>
+      scf.yield %4 : !tt.ptr<f32>
+    }
+    %1 = tt.load %0 : !tt.ptr<f32>
+    tt.store %arg2, %1 : !tt.ptr<f32>
+    tt.return
+  }
+}
+
+{-#
+  external_resources: {
+    mlir_reproducer: {
+      pipeline: "builtin.module(triton-to-linalg)",
+      disable_threading: false,
+      verify_each: true
+    }
+  }
+#-}
+/public/home/dtune/zzx/triton/gap-validation/scalar_pointer_final.py:45:0: error: Failures have been detected while processing an MLIR pass pipeline
+/public/home/dtune/zzx/triton/gap-validation/scalar_pointer_final.py:45:0: note: Pipeline failed while executing [`TritonToLinalg` on 'builtin.module' operation]: reproducer generated at `std::errs, please share the reproducer above with Triton project.`
+{"case": "allocation_switch_rejected", "status": "PASS"}
+[{"select": false, "loops": 0, "stride": 3, "block": 48, "status": "PASS", "max_abs_error": 0}, {"select": false, "loops": 0, "stride": 3, "block": [8, 8], "status": "PASS", "max_abs_error": 0}, {"select": false, "loops": 0, "stride": -2, "block": 48, "status": "PASS", "max_abs_error": 0}, {"select": false, "loops": 0, "stride": -2, "block": [8, 8], "status": "PASS", "max_abs_error": 0}, {"select": false, "loops": 3, "stride": 3, "block": 48, "status": "PASS", "max_abs_error": 0}, {"select": false, "loops": 3, "stride": 3, "block": [8, 8], "status": "PASS", "max_abs_error": 0}, {"select": false, "loops": 3, "stride": -2, "block": 48, "status": "PASS", "max_abs_error": 0}, {"select": false, "loops": 3, "stride": -2, "block": [8, 8], "status": "PASS", "max_abs_error": 0}, {"select": true, "loops": 0, "stride": 3, "block": 48, "status": "PASS", "max_abs_error": 0}, {"select": true, "loops": 0, "stride": 3, "block": [8, 8], "status": "PASS", "max_abs_error": 0}, {"select": true, "loops": 0, "stride": -2, "block": 48, "status": "PASS", "max_abs_error": 0}, {"select": true, "loops": 0, "stride": -2, "block": [8, 8], "status": "PASS", "max_abs_error": 0}, {"select": true, "loops": 3, "stride": 3, "block": 48, "status": "PASS", "max_abs_error": 0}, {"select": true, "loops": 3, "stride": 3, "block": [8, 8], "status": "PASS", "max_abs_error": 0}, {"select": true, "loops": 3, "stride": -2, "block": 48, "status": "PASS", "max_abs_error": 0}, {"select": true, "loops": 3, "stride": -2, "block": [8, 8], "status": "PASS", "max_abs_error": 0}, {"case": "mixed_scalar_tensor", "loops": 0, "stride": 3, "block": 48, "status": "PASS", "max_abs_error": 0}, {"case": "mixed_scalar_tensor", "loops": 0, "stride": 3, "block": [8, 8], "status": "PASS", "max_abs_error": 0}, {"case": "mixed_scalar_tensor", "loops": 0, "stride": -2, "block": 48, "status": "PASS", "max_abs_error": 0}, {"case": "mixed_scalar_tensor", "loops": 0, "stride": -2, "block": [8, 8], "status": "PASS", "max_abs_error": 0}, {"case": "mixed_scalar_tensor", "loops": 3, "stride": 3, "block": 48, "status": "PASS", "max_abs_error": 0}, {"case": "mixed_scalar_tensor", "loops": 3, "stride": 3, "block": [8, 8], "status": "PASS", "max_abs_error": 0}, {"case": "mixed_scalar_tensor", "loops": 3, "stride": -2, "block": 48, "status": "PASS", "max_abs_error": 0}, {"case": "mixed_scalar_tensor", "loops": 3, "stride": -2, "block": [8, 8], "status": "PASS", "max_abs_error": 0}, {"case": "allocation_switch_rejected", "status": "PASS"}]
+{"case": "memory_negative", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.422021671198308}
+{"case": "memory_holes", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.423444899730384}
+{"case": "memory_or", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.423487013205886}
+{"case": "memory_lower", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.424333351664245}
+{"case": "memory_modulo", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.306433216668665}
+{"case": "memory_other", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.308673682622612}
+{"case": "memory_gather", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.309025746770203}
+{"case": "memory_stride", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.31106189917773}
+{"case": "memory_masked_scalar", "status": "PASS", "max_abs_error": 0, "wall_seconds": 12.977253418415785}
+{"case": "memory_grid", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.177199964411557}
+{"case": "memory_loops", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.21965825650841}
+{"case": "memory_ptrloop", "status": "PASS", "max_abs_error": 0, "wall_seconds": 13.684270476922393}
+{"case": "memory_empty", "status": "PASS", "max_abs_error": 0, "wall_seconds": 12.887416739948094}
+{"case": "memory_tail", "status": "PASS", "max_abs_error": 0, "wall_seconds": 12.900429176166654}
+SCALAR_FINAL_COMPLETE

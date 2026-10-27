@@ -60,3 +60,13 @@ The safety test enables this option to exercise the generated vector load/store
 paths. gfx906 measurements showed a copy regression with that option enabled;
 default performance measurements keep it disabled. Tree reductions and proven
 non-overlapping local-buffer lifetime reuse remain enabled.
+
+Additional pointer-loop regressions:
+
+    python-triton scalar_pointer_semantics.py
+
+These reuse the same compiled kernels with runtime loop counts 0/3 and signed
+strides 3/-2. They cover nested scalar pointers, conditional same-allocation
+updates, mixed scalar/tensor pointer reconstruction, loop results, grid=3, and
+local sizes 48/(8,8): 24 exact-output checks plus one allocation-switch negative.
+The negative checks the native MLIR diagnostic text, not only an exception.

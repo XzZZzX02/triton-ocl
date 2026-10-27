@@ -1,0 +1,12 @@
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"select": false, "loops": 0, "stride": 3, "status": "COMPILED"}
+{"select": false, "loops": 0, "stride": -2, "status": "COMPILED"}
+{"select": false, "loops": 3, "stride": 3, "status": "COMPILED"}
+{"select": false, "loops": 3, "stride": -2, "status": "COMPILED"}
+{"select": true, "loops": 0, "stride": 3, "status": "COMPILED"}
+{"select": true, "loops": 0, "stride": -2, "status": "COMPILED"}
+{"select": true, "loops": 3, "stride": 3, "status": "COMPILED"}
+{"select": true, "loops": 3, "stride": -2, "status": "COMPILED"}
+{"case": "allocation_switch_rejected", "status": "PASS", "diagnostic": "SYCL loop-carried pointer changes its base allocation"}
+[{"case": "allocation_switch_rejected", "status": "PASS", "diagnostic": "SYCL loop-carried pointer changes its base allocation"}]

@@ -1,0 +1,3 @@
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"case": "memory_ptrloop", "status": "PASS", "source_bytes": 7598}

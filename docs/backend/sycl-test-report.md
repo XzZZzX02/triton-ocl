@@ -14,3 +14,10 @@
 现在每个 gap 均保留 baseline/after 原始 JSON。测试性能收益是可定位与可复现，
 不将测试速度报告成 kernel 加速。现有测试通过不代表全 dtype 和所有模型覆盖。
 复现命令、DFCS 环境及后续随机数/NaN 数值覆盖限制见 python/test/sycl/README.md。
+
+后续增加 optimization_semantics.py 15 项、optimized_reductions.py 18 项，
+CPU/gfx906 均通过；包含 random floating sum、typed scratch、非二次幂和多维
+local ranges、storage lifetime 与显式实验向量路径检查。
+scalar_pointer_semantics.py 增加 24 项实际输出检查和 1 项具体诊断负例，
+两种 backend 均通过；内存实现补充后原有 14 项 memory 回归再次通过。
+这些补充的细节分别见 sycl-performance-report.md 与 sycl-pointer-followup-report.md。

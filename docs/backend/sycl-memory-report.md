@@ -36,6 +36,11 @@ false scalar mask 指向明显无效地址，未发生访问；masked store 保�
 不把不能运行的 baseline 用例报告为无限加速。动态逻辑 block、切换 allocation
 的 pointer loop 尚不支持，并以诊断拒绝；不是完整 Triton 内存操作全集的声明。
 
+后续独立补充扩展到 scalar pointer carry、同 allocation 的条件 pointer 更新，
+以及 mixed scalar/tensor 地址重建。CPU/gfx906 新增 24 项运行检查和 1 项负例均通过，
+原有 memory 14 项亦重新通过。实现、bufferization 回归修复与原始证据见
+sycl-pointer-followup-report.md。
+
 ## 复现
 
 ~~~sh

@@ -1,0 +1,234 @@
+[
+  {
+    "select": false,
+    "loops": 0,
+    "stride": 3,
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "select": false,
+    "loops": 0,
+    "stride": 3,
+    "block": [
+      8,
+      8
+    ],
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "select": false,
+    "loops": 0,
+    "stride": -2,
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "select": false,
+    "loops": 0,
+    "stride": -2,
+    "block": [
+      8,
+      8
+    ],
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "select": false,
+    "loops": 3,
+    "stride": 3,
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "select": false,
+    "loops": 3,
+    "stride": 3,
+    "block": [
+      8,
+      8
+    ],
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "select": false,
+    "loops": 3,
+    "stride": -2,
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "select": false,
+    "loops": 3,
+    "stride": -2,
+    "block": [
+      8,
+      8
+    ],
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "select": true,
+    "loops": 0,
+    "stride": 3,
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "select": true,
+    "loops": 0,
+    "stride": 3,
+    "block": [
+      8,
+      8
+    ],
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "select": true,
+    "loops": 0,
+    "stride": -2,
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "select": true,
+    "loops": 0,
+    "stride": -2,
+    "block": [
+      8,
+      8
+    ],
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "select": true,
+    "loops": 3,
+    "stride": 3,
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "select": true,
+    "loops": 3,
+    "stride": 3,
+    "block": [
+      8,
+      8
+    ],
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "select": true,
+    "loops": 3,
+    "stride": -2,
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "select": true,
+    "loops": 3,
+    "stride": -2,
+    "block": [
+      8,
+      8
+    ],
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "case": "mixed_scalar_tensor",
+    "loops": 0,
+    "stride": 3,
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "case": "mixed_scalar_tensor",
+    "loops": 0,
+    "stride": 3,
+    "block": [
+      8,
+      8
+    ],
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "case": "mixed_scalar_tensor",
+    "loops": 0,
+    "stride": -2,
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "case": "mixed_scalar_tensor",
+    "loops": 0,
+    "stride": -2,
+    "block": [
+      8,
+      8
+    ],
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "case": "mixed_scalar_tensor",
+    "loops": 3,
+    "stride": 3,
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "case": "mixed_scalar_tensor",
+    "loops": 3,
+    "stride": 3,
+    "block": [
+      8,
+      8
+    ],
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "case": "mixed_scalar_tensor",
+    "loops": 3,
+    "stride": -2,
+    "block": 48,
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "case": "mixed_scalar_tensor",
+    "loops": 3,
+    "stride": -2,
+    "block": [
+      8,
+      8
+    ],
+    "status": "PASS",
+    "max_abs_error": 0
+  },
+  {
+    "case": "allocation_switch_rejected",
+    "status": "PASS"
+  }
+]

@@ -10,6 +10,7 @@
 #include "mlir/Dialect/SCF/IR/SCF.h"
 #include "mlir/Dialect/Tensor/IR/Tensor.h"
 #include "mlir/IR/IRMapping.h"
+#include "llvm/ADT/DenseSet.h"
 #include "triton/Dialect/Triton/IR/Dialect.h"
 
 namespace mlir::triton::sycl {
@@ -93,12 +94,36 @@ struct MemoryPointer { Value base, offset; };
 static FailureOr<MemoryPointer> memoryPointer(Value value, OpBuilder &builder,
                                              Location loc) {
   auto type = dyn_cast<RankedTensorType>(value.getType());
-  if (!type) return MemoryPointer{value, {}};
+  if (auto select = value.getDefiningOp<arith::SelectOp>()) {
+    auto lhs = memoryPointer(select.getTrueValue(), builder, loc);
+    auto rhs = memoryPointer(select.getFalseValue(), builder, loc);
+    if (failed(lhs) || failed(rhs) || lhs->base != rhs->base) return failure();
+    Value offset = builder.create<arith::SelectOp>(
+        loc, select.getCondition(), lhs->offset, rhs->offset);
+    return MemoryPointer{lhs->base, offset};
+  }
+  if (!type) {
+    if (!isa<triton::PointerType>(value.getType())) return failure();
+    if (auto add = value.getDefiningOp<triton::AddPtrOp>()) {
+      auto pointer = memoryPointer(add.getPtr(), builder, loc);
+      if (failed(pointer)) return failure();
+      Value offset = add.getOffset();
+      if (offset.getType().isIndex())
+        offset = builder.create<arith::IndexCastOp>(loc, builder.getI64Type(), offset);
+      else if (!offset.getType().isInteger(64))
+        offset = builder.create<arith::ExtSIOp>(loc, builder.getI64Type(), offset);
+      pointer->offset = builder.create<arith::AddIOp>(loc, pointer->offset, offset);
+      return *pointer;
+    }
+    Value zero = builder.create<arith::ConstantIntOp>(loc, 0, 64);
+    return MemoryPointer{value, zero};
+  }
   if (auto splat = value.getDefiningOp<triton::SplatOp>()) {
+    auto pointer = memoryPointer(splat.getSrc(), builder, loc);
+    if (failed(pointer)) return failure();
     auto offsets = RankedTensorType::get(type.getShape(), builder.getI64Type());
-    Value zero = builder.create<arith::ConstantOp>(loc,
-        DenseElementsAttr::get(offsets, builder.getI64IntegerAttr(0)));
-    return MemoryPointer{splat.getSrc(), zero};
+    Value offset = builder.create<triton::SplatOp>(loc, offsets, pointer->offset);
+    return MemoryPointer{pointer->base, offset};
   }
   if (auto add = value.getDefiningOp<triton::AddPtrOp>()) {
     auto pointer = memoryPointer(add.getPtr(), builder, loc);
@@ -126,13 +151,15 @@ static FailureOr<MemoryPointer> memoryPointer(Value value, OpBuilder &builder,
 }
 
 static LogicalResult normalizePointerLoop(scf::ForOp loop) {
-  struct Carried { unsigned index; Value base; RankedTensorType type; };
+  struct Carried { unsigned index; Value base; Type type; };
   SmallVector<Carried> carried;
   OpBuilder builder(loop);
   auto loc = loop.getLoc();
   for (auto [i, init] : llvm::enumerate(loop.getInitArgs())) {
-    auto type = dyn_cast<RankedTensorType>(init.getType());
-    if (!type || !isa<triton::PointerType>(type.getElementType())) continue;
+    Type type = init.getType();
+    auto tensorType = dyn_cast<RankedTensorType>(type);
+    if (!isa<triton::PointerType>(type) &&
+        (!tensorType || !isa<triton::PointerType>(tensorType.getElementType()))) continue;
     auto pointer = memoryPointer(init, builder, loc);
     if (failed(pointer))
       return loop.emitError("SYCL loop pointer must have an invariant scalar base");
@@ -140,7 +167,8 @@ static LogicalResult normalizePointerLoop(scf::ForOp loop) {
     auto arg = loop.getRegionIterArgs()[i];
     arg.setType(pointer->offset.getType());
     OpBuilder body = OpBuilder::atBlockBegin(loop.getBody());
-    Value base = body.create<triton::SplatOp>(loc, type, pointer->base);
+    Value base = pointer->base;
+    if (tensorType) base = body.create<triton::SplatOp>(loc, tensorType, base);
     Value reconstructed = body.create<triton::AddPtrOp>(loc, type, base, arg);
     arg.replaceAllUsesExcept(reconstructed, reconstructed.getDefiningOp());
     carried.push_back({static_cast<unsigned>(i), pointer->base, type});
@@ -158,11 +186,33 @@ static LogicalResult normalizePointerLoop(scf::ForOp loop) {
     auto pointer = memoryPointer(yield.getOperand(entry.index), builder, loc);
     if (failed(pointer) || pointer->base != entry.base)
       return loop.emitError("SYCL loop-carried pointer changes its base allocation");
+    // A recomputed tensor has no natural carried destination. Preserve that
+    // equivalence explicitly. Existing updates that read the carried tensor
+    // already obtain a destination through elementwise lowering; forcing a
+    // second write there creates a RaW conflict in nested loops.
+    bool readsCarriedOffset = false;
+    SmallVector<Value> pending{pointer->offset};
+    llvm::SmallDenseSet<Value, 16> visited;
+    while (!pending.empty()) {
+      Value value = pending.pop_back_val();
+      if (value == loop.getRegionIterArgs()[entry.index]) {
+        readsCarriedOffset = true;
+        break;
+      }
+      if (!visited.insert(value).second) continue;
+      if (auto *definition = value.getDefiningOp())
+        llvm::append_range(pending, definition->getOperands());
+    }
+    if (isa<RankedTensorType>(entry.type) && !readsCarriedOffset)
+      pointer->offset = builder.create<bufferization::MaterializeInDestinationOp>(
+          loc, pointer->offset, loop.getRegionIterArgs()[entry.index]).getResult();
     yield.setOperand(entry.index, pointer->offset);
     Value result = loop.getResult(entry.index);
     result.setType(pointer->offset.getType());
     builder.setInsertionPointAfter(loop);
-    Value base = builder.create<triton::SplatOp>(loc, entry.type, entry.base);
+    Value base = entry.base;
+    if (auto tensorType = dyn_cast<RankedTensorType>(entry.type))
+      base = builder.create<triton::SplatOp>(loc, tensorType, base);
     Value reconstructed = builder.create<triton::AddPtrOp>(loc, entry.type, base, result);
     result.replaceAllUsesExcept(reconstructed, reconstructed.getDefiningOp());
   }
