@@ -1,0 +1,375 @@
+[
+  {
+    "case": "storage:int1",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:int8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:uint8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:int16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:uint16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:int32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:uint32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:int64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:uint64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:bfloat16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float8e5",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float8e5b16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float8e4nv",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float8e4b8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float8e4b15",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:int8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:uint8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:int16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:uint16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:int32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:uint32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:int64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:uint64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "ieee:float16",
+    "status": "FAIL",
+    "returncode": 1,
+    "output_tail": "DEBUG: Attempting to import triton.backends.sycl\nDEBUG: Successfully imported triton.backends.sycl\nTraceback (most recent call last):\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 357, in <module>\n    main()\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 338, in main\n    print(json.dumps(dict(case=args.case,status='PASS',**{k:v for k,v in execute(args.case,args.mode).items() if k != 'status'})),flush=True)\n                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 320, in execute\n    assert math.copysign(1,got) == math.copysign(1,want), (case,operation,i,'zero sign',a,b,got,want)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('ieee:float16', 0, 1, 'zero sign', 0.0, -0.0, -0.0, 0.0)\n"
+  },
+  {
+    "case": "ieee:bfloat16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "ieee:float32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "ieee:float64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "constant:float32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "constant:float64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "convert:float8e5",
+    "status": "FAIL",
+    "returncode": 1,
+    "output_tail": "DEBUG: Attempting to import triton.backends.sycl\nDEBUG: Successfully imported triton.backends.sycl\nTraceback (most recent call last):\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 357, in <module>\n    main()\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 338, in main\n    print(json.dumps(dict(case=args.case,status='PASS',**{k:v for k,v in execute(args.case,args.mode).items() if k != 'status'})),flush=True)\n                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 288, in execute\n    else: assert got == want, (case,'encode',rounding,i,v,got,want)\n                 ^^^^^^^^^^^\nAssertionError: ('convert:float8e5', 'encode', 1, 2, inf, 123, 124)\n"
+  },
+  {
+    "case": "convert:float8e5b16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "convert:float8e4nv",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "convert:float8e4b8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "convert:float8e4b15",
+    "status": "FAIL",
+    "returncode": 1,
+    "output_tail": "DEBUG: Attempting to import triton.backends.sycl\nDEBUG: Successfully imported triton.backends.sycl\nTraceback (most recent call last):\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/language/core.py\", line 43, in wrapper\n    return fn(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/language/core.py\", line 1098, in to\n    return cast(self, dtype, fp_downcast_rounding, bitcast, _builder=_builder)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/language/core.py\", line 43, in wrapper\n    return fn(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/language/core.py\", line 1878, in cast\n    return semantic.cast(input, dtype, _builder, fp_downcast_rounding)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/language/semantic.py\", line 876, in cast\n    return builder.codegen_fns[\"convert_custom_types\"](input, dst_ty, fp_downcast_rounding, _builder=builder)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/language/core.py\", line 43, in wrapper\n    return fn(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/backends/sycl/numeric.py\", line 18, in convert_custom_float8\n    value = semantic.bitcast(half_bits, core.float16, b)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/language/semantic.py\", line 837, in bitcast\n    raise ValueError(\"Cannot bitcast data-type of size \" + str(src_bits) + \" to \"\nValueError: Cannot bitcast data-type of size 32 to data-type of size 16\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 357, in <module>\n    main()\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 338, in main\n    print(json.dumps(dict(case=args.case,status='PASS',**{k:v for k,v in execute(args.case,args.mode).items() if k != 'status'})),flush=True)\n                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 229, in execute\n    c = conversion.warmup(x,y,output,B=256,grid=(1,))\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/runtime/jit.py\", line 716, in warmup\n    return self.run(grid=grid, warmup=True, *map(MockTensor.wrap_dtype, args), **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/runtime/jit.py\", line 610, in run\n    kernel = self.compile(src, target=target, options=options.__dict__)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/compiler/compiler.py\", line 337, in compile\n    module = src.make_ir(options, codegen_fns, module_map, context)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/compiler/compiler.py\", line 82, in make_ir\n    return ast_to_ttir(self.fn, self, context=context, options=options, codegen_fns=codegen_fns,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntriton.compiler.errors.CompilationError: at 3:18:\ndef conversion(x, y, z, B: tl.constexpr):\n    i = tl.arange(0, B)\n    tl.store(y+i, tl.load(x+i).to(tl.float32))\n                  ^\n"
+  },
+  {
+    "case": "convert:bfloat16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "convert:float16",
+    "status": "FAIL",
+    "returncode": 1,
+    "output_tail": "DEBUG: Attempting to import triton.backends.sycl\nDEBUG: Successfully imported triton.backends.sycl\nTraceback (most recent call last):\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 357, in <module>\n    main()\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 338, in main\n    print(json.dumps(dict(case=args.case,status='PASS',**{k:v for k,v in execute(args.case,args.mode).items() if k != 'status'})),flush=True)\n                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 296, in execute\n    assert math.isnan(got) if math.isnan(want) else got == want, (case,'encode',rounding,i,v,got,want)\n                                                    ^^^^^^^^^^^\nAssertionError: ('convert:float16', 'encode', 1, 131, 65520.0, inf, 65504.0)\n"
+  },
+  {
+    "case": "arithmetic:int8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:uint8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:int16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:uint16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:int32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:uint32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:int64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:uint64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:bfloat16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float8e5",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float8e5b16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float8e4nv",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float8e4b8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float8e4b15",
+    "status": "FAIL",
+    "returncode": 1,
+    "output_tail": "/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py:166:20: error: 'arith.addf' op operand #0 must be floating-point-like, but got 'tensor<64xi8>'\n        tl.store(y+i, v+v)\n                   ^\n\"builtin.module\"() ({\n  \"tt.func\"() <{arg_attrs = [{tt.divisibility = 16 : i32}, {tt.divisibility = 16 : i32}], function_type = (!tt.ptr<i8>, !tt.ptr<i8>) -> (), sym_name = \"arithmetic\", sym_visibility = \"public\"}> ({\n  ^bb0(%arg0: !tt.ptr<i8>, %arg1: !tt.ptr<i8>):\n    %0 = \"tt.make_range\"() <{end = 64 : i32, start = 0 : i32}> : () -> tensor<64xi32>\n    %1 = \"tt.splat\"(%arg0) : (!tt.ptr<i8>) -> tensor<64x!tt.ptr<i8>>\n    %2 = \"tt.addptr\"(%1, %0) : (tensor<64x!tt.ptr<i8>>, tensor<64xi32>) -> tensor<64x!tt.ptr<i8>>\n    %3 = \"tt.load\"(%2) <{boundaryCheck = array<i32>, cache = 1 : i32, evict = 1 : i32, isVolatile = false, operandSegmentSizes = array<i32: 1, 0, 0>}> : (tensor<64x!tt.ptr<i8>>) -> tensor<64xi8>\n    %4 = \"tt.splat\"(%arg1) : (!tt.ptr<i8>) -> tensor<64x!tt.ptr<i8>>\n    %5 = \"tt.addptr\"(%4, %0) : (tensor<64x!tt.ptr<i8>>, tensor<64xi32>) -> tensor<64x!tt.ptr<i8>>\n    %6 = \"arith.addf\"(%3, %3) <{fastmath = #arith.fastmath<none>}> : (tensor<64xi8>, tensor<64xi8>) -> tensor<64xi8>\n    \"tt.store\"(%5, %6) <{boundaryCheck = array<i32>, cache = 1 : i32, evict = 1 : i32}> : (tensor<64x!tt.ptr<i8>>, tensor<64xi8>) -> ()\n    %7 = \"arith.constant\"() <{value = 64 : i32}> : () -> i32\n    %8 = \"tt.addptr\"(%arg1, %7) : (!tt.ptr<i8>, i32) -> !tt.ptr<i8>\n    %9 = \"tt.splat\"(%8) : (!tt.ptr<i8>) -> tensor<64x!tt.ptr<i8>>\n    %10 = \"tt.addptr\"(%9, %0) : (tensor<64x!tt.ptr<i8>>, tensor<64xi32>) -> tensor<64x!tt.ptr<i8>>\n    %11 = \"arith.mulf\"(%3, %3) <{fastmath = #arith.fastmath<none>}> : (tensor<64xi8>, tensor<64xi8>) -> tensor<64xi8>\n    \"tt.store\"(%10, %11) <{boundaryCheck = array<i32>, cache = 1 : i32, evict = 1 : i32}> : (tensor<64x!tt.ptr<i8>>, tensor<64xi8>) -> ()\n    %12 = \"arith.constant\"() <{value = 128 : i32}> : () -> i32\n    %13 = \"tt.addptr\"(%arg1, %12) : (!tt.ptr<i8>, i32) -> !tt.ptr<i8>\n    %14 = \"tt.splat\"(%13) : (!tt.ptr<i8>) -> tensor<64x!tt.ptr<i8>>\n    %15 = \"tt.addptr\"(%14, %0) : (tensor<64x!tt.ptr<i8>>, tensor<64xi32>) -> tensor<64x!tt.ptr<i8>>\n    %16 = \"arith.minnumf\"(%3, %3) <{fastmath = #arith.fastmath<none>}> : (tensor<64xi8>, tensor<64xi8>) -> tensor<64xi8>\n    \"tt.store\"(%15, %16) <{boundaryCheck = array<i32>, cache = 1 : i32, evict = 1 : i32}> : (tensor<64x!tt.ptr<i8>>, tensor<64xi8>) -> ()\n    \"tt.return\"() : () -> ()\n  }) {noinline = false} : () -> ()\n}) : () -> ()\n\n{-#\n  external_resources: {\n    mlir_reproducer: {\n      pipeline: \"builtin.module(inline{default-pipeline=canonicalize inlining-threshold=4294967295 max-iterations=4 }, triton-rewrite-tensor-pointer, canonicalize{  max-iterations=10 max-num-rewrites=-1 region-simplify=normal test-convergence=false top-down=true}, triton-combine, triton-reorder-broadcast, cse, symbol-dce, triton-loop-unroll)\",\n      disable_threading: false,\n      verify_each: true\n    }\n  }\n#-}\n/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py:163:0: error: Failures have been detected while processing an MLIR pass pipeline\n/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py:163:0: note: Pipeline failed while executing [`Inliner` on 'builtin.module' operation, `Canonicalizer` on 'tt.func' operation: @arithmetic]: reproducer generated at `std::errs, please share the reproducer above with Triton project.`\nDEBUG: Attempting to import triton.backends.sycl\nDEBUG: Successfully imported triton.backends.sycl\nTraceback (most recent call last):\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 357, in <module>\n    main()\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 338, in main\n    print(json.dumps(dict(case=args.case,status='PASS',**{k:v for k,v in execute(args.case,args.mode).items() if k != 'status'})),flush=True)\n                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 239, in execute\n    c = arithmetic.warmup(x,y,B=64,grid=(1,))\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/runtime/jit.py\", line 716, in warmup\n    return self.run(grid=grid, warmup=True, *map(MockTensor.wrap_dtype, args), **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/runtime/jit.py\", line 610, in run\n    kernel = self.compile(src, target=target, options=options.__dict__)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/compiler/compiler.py\", line 349, in compile\n    next_module = compile_ir(module, metadata)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/backends/sycl/compiler.py\", line 158, in <lambda>\n    stages[\"ttir\"] = lambda src, metadata: self.make_ttir(src, metadata, options)\n                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/backends/sycl/compiler.py\", line 102, in make_ttir\n    pm.run(mod)\nRuntimeError: PassManager::run failed\n"
+  },
+  {
+    "case": "reduction:int8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:uint8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:int16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:uint16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:int32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:uint32",
+    "status": "FAIL",
+    "returncode": 1,
+    "output_tail": "DEBUG: Attempting to import triton.backends.sycl\nDEBUG: Successfully imported triton.backends.sycl\nTraceback (most recent call last):\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 357, in <module>\n    main()\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 338, in main\n    print(json.dumps(dict(case=args.case,status='PASS',**{k:v for k,v in execute(args.case,args.mode).items() if k != 'status'})),flush=True)\n                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 302, in execute\n    assert actual == check_expected, (case,block,actual.hex(),check_expected.hex())\n           ^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('reduction:uint32', 48, '600000006000000000000000', '600000000300000000000000')\n"
+  },
+  {
+    "case": "reduction:int64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:uint64",
+    "status": "FAIL",
+    "returncode": 1,
+    "output_tail": "DEBUG: Attempting to import triton.backends.sycl\nDEBUG: Successfully imported triton.backends.sycl\nTraceback (most recent call last):\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 357, in <module>\n    main()\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 338, in main\n    print(json.dumps(dict(case=args.case,status='PASS',**{k:v for k,v in execute(args.case,args.mode).items() if k != 'status'})),flush=True)\n                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 302, in execute\n    assert actual == check_expected, (case,block,actual.hex(),check_expected.hex())\n           ^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('reduction:uint64', 48, '600000000000000060000000000000000000000000000000', '600000000000000003000000000000000000000000000000')\n"
+  },
+  {
+    "case": "reduction:float16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:bfloat16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float8e5",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float8e5b16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float8e4nv",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float8e4b8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float8e4b15",
+    "status": "FAIL",
+    "returncode": 1,
+    "output_tail": "DEBUG: Attempting to import triton.backends.sycl\nDEBUG: Successfully imported triton.backends.sycl\nTraceback (most recent call last):\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/language/core.py\", line 43, in wrapper\n    return fn(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/language/core.py\", line 2091, in store\n    return semantic.store(pointer, value, mask, boundary_check, cache_modifier, eviction_policy, _builder)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/language/semantic.py\", line 1366, in store\n    return _store_legacy(ptr, val, mask, boundary_check, cache, eviction, builder)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/language/semantic.py\", line 1342, in _store_legacy\n    val = cast(val, elt_ty, builder)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/language/semantic.py\", line 876, in cast\n    return builder.codegen_fns[\"convert_custom_types\"](input, dst_ty, fp_downcast_rounding, _builder=builder)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/language/core.py\", line 43, in wrapper\n    return fn(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/backends/sycl/numeric.py\", line 18, in convert_custom_float8\n    value = semantic.bitcast(half_bits, core.float16, b)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/language/semantic.py\", line 837, in bitcast\n    raise ValueError(\"Cannot bitcast data-type of size \" + str(src_bits) + \" to \"\nValueError: Cannot bitcast data-type of size 32 to data-type of size 16\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 357, in <module>\n    main()\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 338, in main\n    print(json.dumps(dict(case=args.case,status='PASS',**{k:v for k,v in execute(args.case,args.mode).items() if k != 'status'})),flush=True)\n                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v3.py\", line 244, in execute\n    c = reduction.warmup(x,y,B=64,grid=(1,))\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/runtime/jit.py\", line 716, in warmup\n    return self.run(grid=grid, warmup=True, *map(MockTensor.wrap_dtype, args), **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/runtime/jit.py\", line 610, in run\n    kernel = self.compile(src, target=target, options=options.__dict__)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/compiler/compiler.py\", line 337, in compile\n    module = src.make_ir(options, codegen_fns, module_map, context)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v3-python/triton/compiler/compiler.py\", line 82, in make_ir\n    return ast_to_ttir(self.fn, self, context=context, options=options, codegen_fns=codegen_fns,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntriton.compiler.errors.CompilationError: at 4:4:\ndef reduction(x, y, B: tl.constexpr):\n    i = tl.arange(0, B)\n    v = tl.load(x+i)\n    tl.store(y, tl.sum(v, 0))\n    ^\n"
+  }
+]

@@ -67,7 +67,7 @@ static FailureOr<Value> scalarMemoryElement(Value value, ValueRange indices,
           .getResult();
   }
   if (op->getNumRegions() == 0 && op->getNumResults() == 1 &&
-      (isa<triton::AddPtrOp>(op) ||
+      (isa<triton::AddPtrOp, triton::BitcastOp, triton::FpToFpOp>(op) ||
        op->getName().getDialectNamespace() == "arith" ||
        op->getName().getDialectNamespace() == "math")) {
     SmallVector<Value> operands;

@@ -2493,6 +2493,12 @@ def reduce(input, axis, combine_fn, keep_dims=False, _builder=None, _generator=N
     if isinstance(input, tensor):
         return reduce((input, ), axis, combine_fn, keep_dims=keep_dims, _builder=_builder, _generator=_generator)[0]
 
+    # The legacy fp8 encoding has an integer IR representation. Targets with
+    # software arithmetic must promote before creating the combiner region so
+    # its arguments, return values and reduction result agree.
+    if getattr(_builder.options, "promote_legacy_fp8_arithmetic", False):
+        input = tuple(t.to(float32, _builder=_builder) if t.dtype.is_fp8e4b15() else t for t in input)
+
     def make_combine_region(reduce_op):
         param_types = [t.type.scalar for t in input] * 2
         region = reduce_op.get_region(0)

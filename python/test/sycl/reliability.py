@@ -65,7 +65,7 @@ class RuntimeFailureTests(unittest.TestCase):
 
     def test_unsupported_dtype(self):
         with self.assertRaisesRegex(TypeError,'unsupported'):
-            runtime._type_info('fp8e4nv')
+            runtime._type_info('not-a-dtype')
 
 
 if __name__=='__main__':unittest.main(verbosity=2)

@@ -7,6 +7,7 @@
 //===----------------------------------------------------------------------===//
 
 #include "Utils/EmitUtils.h"
+#include "Utils/EmitNumericSupport.h"
 #include "llvm/Support/CommandLine.h"
 
 static llvm::cl::opt<bool> vectorMemory(
@@ -67,18 +68,12 @@ static unsigned getSYCLAccessorRank(MemRefType type) {
 void ModuleEmitter::emitOneAssign(arith::IndexCastOp op) {
   addAlias(op.getOperand(), op.getResult());
 }
-// ... (rest of the file content modifications)
 
-// I will try to make targeted replaces instead of full file to avoid massive
-// token usage if possible, but since I need to change 'state.target ==
-// EmitTarget::SYCL' checks throughout, a multi-replace or several chunks is
-// better.
-
-// Actually, I can keep the checks 'if (state.target == EmitTarget::SYCL)'
-// effectively true by passing EmitTarget::SYCL. But valid refactoring should
-// remove dead code.
-
-// Let's replace the includes and registration first.
+static std::string unsignedType(Type type) {
+  if (auto shaped = dyn_cast<ShapedType>(type)) type = shaped.getElementType();
+  unsigned width = type.isIndex() ? 64 : type.getIntOrFloatBitWidth();
+  return width == 1 ? "bool" : "uint" + std::to_string(width) + "_t";
+}
 
 template <typename AssignOpType>
 void ModuleEmitter::emitAssign(AssignOpType op) {
@@ -86,8 +81,29 @@ void ModuleEmitter::emitAssign(AssignOpType op) {
   indent();
   emitValue(op.getResult(), rank);
   os << " = ";
+  bool inputUnsigned = isa<arith::UIToFPOp, arith::ExtUIOp>(op.getOperation());
+  bool outputUnsigned = isa<arith::FPToUIOp>(op.getOperation());
+  auto rounding = op->template getAttrOfType<IntegerAttr>("sycl.rounding");
+  bool rtz = rounding && rounding.getInt() == 0;
+  Type target = op.getResult().getType();
+  if (auto shaped = dyn_cast<ShapedType>(target)) target = shaped.getElementType();
+  if (inputUnsigned) os << "static_cast<" << unsignedType(op.getOperand().getType()) << ">(";
+  if (outputUnsigned) os << "static_cast<" << unsignedType(target) << ">(";
+  if (rtz) os << "triton_sycl_rtz<" << getDataTypeName(target, state.target) << ">(";
   emitValue(op.getOperand(), rank);
+  if (inputUnsigned || outputUnsigned || rtz) os << ")";
   os << ";";
+  emitInfoAndNewLine(op);
+  emitNestedLoopFooter(rank);
+}
+
+void ModuleEmitter::emitBitcast(arith::BitcastOp op) {
+  unsigned rank = emitNestedLoopHeader(op.getResult());
+  indent();
+  emitValue(op.getResult(), rank);
+  os << " = sycl::bit_cast<" << getDataTypeName(op.getResult().getType(), state.target) << ">(";
+  emitValue(op.getIn(), rank);
+  os << ");";
   emitInfoAndNewLine(op);
   emitNestedLoopFooter(rank);
 }
@@ -1221,6 +1237,23 @@ void ModuleEmitter::emitAsyncCopyWithConstant(Value target, Value source,
 
 void ModuleEmitter::emitMemCpy(memref::CopyOp op) {
   if (state.target == EmitTarget::SYCL &&
+      cast<MemRefType>(op.getTarget().getType()).getRank() == 0) {
+    // A rank-zero memref is represented by a one-element local_accessor.
+    // Copy the element, not the accessor: copying &accessor aliases the two
+    // buffers and corrupts independent reduction accumulators.
+    indent() << "if (item.get_local_linear_id() == 0) {\n";
+    addIndent();
+    indent();
+    emitMemRefAccess(op.getTarget(), ValueRange{});
+    os << " = ";
+    emitMemRefAccess(op.getSource(), ValueRange{});
+    os << ";\n";
+    reduceIndent();
+    indent() << "}\n";
+    indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
+    return;
+  }
+  if (state.target == EmitTarget::SYCL &&
       cast<MemRefType>(op.getTarget().getType()).getRank() > 2) {
     auto type = cast<MemRefType>(op.getTarget().getType());
     if (!type.hasStaticShape()) {
@@ -1446,22 +1479,57 @@ void ModuleEmitter::emitUnary(Operation *op, const char *syntax) {
   auto rank = emitNestedLoopHeader(op->getResult(0));
   indent();
   emitValue(op->getResult(0), rank);
-  os << " = " << syntax << "(";
+  os << " = ";
+  bool floatingMath = state.target == EmitTarget::SYCL &&
+      op->getName().getDialectNamespace() == "math" &&
+      !isa<math::AbsIOp>(op);
+  if (floatingMath) {
+    // Unqualified abs(float) can select ::abs(int). Always choose the SYCL
+    // floating overload; software storage types explicitly widen first.
+    if (isa<math::AbsFOp>(op)) os << "sycl::fabs";
+    else if (isa<math::RsqrtOp>(op)) os << "sycl::rsqrt";
+    else os << "sycl::" << syntax;
+  } else os << syntax;
+  os << "(";
+  if (floatingMath) {
+    Type type = op->getOperand(0).getType();
+    if (auto shaped = dyn_cast<ShapedType>(type)) type = shaped.getElementType();
+    os << "static_cast<" << (type.isF64() ? "double" : "float") << ">(";
+  }
   emitValue(op->getOperand(0), rank);
+  if (floatingMath) os << ")";
   os << ");";
   emitInfoAndNewLine(op);
   emitNestedLoopFooter(rank);
 }
 
-void ModuleEmitter::emitBinary(Operation *op, const char *syntax) {
+void ModuleEmitter::emitBinary(Operation *op, const char *syntax, bool unsignedOperands) {
   auto rank = emitNestedLoopHeader(op->getResult(0));
   indent();
   emitValue(op->getResult(0), rank);
   os << " = ";
-  emitValue(op->getOperand(0), rank);
+  auto operand = [&](unsigned i) {
+    if (unsignedOperands) os << "uint64_t(static_cast<" << unsignedType(op->getOperand(i).getType()) << ">(";
+    emitValue(op->getOperand(i), rank);
+    if (unsignedOperands) os << "))";
+  };
+  operand(0);
   os << " " << syntax << " ";
-  emitValue(op->getOperand(1), rank);
+  operand(1);
   os << ";";
+  emitInfoAndNewLine(op);
+  emitNestedLoopFooter(rank);
+}
+
+void ModuleEmitter::emitFloatCompare(arith::CmpFOp op) {
+  auto rank = emitNestedLoopHeader(op.getResult());
+  indent();
+  emitValue(op.getResult(), rank);
+  os << " = triton_sycl_cmp<" << static_cast<unsigned>(op.getPredicate()) << ">(";
+  emitValue(op.getLhs(), rank);
+  os << ", ";
+  emitValue(op.getRhs(), rank);
+  os << ");";
   emitInfoAndNewLine(op);
   emitNestedLoopFooter(rank);
 }
@@ -1471,17 +1539,23 @@ void ModuleEmitter::emitMaxMin(OpType op, const char *syntax) {
   auto rank = emitNestedLoopHeader(op.getResult());
   indent();
   emitValue(op.getResult());
-  // SYCL maximum/minimum propagate NaNs; fmax/fmin implement maxnum/minnum.
-  if (state.target == EmitTarget::SYCL &&
-      isa<arith::MaximumFOp, arith::MinimumFOp, arith::MaxNumFOp, arith::MinNumFOp>(op.getOperation()))
+  bool unsignedOperands = isa<arith::MaxUIOp, arith::MinUIOp>(op.getOperation());
+  bool floating = isa<arith::MaximumFOp, arith::MinimumFOp, arith::MaxNumFOp, arith::MinNumFOp>(op.getOperation());
+  if (state.target == EmitTarget::SYCL && floating)
+    os << " = triton_sycl_" << syntax << "(";
+  else if (state.target == EmitTarget::SYCL && isa<arith::RemFOp, math::PowFOp>(op.getOperation()))
     os << " = sycl::" << syntax << "(";
   else if (state.target == EmitTarget::SYCL)
-    os << " = std::" << syntax << "(";
+    os << " = std::" << syntax << "<" << (unsignedOperands ? unsignedType(op.getResult().getType()) : getDataTypeName(op.getResult().getType(), state.target)) << ">(";
   else
     os << " = " << syntax << "(";
+  if (unsignedOperands) os << "static_cast<" << unsignedType(op.getLhs().getType()) << ">(";
   emitValue(op.getLhs(), rank);
+  if (unsignedOperands) os << ")";
   os << ", ";
+  if (unsignedOperands) os << "static_cast<" << unsignedType(op.getRhs().getType()) << ">(";
   emitValue(op.getRhs(), rank);
+  if (unsignedOperands) os << ")";
   os << ");";
   emitInfoAndNewLine(op);
   emitNestedLoopFooter(rank);
@@ -1536,9 +1610,6 @@ template <typename OpType> void ModuleEmitter::emitConstant(OpType op) {
     emitError(op, "has unsupported constant type.");
 }
 
-// Color equal-sized local allocations only when every use has a bounded,
-// barrier-terminated top-level affine phase. Escapes and overlapping phases
-// conservatively retain separate storage.
 void ModuleEmitter::planLocalBuffers(func::FuncOp func) {
   struct Interval { memref::AllocOp alloc; unsigned begin, end; bool safe; };
   SmallVector<Interval> intervals;
@@ -1809,6 +1880,7 @@ void ModuleEmitter::emitModule(ModuleOp module) {
 #include <cstdint>
 
 )XXX";
+    os << tritonSYCLNumericSupport;
   } else {
     os << R"XXX(//===------------------------------------------------------------*- C++ -*-===//
 //

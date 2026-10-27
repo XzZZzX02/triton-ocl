@@ -22,6 +22,9 @@ class SYCLOptions:
     source_lang: str = "sycl"
     default_dot_input_precision: str = "ieee"
     allowed_dot_input_precisions: Tuple[str, ...] = ("ieee",)
+    supported_fp8_dtypes: Tuple[str, ...] = ("fp8e5", "fp8e5b16", "fp8e4nv", "fp8e4b8", "fp8e4b15")
+    deprecated_fp8_dtypes: Tuple[str, ...] = ()
+    promote_legacy_fp8_arithmetic: bool = True
     num_warps: int = 0
     num_stages: int = 0
     num_ctas: int = 0
@@ -74,7 +77,9 @@ class SYCLBackend(BaseBackend):
 
     def get_codegen_implementation(self, options):
         # Scalar dot lowering has no frontend hardware tile constraint.
-        return {"min_dot_size": lambda lhs_type, rhs_type: (1, 1, 1)}
+        from .numeric import convert_custom_float8
+        return {"min_dot_size": lambda lhs_type, rhs_type: (1, 1, 1),
+                "convert_custom_types": convert_custom_float8}
 
     def get_module_map(self) -> Dict[str, ModuleType]:
         # TODO: Add SYCL specific libdevice if needed

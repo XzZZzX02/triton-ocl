@@ -161,7 +161,9 @@ struct LegacyAddPtrConverter : public OpConversionPattern<triton::AddPtrOp> {
       base = previous.getSource();
     }
     auto pointer = cast<triton::PointerType>(op.getType());
-    auto type = MemRefType::get({1}, pointer.getPointeeType(),
+    Type element = pointer.getPointeeType();
+    if (element.isInteger(1)) element = rewriter.getI8Type();
+    auto type = MemRefType::get({1}, element,
         StridedLayoutAttr::get(op.getContext(), ShapedType::kDynamic, {1}));
     auto cast = rewriter.create<memref::ReinterpretCastOp>(op.getLoc(), type,
         base, offset, SmallVector<OpFoldResult>{rewriter.getIndexAttr(1)},
@@ -184,6 +186,95 @@ static FailureOr<Value> scalarMemoryRef(Value pointer, Type element, Location lo
       rewriter.getIndexAttr(0), SmallVector<OpFoldResult>{rewriter.getIndexAttr(1)},
       SmallVector<OpFoldResult>{rewriter.getIndexAttr(1)}).getResult();
 }
+
+// Triton boolean memory uses byte storage; its frontend inserts pointer
+// bitcasts before loads/stores. Equal-storage-width casts preserve the address.
+struct FpToFpConverter : public OpConversionPattern<triton::FpToFpOp> {
+  using OpConversionPattern<triton::FpToFpOp>::OpConversionPattern;
+  LogicalResult matchAndRewrite(triton::FpToFpOp op, OpAdaptor adaptor,
+      ConversionPatternRewriter &rewriter) const override {
+    auto convert = [&](OpBuilder &builder, Location loc, Value value, Type target) -> Value {
+      auto source = cast<FloatType>(value.getType());
+      auto destination = cast<FloatType>(target);
+      if (source == destination) return value;
+      // Equal-width custom formats have distinct exponent ranges. Convert via
+      // fp32, which represents every fp8 value exactly.
+      if (source.getWidth() == destination.getWidth()) {
+        value = builder.create<arith::ExtFOp>(loc, builder.getF32Type(), value);
+        source = builder.getF32Type();
+      }
+      Operation *castOp;
+      if (source.getWidth() < destination.getWidth())
+        castOp = builder.create<arith::ExtFOp>(loc, target, value);
+      else
+        castOp = builder.create<arith::TruncFOp>(loc, target, value);
+      if (auto rounding = op.getRoundingAttr())
+        castOp->setAttr("sycl.rounding", builder.getI32IntegerAttr(static_cast<int>(rounding.getValue())));
+      return castOp->getResult(0);
+    };
+    if (auto type = dyn_cast<RankedTensorType>(op.getType())) {
+      Value source = adaptor.getSrc();
+      if (auto memref = dyn_cast<MemRefType>(source.getType()))
+        source = rewriter.create<bufferization::ToTensorOp>(op.getLoc(), op.getSrc().getType(), source, true, true);
+      Value init = rewriter.create<tensor::EmptyOp>(op.getLoc(), type.getShape(), type.getElementType());
+      auto identity = rewriter.getMultiDimIdentityMap(type.getRank());
+      auto generic = rewriter.create<linalg::GenericOp>(op.getLoc(), TypeRange{type},
+          ValueRange{source}, ValueRange{init}, SmallVector<AffineMap>{identity, identity},
+          getNParallelLoopsAttrs(type.getRank()), [&](OpBuilder &builder, Location loc, ValueRange args) {
+            builder.create<linalg::YieldOp>(loc, convert(builder, loc, args[0], type.getElementType()));
+          });
+      rewriter.replaceOp(op, generic.getResults());
+    } else rewriter.replaceOp(op, convert(rewriter, op.getLoc(), adaptor.getSrc(), op.getType()));
+    return success();
+  }
+};
+
+struct BitcastConverter : public OpConversionPattern<triton::BitcastOp> {
+  using OpConversionPattern<triton::BitcastOp>::OpConversionPattern;
+  LogicalResult matchAndRewrite(triton::BitcastOp op, OpAdaptor adaptor,
+      ConversionPatternRewriter &rewriter) const override {
+    if (auto pointer = dyn_cast<triton::PointerType>(op.getType())) {
+      Type element = pointer.getPointeeType();
+      Type sourceElement;
+      if (auto type = dyn_cast<UnrankedMemRefType>(adaptor.getSrc().getType())) sourceElement = type.getElementType();
+      if (auto type = dyn_cast<MemRefType>(adaptor.getSrc().getType())) sourceElement = type.getElementType();
+      if (sourceElement != element)
+        return rewriter.notifyMatchFailure(op, "pointer bitcast needs equal storage types");
+      rewriter.replaceOp(op, adaptor.getSrc());
+      return success();
+    }
+    if (auto target = dyn_cast<RankedTensorType>(op.getType())) {
+      Value source = adaptor.getSrc();
+      if (auto type = dyn_cast<MemRefType>(source.getType()))
+        source = rewriter.create<bufferization::ToTensorOp>(op.getLoc(),
+            op.getSrc().getType(), source, true, true);
+      if (source.getType() == target) {
+        rewriter.replaceOp(op, source);
+        return success();
+      }
+      auto sourceType = dyn_cast<RankedTensorType>(source.getType());
+      if (!sourceType || sourceType.getShape() != target.getShape() ||
+          sourceType.getElementTypeBitWidth() != target.getElementTypeBitWidth())
+        return rewriter.notifyMatchFailure(op, "bitcast needs equal element storage widths");
+      Value init = rewriter.create<tensor::EmptyOp>(op.getLoc(),
+          target.getShape(), target.getElementType());
+      auto identity = rewriter.getMultiDimIdentityMap(target.getRank());
+      auto generic = rewriter.create<linalg::GenericOp>(op.getLoc(),
+          TypeRange{target}, ValueRange{source}, ValueRange{init},
+          SmallVector<AffineMap>{identity, identity},
+          getNParallelLoopsAttrs(target.getRank()),
+          [&](OpBuilder &builder, Location loc, ValueRange args) {
+            Value bits = builder.create<arith::BitcastOp>(loc,
+                target.getElementType(), args[0]);
+            builder.create<linalg::YieldOp>(loc, bits);
+          });
+      rewriter.replaceOp(op, generic.getResults());
+      return success();
+    }
+    rewriter.replaceOpWithNewOp<arith::BitcastOp>(op, op.getType(), adaptor.getSrc());
+    return success();
+  }
+};
 
 struct LoadConverter : public OpConversionPattern<triton::LoadOp> {
   using OpConversionPattern<triton::LoadOp>::OpConversionPattern;
@@ -641,6 +732,9 @@ struct ReduceConverter : public OpConversionPattern<triton::ReduceOp> {
            (binary->getOperand(1) == combiner.getArgument(i) &&
             binary->getOperand(0) == combiner.getArgument(count + i))))
         identity = arith::getNeutralElement(binary);
+      // +/-infinity is not a neutral element for maxnum/minnum on all-NaN
+      // inputs. Seed from the first element to preserve NaN results.
+      if (binary && isa<arith::MaxNumFOp, arith::MinNumFOp>(binary)) identity.reset();
       identities.push_back(identity ? *identity : TypedAttr{});
       seedFirst |= !identity.has_value();
     }

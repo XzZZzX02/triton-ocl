@@ -33,6 +33,8 @@
 #include "mlir/Interfaces/ViewLikeInterface.h"
 #include "mlir/Tools/mlir-translate/MlirTranslateMain.h"
 #include "llvm/ADT/TypeSwitch.h"
+#include <iomanip>
+#include <sstream>
 
 using namespace mlir;
 //===----------------------------------------------------------------------===//
@@ -78,9 +80,17 @@ static std::string getDataTypeName(Type type, EmitTarget target) {
   else if (mlir::isa<Float64Type>(valType))
     return "double";
   else if (mlir::isa<Float16Type>(valType))
-    return target == EmitTarget::SYCL ? "sycl::half" : "half";
+    return target == EmitTarget::SYCL ? "triton_sycl_float16" : "half";
   else if (mlir::isa<BFloat16Type>(valType))
-    return target == EmitTarget::SYCL ? "sycl::ext::oneapi::bfloat16" : "ushort";
+    return target == EmitTarget::SYCL ? "triton_sycl_bfloat16" : "ushort";
+  else if (mlir::isa<Float8E5M2Type>(valType))
+    return "triton_sycl_fp8e5";
+  else if (mlir::isa<Float8E5M2FNUZType>(valType))
+    return "triton_sycl_fp8e5b16";
+  else if (mlir::isa<Float8E4M3FNType>(valType))
+    return "triton_sycl_fp8e4nv";
+  else if (mlir::isa<Float8E4M3FNUZType>(valType))
+    return "triton_sycl_fp8e4b8";
   else if (mlir::isa<IndexType>(valType))
     return "int64_t";
   else if (auto intType = mlir::dyn_cast<IntegerType>(valType)) {
@@ -155,7 +165,7 @@ public:
             arith::MaxUIOp, arith::MinUIOp,
 
             // Special expressions.
-            arith::SelectOp, arith::ConstantOp, arith::TruncIOp,
+            arith::SelectOp, arith::ConstantOp, arith::BitcastOp, arith::TruncIOp,
             arith::TruncFOp, arith::ExtFOp, arith::ExtUIOp, arith::ExtSIOp, arith::IndexCastOp,
             arith::UIToFPOp, arith::SIToFPOp, arith::FPToSIOp, arith::FPToUIOp,
 
@@ -269,6 +279,7 @@ public:
   HANDLE(arith::MinUIOp);
 
   // Special expressions.
+  HANDLE(arith::BitcastOp);
   HANDLE(arith::SelectOp);
   HANDLE(arith::ConstantOp);
   HANDLE(arith::TruncIOp);
@@ -392,17 +403,18 @@ static SmallString<8> getConstantString(Type type, Attribute attr) {
     string.append(std::to_string(value));
 
   } else if (auto floatType = mlir::dyn_cast<FloatType>(type)) {
-    if (floatType.getWidth() <= 32) {
-      auto value = mlir::cast<FloatAttr>(attr).getValue().convertToFloat();
-      string.append(std::isfinite(value)
-                        ? std::to_string(value)
-                        : (std::isnan(value) ? "NAN" : (value > 0 ? "INFINITY" : "-INFINITY")));
-    } else if (floatType.getWidth() == 64) {
-      auto value = mlir::cast<FloatAttr>(attr).getValue().convertToDouble();
-      string.append(std::isfinite(value)
-                        ? std::to_string(value)
-                        : (std::isnan(value) ? "NAN" : (value > 0 ? "INFINITY" : "-INFINITY")));
-    }
+    // Hex literals round-trip every finite binary value and preserve -0.
+    // Decimal std::to_string truncated values such as 1e-12 to zero.
+    auto number = mlir::cast<FloatAttr>(attr).getValue();
+    bool losesInfo;
+    number.convert(llvm::APFloat::IEEEdouble(), llvm::APFloat::rmNearestTiesToEven, &losesInfo);
+    double value = number.convertToDouble();
+    std::ostringstream literal;
+    if (std::isnan(value)) literal << "NAN";
+    else if (std::isinf(value)) literal << (value < 0 ? "-INFINITY" : "INFINITY");
+    else literal << std::hexfloat << value << (floatType.isF64() ? "" : "f");
+    string.append("static_cast<" + getDataTypeName(type, EmitTarget::SYCL) +
+                  ">(" + literal.str() + ")");
   } else if (auto intType = mlir::dyn_cast<IntegerType>(type)) {
     if (intType.isSigned()) {
       auto value = mlir::cast<IntegerAttr>(attr).getValue().getSExtValue();
@@ -411,8 +423,9 @@ static SmallString<8> getConstantString(Type type, Attribute attr) {
       auto value = mlir::cast<IntegerAttr>(attr).getValue().getZExtValue();
       string.append(std::to_string(value));
     } else {
-      auto value = mlir::cast<IntegerAttr>(attr).getInt();
-      string.append(std::to_string(value));
+      auto value = mlir::cast<IntegerAttr>(attr).getValue().getZExtValue();
+      string.append("static_cast<" + getDataTypeName(type, EmitTarget::SYCL) +
+                    ">(" + std::to_string(value) + "ULL)");
     }
   }
   return string;
@@ -484,7 +497,9 @@ public:
 
   /// Standard expression emitters.
   void emitUnary(Operation *op, const char *syntax);
-  void emitBinary(Operation *op, const char *syntax);
+  void emitBinary(Operation *op, const char *syntax, bool unsignedOperands = false);
+  void emitFloatCompare(arith::CmpFOp op);
+  void emitBitcast(arith::BitcastOp op);
   template <typename OpType> void emitMaxMin(OpType op, const char *syntax);
 
   /// Special expression emitters.
@@ -714,7 +729,7 @@ public:
   bool visitOp(arith::SubFOp op) { return emitter.emitBinary(op, "-"), true; }
   bool visitOp(arith::MulFOp op) { return emitter.emitBinary(op, "*"), true; }
   bool visitOp(arith::DivFOp op) { return emitter.emitBinary(op, "/"), true; }
-  bool visitOp(arith::RemFOp op) { return emitter.emitBinary(op, "%"), true; }
+  bool visitOp(arith::RemFOp op) { return emitter.emitMaxMin(op, "fmod"), true; }
   bool visitOp(arith::MaximumFOp op) {
     return emitter.emitMaxMin(op, "maximum"), true;
   }
@@ -731,19 +746,19 @@ public:
 
   /// Integer binary expressions.
   bool visitOp(arith::CmpIOp op);
-  bool visitOp(arith::AddIOp op) { return emitter.emitBinary(op, "+"), true; }
-  bool visitOp(arith::SubIOp op) { return emitter.emitBinary(op, "-"), true; }
-  bool visitOp(arith::MulIOp op) { return emitter.emitBinary(op, "*"), true; }
+  bool visitOp(arith::AddIOp op) { return emitter.emitBinary(op, "+", true), true; }
+  bool visitOp(arith::SubIOp op) { return emitter.emitBinary(op, "-", true), true; }
+  bool visitOp(arith::MulIOp op) { return emitter.emitBinary(op, "*", true), true; }
   bool visitOp(arith::DivSIOp op) { return emitter.emitBinary(op, "/"), true; }
   bool visitOp(arith::RemSIOp op) { return emitter.emitBinary(op, "%"), true; }
-  bool visitOp(arith::DivUIOp op) { return emitter.emitBinary(op, "/"), true; }
-  bool visitOp(arith::RemUIOp op) { return emitter.emitBinary(op, "%"), true; }
+  bool visitOp(arith::DivUIOp op) { return emitter.emitBinary(op, "/", true), true; }
+  bool visitOp(arith::RemUIOp op) { return emitter.emitBinary(op, "%", true), true; }
   bool visitOp(arith::XOrIOp op) { return emitter.emitBinary(op, "^"), true; }
   bool visitOp(arith::AndIOp op) { return emitter.emitBinary(op, "&"), true; }
   bool visitOp(arith::OrIOp op) { return emitter.emitBinary(op, "|"), true; }
-  bool visitOp(arith::ShLIOp op) { return emitter.emitBinary(op, "<<"), true; }
+  bool visitOp(arith::ShLIOp op) { return emitter.emitBinary(op, "<<", true), true; }
   bool visitOp(arith::ShRSIOp op) { return emitter.emitBinary(op, ">>"), true; }
-  bool visitOp(arith::ShRUIOp op) { return emitter.emitBinary(op, ">>"), true; }
+  bool visitOp(arith::ShRUIOp op) { return emitter.emitBinary(op, ">>", true), true; }
   bool visitOp(arith::MaxSIOp op) {
     return emitter.emitMaxMin(op, "max"), true;
   }
@@ -758,6 +773,7 @@ public:
   }
 
   /// Special expressions.
+  bool visitOp(arith::BitcastOp op) { return emitter.emitBitcast(op), true; }
   bool visitOp(arith::SelectOp op) { return emitter.emitSelect(op), true; }
   bool visitOp(arith::ConstantOp op) { return emitter.emitConstant(op), true; }
   bool visitOp(arith::IndexCastOp op) {
@@ -781,29 +797,8 @@ private:
 } // namespace
 
 bool ExprVisitor::visitOp(arith::CmpFOp op) {
-  switch (op.getPredicate()) {
-  case arith::CmpFPredicate::OEQ:
-  case arith::CmpFPredicate::UEQ:
-    return emitter.emitBinary(op, "=="), true;
-  case arith::CmpFPredicate::ONE:
-  case arith::CmpFPredicate::UNE:
-    return emitter.emitBinary(op, "!="), true;
-  case arith::CmpFPredicate::OLT:
-  case arith::CmpFPredicate::ULT:
-    return emitter.emitBinary(op, "<"), true;
-  case arith::CmpFPredicate::OLE:
-  case arith::CmpFPredicate::ULE:
-    return emitter.emitBinary(op, "<="), true;
-  case arith::CmpFPredicate::OGT:
-  case arith::CmpFPredicate::UGT:
-    return emitter.emitBinary(op, ">"), true;
-  case arith::CmpFPredicate::OGE:
-  case arith::CmpFPredicate::UGE:
-    return emitter.emitBinary(op, ">="), true;
-  default:
-    op.emitError("has unsupported compare type.");
-    return false;
-  }
+  emitter.emitFloatCompare(op);
+  return true;
 }
 
 bool ExprVisitor::visitOp(arith::CmpIOp op) {
@@ -813,17 +808,21 @@ bool ExprVisitor::visitOp(arith::CmpIOp op) {
   case arith::CmpIPredicate::ne:
     return emitter.emitBinary(op, "!="), true;
   case arith::CmpIPredicate::slt:
-  case arith::CmpIPredicate::ult:
     return emitter.emitBinary(op, "<"), true;
+  case arith::CmpIPredicate::ult:
+    return emitter.emitBinary(op, "<", true), true;
   case arith::CmpIPredicate::sle:
-  case arith::CmpIPredicate::ule:
     return emitter.emitBinary(op, "<="), true;
+  case arith::CmpIPredicate::ule:
+    return emitter.emitBinary(op, "<=", true), true;
   case arith::CmpIPredicate::sgt:
-  case arith::CmpIPredicate::ugt:
     return emitter.emitBinary(op, ">"), true;
+  case arith::CmpIPredicate::ugt:
+    return emitter.emitBinary(op, ">", true), true;
   case arith::CmpIPredicate::sge:
-  case arith::CmpIPredicate::uge:
     return emitter.emitBinary(op, ">="), true;
+  case arith::CmpIPredicate::uge:
+    return emitter.emitBinary(op, ">=", true), true;
   }
   return false;
 }

@@ -26,6 +26,7 @@ void populateTritonToLinalgConversionPatterns(TypeConverter &typeConverter,
   populateFunctionOpInterfaceTypeConversionPattern<triton::FuncOp>(
       patterns, typeConverter);
   patterns.add<MetaOpConverter>(patterns.getContext());
+  patterns.add<FpToFpConverter, BitcastConverter>(patterns.getContext());
   patterns.add<StoreConverter>(patterns.getContext());
   patterns.add<LegacyAddPtrConverter>(patterns.getContext());
   patterns.add<GetProgramIDConverter>(patterns.getContext());
@@ -47,7 +48,9 @@ public:
     // The order of type conversion is important: later ones are tried earlier.
     addConversion([](Type type) { return type; });
     addConversion([](triton::PointerType ptrType) {
-      return UnrankedMemRefType::get(ptrType.getPointeeType(), 0);
+      Type element = ptrType.getPointeeType();
+      if (element.isInteger(1)) element = IntegerType::get(element.getContext(), 8);
+      return UnrankedMemRefType::get(element, 0);
     });
     addConversion([](TensorType tensorType) -> Type {
       auto elemType = tensorType.getElementType();

@@ -3,6 +3,7 @@ import warnings
 
 from typing import List, Optional, Sequence, Tuple, TypeVar
 import numbers
+import math
 
 from .._C.libtriton import ir
 from . import core as tl
@@ -191,6 +192,8 @@ def binary_op_type_checking_impl(lhs: tl.tensor | numbers.Number, rhs: tl.tensor
                 raise ValueError(f"Scalar {lhs_scalar} is out of range for type {ret_sca_ty}")
             if rhs_is_scalar and not (ret_sca_ty.get_int_min_value() <= rhs_scalar <= ret_sca_ty.get_int_max_value()):
                 raise ValueError(f"Scalar {rhs_scalar} is out of range for type {ret_sca_ty}")
+        if ret_sca_ty.is_fp8e4b15() and getattr(builder.options, "promote_legacy_fp8_arithmetic", False):
+            ret_sca_ty = tl.float32
         lhs = full(
             (), lhs_scalar, dtype=ret_sca_ty, builder=builder) if lhs_is_scalar else cast(lhs, ret_sca_ty, builder)
         rhs = full(
@@ -634,7 +637,7 @@ def full(shape: List[int], value, dtype: tl.dtype, builder: ir.builder) -> tl.te
         # scalar
         if dtype is None:
             raise ValueError("dtype must be specified when value is not a tensor")
-        if value == 0:
+        if value == 0 and not (isinstance(value, float) and math.copysign(1., value) < 0):
             value = builder.get_null_value(dtype.to_ir(builder))
         else:
             get_value_fn = getattr(builder, f"get_{dtype.name}")
@@ -861,6 +864,13 @@ def cast(input: tl.tensor, dst_ty: tl.dtype, builder: ir.builder,
         if fp_downcast_rounding is not None:
             raise ValueError("fp_downcast_rounding should be set only for truncating fp conversions. "
                              "Source scalar type is " + str(src_sca_ty) + " and destination type is " + str(dst_sca_ty))
+
+    # Custom floating encodings use a standard float intermediate when crossing
+    # the integer family. All finite fp8 values are exactly representable in f32.
+    if src_sca_ty.is_int() and dst_sca_ty.is_fp8():
+        return cast(cast(input, tl.float32, builder), dst_ty, builder)
+    if src_sca_ty.is_fp8() and dst_sca_ty.is_int():
+        return cast(cast(input, tl.float32, builder), dst_ty, builder)
 
     if (src_sca_ty.is_fp8e4b15() or dst_sca_ty.is_fp8e4b15()):
         assert builder.codegen_fns.get(

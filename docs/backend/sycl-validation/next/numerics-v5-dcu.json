@@ -1,0 +1,368 @@
+[
+  {
+    "case": "storage:int1",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:int8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:uint8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:int16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:uint16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:int32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:uint32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:int64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:uint64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:bfloat16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float8e5",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float8e5b16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float8e4nv",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float8e4b8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float8e4b15",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:int8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:uint8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:int16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:uint16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:int32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:uint32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:int64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:uint64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "ieee:float16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "ieee:bfloat16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "ieee:float32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "ieee:float64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "constant:float32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "constant:float64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "convert:float8e5",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "convert:float8e5b16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "convert:float8e4nv",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "convert:float8e4b8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "convert:float8e4b15",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "convert:bfloat16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "convert:float16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:int8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:uint8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:int16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:uint16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:int32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:uint32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:int64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:uint64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:bfloat16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float8e5",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float8e5b16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float8e4nv",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float8e4b8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float8e4b15",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:int8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:uint8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:int16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:uint16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:int32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:uint32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:int64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:uint64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:bfloat16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float8e5",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float8e5b16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float8e4nv",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float8e4b8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float8e4b15",
+    "status": "FAIL",
+    "returncode": 1,
+    "output_tail": "/public/home/dtune/zzx/triton/gap-validation/next/numerics-v5-python/triton/language/standard.py:290:36: error: failed to legalize operation 'tt.bitcast' that was explicitly marked illegal\n    return core.reduce(input, axis, _sum_combine, keep_dims=keep_dims)\n                                   ^\n/work1/dtune/zzx/triton/gap-validation/next/dtype-v5.py:183:26: note: called from\n        tl.store(y, tl.sum(v, 0))\n                         ^\nmodule {\n  tt.func public @reduction(%arg0: !tt.ptr<i8> {tt.divisibility = 16 : i32}, %arg1: !tt.ptr<f32> {tt.divisibility = 16 : i32}) attributes {noinline = false} {\n    %cst = arith.constant dense<127> : tensor<64xi32>\n    %cst_0 = arith.constant dense<7> : tensor<64xi32>\n    %cst_1 = arith.constant dense<128> : tensor<64xi32>\n    %cst_2 = arith.constant dense<8> : tensor<64xi32>\n    %c2_i32 = arith.constant 2 : i32\n    %c1_i32 = arith.constant 1 : i32\n    %0 = tt.make_range {end = 64 : i32, start = 0 : i32} : tensor<64xi32>\n    %1 = tt.splat %arg0 : !tt.ptr<i8> -> tensor<64x!tt.ptr<i8>>\n    %2 = tt.addptr %1, %0 : tensor<64x!tt.ptr<i8>>, tensor<64xi32>\n    %3 = tt.load %2 : tensor<64x!tt.ptr<i8>>\n    %4 = tt.bitcast %3 : tensor<64xi8> -> tensor<64xi8>\n    %5 = arith.extui %4 : tensor<64xi8> to tensor<64xi32>\n    %6 = arith.andi %5, %cst : tensor<64xi32>\n    %7 = arith.shli %6, %cst_0 : tensor<64xi32>\n    %8 = arith.andi %5, %cst_1 : tensor<64xi32>\n    %9 = arith.shli %8, %cst_2 : tensor<64xi32>\n    %10 = arith.ori %7, %9 : tensor<64xi32>\n    %11 = arith.trunci %10 : tensor<64xi32> to tensor<64xi16>\n    %12 = tt.bitcast %11 : tensor<64xi16> -> tensor<64xf16>\n    %13 = arith.extf %12 : tensor<64xf16> to tensor<64xf32>\n    %14 = \"tt.reduce\"(%13) <{axis = 0 : i32}> ({\n    ^bb0(%arg2: f32, %arg3: f32):\n      %19 = arith.addf %arg2, %arg3 : f32\n      tt.reduce.return %19 : f32\n    }) : (tensor<64xf32>) -> f32\n    tt.store %arg1, %14 : !tt.ptr<f32>\n    %15 = tt.addptr %arg1, %c1_i32 : !tt.ptr<f32>, i32\n    %16 = \"tt.reduce\"(%13) <{axis = 0 : i32}> ({\n    ^bb0(%arg2: f32, %arg3: f32):\n      %19 = arith.maxnumf %arg2, %arg3 : f32\n      tt.reduce.return %19 : f32\n    }) : (tensor<64xf32>) -> f32\n    tt.store %15, %16 : !tt.ptr<f32>\n    %17 = tt.addptr %arg1, %c2_i32 : !tt.ptr<f32>, i32\n    %18 = \"tt.reduce\"(%13) <{axis = 0 : i32}> ({\n    ^bb0(%arg2: f32, %arg3: f32):\n      %19 = arith.minnumf %arg2, %arg3 : f32\n      tt.reduce.return %19 : f32\n    }) : (tensor<64xf32>) -> f32\n    tt.store %17, %18 : !tt.ptr<f32>\n    tt.return\n  }\n}\n\n{-#\n  external_resources: {\n    mlir_reproducer: {\n      pipeline: \"builtin.module(triton-to-linalg)\",\n      disable_threading: false,\n      verify_each: true\n    }\n  }\n#-}\n/work1/dtune/zzx/triton/gap-validation/next/dtype-v5.py:180:0: error: Failures have been detected while processing an MLIR pass pipeline\n/work1/dtune/zzx/triton/gap-validation/next/dtype-v5.py:180:0: note: Pipeline failed while executing [`TritonToLinalg` on 'builtin.module' operation]: reproducer generated at `std::errs, please share the reproducer above with Triton project.`\nDEBUG: Attempting to import triton.backends.sycl\nDEBUG: Successfully imported triton.backends.sycl\nTraceback (most recent call last):\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v5.py\", line 368, in <module>\n    main()\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v5.py\", line 349, in main\n    print(json.dumps(dict(case=args.case,status='PASS',**{k:v for k,v in execute(args.case,args.mode).items() if k != 'status'})),flush=True)\n                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work1/dtune/zzx/triton/gap-validation/next/dtype-v5.py\", line 253, in execute\n    c = reduction.warmup(x,y,B=64,grid=(1,))\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v5-python/triton/runtime/jit.py\", line 716, in warmup\n    return self.run(grid=grid, warmup=True, *map(MockTensor.wrap_dtype, args), **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v5-python/triton/runtime/jit.py\", line 610, in run\n    kernel = self.compile(src, target=target, options=options.__dict__)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v5-python/triton/compiler/compiler.py\", line 349, in compile\n    next_module = compile_ir(module, metadata)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v5-python/triton/backends/sycl/compiler.py\", line 167, in <lambda>\n    stages[\"lair\"] = lambda src, metadata: self.make_lair(src, metadata, options)\n                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/public/home/dtune/zzx/triton/gap-validation/next/numerics-v5-python/triton/backends/sycl/compiler.py\", line 116, in make_lair\n    pm.run(mod)\nRuntimeError: PassManager::run failed\n"
+  }
+]

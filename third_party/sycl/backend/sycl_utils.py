@@ -9,6 +9,7 @@ from dataclasses import dataclass
 import ctypes
 import fcntl
 import hashlib
+import math
 import os
 import re
 import struct
@@ -43,13 +44,21 @@ _TYPE_INFO = {
     "u32": _TypeInfo("uint32_t", ctypes.c_uint32, 4),
     "i64": _TypeInfo("int64_t", ctypes.c_int64, 8),
     "u64": _TypeInfo("uint64_t", ctypes.c_uint64, 8),
-    "fp16": _TypeInfo("sycl::half", ctypes.c_uint16, 2, is_float=True),
-    "bf16": _TypeInfo("sycl::ext::oneapi::bfloat16", ctypes.c_uint16, 2, is_float=True),
+    "fp16": _TypeInfo("triton_sycl_float16", ctypes.c_uint16, 2, is_float=True),
+    "bf16": _TypeInfo("triton_sycl_bfloat16", ctypes.c_uint16, 2, is_float=True),
+    "fp8e5": _TypeInfo("triton_sycl_fp8e5", ctypes.c_uint8, 1, is_float=True),
+    "fp8e5b16": _TypeInfo("triton_sycl_fp8e5b16", ctypes.c_uint8, 1, is_float=True),
+    "fp8e4nv": _TypeInfo("triton_sycl_fp8e4nv", ctypes.c_uint8, 1, is_float=True),
+    "fp8e4b8": _TypeInfo("triton_sycl_fp8e4b8", ctypes.c_uint8, 1, is_float=True),
+    "fp8e4b15": _TypeInfo("int8_t", ctypes.c_uint8, 1, is_float=True),
     "fp32": _TypeInfo("float", ctypes.c_float, 4, is_float=True),
     "fp64": _TypeInfo("double", ctypes.c_double, 8, is_float=True),
 }
 
 _DTYPE_ALIASES = {
+    "int1": "u1",
+    "float8e5": "fp8e5", "float8e5b16": "fp8e5b16",
+    "float8e4nv": "fp8e4nv", "float8e4b8": "fp8e4b8", "float8e4b15": "fp8e4b15",
     "bool": "u1", "torch.bool": "u1",
     "int8": "i8", "torch.int8": "i8", "int16": "i16", "torch.int16": "i16",
     "int32": "i32", "torch.int32": "i32", "int": "i32", "int64": "i64", "torch.int64": "i64",
@@ -105,11 +114,15 @@ def _pointer_element_type(type_repr, arg):
 
 
 def _actual_element_type(arg):
-    # ctypes carries half bits in uint16; the explicit Triton dtype
-    # distinguishes this storage from an integer tensor.
-    if (hasattr(arg, "c_array") and arg.c_array._type_ is ctypes.c_uint16
-            and str(getattr(arg, "dtype", "")) in ("fp16", "float16", "torch.float16")):
-        return "fp16"
+    # Explicit logical dtype disambiguates raw uint8/uint16 float storage.
+    dtype = _canonical_type(getattr(arg, "dtype", ""))
+    if hasattr(arg, "c_array") and dtype in _TYPE_INFO:
+        info = _TYPE_INFO[dtype]
+        actual = arg.c_array._type_
+        if info.is_float and actual in (ctypes.c_uint8, ctypes.c_uint16):
+            if ctypes.sizeof(actual) != info.size:
+                raise ValueError(f"{dtype} storage has an incompatible element width")
+            return dtype
     if hasattr(arg, "c_array") and hasattr(arg.c_array, "_type_"):
         for name, info in _TYPE_INFO.items():
             if info.ctypes_type is arg.c_array._type_:
@@ -183,6 +196,9 @@ def _source_signature(kernel_name, source_code):
     if len(params) < 7:
         raise RuntimeError(f"invalid launch_{kernel_name} ABI")
     cxx_to_triton = {
+        "sycl::half": "fp16", "triton_sycl_float16": "fp16", "triton_sycl_bfloat16": "bf16",
+        "triton_sycl_fp8e5": "fp8e5", "triton_sycl_fp8e5b16": "fp8e5b16",
+        "triton_sycl_fp8e4nv": "fp8e4nv", "triton_sycl_fp8e4b8": "fp8e4b8",
         "bool": "u1", "int8_t": "i8", "uint8_t": "u8", "int16_t": "i16", "uint16_t": "u16",
         "int32_t": "i32", "uint32_t": "u32", "int64_t": "i64", "uint64_t": "u64",
         "int": "i32", "long": "i64", "unsigned": "u32", "float": "fp32", "double": "fp64",
@@ -456,9 +472,12 @@ def _cpp_scalar_declaration(index, type_repr, value):
     if info.is_bool:
         literal = "true" if bool(value) else "false"
     elif info.is_float:
-        literal = repr(float(value)) + ("f" if ty == "fp32" else "")
+        number = float(value)
+        literal = ("NAN" if math.isnan(number) else
+                   ("-INFINITY" if number < 0 else "INFINITY") if math.isinf(number) else
+                   number.hex() + ("f" if ty == "fp32" else ""))
     else:
-        literal = str(int(value))
+        literal = str(int(value)) + ("ULL" if ty == "u64" else "LL" if ty == "i64" else "")
     return f"        {info.cxx} arg_{index} = static_cast<{info.cxx}>({literal});\n"
 
 
@@ -469,7 +488,8 @@ def generate_standalone_wrapper(kernel_name, source_code, bound_args, *, signatu
     block = resolve_block_size(metadata, block_size, source_code)
     call_args = ["&q", "gridX", "gridY", "gridZ", "blockX", "blockY", "blockZ"]
     declarations, output_writes, cleanup = [], [], []
-    for index, type_repr, element_type, arg, _ in runtime_args:
+    source_types = _source_signature(kernel_name, source_code)
+    for position, (index, type_repr, element_type, arg, _) in enumerate(runtime_args):
         if _is_pointer_type(type_repr):
             info = _type_info(element_type)
             declarations.append(
@@ -481,7 +501,13 @@ def generate_standalone_wrapper(kernel_name, source_code, bound_args, *, signatu
                 f"        infile.read(reinterpret_cast<char*>(arg_{index}), size_{index});\n"
                 f"        if (!infile) return 4;\n"
             )
-            call_args.append(f"arg_{index}")
+            # MLIR integer types are signless; the source ABI uses signed
+            # storage while runtime buffers retain the user's logical dtype.
+            source_type = source_types[position].lstrip("*")
+            source_info = _type_info(source_type)
+            if source_info.size != info.size:
+                raise ValueError("compiled pointer ABI has a different storage width")
+            call_args.append(f"reinterpret_cast<{source_info.cxx}*>(arg_{index})")
             output_writes.append(f"        outfile.write(reinterpret_cast<const char*>(arg_{index}), size_{index});\n")
             cleanup.append(f"        sycl::free(arg_{index}, q);\n")
         else:

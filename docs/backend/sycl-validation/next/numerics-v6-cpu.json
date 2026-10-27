@@ -1,0 +1,367 @@
+[
+  {
+    "case": "storage:int1",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:int8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:uint8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:int16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:uint16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:int32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:uint32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:int64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:uint64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:bfloat16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float8e5",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float8e5b16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float8e4nv",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float8e4b8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "storage:float8e4b15",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:int8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:uint8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:int16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:uint16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:int32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:uint32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:int64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "integer:uint64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "ieee:float16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "ieee:bfloat16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "ieee:float32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "ieee:float64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "constant:float32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "constant:float64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "convert:float8e5",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "convert:float8e5b16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "convert:float8e4nv",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "convert:float8e4b8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "convert:float8e4b15",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "convert:bfloat16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "convert:float16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:int8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:uint8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:int16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:uint16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:int32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:uint32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:int64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:uint64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:bfloat16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float8e5",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float8e5b16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float8e4nv",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float8e4b8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "arithmetic:float8e4b15",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:int8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:uint8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:int16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:uint16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:int32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:uint32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:int64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:uint64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:bfloat16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float32",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float64",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float8e5",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float8e5b16",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float8e4nv",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float8e4b8",
+    "status": "PASS",
+    "checks": 2
+  },
+  {
+    "case": "reduction:float8e4b15",
+    "status": "PASS",
+    "checks": 2
+  }
+]
