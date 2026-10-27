@@ -28,6 +28,9 @@
 namespace py = pybind11;
 
 void init_triton_sycl_passes_lair(py::module &&m) {
+  m.def("elementwise_fusion", [](mlir::PassManager &pm) {
+    pm.addPass(mlir::triton::sycl::createElementwiseFusionPass());
+  });
   m.def("triton_to_linalg", [](mlir::PassManager &pm) {
     pm.addPass(mlir::triton::sycl::createTritonToLinalgPass());
   });

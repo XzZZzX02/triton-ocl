@@ -37,6 +37,7 @@ class SYCLOptions:
     sanitize_overflow: bool = False
     vectorize_memory: bool = False
     reuse_local_memory: bool = True
+    fuse_elementwise: bool = False
 
     def __post_init__(self):
         pass
@@ -109,6 +110,9 @@ class SYCLBackend(BaseBackend):
         pm = ir.pass_manager(mod.context)
         pm.enable_debug()
         sycl.passes.lair.triton_to_linalg(pm)
+        if opt.fuse_elementwise:
+            sycl.passes.lair.elementwise_fusion(pm)
+            passes.common.add_canonicalizer(pm)
         pm.run(mod)
         return mod
 
