@@ -6,6 +6,7 @@ add_subdirectory(lib)
 if(TRITON_BUILD_PYTHON_MODULE)
   add_triton_plugin(TritonSYCL ${CMAKE_CURRENT_SOURCE_DIR}/triton_sycl.cc)
   target_link_libraries(TritonSYCL PUBLIC PRIVATE Python3::Module pybind11::headers)
+  target_link_libraries(TritonSYCL PUBLIC MLIRFuncInlinerExtension)
 endif()
 
 option(BUILD_SPIRV_OPT "build spirv-opt to debug" OFF)

@@ -1,0 +1,2204 @@
+[
+  {
+    "source": "int1",
+    "status": "PASS",
+    "pairs": [
+      {
+        "src": "int1",
+        "dst": "int1",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int1",
+        "dst": "int8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int1",
+        "dst": "uint8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int1",
+        "dst": "int16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int1",
+        "dst": "uint16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int1",
+        "dst": "int32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int1",
+        "dst": "uint32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int1",
+        "dst": "int64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int1",
+        "dst": "uint64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int1",
+        "dst": "float16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int1",
+        "dst": "bfloat16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int1",
+        "dst": "float32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int1",
+        "dst": "float64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int1",
+        "dst": "float8e5",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int1",
+        "dst": "float8e5b16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int1",
+        "dst": "float8e4nv",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int1",
+        "dst": "float8e4b8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int1",
+        "dst": "float8e4b15",
+        "rounding": "default",
+        "status": "PASS"
+      }
+    ]
+  },
+  {
+    "source": "int8",
+    "status": "PASS",
+    "pairs": [
+      {
+        "src": "int8",
+        "dst": "int1",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int8",
+        "dst": "int8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int8",
+        "dst": "uint8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int8",
+        "dst": "int16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int8",
+        "dst": "uint16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int8",
+        "dst": "int32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int8",
+        "dst": "uint32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int8",
+        "dst": "int64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int8",
+        "dst": "uint64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int8",
+        "dst": "float16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int8",
+        "dst": "bfloat16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int8",
+        "dst": "float32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int8",
+        "dst": "float64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int8",
+        "dst": "float8e5",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int8",
+        "dst": "float8e5b16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int8",
+        "dst": "float8e4nv",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int8",
+        "dst": "float8e4b8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int8",
+        "dst": "float8e4b15",
+        "rounding": "default",
+        "status": "PASS"
+      }
+    ]
+  },
+  {
+    "source": "uint8",
+    "status": "PASS",
+    "pairs": [
+      {
+        "src": "uint8",
+        "dst": "int1",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint8",
+        "dst": "int8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint8",
+        "dst": "uint8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint8",
+        "dst": "int16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint8",
+        "dst": "uint16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint8",
+        "dst": "int32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint8",
+        "dst": "uint32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint8",
+        "dst": "int64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint8",
+        "dst": "uint64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint8",
+        "dst": "float16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint8",
+        "dst": "bfloat16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint8",
+        "dst": "float32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint8",
+        "dst": "float64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint8",
+        "dst": "float8e5",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint8",
+        "dst": "float8e5b16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint8",
+        "dst": "float8e4nv",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint8",
+        "dst": "float8e4b8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint8",
+        "dst": "float8e4b15",
+        "rounding": "default",
+        "status": "PASS"
+      }
+    ]
+  },
+  {
+    "source": "int16",
+    "status": "PASS",
+    "pairs": [
+      {
+        "src": "int16",
+        "dst": "int1",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int16",
+        "dst": "int8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int16",
+        "dst": "uint8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int16",
+        "dst": "int16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int16",
+        "dst": "uint16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int16",
+        "dst": "int32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int16",
+        "dst": "uint32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int16",
+        "dst": "int64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int16",
+        "dst": "uint64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int16",
+        "dst": "float16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int16",
+        "dst": "bfloat16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int16",
+        "dst": "float32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int16",
+        "dst": "float64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int16",
+        "dst": "float8e5",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int16",
+        "dst": "float8e5b16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int16",
+        "dst": "float8e4nv",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int16",
+        "dst": "float8e4b8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int16",
+        "dst": "float8e4b15",
+        "rounding": "default",
+        "status": "PASS"
+      }
+    ]
+  },
+  {
+    "source": "uint16",
+    "status": "PASS",
+    "pairs": [
+      {
+        "src": "uint16",
+        "dst": "int1",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint16",
+        "dst": "int8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint16",
+        "dst": "uint8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint16",
+        "dst": "int16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint16",
+        "dst": "uint16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint16",
+        "dst": "int32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint16",
+        "dst": "uint32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint16",
+        "dst": "int64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint16",
+        "dst": "uint64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint16",
+        "dst": "float16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint16",
+        "dst": "bfloat16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint16",
+        "dst": "float32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint16",
+        "dst": "float64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint16",
+        "dst": "float8e5",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint16",
+        "dst": "float8e5b16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint16",
+        "dst": "float8e4nv",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint16",
+        "dst": "float8e4b8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint16",
+        "dst": "float8e4b15",
+        "rounding": "default",
+        "status": "PASS"
+      }
+    ]
+  },
+  {
+    "source": "int32",
+    "status": "PASS",
+    "pairs": [
+      {
+        "src": "int32",
+        "dst": "int1",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int32",
+        "dst": "int8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int32",
+        "dst": "uint8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int32",
+        "dst": "int16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int32",
+        "dst": "uint16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int32",
+        "dst": "int32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int32",
+        "dst": "uint32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int32",
+        "dst": "int64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int32",
+        "dst": "uint64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int32",
+        "dst": "float16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int32",
+        "dst": "bfloat16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int32",
+        "dst": "float32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int32",
+        "dst": "float64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int32",
+        "dst": "float8e5",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int32",
+        "dst": "float8e5b16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int32",
+        "dst": "float8e4nv",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int32",
+        "dst": "float8e4b8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int32",
+        "dst": "float8e4b15",
+        "rounding": "default",
+        "status": "PASS"
+      }
+    ]
+  },
+  {
+    "source": "uint32",
+    "status": "PASS",
+    "pairs": [
+      {
+        "src": "uint32",
+        "dst": "int1",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint32",
+        "dst": "int8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint32",
+        "dst": "uint8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint32",
+        "dst": "int16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint32",
+        "dst": "uint16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint32",
+        "dst": "int32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint32",
+        "dst": "uint32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint32",
+        "dst": "int64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint32",
+        "dst": "uint64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint32",
+        "dst": "float16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint32",
+        "dst": "bfloat16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint32",
+        "dst": "float32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint32",
+        "dst": "float64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint32",
+        "dst": "float8e5",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint32",
+        "dst": "float8e5b16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint32",
+        "dst": "float8e4nv",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint32",
+        "dst": "float8e4b8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint32",
+        "dst": "float8e4b15",
+        "rounding": "default",
+        "status": "PASS"
+      }
+    ]
+  },
+  {
+    "source": "int64",
+    "status": "PASS",
+    "pairs": [
+      {
+        "src": "int64",
+        "dst": "int1",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int64",
+        "dst": "int8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int64",
+        "dst": "uint8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int64",
+        "dst": "int16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int64",
+        "dst": "uint16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int64",
+        "dst": "int32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int64",
+        "dst": "uint32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int64",
+        "dst": "int64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int64",
+        "dst": "uint64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int64",
+        "dst": "float16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int64",
+        "dst": "bfloat16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int64",
+        "dst": "float32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int64",
+        "dst": "float64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int64",
+        "dst": "float8e5",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int64",
+        "dst": "float8e5b16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int64",
+        "dst": "float8e4nv",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int64",
+        "dst": "float8e4b8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "int64",
+        "dst": "float8e4b15",
+        "rounding": "default",
+        "status": "PASS"
+      }
+    ]
+  },
+  {
+    "source": "uint64",
+    "status": "PASS",
+    "pairs": [
+      {
+        "src": "uint64",
+        "dst": "int1",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint64",
+        "dst": "int8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint64",
+        "dst": "uint8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint64",
+        "dst": "int16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint64",
+        "dst": "uint16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint64",
+        "dst": "int32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint64",
+        "dst": "uint32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint64",
+        "dst": "int64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint64",
+        "dst": "uint64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint64",
+        "dst": "float16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint64",
+        "dst": "bfloat16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint64",
+        "dst": "float32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint64",
+        "dst": "float64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint64",
+        "dst": "float8e5",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint64",
+        "dst": "float8e5b16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint64",
+        "dst": "float8e4nv",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint64",
+        "dst": "float8e4b8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "uint64",
+        "dst": "float8e4b15",
+        "rounding": "default",
+        "status": "PASS"
+      }
+    ]
+  },
+  {
+    "source": "float16",
+    "status": "PASS",
+    "pairs": [
+      {
+        "src": "float16",
+        "dst": "int1",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "int8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "uint8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "int16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "uint16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "int32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "uint32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "int64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "uint64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "float16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "bfloat16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "float32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "float64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "float8e5",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "float8e5",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "float8e5b16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "float8e5b16",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "float8e4nv",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "float8e4nv",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "float8e4b8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "float8e4b8",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "float8e4b15",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float16",
+        "dst": "float8e4b15",
+        "rounding": "rtz",
+        "status": "PASS"
+      }
+    ]
+  },
+  {
+    "source": "bfloat16",
+    "status": "PASS",
+    "pairs": [
+      {
+        "src": "bfloat16",
+        "dst": "int1",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "int8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "uint8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "int16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "uint16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "int32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "uint32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "int64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "uint64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "float16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "bfloat16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "float32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "float64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "float8e5",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "float8e5",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "float8e5b16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "float8e5b16",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "float8e4nv",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "float8e4nv",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "float8e4b8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "float8e4b8",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "float8e4b15",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "bfloat16",
+        "dst": "float8e4b15",
+        "rounding": "rtz",
+        "status": "PASS"
+      }
+    ]
+  },
+  {
+    "source": "float32",
+    "status": "PASS",
+    "pairs": [
+      {
+        "src": "float32",
+        "dst": "int1",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "int8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "uint8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "int16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "uint16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "int32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "uint32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "int64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "uint64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "float16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "float16",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "bfloat16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "bfloat16",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "float32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "float64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "float8e5",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "float8e5",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "float8e5b16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "float8e5b16",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "float8e4nv",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "float8e4nv",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "float8e4b8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "float8e4b8",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "float8e4b15",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float32",
+        "dst": "float8e4b15",
+        "rounding": "rtz",
+        "status": "PASS"
+      }
+    ]
+  },
+  {
+    "source": "float64",
+    "status": "PASS",
+    "pairs": [
+      {
+        "src": "float64",
+        "dst": "int1",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "int8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "uint8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "int16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "uint16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "int32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "uint32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "int64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "uint64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "float16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "float16",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "bfloat16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "bfloat16",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "float32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "float32",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "float64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "float8e5",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "float8e5",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "float8e5b16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "float8e5b16",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "float8e4nv",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "float8e4nv",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "float8e4b8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "float8e4b8",
+        "rounding": "rtz",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "float8e4b15",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float64",
+        "dst": "float8e4b15",
+        "rounding": "rtz",
+        "status": "PASS"
+      }
+    ]
+  },
+  {
+    "source": "float8e5",
+    "status": "PASS",
+    "pairs": [
+      {
+        "src": "float8e5",
+        "dst": "int1",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5",
+        "dst": "int8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5",
+        "dst": "uint8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5",
+        "dst": "int16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5",
+        "dst": "uint16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5",
+        "dst": "int32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5",
+        "dst": "uint32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5",
+        "dst": "int64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5",
+        "dst": "uint64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5",
+        "dst": "float16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5",
+        "dst": "bfloat16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5",
+        "dst": "float32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5",
+        "dst": "float64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5",
+        "dst": "float8e5",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5",
+        "dst": "float8e5b16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5",
+        "dst": "float8e4nv",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5",
+        "dst": "float8e4b8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5",
+        "dst": "float8e4b15",
+        "rounding": "default",
+        "status": "PASS"
+      }
+    ]
+  },
+  {
+    "source": "float8e5b16",
+    "status": "PASS",
+    "pairs": [
+      {
+        "src": "float8e5b16",
+        "dst": "int1",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5b16",
+        "dst": "int8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5b16",
+        "dst": "uint8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5b16",
+        "dst": "int16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5b16",
+        "dst": "uint16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5b16",
+        "dst": "int32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5b16",
+        "dst": "uint32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5b16",
+        "dst": "int64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5b16",
+        "dst": "uint64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5b16",
+        "dst": "float16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5b16",
+        "dst": "bfloat16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5b16",
+        "dst": "float32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5b16",
+        "dst": "float64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5b16",
+        "dst": "float8e5",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5b16",
+        "dst": "float8e5b16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5b16",
+        "dst": "float8e4nv",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5b16",
+        "dst": "float8e4b8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e5b16",
+        "dst": "float8e4b15",
+        "rounding": "default",
+        "status": "PASS"
+      }
+    ]
+  },
+  {
+    "source": "float8e4nv",
+    "status": "PASS",
+    "pairs": [
+      {
+        "src": "float8e4nv",
+        "dst": "int1",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4nv",
+        "dst": "int8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4nv",
+        "dst": "uint8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4nv",
+        "dst": "int16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4nv",
+        "dst": "uint16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4nv",
+        "dst": "int32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4nv",
+        "dst": "uint32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4nv",
+        "dst": "int64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4nv",
+        "dst": "uint64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4nv",
+        "dst": "float16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4nv",
+        "dst": "bfloat16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4nv",
+        "dst": "float32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4nv",
+        "dst": "float64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4nv",
+        "dst": "float8e5",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4nv",
+        "dst": "float8e5b16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4nv",
+        "dst": "float8e4nv",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4nv",
+        "dst": "float8e4b8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4nv",
+        "dst": "float8e4b15",
+        "rounding": "default",
+        "status": "PASS"
+      }
+    ]
+  },
+  {
+    "source": "float8e4b8",
+    "status": "PASS",
+    "pairs": [
+      {
+        "src": "float8e4b8",
+        "dst": "int1",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b8",
+        "dst": "int8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b8",
+        "dst": "uint8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b8",
+        "dst": "int16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b8",
+        "dst": "uint16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b8",
+        "dst": "int32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b8",
+        "dst": "uint32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b8",
+        "dst": "int64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b8",
+        "dst": "uint64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b8",
+        "dst": "float16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b8",
+        "dst": "bfloat16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b8",
+        "dst": "float32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b8",
+        "dst": "float64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b8",
+        "dst": "float8e5",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b8",
+        "dst": "float8e5b16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b8",
+        "dst": "float8e4nv",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b8",
+        "dst": "float8e4b8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b8",
+        "dst": "float8e4b15",
+        "rounding": "default",
+        "status": "PASS"
+      }
+    ]
+  },
+  {
+    "source": "float8e4b15",
+    "status": "PASS",
+    "pairs": [
+      {
+        "src": "float8e4b15",
+        "dst": "int1",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b15",
+        "dst": "int8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b15",
+        "dst": "uint8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b15",
+        "dst": "int16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b15",
+        "dst": "uint16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b15",
+        "dst": "int32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b15",
+        "dst": "uint32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b15",
+        "dst": "int64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b15",
+        "dst": "uint64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b15",
+        "dst": "float16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b15",
+        "dst": "bfloat16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b15",
+        "dst": "float32",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b15",
+        "dst": "float64",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b15",
+        "dst": "float8e5",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b15",
+        "dst": "float8e5b16",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b15",
+        "dst": "float8e4nv",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b15",
+        "dst": "float8e4b8",
+        "rounding": "default",
+        "status": "PASS"
+      },
+      {
+        "src": "float8e4b15",
+        "dst": "float8e4b15",
+        "rounding": "default",
+        "status": "PASS"
+      }
+    ]
+  }
+]

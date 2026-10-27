@@ -15,6 +15,10 @@
 #include "mlir/Dialect/SCF/IR/SCF.h"
 #include "mlir/Dialect/SCF/Transforms/BufferizableOpInterfaceImpl.h"
 #include "mlir/Dialect/Tensor/Transforms/BufferizableOpInterfaceImpl.h"
+#include "mlir/Dialect/Func/Extensions/InlinerExtension.h"
+#include "mlir/Dialect/GPU/IR/GPUDialect.h"
+#include "mlir/Dialect/MemRef/IR/MemRef.h"
+#include "mlir/Dialect/Tensor/IR/Tensor.h"
 #include "sycl/include/Conversion/LinalgToAffineLoops/Passes.h"
 #include "sycl/include/Conversion/TritonToLinalg/Passes.h"
 #include <pybind11/pybind11.h>
@@ -49,6 +53,12 @@ void init_triton_sycl(py::module &&m) {
   // load dialects
   m.def("load_dialects", [](mlir::MLIRContext &context) {
     mlir::DialectRegistry registry;
+    registry.insert<mlir::affine::AffineDialect, mlir::arith::ArithDialect,
+                    mlir::bufferization::BufferizationDialect,
+                    mlir::func::FuncDialect, mlir::gpu::GPUDialect,
+                    mlir::linalg::LinalgDialect, mlir::memref::MemRefDialect,
+                    mlir::scf::SCFDialect, mlir::tensor::TensorDialect>();
+    mlir::func::registerInlinerExtension(registry);
     mlir::bufferization::func_ext::
         registerBufferizableOpInterfaceExternalModels(registry);
     mlir::arith::registerBufferizableOpInterfaceExternalModels(registry);

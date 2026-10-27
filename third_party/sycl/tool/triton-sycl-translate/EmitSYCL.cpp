@@ -65,6 +65,22 @@ static unsigned getSYCLAccessorRank(MemRefType type) {
   return std::max<unsigned>(type.getRank(), 1);
 }
 
+// AdaptiveCpp 25.10 SSCP can misvectorize strided i8/i16 stores for odd
+// work-group sizes on gfx906. Scalar device stores preserve both bits and
+// addresses. Restrict this correctness guard to loops containing narrow
+// stores; explicit vector-copy operations have a separate legality contract.
+static bool hasNarrowStore(Operation *operation) {
+  bool narrow = false;
+  operation->walk([&](Operation *nested) {
+    Value value;
+    if (auto store = dyn_cast<memref::StoreOp>(nested)) value = store.getValueToStore();
+    if (auto store = dyn_cast<affine::AffineStoreOp>(nested)) value = store.getValueToStore();
+    if (value && value.getType().isIntOrFloat() &&
+        value.getType().getIntOrFloatBitWidth() < 32) narrow = true;
+  });
+  return narrow;
+}
+
 void ModuleEmitter::emitOneAssign(arith::IndexCastOp op) {
   addAlias(op.getOperand(), op.getResult());
 }
@@ -83,6 +99,7 @@ void ModuleEmitter::emitAssign(AssignOpType op) {
   os << " = ";
   bool inputUnsigned = isa<arith::UIToFPOp, arith::ExtUIOp>(op.getOperation());
   bool outputUnsigned = isa<arith::FPToUIOp>(op.getOperation());
+  bool floatingCast = isa<arith::TruncFOp, arith::ExtFOp>(op.getOperation());
   auto rounding = op->template getAttrOfType<IntegerAttr>("sycl.rounding");
   bool rtz = rounding && rounding.getInt() == 0;
   Type target = op.getResult().getType();
@@ -90,7 +107,11 @@ void ModuleEmitter::emitAssign(AssignOpType op) {
   if (inputUnsigned) os << "static_cast<" << unsignedType(op.getOperand().getType()) << ">(";
   if (outputUnsigned) os << "static_cast<" << unsignedType(target) << ">(";
   if (rtz) os << "triton_sycl_rtz<" << getDataTypeName(target, state.target) << ">(";
+  // Software low-precision types need an explicit scalar intermediate: C++
+  // cannot chain a conversion operator and a destination constructor implicitly.
+  if (floatingCast) os << "static_cast<double>(";
   emitValue(op.getOperand(), rank);
+  if (floatingCast) os << ")";
   if (inputUnsigned || outputUnsigned || rtz) os << ")";
   os << ";";
   emitInfoAndNewLine(op);
@@ -98,9 +119,27 @@ void ModuleEmitter::emitAssign(AssignOpType op) {
 }
 
 void ModuleEmitter::emitBitcast(arith::BitcastOp op) {
+  auto storageType = [&](Type type) {
+    return StringRef(getDataTypeName(type, state.target)).starts_with("triton_sycl_");
+  };
+  bool sourceStorage = storageType(op.getIn().getType());
+  bool targetStorage = storageType(op.getResult().getType());
   unsigned rank = emitNestedLoopHeader(op.getResult());
   indent();
   emitValue(op.getResult(), rank);
+  if (targetStorage) {
+    os << ";\n";
+    indent(); emitValue(op.getResult(), rank); os << ".bits";
+  }
+  if (sourceStorage || targetStorage) {
+    os << " = ";
+    emitValue(op.getIn(), rank);
+    if (sourceStorage) os << ".bits";
+    os << ";";
+    emitInfoAndNewLine(op);
+    emitNestedLoopFooter(rank);
+    return;
+  }
   os << " = sycl::bit_cast<" << getDataTypeName(op.getResult().getType(), state.target) << ">(";
   emitValue(op.getIn(), rank);
   os << ");";
@@ -166,6 +205,8 @@ void ModuleEmitter::emitScfFor(scf::ForOp op) {
     os << ";";
     emitInfoAndNewLine(op);
   }
+  if (state.target == EmitTarget::SYCL && hasNarrowStore(op))
+    indent() << "#pragma clang loop vectorize(disable) interleave(disable)\n";
   indent() << "for (";
   auto iterVar = op.getInductionVar();
 
@@ -500,6 +541,8 @@ bool ModuleEmitter::emitParallelAffineNest(affine::AffineForOp op) {
   }
   std::string flat = "linear_" + std::to_string(state.currentIndent);
   // The actual induction variables retain their SSA names inside the body.
+  if (hasNarrowStore(op))
+    indent() << "#pragma clang loop vectorize(disable) interleave(disable)\n";
   indent() << "for (int64_t " << flat << " = item.get_local_linear_id(); "
            << flat << " < " << total << "; " << flat
            << " += item.get_local_range().size()) {\n";
@@ -547,6 +590,8 @@ void ModuleEmitter::emitAffineFor(affine::AffineForOp op) {
       // usage: for (int iv = get_local_id(depth); iv < upper_bound; iv +=
       // get_local_range(depth)) { ... }
       unsigned depth = getParallelLoopDepth(op);
+      if (hasNarrowStore(op))
+        indent() << "#pragma clang loop vectorize(disable) interleave(disable)\n";
 
       indent() << "for (";
       emitValue(iterVar);
