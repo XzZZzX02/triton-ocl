@@ -19,6 +19,8 @@ std::unique_ptr<OperationPass<ModuleOp>> createLocalMemoryReusePass();
 
 std::unique_ptr<OperationPass<ModuleOp>> createElementwiseFusionPass();
 
+std::unique_ptr<OperationPass<ModuleOp>> createGroupReductionPass();
+
 #define GEN_PASS_REGISTRATION
 #include "sycl/include/Conversion/LinalgToAffineLoops/Passes.h.inc"
 

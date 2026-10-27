@@ -1,0 +1,162 @@
+[
+  {
+    "case": "group_sum_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction)"
+  },
+  {
+    "case": "group_sum_group_reduction_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "group_sum_local_memory_reuse_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-group-reduction)"
+  },
+  {
+    "case": "group_sum_group_reduction_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-group-reduction)"
+  },
+  {
+    "case": "group_short_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction)"
+  },
+  {
+    "case": "group_short_group_reduction_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "group_short_local_memory_reuse_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-group-reduction)"
+  },
+  {
+    "case": "group_short_group_reduction_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-group-reduction)"
+  },
+  {
+    "case": "group_view_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction)"
+  },
+  {
+    "case": "group_view_group_reduction_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "group_view_local_memory_reuse_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-group-reduction)"
+  },
+  {
+    "case": "group_view_group_reduction_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-group-reduction)"
+  },
+  {
+    "case": "group_conditional_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction)"
+  },
+  {
+    "case": "group_conditional_group_reduction_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "group_conditional_local_memory_reuse_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-group-reduction)"
+  },
+  {
+    "case": "group_conditional_group_reduction_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-group-reduction)"
+  },
+  {
+    "case": "group_maxnum_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction)"
+  },
+  {
+    "case": "group_maxnum_group_reduction_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "group_maxnum_local_memory_reuse_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-group-reduction)"
+  },
+  {
+    "case": "group_maxnum_group_reduction_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-group-reduction)"
+  },
+  {
+    "case": "reuse_disjoint_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse)"
+  },
+  {
+    "case": "reuse_disjoint_local_memory_reuse_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "reuse_overlap_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse)"
+  },
+  {
+    "case": "reuse_overlap_local_memory_reuse_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "reuse_view_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse)"
+  },
+  {
+    "case": "reuse_view_local_memory_reuse_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "fusion_identity_elementwise_fusion",
+    "status": "PASS",
+    "pipeline": "any(sycl-elementwise-fusion)"
+  },
+  {
+    "case": "fusion_identity_elementwise_fusion_elementwise_fusion",
+    "status": "PASS",
+    "pipeline": "any(sycl-elementwise-fusion,sycl-elementwise-fusion)"
+  },
+  {
+    "case": "fusion_fanout_elementwise_fusion",
+    "status": "PASS",
+    "pipeline": "any(sycl-elementwise-fusion)"
+  },
+  {
+    "case": "fusion_fanout_elementwise_fusion_elementwise_fusion",
+    "status": "PASS",
+    "pipeline": "any(sycl-elementwise-fusion,sycl-elementwise-fusion)"
+  },
+  {
+    "case": "fusion_permutation_elementwise_fusion",
+    "status": "PASS",
+    "pipeline": "any(sycl-elementwise-fusion)"
+  },
+  {
+    "case": "fusion_permutation_elementwise_fusion_elementwise_fusion",
+    "status": "PASS",
+    "pipeline": "any(sycl-elementwise-fusion,sycl-elementwise-fusion)"
+  }
+]

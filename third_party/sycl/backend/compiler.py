@@ -38,6 +38,7 @@ class SYCLOptions:
     vectorize_memory: bool = False
     reuse_local_memory: bool = True
     fuse_elementwise: bool = False
+    group_reduction: bool = False
 
     def __post_init__(self):
         pass
@@ -127,6 +128,8 @@ class SYCLBackend(BaseBackend):
         passes.common.add_canonicalizer(pm)
         passes.common.add_cse(pm)
         passes.common.add_symbol_dce(pm)
+        if opt.group_reduction:
+            sycl.passes.memir.group_reduction(pm)
         if opt.reuse_local_memory:
             sycl.passes.memir.local_memory_reuse(pm)
         pm.run(mod)

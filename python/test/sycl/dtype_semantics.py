@@ -180,7 +180,11 @@ def execute(case, mode):
     def reduction(x, y, B: tl.constexpr):
         i = tl.arange(0, B)
         v = tl.load(x+i)
-        tl.store(y, tl.sum(v, 0))
+        if v.dtype.is_fp8():
+            tl.store(y, tl.sum(v.to(tl.float32), 0))
+            tl.store(y+3, tl.sum(tl.where(i < 4, v, 0.), 0))
+        else:
+            tl.store(y, tl.sum(v, 0))
         tl.store(y+1, tl.max(v, 0))
         tl.store(y+2, tl.min(v, 0))
 
@@ -247,8 +251,14 @@ def execute(case, mode):
             expected = bytes(encode_fp8(dtype,v) for v in expected_values) if dtype in FP8 else b''.join(pack_value(dtype,v) for v in expected_values)
             c = arithmetic.warmup(x,y,B=64,grid=(1,))
         else:
-            y = Tensor('float32' if dtype.startswith(('float','bfloat')) else dtype, [0]*3)
+            y = Tensor('float32' if dtype.startswith(('float','bfloat')) else dtype, [0]*(4 if dtype in FP8 else 3))
             expected_values = [sum(values),max(values),min(values)]
+            if dtype in FP8:
+                # Every intermediate in the four-value native sum is exactly
+                # representable. The long sum is explicitly widened: fp8
+                # default accumulation otherwise rounds differently for legal
+                # serial and tree reduction orders.
+                expected_values.append(sum(values[:4]))
             expected = b''.join(pack_value(y.name,v) for v in expected_values)
             c = reduction.warmup(x,y,B=64,grid=(1,))
         bound = [x,y,64]

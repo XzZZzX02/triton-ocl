@@ -37,6 +37,9 @@ void init_triton_sycl_passes_lair(py::module &&m) {
 }
 
 void init_triton_sycl_passes_memir(py::module &&m) {
+  m.def("group_reduction", [](mlir::PassManager &pm) {
+    pm.addPass(mlir::triton::sycl::createGroupReductionPass());
+  });
   m.def("local_memory_reuse", [](mlir::PassManager &pm) {
     pm.addPass(mlir::triton::sycl::createLocalMemoryReusePass());
   });

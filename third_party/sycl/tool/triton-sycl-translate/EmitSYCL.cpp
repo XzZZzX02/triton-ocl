@@ -49,18 +49,6 @@ static bool hasParallelAffineParent(affine::AffineForOp op) {
   return op->getParentOfType<affine::AffineForOp>() != nullptr;
 }
 
-static Type groupReductionElementType(affine::AffineForOp loop) {
-  if (loop->getParentOfType<affine::AffineForOp>() || !isReductionLoop(loop)) return {};
-  Type result;
-  for (Operation &op : loop.getBody()->without_terminator()) {
-    if (auto store = dyn_cast<affine::AffineStoreOp>(op)) {
-      if (result) return {};
-      result = store.getValueToStore().getType();
-    }
-  }
-  return result;
-}
-
 static unsigned getSYCLAccessorRank(MemRefType type) {
   return std::max<unsigned>(type.getRank(), 1);
 }
@@ -234,7 +222,7 @@ void ModuleEmitter::emitScfFor(scf::ForOp op) {
   emitBlock(*op.getBody());
   reduceIndent();
 
-  if (state.target == EmitTarget::SYCL)
+  if (state.target == EmitTarget::SYCL && !op->hasAttr("sycl.thread_private"))
     indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
   indent() << "}\n";
 
@@ -344,86 +332,6 @@ unsigned ModuleEmitter::getParallelLoopDepth(affine::AffineForOp op) {
     }
   }
   return depth;
-}
-
-// Use a portable work-group tree for recognized independent scalar reductions.
-// User-defined tuple combiners retain their serial ordering and seed semantics.
-bool ModuleEmitter::emitGroupReduction(affine::AffineForOp op) {
-  if (op->getParentOfType<affine::AffineForOp>() || !op.hasConstantBounds() ||
-      op.getConstantLowerBound() != 0 || op.getStep() != 1) return false;
-  SmallVector<affine::AffineLoadOp> loads;
-  affine::AffineStoreOp store;
-  Operation *combine = nullptr;
-  for (Operation &inner : op.getBody()->without_terminator()) {
-    if (auto load = dyn_cast<affine::AffineLoadOp>(&inner)) loads.push_back(load);
-    else if (auto write = dyn_cast<affine::AffineStoreOp>(&inner)) {
-      if (store) return false;
-      store = write;
-    } else {
-      if (combine) return false;
-      combine = &inner;
-    }
-  }
-  if (!store || !combine || loads.size() != 2 ||
-      combine->getNumOperands() != 2 || combine->getNumResults() != 1 ||
-      store.getValueToStore() != combine->getResult(0)) return false;
-  affine::AffineLoadOp input, accumulator;
-  for (auto load : loads) {
-    if (load.getMemRef() == store.getMemRef() && load.getMapOperands().empty()) accumulator = load;
-    else input = load;
-  }
-  if (!input || !accumulator || !store.getMapOperands().empty() ||
-      !llvm::is_contained(input.getMapOperands(), op.getInductionVar())) return false;
-  if (!((combine->getOperand(0) == input.getResult() && combine->getOperand(1) == accumulator.getResult()) ||
-        (combine->getOperand(1) == input.getResult() && combine->getOperand(0) == accumulator.getResult()))) return false;
-  auto identity = arith::getNeutralElement(combine);
-  if (!identity) return false;
-  StringRef symbol, function;
-  if (isa<arith::AddFOp, arith::AddIOp>(combine)) symbol = "+";
-  else if (isa<arith::MulFOp, arith::MulIOp>(combine)) symbol = "*";
-  else if (isa<arith::AndIOp>(combine)) symbol = "&";
-  else if (isa<arith::OrIOp>(combine)) symbol = "|";
-  else if (isa<arith::XOrIOp>(combine)) symbol = "^";
-  else if (isa<arith::MaxNumFOp>(combine)) function = "sycl::fmax";
-  else if (isa<arith::MinNumFOp>(combine)) function = "sycl::fmin";
-  else return false;
-  auto found = llvm::find(groupReductions, op);
-  if (found == groupReductions.end()) return false;
-  std::string scratch = "reduction_scratch_" + std::to_string(found - groupReductions.begin());
-  std::string type = getDataTypeName(combine->getResult(0).getType(), state.target);
-  auto expression = [&](StringRef lhs, StringRef rhs) {
-    if (!function.empty()) os << function << "(" << lhs << ", " << rhs << ")";
-    else os << "(" << lhs << " " << symbol << " " << rhs << ")";
-  };
-  indent() << "{\n"; addIndent();
-  indent() << type << " partial = " << getConstantString(identity->getType(), *identity) << ";\n";
-  indent() << "for ("; emitValue(op.getInductionVar());
-  os << " = item.get_local_linear_id(); "; emitValue(op.getInductionVar());
-  os << " < " << op.getConstantUpperBound() << "; "; emitValue(op.getInductionVar());
-  os << " += item.get_local_range().size()) {\n"; addIndent();
-  emitAffineLoad(input);
-  indent() << "partial = "; expression("partial", getName(input.getResult())); os << ";\n";
-  reduceIndent(); indent() << "}\n";
-  indent() << scratch << "[item.get_local_linear_id()] = partial;\n";
-  indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
-  indent() << "for (size_t active = item.get_local_range().size(); active > 1; active = (active + 1) / 2) {\n";
-  addIndent();
-  indent() << "size_t next = (active + 1) / 2;\n";
-  indent() << "if (item.get_local_linear_id() < active - next) {\n"; addIndent();
-  indent() << scratch << "[item.get_local_linear_id()] = ";
-  expression(scratch + "[item.get_local_linear_id()]", scratch + "[item.get_local_linear_id() + next]"); os << ";\n";
-  reduceIndent(); indent() << "}\n";
-  indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
-  reduceIndent(); indent() << "}\n";
-  indent() << "if (item.get_local_linear_id() == 0) {\n"; addIndent();
-  emitAffineLoad(accumulator);
-  indent(); emitValue(combine->getResult(0)); os << " = ";
-  expression(getName(accumulator.getResult()), scratch + "[0]"); os << ";\n";
-  emitAffineStore(store);
-  reduceIndent(); indent() << "}\n";
-  indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
-  reduceIndent(); indent() << "}\n";
-  return true;
 }
 
 // Vectorize proven unit-stride, unmasked global/local copies. Arbitrary masks,
@@ -563,7 +471,7 @@ void ModuleEmitter::emitAffineFor(affine::AffineForOp op) {
   if (state.target == EmitTarget::SYCL && vectorMemory && emitVectorCopy(op)) return;
   if (state.target == EmitTarget::SYCL && emitParallelAffineNest(op)) return;
   bool reductionLoop = isReductionLoop(op);
-  if (state.target == EmitTarget::SYCL && reductionLoop && emitGroupReduction(op)) return;
+  // Group reduction is materialized by sycl-group-reduction in the IR.
 
   // For SYCL target, try to emit SIMT parallel code instead of serial loops
   if (state.target == EmitTarget::SYCL && !reductionLoop) {
@@ -878,7 +786,8 @@ void ModuleEmitter::emitAffineLoad(affine::AffineLoadOp op) {
 
 void ModuleEmitter::emitAffineStore(affine::AffineStoreOp op) {
   bool scalarOwner = state.target == EmitTarget::SYCL &&
-      !op->getParentOfType<affine::AffineForOp>();
+      !op->getParentOfType<affine::AffineForOp>() &&
+      !op->hasAttr("sycl.scalar_owner");
   if (scalarOwner) {
     indent() << "if (item.get_local_linear_id() == 0) {\n";
     addIndent();
@@ -1731,17 +1640,6 @@ void ModuleEmitter::emitFunction(func::FuncOp func) {
     }
   }
 
-  groupReductions.clear();
-  if (state.target == EmitTarget::SYCL) {
-    func.walk([&](affine::AffineForOp loop) {
-      if (groupReductionElementType(loop)) groupReductions.push_back(loop);
-    });
-    for (auto [i, loop] : llvm::enumerate(groupReductions)) {
-      os << ",\n"; indent() << "sycl::local_accessor<"
-          << getDataTypeName(groupReductionElementType(loop), state.target)
-          << ", 1> reduction_scratch_" << i;
-    }
-  }
   reduceIndent();
   os << "\n) {";
   emitInfoAndNewLine(func);
@@ -1773,6 +1671,29 @@ void ModuleEmitter::emitGlobalId(gpu::GlobalIdOp op) {
     os << static_cast<int64_t>(dim);
   }
   os << ");\n";
+}
+
+void ModuleEmitter::emitLocalId(Operation *op, gpu::Dimension dimension, bool range) {
+  indent(); emitValue(op->getResult(0));
+  os << (range ? " = item.get_local_range(" : " = item.get_local_id(")
+     << static_cast<int64_t>(dimension) << ");\n";
+}
+
+void ModuleEmitter::emitAllReduce(gpu::AllReduceOp op) {
+  auto kind = op.getOp();
+  StringRef function;
+  if (kind == gpu::AllReduceOperation::ADD) function = "plus";
+  else if (kind == gpu::AllReduceOperation::MUL) function = "multiplies";
+  else if (kind == gpu::AllReduceOperation::AND) function = "bit_and";
+  else if (kind == gpu::AllReduceOperation::OR) function = "bit_or";
+  else if (kind == gpu::AllReduceOperation::XOR) function = "bit_xor";
+  else { emitError(op, "unsupported group reduction operation"); return; }
+  Type type = op.getResult().getType();
+  std::string name = isa<IntegerType>(type) ? unsignedType(type) : getDataTypeName(type, state.target);
+  indent(); emitValue(op.getResult());
+  os << " = sycl::reduce_over_group(item.get_group(), static_cast<" << name << ">(";
+  emitValue(op.getValue());
+  os << "), sycl::" << function << "<" << name << ">());\n";
 }
 
 void ModuleEmitter::emitBarrier(gpu::BarrierOp op) {
@@ -1821,9 +1742,6 @@ void ModuleEmitter::emitHostWrapper(func::FuncOp func) {
       indent() << "q->submit([&](sycl::handler &h) {\n";
     addIndent();
 
-    for (auto [i, loop] : llvm::enumerate(groupReductions))
-      indent() << "sycl::local_accessor<" << getDataTypeName(groupReductionElementType(loop), state.target)
-          << ", 1> reduction_scratch_" << i << "(sycl::range<1>(blockX * blockY * blockZ), h);\n";
     for (auto allocOp : hostLocalAllocs) {
       indent();
       auto memrefType = allocOp.getType();
@@ -1856,7 +1774,6 @@ void ModuleEmitter::emitHostWrapper(func::FuncOp func) {
       os << ", " << getName(arg);
     for (auto allocOp : hostLocalAllocs)
       os << ", " << getName(allocOp.getResult());
-    for (unsigned i = 0; i < groupReductions.size(); ++i) os << ", reduction_scratch_" << i;
     os << ");\n";
 
     reduceIndent();

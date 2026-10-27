@@ -1,0 +1,1118 @@
+[
+  {
+    "case": "sum:f64",
+    "status": "PASS",
+    "configs": [
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      }
+    ]
+  },
+  {
+    "case": "sum:i32",
+    "status": "PASS",
+    "configs": [
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      }
+    ]
+  },
+  {
+    "case": "sum:u32",
+    "status": "PASS",
+    "configs": [
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      }
+    ]
+  },
+  {
+    "case": "sum:f32",
+    "status": "PASS",
+    "configs": [
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      }
+    ]
+  },
+  {
+    "case": "sum:i64",
+    "status": "PASS",
+    "configs": [
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      }
+    ]
+  },
+  {
+    "case": "product:f32",
+    "status": "PASS",
+    "configs": [
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      }
+    ]
+  },
+  {
+    "case": "sum:u64",
+    "status": "PASS",
+    "configs": [
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      }
+    ]
+  },
+  {
+    "case": "and:u32",
+    "status": "PASS",
+    "configs": [
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      }
+    ]
+  },
+  {
+    "case": "short:f32",
+    "status": "PASS",
+    "configs": [
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      }
+    ]
+  },
+  {
+    "case": "or:u64",
+    "status": "PASS",
+    "configs": [
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      }
+    ]
+  },
+  {
+    "case": "xor:i32",
+    "status": "PASS",
+    "configs": [
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      }
+    ]
+  },
+  {
+    "case": "maxnan:f32",
+    "status": "PASS",
+    "configs": [
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      }
+    ]
+  },
+  {
+    "case": "conditional:f32",
+    "status": "PASS",
+    "configs": [
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      }
+    ]
+  },
+  {
+    "case": "product_zero:f32",
+    "status": "PASS",
+    "configs": [
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      }
+    ]
+  },
+  {
+    "case": "minzero:f32",
+    "status": "PASS",
+    "configs": [
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      }
+    ]
+  },
+  {
+    "case": "tuple:f32",
+    "status": "PASS",
+    "configs": [
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": true,
+        "collectives": 0,
+        "samples_ns": []
+      }
+    ]
+  },
+  {
+    "case": "sum_nan:f32",
+    "status": "PASS",
+    "configs": [
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      }
+    ]
+  },
+  {
+    "case": "sum_zero:f32",
+    "status": "PASS",
+    "configs": [
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": false,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": false,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": false,
+        "collectives": 0,
+        "samples_ns": []
+      },
+      {
+        "fuse": true,
+        "reuse": true,
+        "group": true,
+        "collectives": 1,
+        "samples_ns": []
+      }
+    ]
+  }
+]

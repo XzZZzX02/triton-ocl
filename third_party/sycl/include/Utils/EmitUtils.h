@@ -470,7 +470,6 @@ public:
   bool emitParallelAffineNest(affine::AffineForOp op);
   bool emitVectorCopy(affine::AffineForOp op);
   void planLocalBuffers(func::FuncOp func);
-  bool emitGroupReduction(affine::AffineForOp op);
   void emitAffineIf(affine::AffineIfOp op);
   void emitAffineParallel(affine::AffineParallelOp op);
   void emitAffineApply(affine::AffineApplyOp op);
@@ -508,6 +507,8 @@ public:
 
   // Gpu op emitters.
   void emitGlobalId(gpu::GlobalIdOp op);
+  void emitLocalId(Operation *op, gpu::Dimension dimension, bool range);
+  void emitAllReduce(gpu::AllReduceOp op);
   void emitBarrier(gpu::BarrierOp op);
 
   void emitOneAssign(arith::IndexCastOp op);
@@ -535,7 +536,6 @@ private:
 
   /// Track local allocations for SYCL local_accessor generation
   SmallVector<memref::AllocOp, 4> localAllocs;
-  SmallVector<affine::AffineForOp> groupReductions;
 
   unsigned numDSPs = 0;
 
@@ -924,6 +924,9 @@ void ModuleEmitter::emitInfoAndNewLine(Operation *op) {
 /// MLIR component and HLS C++ pragma emitters.
 void ModuleEmitter::emitBlock(Block &block) {
   for (auto &op : block) {
+    if (auto id = mlir::dyn_cast<gpu::ThreadIdOp>(op)) { emitLocalId(&op, id.getDimension(), false); continue; }
+    if (auto size = mlir::dyn_cast<gpu::BlockDimOp>(op)) { emitLocalId(&op, size.getDimension(), true); continue; }
+    if (auto reduce = mlir::dyn_cast<gpu::AllReduceOp>(op)) { emitAllReduce(reduce); continue; }
     if (mlir::isa<gpu::BarrierOp>(op)) {
       emitBarrier(mlir::cast<gpu::BarrierOp>(op));
       continue;
