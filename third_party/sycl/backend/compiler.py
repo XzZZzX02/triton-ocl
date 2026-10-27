@@ -36,6 +36,7 @@ class SYCLOptions:
     max_num_imprecise_acc_default: int = 0
     sanitize_overflow: bool = False
     vectorize_memory: bool = False
+    reuse_local_memory: bool = True
 
     def __post_init__(self):
         pass
@@ -122,6 +123,8 @@ class SYCLBackend(BaseBackend):
         passes.common.add_canonicalizer(pm)
         passes.common.add_cse(pm)
         passes.common.add_symbol_dce(pm)
+        if opt.reuse_local_memory:
+            sycl.passes.memir.local_memory_reuse(pm)
         pm.run(mod)
         return mod
 

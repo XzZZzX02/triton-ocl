@@ -15,6 +15,8 @@ namespace triton::sycl {
 
 std::unique_ptr<OperationPass<ModuleOp>> createLinalgToAffineLoopsPass();
 
+std::unique_ptr<OperationPass<ModuleOp>> createLocalMemoryReusePass();
+
 #define GEN_PASS_REGISTRATION
 #include "sycl/include/Conversion/LinalgToAffineLoops/Passes.h.inc"
 

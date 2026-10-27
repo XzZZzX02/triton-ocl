@@ -34,6 +34,9 @@ void init_triton_sycl_passes_lair(py::module &&m) {
 }
 
 void init_triton_sycl_passes_memir(py::module &&m) {
+  m.def("local_memory_reuse", [](mlir::PassManager &pm) {
+    pm.addPass(mlir::triton::sycl::createLocalMemoryReusePass());
+  });
   m.def("one_shot_bufferize", [](mlir::PassManager &pm) {
     pm.addPass(mlir::bufferization::createOneShotBufferizePass());
   });

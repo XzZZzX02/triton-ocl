@@ -536,7 +536,6 @@ private:
   /// Track local allocations for SYCL local_accessor generation
   SmallVector<memref::AllocOp, 4> localAllocs;
   SmallVector<affine::AffineForOp> groupReductions;
-  SmallVector<std::pair<Value, Value>> localAliases;
 
   unsigned numDSPs = 0;
 

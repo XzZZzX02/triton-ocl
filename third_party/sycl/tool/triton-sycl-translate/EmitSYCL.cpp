@@ -1656,43 +1656,12 @@ template <typename OpType> void ModuleEmitter::emitConstant(OpType op) {
 }
 
 void ModuleEmitter::planLocalBuffers(func::FuncOp func) {
-  struct Interval { memref::AllocOp alloc; unsigned begin, end; bool safe; };
-  SmallVector<Interval> intervals;
-  DenseMap<Operation *, unsigned> order;
-  unsigned position = 0;
-  for (Operation &op : func.front()) order[&op] = position++;
-  uint64_t before = 0, after = 0;
-  for (auto alloc : localAllocs) {
-    Interval range{alloc, position, 0, alloc->getBlock() == &func.front()};
-    before += alloc.getType().getNumElements() * alloc.getType().getElementTypeBitWidth() / 8;
-    for (Operation *user : alloc.getResult().getUsers()) {
-      if (isa<memref::DeallocOp>(user)) continue;
-      if (!isa<memref::LoadOp, memref::StoreOp, affine::AffineLoadOp, affine::AffineStoreOp>(user)) range.safe = false;
-      Operation *phase = user;
-      while (phase && phase->getBlock() != &func.front()) phase = phase->getParentOp();
-      if (!phase || !isa<affine::AffineForOp>(phase)) { range.safe = false; continue; }
-      range.begin = std::min(range.begin, order[phase]);
-      range.end = std::max(range.end, order[phase]);
-    }
-    intervals.push_back(range);
-  }
-  llvm::stable_sort(intervals, [](const Interval &a, const Interval &b) { return a.begin < b.begin; });
-  localAllocs.clear(); localAliases.clear();
-  SmallVector<Interval> slots;
-  for (auto interval : intervals) {
-    auto slot = llvm::find_if(slots, [&](const Interval &previous) {
-      return interval.safe && previous.safe && previous.end < interval.begin &&
-             previous.alloc->getResult(0).getType() == interval.alloc.getType();
-    });
-    if (slot == slots.end()) {
-      slots.push_back(interval); localAllocs.push_back(interval.alloc);
-      after += interval.alloc.getType().getNumElements() * interval.alloc.getType().getElementTypeBitWidth() / 8;
-    } else {
-      localAliases.emplace_back(slot->alloc.getResult(), interval.alloc.getResult());
-      slot->end = interval.end;
-    }
-  }
-  os << "// SYCL local storage: " << before << " -> " << after << " bytes (phase reuse)\n";
+  uint64_t bytes = 0;
+  for (auto allocation : localAllocs)
+    bytes += allocation.getType().getNumElements() * std::max<unsigned>(8, allocation.getType().getElementTypeBitWidth()) / 8;
+  auto before = func->getAttrOfType<IntegerAttr>("sycl.local_bytes_before");
+  os << "// SYCL local storage: " << (before ? before.getInt() : bytes)
+     << " -> " << bytes << " bytes (pipeline phase reuse)\n";
 }
 
 void ModuleEmitter::emitFunction(func::FuncOp func) {
@@ -1761,8 +1730,6 @@ void ModuleEmitter::emitFunction(func::FuncOp func) {
       needComma = true;
     }
   }
-
-  for (auto [source, alias] : localAliases) addAlias(source, alias);
 
   groupReductions.clear();
   if (state.target == EmitTarget::SYCL) {
