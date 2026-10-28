@@ -10,44 +10,10 @@
 #include "Utils/EmitNumericSupport.h"
 #include "llvm/Support/CommandLine.h"
 
-static llvm::cl::opt<bool> vectorMemory(
-    "sycl-vector-memory", llvm::cl::init(false),
-    llvm::cl::desc("Enable experimental four-element global memory copies"));
-
 using namespace mlir;
 
 LogicalResult emitSYCL(ModuleOp module, llvm::raw_ostream &os);
 void registerEmitSYCLTranslation();
-
-static bool isReductionLoop(affine::AffineForOp op) {
-  if (op->hasAttr("sycl.reduction"))
-    return true;
-  auto inductionVar = op.getInductionVar();
-  SmallVector<affine::AffineLoadOp> loads;
-  SmallVector<affine::AffineStoreOp> stores;
-  for (Operation &nested : op.getBody()->getOperations()) {
-    if (auto load = dyn_cast<affine::AffineLoadOp>(&nested))
-      loads.push_back(load);
-    if (auto store = dyn_cast<affine::AffineStoreOp>(&nested))
-      stores.push_back(store);
-  }
-
-  for (auto store : stores) {
-    if (llvm::is_contained(store.getMapOperands(), inductionVar))
-      continue;
-    for (auto load : loads) {
-      if (load.getMemRef() != store.getMemRef())
-        continue;
-      if (!llvm::is_contained(load.getMapOperands(), inductionVar))
-        return true;
-    }
-  }
-  return false;
-}
-
-static bool hasParallelAffineParent(affine::AffineForOp op) {
-  return op->getParentOfType<affine::AffineForOp>() != nullptr;
-}
 
 static unsigned getSYCLAccessorRank(MemRefType type) {
   return std::max<unsigned>(type.getRank(), 1);
@@ -305,87 +271,20 @@ void ModuleEmitter::emitScfYield(scf::YieldOp op) {
 
 /// Affine statement emitters.
 
-unsigned ModuleEmitter::getParallelLoopDepth(affine::AffineForOp op) {
-  unsigned depth = 0;
-  // Look for a nested AffineForOp in the body
-  for (auto &nestedOp : op.getBody()->getOperations()) {
-    if (auto nestedFor = llvm::dyn_cast<affine::AffineForOp>(nestedOp)) {
-      if (isReductionLoop(nestedFor))
-        continue;
-      // Check if this nested loop is also parallelizable (same criteria as
-      // emitAffineFor)
-      auto lowerMap = nestedFor.getLowerBoundMap();
-      auto upperMap = nestedFor.getUpperBoundMap();
-      bool lowerIsZero =
-          (lowerMap.getNumResults() == 1 &&
-           llvm::isa<AffineConstantExpr>(lowerMap.getResult(0)) &&
-           llvm::cast<AffineConstantExpr>(lowerMap.getResult(0)).getValue() ==
-               0);
-      bool upperIsSimple = (upperMap.getNumResults() >= 1);
-      bool stepIsOne = (nestedFor.getStep() == 1);
-
-      if (lowerIsZero && upperIsSimple && stepIsOne) {
-        // If we found a nested parallel loop, our depth is 1 + its depth
-        // We assume strict nesting for now (one child)
-        depth = std::max(depth, 1 + getParallelLoopDepth(nestedFor));
-      }
-    }
-  }
-  return depth;
-}
-
 // Vectorize proven unit-stride, unmasked global/local copies. Arbitrary masks,
 // strides, and gather expressions continue through the scalar semantic path.
 bool ModuleEmitter::emitVectorCopy(affine::AffineForOp loop) {
-  if (loop->getParentOfType<affine::AffineForOp>() || !loop.hasConstantBounds() ||
-      loop.getConstantLowerBound() != 0 || loop.getStep() != 1 ||
-      loop.getConstantUpperBound() % 4 != 0) return false;
+  if (!loop->hasAttr("sycl.vector_copy")) return false;
   memref::LoadOp load;
   memref::StoreOp store;
   for (Operation &inner : loop.getBody()->without_terminator()) {
-    if (auto read = dyn_cast<memref::LoadOp>(inner)) {
-      if (load) return false;
-      load = read;
-    } else if (auto write = dyn_cast<memref::StoreOp>(inner)) {
-      if (store) return false;
-      store = write;
-    } else if (!isa<memref::ReinterpretCastOp>(inner) &&
-               inner.getName().getDialectNamespace() != "arith") return false;
+    if (auto read = dyn_cast<memref::LoadOp>(&inner)) load=read;
+    if (auto write = dyn_cast<memref::StoreOp>(&inner)) store=write;
   }
-  if (!load || !store || store.getValueToStore() != load.getResult() ||
-      !(load.getType().isF32() || load.getType().isInteger(32))) return false;
-  auto source = load.getMemRef().getDefiningOp<memref::ReinterpretCastOp>();
-  auto target = store.getMemRef().getDefiningOp<memref::ReinterpretCastOp>();
-  if (bool(source) == bool(target)) return false;
-  auto external = source ? source : target;
-  Value local = source ? store.getMemRef() : load.getMemRef();
-  auto localType = dyn_cast<MemRefType>(local.getType());
-  auto localIndices = source ? store.getIndices() : load.getIndices();
-  auto externalIndices = source ? load.getIndices() : store.getIndices();
-  if (!isa<UnrankedMemRefType>(external.getSource().getType()) ||
-      !localType || localType.getRank() != 1 || !local.getDefiningOp<memref::AllocOp>() ||
-      localIndices.size() != 1 || localIndices[0] != loop.getInductionVar() ||
-      externalIndices.size() != 1 ||
-      getConstantIntValue(externalIndices[0]) != std::optional<int64_t>(0) ||
-      getConstantIntValue(external.getMixedStrides()[0]) != std::optional<int64_t>(1)) return false;
-  auto offset = dyn_cast<Value>(external.getMixedOffsets()[0]);
-  if (!offset) return false;
-  std::function<std::optional<int64_t>(Value)> coefficient = [&](Value value) -> std::optional<int64_t> {
-    if (value == loop.getInductionVar()) return 1;
-    Operation *def = value.getDefiningOp();
-    if (!def || !loop->isProperAncestor(def)) return 0;
-    if (auto cast = dyn_cast<arith::IndexCastOp>(def)) return coefficient(cast.getIn());
-    if (isa<arith::ConstantOp>(def)) return 0;
-    if (isa<arith::AddIOp, arith::SubIOp>(def)) {
-      auto lhs = coefficient(def->getOperand(0)), rhs = coefficient(def->getOperand(1));
-      if (lhs && rhs) return *lhs + (isa<arith::AddIOp>(def) ? *rhs : -*rhs);
-    }
-    return std::nullopt;
-  };
-  if (coefficient(offset) != std::optional<int64_t>(1)) return false;
-  for (Operation &inner : loop.getBody()->without_terminator())
-    if (&inner != store.getOperation() && &inner != load.getOperation())
-      for (Value operand : inner.getOperands()) if (operand == load.getResult()) return false;
+  if (!load || !store) { emitError(loop,"invalid vector-copy plan"); return false; }
+  auto source=load.getMemRef().getDefiningOp<memref::ReinterpretCastOp>();
+  auto target=store.getMemRef().getDefiningOp<memref::ReinterpretCastOp>();
+  Value local=source ? store.getMemRef() : load.getMemRef();
   indent() << "for ("; emitValue(loop.getInductionVar());
   os << " = 4 * item.get_local_linear_id(); "; emitValue(loop.getInductionVar());
   os << " < " << loop.getConstantUpperBound() << "; "; emitValue(loop.getInductionVar());
@@ -421,31 +320,19 @@ bool ModuleEmitter::emitVectorCopy(affine::AffineForOp loop) {
 // Flatten perfect parallel nests onto the work-group's linear local index.
 // The contiguous dimension varies fastest, including rank3 and 2D local ranges.
 bool ModuleEmitter::emitParallelAffineNest(affine::AffineForOp op) {
-  if (op->getParentOfType<affine::AffineForOp>()) return false;
+  auto depth = op->getAttrOfType<IntegerAttr>("sycl.distribution_depth");
+  if (!op->hasAttr("sycl.distribute") || !depth || depth.getInt() <= 0) return false;
   SmallVector<affine::AffineForOp> loops;
   SmallVector<int64_t> sizes;
   auto current = op;
-  while (current && !isReductionLoop(current) && current.hasConstantBounds() &&
-         current.getConstantLowerBound() == 0 && current.getStep() == 1 &&
-         current.getNumResults() == 0) {
-    int64_t size = current.getConstantUpperBound();
-    if (size <= 0) return false;
-    loops.push_back(current); sizes.push_back(size);
-    auto &operations = current.getBody()->getOperations();
-    if (operations.size() != 2) break;
-    current = dyn_cast<affine::AffineForOp>(&operations.front());
-  }
-  if (loops.empty()) return false;
-  bool partialParallelNest = false;
-  loops.back().walk([&](affine::AffineForOp nested) {
-    if (nested != loops.back() && !isReductionLoop(nested)) partialParallelNest = true;
-  });
-  if (partialParallelNest) return false;
-
   int64_t total = 1;
-  for (int64_t size : sizes) {
-    if (total > INT64_MAX / size) return false;
-    total *= size;
+  for (int64_t index = 0; index < depth.getInt(); ++index) {
+    if (!current || !current.hasConstantBounds()) return false;
+    int64_t size = current.getConstantUpperBound();
+    if (size <= 0 || total > INT64_MAX / size) return false;
+    loops.push_back(current); sizes.push_back(size); total *= size;
+    if (index+1 < depth.getInt())
+      current = dyn_cast<affine::AffineForOp>(&current.getBody()->front());
   }
   std::string flat = "linear_" + std::to_string(state.currentIndent);
   // The actual induction variables retain their SSA names inside the body.
@@ -468,82 +355,12 @@ bool ModuleEmitter::emitParallelAffineNest(affine::AffineForOp op) {
 }
 
 void ModuleEmitter::emitAffineFor(affine::AffineForOp op) {
-  if (state.target == EmitTarget::SYCL && vectorMemory && emitVectorCopy(op)) return;
+  if (state.target == EmitTarget::SYCL && emitVectorCopy(op)) return;
   if (state.target == EmitTarget::SYCL && emitParallelAffineNest(op)) return;
-  bool reductionLoop = isReductionLoop(op);
-  // Group reduction is materialized by sycl-group-reduction in the IR.
-
-  // For SYCL target, try to emit SIMT parallel code instead of serial loops
-  if (state.target == EmitTarget::SYCL && !reductionLoop) {
-    auto lowerMap = op.getLowerBoundMap();
-    auto upperMap = op.getUpperBoundMap();
-
-    // Check if loop is parallelizable:
-    // - Lower bound is constant 0
-    // - Upper bound is constant
-    // - Step is 1
-    // - No loop-carried dependencies (simple element-wise ops)
-    bool lowerIsZero =
-        (lowerMap.getNumResults() == 1 &&
-         llvm::isa<AffineConstantExpr>(lowerMap.getResult(0)) &&
-         llvm::cast<AffineConstantExpr>(lowerMap.getResult(0)).getValue() == 0);
-    bool upperIsSimple = (upperMap.getNumResults() >= 1);
-    bool stepIsOne = (op.getStep() == 1);
-
-    // Now that local_accessor is used, SIMT transformation should work
-    if (lowerIsZero && upperIsSimple && stepIsOne) {
-      auto iterVar = op.getInductionVar();
-
-      // Emit SIMT code: Grid-Stride Loop
-      // usage: for (int iv = get_local_id(depth); iv < upper_bound; iv +=
-      // get_local_range(depth)) { ... }
-      unsigned depth = getParallelLoopDepth(op);
-      if (hasNarrowStore(op))
-        indent() << "#pragma clang loop vectorize(disable) interleave(disable)\n";
-
-      indent() << "for (";
-      emitValue(iterVar);
-      os << " = item.get_local_id(" << depth << "); ";
-
-      emitValue(iterVar);
-      os << " < ";
-      // Emit upper bound expression
-      AffineExprEmitter upperEmitter(state, upperMap.getNumDims(),
-                                     op.getUpperBoundOperands());
-      if (upperMap.getNumResults() == 1)
-        upperEmitter.emitAffineExpr(upperMap.getResult(0));
-      else {
-        // Handle min(a, b)
-        for (unsigned i = 0, e = upperMap.getNumResults() - 1; i < e; ++i)
-          os << (state.target == EmitTarget::SYCL ? "std::min(" : "min(");
-        upperEmitter.emitAffineExpr(upperMap.getResult(0));
-        for (auto &expr : llvm::drop_begin(upperMap.getResults(), 1)) {
-          os << ", ";
-          upperEmitter.emitAffineExpr(expr);
-          os << ")";
-        }
-      }
-      os << "; ";
-
-      emitValue(iterVar);
-      os << " += item.get_local_range(" << depth
-         << ")) {\n"; // Stride by local range
-
-      addIndent();
-      emitBlock(*op.getBody());
-      reduceIndent();
-
-      indent() << "}\n";
-      if (state.target == EmitTarget::SYCL && !op->getParentOfType<affine::AffineForOp>())
-        indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
-      return;
-    }
-  }
-
-  // Reduction loops carry a loop-carried dependency and must remain serial.
-  // A scalar reduction has no outer parallel loop, so only one work-item in
-  // the work-group is allowed to execute it.
-  bool guardScalarReduction = reductionLoop && !hasParallelAffineParent(op);
+  // Unscheduled affine loops have one owner. A distributed outer loop owns
+  // its nested scalar reductions; no emitter-side dependence guess is used.
+  bool guardScalarReduction = state.target == EmitTarget::SYCL &&
+      !op->getParentOfType<affine::AffineForOp>();
   if (guardScalarReduction) {
     indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
     indent() << "if (item.get_local_id(0) == 0 && item.get_local_id(1) == 0 && "
@@ -552,6 +369,8 @@ void ModuleEmitter::emitAffineFor(affine::AffineForOp op) {
   }
 
   // Fall back to original serial loop emission
+  if (state.target == EmitTarget::SYCL && hasNarrowStore(op))
+    indent() << "#pragma clang loop vectorize(disable) interleave(disable)\n";
   indent() << "for (";
   auto iterVar = op.getInductionVar();
 
@@ -1564,6 +1383,8 @@ template <typename OpType> void ModuleEmitter::emitConstant(OpType op) {
     emitError(op, "has unsupported constant type.");
 }
 
+// Allocation coloring is an IR transformation in sycl-local-memory-reuse.
+// Translation only reports the pass decision and declares the remaining IR.
 void ModuleEmitter::planLocalBuffers(func::FuncOp func) {
   uint64_t bytes = 0;
   for (auto allocation : localAllocs)
@@ -1711,6 +1532,11 @@ void ModuleEmitter::emitHostWrapper(func::FuncOp func) {
   // Scan for local allocations again (or reuse localAllocs if scope is
   // preserved, but best to rescan to be safe/stateless)
   auto hostLocalAllocs = localAllocs;
+  uint64_t localBytes = 0;
+  for (auto allocation : hostLocalAllocs) {
+    auto type = allocation.getType();
+    localBytes += type.getNumElements() * std::max<unsigned>(8, type.getElementTypeBitWidth()) / 8;
+  }
 
   // Emit both the normal asynchronous launcher and a profiling launcher.
   // The latter returns the device event duration and is used by benchmarks to
@@ -1735,6 +1561,15 @@ void ModuleEmitter::emitHostWrapper(func::FuncOp func) {
       os << ", uint64_t* elapsed_ns";
     os << ") {\n";
     addIndent();
+    indent() << "auto device = q->get_device();\n";
+    indent() << "if (" << localBytes << "ULL > device.get_info<sycl::info::device::local_mem_size>()) "
+             << "throw std::runtime_error(\"SYCL kernel local-memory requirement exceeds device limit: "
+             << localBytes << " bytes\");\n";
+    indent() << "auto max_group = device.get_info<sycl::info::device::max_work_group_size>();\n";
+    indent() << "auto max_axis = device.get_info<sycl::info::device::max_work_item_sizes<3>>();\n";
+    indent() << "if (!blockX || !blockY || !blockZ || blockX > max_axis[0] || blockY > max_axis[1] || "
+             << "blockZ > max_axis[2] || blockX > max_group/blockY || blockX*blockY > max_group/blockZ) "
+             << "throw std::runtime_error(\"SYCL local range exceeds device limit\");\n";
 
     if (profile)
       indent() << "sycl::event kernel_event = q->submit([&](sycl::handler &h) {\n";
@@ -1807,6 +1642,7 @@ void ModuleEmitter::emitModule(ModuleOp module) {
 #include <sycl/sycl.hpp>
 #include <algorithm>
 #include <cstdint>
+#include <stdexcept>
 
 )XXX";
     os << tritonSYCLNumericSupport;

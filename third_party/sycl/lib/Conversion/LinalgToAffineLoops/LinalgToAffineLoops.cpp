@@ -40,6 +40,9 @@ struct LinalgToAffineLoops
       }
       if (auto axis = linalgOp->getAttrOfType<IntegerAttr>("sycl.reduction_axis"))
         (*loops)[axis.getInt()]->setAttr("sycl.reduction", rewriter.getUnitAttr());
+      for (auto [index, iterator] : llvm::enumerate(linalgOp.getIteratorTypesArray()))
+        if (iterator == utils::IteratorType::parallel)
+          (*loops)[index]->setAttr("sycl.parallel", rewriter.getUnitAttr());
       rewriter.eraseOp(linalgOp);
     }
   }

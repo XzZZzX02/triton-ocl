@@ -539,8 +539,6 @@ private:
 
   unsigned numDSPs = 0;
 
-  // Helper to calculate the nesting depth of parallelizable affine loops.
-  unsigned getParallelLoopDepth(affine::AffineForOp op);
 };
 } // namespace
 

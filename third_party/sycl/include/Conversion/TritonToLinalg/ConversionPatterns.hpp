@@ -657,6 +657,7 @@ struct DotConverter : public OpConversionPattern<triton::DotOp> {
           builder.create<linalg::YieldOp>(loc, result);
         });
 
+    linalgOp->setAttr("sycl.reduction_axis", rewriter.getI64IntegerAttr(loopRank - 1));
     rewriter.replaceOp(op, linalgOp->getResults());
     return success();
   }

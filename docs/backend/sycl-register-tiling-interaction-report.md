@@ -1,58 +1,74 @@
-# Register accumulator and matmul tiling interaction
+# Register accumulator and matmul tiling composition
 
-2026-10-29. gfx906 validation used the `wlx -> dfcs` route. This report records
-a measured pass conflict; it does not mark the two-pass independence gap as
-resolved.
+2026-10-29, gfx906 (`g09r1n10`) through `wlx -> dfcs`.
 
-## Test design
+## Problem and implementation
 
-The paired test used NN f32 contractions at `(M,N,K) = (4,8,8), (16,32,32),
-(32,64,64), (64,16,32)`. It crossed `register_accumulator` and
-`matmul_register_tiling` on/off, held work distribution and local-memory reuse
-on, and held fusion and group reduction off. Each of the four combinations ran
-in three alternating rounds. Every run checked exact reference output at local
-ranges 48 and `(3,5)`, then took 31 device-event samples after 10 warmups.
-Job 22667834 ran exclusively on gfx906. All 48 rows passed.
+The former compiler order ran `matmul_register_tiling` before
+`register_accumulator`. Tiling consumed the affine reduction and made the later
+accumulator pass a no-op. The resulting kernel was correct, but the pipeline
+never applied accumulator promotion to the eligible contraction.
 
-## Results
+The pipeline now runs work distribution, accumulator promotion, then matmul
+tiling. The accumulator pass tags its SCF reduction. Tiling recognizes that
+tagged, statically bounded NN f32 contraction, checks allocation ownership,
+loop bounds, output uniqueness and index relationships, then expands the
+single SSA carry into four carries. It maps each column lane independently and
+keeps the original K update order. Unsupported layouts and shapes fall through
+unchanged. A dedicated `sycl.register_tile_composed_accumulator` marker records
+that tiling consumed the promoted loop.
 
-Paired speed ratio is `median(no tiling) / median(tiling)`, so values above 1
-favor tiling.
+This is a composable schedule, not a new arithmetic algorithm: standalone
+tiling already makes its own four SSA carries. The composition retains that
+register-resident recurrence without leaving a redundant affine reduction or
+running two transforms over the same loop.
 
-| Shape | Accumulator off | Accumulator on |
-|---|---:|---:|
-| 4×8×8 | 1.000× | 0.995× |
-| 16×32×32 | 1.032× | 0.990× |
-| 32×64×64 | 1.062× | 0.980× |
-| 64×16×32 | 1.013× | 0.988× |
+## Correctness and robustness
 
-For all three eligible shapes, `register_accumulator=true` plus
-`matmul_register_tiling=true` generated the same source hash as tiling alone,
-and a different hash from accumulator-only. The tiling pass consumes the affine
-reduction nest and materializes its own SCF-carried accumulators; the later
-register-accumulator pass then has no affine reduction to transform. The
-combined configuration therefore loses the accumulator-only result and is
-about 1.0–2.0% slower than accumulator-only in these measurements. With the
-small ineligible shape, tiling is a no-op and all corresponding hashes match.
+- The updated CPU IR contract suite passed 109/109. It checks the four
+  `iter_args`, four result stores, the composition marker, repeated pass runs,
+  pass orders, and rejection of short reductions, tail columns, aliases,
+  permuted inputs and insufficient batch distribution depth.
+- gfx906 job 22669079 passed all 48 cases: four shapes, all four accumulator /
+  tiling toggle combinations, three alternating rounds, and exact output
+  checks at local ranges 48 and `(3,5)`.
+- Focused gfx906 job 22669193 passed the 32x64x64 NN f32 case with both options
+  enabled. The harness asserted the composition marker and exact outputs at
+  both local ranges.
+- The pass sources compiled and the Triton module linked in the DFCS build.
 
-This confirms the transforms are not composable in the current pipeline. It
-does not justify a general selector: the measurements cover one device, NN f32,
-four shapes, and a fixed set of other pass settings. No compiler change was
-made. A runtime exclusion would hide the conflict rather than make both
-optimizations independently effective. The next implementation needs either a
-tiling transform that preserves/consumes the promoted accumulator state, or a
-reframed single schedule pass with explicit alternatives and independent
-ablation. Until then, the no-interaction requirement remains open.
+## Performance comparison
 
-## Robustness evidence
+The full before/after runs used the same benchmark harness SHA-256
+`d4f6cc6639759de9e86e7c925221b22b95816bf853825727d73caf2be6b67d3c`, three
+rounds, 31 device-event samples per row, and identical device settings. All 16
+paired configurations produced identical generated-source hashes before and
+after, including the nine eligible contraction rows. The median timings for
+the both-enabled configuration were:
 
-The existing IR contract suite was rerun on CPU: 104/104 pass. Those contracts
-cover eligibility, rejection, idempotence, and ordering of the individual IR
-passes; they do not prove device-level composition. The previous
-`register-ablation-v2-{32x64x64,64x64x64}.json` results also showed the same
-interaction in larger kernels.
+| Shape | Before (ns) | After (ns) | Change |
+|---|---:|---:|---:|
+| 4x8x8 | 31,200 | 31,200 | 0.00% |
+| 16x32x32 | 239,362 | 240,005 | +0.27% |
+| 32x64x64 | 1,142,415 | 1,141,462 | -0.08% |
+| 64x16x32 | 421,604 | 420,965 | -0.15% |
 
-Raw evidence: `sycl-validation/next/register-tiling-isolation-22667834.json`
-and `sycl-validation/next/pass-contracts-v16.json`. The benchmark source is
-`python/test/sycl/register_accumulator.py`; its fingerprint for the measured run
-is `d4f6cc6639759de9e86e7c925221b22b95816bf853825727d73caf2be6b67d3c`.
+These differences are within run-to-run noise; no performance gain is claimed.
+The measurable benefit is that the canonical pipeline now applies both pass
+stages and verifies their composition while emitting the same device program,
+so the ordering fix adds no observed runtime cost. The current tiling pass is
+still profitability-limited to its existing verified pattern; this result is
+not evidence that tiling wins over accumulator-only on every shape.
+
+## Evidence
+
+- Before: `sycl-validation/next/register-tiling-isolation-22667834.json`
+- After: `sycl-validation/next/register-tiling-isolation-22669079.json`
+- IR contracts: `sycl-validation/next/pass-contracts-composition-22669079.json`
+- Focused device result: `sycl-validation/next/register-tiling-composition-22669193.json`
+- Focused device log: `sycl-validation/next/register-tiling-compose-22669193.log`
+- Repeatable smoke job: `sycl-validation/next/register-tiling-composition-smoke-dcu.sbatch`
+- The first smoke submission (22669181) stopped at the harness checksum before
+  compiling or launching a kernel; its log is retained as
+  `sycl-validation/next/register-tiling-compose-stale-harness-22669181.log`.
+  The corrected submission (22669193) completed successfully.

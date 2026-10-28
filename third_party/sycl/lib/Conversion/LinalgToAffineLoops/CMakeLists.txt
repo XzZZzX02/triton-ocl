@@ -4,6 +4,10 @@ add_triton_library(LinalgToAffineLoopsSYCL
   LocalMemoryReuse.cpp
   ElementwiseFusion.cpp
   GroupReduction.cpp
+  RegisterAccumulator.cpp
+  MatmulRegisterTiling.cpp
+  WorkDistribution.cpp
+  VectorMemory.cpp
 
   DEPENDS
   LinalgToAffineLoopsSYCLConversionPassIncGen

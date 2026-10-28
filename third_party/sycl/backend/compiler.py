@@ -39,6 +39,9 @@ class SYCLOptions:
     reuse_local_memory: bool = True
     fuse_elementwise: bool = False
     group_reduction: bool = False
+    register_accumulator: bool = False
+    matmul_register_tiling: bool = False
+    distribute_work: bool = True
 
     def __post_init__(self):
         pass
@@ -128,10 +131,19 @@ class SYCLBackend(BaseBackend):
         passes.common.add_canonicalizer(pm)
         passes.common.add_cse(pm)
         passes.common.add_symbol_dce(pm)
+        if opt.distribute_work:
+            sycl.passes.memir.work_distribution(pm)
+        if opt.register_accumulator:
+            sycl.passes.memir.register_accumulator(pm)
+        if opt.matmul_register_tiling:
+            sycl.passes.memir.matmul_register_tiling(pm)
+            passes.common.add_cse(pm)
         if opt.group_reduction:
             sycl.passes.memir.group_reduction(pm)
         if opt.reuse_local_memory:
             sycl.passes.memir.local_memory_reuse(pm)
+        if opt.vectorize_memory:
+            sycl.passes.memir.vector_memory(pm)
         pm.run(mod)
         return mod
 
@@ -150,8 +162,6 @@ class SYCLBackend(BaseBackend):
             source, output = Path(directory)/"kernel.memir", Path(directory)/"kernel.sycl"
             source.write_text(str(src))
             command = [str(translator), str(source), "-triton-sycl-emit-sycl", "-o", str(output)]
-            if opt.vectorize_memory:
-                command.append("--sycl-vector-memory")
             try:
                 result = subprocess.run(command, capture_output=True, text=True, timeout=timeout)
             except subprocess.TimeoutExpired as error:

@@ -1,0 +1,7 @@
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+composition smoke harness sha256: 652bf296e92f46f2b6f506f4557a0e39ca9c5c9f1a6b2ca12a757541e05e93be
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"M": 32, "N": 64, "K": 64, "ta": false, "tb": false, "half": false, "enabled": true, "config_index": 3, "round": 0, "tiled": true, "fused": false, "reuse": true, "group": false, "distributed": true, "block": 64, "special": false, "status": "PASS", "compile_seconds": 0.7585438629612327, "source_bytes": 18362, "source_sha256": "8c9e8508d3ac0510f9c92e5a586c280cc7a3cd745c7b3ee225ccaae647afee2c", "samples_ns": [], "median_ns": null, "private_loops": 1}
