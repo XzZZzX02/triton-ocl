@@ -37,6 +37,7 @@ CASES = ([f'storage:{d}' for d in DTYPES] +
          [f'integer:{d}' for d in DTYPES if d.startswith(('int', 'uint')) and d != 'int1'] +
          [f'ieee:{d}' for d in FLOATS] +
          [f'ieee_arithmetic:{d}' for d in FLOATS] +
+         [f'ieee_reduction:{d}' for d in FLOATS] +
          [f'constant:{d}' for d in ('float32', 'float64')] +
          [f'convert:{d}' for d in FP8 + ('bfloat16', 'float16')] +
          [f'arithmetic:{d}' for d in DTYPES if d != 'int1'] +
@@ -231,6 +232,15 @@ def execute(case, mode):
         tl.store(y+2, tl.min(v, 0))
 
     @triton.jit
+    def ieee_reduction(x, y, R: tl.constexpr, B: tl.constexpr):
+        row = tl.program_id(0)*R+tl.arange(0, R)
+        col = tl.arange(0, B)
+        v = tl.load(x+row[:, None]*B+col[None, :])
+        tl.store(y+row*3, tl.sum(v, 1))
+        tl.store(y+row*3+1, tl.max(v, 1))
+        tl.store(y+row*3+2, tl.min(v, 1))
+
+    @triton.jit
     def constants(y):
         tl.store(y, 1.e-12)
         tl.store(y+1, -0.)
@@ -320,6 +330,33 @@ def execute(case, mode):
         bound = [x, y, output, 64]
         expected = [ieee_binary(op, a, b, dtype) for op in ('add','sub','mul','div')
                     for a,b in pairs]
+    elif kind == 'ieee_reduction':
+        rows = [
+            [-8., -4., -2., -1., -.5, -.25, -.125, -.0625],
+            [.125, .25, .5, 1., 2., 4., 8., 16.],
+            [1., 2., math.nan, 4., 5., 6., 7., 8.],
+            [math.nan] * 8,
+            [math.inf, -math.inf, 0., 0., 1., -1., 2., -2.],
+            [0., -0., 0., -0., 0., -0., 0., -0.],
+            [math.inf] * 8,
+            [-math.inf] * 8,
+        ]
+        values = [value for row in rows for value in row]
+        x = Tensor(dtype, values)
+        output_dtype = 'float64' if dtype == 'float64' else 'float32'
+        y = Tensor(output_dtype, [0.] * (len(rows) * 3))
+        c = ieee_reduction.warmup(x, y, R=8, B=8, grid=(1,))
+        bound = [x, y, 8, 8]
+        expected = [
+            -15.9375, -.0625, -8.,
+            31.875, 16., .125,
+            math.nan, 8., 1.,
+            math.nan, math.nan, math.nan,
+            math.nan, math.inf, -math.inf,
+            0., 0., -0.,
+            math.inf, math.inf, math.inf,
+            -math.inf, -math.inf, -math.inf,
+        ]
     else:
         sub = minimum_subnormal(dtype)
         special = [0., -0., 1., -1., math.inf, -math.inf, math.nan, sub]
@@ -379,6 +416,18 @@ def execute(case, mode):
                         assert math.copysign(1.,got) == math.copysign(1.,want), \
                             (case,block,op,i,'zero sign',a,b,got,want)
             continue
+        if kind == 'ieee_reduction':
+            actual = y.values()
+            for row in range(8):
+                for operation in range(3):
+                    index = row * 3 + operation
+                    got, want = actual[index], expected[index]
+                    assert math.isnan(got) if math.isnan(want) else got == want, \
+                        (case, block, row, operation, got, want)
+                    if want == 0.:
+                        assert math.copysign(1., got) == math.copysign(1., want), \
+                            (case, block, row, operation, 'zero sign', got, want)
+            continue
         if kind != 'ieee':
             actual = y.raw()
             check_expected = expected
@@ -411,6 +460,7 @@ def execute(case, mode):
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--case',choices=CASES)
+    p.add_argument('--cases',nargs='+',choices=CASES)
     p.add_argument('--mode',choices=('run','compile'),default='run')
     p.add_argument('--output')
     p.add_argument('--python',default=sys.executable)
@@ -449,7 +499,7 @@ def main():
             return dict(case=case,status='TIMEOUT',expected_harness_sha256=SCRIPT_SHA256)
     results=[]
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.jobs) as pool:
-        for row in pool.map(isolated,CASES):
+        for row in pool.map(isolated,args.cases or CASES):
             results.append(row); print(json.dumps(row),flush=True)
             if args.output:
                 pathlib.Path(args.output).write_text(json.dumps(results,indent=2)+'\n')
