@@ -1,0 +1,34 @@
+[
+  {
+    "case": "ieee:float16",
+    "status": "PASS",
+    "checks": 2,
+    "job_id": 22645130,
+    "reason": "isolated retry after SIGBUS in full matrix job 22644866",
+    "harness_sha256": "fdf90f17e1ba9c34d85a043ca7a4d5820a2d0131018542754c58726029a2e7bc"
+  },
+  {
+    "case": "reduction:float8e4nv",
+    "status": "PASS",
+    "checks": 2,
+    "job_id": 22667678,
+    "reason": "case omitted after full matrix job 22644866 reached its time limit",
+    "harness_sha256": "fdf90f17e1ba9c34d85a043ca7a4d5820a2d0131018542754c58726029a2e7bc"
+  },
+  {
+    "case": "reduction:float8e4b8",
+    "status": "PASS",
+    "checks": 2,
+    "job_id": 22667682,
+    "reason": "case omitted after full matrix job 22644866 reached its time limit",
+    "harness_sha256": "fdf90f17e1ba9c34d85a043ca7a4d5820a2d0131018542754c58726029a2e7bc"
+  },
+  {
+    "case": "reduction:float8e4b15",
+    "status": "PASS",
+    "checks": 2,
+    "job_id": 22667688,
+    "reason": "case omitted after full matrix job 22644866 reached its time limit",
+    "harness_sha256": "fdf90f17e1ba9c34d85a043ca7a4d5820a2d0131018542754c58726029a2e7bc"
+  }
+]

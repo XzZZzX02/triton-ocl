@@ -6,6 +6,7 @@ Run with a loader-capable --python on DFCS; --mode compile is a separate gate.
 import argparse
 import concurrent.futures
 import ctypes
+import hashlib
 import itertools
 import json
 import math
@@ -35,10 +36,12 @@ FP8 = tuple(d for d in DTYPES if d.startswith('float8'))
 CASES = ([f'storage:{d}' for d in DTYPES] +
          [f'integer:{d}' for d in DTYPES if d.startswith(('int', 'uint')) and d != 'int1'] +
          [f'ieee:{d}' for d in FLOATS] +
+         [f'ieee_arithmetic:{d}' for d in FLOATS] +
          [f'constant:{d}' for d in ('float32', 'float64')] +
          [f'convert:{d}' for d in FP8 + ('bfloat16', 'float16')] +
          [f'arithmetic:{d}' for d in DTYPES if d != 'int1'] +
          [f'reduction:{d}' for d in DTYPES if d != 'int1'])
+SCRIPT_SHA256 = hashlib.sha256(pathlib.Path(__file__).resolve().read_bytes()).hexdigest()
 
 
 def pack_value(dtype, value):
@@ -56,6 +59,36 @@ def unpack_value(dtype, data):
     if fmt == 'bf16':
         return struct.unpack('<f', b'\0\0'+data)[0]
     return struct.unpack('<'+fmt, data)[0]
+
+
+def ieee_binary(op, a, b, dtype):
+    if op == 'add':
+        value = a + b
+    elif op == 'sub':
+        value = a - b
+    elif op == 'mul':
+        value = a * b
+    elif math.isnan(a) or math.isnan(b):
+        value = math.nan
+    elif (a == 0. and b == 0.) or (math.isinf(a) and math.isinf(b)):
+        value = math.nan
+    elif op == 'div' and (b == 0. or math.isinf(a)):
+        negative = math.copysign(1., a) != math.copysign(1., b)
+        value = -math.inf if negative else math.inf
+    elif op == 'div' and math.isinf(b):
+        negative = math.copysign(1., a) != math.copysign(1., b)
+        value = -0. if negative else 0.
+    else:
+        value = a / b
+    try:
+        return unpack_value(dtype, pack_value(dtype, value))
+    except OverflowError:
+        return math.copysign(math.inf, value)
+
+
+def minimum_subnormal(dtype):
+    return {'float16': 2.**-24, 'bfloat16': 2.**-133,
+            'float32': 2.**-149, 'float64': 2.**-1074}[dtype]
 
 
 def decode_fp8(dtype, bits):
@@ -177,6 +210,15 @@ def execute(case, mode):
         tl.store(y+2*B+i, tl.minimum(v, v))
 
     @triton.jit
+    def ieee_arithmetic(x, y, z, B: tl.constexpr):
+        i = tl.arange(0, B)
+        a, b = tl.load(x+i), tl.load(y+i)
+        tl.store(z+i, a+b)
+        tl.store(z+B+i, a-b)
+        tl.store(z+2*B+i, a*b)
+        tl.store(z+3*B+i, a/b)
+
+    @triton.jit
     def reduction(x, y, B: tl.constexpr):
         i = tl.arange(0, B)
         v = tl.load(x+i)
@@ -269,8 +311,17 @@ def execute(case, mode):
         # Triton Python literals default to fp32 before a wider store.
         literals = [1.e-12, -0., 1.23456789012345, 1.e-30]
         expected = b''.join(pack_value(dtype, struct.unpack('<f',struct.pack('<f',v))[0]) for v in literals)
+    elif kind == 'ieee_arithmetic':
+        special = [0., -0., 1., -1., math.inf, -math.inf, math.nan, minimum_subnormal(dtype)]
+        pairs = list(itertools.product(special, repeat=2))
+        x, y = Tensor(dtype, [a for a,b in pairs]), Tensor(dtype, [b for a,b in pairs])
+        output = Tensor(dtype, [0.]*256)
+        c = ieee_arithmetic.warmup(x, y, output, B=64, grid=(1,))
+        bound = [x, y, output, 64]
+        expected = [ieee_binary(op, a, b, dtype) for op in ('add','sub','mul','div')
+                    for a,b in pairs]
     else:
-        sub = {'float16': 2.**-24, 'bfloat16': 2.**-133, 'float32': 2.**-149, 'float64': 2.**-1074}[dtype]
+        sub = minimum_subnormal(dtype)
         special = [0., -0., 1., -1., math.inf, -math.inf, math.nan, sub]
         pairs = list(itertools.product(special, repeat=2))
         x = Tensor(dtype, [a for a,b in pairs])
@@ -317,6 +368,17 @@ def execute(case, mode):
                         assert math.isnan(got) if math.isnan(want) else got == want, (case,'encode',rounding,i,v,got,want)
                         if want == 0.: assert math.copysign(1.,got) == math.copysign(1.,want), (case,'encode zero',rounding,i)
             continue
+        if kind == 'ieee_arithmetic':
+            actual = output.values()
+            for operation, op in enumerate(('add','sub','mul','div')):
+                for i, (a,b) in enumerate(pairs):
+                    got, want = actual[operation*64+i], expected[operation*64+i]
+                    assert math.isnan(got) if math.isnan(want) else got == want, \
+                        (case,block,op,i,a,b,got,want)
+                    if want == 0.:
+                        assert math.copysign(1.,got) == math.copysign(1.,want), \
+                            (case,block,op,i,'zero sign',a,b,got,want)
+            continue
         if kind != 'ieee':
             actual = y.raw()
             check_expected = expected
@@ -356,15 +418,35 @@ def main():
     p.add_argument('--timeout',type=int,default=180)
     args = p.parse_args()
     if args.case:
-        print(json.dumps(dict(case=args.case,status='PASS',**{k:v for k,v in execute(args.case,args.mode).items() if k != 'status'})),flush=True)
+        print(json.dumps(dict(status='HARNESS',sha256=SCRIPT_SHA256)), flush=True)
+        print(json.dumps(dict(case=args.case,status='PASS',harness_sha256=SCRIPT_SHA256,
+                              **{k:v for k,v in execute(args.case,args.mode).items() if k != 'status'})),flush=True)
         return
     def isolated(case):
         try:
             r = subprocess.run([args.python,str(pathlib.Path(__file__).resolve()),'--case',case,'--mode',args.mode],stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,timeout=args.timeout)
-            lines = [line for line in r.stdout.splitlines() if line.startswith('{"case":')]
-            return json.loads(lines[-1]) if r.returncode == 0 and lines else dict(case=case,status='FAIL',returncode=r.returncode,output_tail=r.stdout[-9000:])
+            records = []
+            for line in r.stdout.splitlines():
+                try:
+                    records.append(json.loads(line))
+                except json.JSONDecodeError:
+                    continue
+            fingerprints = [row for row in records if row.get('status') == 'HARNESS']
+            observed_sha256 = fingerprints[-1]['sha256'] if fingerprints else None
+            cases = [row for row in records if row.get('case') == case]
+            if r.returncode == 0 and cases:
+                result = cases[-1]
+                result['harness_sha256'] = observed_sha256
+                result['expected_harness_sha256'] = SCRIPT_SHA256
+                result['harness_match'] = observed_sha256 == SCRIPT_SHA256
+                if not result['harness_match']:
+                    result['status'] = 'INVALID_HARNESS'
+                return result
+            return dict(case=case,status='FAIL',returncode=r.returncode,
+                        harness_sha256=observed_sha256,
+                        expected_harness_sha256=SCRIPT_SHA256,output_tail=r.stdout[-9000:])
         except subprocess.TimeoutExpired:
-            return dict(case=case,status='TIMEOUT')
+            return dict(case=case,status='TIMEOUT',expected_harness_sha256=SCRIPT_SHA256)
     results=[]
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.jobs) as pool:
         for row in pool.map(isolated,CASES):
