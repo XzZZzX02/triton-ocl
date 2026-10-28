@@ -55,3 +55,38 @@ set `ACPP_VISIBILITY_MASK=hip`, and run the SHA-checked
 `sycl-validation/next/model-layout-dcu.sbatch`. CPU uses `ACPP_VISIBILITY_MASK=omp`
 and `OMP_NUM_THREADS=4`. Full execution JSON files are retained in the same
 validation directory.
+
+## Follow-up: Negative and Zero Strides
+
+2026-10-29. The regression matrix now has 44 cases, up from 32. It adds
+negative A row, A reduction-axis, B column, and B reduction-axis strides, plus
+zero-stride broadcast across A rows and B columns. Each case runs fp16 and
+fp32 and compares every output and padding sentinel against the scalar
+reference. The standalone harness passes the backing allocation base and an
+explicit logical-origin offset; this is required because its serializer copies
+the complete `c_array` starting at `data_ptr()`.
+
+| Backend | Cases | Pass | Fail | Elements checked | Maximum absolute error |
+|---|---:|---:|---:|---:|---:|
+| SYCL CPU | 44 | 44 | 0 | 7,169 | 0 |
+| gfx906 | 44 | 44 | 0 | 7,169 | 0 |
+
+The previous `model-layout-cpu-820f5ce9.json` is preserved as an invalid
+harness experiment: its interior `data_ptr()` caused `run_standalone` to copy
+from the logical origin while discarding the allocation prefix. The apparent
+eight negative-stride failures and one child-process heap error were harness
+artifacts, not backend failures. A focused allocation-base load/store probe
+also passed fp16/fp32 with strides -1 and -2 (4/4 cases, 52 elements).
+
+The corrected source SHA is
+`e072120ef00f293c64030050deed4ce9bc6d94432b2c77f110d783770acfdbe6`. Raw
+results are `sycl-validation/next/model-layout-cpu-e072120e.json` and
+`sycl-validation/next/model-layout-extended-dcu-22669501.json`; the gfx906 job
+completed with exit code 0 on g09r2n01. The invalid harness evidence remains
+in `sycl-validation/next/model-layout-cpu-820f5ce9.json`.
+
+This follow-up changes test coverage and pointer construction in the harness;
+the compiler and generated kernels did not change, so there is no runtime
+performance delta to claim. It establishes correctness only for the listed
+stride and broadcast combinations, not arbitrary affine or data-dependent
+layouts.

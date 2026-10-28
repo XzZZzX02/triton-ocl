@@ -1,0 +1,742 @@
+[
+  {
+    "case": "layout_2d_nn_f32_none",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 71,
+    "max_abs_error": 0,
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nn",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nn_f16_none",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 87,
+    "max_abs_error": 0,
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nn",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_tn_f32_none",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 87,
+    "max_abs_error": 0,
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "tn",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_tn_f16_none",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 56,
+    "max_abs_error": 0,
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "tn",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nt_f32_none",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 56,
+    "max_abs_error": 0,
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nt_f16_none",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 71,
+    "max_abs_error": 0,
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_tt_f32_none",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 71,
+    "max_abs_error": 0,
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "tt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_tt_f16_none",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 87,
+    "max_abs_error": 0,
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "tt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nn_f32_none",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 237,
+    "max_abs_error": 0,
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "nn",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nn_f32_a",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 285,
+    "max_abs_error": 0,
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "nn",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nn_f32_b",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 192,
+    "max_abs_error": 0,
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "nn",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nn_f16_none",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 285,
+    "max_abs_error": 0,
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "nn",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nn_f16_a",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 192,
+    "max_abs_error": 0,
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "nn",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nn_f16_b",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 237,
+    "max_abs_error": 0,
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "nn",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tn_f32_none",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 285,
+    "max_abs_error": 0,
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "tn",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tn_f32_a",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 192,
+    "max_abs_error": 0,
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "tn",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tn_f32_b",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 237,
+    "max_abs_error": 0,
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "tn",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tn_f16_none",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 192,
+    "max_abs_error": 0,
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "tn",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tn_f16_a",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 237,
+    "max_abs_error": 0,
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "tn",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tn_f16_b",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 285,
+    "max_abs_error": 0,
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "tn",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nt_f32_none",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 192,
+    "max_abs_error": 0,
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "nt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nt_f32_a",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 237,
+    "max_abs_error": 0,
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "nt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nt_f32_b",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 285,
+    "max_abs_error": 0,
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "nt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nt_f16_none",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 237,
+    "max_abs_error": 0,
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "nt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nt_f16_a",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 285,
+    "max_abs_error": 0,
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "nt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nt_f16_b",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 192,
+    "max_abs_error": 0,
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "nt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f32_none",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 237,
+    "max_abs_error": 0,
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "tt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f32_a",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 285,
+    "max_abs_error": 0,
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "tt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f32_b",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 192,
+    "max_abs_error": 0,
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "tt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f16_none",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 285,
+    "max_abs_error": 0,
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "tt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f16_a",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 192,
+    "max_abs_error": 0,
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "tt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f16_b",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 237,
+    "max_abs_error": 0,
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "tt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nn_f32_none_negative_a_rows",
+    "status": "FAIL",
+    "returncode": 1,
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "output_tail": "{\"status\": \"HARNESS\", \"sha256\": \"820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec\"}\nDEBUG: Attempting to import triton.backends.sycl\nDEBUG: Successfully imported triton.backends.sycl\nTraceback (most recent call last):\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 237, in <module>\n    main()\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 194, in main\n    **execute(args.case, args.mode))), flush=True)\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 173, in execute\n    assert got == want, (case, index, got, want)\n           ^^^^^^^^^^^\nAssertionError: ('layout_2d_nn_f32_none_negative_a_rows', 15, nan, -0.5)\n"
+  },
+  {
+    "case": "layout_2d_nn_f16_none_negative_a_rows",
+    "status": "FAIL",
+    "returncode": 1,
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "output_tail": "{\"status\": \"HARNESS\", \"sha256\": \"820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec\"}\nDEBUG: Attempting to import triton.backends.sycl\nDEBUG: Successfully imported triton.backends.sycl\nTraceback (most recent call last):\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 237, in <module>\n    main()\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 194, in main\n    **execute(args.case, args.mode))), flush=True)\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 173, in execute\n    assert got == want, (case, index, got, want)\n           ^^^^^^^^^^^\nAssertionError: ('layout_2d_nn_f16_none_negative_a_rows', 13, -17988.3671875, -1.75)\n"
+  },
+  {
+    "case": "layout_2d_tn_f32_none_negative_a_k",
+    "status": "FAIL",
+    "returncode": 1,
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "output_tail": "{\"status\": \"HARNESS\", \"sha256\": \"820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec\"}\nDEBUG: Attempting to import triton.backends.sycl\nDEBUG: Successfully imported triton.backends.sycl\nTraceback (most recent call last):\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 237, in <module>\n    main()\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 194, in main\n    **execute(args.case, args.mode))), flush=True)\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 173, in execute\n    assert got == want, (case, index, got, want)\n           ^^^^^^^^^^^\nAssertionError: ('layout_2d_tn_f32_none_negative_a_k', 0, 5.5, 10.0)\n"
+  },
+  {
+    "case": "layout_2d_tn_f16_none_negative_a_k",
+    "status": "FAIL",
+    "returncode": 1,
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "output_tail": "{\"status\": \"HARNESS\", \"sha256\": \"820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec\"}\nDEBUG: Attempting to import triton.backends.sycl\nDEBUG: Successfully imported triton.backends.sycl\nTraceback (most recent call last):\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 237, in <module>\n    main()\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 194, in main\n    **execute(args.case, args.mode))), flush=True)\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 173, in execute\n    assert got == want, (case, index, got, want)\n           ^^^^^^^^^^^\nAssertionError: ('layout_2d_tn_f16_none_negative_a_k', 0, 3178.75, 2.75)\n"
+  },
+  {
+    "case": "layout_2d_nt_f32_none_negative_b_cols",
+    "status": "FAIL",
+    "returncode": 1,
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "output_tail": "{\"status\": \"HARNESS\", \"sha256\": \"820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec\"}\nDEBUG: Attempting to import triton.backends.sycl\nDEBUG: Successfully imported triton.backends.sycl\nTraceback (most recent call last):\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 237, in <module>\n    main()\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 194, in main\n    **execute(args.case, args.mode))), flush=True)\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 173, in execute\n    assert got == want, (case, index, got, want)\n           ^^^^^^^^^^^\nAssertionError: ('layout_2d_nt_f32_none_negative_b_cols', 1, -1.2559342603274575e+36, 6.625)\n"
+  },
+  {
+    "case": "layout_2d_nt_f16_none_negative_b_cols",
+    "status": "FAIL",
+    "returncode": -6,
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "output_tail": "{\"status\": \"HARNESS\", \"sha256\": \"820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec\"}\ncorrupted size vs. prev_size\n"
+  },
+  {
+    "case": "layout_2d_tt_f32_none_negative_b_k",
+    "status": "FAIL",
+    "returncode": 1,
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "output_tail": "{\"status\": \"HARNESS\", \"sha256\": \"820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec\"}\nDEBUG: Attempting to import triton.backends.sycl\nDEBUG: Successfully imported triton.backends.sycl\nTraceback (most recent call last):\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 237, in <module>\n    main()\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 194, in main\n    **execute(args.case, args.mode))), flush=True)\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 173, in execute\n    assert got == want, (case, index, got, want)\n           ^^^^^^^^^^^\nAssertionError: ('layout_2d_tt_f32_none_negative_b_k', 0, -1.797142709972185e+35, 4.25)\n"
+  },
+  {
+    "case": "layout_2d_tt_f16_none_negative_b_k",
+    "status": "FAIL",
+    "returncode": 1,
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "output_tail": "{\"status\": \"HARNESS\", \"sha256\": \"820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec\"}\nDEBUG: Attempting to import triton.backends.sycl\nDEBUG: Successfully imported triton.backends.sycl\nTraceback (most recent call last):\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 237, in <module>\n    main()\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 194, in main\n    **execute(args.case, args.mode))), flush=True)\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work1/dtune/zzx/triton/gap-validation/next/model_layout_semantics-820f5ce9.py\", line 173, in execute\n    assert got == want, (case, index, got, want)\n           ^^^^^^^^^^^\nAssertionError: ('layout_2d_tt_f16_none_negative_b_k', 0, 1842.5, 10.0)\n"
+  },
+  {
+    "case": "layout_2d_nn_f32_none_broadcast_a_rows",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 71,
+    "max_abs_error": 0,
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nn",
+    "precision": "f32",
+    "variant": "broadcast_a_rows",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nn_f16_none_broadcast_a_rows",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 87,
+    "max_abs_error": 0,
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nn",
+    "precision": "f16",
+    "variant": "broadcast_a_rows",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nt_f32_none_broadcast_b_cols",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 56,
+    "max_abs_error": 0,
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nt",
+    "precision": "f32",
+    "variant": "broadcast_b_cols",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nt_f16_none_broadcast_b_cols",
+    "status": "PASS",
+    "harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "elements_checked": 71,
+    "max_abs_error": 0,
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nt",
+    "precision": "f16",
+    "variant": "broadcast_b_cols",
+    "expected_harness_sha256": "820f5ce9f5c3a8810eb9914c36d2e72e776250268e9b773edfa8c1fff5ce6fec",
+    "harness_match": true
+  }
+]
