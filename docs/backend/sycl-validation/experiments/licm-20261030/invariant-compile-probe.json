@@ -1,0 +1,38 @@
+[
+  {
+    "hoist": false,
+    "accumulator": false,
+    "round": 0,
+    "status": "PASS",
+    "marker_count": 0,
+    "source_sha256": "8b9cad8132ba4bde5d810718d5bbf155d0557fecb5e1f10ed05bdadee8046ec3",
+    "source_bytes": 13292
+  },
+  {
+    "hoist": true,
+    "accumulator": false,
+    "round": 0,
+    "status": "PASS",
+    "marker_count": 8,
+    "source_sha256": "f287745de5fed556a24321b15109c48d8bb0dde6de6692b1327dd6cdc8304d55",
+    "source_bytes": 13283
+  },
+  {
+    "hoist": false,
+    "accumulator": true,
+    "round": 0,
+    "status": "PASS",
+    "marker_count": 0,
+    "source_sha256": "8b9cad8132ba4bde5d810718d5bbf155d0557fecb5e1f10ed05bdadee8046ec3",
+    "source_bytes": 13292
+  },
+  {
+    "hoist": true,
+    "accumulator": true,
+    "round": 0,
+    "status": "PASS",
+    "marker_count": 8,
+    "source_sha256": "f287745de5fed556a24321b15109c48d8bb0dde6de6692b1327dd6cdc8304d55",
+    "source_bytes": 13283
+  }
+]

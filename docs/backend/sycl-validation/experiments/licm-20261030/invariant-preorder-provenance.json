@@ -1,0 +1,7 @@
+{
+  "third_party/sycl/lib/Conversion/LinalgToAffineLoops/LoopInvariantComputeHoisting.cpp": "b187328ede8779e0f522c6e9b72788aa7bf53312b39a994663ea72c2b29d9b5b",
+  "third_party/sycl/backend/compiler.py": "ac949f22b530ccdf949baf6e457d7e460d6ff32ffb9d6c42ed5632c02fc0af3f",
+  "python/test/sycl/invariant_hoisting_semantics.py": "326c3d950cb2ac510232d583a61372f9ace71d6bbb5257fd9092168d73844c47",
+  "python/test/sycl/invariant_hoisting_followup.py": "c53d597566ee78b3a423cd25c72add392fdf8f2878b5cbdb858b5d16956e290a",
+  "python/test/sycl/invariant_hoisting_contracts.py": "ed833d923e513baede4d3a97b9e6b5bb7752ec7bcaf1211f72fe00390a208016"
+}

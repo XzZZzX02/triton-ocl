@@ -1,0 +1,21 @@
+--- a/third_party/sycl/include/Conversion/LinalgToAffineLoops/Passes.h
++++ b/third_party/sycl/include/Conversion/LinalgToAffineLoops/Passes.h
+@@ -22,0 +23 @@
++std::unique_ptr<OperationPass<ModuleOp>> createLoopInvariantComputeHoistingPass();
+--- a/third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeLists.txt
++++ b/third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeLists.txt
+@@ -9,0 +10 @@
++  LoopInvariantComputeHoisting.cpp
+--- a/third_party/sycl/triton_sycl.cc
++++ b/third_party/sycl/triton_sycl.cc
+@@ -42,0 +43,3 @@
++  m.def("loop_invariant_compute_hoisting", [](mlir::PassManager &pm) {
++    pm.addPass(mlir::triton::sycl::createLoopInvariantComputeHoistingPass());
++  });
+--- a/third_party/sycl/backend/compiler.py
++++ b/third_party/sycl/backend/compiler.py
+@@ -44,0 +45 @@
++    loop_invariant_compute_hoisting: bool = False
+@@ -151,0 +153,2 @@
++        if opt.loop_invariant_compute_hoisting:
++            sycl.passes.memir.loop_invariant_compute_hoisting(pm)

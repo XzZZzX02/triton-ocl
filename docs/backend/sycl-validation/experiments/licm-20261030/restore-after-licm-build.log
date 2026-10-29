@@ -1,0 +1,33 @@
+ninja: Entering directory `build/cmake.linux-x86_64-cpython-3.11'
+[0/1] Re-running CMake...
+-- Could not find ccache. Consider installing ccache to speed up compilation.
+-- Adding Python module
+-- Found pybind11: /public/home/dtune/zzx/triton/venv/lib/python3.11/site-packages/pybind11/include (found version "2.13.6")
+-- Triton backends tuple: sycl,proton
+-- Configuring done
+CMake Warning at /work1/dtune/zzx/triton/deps/llvm-cached/lib/cmake/llvm/AddLLVM.cmake:1070 (add_executable):
+  Cannot generate a safe runtime search path for target triton-sycl-translate
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libz.so.1] in /usr/lib64 may be hidden by files in:
+      /public/home/dtune/zzx/triton/deps/runtime
+
+  Some of these libraries may not be found correctly.
+Call Stack (most recent call first):
+  third_party/sycl/tool/triton-sycl-translate/CMakeLists.txt:4 (add_llvm_executable)
+
+
+-- Generating done
+-- Build files have been written to: /work1/dtune/zzx/triton/triton-ocl/build/cmake.linux-x86_64-cpython-3.11
+[1/12] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/LocalMemoryReuse.cpp.o
+[2/12] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/RegisterAccumulator.cpp.o
+[3/12] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/OrderedReductionUnroll.cpp.o
+[4/12] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/MatmulRegisterTiling.cpp.o
+[5/12] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/GroupReduction.cpp.o
+[6/12] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/ElementwiseFusion.cpp.o
+[7/12] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/LinalgToAffineLoops.cpp.o
+[8/12] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/VectorMemory.cpp.o
+[9/12] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/WorkDistribution.cpp.o
+[10/12] Building CXX object third_party/sycl/CMakeFiles/TritonSYCL.dir/triton_sycl.cc.o
+[11/12] Linking CXX shared library /work1/dtune/zzx/triton/triton-ocl/python/triton/_C/libtriton.so

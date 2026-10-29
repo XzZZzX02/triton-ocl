@@ -1,0 +1,20 @@
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+h04r3n14
+gfx906:sramecc-:xnack-
+HIP_DEVICE=Device 66a1 COUNT=4
+c53d597566ee78b3a423cd25c72add392fdf8f2878b5cbdb858b5d16956e290a  python/test/sycl/invariant_hoisting_followup.py
+b187328ede8779e0f522c6e9b72788aa7bf53312b39a994663ea72c2b29d9b5b  third_party/sycl/lib/Conversion/LinalgToAffineLoops/LoopInvariantComputeHoisting.cpp
+c62e8ea37c4b56bf3e97c796ea3c3208d9f6e5a72a6f816be3fae8d1b43b6969  python/triton/_C/libtriton.so
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"case": "copy", "special": true, "hoist": false, "accumulator": false, "unroll": 1, "round": 0, "status": "PASS", "elements_checked": 309, "hoisted": 0, "promoted": 0, "expanded": 0, "source_sha256": "00d63b6f185aa5975960803abb750197ef986755759c05ab16d41182ed7a406a", "source_bytes": 13160, "samples_ns": [], "median_ns": null}
+{"case": "copy", "special": true, "hoist": true, "accumulator": false, "unroll": 1, "round": 0, "status": "PASS", "elements_checked": 309, "hoisted": 8, "promoted": 0, "expanded": 0, "source_sha256": "868e5c3f0be2106b8bef646e0031bc82de5d0458c91b8ec0936b198b75fe8b3f", "source_bytes": 13150, "samples_ns": [], "median_ns": null}
+{"case": "varying", "special": true, "hoist": false, "accumulator": false, "unroll": 1, "round": 0, "status": "PASS", "elements_checked": 309, "hoisted": 0, "promoted": 0, "expanded": 0, "source_sha256": "69b4a8d2be99893fca12ea82f1881a08dde0677a47e95bcf06617c54adb263c7", "source_bytes": 13270, "samples_ns": [], "median_ns": null}
+{"case": "varying", "special": true, "hoist": true, "accumulator": false, "unroll": 1, "round": 0, "status": "PASS", "elements_checked": 309, "hoisted": 8, "promoted": 0, "expanded": 0, "source_sha256": "115332c5d858a7ca7d70f3679b92022750c033c5d2af72b4729a62e7d97887c9", "source_bytes": 13261, "samples_ns": [], "median_ns": null}
+{"case": "nested", "special": true, "hoist": false, "accumulator": false, "unroll": 1, "round": 0, "status": "PASS", "elements_checked": 1173, "hoisted": 0, "promoted": 0, "expanded": 0, "source_sha256": "7900bef1c665b57b30f933dd5e28e6ddce44754d711732163ee61651c1e81a1f", "source_bytes": 13736, "samples_ns": [], "median_ns": null}
+{"case": "nested", "special": true, "hoist": true, "accumulator": false, "unroll": 1, "round": 0, "status": "PASS", "elements_checked": 1173, "hoisted": 11, "promoted": 0, "expanded": 0, "source_sha256": "057f1af4a3e42ee01c47b60e5ca67b18c9d2b36b00af9f8c3314e388427d4f6f", "source_bytes": 13720, "samples_ns": [], "median_ns": null}
+{"case": "dynamic", "special": true, "hoist": false, "accumulator": false, "unroll": 1, "round": 0, "status": "PASS", "elements_checked": 309, "hoisted": 0, "promoted": 0, "expanded": 0, "source_sha256": "929fd85cc9cfbca00a9d21f736731e5d7077067004e40e5e17df9de40cdbf924", "source_bytes": 13138, "samples_ns": [], "median_ns": null}
+{"case": "dynamic", "special": true, "hoist": true, "accumulator": false, "unroll": 1, "round": 0, "status": "PASS", "elements_checked": 309, "hoisted": 0, "promoted": 0, "expanded": 0, "source_sha256": "929fd85cc9cfbca00a9d21f736731e5d7077067004e40e5e17df9de40cdbf924", "source_bytes": 13138, "samples_ns": [], "median_ns": null}
+{"case": "one", "special": true, "hoist": false, "accumulator": false, "unroll": 1, "round": 0, "status": "PASS", "elements_checked": 30, "hoisted": 0, "promoted": 0, "expanded": 0, "source_sha256": "24083cf7c10167a8b4ebfdcceed459f76fc0e4b1db994ea4ea165c295314b702", "source_bytes": 12702, "samples_ns": [], "median_ns": null}
+{"case": "one", "special": true, "hoist": true, "accumulator": false, "unroll": 1, "round": 0, "status": "PASS", "elements_checked": 30, "hoisted": 0, "promoted": 0, "expanded": 0, "source_sha256": "24083cf7c10167a8b4ebfdcceed459f76fc0e4b1db994ea4ea165c295314b702", "source_bytes": 12702, "samples_ns": [], "median_ns": null}

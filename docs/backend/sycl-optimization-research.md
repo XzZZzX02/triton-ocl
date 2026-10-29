@@ -39,3 +39,28 @@ no MFMA on gfx906; cache-keyed controls; safe fallback for unproven dependencies
 retain raw timing samples, compile cost and rejected candidates. Performance
 claims apply only to measured classes. Negative/zero/NaN/subnormal tests precede
 any reordering or reduction optimization claims.
+
+## 2026-10-30: Integer Compute LICM Candidate
+
+- MLIR pass documentation, affine and generic loop-invariant code motion:
+  https://mlir.llvm.org/docs/Passes/
+  The candidate handles both affine.for and scf.for because actual Triton
+  scalar loops in this checkout lower to SCF. It avoids moving memory
+  operations and floating arithmetic.
+- LLVM's LICM design notes:
+  https://llvm.org/docs/Passes.html#licm-loop-invariant-code-motion
+  Hoisting can lengthen live ranges; lower-level rematerialization and register
+  pressure handling remain relevant. Fewer source operations in a loop are
+  therefore not a device speedup claim.
+- LLVM MachineLICM implementation:
+  https://llvm.org/doxygen/MachineLICM_8cpp_source.html
+  Its register-pressure safeguards motivate paired GPU measurement rather
+  than enabling the new candidate from static trip count alone.
+
+Status: rejected after gfx906 timing; production integration removed. See
+`sycl-licm-experiment-report.md` and the archived measured source/results.
+The initial integer-chain IR contracts exposed a pass-order dependency with
+ordered unroll when an affine.apply remains in a promoted recurrence. A
+candidate placement before unroll would need revalidation after scheduling.
+The measured version put hoisting last. No universal profitability or
+pass-independence conclusion follows from its contract results.

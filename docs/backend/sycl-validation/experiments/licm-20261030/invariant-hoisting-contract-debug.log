@@ -1,0 +1,40 @@
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+Traceback (most recent call last):
+  File "/work1/dtune/zzx/triton/triton-ocl/python/test/sycl/invariant_hoisting_contracts.py", line 188, in <module>
+    main()
+  File "/work1/dtune/zzx/triton/triton-ocl/python/test/sycl/invariant_hoisting_contracts.py", line 170, in main
+    assert result.count('sycl.ordered_reduction_unroll') == int(middle == [4]), result
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: #loc2 = loc("contract.mlir":2:21)
+#loc6 = loc("contract.mlir":5:18)
+#map = affine_map<(d0)[s0] -> (d0 + s0)>
+module {
+  func.func @composed(%arg0: index loc("contract.mlir":2:21)) {
+    %alloc = memref.alloc() : memref<64x64xf32> loc(#loc3)
+    %alloc_0 = memref.alloc() : memref<64xf32> loc(#loc4)
+    affine.for %arg1 loc("contract.mlir":5:18) = 0 to 32 {
+      %0 = memref.load %alloc_0[%arg1] : memref<64xf32> loc(#loc7)
+      %c0 = arith.constant 0 : index loc(#loc7)
+      %c32 = arith.constant 32 : index loc(#loc7)
+      %c1 = arith.constant 1 : index loc(#loc7)
+      %1 = affine.apply #map(%arg1)[%arg0] {sycl.loop_invariant_hoisted} loc(#loc8)
+      %2 = scf.for %arg2 = %c0 to %c32 step %c1 iter_args(%arg3 = %0) -> (f32) {
+        %3 = memref.load %alloc[%1, %arg2] : memref<64x64xf32> loc(#loc7)
+        %4 = arith.addf %3, %arg3 : f32 loc(#loc9)
+        scf.yield %4 : f32 loc(#loc7)
+      } {sycl.register_accumulator, sycl.thread_private} loc(#loc7)
+      memref.store %2, %alloc_0[%arg1] : memref<64xf32> loc(#loc7)
+    } {sycl.distribute, sycl.distribution_depth = 1 : i64, sycl.parallel} loc(#loc5)
+    return loc(#loc10)
+  } loc(#loc1)
+} loc(#loc)
+#loc = loc("contract.mlir":1:1)
+#loc1 = loc("contract.mlir":2:1)
+#loc3 = loc("contract.mlir":3:16)
+#loc4 = loc("contract.mlir":4:14)
+#loc5 = loc("contract.mlir":5:7)
+#loc7 = loc("contract.mlir":6:9)
+#loc8 = loc("contract.mlir":7:18)
+#loc9 = loc("contract.mlir":10:16)
+#loc10 = loc("contract.mlir":14:7)

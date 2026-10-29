@@ -1,0 +1,93 @@
+[
+  {
+    "case": "static_integer_chain_and_idempotence",
+    "status": "PASS"
+  },
+  {
+    "case": "affine_apply",
+    "status": "PASS"
+  },
+  {
+    "case": "one_trip",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "zero_trip",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "dynamic_bound",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "potentially_undefined_division",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "floating_point_unchanged",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "scf_static",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "scf_dynamic",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "scf_one_trip",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "scf_zero_trip",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "scf_nsw",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "scf_unknown_attribute",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "nested_fixed_point",
+    "status": "PASS"
+  },
+  {
+    "case": "preserve_parallel_nest",
+    "status": "PASS"
+  },
+  {
+    "case": "never_move_memory_access",
+    "status": "PASS"
+  },
+  {
+    "case": "active_promotion_distribution_[]",
+    "status": "PASS"
+  },
+  {
+    "case": "active_promotion_distribution_['local_memory_reuse']",
+    "status": "PASS"
+  },
+  {
+    "case": "active_promotion_distribution_[4]",
+    "status": "PASS"
+  },
+  {
+    "case": "default_off_and_cache_key",
+    "status": "PASS"
+  }
+]
