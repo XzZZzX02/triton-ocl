@@ -55,6 +55,8 @@ def main():
     p.add_argument('--check-block',choices=('all','48','3x5'),default='all')
     p.add_argument('--special',action='store_true')
     p.add_argument('--undistributed',action='store_true')
+    p.add_argument('--unroll',nargs='+',type=int,choices=(1,2,4,8),default=[1])
+    p.add_argument('--accumulated-only',action='store_true')
     args=p.parse_args()
     specs=[(4,8,8),(16,32,32),(32,64,64),(64,16,32)]
     if args.quick: specs=specs[:1]
@@ -90,13 +92,16 @@ def main():
                     configs.append((False, False, False, False, False, True))
                 if args.undistributed:
                     configs=[config[:5]+(False,) for config in configs]
-                ordered_configs=configs if round_index%2==0 else list(reversed(configs))
+                if args.accumulated_only:
+                    configs=[config for config in configs if config[0]]
+                expanded=[config+(factor,) for config in configs for factor in args.unroll]
+                ordered_configs=expanded if round_index%2==0 else list(reversed(expanded))
                 indexed_configs=list(enumerate(ordered_configs))
                 if args.config_index is not None:
                     if args.config_index < 0 or args.config_index >= len(indexed_configs):
                         p.error(f'--config-index must be in [0, {len(indexed_configs)-1}]')
                     indexed_configs=[indexed_configs[args.config_index]]
-                for config_index,(enabled,tiled,fused,reuse,group,distributed) in indexed_configs:
+                for config_index,(enabled,tiled,fused,reuse,group,distributed,unroll) in indexed_configs:
                     started=time.perf_counter()
                     phase='compile'
                     code_hash=None
@@ -104,7 +109,8 @@ def main():
                         z.c_array[:] = [-99.] * len(z.c_array)
                         c=kernel.warmup(x,y,z,m,n,k,M=M,N=N,K=K,BATCH=batches,TA=ta,TB=tb,
                             grid=(batches,),register_accumulator=enabled,matmul_register_tiling=tiled,
-                            fuse_elementwise=fused,reuse_local_memory=reuse,group_reduction=group,distribute_work=distributed)
+                            fuse_elementwise=fused,reuse_local_memory=reuse,group_reduction=group,distribute_work=distributed,
+                            reduction_unroll=unroll)
                         compile_seconds=time.perf_counter()-started
                         code=c.asm['sycl']; code=code.decode() if isinstance(code,bytes) else code
                         code_hash=hashlib.sha256(code.encode()).hexdigest()
@@ -115,6 +121,7 @@ def main():
                                 if isinstance(data,str): (path/(str(enabled)+'-'+str(tiled)+'.'+stage)).write_text(data)
                         blocks={'all':(48,(3,5)),'48':(48,),'3x5':((3,5),)}[args.check_block]
                         for block in blocks:
+                            z.c_array[:] = [-99.] * len(z.c_array)
                             phase=f'run block={block}'
                             bound=[x,y,z,m,n,k,M,N,K,batches,ta,tb]
                             run_standalone(batches,1,1,c.name,code,bound,signature=c.src.signature,metadata=c.metadata,block_size=block)
@@ -126,7 +133,7 @@ def main():
                             metadata=c.metadata,block_size=args.block,repeats=args.repeats,warmup=10) if args.repeats else []
                         row=dict(M=M,N=N,K=K,ta=ta,tb=tb,half=half,enabled=enabled,config_index=config_index,round=round_index,
                             tiled=tiled,fused=fused,reuse=reuse,group=group,distributed=distributed,block=args.block,
-                            special=args.special,status='PASS',compile_seconds=compile_seconds,source_bytes=len(code),
+                            special=args.special,unroll=unroll,status='PASS',compile_seconds=compile_seconds,source_bytes=len(code),
                             source_sha256=code_hash,
                             samples_ns=samples,median_ns=statistics.median(samples) if samples else None,
                             private_loops=str(c.asm['memir']).count('sycl.thread_private'))
@@ -134,11 +141,13 @@ def main():
                         assert ('sycl.register_tile' in str(c.asm['memir'])) == should_tile,row
                         should_compose=enabled and should_tile
                         assert ('sycl.register_tile_composed_accumulator' in str(c.asm['memir'])) == should_compose,row
+                        should_unroll=unroll>1 and (enabled or should_tile) and K%unroll==0 and K//unroll>=2
+                        assert ('sycl.ordered_reduction_unroll' in str(c.asm['memir'])) == should_unroll,row
                         assert row['private_loops']>0 if enabled or should_tile else row['private_loops']==0,row
                     except Exception as error:
                         row=dict(M=M,N=N,K=K,ta=ta,tb=tb,half=half,enabled=enabled,config_index=config_index,round=round_index,
                             tiled=tiled,fused=fused,reuse=reuse,group=group,distributed=distributed,
-                            status='FAIL',phase=phase,source_sha256=code_hash,error=repr(error))
+                            unroll=unroll,status='FAIL',phase=phase,source_sha256=code_hash,error=repr(error))
                     rows.append(row); print(json.dumps(row),flush=True)
                     pathlib.Path(args.output).write_text(json.dumps(rows,indent=2)+'\n')
     raise SystemExit(any(row['status'] != 'PASS' for row in rows))

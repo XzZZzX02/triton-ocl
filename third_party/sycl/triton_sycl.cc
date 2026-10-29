@@ -37,6 +37,9 @@ void init_triton_sycl_passes_lair(py::module &&m) {
 }
 
 void init_triton_sycl_passes_memir(py::module &&m) {
+  m.def("ordered_reduction_unroll", [](mlir::PassManager &pm, unsigned factor) {
+    pm.addPass(mlir::triton::sycl::createOrderedReductionUnrollPass(factor));
+  }, py::arg("pm"), py::arg("factor") = 4);
   m.def("vector_memory", [](mlir::PassManager &pm) {
     pm.addPass(mlir::triton::sycl::createVectorMemoryPass());
   });

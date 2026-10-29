@@ -41,10 +41,12 @@ class SYCLOptions:
     group_reduction: bool = False
     register_accumulator: bool = False
     matmul_register_tiling: bool = False
+    reduction_unroll: int = 1
     distribute_work: bool = True
 
     def __post_init__(self):
-        pass
+        if type(self.reduction_unroll) is not int or self.reduction_unroll not in (1, 2, 4, 8):
+            raise ValueError("SYCL reduction_unroll must be 1, 2, 4, or 8")
 
     def hash(self):
         hash_dict = dict(self.__dict__)
@@ -140,6 +142,9 @@ class SYCLBackend(BaseBackend):
             passes.common.add_cse(pm)
         if opt.group_reduction:
             sycl.passes.memir.group_reduction(pm)
+        if opt.reduction_unroll != 1:
+            sycl.passes.memir.ordered_reduction_unroll(pm, opt.reduction_unroll)
+            passes.common.add_cse(pm)
         if opt.reuse_local_memory:
             sycl.passes.memir.local_memory_reuse(pm)
         if opt.vectorize_memory:
