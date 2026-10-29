@@ -9,6 +9,14 @@
 
 using namespace mlir;
 namespace {
+static bool hasRegisterTileAncestor(Operation *op) {
+  for (Operation *parent = op->getParentOp(); parent;
+       parent = parent->getParentOp())
+    if (parent->hasAttr("sycl.register_tile"))
+      return true;
+  return false;
+}
+
 // Expand consecutive iterations of a proven private recurrence. The second
 // copy consumes the first copy's yield, including for tuple accumulators.
 // There are no partial sums, speculative iterations, or fast-math flags.
@@ -50,6 +58,11 @@ struct OrderedReductionUnrollPass
           (upper.value() - lower.value()) % factor ||
           (upper.value() - lower.value()) / factor < 2 ||
           loop.getInitArgs().empty() || loop.getInitArgs().size() > 8)
+        continue;
+      // Paired gfx906 measurements showed factor-four unroll losing 2.7% when
+      // composed with a register tile at K=16, while K>=32 retained a benefit.
+      // Keep the two schedules independent for short tiled reductions.
+      if (hasRegisterTileAncestor(loop) && upper.value() - lower.value() < 32)
         continue;
       bool legal = true;
       unsigned bodySize = 0;

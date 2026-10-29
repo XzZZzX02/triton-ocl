@@ -27,6 +27,13 @@ Thus the original update order is retained while reducing loop-control work
 and exposing loads/conversions to later scheduling. This approach has a code
 size cost, and a profitable automatic choice is not established here.
 
+Follow-up interaction evidence (2026-10-29): on the final four gfx906
+shape/layout pairs, factor-four unroll combined with register tiling regressed
+the K=16 case by 2.7% before a guard, but improved K=64 and K=128 cases by
+roughly 0.5–1.5%. The pass now detects a `sycl.register_tile` ancestor and skips
+static trip counts below 32. The untiled short-loop path remains independently
+eligible. This uses IR structure and bounds, not kernel names or shape lists.
+
 ## Correctness and robustness
 
 - New IR contracts: 65/65 pass; original pass contracts: 109/109 pass. Tests
@@ -92,21 +99,19 @@ row-sum toggle matrix includes fusion/reuse/group options, but fusion and group
 are mostly no-ops on that kernel. It cannot prove independence when every pass
 actually transforms a model.
 
-The 44-case model-layout suite predates this pass and runs with its default
-disabled setting. It is not evidence for enabling expansion across all layouts.
 IEEE tests establish the listed values and baseline equivalence, not exhaustive
-rounding/NaN-payload coverage. The separate tiling matrix also found f32
-regressions relative to accumulator-only; those require their own profitability
-gate and are not attributed to this unroll pass.
+rounding/NaN-payload coverage. Tiling profitability is assessed separately and
+is not attributed to the unroll pass.
 
 ## Reproduction and provenance
 
 Source SHA-256 for `OrderedReductionUnroll.cpp`:
-`6b6c1ff56066fce683f510ca2b26b5e19da99502d409adc1de8c79958fc1222a`.
+`ed09f8e7d698f36eaccf0854cb9df59d9f6663463cad7cf93dba6c75ac35941e`.
 The source compiled and `libtriton.so` linked in the DFCS build.
 
 - IR: `ordered_unroll_contracts.py --output result.json`;
-  `pass_contracts.py --output result.json` under the DFCS Triton Python.
+  the updated contracts pass 71/71 including short tiled fallback;
+  tiling contracts pass 122/122 under the DFCS Triton Python.
 - Dot: `sycl-validation/next/ordered-unroll-dcu.sbatch`, accepting layout, dtype
   and M/N/K arguments. It pins the current harness SHA.
 - Generic reductions: `ordered-unroll-semantics-dcu.sbatch --special --factors
@@ -120,6 +125,8 @@ The source compiled and `libtriton.so` linked in the DFCS build.
   which additionally resets output sentinels before each local range.
 - v1 generic harness SHA: `88adaee9257e99809b98ae80d61cdb21250423c78b2b8765d21a20d6718a4bbc`.
   v2 SHA: `5dc3a50c8a7315dd5ee7831aa1558f705fad1e8b754e9c4a0afff6b2f01fd54c`.
+- Final schedule-interaction GPU jobs: 22677308–22677311 (96/96 PASS);
+  analysis: `tiling-guard-analysis-final.json`.
 
 Background sources recorded during design: LLVM/MLIR pass documentation, AMD's
 register-pressure article and *A Tiling Perspective for Register Optimization*

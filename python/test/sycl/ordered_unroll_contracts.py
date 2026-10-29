@@ -104,15 +104,18 @@ def main():
             rows.append(dict(case=f'{name}_{factor}', status='PASS', transformed=expected))
     source = recurrence()
     assert transform(source, [1]) == transform(source, []), 'factor one must be a no-op'
-    contraction = """func.func @dot() {
-      %a = memref.alloc() : memref<32x32xf32>
-      %b = memref.alloc() : memref<32x32xf32>
+    def contraction(k=32):
+        source = """func.func @dot() {
+      %a = memref.alloc() : memref<32x32xf16>
+      %b = memref.alloc() : memref<32x32xf16>
       %c = memref.alloc() : memref<32x32xf32>
       affine.for %r = 0 to 32 {
         affine.for %n = 0 to 32 {
           affine.for %k = 0 to 32 {
-            %x = affine.load %a[%r,%k] : memref<32x32xf32>
-            %y = affine.load %b[%k,%n] : memref<32x32xf32>
+            %xh = affine.load %a[%r,%k] : memref<32x32xf16>
+            %yh = affine.load %b[%k,%n] : memref<32x32xf16>
+            %x = arith.extf %xh : f16 to f32
+            %y = arith.extf %yh : f16 to f32
             %z = affine.load %c[%r,%n] : memref<32x32xf32>
             %p = arith.mulf %x,%y : f32
             %q = arith.addf %z,%p : f32
@@ -122,19 +125,32 @@ def main():
       } {sycl.parallel}
       return
     }"""
+        return source.replace('affine.for %k = 0 to 32 {',
+                              f'affine.for %k = 0 to {k} {{')
     prefix = ['work_distribution', 'register_accumulator', 'matmul_register_tiling']
     for factor in (2, 4, 8):
         for middle in ([], ['group_reduction'], ['local_memory_reuse']):
-            result = transform(contraction, prefix + middle + [factor])
+            result = transform(contraction(), prefix + middle + [factor])
             assert result.count('sycl.register_tile =') == 1, result
             assert result.count('sycl.register_tile_composed_accumulator') == 1, result
             assert result.count('sycl.ordered_reduction_unroll =') == 1, result
             assert result.count('arith.addf') == 4 * factor, result
             assert result.count('memref.store') == 4, result
-            after = transform(contraction, prefix + [factor] + middle)
+            after = transform(contraction(), prefix + [factor] + middle)
             assert result == after, (middle, result, after)
-            assert result == transform(contraction, prefix + middle + [factor, factor]), result
+            assert result == transform(contraction(), prefix + middle + [factor, factor]), result
             rows.append(dict(case=f'tiling_composition_{factor}_{middle}', status='PASS'))
+        short = transform(contraction(16), prefix + [factor])
+        assert short.count('sycl.register_tile =') == 1, short
+        assert short.count('sycl.ordered_reduction_unroll =') == 0, short
+        assert short.count('arith.addf') == 4, short
+        rows.append(dict(case=f'short_tiled_reduction_{factor}', status='PASS',
+                         transformed=False))
+        untiled = transform(contraction(16), prefix[:-1] + [factor])
+        assert untiled.count('sycl.register_tile =') == 0, untiled
+        assert untiled.count('sycl.ordered_reduction_unroll =') == 1, untiled
+        rows.append(dict(case=f'short_untiled_reduction_{factor}', status='PASS',
+                         transformed=True))
     for factor in (0, 3, 16):
         try:
             transform(source, [factor])
