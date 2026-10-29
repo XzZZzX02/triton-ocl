@@ -1,0 +1,798 @@
+{
+  "status": "PASS",
+  "rows": 96,
+  "jobs": 4,
+  "comparisons": [
+    {
+      "input": "tiling-guard-22677308.json",
+      "job_id": "22677308",
+      "shape": [
+        8,
+        64,
+        16
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "unroll": 1,
+      "untiled_median_ns": 279844,
+      "tiled_median_ns": 279044,
+      "speedup": 1.0028669313799974,
+      "round_speedups": [
+        0.9928419471905894,
+        1.0028669313799974,
+        1.0051693686190606
+      ],
+      "all_rounds_nonregressing": false,
+      "source_identical": true,
+      "source_bytes_delta": [
+        0
+      ]
+    },
+    {
+      "input": "tiling-guard-22677308.json",
+      "job_id": "22677308",
+      "shape": [
+        8,
+        64,
+        16
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "unroll": 4,
+      "untiled_median_ns": 278724,
+      "tiled_median_ns": 279685,
+      "speedup": 0.9965639916334448,
+      "round_speedups": [
+        1.0040391800464505,
+        1.0285710204139942,
+        0.9965639916334448
+      ],
+      "all_rounds_nonregressing": false,
+      "source_identical": true,
+      "source_bytes_delta": [
+        0
+      ]
+    },
+    {
+      "input": "tiling-guard-22677308.json",
+      "job_id": "22677308",
+      "shape": [
+        8,
+        64,
+        16
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "unroll": 1,
+      "untiled_median_ns": 292165,
+      "tiled_median_ns": 277604,
+      "speedup": 1.0524524142303424,
+      "round_speedups": [
+        1.0571915483600758,
+        1.0281562759533227,
+        1.0501433696920794
+      ],
+      "all_rounds_nonregressing": true,
+      "source_identical": false,
+      "source_bytes_delta": [
+        1371
+      ]
+    },
+    {
+      "input": "tiling-guard-22677308.json",
+      "job_id": "22677308",
+      "shape": [
+        8,
+        64,
+        16
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "unroll": 4,
+      "untiled_median_ns": 292964,
+      "tiled_median_ns": 278405,
+      "speedup": 1.0522943194267345,
+      "round_speedups": [
+        1.070759199426909,
+        1.0700295990671809,
+        1.0442520788060559
+      ],
+      "all_rounds_nonregressing": true,
+      "source_identical": false,
+      "source_bytes_delta": [
+        45
+      ]
+    },
+    {
+      "input": "tiling-guard-22677309.json",
+      "job_id": "22677309",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "unroll": 1,
+      "untiled_median_ns": 450568,
+      "tiled_median_ns": 449768,
+      "speedup": 1.0017786947937604,
+      "round_speedups": [
+        1.0014330690117157,
+        1.0014229558350083,
+        1.0049963419639192
+      ],
+      "all_rounds_nonregressing": true,
+      "source_identical": true,
+      "source_bytes_delta": [
+        0
+      ]
+    },
+    {
+      "input": "tiling-guard-22677309.json",
+      "job_id": "22677309",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "unroll": 4,
+      "untiled_median_ns": 449128,
+      "tiled_median_ns": 450567,
+      "speedup": 0.9968062463518189,
+      "round_speedups": [
+        0.995392358717839,
+        0.9953858138745181,
+        1.0017780583158675
+      ],
+      "all_rounds_nonregressing": false,
+      "source_identical": true,
+      "source_bytes_delta": [
+        0
+      ]
+    },
+    {
+      "input": "tiling-guard-22677309.json",
+      "job_id": "22677309",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "unroll": 1,
+      "untiled_median_ns": 674572,
+      "tiled_median_ns": 615690,
+      "speedup": 1.0956357907388459,
+      "round_speedups": [
+        1.0939283322333053,
+        1.0953742955058552,
+        1.0961867992470078
+      ],
+      "all_rounds_nonregressing": true,
+      "source_identical": false,
+      "source_bytes_delta": [
+        1374
+      ]
+    },
+    {
+      "input": "tiling-guard-22677309.json",
+      "job_id": "22677309",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "unroll": 4,
+      "untiled_median_ns": 655211,
+      "tiled_median_ns": 606409,
+      "speedup": 1.0804770377748352,
+      "round_speedups": [
+        1.081595233772878,
+        1.0801902500947953,
+        1.0796739494301701
+      ],
+      "all_rounds_nonregressing": true,
+      "source_identical": false,
+      "source_bytes_delta": [
+        3419
+      ]
+    },
+    {
+      "input": "tiling-guard-22677310.json",
+      "job_id": "22677310",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "unroll": 1,
+      "untiled_median_ns": 909600,
+      "tiled_median_ns": 907520,
+      "speedup": 1.0022919605077574,
+      "round_speedups": [
+        1.0040671850960188,
+        1.000882626148874,
+        1.0022919605077574
+      ],
+      "all_rounds_nonregressing": true,
+      "source_identical": true,
+      "source_bytes_delta": [
+        0
+      ]
+    },
+    {
+      "input": "tiling-guard-22677310.json",
+      "job_id": "22677310",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "unroll": 4,
+      "untiled_median_ns": 909439,
+      "tiled_median_ns": 909439,
+      "speedup": 1.0,
+      "round_speedups": [
+        1.0021122912036982,
+        1.0022912625639218,
+        0.99753867521391
+      ],
+      "all_rounds_nonregressing": false,
+      "source_identical": true,
+      "source_bytes_delta": [
+        0
+      ]
+    },
+    {
+      "input": "tiling-guard-22677310.json",
+      "job_id": "22677310",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "unroll": 1,
+      "untiled_median_ns": 920326,
+      "tiled_median_ns": 858561,
+      "speedup": 1.0719401417022203,
+      "round_speedups": [
+        1.071740971229767,
+        1.0721336989722812,
+        1.0752883296100708
+      ],
+      "all_rounds_nonregressing": true,
+      "source_identical": false,
+      "source_bytes_delta": [
+        1366
+      ]
+    },
+    {
+      "input": "tiling-guard-22677310.json",
+      "job_id": "22677310",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "unroll": 4,
+      "untiled_median_ns": 906726,
+      "tiled_median_ns": 854406,
+      "speedup": 1.0612355250314254,
+      "round_speedups": [
+        1.056467411940375,
+        1.0589994673659195,
+        1.0612355250314254
+      ],
+      "all_rounds_nonregressing": true,
+      "source_identical": false,
+      "source_bytes_delta": [
+        3379
+      ]
+    },
+    {
+      "input": "tiling-guard-22677311.json",
+      "job_id": "22677311",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "unroll": 1,
+      "untiled_median_ns": 1052973,
+      "tiled_median_ns": 1053131,
+      "speedup": 0.9998499711811731,
+      "round_speedups": [
+        1.000165073172953,
+        0.9993919193685082,
+        0.9998499711811731
+      ],
+      "all_rounds_nonregressing": false,
+      "source_identical": true,
+      "source_bytes_delta": [
+        0
+      ]
+    },
+    {
+      "input": "tiling-guard-22677311.json",
+      "job_id": "22677311",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "unroll": 4,
+      "untiled_median_ns": 1052828,
+      "tiled_median_ns": 1052755,
+      "speedup": 1.0000693418696658,
+      "round_speedups": [
+        1.0001546825638588,
+        1.0000693418696658,
+        0.9990880176924568
+      ],
+      "all_rounds_nonregressing": false,
+      "source_identical": true,
+      "source_bytes_delta": [
+        0
+      ]
+    },
+    {
+      "input": "tiling-guard-22677311.json",
+      "job_id": "22677311",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "unroll": 1,
+      "untiled_median_ns": 1771060,
+      "tiled_median_ns": 1545935,
+      "speedup": 1.1456238457632435,
+      "round_speedups": [
+        1.145977438403373,
+        1.1454142638597353,
+        1.1444369468990834
+      ],
+      "all_rounds_nonregressing": true,
+      "source_identical": false,
+      "source_bytes_delta": [
+        1373
+      ]
+    },
+    {
+      "input": "tiling-guard-22677311.json",
+      "job_id": "22677311",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "unroll": 4,
+      "untiled_median_ns": 1728654,
+      "tiled_median_ns": 1532815,
+      "speedup": 1.1277642768370613,
+      "round_speedups": [
+        1.127976957428,
+        1.124908199338579,
+        1.1279990290349862
+      ],
+      "all_rounds_nonregressing": true,
+      "source_identical": false,
+      "source_bytes_delta": [
+        3420
+      ]
+    }
+  ],
+  "unroll_comparisons": [
+    {
+      "input": "tiling-guard-22677308.json",
+      "shape": [
+        8,
+        64,
+        16
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "tiled": false,
+      "unroll4_speedup_vs_unroll1": 1.0040183120219286,
+      "round_speedups": [
+        0.9974102383586443,
+        0.9716670601797197,
+        1.0045923565964898
+      ],
+      "source_bytes_delta": [
+        900
+      ]
+    },
+    {
+      "input": "tiling-guard-22677308.json",
+      "shape": [
+        8,
+        64,
+        16
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "tiled": true,
+      "unroll4_speedup_vs_unroll1": 0.9977081359386453,
+      "round_speedups": [
+        1.0086589922245783,
+        0.9965714775503207,
+        0.9959919194808445
+      ],
+      "source_bytes_delta": [
+        900
+      ]
+    },
+    {
+      "input": "tiling-guard-22677308.json",
+      "shape": [
+        8,
+        64,
+        16
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "tiled": false,
+      "unroll4_speedup_vs_unroll1": 0.9972727024480823,
+      "round_speedups": [
+        0.9994538578118813,
+        0.979617360282185,
+        1.002748301659644
+      ],
+      "source_bytes_delta": [
+        1326
+      ]
+    },
+    {
+      "input": "tiling-guard-22677308.json",
+      "shape": [
+        8,
+        64,
+        16
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "tiled": true,
+      "unroll4_speedup_vs_unroll1": 0.9971228964997036,
+      "round_speedups": [
+        1.0122805222145874,
+        1.0195138577450893,
+        0.9971228964997036
+      ],
+      "source_bytes_delta": [
+        0
+      ]
+    },
+    {
+      "input": "tiling-guard-22677309.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "tiled": false,
+      "unroll4_speedup_vs_unroll1": 1.003206212928163,
+      "round_speedups": [
+        1.00356245880907,
+        1.00428105099802,
+        0.9996428008847889
+      ],
+      "source_bytes_delta": [
+        903
+      ]
+    },
+    {
+      "input": "tiling-guard-22677309.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "tiled": true,
+      "unroll4_speedup_vs_unroll1": 0.9982266788291198,
+      "round_speedups": [
+        0.9975089038955512,
+        0.9982266788291198,
+        0.9964416607953699
+      ],
+      "source_bytes_delta": [
+        903
+      ]
+    },
+    {
+      "input": "tiling-guard-22677309.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "tiled": false,
+      "unroll4_speedup_vs_unroll1": 1.0295492597041258,
+      "round_speedups": [
+        1.0292979091232295,
+        1.0293035373337749,
+        1.030811456430496
+      ],
+      "source_bytes_delta": [
+        1329
+      ]
+    },
+    {
+      "input": "tiling-guard-22677309.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "tiled": true,
+      "unroll4_speedup_vs_unroll1": 1.0153048520058245,
+      "round_speedups": [
+        1.017693462941264,
+        1.0150353627775854,
+        1.0152834143292728
+      ],
+      "source_bytes_delta": [
+        3374
+      ]
+    },
+    {
+      "input": "tiling-guard-22677310.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "tiled": false,
+      "unroll4_speedup_vs_unroll1": 1.000177032214365,
+      "round_speedups": [
+        1.0003642907303372,
+        0.9987695711312139,
+        1.0019397712590008
+      ],
+      "source_bytes_delta": [
+        900
+      ]
+    },
+    {
+      "input": "tiling-guard-22677310.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "tiled": true,
+      "unroll4_speedup_vs_unroll1": 0.9978899079542444,
+      "round_speedups": [
+        0.9984166062814548,
+        1.0001752336448597,
+        0.9971881561930338
+      ],
+      "source_bytes_delta": [
+        900
+      ]
+    },
+    {
+      "input": "tiling-guard-22677310.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "tiled": false,
+      "unroll4_speedup_vs_unroll1": 1.014999018446587,
+      "round_speedups": [
+        1.0144512908371892,
+        1.0173338712975808,
+        1.0181752811764524
+      ],
+      "source_bytes_delta": [
+        1326
+      ]
+    },
+    {
+      "input": "tiling-guard-22677310.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "tiled": true,
+      "unroll4_speedup_vs_unroll1": 1.0048630276472779,
+      "round_speedups": [
+        0.9999941763358903,
+        1.004870967930746,
+        1.0048688796661072
+      ],
+      "source_bytes_delta": [
+        3339
+      ]
+    },
+    {
+      "input": "tiling-guard-22677311.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "tiled": false,
+      "unroll4_speedup_vs_unroll1": 1.0001377243006455,
+      "round_speedups": [
+        1.0003017266735867,
+        0.9990729729832414,
+        1.0012180372200226
+      ],
+      "source_bytes_delta": [
+        903
+      ]
+    },
+    {
+      "input": "tiling-guard-22677311.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "tiled": true,
+      "unroll4_speedup_vs_unroll1": 1.00035715812321,
+      "round_speedups": [
+        1.0002913346448137,
+        0.999750179291478,
+        1.0004550411722013
+      ],
+      "source_bytes_delta": [
+        903
+      ]
+    },
+    {
+      "input": "tiling-guard-22677311.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "tiled": false,
+      "unroll4_speedup_vs_unroll1": 1.0245312248720682,
+      "round_speedups": [
+        1.0243380490231235,
+        1.0257667460677906,
+        1.0252705283995525
+      ],
+      "source_bytes_delta": [
+        1329
+      ]
+    },
+    {
+      "input": "tiling-guard-22677311.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "tiled": true,
+      "unroll4_speedup_vs_unroll1": 1.0085594151936144,
+      "round_speedups": [
+        1.008248223040615,
+        1.007402701073587,
+        1.0105442363307964
+      ],
+      "source_bytes_delta": [
+        3376
+      ]
+    }
+  ],
+  "tiling_unroll_interactions": [
+    {
+      "input": "tiling-guard-22677308.json",
+      "dtype": "f32",
+      "tiling_speedup_unroll1": 1.0028669313799974,
+      "tiling_speedup_unroll4": 0.9965639916334448,
+      "relative_change": 0.9937150786915674
+    },
+    {
+      "input": "tiling-guard-22677308.json",
+      "dtype": "f16",
+      "tiling_speedup_unroll1": 1.0524524142303424,
+      "tiling_speedup_unroll4": 1.0522943194267345,
+      "relative_change": 0.9998497843688985
+    },
+    {
+      "input": "tiling-guard-22677309.json",
+      "dtype": "f32",
+      "tiling_speedup_unroll1": 1.0017786947937604,
+      "tiling_speedup_unroll4": 0.9968062463518189,
+      "relative_change": 0.995036380322537
+    },
+    {
+      "input": "tiling-guard-22677309.json",
+      "dtype": "f16",
+      "tiling_speedup_unroll1": 1.0956357907388459,
+      "tiling_speedup_unroll4": 1.0804770377748352,
+      "relative_change": 0.9861644233493063
+    },
+    {
+      "input": "tiling-guard-22677310.json",
+      "dtype": "f32",
+      "tiling_speedup_unroll1": 1.0022919605077574,
+      "tiling_speedup_unroll4": 1.0,
+      "relative_change": 0.9977132805628848
+    },
+    {
+      "input": "tiling-guard-22677310.json",
+      "dtype": "f16",
+      "tiling_speedup_unroll1": 1.0719401417022203,
+      "tiling_speedup_unroll4": 1.0612355250314254,
+      "relative_change": 0.9900137925110294
+    },
+    {
+      "input": "tiling-guard-22677311.json",
+      "dtype": "f32",
+      "tiling_speedup_unroll1": 0.9998499711811731,
+      "tiling_speedup_unroll4": 1.0000693418696658,
+      "relative_change": 1.0002194036053564
+    },
+    {
+      "input": "tiling-guard-22677311.json",
+      "dtype": "f16",
+      "tiling_speedup_unroll1": 1.1456238457632435,
+      "tiling_speedup_unroll4": 1.1277642768370613,
+      "relative_change": 0.9844106169819783
+    }
+  ],
+  "summary": {
+    "f16_comparisons": 8,
+    "f16_speedup_range": [
+      1.0522943194267345,
+      1.1456238457632435
+    ],
+    "f16_nonregressing_comparisons": 8,
+    "f16_nonregressing_rounds": 24,
+    "f32_comparisons": 8,
+    "f32_source_identical_pairs": 8
+  }
+}

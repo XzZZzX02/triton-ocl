@@ -2,6 +2,11 @@
 
 2026-10-29, gfx906 (`g09r1n10`) through `wlx -> dfcs`.
 
+This historical report's f32 tiling eligibility was superseded on 2026-10-29
+by the profitability gate in `sycl-tiling-profitability-report.md`. Current
+tiling requires two f16 inputs widened for f32 accumulation; the f32 runs below
+remain evidence for disabling that path.
+
 ## Problem and implementation
 
 The former compiler order ran `matmul_register_tiling` before

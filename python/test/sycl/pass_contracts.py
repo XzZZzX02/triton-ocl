@@ -185,20 +185,29 @@ def main():
                 count('sycl.distribution_depth',
                       1 if name in ('parallel','reduction','triangular') else 0))
 
-    def contraction(n=32, k=32, alias=False, permuted=False):
+    def contraction(n=32, k=32, alias=False, permuted=False, half=False, mixed=False):
         right='%a' if alias else '%b'
         aindices='%k,%r' if permuted else '%r,%k'
+        dtype='f16' if half else 'f32'
+        rhs_dtype='f32' if mixed else dtype
+        widening='''%xf=arith.extf %x : f16 to f32
+                %yf=arith.extf %y : f16 to f32''' if half else ''
+        x,y=('%xf','%yf') if half else ('%x','%y')
+        if mixed:
+            widening='%xf=arith.extf %x : f16 to f32'
+            x,y='%xf','%y'
         return f'''func.func @matmul() {{
-          %a=memref.alloc() : memref<32x32xf32>
-          %b=memref.alloc() : memref<32x32xf32>
+          %a=memref.alloc() : memref<32x32x{dtype}>
+          %b=memref.alloc() : memref<32x32x{rhs_dtype}>
           %c=memref.alloc() : memref<32x32xf32>
           affine.for %r=0 to 32 {{
             affine.for %n=0 to {n} {{
               affine.for %k=0 to {k} {{
-                %x=affine.load %a[{aindices}] : memref<32x32xf32>
-                %y=affine.load {right}[%k,%n] : memref<32x32xf32>
+                %x=affine.load %a[{aindices}] : memref<32x32x{dtype}>
+                %y=affine.load {right}[%k,%n] : memref<32x32x{rhs_dtype}>
                 %z=affine.load %c[%r,%n] : memref<32x32xf32>
-                %p=arith.mulf %x,%y : f32
+                {widening}
+                %p=arith.mulf {x},{y} : f32
                 %q=arith.addf %z,%p : f32
                 affine.store %q,%c[%r,%n] : memref<32x32xf32>
               }} {{sycl.reduction}}
@@ -206,7 +215,8 @@ def main():
           }} {{sycl.parallel}}
           return
         }}'''
-    for name,kw in [('static',{}),('short',dict(k=8)),('tail',dict(n=31)),
+    for name,kw in [('static',{}),('half',dict(half=True)),
+                    ('mixed',dict(half=True,mixed=True)),('short',dict(k=8)),('tail',dict(n=31)),
                     ('alias',dict(alias=True)),('permuted',dict(permuted=True))]:
         for order in [('matmul_register_tiling',),
                       ('matmul_register_tiling','matmul_register_tiling'),
@@ -214,7 +224,7 @@ def main():
                       ('work_distribution','matmul_register_tiling','register_accumulator'),
                       ('work_distribution','register_accumulator','matmul_register_tiling'),
                       ('register_accumulator','work_distribution','matmul_register_tiling')]:
-            expected=int(name=='static' and order in (
+            expected=int(name=='half' and order in (
                 ('work_distribution','matmul_register_tiling'),
                 ('work_distribution','matmul_register_tiling','register_accumulator'),
                 ('work_distribution','register_accumulator','matmul_register_tiling')))
@@ -232,19 +242,24 @@ def main():
                     assert s.count('memref.store') == 4, s
             run('tiling_'+name+'_'+'_'.join(order),contraction(**kw),order,check_tiling)
 
-    def batched_contraction(depth):
+    def batched_contraction(depth, half=True):
+        dtype='f16' if half else 'f32'
+        widening='''%xf=arith.extf %x : f16 to f32
+                  %yf=arith.extf %y : f16 to f32''' if half else ''
+        x,y=('%xf','%yf') if half else ('%x','%y')
         return f'''func.func @batched_matmul() {{
-          %a=memref.alloc() : memref<2x32x32xf32>
-          %b=memref.alloc() : memref<2x32x32xf32>
+          %a=memref.alloc() : memref<2x32x32x{dtype}>
+          %b=memref.alloc() : memref<2x32x32x{dtype}>
           %c=memref.alloc() : memref<2x32x32xf32>
           affine.for %batch=0 to 2 {{
             affine.for %r=0 to 32 {{
               affine.for %n=0 to 32 {{
                 affine.for %k=0 to 32 {{
-                  %x=affine.load %a[%batch,%r,%k] : memref<2x32x32xf32>
-                  %y=affine.load %b[%batch,%k,%n] : memref<2x32x32xf32>
+                  %x=affine.load %a[%batch,%r,%k] : memref<2x32x32x{dtype}>
+                  %y=affine.load %b[%batch,%k,%n] : memref<2x32x32x{dtype}>
                   %z=affine.load %c[%batch,%r,%n] : memref<2x32x32xf32>
-                  %p=arith.mulf %x,%y : f32
+                  {widening}
+                  %p=arith.mulf {x},{y} : f32
                   %q=arith.addf %z,%p : f32
                   affine.store %q,%c[%batch,%r,%n] : memref<2x32x32xf32>
                 }} {{sycl.reduction}}
@@ -257,6 +272,8 @@ def main():
         ('matmul_register_tiling',),count('sycl.register_tile',0))
     run('tiling_batched_complete_depth',batched_contraction(3),
         ('matmul_register_tiling',),count('sycl.register_tile',1))
+    run('tiling_batched_f32_rejected',batched_contraction(3,half=False),
+        ('matmul_register_tiling',),count('sycl.register_tile',0))
     pathlib.Path(args.output).write_text(json.dumps(rows,indent=2)+'\n')
     print(json.dumps(dict(passed=len(rows),cases=rows)))
 

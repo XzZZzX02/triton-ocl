@@ -76,7 +76,7 @@ def pack_matrix(logical, row_stride, col_stride, batch_stride, dtype):
     return Tensor(storage, dtype, pointer_offset)
 
 
-def execute(case, mode):
+def execute(case, mode, schedule='baseline'):
     import triton
     import triton.language as tl
     from triton.backends.sycl.sycl_utils import run_standalone
@@ -152,16 +152,9 @@ def execute(case, mode):
                   b_bs=b_batch_stride, b_base=y.pointer_offset,
                   z_rm=z_rm, z_bs=z_bs, BM=BM, BN=BN, BK=BK,
                   BATCHED=batched)
-    compiled = kernel.warmup(x, y, z, m, n, k, grid=(batch_count,), **kwargs)
-    if mode == "compile":
-        return {"source_bytes": len(compiled.asm["sycl"])}
-
     bound = [x, y, z, m, n, k, a_rm, a_ck, a_batch_stride, x.pointer_offset,
              b_rk, b_cn, b_batch_stride, y.pointer_offset, z_rm, z_bs,
              BM, BN, BK, batched]
-    run_standalone(batch_count, 1, 1, compiled.name, compiled.asm["sycl"], bound,
-                   signature=compiled.src.signature, metadata=compiled.metadata)
-
     expected = [-99.] * out_size
     for batch in range(batch_count):
         a_batch = 0 if len(source_a) == 1 else batch
@@ -171,10 +164,40 @@ def execute(case, mode):
                 expected[batch * z_bs + row * z_rm + col] = sum(
                     logical_a[a_batch][row][step] * logical_b[b_batch][step][col]
                     for step in range(k))
-    actual = list(z.c_array)
-    for index, (got, want) in enumerate(zip(actual, expected)):
-        assert got == want, (case, index, got, want)
-    return {"elements_checked": len(actual), "max_abs_error": 0,
+    schedules = ('baseline', 'optimized') if schedule == 'both' else (schedule,)
+    variants = []
+    for selected in schedules:
+        options = (dict(register_accumulator=True, matmul_register_tiling=True,
+                        fuse_elementwise=True, group_reduction=True,
+                        reuse_local_memory=True, reduction_unroll=4)
+                   if selected == 'optimized' else {})
+        compiled = kernel.warmup(x, y, z, m, n, k, grid=(batch_count,), **kwargs, **options)
+        code = compiled.asm['sycl']
+        code = code.decode() if isinstance(code, bytes) else code
+        memir = str(compiled.asm['memir'])
+        markers = {name: name in memir for name in (
+            'sycl.register_accumulator', 'sycl.register_tile =',
+            'sycl.register_tile_composed_accumulator', 'sycl.ordered_reduction_unroll')}
+        if selected == 'optimized':
+            assert markers['sycl.register_accumulator'], (case, memir)
+            assert markers['sycl.register_tile ='] == half, (case, memir)
+            assert markers['sycl.register_tile_composed_accumulator'] == half, (case, memir)
+            assert markers['sycl.ordered_reduction_unroll'] == (not half), (case, memir)
+        checks = 0
+        if mode == 'run':
+            for local_shape in (48, (3, 5)):
+                z.c_array[:] = [-99.] * len(z.c_array)
+                run_standalone(batch_count, 1, 1, compiled.name, code, bound,
+                               signature=compiled.src.signature, metadata=compiled.metadata,
+                               block_size=local_shape)
+                for index, (got, want) in enumerate(zip(z.c_array, expected)):
+                    assert got == want, (case, selected, local_shape, index, got, want)
+                checks += len(z.c_array)
+        variants.append(dict(schedule=selected, source_bytes=len(code), markers=markers,
+                             source_sha256=hashlib.sha256(code.encode()).hexdigest(),
+                             elements_checked=checks))
+    return {"elements_checked": sum(v['elements_checked'] for v in variants), "max_abs_error": 0,
+            "schedules": variants, "local_shapes": [48, [3, 5]],
             "shape": [m, n, k],
             "batch_count": batch_count, "broadcast": batch_mode,
             "layout": layout, "precision": precision,
@@ -184,8 +207,10 @@ def execute(case, mode):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--case", choices=CASES)
+    parser.add_argument("--cases", nargs='+', choices=CASES)
     parser.add_argument("--all", action="store_true")
     parser.add_argument("--mode", choices=("run", "compile"), default="run")
+    parser.add_argument("--schedule", choices=("baseline", "optimized", "both"), default="baseline")
     parser.add_argument("--python", default=sys.executable)
     parser.add_argument("--timeout", type=int, default=240)
     parser.add_argument("--jobs", type=int, default=1)
@@ -194,16 +219,16 @@ def main():
     if args.case:
         print(json.dumps({"status": "HARNESS", "sha256": SCRIPT_SHA256}), flush=True)
         print(json.dumps(dict(case=args.case, status="PASS", harness_sha256=SCRIPT_SHA256,
-                              **execute(args.case, args.mode))), flush=True)
+                              **execute(args.case, args.mode, args.schedule))), flush=True)
         return
-    if not args.all:
-        parser.error("choose --all or --case")
+    if not args.all and not args.cases:
+        parser.error("choose --all, --cases or --case")
 
     def isolated(case):
         try:
             result = subprocess.run(
                 [args.python, str(pathlib.Path(__file__).resolve()), "--case", case,
-                 "--mode", args.mode], stdout=subprocess.PIPE,
+                 "--mode", args.mode, "--schedule", args.schedule], stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT, text=True, timeout=args.timeout)
         except subprocess.TimeoutExpired as error:
             return {"case": case, "status": "TIMEOUT", "output_tail": str(error.stdout)[-3000:]}
@@ -228,7 +253,7 @@ def main():
 
     results = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, args.jobs)) as pool:
-        for row in pool.map(isolated, CASES):
+        for row in pool.map(isolated, args.cases or CASES):
             results.append(row)
             print(json.dumps(row), flush=True)
             if args.output:

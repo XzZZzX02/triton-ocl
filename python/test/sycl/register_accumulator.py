@@ -137,11 +137,13 @@ def main():
                             source_sha256=code_hash,
                             samples_ns=samples,median_ns=statistics.median(samples) if samples else None,
                             private_loops=str(c.asm['memir']).count('sycl.thread_private'))
-                        should_tile=tiled and distributed and M>=8 and N>=16 and K>=16
+                        should_tile=tiled and distributed and M>=8 and N>=16 and K>=16 and half
                         assert ('sycl.register_tile' in str(c.asm['memir'])) == should_tile,row
                         should_compose=enabled and should_tile
                         assert ('sycl.register_tile_composed_accumulator' in str(c.asm['memir'])) == should_compose,row
-                        should_unroll=unroll>1 and (enabled or should_tile) and K%unroll==0 and K//unroll>=2
+                        should_unroll=(unroll>1 and (enabled or should_tile) and
+                                       K%unroll==0 and K//unroll>=2 and
+                                       (not should_tile or K>=32))
                         assert ('sycl.ordered_reduction_unroll' in str(c.asm['memir'])) == should_unroll,row
                         assert row['private_loops']>0 if enabled or should_tile else row['private_loops']==0,row
                     except Exception as error:

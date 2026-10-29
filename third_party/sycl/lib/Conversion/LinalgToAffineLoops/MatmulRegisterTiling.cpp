@@ -124,6 +124,13 @@ static bool tilePromotedContraction(affine::AffineForOp columns,
       !rhs.getMemRef().getDefiningOp<memref::AllocOp>())
     return false;
 
+  // Once scalar replacement has removed accumulator traffic, the four-column
+  // schedule regresses for f32 inputs in paired gfx906 measurements. Retain
+  // composition only for two f16 inputs whose widening/reuse showed a benefit.
+  // Inspect the actual loaded types, independently of the kernel or layout name.
+  if (!lhs.getResult().getType().isF16() || !rhs.getResult().getType().isF16())
+    return false;
+
   auto c = store.getIndices();
   auto a = lhs.getIndices();
   auto b = rhs.getIndices();
@@ -193,9 +200,9 @@ static bool tilePromotedContraction(affine::AffineForOp columns,
   return true;
 }
 
-// Four output columns share each left-hand input. This uses ordinary scalar
-// arithmetic and LDS reads, including on gfx906; no matrix instruction exists
-// in this lowering. Each output retains the original K update order.
+// Four output columns share each f16 left-hand input, widened to f32. This uses
+// ordinary scalar arithmetic and LDS reads, including on gfx906; no matrix
+// instruction exists in this lowering. Each output retains the K update order.
 struct MatmulRegisterTilingPass
     : PassWrapper<MatmulRegisterTilingPass, OperationPass<ModuleOp>> {
   MLIR_DEFINE_EXPLICIT_INTERNAL_INLINE_TYPE_ID(MatmulRegisterTilingPass)
@@ -244,6 +251,10 @@ struct MatmulRegisterTilingPass
       if (!legal || !accumulator || !lhs || !rhs ||
           lhs.getMemRef()==rhs.getMemRef() || lhs.getMemRef()==store.getMemRef() ||
           rhs.getMemRef()==store.getMemRef()) continue;
+      // Keep the same measured input-type rule in the standalone schedule.
+      // F32-only tiling also has no stable benefit across held-out shapes.
+      if (!lhs.getResult().getType().isF16() ||
+          !rhs.getResult().getType().isF16()) continue;
       auto c=store.getMapOperands(), a=lhs.getMapOperands(), b=rhs.getMapOperands();
       if (c.size()<2 || a.size()!=c.size() || b.size()!=c.size() || c.size()>3) continue;
       unsigned rank=c.size();

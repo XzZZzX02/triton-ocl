@@ -58,8 +58,9 @@ Four-element vector memory copies are experimental and disabled by default.
 Enable them explicitly with vectorize_memory=True in the Triton compile options.
 The safety test enables this option to exercise the generated vector load/store
 paths. gfx906 measurements showed a copy regression with that option enabled;
-default performance measurements keep it disabled. Tree reductions and proven
-non-overlapping local-buffer lifetime reuse remain enabled.
+default performance measurements keep it disabled. Group reductions are also
+opt-in (`group_reduction=True`); proven non-overlapping local-buffer lifetime
+reuse remains enabled by default.
 
 Additional pointer-loop regressions:
 
@@ -70,3 +71,22 @@ strides 3/-2. They cover nested scalar pointers, conditional same-allocation
 updates, mixed scalar/tensor pointer reconstruction, loop results, grid=3, and
 local sizes 48/(8,8): 24 exact-output checks plus one allocation-switch negative.
 The negative checks the native MLIR diagnostic text, not only an exception.
+
+Independent optimization-pass checks:
+
+    python-triton pass_contracts.py --output contracts.json
+    python-triton ordered_unroll_contracts.py --output unroll-contracts.json
+    python-triton ordered_unroll_semantics.py --special --factors 1 2 4 8 --output ieee.json
+    python-triton model_layout_semantics.py --all --schedule both --python /path/to/python-triton --output layouts.json
+
+The layout runner compares baseline and enabled fusion/group/reuse/accumulator/
+tiling/unroll pipelines at local ranges 48 and (3,5), checking optimization
+markers as well as every output and padding element. Some passes do not match
+these dot kernels; the result is not an all-passes-active benchmark. The
+four-column tiling pass requires two f16 loaded operands and f32 accumulation.
+F32 and mixed input contractions keep the existing untiled path.
+`reduction_unroll` accepts integer factors 1/2/4/8, defaults to 1, and preserves
+the SSA recurrence order. In a tiled reduction, unrolling is limited to static
+trip counts of at least 32; shorter tiled reductions retain the tiled loop.
+Tiling and unroll remain opt-in: measured wins do not establish a universal
+profitability guarantee.

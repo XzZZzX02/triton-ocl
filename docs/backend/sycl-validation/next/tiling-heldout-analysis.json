@@ -1,0 +1,534 @@
+{
+  "status": "PASS",
+  "included_rows": 144,
+  "groups": [
+    {
+      "input": "tiling-heldout-22673650.json",
+      "shape": [
+        8,
+        64,
+        16
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 284804,
+      "after_ns": 286244,
+      "speedup": 0.9949693268679868,
+      "min_round_speedup": 0.9949693268679868,
+      "max_round_speedup": 1.0119520211721518,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1252
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673650.json",
+      "shape": [
+        8,
+        64,
+        16
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 279204,
+      "after_ns": 281284,
+      "speedup": 0.9926053383768718,
+      "min_round_speedup": 0.9841182059244764,
+      "max_round_speedup": 0.9988551966915185,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1158
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673650.json",
+      "shape": [
+        8,
+        64,
+        16
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 292484,
+      "after_ns": 278883,
+      "speedup": 1.0487695556918135,
+      "min_round_speedup": 1.0447535346363888,
+      "max_round_speedup": 1.0548174434875435,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1465
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673650.json",
+      "shape": [
+        8,
+        64,
+        16
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 292004,
+      "after_ns": 275844,
+      "speedup": 1.0585838372413392,
+      "min_round_speedup": 1.0357579906570233,
+      "max_round_speedup": 1.0659651785583981,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1371
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673652.json",
+      "shape": [
+        8,
+        64,
+        16
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 301443,
+      "after_ns": 296960,
+      "speedup": 1.0150963092672414,
+      "min_round_speedup": 1.0118151334405199,
+      "max_round_speedup": 1.022100619612069,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1255
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673652.json",
+      "shape": [
+        8,
+        64,
+        16
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 295043,
+      "after_ns": 298083,
+      "speedup": 0.989801498240423,
+      "min_round_speedup": 0.9835094503150105,
+      "max_round_speedup": 1.055283260031602,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1161
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673652.json",
+      "shape": [
+        8,
+        64,
+        16
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 304803,
+      "after_ns": 288962,
+      "speedup": 1.0548203570019588,
+      "min_round_speedup": 1.0433347161130406,
+      "max_round_speedup": 1.070394061493984,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1472
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673652.json",
+      "shape": [
+        8,
+        64,
+        16
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 303685,
+      "after_ns": 289923,
+      "speedup": 1.0474677759267115,
+      "min_round_speedup": 1.0422908879988193,
+      "max_round_speedup": 1.1203112550573773,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1378
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673653.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 535361,
+      "after_ns": 522401,
+      "speedup": 1.0248085283144557,
+      "min_round_speedup": 1.0241886099203918,
+      "max_round_speedup": 1.0269486467292368,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1248
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673653.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 520320,
+      "after_ns": 520961,
+      "speedup": 0.9987695816001582,
+      "min_round_speedup": 0.9972262798942723,
+      "max_round_speedup": 0.9996926865152763,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1154
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673653.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 714081,
+      "after_ns": 640648,
+      "speedup": 1.1146230067057106,
+      "min_round_speedup": 1.1136349446185736,
+      "max_round_speedup": 1.1159149209898094,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1461
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673653.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 709609,
+      "after_ns": 640808,
+      "speedup": 1.1073660129087028,
+      "min_round_speedup": 1.1071194491953908,
+      "max_round_speedup": 1.1084730883143175,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1367
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673654.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 466568,
+      "after_ns": 451686,
+      "speedup": 1.0329476671847257,
+      "min_round_speedup": 1.0297049833916412,
+      "max_round_speedup": 1.034729127862811,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1251
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673654.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 448963,
+      "after_ns": 453603,
+      "speedup": 0.9897707907575567,
+      "min_round_speedup": 0.9880071339916182,
+      "max_round_speedup": 0.9936441612763742,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1157
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673654.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 678576,
+      "after_ns": 615847,
+      "speedup": 1.1018580913765919,
+      "min_round_speedup": 1.1018580913765919,
+      "max_round_speedup": 1.1032777822941224,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1468
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673654.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 673771,
+      "after_ns": 615209,
+      "speedup": 1.0951904149646705,
+      "min_round_speedup": 1.0942630998962948,
+      "max_round_speedup": 1.0951904149646705,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1374
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673655.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 923843,
+      "after_ns": 908486,
+      "speedup": 1.016903947886924,
+      "min_round_speedup": 1.013013193458999,
+      "max_round_speedup": 1.0190530159374145,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1247
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673655.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 908810,
+      "after_ns": 908645,
+      "speedup": 1.0001815890694385,
+      "min_round_speedup": 0.9956179270603959,
+      "max_round_speedup": 1.0001815890694385,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1153
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673655.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 926734,
+      "after_ns": 858888,
+      "speedup": 1.0789928372500257,
+      "min_round_speedup": 1.078439796574175,
+      "max_round_speedup": 1.0799962707874466,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1460
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673655.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 921610,
+      "after_ns": 859844,
+      "speedup": 1.0718339605788958,
+      "min_round_speedup": 1.0704334302396485,
+      "max_round_speedup": 1.07387386549188,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1366
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673656.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 902569,
+      "after_ns": 895848,
+      "speedup": 1.0075023887980996,
+      "min_round_speedup": 1.00607357498147,
+      "max_round_speedup": 1.010900856033214,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1247
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673656.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 890407,
+      "after_ns": 896168,
+      "speedup": 0.9935715178404049,
+      "min_round_speedup": 0.9910944039942678,
+      "max_round_speedup": 0.9962460155812699,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1153
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673656.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 908969,
+      "after_ns": 853288,
+      "speedup": 1.0652546385276718,
+      "min_round_speedup": 1.0650524342375065,
+      "max_round_speedup": 1.0675047580652721,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1460
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "tiling-heldout-22673656.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 904489,
+      "after_ns": 854089,
+      "speedup": 1.0590102436631312,
+      "min_round_speedup": 1.05663615293315,
+      "max_round_speedup": 1.061172957656618,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1366
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    }
+  ]
+}

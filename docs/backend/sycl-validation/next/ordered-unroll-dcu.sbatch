@@ -20,7 +20,7 @@ export TMPDIR=$node_tmp/tmp ACPP_APPDB_DIR=$node_tmp/appdb TRITON_CACHE_DIR=$nod
 mkdir -p "$TMPDIR" "$ACPP_APPDB_DIR" "$TRITON_CACHE_DIR"
 cd /work1/dtune/zzx/triton/triton-ocl
 script=python/test/sycl/register_accumulator.py
-test "$(sha256sum "$script" | cut -d " " -f1)" = 7048375bebb3c2867d8ff24e2488f03bbd2270b62e1d72c033ab6d94c8701dac
+test "$(sha256sum "$script" | cut -d " " -f1)" = 054701901cce832ad8089041b83f79306118964bd7c7355bca2ce85e5836736f
 hostname
 "$base/bin/python-triton" "$script" --shape "${3:-16}" "${4:-32}" "${5:-32}" --tiling --accumulated-only \
   --unroll 1 4 --layout "${1:-NN}" --dtype "${2:-f32}" --repeats 31 --rounds 3 \

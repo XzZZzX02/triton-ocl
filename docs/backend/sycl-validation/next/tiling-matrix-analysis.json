@@ -1,0 +1,1414 @@
+{
+  "status": "PASS",
+  "included_rows": 384,
+  "groups": [
+    {
+      "input": "register-tiling-shard-dcu-22673352.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 1215380,
+      "after_ns": 1144019,
+      "speedup": 1.0623774605142047,
+      "min_round_speedup": 1.0606924796666253,
+      "max_round_speedup": 1.0626589791419365,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1251
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673352.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 1121458,
+      "after_ns": 1142098,
+      "speedup": 0.9819279956711245,
+      "min_round_speedup": 0.9817887781959166,
+      "max_round_speedup": 0.9829431075463085,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1157
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673352.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 1808030,
+      "after_ns": 1540025,
+      "speedup": 1.174026395675395,
+      "min_round_speedup": 1.1726449591370767,
+      "max_round_speedup": 1.1742696332936289,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1464
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673352.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 1791711,
+      "after_ns": 1541626,
+      "speedup": 1.1622215764394217,
+      "min_round_speedup": 1.1607759017223978,
+      "max_round_speedup": 1.1626316972201187,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1370
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673353.json",
+      "shape": [
+        64,
+        16,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 425761,
+      "after_ns": 420640,
+      "speedup": 1.0121743058197032,
+      "min_round_speedup": 1.00836820083682,
+      "max_round_speedup": 1.0126413380077346,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1247
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673353.json",
+      "shape": [
+        64,
+        16,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 416320,
+      "after_ns": 421280,
+      "speedup": 0.9882263577668059,
+      "min_round_speedup": 0.9859659522003035,
+      "max_round_speedup": 0.9889859475883023,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1153
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673353.json",
+      "shape": [
+        64,
+        16,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 651522,
+      "after_ns": 589601,
+      "speedup": 1.105021870722743,
+      "min_round_speedup": 1.104479130802017,
+      "max_round_speedup": 1.1062207748547443,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1460
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673353.json",
+      "shape": [
+        64,
+        16,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 644800,
+      "after_ns": 589922,
+      "speedup": 1.0930258576557579,
+      "min_round_speedup": 1.0921409214092141,
+      "max_round_speedup": 1.0933240866654685,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1366
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673354.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "NT",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 1216820,
+      "after_ns": 1149457,
+      "speedup": 1.058604193110312,
+      "min_round_speedup": 1.0565065469516421,
+      "max_round_speedup": 1.059857828522511,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1251
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673354.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "NT",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 1123698,
+      "after_ns": 1148658,
+      "speedup": 0.9782702945524255,
+      "min_round_speedup": 0.9766358226387286,
+      "max_round_speedup": 0.9788148105562713,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1157
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673354.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 1802908,
+      "after_ns": 1544503,
+      "speedup": 1.1673062467343864,
+      "min_round_speedup": 1.1656661919747313,
+      "max_round_speedup": 1.1690338478609168,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1464
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673354.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 1797947,
+      "after_ns": 1542423,
+      "speedup": 1.1656640234228872,
+      "min_round_speedup": 1.164264376956944,
+      "max_round_speedup": 1.1666336824469663,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1370
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673355.json",
+      "shape": [
+        64,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 403043,
+      "after_ns": 400163,
+      "speedup": 1.007197067195118,
+      "min_round_speedup": 1.00679993200068,
+      "max_round_speedup": 1.0091962295458863,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1247
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673355.json",
+      "shape": [
+        64,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 387684,
+      "after_ns": 402084,
+      "speedup": 0.96418658787716,
+      "min_round_speedup": 0.96418658787716,
+      "max_round_speedup": 0.966455169934004,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1153
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673355.json",
+      "shape": [
+        64,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 634404,
+      "after_ns": 561924,
+      "speedup": 1.1289854143976765,
+      "min_round_speedup": 1.1277025765911495,
+      "max_round_speedup": 1.1289854143976765,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1460
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673355.json",
+      "shape": [
+        64,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 627204,
+      "after_ns": 561605,
+      "speedup": 1.11680629624024,
+      "min_round_speedup": 1.1164882112627166,
+      "max_round_speedup": 1.1176627700964201,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1366
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673356.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 1145450,
+      "after_ns": 1088808,
+      "speedup": 1.0520220277587968,
+      "min_round_speedup": 1.0515545877505756,
+      "max_round_speedup": 1.052471142754278,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1251
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673356.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 1052497,
+      "after_ns": 1090100,
+      "speedup": 0.9655049995413265,
+      "min_round_speedup": 0.9654967374178849,
+      "max_round_speedup": 0.9662645831289915,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1157
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673356.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 1811762,
+      "after_ns": 1537493,
+      "speedup": 1.1783871536325694,
+      "min_round_speedup": 1.1773418102548732,
+      "max_round_speedup": 1.1788212581000614,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1464
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673356.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 1786748,
+      "after_ns": 1538424,
+      "speedup": 1.1614145385147399,
+      "min_round_speedup": 1.1596747398907048,
+      "max_round_speedup": 1.162748706123028,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1370
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673357.json",
+      "shape": [
+        64,
+        16,
+        32
+      ],
+      "layout": "TN",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 487847,
+      "after_ns": 478099,
+      "speedup": 1.0203890825958641,
+      "min_round_speedup": 1.0197387542420548,
+      "max_round_speedup": 1.0208262305505764,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1247
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673357.json",
+      "shape": [
+        64,
+        16,
+        32
+      ],
+      "layout": "TN",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 469128,
+      "after_ns": 478087,
+      "speedup": 0.9812607328791622,
+      "min_round_speedup": 0.9809239740883982,
+      "max_round_speedup": 0.9825856536763736,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1153
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673357.json",
+      "shape": [
+        64,
+        16,
+        32
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 649608,
+      "after_ns": 593608,
+      "speedup": 1.0943383512351585,
+      "min_round_speedup": 1.0937537883379804,
+      "max_round_speedup": 1.0958151711852742,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1460
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673357.json",
+      "shape": [
+        64,
+        16,
+        32
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 645280,
+      "after_ns": 592966,
+      "speedup": 1.0882242826738802,
+      "min_round_speedup": 1.086629789530491,
+      "max_round_speedup": 1.0882242826738802,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1366
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673358.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 1145455,
+      "after_ns": 1079054,
+      "speedup": 1.0615363086555445,
+      "min_round_speedup": 1.0598086810576852,
+      "max_round_speedup": 1.0632237322974292,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1254
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673358.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 1053134,
+      "after_ns": 1078413,
+      "speedup": 0.9765590733791228,
+      "min_round_speedup": 0.9742034241618661,
+      "max_round_speedup": 0.9783017430691543,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1160
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673358.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 1800675,
+      "after_ns": 1545625,
+      "speedup": 1.1650141528507885,
+      "min_round_speedup": 1.1634462056150126,
+      "max_round_speedup": 1.1675988677719369,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1467
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673358.json",
+      "shape": [
+        32,
+        64,
+        64
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 1770269,
+      "after_ns": 1546266,
+      "speedup": 1.1448670539221584,
+      "min_round_speedup": 1.1444670296821728,
+      "max_round_speedup": 1.1454604277676945,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1373
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673359.json",
+      "shape": [
+        64,
+        16,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 464324,
+      "after_ns": 444482,
+      "speedup": 1.044640727858496,
+      "min_round_speedup": 1.0412882434655375,
+      "max_round_speedup": 1.045765353465284,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1250
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673359.json",
+      "shape": [
+        64,
+        16,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 442082,
+      "after_ns": 444802,
+      "speedup": 0.9938849195821962,
+      "min_round_speedup": 0.9924492611014508,
+      "max_round_speedup": 0.996043183259068,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1156
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673359.json",
+      "shape": [
+        64,
+        16,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 630238,
+      "after_ns": 564957,
+      "speedup": 1.1155503870206052,
+      "min_round_speedup": 1.1139218126785664,
+      "max_round_speedup": 1.1181974717269918,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1467
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-shard-dcu-22673359.json",
+      "shape": [
+        64,
+        16,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 626257,
+      "after_ns": 565936,
+      "speedup": 1.1065862571032767,
+      "min_round_speedup": 1.1043315851969127,
+      "max_round_speedup": 1.11029244988801,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1373
+      ],
+      "input_rows": 24,
+      "included_rows": 24
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        4,
+        8,
+        8
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 31360,
+      "after_ns": 31520,
+      "speedup": 0.9949238578680203,
+      "min_round_speedup": 0.9799309045226131,
+      "max_round_speedup": 1.0,
+      "identical_source_pairs": 3,
+      "source_bytes_delta": [
+        0
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        4,
+        8,
+        8
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 31200,
+      "after_ns": 31041,
+      "speedup": 1.005122257659225,
+      "min_round_speedup": 0.9948455268837988,
+      "max_round_speedup": 1.0051546391752577,
+      "identical_source_pairs": 3,
+      "source_bytes_delta": [
+        0
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        4,
+        8,
+        8
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 31664,
+      "after_ns": 31520,
+      "speedup": 1.0045685279187817,
+      "min_round_speedup": 1.0,
+      "max_round_speedup": 1.0051078680203045,
+      "identical_source_pairs": 3,
+      "source_bytes_delta": [
+        0
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        4,
+        8,
+        8
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 31680,
+      "after_ns": 31680,
+      "speedup": 1.0,
+      "min_round_speedup": 1.0,
+      "max_round_speedup": 1.0051339285714285,
+      "identical_source_pairs": 3,
+      "source_bytes_delta": [
+        0
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        4,
+        8,
+        8
+      ],
+      "layout": "NT",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 29920,
+      "after_ns": 29761,
+      "speedup": 1.0053425624138974,
+      "min_round_speedup": 0.9893949468085106,
+      "max_round_speedup": 1.0162162162162163,
+      "identical_source_pairs": 3,
+      "source_bytes_delta": [
+        0
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        4,
+        8,
+        8
+      ],
+      "layout": "NT",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 29440,
+      "after_ns": 29440,
+      "speedup": 1.0,
+      "min_round_speedup": 0.9945945945945946,
+      "max_round_speedup": 1.0000339673913043,
+      "identical_source_pairs": 3,
+      "source_bytes_delta": [
+        0
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        4,
+        8,
+        8
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 30240,
+      "after_ns": 30560,
+      "speedup": 0.9895287958115183,
+      "min_round_speedup": 0.9895287958115183,
+      "max_round_speedup": 0.9947916666666666,
+      "identical_source_pairs": 3,
+      "source_bytes_delta": [
+        0
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        4,
+        8,
+        8
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 30241,
+      "after_ns": 30081,
+      "speedup": 1.00531897210864,
+      "min_round_speedup": 0.9692307692307692,
+      "max_round_speedup": 1.010604700641601,
+      "identical_source_pairs": 3,
+      "source_bytes_delta": [
+        0
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        4,
+        8,
+        8
+      ],
+      "layout": "TN",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 31680,
+      "after_ns": 31841,
+      "speedup": 0.9949436261423951,
+      "min_round_speedup": 0.9899500643824001,
+      "max_round_speedup": 1.0,
+      "identical_source_pairs": 3,
+      "source_bytes_delta": [
+        0
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        4,
+        8,
+        8
+      ],
+      "layout": "TN",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 31840,
+      "after_ns": 31681,
+      "speedup": 1.0050187809728228,
+      "min_round_speedup": 1.0,
+      "max_round_speedup": 1.0100502512562815,
+      "identical_source_pairs": 3,
+      "source_bytes_delta": [
+        0
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        4,
+        8,
+        8
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 32640,
+      "after_ns": 32480,
+      "speedup": 1.0049261083743843,
+      "min_round_speedup": 0.9901960784313726,
+      "max_round_speedup": 1.0049261083743843,
+      "identical_source_pairs": 3,
+      "source_bytes_delta": [
+        0
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        4,
+        8,
+        8
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 32480,
+      "after_ns": 32480,
+      "speedup": 1.0,
+      "min_round_speedup": 1.0,
+      "max_round_speedup": 1.0,
+      "identical_source_pairs": 3,
+      "source_bytes_delta": [
+        0
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        4,
+        8,
+        8
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 30240,
+      "after_ns": 30081,
+      "speedup": 1.005285728532961,
+      "min_round_speedup": 0.9842105263157894,
+      "max_round_speedup": 1.0161290322580645,
+      "identical_source_pairs": 3,
+      "source_bytes_delta": [
+        0
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        4,
+        8,
+        8
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 30080,
+      "after_ns": 30080,
+      "speedup": 1.0,
+      "min_round_speedup": 0.999966756424321,
+      "max_round_speedup": 1.0053139935162594,
+      "identical_source_pairs": 3,
+      "source_bytes_delta": [
+        0
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        4,
+        8,
+        8
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 31200,
+      "after_ns": 31201,
+      "speedup": 0.9999679497452004,
+      "min_round_speedup": 0.9999679497452004,
+      "max_round_speedup": 1.000031887755102,
+      "identical_source_pairs": 3,
+      "source_bytes_delta": [
+        0
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        4,
+        8,
+        8
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 31200,
+      "after_ns": 31200,
+      "speedup": 1.0,
+      "min_round_speedup": 0.9898477157360406,
+      "max_round_speedup": 1.005128205128205,
+      "identical_source_pairs": 3,
+      "source_bytes_delta": [
+        0
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 247362,
+      "after_ns": 239843,
+      "speedup": 1.031349674578787,
+      "min_round_speedup": 1.031349674578787,
+      "max_round_speedup": 1.035546166002272,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1249
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 237283,
+      "after_ns": 238883,
+      "speedup": 0.9933021604718628,
+      "min_round_speedup": 0.9852787376276972,
+      "max_round_speedup": 0.995980080649894,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1155
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 363203,
+      "after_ns": 329283,
+      "speedup": 1.1030116951072482,
+      "min_round_speedup": 1.1030113822718384,
+      "max_round_speedup": 1.1031115866781775,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1462
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 360804,
+      "after_ns": 328963,
+      "speedup": 1.0967920404422382,
+      "min_round_speedup": 1.095190684911548,
+      "max_round_speedup": 1.0978566473144193,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1368
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 234883,
+      "after_ns": 228965,
+      "speedup": 1.0258467451357194,
+      "min_round_speedup": 1.0237175181654032,
+      "max_round_speedup": 1.0321315484899438,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1249
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 224162,
+      "after_ns": 228003,
+      "speedup": 0.9831537304333715,
+      "min_round_speedup": 0.9831343716235803,
+      "max_round_speedup": 0.9838824116817477,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1155
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 361924,
+      "after_ns": 326724,
+      "speedup": 1.107736193239554,
+      "min_round_speedup": 1.1072430943453975,
+      "max_round_speedup": 1.109258828284808,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1462
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 360324,
+      "after_ns": 327043,
+      "speedup": 1.101763376681354,
+      "min_round_speedup": 1.0996081590800895,
+      "max_round_speedup": 1.1037710740540194,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1368
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TN",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 261122,
+      "after_ns": 254732,
+      "speedup": 1.0250851875696811,
+      "min_round_speedup": 1.0244610021512806,
+      "max_round_speedup": 1.0289792251190064,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1249
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TN",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 251202,
+      "after_ns": 253923,
+      "speedup": 0.9892841530700252,
+      "min_round_speedup": 0.9848773053248425,
+      "max_round_speedup": 0.991157949559673,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1155
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 384161,
+      "after_ns": 349924,
+      "speedup": 1.0978412455276003,
+      "min_round_speedup": 1.0973614376265792,
+      "max_round_speedup": 1.098809482965657,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1462
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 383524,
+      "after_ns": 350084,
+      "speedup": 1.095519932359091,
+      "min_round_speedup": 1.095065755647216,
+      "max_round_speedup": 1.096478092385775,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1368
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "accumulator": false,
+      "before_ns": 258911,
+      "after_ns": 252674,
+      "speedup": 1.0246839801483334,
+      "min_round_speedup": 1.02027778547425,
+      "max_round_speedup": 1.0284793845033522,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1252
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "accumulator": true,
+      "before_ns": 248517,
+      "after_ns": 252628,
+      "speedup": 0.983727061133366,
+      "min_round_speedup": 0.9822786913129986,
+      "max_round_speedup": 0.9861785714285715,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1158
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "accumulator": false,
+      "before_ns": 381124,
+      "after_ns": 345924,
+      "speedup": 1.101756455175125,
+      "min_round_speedup": 1.1002297894943476,
+      "max_round_speedup": 1.102221875325216,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1465
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    },
+    {
+      "input": "register-tiling-matrix-dcu-22669628.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "accumulator": true,
+      "before_ns": 379524,
+      "after_ns": 346084,
+      "speedup": 1.0966239410085412,
+      "min_round_speedup": 1.093590438100068,
+      "max_round_speedup": 1.0990758208817029,
+      "identical_source_pairs": 0,
+      "source_bytes_delta": [
+        1371
+      ],
+      "input_rows": 193,
+      "included_rows": 192
+    }
+  ]
+}

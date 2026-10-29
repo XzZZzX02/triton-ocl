@@ -1,0 +1,612 @@
+[
+  {
+    "case": "group_sum_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction)"
+  },
+  {
+    "case": "group_sum_group_reduction_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "group_sum_local_memory_reuse_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-group-reduction)"
+  },
+  {
+    "case": "group_sum_group_reduction_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-group-reduction)"
+  },
+  {
+    "case": "group_short_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction)"
+  },
+  {
+    "case": "group_short_group_reduction_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "group_short_local_memory_reuse_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-group-reduction)"
+  },
+  {
+    "case": "group_short_group_reduction_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-group-reduction)"
+  },
+  {
+    "case": "group_view_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction)"
+  },
+  {
+    "case": "group_view_group_reduction_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "group_view_local_memory_reuse_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-group-reduction)"
+  },
+  {
+    "case": "group_view_group_reduction_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-group-reduction)"
+  },
+  {
+    "case": "group_conditional_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction)"
+  },
+  {
+    "case": "group_conditional_group_reduction_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "group_conditional_local_memory_reuse_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-group-reduction)"
+  },
+  {
+    "case": "group_conditional_group_reduction_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-group-reduction)"
+  },
+  {
+    "case": "group_maxnum_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction)"
+  },
+  {
+    "case": "group_maxnum_group_reduction_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "group_maxnum_local_memory_reuse_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-group-reduction)"
+  },
+  {
+    "case": "group_maxnum_group_reduction_group_reduction",
+    "status": "PASS",
+    "pipeline": "any(sycl-group-reduction,sycl-group-reduction)"
+  },
+  {
+    "case": "reuse_disjoint_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse)"
+  },
+  {
+    "case": "reuse_disjoint_local_memory_reuse_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "reuse_overlap_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse)"
+  },
+  {
+    "case": "reuse_overlap_local_memory_reuse_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "reuse_view_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse)"
+  },
+  {
+    "case": "reuse_view_local_memory_reuse_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "fusion_identity_elementwise_fusion",
+    "status": "PASS",
+    "pipeline": "any(sycl-elementwise-fusion)"
+  },
+  {
+    "case": "fusion_identity_elementwise_fusion_elementwise_fusion",
+    "status": "PASS",
+    "pipeline": "any(sycl-elementwise-fusion,sycl-elementwise-fusion)"
+  },
+  {
+    "case": "fusion_fanout_elementwise_fusion",
+    "status": "PASS",
+    "pipeline": "any(sycl-elementwise-fusion)"
+  },
+  {
+    "case": "fusion_fanout_elementwise_fusion_elementwise_fusion",
+    "status": "PASS",
+    "pipeline": "any(sycl-elementwise-fusion,sycl-elementwise-fusion)"
+  },
+  {
+    "case": "fusion_permutation_elementwise_fusion",
+    "status": "PASS",
+    "pipeline": "any(sycl-elementwise-fusion)"
+  },
+  {
+    "case": "fusion_permutation_elementwise_fusion_elementwise_fusion",
+    "status": "PASS",
+    "pipeline": "any(sycl-elementwise-fusion,sycl-elementwise-fusion)"
+  },
+  {
+    "case": "register_independent_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator)"
+  },
+  {
+    "case": "register_independent_register_accumulator_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator,sycl-register-accumulator)"
+  },
+  {
+    "case": "register_independent_register_accumulator_group_reduction_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator,sycl-group-reduction,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "register_independent_local_memory_reuse_group_reduction_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-group-reduction,sycl-register-accumulator)"
+  },
+  {
+    "case": "register_zero_trip_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator)"
+  },
+  {
+    "case": "register_zero_trip_register_accumulator_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator,sycl-register-accumulator)"
+  },
+  {
+    "case": "register_zero_trip_register_accumulator_group_reduction_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator,sycl-group-reduction,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "register_zero_trip_local_memory_reuse_group_reduction_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-group-reduction,sycl-register-accumulator)"
+  },
+  {
+    "case": "register_derived_index_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator)"
+  },
+  {
+    "case": "register_derived_index_register_accumulator_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator,sycl-register-accumulator)"
+  },
+  {
+    "case": "register_derived_index_register_accumulator_group_reduction_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator,sycl-group-reduction,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "register_derived_index_local_memory_reuse_group_reduction_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-group-reduction,sycl-register-accumulator)"
+  },
+  {
+    "case": "register_view_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator)"
+  },
+  {
+    "case": "register_view_register_accumulator_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator,sycl-register-accumulator)"
+  },
+  {
+    "case": "register_view_register_accumulator_group_reduction_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator,sycl-group-reduction,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "register_view_local_memory_reuse_group_reduction_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-group-reduction,sycl-register-accumulator)"
+  },
+  {
+    "case": "register_conditional_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator)"
+  },
+  {
+    "case": "register_conditional_register_accumulator_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator,sycl-register-accumulator)"
+  },
+  {
+    "case": "register_conditional_register_accumulator_group_reduction_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator,sycl-group-reduction,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "register_conditional_local_memory_reuse_group_reduction_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-group-reduction,sycl-register-accumulator)"
+  },
+  {
+    "case": "register_carried_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator)"
+  },
+  {
+    "case": "register_carried_register_accumulator_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator,sycl-register-accumulator)"
+  },
+  {
+    "case": "register_carried_register_accumulator_group_reduction_local_memory_reuse",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator,sycl-group-reduction,sycl-local-memory-reuse)"
+  },
+  {
+    "case": "register_carried_local_memory_reuse_group_reduction_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-group-reduction,sycl-register-accumulator)"
+  },
+  {
+    "case": "distribution_parallel_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_parallel_work_distribution_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_parallel_local_memory_reuse_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_unproven_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_unproven_work_distribution_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_unproven_local_memory_reuse_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_reduction_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_reduction_work_distribution_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_reduction_local_memory_reuse_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_triangular_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_triangular_work_distribution_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_triangular_local_memory_reuse_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_duplicate_address_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_duplicate_address_work_distribution_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_duplicate_address_local_memory_reuse_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_neighbor_read_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_neighbor_read_work_distribution_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_neighbor_read_local_memory_reuse_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_nonzero_lower_bound_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_nonzero_lower_bound_work_distribution_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-work-distribution)"
+  },
+  {
+    "case": "distribution_nonzero_lower_bound_local_memory_reuse_work_distribution",
+    "status": "PASS",
+    "pipeline": "any(sycl-local-memory-reuse,sycl-work-distribution)"
+  },
+  {
+    "case": "tiling_static_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_static_matmul_register_tiling_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-matmul-register-tiling,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_static_work_distribution_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_static_work_distribution_matmul_register_tiling_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-matmul-register-tiling,sycl-register-accumulator)"
+  },
+  {
+    "case": "tiling_static_work_distribution_register_accumulator_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-register-accumulator,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_static_register_accumulator_work_distribution_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator,sycl-work-distribution,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_half_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_half_matmul_register_tiling_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-matmul-register-tiling,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_half_work_distribution_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_half_work_distribution_matmul_register_tiling_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-matmul-register-tiling,sycl-register-accumulator)"
+  },
+  {
+    "case": "tiling_half_work_distribution_register_accumulator_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-register-accumulator,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_half_register_accumulator_work_distribution_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator,sycl-work-distribution,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_mixed_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_mixed_matmul_register_tiling_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-matmul-register-tiling,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_mixed_work_distribution_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_mixed_work_distribution_matmul_register_tiling_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-matmul-register-tiling,sycl-register-accumulator)"
+  },
+  {
+    "case": "tiling_mixed_work_distribution_register_accumulator_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-register-accumulator,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_mixed_register_accumulator_work_distribution_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator,sycl-work-distribution,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_short_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_short_matmul_register_tiling_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-matmul-register-tiling,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_short_work_distribution_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_short_work_distribution_matmul_register_tiling_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-matmul-register-tiling,sycl-register-accumulator)"
+  },
+  {
+    "case": "tiling_short_work_distribution_register_accumulator_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-register-accumulator,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_short_register_accumulator_work_distribution_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator,sycl-work-distribution,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_tail_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_tail_matmul_register_tiling_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-matmul-register-tiling,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_tail_work_distribution_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_tail_work_distribution_matmul_register_tiling_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-matmul-register-tiling,sycl-register-accumulator)"
+  },
+  {
+    "case": "tiling_tail_work_distribution_register_accumulator_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-register-accumulator,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_tail_register_accumulator_work_distribution_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator,sycl-work-distribution,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_alias_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_alias_matmul_register_tiling_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-matmul-register-tiling,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_alias_work_distribution_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_alias_work_distribution_matmul_register_tiling_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-matmul-register-tiling,sycl-register-accumulator)"
+  },
+  {
+    "case": "tiling_alias_work_distribution_register_accumulator_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-register-accumulator,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_alias_register_accumulator_work_distribution_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator,sycl-work-distribution,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_permuted_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_permuted_matmul_register_tiling_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-matmul-register-tiling,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_permuted_work_distribution_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_permuted_work_distribution_matmul_register_tiling_register_accumulator",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-matmul-register-tiling,sycl-register-accumulator)"
+  },
+  {
+    "case": "tiling_permuted_work_distribution_register_accumulator_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-work-distribution,sycl-register-accumulator,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_permuted_register_accumulator_work_distribution_matmul_register_tiling",
+    "status": "PASS",
+    "pipeline": "any(sycl-register-accumulator,sycl-work-distribution,sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_batched_insufficient_depth",
+    "status": "PASS",
+    "pipeline": "any(sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_batched_complete_depth",
+    "status": "PASS",
+    "pipeline": "any(sycl-matmul-register-tiling)"
+  },
+  {
+    "case": "tiling_batched_f32_rejected",
+    "status": "PASS",
+    "pipeline": "any(sycl-matmul-register-tiling)"
+  }
+]

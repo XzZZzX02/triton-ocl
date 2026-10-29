@@ -1,0 +1,574 @@
+[
+  {
+    "case": "layout_3d_nt_f32_b",
+    "status": "PASS",
+    "harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "elements_checked": 1140,
+    "max_abs_error": 0,
+    "schedules": [
+      {
+        "schedule": "baseline",
+        "source_bytes": 18042,
+        "markers": {
+          "sycl.register_accumulator": false,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": false
+        },
+        "source_sha256": "cd7fb6458a74054230bbac032e1cd4381f46854933b595604f75a8c7e550f1d4",
+        "elements_checked": 570
+      },
+      {
+        "schedule": "optimized",
+        "source_bytes": 19060,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true
+        },
+        "source_sha256": "4e8f28d3d38e4adddc19e735db6b3cbcd1a4d9ca85940e3dad2be5c7f50a6616",
+        "elements_checked": 570
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "nt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nt_f16_none",
+    "status": "PASS",
+    "harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "elements_checked": 948,
+    "max_abs_error": 0,
+    "schedules": [
+      {
+        "schedule": "baseline",
+        "source_bytes": 18690,
+        "markers": {
+          "sycl.register_accumulator": false,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": false
+        },
+        "source_sha256": "75c39c18037340eb95901784ceec99e54183d293b77fcf8b70a9b5a3ba4b8840",
+        "elements_checked": 474
+      },
+      {
+        "schedule": "optimized",
+        "source_bytes": 20207,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false
+        },
+        "source_sha256": "d25f1aaa05abc87d2df64a632d9d98808297938c287d40d22613984aee55b978",
+        "elements_checked": 474
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "nt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nt_f16_a",
+    "status": "PASS",
+    "harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "elements_checked": 1140,
+    "max_abs_error": 0,
+    "schedules": [
+      {
+        "schedule": "baseline",
+        "source_bytes": 18690,
+        "markers": {
+          "sycl.register_accumulator": false,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": false
+        },
+        "source_sha256": "75c39c18037340eb95901784ceec99e54183d293b77fcf8b70a9b5a3ba4b8840",
+        "elements_checked": 570
+      },
+      {
+        "schedule": "optimized",
+        "source_bytes": 20207,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false
+        },
+        "source_sha256": "d25f1aaa05abc87d2df64a632d9d98808297938c287d40d22613984aee55b978",
+        "elements_checked": 570
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "nt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nt_f16_b",
+    "status": "PASS",
+    "harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "elements_checked": 768,
+    "max_abs_error": 0,
+    "schedules": [
+      {
+        "schedule": "baseline",
+        "source_bytes": 18690,
+        "markers": {
+          "sycl.register_accumulator": false,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": false
+        },
+        "source_sha256": "75c39c18037340eb95901784ceec99e54183d293b77fcf8b70a9b5a3ba4b8840",
+        "elements_checked": 384
+      },
+      {
+        "schedule": "optimized",
+        "source_bytes": 20207,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false
+        },
+        "source_sha256": "d25f1aaa05abc87d2df64a632d9d98808297938c287d40d22613984aee55b978",
+        "elements_checked": 384
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "nt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f32_none",
+    "status": "PASS",
+    "harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "elements_checked": 948,
+    "max_abs_error": 0,
+    "schedules": [
+      {
+        "schedule": "baseline",
+        "source_bytes": 18223,
+        "markers": {
+          "sycl.register_accumulator": false,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": false
+        },
+        "source_sha256": "36c3ec4f9f05b662366a8fb92dbfd56b0754bae94e811bfe1258eac86cae6f36",
+        "elements_checked": 474
+      },
+      {
+        "schedule": "optimized",
+        "source_bytes": 19241,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true
+        },
+        "source_sha256": "fcb1f4bf0ca30dd921600ace8583104a36ffdae7df8c5fe5a31a5c0c549a248c",
+        "elements_checked": 474
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "tt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f32_a",
+    "status": "PASS",
+    "harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "elements_checked": 1140,
+    "max_abs_error": 0,
+    "schedules": [
+      {
+        "schedule": "baseline",
+        "source_bytes": 18223,
+        "markers": {
+          "sycl.register_accumulator": false,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": false
+        },
+        "source_sha256": "36c3ec4f9f05b662366a8fb92dbfd56b0754bae94e811bfe1258eac86cae6f36",
+        "elements_checked": 570
+      },
+      {
+        "schedule": "optimized",
+        "source_bytes": 19241,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true
+        },
+        "source_sha256": "fcb1f4bf0ca30dd921600ace8583104a36ffdae7df8c5fe5a31a5c0c549a248c",
+        "elements_checked": 570
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "tt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f32_b",
+    "status": "PASS",
+    "harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "elements_checked": 768,
+    "max_abs_error": 0,
+    "schedules": [
+      {
+        "schedule": "baseline",
+        "source_bytes": 18223,
+        "markers": {
+          "sycl.register_accumulator": false,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": false
+        },
+        "source_sha256": "36c3ec4f9f05b662366a8fb92dbfd56b0754bae94e811bfe1258eac86cae6f36",
+        "elements_checked": 384
+      },
+      {
+        "schedule": "optimized",
+        "source_bytes": 19241,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true
+        },
+        "source_sha256": "fcb1f4bf0ca30dd921600ace8583104a36ffdae7df8c5fe5a31a5c0c549a248c",
+        "elements_checked": 384
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "tt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f16_none",
+    "status": "PASS",
+    "harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "elements_checked": 1140,
+    "max_abs_error": 0,
+    "schedules": [
+      {
+        "schedule": "baseline",
+        "source_bytes": 18871,
+        "markers": {
+          "sycl.register_accumulator": false,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": false
+        },
+        "source_sha256": "763cf7ff1ffd026250f467fdc2aeaf83d5fd33a7cc0b3ae7bc38e2005fd6190c",
+        "elements_checked": 570
+      },
+      {
+        "schedule": "optimized",
+        "source_bytes": 20400,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false
+        },
+        "source_sha256": "6d144cbc28d1e08964655f9839013e31d84980916d29af29544f94947b70757d",
+        "elements_checked": 570
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "tt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f16_a",
+    "status": "PASS",
+    "harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "elements_checked": 768,
+    "max_abs_error": 0,
+    "schedules": [
+      {
+        "schedule": "baseline",
+        "source_bytes": 18871,
+        "markers": {
+          "sycl.register_accumulator": false,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": false
+        },
+        "source_sha256": "763cf7ff1ffd026250f467fdc2aeaf83d5fd33a7cc0b3ae7bc38e2005fd6190c",
+        "elements_checked": 384
+      },
+      {
+        "schedule": "optimized",
+        "source_bytes": 20400,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false
+        },
+        "source_sha256": "6d144cbc28d1e08964655f9839013e31d84980916d29af29544f94947b70757d",
+        "elements_checked": 384
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "tt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f16_b",
+    "status": "PASS",
+    "harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "elements_checked": 948,
+    "max_abs_error": 0,
+    "schedules": [
+      {
+        "schedule": "baseline",
+        "source_bytes": 18871,
+        "markers": {
+          "sycl.register_accumulator": false,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": false
+        },
+        "source_sha256": "763cf7ff1ffd026250f467fdc2aeaf83d5fd33a7cc0b3ae7bc38e2005fd6190c",
+        "elements_checked": 474
+      },
+      {
+        "schedule": "optimized",
+        "source_bytes": 20400,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false
+        },
+        "source_sha256": "6d144cbc28d1e08964655f9839013e31d84980916d29af29544f94947b70757d",
+        "elements_checked": 474
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "tt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nn_f32_none_negative_a_rows",
+    "status": "PASS",
+    "harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "elements_checked": 284,
+    "max_abs_error": 0,
+    "schedules": [
+      {
+        "schedule": "baseline",
+        "source_bytes": 17162,
+        "markers": {
+          "sycl.register_accumulator": false,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": false
+        },
+        "source_sha256": "80ea53d05211d9d79eeb8c3e884e9ab67d4ad64d26fbdaf1cfd8660413668d81",
+        "elements_checked": 142
+      },
+      {
+        "schedule": "optimized",
+        "source_bytes": 18180,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true
+        },
+        "source_sha256": "6b661bcce049f1bb341891f5434e68f9d3758c00fe12d5e7147bd14d9fe1ca0d",
+        "elements_checked": 142
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nn",
+    "precision": "f32",
+    "variant": "negative_a_rows",
+    "expected_harness_sha256": "06c0b7823259f3f8f18f0b8d12f04dd8b8b0dcfd1e87947be674aa506b17dcbe",
+    "harness_match": true
+  }
+]
