@@ -164,25 +164,30 @@ def execute(case, mode, schedule='baseline'):
                 expected[batch * z_bs + row * z_rm + col] = sum(
                     logical_a[a_batch][row][step] * logical_b[b_batch][step][col]
                     for step in range(k))
-    schedules = ('baseline', 'optimized') if schedule == 'both' else (schedule,)
+    schedules = (('baseline', 'optimized') if schedule == 'both' else
+                 ('optimized', 'forwarded') if schedule == 'init-pair' else (schedule,))
     variants = []
     for selected in schedules:
         options = (dict(register_accumulator=True, matmul_register_tiling=True,
                         fuse_elementwise=True, group_reduction=True,
                         reuse_local_memory=True, reduction_unroll=4)
-                   if selected == 'optimized' else {})
+                   if selected in ('optimized', 'forwarded') else {})
+        if selected == 'forwarded':
+            options['accumulator_init_forwarding'] = True
         compiled = kernel.warmup(x, y, z, m, n, k, grid=(batch_count,), **kwargs, **options)
         code = compiled.asm['sycl']
         code = code.decode() if isinstance(code, bytes) else code
         memir = str(compiled.asm['memir'])
         markers = {name: name in memir for name in (
             'sycl.register_accumulator', 'sycl.register_tile =',
-            'sycl.register_tile_composed_accumulator', 'sycl.ordered_reduction_unroll')}
-        if selected == 'optimized':
+            'sycl.register_tile_composed_accumulator', 'sycl.ordered_reduction_unroll',
+            'sycl.accumulator_init_forwarded')}
+        if selected in ('optimized', 'forwarded'):
             assert markers['sycl.register_accumulator'], (case, memir)
             assert markers['sycl.register_tile ='] == half, (case, memir)
             assert markers['sycl.register_tile_composed_accumulator'] == half, (case, memir)
             assert markers['sycl.ordered_reduction_unroll'] == (not half), (case, memir)
+        assert markers['sycl.accumulator_init_forwarded'] == (selected == 'forwarded'), (case, memir)
         checks = 0
         if mode == 'run':
             for local_shape in (48, (3, 5)):
@@ -210,7 +215,7 @@ def main():
     parser.add_argument("--cases", nargs='+', choices=CASES)
     parser.add_argument("--all", action="store_true")
     parser.add_argument("--mode", choices=("run", "compile"), default="run")
-    parser.add_argument("--schedule", choices=("baseline", "optimized", "both"), default="baseline")
+    parser.add_argument("--schedule", choices=("baseline", "optimized", "both", "forwarded", "init-pair"), default="baseline")
     parser.add_argument("--python", default=sys.executable)
     parser.add_argument("--timeout", type=int, default=240)
     parser.add_argument("--jobs", type=int, default=1)

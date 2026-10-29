@@ -1,0 +1,497 @@
+{
+  "status": "PASS",
+  "jobs": [
+    {
+      "input": "accumulator-init-dcu-22682188.json",
+      "shape": [
+        4,
+        8,
+        8
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "rows": 24,
+      "elements_checked": 4608,
+      "comparisons": [
+        {
+          "tiled": false,
+          "unroll": 1,
+          "active": true,
+          "before_ns": 31201,
+          "after_ns": 31200,
+          "speedup": 1.0000320512820513,
+          "round_speedups": [
+            1.0000320512820513,
+            0.9949038461538462,
+            1.0101192394456977
+          ],
+          "nonregressing_rounds": 2,
+          "source_bytes_delta": -345,
+          "barriers_removed": 1,
+          "local_bytes": 512
+        },
+        {
+          "tiled": false,
+          "unroll": 4,
+          "active": true,
+          "before_ns": 31041,
+          "after_ns": 31200,
+          "speedup": 0.9949038461538462,
+          "round_speedups": [
+            0.9949038461538462,
+            1.0000320512820513,
+            0.989775641025641
+          ],
+          "nonregressing_rounds": 1,
+          "source_bytes_delta": -345,
+          "barriers_removed": 1,
+          "local_bytes": 512
+        },
+        {
+          "tiled": true,
+          "unroll": 1,
+          "active": true,
+          "before_ns": 31360,
+          "after_ns": 31361,
+          "speedup": 0.9999681132616944,
+          "round_speedups": [
+            0.9949240189080296,
+            1.0050959905131245,
+            0.9948981218711138
+          ],
+          "nonregressing_rounds": 1,
+          "source_bytes_delta": -345,
+          "barriers_removed": 1,
+          "local_bytes": 512
+        },
+        {
+          "tiled": true,
+          "unroll": 4,
+          "active": true,
+          "before_ns": 31201,
+          "after_ns": 31040,
+          "speedup": 1.0051868556701031,
+          "round_speedups": [
+            1.005122257659225,
+            1.0051868556701031,
+            1.0155440414507773
+          ],
+          "nonregressing_rounds": 3,
+          "source_bytes_delta": -345,
+          "barriers_removed": 1,
+          "local_bytes": 512
+        }
+      ]
+    },
+    {
+      "input": "accumulator-init-dcu-22682189.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "rows": 24,
+      "elements_checked": 73728,
+      "comparisons": [
+        {
+          "tiled": false,
+          "unroll": 1,
+          "active": true,
+          "before_ns": 236481,
+          "after_ns": 233764,
+          "speedup": 1.0116228332848514,
+          "round_speedups": [
+            1.0136890196950772,
+            1.010280882271047,
+            1.0116228332848514
+          ],
+          "nonregressing_rounds": 3,
+          "source_bytes_delta": -349,
+          "barriers_removed": 1,
+          "local_bytes": 8192
+        },
+        {
+          "tiled": false,
+          "unroll": 4,
+          "active": true,
+          "before_ns": 236639,
+          "after_ns": 233763,
+          "speedup": 1.012303059081206,
+          "round_speedups": [
+            1.0095149942893051,
+            1.0116357165163008,
+            1.0176839678832996
+          ],
+          "nonregressing_rounds": 3,
+          "source_bytes_delta": -349,
+          "barriers_removed": 1,
+          "local_bytes": 8192
+        },
+        {
+          "tiled": true,
+          "unroll": 1,
+          "active": true,
+          "before_ns": 236162,
+          "after_ns": 233443,
+          "speedup": 1.011647382872907,
+          "round_speedups": [
+            1.0109705581233963,
+            1.008192347263312,
+            1.0157676384114929
+          ],
+          "nonregressing_rounds": 3,
+          "source_bytes_delta": -349,
+          "barriers_removed": 1,
+          "local_bytes": 8192
+        },
+        {
+          "tiled": true,
+          "unroll": 4,
+          "active": true,
+          "before_ns": 236483,
+          "after_ns": 234084,
+          "speedup": 1.0102484578185609,
+          "round_speedups": [
+            1.0116357165163008,
+            1.0136660344149964,
+            1.0031855837390042
+          ],
+          "nonregressing_rounds": 3,
+          "source_bytes_delta": -349,
+          "barriers_removed": 1,
+          "local_bytes": 8192
+        }
+      ]
+    },
+    {
+      "input": "accumulator-init-dcu-22682190.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "rows": 24,
+      "elements_checked": 73728,
+      "comparisons": [
+        {
+          "tiled": false,
+          "unroll": 1,
+          "active": true,
+          "before_ns": 380487,
+          "after_ns": 371846,
+          "speedup": 1.0232381147033986,
+          "round_speedups": [
+            1.0232381147033986,
+            1.0236962996073955,
+            1.0232154468704826
+          ],
+          "nonregressing_rounds": 3,
+          "source_bytes_delta": -348,
+          "barriers_removed": 1,
+          "local_bytes": 8192
+        },
+        {
+          "tiled": false,
+          "unroll": 4,
+          "active": true,
+          "before_ns": 370406,
+          "after_ns": 363046,
+          "speedup": 1.0202729130743762,
+          "round_speedups": [
+            1.019399905796283,
+            1.0193744048700208,
+            1.0229199605559627
+          ],
+          "nonregressing_rounds": 3,
+          "source_bytes_delta": -348,
+          "barriers_removed": 1,
+          "local_bytes": 8192
+        },
+        {
+          "tiled": true,
+          "unroll": 1,
+          "active": true,
+          "before_ns": 346406,
+          "after_ns": 339846,
+          "speedup": 1.019302860707497,
+          "round_speedups": [
+            1.0192999181982427,
+            1.021203089012329,
+            1.0188231972376958
+          ],
+          "nonregressing_rounds": 3,
+          "source_bytes_delta": -432,
+          "barriers_removed": 1,
+          "local_bytes": 8192
+        },
+        {
+          "tiled": true,
+          "unroll": 4,
+          "active": true,
+          "before_ns": 344326,
+          "after_ns": 337606,
+          "speedup": 1.0199048595107907,
+          "round_speedups": [
+            1.0189390576635122,
+            1.0189600272507813,
+            1.020378784737238
+          ],
+          "nonregressing_rounds": 3,
+          "source_bytes_delta": -448,
+          "barriers_removed": 1,
+          "local_bytes": 8192
+        }
+      ]
+    },
+    {
+      "input": "accumulator-init-dcu-22682191.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "rows": 24,
+      "elements_checked": 73728,
+      "comparisons": [
+        {
+          "tiled": false,
+          "unroll": 1,
+          "active": true,
+          "before_ns": 716656,
+          "after_ns": 708497,
+          "speedup": 1.0115159273786622,
+          "round_speedups": [
+            1.0112890389076725,
+            1.0115159273786622,
+            1.0126550633671225
+          ],
+          "nonregressing_rounds": 3,
+          "source_bytes_delta": -348,
+          "barriers_removed": 1,
+          "local_bytes": 12288
+        },
+        {
+          "tiled": false,
+          "unroll": 4,
+          "active": true,
+          "before_ns": 698736,
+          "after_ns": 691215,
+          "speedup": 1.010880840259543,
+          "round_speedups": [
+            1.008561760267819,
+            1.010880840259543,
+            1.009478816773215
+          ],
+          "nonregressing_rounds": 3,
+          "source_bytes_delta": -348,
+          "barriers_removed": 1,
+          "local_bytes": 12288
+        },
+        {
+          "tiled": true,
+          "unroll": 1,
+          "active": true,
+          "before_ns": 648649,
+          "after_ns": 644495,
+          "speedup": 1.0064453564418654,
+          "round_speedups": [
+            1.006454726147382,
+            1.0057098968960194,
+            1.0057057913549743
+          ],
+          "nonregressing_rounds": 3,
+          "source_bytes_delta": -432,
+          "barriers_removed": 1,
+          "local_bytes": 12288
+        },
+        {
+          "tiled": true,
+          "unroll": 4,
+          "active": true,
+          "before_ns": 646570,
+          "after_ns": 641936,
+          "speedup": 1.0072187881657984,
+          "round_speedups": [
+            1.0099857213080219,
+            1.0069773310735026,
+            1.006967805437193
+          ],
+          "nonregressing_rounds": 3,
+          "source_bytes_delta": -447,
+          "barriers_removed": 1,
+          "local_bytes": 12288
+        }
+      ]
+    },
+    {
+      "input": "accumulator-init-dcu-22682192.json",
+      "shape": [
+        8,
+        64,
+        16
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "rows": 24,
+      "elements_checked": 73728,
+      "comparisons": [
+        {
+          "tiled": false,
+          "unroll": 1,
+          "active": true,
+          "before_ns": 304484,
+          "after_ns": 296804,
+          "speedup": 1.025875662053072,
+          "round_speedups": [
+            1.0350847606262774,
+            1.0199458228325764,
+            1.0225647742347153
+          ],
+          "nonregressing_rounds": 3,
+          "source_bytes_delta": -347,
+          "barriers_removed": 1,
+          "local_bytes": 6400
+        },
+        {
+          "tiled": false,
+          "unroll": 4,
+          "active": true,
+          "before_ns": 302724,
+          "after_ns": 293765,
+          "speedup": 1.0304971661021565,
+          "round_speedups": [
+            1.044637996733805,
+            1.0288632069851753,
+            1.0249184057637355
+          ],
+          "nonregressing_rounds": 3,
+          "source_bytes_delta": -347,
+          "barriers_removed": 1,
+          "local_bytes": 6400
+        },
+        {
+          "tiled": true,
+          "unroll": 1,
+          "active": true,
+          "before_ns": 295206,
+          "after_ns": 283844,
+          "speedup": 1.0400290300305801,
+          "round_speedups": [
+            1.041152886796973,
+            1.0220158505659154,
+            1.0394431064351206
+          ],
+          "nonregressing_rounds": 3,
+          "source_bytes_delta": -431,
+          "barriers_removed": 1,
+          "local_bytes": 6400
+        },
+        {
+          "tiled": true,
+          "unroll": 4,
+          "active": true,
+          "before_ns": 290885,
+          "after_ns": 283842,
+          "speedup": 1.0248131002459115,
+          "round_speedups": [
+            1.036445950370866,
+            1.0248131002459115,
+            1.0213755430885392
+          ],
+          "nonregressing_rounds": 3,
+          "source_bytes_delta": -431,
+          "barriers_removed": 1,
+          "local_bytes": 6400
+        }
+      ]
+    },
+    {
+      "input": "accumulator-init-dcu-22682193.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "TT",
+      "dtype": "f32",
+      "rows": 24,
+      "elements_checked": 36864,
+      "comparisons": [
+        {
+          "tiled": false,
+          "unroll": 1,
+          "active": true,
+          "before_ns": 892167,
+          "after_ns": 890878,
+          "speedup": 1.0014468872281053,
+          "round_speedups": [
+            1.0014468872281053,
+            1.0010774637986786,
+            0.9985741184621487
+          ],
+          "nonregressing_rounds": 2,
+          "source_bytes_delta": -348,
+          "barriers_removed": 1,
+          "local_bytes": 25600
+        },
+        {
+          "tiled": false,
+          "unroll": 4,
+          "active": true,
+          "before_ns": 891206,
+          "after_ns": 890742,
+          "speedup": 1.0005209140244875,
+          "round_speedups": [
+            1.005544815445999,
+            1.0035877570324994,
+            0.9957081832873975
+          ],
+          "nonregressing_rounds": 2,
+          "source_bytes_delta": -348,
+          "barriers_removed": 1,
+          "local_bytes": 25600
+        },
+        {
+          "tiled": true,
+          "unroll": 1,
+          "active": true,
+          "before_ns": 891542,
+          "after_ns": 889622,
+          "speedup": 1.0021582200080483,
+          "round_speedups": [
+            1.0021582200080483,
+            1.0041455399960122,
+            1.0014277007432082
+          ],
+          "nonregressing_rounds": 3,
+          "source_bytes_delta": -348,
+          "barriers_removed": 1,
+          "local_bytes": 25600
+        },
+        {
+          "tiled": true,
+          "unroll": 4,
+          "active": true,
+          "before_ns": 893142,
+          "after_ns": 890420,
+          "speedup": 1.0030569843444666,
+          "round_speedups": [
+            1.0028780554737038,
+            1.0030569843444666,
+            1.005191663773699
+          ],
+          "nonregressing_rounds": 3,
+          "source_bytes_delta": -348,
+          "barriers_removed": 1,
+          "local_bytes": 25600
+        }
+      ]
+    }
+  ]
+}

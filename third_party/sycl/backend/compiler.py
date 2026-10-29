@@ -42,6 +42,7 @@ class SYCLOptions:
     register_accumulator: bool = False
     matmul_register_tiling: bool = False
     reduction_unroll: int = 1
+    accumulator_init_forwarding: bool = False
     distribute_work: bool = True
 
     def __post_init__(self):
@@ -142,6 +143,8 @@ class SYCLBackend(BaseBackend):
             passes.common.add_cse(pm)
         if opt.group_reduction:
             sycl.passes.memir.group_reduction(pm)
+        if opt.accumulator_init_forwarding:
+            sycl.passes.memir.accumulator_init_forwarding(pm)
         if opt.reduction_unroll != 1:
             sycl.passes.memir.ordered_reduction_unroll(pm, opt.reduction_unroll)
             passes.common.add_cse(pm)

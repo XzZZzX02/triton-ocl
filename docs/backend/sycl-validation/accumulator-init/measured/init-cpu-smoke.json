@@ -1,0 +1,94 @@
+[
+  {
+    "shape": [
+      4,
+      8,
+      8
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "tiled": false,
+    "unroll": 1,
+    "enabled": false,
+    "round": 0,
+    "special": true,
+    "status": "PASS",
+    "marker": false,
+    "elements_checked": 192,
+    "source_bytes": 17157,
+    "source_sha256": "73c5728d9594283d693808f76dacf65f01647a470ecddabb23fe25c6cfd408f6",
+    "local_bytes": 512,
+    "barriers": 8,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      4,
+      8,
+      8
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "tiled": false,
+    "unroll": 1,
+    "enabled": true,
+    "round": 0,
+    "special": true,
+    "status": "PASS",
+    "marker": true,
+    "elements_checked": 192,
+    "source_bytes": 16812,
+    "source_sha256": "1a0860098e1052a2c88d343101dbfac3fd18dd51db85ea41a3bb55501e155713",
+    "local_bytes": 512,
+    "barriers": 7,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      4,
+      8,
+      8
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "tiled": false,
+    "unroll": 4,
+    "enabled": false,
+    "round": 0,
+    "special": true,
+    "status": "PASS",
+    "marker": false,
+    "elements_checked": 192,
+    "source_bytes": 18057,
+    "source_sha256": "34b6a00c57d6d20cf93ce178be225656cb771257945318e4d7abdf82b0842979",
+    "local_bytes": 512,
+    "barriers": 8,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      4,
+      8,
+      8
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "tiled": false,
+    "unroll": 4,
+    "enabled": true,
+    "round": 0,
+    "special": true,
+    "status": "PASS",
+    "marker": true,
+    "elements_checked": 192,
+    "source_bytes": 17712,
+    "source_sha256": "0857a43d76e6875afd0c5c0a49de3e411fff968947c6d329b6b86a24f3ae0b05",
+    "local_bytes": 512,
+    "barriers": 7,
+    "samples_ns": [],
+    "median_ns": null
+  }
+]

@@ -64,3 +64,26 @@ ordered unroll when an affine.apply remains in a promoted recurrence. A
 candidate placement before unroll would need revalidation after scheduling.
 The measured version put hoisting last. No universal profitability or
 pass-independence conclusion follows from its contract results.
+
+## 2026-10-30: Accumulator Initializer Forwarding
+
+- MLIR scalar replacement documentation:
+  https://mlir.llvm.org/docs/Passes/#affine-scalrep
+  Store-to-load forwarding removes redundant memory traffic when access
+  equivalence and ordering can be proved. The SYCL pass specializes this idea
+  to a complete constant fill followed by promoted, fully covered outputs.
+- MLIR affine forwarding implementation and its conditions:
+  https://mlir.llvm.org/doxygen/Dialect_2Affine_2Utils_2Utils_8cpp_source.html
+  Dominance, access equivalence and no intervening conflicting writes motivate
+  the owned-allocation/full-domain/phase checks. This is a bounded backend
+  transformation, not a replacement for upstream alias analysis.
+- LLVM dead-store elimination implementation:
+  https://llvm.org/docs/doxygen/DeadStoreElimination_8cpp_source.html
+  Complete overwrite versus partial overwrite motivates requiring all output
+  elements to be written before deleting the initial fill. Original constants
+  and recurrence order are retained; no floating identity is invented.
+
+See sycl-accumulator-init-report.md for the exact gate, paired gfx906 data,
+runtime/source-hash provenance and remaining interactions. A small f16 tiling
+regression found by its boundary matrix is tracked separately from initializer
+forwarding profitability.

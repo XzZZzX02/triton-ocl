@@ -90,3 +90,19 @@ the SSA recurrence order. In a tiled reduction, unrolling is limited to static
 trip counts of at least 32; shorter tiled reductions retain the tiled loop.
 Tiling and unroll remain opt-in: measured wins do not establish a universal
 profitability guarantee.
+
+Accumulator initialization forwarding:
+
+    python-triton accumulator_init_contracts.py --output init-contracts.json
+    python-triton accumulator_init_semantics.py --dtype f16 --rounds 3 --repeats 31 --output init-timing.json
+    python-triton accumulator_init_ieee.py --dtype f16 --output init-ieee.json
+    python-triton model_layout_semantics.py --all --schedule init-pair --python /path/to/python-triton --output init-layouts.json
+
+The cache-keyed accumulator_init_forwarding option defaults to False. It
+requires an existing complete distributed/private accumulator schedule and a
+full constant fill of at least 128 output elements. It forwards the exact
+initial SSA constant, removes its fill and initial loads, and preserves the
+recurrence order. Views, escapes, partial domains and extra buffer uses fall
+back unchanged. The init-pair layout schedule holds the existing optimized
+stack fixed and toggles only forwarding. See the dedicated pass report for
+runtime-versus-source-consistency provenance and measured profitability limits.

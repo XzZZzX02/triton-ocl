@@ -1,0 +1,14 @@
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+i01r1n00
+gfx906:sramecc-:xnack-
+HIP_DEVICE=Device 66a1 COUNT=4
+2fd4ba2377717e345f85482be26cc69d60e8da3ecf6ffdd7675c82d3c1c74bff  python/test/sycl/accumulator_init_ieee.py
+f8bc40d68cca850b366a8d53a9cf1ba86fdeb7cb49bf2635c55170cdaf6206a2  third_party/sycl/lib/Conversion/LinalgToAffineLoops/AccumulatorInitForwarding.cpp
+50749826f1562c8436b02eca2b7499f520c2bb1bf051317c389173ceab50f1af  python/triton/_C/libtriton.so
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"initial": "zero", "initial_bits": "00000000", "dtype": "f16", "tiled": true, "factor": 4, "enabled": false, "status": "PASS", "elements_checked": 782, "source_sha256": "9a898f461b561ede13d8820df03b444fe9f011ec46655462e3afd4811477532e"}
+{"initial": "zero", "initial_bits": "00000000", "dtype": "f16", "tiled": true, "factor": 4, "enabled": true, "status": "PASS", "elements_checked": 782, "source_sha256": "a165760e0e29baa4e5aa94e7439f0318596d5c85ebb832951ee5370e092fed5c"}
+{"initial": "negative_zero", "initial_bits": "00000080", "dtype": "f16", "tiled": true, "factor": 4, "enabled": false, "status": "PASS", "elements_checked": 782, "source_sha256": "036e17e7c3d6cc8d99692991b8a857aa755c9beb4386fd326d61e657ea1b545d"}
+{"initial": "negative_zero", "initial_bits": "00000080", "dtype": "f16", "tiled": true, "factor": 4, "enabled": true, "status": "PASS", "elements_checked": 782, "source_sha256": "e4d29da8d7db8929c01fef7d11b266070f40cd0f7ac3b2d79e5d3e08a16d34b4"}

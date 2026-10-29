@@ -45,6 +45,12 @@ optimization is dedicated scalar/vector register tiling.
 - The full optimization objective remains active. Existing correctness and
   interaction evidence does not establish non-regression for all models or
   every combination of passes.
+- Integer LICM was rejected after device timing and removed from production;
+  f282d464 records the measured source and negative experiment.
+- The accumulator initializer forwarding pass has complete-domain legality,
+  an explicit 128-element minimum work gate, bitwise IEEE tests, measured
+  tiling/unroll combinations, and paired boundary/fallback experiments. It
+  remains opt-in; see sycl-accumulator-init-report.md.
 
 ## Next Work
 
@@ -55,3 +61,7 @@ candidate, compare baseline, pass-alone, useful combinations, order variants,
 and all-on schedules; preserve source hashes and failed experiments. Avoid
 claiming pass independence when the transformations do not both match the
 tested program.
+
+The new boundary matrix identifies an 8x16x16 f16 tiling regression. Resolve
+that independently and recheck the initializer/tile/unroll combinations before
+claiming broad schedule profitability.
