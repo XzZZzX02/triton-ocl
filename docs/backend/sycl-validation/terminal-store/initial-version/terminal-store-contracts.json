@@ -1,0 +1,839 @@
+[
+  {
+    "case": "dense",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "dense",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "dense",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "mask",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "mask",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "mask",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "transposed",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "transposed",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "transposed",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "reverse",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "reverse",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "reverse",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "padded",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "padded",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "padded",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "stride2",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "stride2",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "stride2",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "rank1",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "rank1",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "rank1",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "rank3",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "rank3",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "rank3",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "extent1",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "extent1",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "extent1",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "under256",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "under256",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "under256",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "collision",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "collision",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "collision",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "zero_stride",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "zero_stride",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "zero_stride",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "wrapped",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "wrapped",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "wrapped",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "modular_boundary",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "modular_boundary",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "modular_boundary",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "modular_collision",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "modular_collision",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "modular_collision",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "pointer_byte_wrap",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "pointer_byte_wrap",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "pointer_byte_wrap",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "rank4",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "rank4",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "rank4",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "dynamic_stride",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "dynamic_stride",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "dynamic_stride",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "modulo",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "modulo",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "modulo",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "select",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "select",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "select",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "trunc8",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "trunc8",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "trunc8",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "thread",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "thread",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "thread",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "external_read",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "external_read",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "external_read",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "extra_store",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "extra_store",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "extra_store",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "nontemporal",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "nontemporal",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "nontemporal",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "unknown_attr",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "unknown_attr",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "unknown_attr",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "nested",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "nested",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "nested",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "following_read",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "following_read",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "following_read",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "prior_write",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "prior_write",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "prior_write",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "dynamic_bound",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "dynamic_bound",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "dynamic_bound",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "step2",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "step2",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "step2",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "narrow",
+    "pipeline": [
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "narrow",
+    "pipeline": [
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "narrow",
+    "pipeline": [
+      "local_memory_reuse",
+      "terminal_store_distribution"
+    ],
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "default_and_cache_key",
+    "pipeline": [],
+    "status": "PASS"
+  }
+]

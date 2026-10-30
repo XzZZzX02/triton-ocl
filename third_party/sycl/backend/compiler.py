@@ -45,6 +45,7 @@ class SYCLOptions:
     accumulator_init_forwarding: bool = False
     distribute_work: bool = True
     cooperative_load_staging: bool = False
+    terminal_store_distribution: bool = False
 
     def __post_init__(self):
         if type(self.reduction_unroll) is not int or self.reduction_unroll not in (1, 2, 4, 8):
@@ -155,6 +156,8 @@ class SYCLBackend(BaseBackend):
             sycl.passes.memir.local_memory_reuse(pm)
         if opt.vectorize_memory:
             sycl.passes.memir.vector_memory(pm)
+        if opt.distribute_work and opt.terminal_store_distribution:
+            sycl.passes.memir.terminal_store_distribution(pm)
         pm.run(mod)
         return mod
 

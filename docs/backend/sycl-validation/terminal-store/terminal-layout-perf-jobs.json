@@ -1,0 +1,82 @@
+[
+  {
+    "job": 22739871,
+    "suite": "memory",
+    "cases": [
+      "transpose"
+    ],
+    "expected_rows": 12
+  },
+  {
+    "job": 22739872,
+    "suite": "memory",
+    "cases": [
+      "padded"
+    ],
+    "expected_rows": 12
+  },
+  {
+    "job": 22739873,
+    "suite": "memory",
+    "cases": [
+      "negative"
+    ],
+    "expected_rows": 12
+  },
+  {
+    "job": 22739874,
+    "suite": "memory",
+    "cases": [
+      "stride2"
+    ],
+    "expected_rows": 12
+  },
+  {
+    "job": 22739875,
+    "suite": "memory",
+    "cases": [
+      "reverse_cols"
+    ],
+    "expected_rows": 12
+  },
+  {
+    "job": 22739876,
+    "suite": "memory",
+    "cases": [
+      "rank3"
+    ],
+    "expected_rows": 12
+  },
+  {
+    "job": 22739877,
+    "suite": "dot",
+    "cases": [
+      "f32_NN_transpose"
+    ],
+    "expected_rows": 12
+  },
+  {
+    "job": 22739878,
+    "suite": "dot",
+    "cases": [
+      "f32_TT_negative"
+    ],
+    "expected_rows": 12
+  },
+  {
+    "job": 22739879,
+    "suite": "dot",
+    "cases": [
+      "f16_TN_transpose"
+    ],
+    "expected_rows": 12
+  },
+  {
+    "job": 22739880,
+    "suite": "dot",
+    "cases": [
+      "f16_NT_negative"
+    ],
+    "expected_rows": 12
+  }
+]

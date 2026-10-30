@@ -1,0 +1,78 @@
+[
+  {
+    "job": 22739662,
+    "suite": "memory",
+    "cases": [
+      "dense",
+      "transpose",
+      "padded",
+      "negative"
+    ],
+    "expected_rows": 16
+  },
+  {
+    "job": 22739663,
+    "suite": "memory",
+    "cases": [
+      "stride2",
+      "reverse_cols",
+      "rank3"
+    ],
+    "expected_rows": 12
+  },
+  {
+    "job": 22739665,
+    "suite": "fallback",
+    "cases": [
+      "dynamic",
+      "collision",
+      "scatter",
+      "small"
+    ],
+    "expected_rows": 16
+  },
+  {
+    "job": 22739666,
+    "suite": "dot",
+    "cases": [
+      "f32_NN_transpose",
+      "f32_TN_transpose",
+      "f16_NN_transpose",
+      "f16_TN_transpose"
+    ],
+    "expected_rows": 16
+  },
+  {
+    "job": 22739667,
+    "suite": "dot",
+    "cases": [
+      "f32_NN_negative",
+      "f32_TN_negative",
+      "f16_NN_negative",
+      "f16_TN_negative"
+    ],
+    "expected_rows": 16
+  },
+  {
+    "job": 22739668,
+    "suite": "dot",
+    "cases": [
+      "f32_NT_transpose",
+      "f32_TT_transpose",
+      "f16_NT_transpose",
+      "f16_TT_transpose"
+    ],
+    "expected_rows": 16
+  },
+  {
+    "job": 22739669,
+    "suite": "dot",
+    "cases": [
+      "f32_NT_negative",
+      "f32_TT_negative",
+      "f16_NT_negative",
+      "f16_TT_negative"
+    ],
+    "expected_rows": 16
+  }
+]

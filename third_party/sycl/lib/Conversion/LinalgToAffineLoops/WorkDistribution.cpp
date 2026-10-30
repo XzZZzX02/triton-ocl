@@ -89,7 +89,10 @@ struct WorkDistributionPass
   StringRef getArgument() const final { return "sycl-work-distribution"; }
   StringRef getDescription() const final { return "Plan linear work-group distribution for proven parallel affine nests"; }
   void runOnOperation() override {
+    SmallVector<affine::AffineForOp> terminalStores;
     getOperation().walk([&](affine::AffineForOp loop) {
+      if (loop->hasAttr("sycl.terminal_store_distribution"))
+        terminalStores.push_back(loop);
       loop->removeAttr("sycl.distribute");
       loop->removeAttr("sycl.distribution_depth");
     });
@@ -123,6 +126,11 @@ struct WorkDistributionPass
       loop->setAttr("sycl.distribute",builder.getUnitAttr());
       loop->setAttr("sycl.distribution_depth",builder.getI64IntegerAttr(depth));
     });
+    // External output stores have a separate address/effect proof. Re-run it
+    // after rebuilding generic ownership so this pass cannot discard their
+    // optimization or accidentally trust a stale/forged marker.
+    for (auto loop : terminalStores)
+      mlir::triton::sycl::planTerminalStoreDistribution(loop);
   }
 };
 }

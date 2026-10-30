@@ -1,0 +1,123 @@
+[
+  {
+    "job": 22739365,
+    "arguments": [
+      "--kind",
+      "copy",
+      "--block",
+      "256",
+      "--n",
+      "1021"
+    ],
+    "expected_rows": 24
+  },
+  {
+    "job": 22739366,
+    "arguments": [
+      "--kind",
+      "holes",
+      "--block",
+      "1024",
+      "--n",
+      "4093"
+    ],
+    "expected_rows": 24
+  },
+  {
+    "job": 22739367,
+    "arguments": [
+      "--kind",
+      "negative",
+      "--block",
+      "256",
+      "--n",
+      "1021"
+    ],
+    "expected_rows": 24
+  },
+  {
+    "job": 22739368,
+    "arguments": [
+      "--kind",
+      "broadcast",
+      "--block",
+      "256",
+      "--n",
+      "1021"
+    ],
+    "expected_rows": 24
+  },
+  {
+    "job": 22739369,
+    "arguments": [
+      "--kind",
+      "dot",
+      "--shape",
+      "16",
+      "32",
+      "32",
+      "--dtype",
+      "f32",
+      "--layout",
+      "NN"
+    ],
+    "expected_rows": 24
+  },
+  {
+    "job": 22739370,
+    "arguments": [
+      "--kind",
+      "dot",
+      "--shape",
+      "16",
+      "32",
+      "32",
+      "--dtype",
+      "f16",
+      "--layout",
+      "TT"
+    ],
+    "expected_rows": 24
+  },
+  {
+    "job": 22739371,
+    "arguments": [
+      "--kind",
+      "dot",
+      "--shape",
+      "32",
+      "16",
+      "64",
+      "--dtype",
+      "f16",
+      "--layout",
+      "TN"
+    ],
+    "expected_rows": 24
+  },
+  {
+    "job": 22739372,
+    "arguments": [
+      "--kind",
+      "copy",
+      "--block",
+      "128",
+      "--n",
+      "509"
+    ],
+    "expected_rows": 24
+  },
+  {
+    "job": 22739373,
+    "arguments": [
+      "--kind",
+      "copy",
+      "--block",
+      "256",
+      "--n",
+      "1021",
+      "--undistributed"
+    ],
+    "expected_rows": 24
+  }
+]

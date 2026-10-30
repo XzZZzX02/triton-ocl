@@ -1,0 +1,957 @@
+{
+  "status": "PASS",
+  "completed_gpu_jobs": 26,
+  "contracts": 241,
+  "regressions": {
+    "pass_contracts": 150,
+    "ordered_unroll_contracts": 71,
+    "accumulator_init_contracts": 55,
+    "cooperative_staging_contracts": 66,
+    "fusion_destination_contracts": 16
+  },
+  "dynamic_stride_compile_fallbacks": 44,
+  "cpu_static_configurations": 108,
+  "gpu_static_configurations": 108,
+  "static_elements_per_device": 359280,
+  "performance": {
+    "status": "PASS",
+    "rows": 216,
+    "elements_checked": 961704,
+    "comparisons": [
+      {
+        "file": "terminal-final-dcu-22739598.json",
+        "kind": "copy",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": false,
+        "stack": false,
+        "active": true,
+        "ratio": 1.3815576923076922,
+        "round_ratios": [
+          1.3815311244014539,
+          1.3907884615384616,
+          1.3826819952933915
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739598.json",
+        "kind": "copy",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": false,
+        "stack": true,
+        "active": true,
+        "ratio": 1.3784542604949905,
+        "round_ratios": [
+          1.3784542604949905,
+          1.3815118940020383,
+          1.374206782845421
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739598.json",
+        "kind": "copy",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": true,
+        "stack": false,
+        "active": true,
+        "ratio": 1.914111328125,
+        "round_ratios": [
+          1.921875,
+          1.8992732558139536,
+          1.9140625
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739598.json",
+        "kind": "copy",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": true,
+        "stack": true,
+        "active": true,
+        "ratio": 1.921875,
+        "round_ratios": [
+          1.9375,
+          1.9369125535160672,
+          1.921875
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739599.json",
+        "kind": "holes",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": false,
+        "stack": false,
+        "active": true,
+        "ratio": 1.4220112433790795,
+        "round_ratios": [
+          1.4195510429169236,
+          1.421144701638847,
+          1.4463193221830986
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739599.json",
+        "kind": "holes",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": false,
+        "stack": true,
+        "active": true,
+        "ratio": 1.4267137173274358,
+        "round_ratios": [
+          1.4267137173274358,
+          1.4209170168861616,
+          1.431057940926166
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739599.json",
+        "kind": "holes",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": true,
+        "stack": false,
+        "active": true,
+        "ratio": 2.9571083690987123,
+        "round_ratios": [
+          2.9571083690987123,
+          2.9528165236051502,
+          2.9570290496499556
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739599.json",
+        "kind": "holes",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": true,
+        "stack": true,
+        "active": true,
+        "ratio": 2.965464292449018,
+        "round_ratios": [
+          2.9487713675213674,
+          2.965544181034483,
+          2.965464292449018
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739600.json",
+        "kind": "negative",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": false,
+        "stack": false,
+        "active": true,
+        "ratio": 1.3273211839117134,
+        "round_ratios": [
+          1.3279692047695053,
+          1.323347242753691,
+          1.3213152906289296
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739600.json",
+        "kind": "negative",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": false,
+        "stack": true,
+        "active": true,
+        "ratio": 1.320377994011976,
+        "round_ratios": [
+          1.40966936369993,
+          1.3203592814371257,
+          1.320377994011976
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739600.json",
+        "kind": "negative",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": true,
+        "stack": false,
+        "active": true,
+        "ratio": 1.8769711538461538,
+        "round_ratios": [
+          1.891429678794632,
+          1.8769711538461538,
+          1.8768328445747802
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739600.json",
+        "kind": "negative",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": true,
+        "stack": true,
+        "active": true,
+        "ratio": 1.8769711538461538,
+        "round_ratios": [
+          1.8768328445747802,
+          1.8769711538461538,
+          1.891429678794632
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739601.json",
+        "kind": "broadcast",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": false,
+        "stack": false,
+        "active": true,
+        "ratio": 1.5481069711538462,
+        "round_ratios": [
+          1.5528846153846154,
+          1.5480604549142154,
+          1.555508589716494
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739601.json",
+        "kind": "broadcast",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": false,
+        "stack": true,
+        "active": true,
+        "ratio": 1.5555387820416051,
+        "round_ratios": [
+          1.5480604549142154,
+          1.560369554059358,
+          1.5555387820416051
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739601.json",
+        "kind": "broadcast",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": true,
+        "stack": false,
+        "active": true,
+        "ratio": 2.008984375,
+        "round_ratios": [
+          1.9910956252419667,
+          2.036363636363636,
+          2.008984375
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739601.json",
+        "kind": "broadcast",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": true,
+        "stack": true,
+        "active": true,
+        "ratio": 2.018074324324324,
+        "round_ratios": [
+          2.0551032110091745,
+          1.9912057522123894,
+          2.018074324324324
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739602.json",
+        "kind": "dot",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": false,
+        "stack": false,
+        "active": true,
+        "ratio": 1.1304652836617741,
+        "round_ratios": [
+          1.1287306479032009,
+          1.137095517819668,
+          1.130460728309691
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739602.json",
+        "kind": "dot",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": false,
+        "stack": true,
+        "active": true,
+        "ratio": 1.130900165567723,
+        "round_ratios": [
+          1.1282879802165744,
+          1.1239337341815048,
+          1.1344149726595507
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739602.json",
+        "kind": "dot",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": true,
+        "stack": false,
+        "active": true,
+        "ratio": 1.4738142373325043,
+        "round_ratios": [
+          1.4700065274151437,
+          1.4738142373325043,
+          1.4738142373325043
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739602.json",
+        "kind": "dot",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": true,
+        "stack": true,
+        "active": true,
+        "ratio": 1.5870849378036733,
+        "round_ratios": [
+          1.5999879034696882,
+          1.5922210311280112,
+          1.5870849378036733
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739603.json",
+        "kind": "dot",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "TT",
+        "dtype": "f16",
+        "staging": false,
+        "stack": false,
+        "active": true,
+        "ratio": 1.080274033174227,
+        "round_ratios": [
+          1.080274033174227,
+          1.0812547519887428,
+          1.0802468261365987
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739603.json",
+        "kind": "dot",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "TT",
+        "dtype": "f16",
+        "staging": false,
+        "stack": true,
+        "active": true,
+        "ratio": 1.077057005921575,
+        "round_ratios": [
+          1.0770398336755909,
+          1.0770791592756601,
+          1.077057005921575
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739603.json",
+        "kind": "dot",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "TT",
+        "dtype": "f16",
+        "staging": true,
+        "stack": false,
+        "active": true,
+        "ratio": 1.221953729807133,
+        "round_ratios": [
+          1.2175948633343738,
+          1.2248770203794799,
+          1.219567130561895
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739603.json",
+        "kind": "dot",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "TT",
+        "dtype": "f16",
+        "staging": true,
+        "stack": true,
+        "active": true,
+        "ratio": 1.2871096338740429,
+        "round_ratios": [
+          1.280594610576972,
+          1.2871096338740429,
+          1.2946164625975594
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739604.json",
+        "kind": "dot",
+        "shape": [
+          32,
+          16,
+          64
+        ],
+        "layout": "TN",
+        "dtype": "f16",
+        "staging": false,
+        "stack": false,
+        "active": true,
+        "ratio": 1.0364905261254487,
+        "round_ratios": [
+          1.0349018600452633,
+          1.036726061773015,
+          1.03673452982644
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739604.json",
+        "kind": "dot",
+        "shape": [
+          32,
+          16,
+          64
+        ],
+        "layout": "TN",
+        "dtype": "f16",
+        "staging": false,
+        "stack": true,
+        "active": true,
+        "ratio": 1.0298056134707891,
+        "round_ratios": [
+          1.0303240417503294,
+          1.0300519515546935,
+          1.029273828019671
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739604.json",
+        "kind": "dot",
+        "shape": [
+          32,
+          16,
+          64
+        ],
+        "layout": "TN",
+        "dtype": "f16",
+        "staging": true,
+        "stack": false,
+        "active": true,
+        "ratio": 1.0746111918747037,
+        "round_ratios": [
+          1.0746069810818013,
+          1.0786036328187953,
+          1.0727303362421288
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739604.json",
+        "kind": "dot",
+        "shape": [
+          32,
+          16,
+          64
+        ],
+        "layout": "TN",
+        "dtype": "f16",
+        "staging": true,
+        "stack": true,
+        "active": true,
+        "ratio": 1.0988811384228458,
+        "round_ratios": [
+          1.09888651239776,
+          1.096213528634787,
+          1.0998208935957359
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739605.json",
+        "kind": "copy",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": false,
+        "stack": false,
+        "active": false,
+        "ratio": 1.0039061546348966,
+        "round_ratios": [
+          1.0033802679895918,
+          1.0039061546348966,
+          1.0
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739605.json",
+        "kind": "copy",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": false,
+        "stack": true,
+        "active": false,
+        "ratio": 0.9999756815252547,
+        "round_ratios": [
+          0.9995136305050947,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739605.json",
+        "kind": "copy",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": true,
+        "stack": false,
+        "active": false,
+        "ratio": 1.0,
+        "round_ratios": [
+          0.9994893120303494,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739605.json",
+        "kind": "copy",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": true,
+        "stack": true,
+        "active": false,
+        "ratio": 1.0,
+        "round_ratios": [
+          1.0038817411684284,
+          0.9961482558139535,
+          1.0
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739606.json",
+        "kind": "copy",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": false,
+        "stack": false,
+        "active": false,
+        "ratio": 1.0,
+        "round_ratios": [
+          1.0539898182244978,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739606.json",
+        "kind": "copy",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": false,
+        "stack": true,
+        "active": false,
+        "ratio": 1.0022321117171915,
+        "round_ratios": [
+          1.0022320805781089,
+          1.0,
+          1.0022321117171915
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739606.json",
+        "kind": "copy",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": true,
+        "stack": false,
+        "active": false,
+        "ratio": 1.0,
+        "round_ratios": [
+          1.0022321117171915,
+          0.9977589710754154,
+          1.0
+        ]
+      },
+      {
+        "file": "terminal-final-dcu-22739606.json",
+        "kind": "copy",
+        "shape": [
+          16,
+          32,
+          32
+        ],
+        "layout": "NN",
+        "dtype": "f32",
+        "staging": true,
+        "stack": true,
+        "active": false,
+        "ratio": 1.0,
+        "round_ratios": [
+          0.9999860805656858,
+          1.0298846280944238,
+          1.0
+        ]
+      }
+    ],
+    "active_comparisons": 28,
+    "active_improved": 28,
+    "active_improved_rounds": 84,
+    "active_ratio_range": [
+      1.0298056134707891,
+      2.965464292449018
+    ]
+  },
+  "timed_configurations": 336,
+  "timing_samples": 10416,
+  "layout_performance": [
+    {
+      "case": "transpose",
+      "optimized": false,
+      "ratio": 1.2775652682845258,
+      "round_ratios": [
+        1.2748813183595793,
+        1.2733276390075208,
+        1.2775652682845258
+      ]
+    },
+    {
+      "case": "transpose",
+      "optimized": true,
+      "ratio": 1.587833969465649,
+      "round_ratios": [
+        1.5407870370370371,
+        1.625048828125,
+        1.5954675572519084
+      ]
+    },
+    {
+      "case": "padded",
+      "optimized": false,
+      "ratio": 1.2702759197324414,
+      "round_ratios": [
+        1.2608904682274247,
+        1.2708869230608362,
+        1.2702493676971636
+      ]
+    },
+    {
+      "case": "padded",
+      "optimized": true,
+      "ratio": 1.6146634615384616,
+      "round_ratios": [
+        1.6153846153846154,
+        1.590151515151515,
+        1.6271802325581395
+      ]
+    },
+    {
+      "case": "negative",
+      "optimized": false,
+      "ratio": 1.2708973474634728,
+      "round_ratios": [
+        1.2666611112268495,
+        1.2708973474634728,
+        1.2751677852348993
+      ]
+    },
+    {
+      "case": "negative",
+      "optimized": true,
+      "ratio": 1.640673828125,
+      "round_ratios": [
+        1.640625,
+        1.6307692307692307,
+        1.6535111461050145
+      ]
+    },
+    {
+      "case": "stride2",
+      "optimized": false,
+      "ratio": 1.277222004496607,
+      "round_ratios": [
+        1.2805222664548999,
+        1.281451128908756,
+        1.2697312966427499
+      ]
+    },
+    {
+      "case": "stride2",
+      "optimized": true,
+      "ratio": 1.6015037593984962,
+      "round_ratios": [
+        1.6015037593984962,
+        1.6015507518796992,
+        1.60142850429961
+      ]
+    },
+    {
+      "case": "reverse_cols",
+      "optimized": false,
+      "ratio": 1.2709239130434782,
+      "round_ratios": [
+        1.2751620142195004,
+        1.2742683946488294,
+        1.2708973474634728
+      ]
+    },
+    {
+      "case": "reverse_cols",
+      "optimized": true,
+      "ratio": 1.6229988942839286,
+      "round_ratios": [
+        1.6229988942839286,
+        1.6229988942839286,
+        1.6357073643410853
+      ]
+    },
+    {
+      "case": "rank3",
+      "optimized": false,
+      "ratio": 2.294192068284948,
+      "round_ratios": [
+        2.2990756167488433,
+        2.294192068284948,
+        2.296647707253234
+      ]
+    },
+    {
+      "case": "rank3",
+      "optimized": true,
+      "ratio": 2.782389705882353,
+      "round_ratios": [
+        2.7765441176470587,
+        2.766017323928219,
+        2.782389705882353
+      ]
+    },
+    {
+      "case": "f32_NN_transpose",
+      "optimized": false,
+      "ratio": 1.0570498244103281,
+      "round_ratios": [
+        1.058126236191655,
+        1.0559734126290012,
+        1.058188871378349
+      ]
+    },
+    {
+      "case": "f32_NN_transpose",
+      "optimized": true,
+      "ratio": 1.3008394904795952,
+      "round_ratios": [
+        1.3008394904795952,
+        1.3135593220338984,
+        1.2911315629862081
+      ]
+    },
+    {
+      "case": "f32_TT_negative",
+      "optimized": false,
+      "ratio": 1.0589535740604274,
+      "round_ratios": [
+        1.0589535740604274,
+        1.0577696297993793,
+        1.0590192230063613
+      ]
+    },
+    {
+      "case": "f32_TT_negative",
+      "optimized": true,
+      "ratio": 1.3305349576271186,
+      "round_ratios": [
+        1.3220338983050848,
+        1.3361612723065877,
+        1.3305349576271186
+      ]
+    },
+    {
+      "case": "f16_TN_transpose",
+      "optimized": false,
+      "ratio": 1.009310003892217,
+      "round_ratios": [
+        1.0093054884486676,
+        1.0100285185997682,
+        1.0100213400858078
+      ]
+    },
+    {
+      "case": "f16_TN_transpose",
+      "optimized": true,
+      "ratio": 1.110845232285386,
+      "round_ratios": [
+        1.1111093574912012,
+        1.110845232285386,
+        1.1158671935265503
+      ]
+    },
+    {
+      "case": "f16_NT_negative",
+      "optimized": false,
+      "ratio": 1.049321872436028,
+      "round_ratios": [
+        1.047534426698503,
+        1.0502637191845372,
+        1.049321872436028
+      ]
+    },
+    {
+      "case": "f16_NT_negative",
+      "optimized": true,
+      "ratio": 1.147538464165571,
+      "round_ratios": [
+        1.1561617095597678,
+        1.147538464165571,
+        1.1444141689373297
+      ]
+    }
+  ],
+  "layout_timing_elements": 493848,
+  "active_comparisons": 48,
+  "active_improved_rounds": 144
+}

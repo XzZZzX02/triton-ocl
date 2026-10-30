@@ -1,0 +1,350 @@
+{
+  "status": "PASS",
+  "unique_configurations": 108,
+  "identical_duplicates": 19,
+  "origins": {
+    "('memory', 'dense', False, False)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'dense', False, True)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'dense', True, False)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'dense', True, True)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'transpose', False, False)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'transpose', False, True)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'transpose', True, False)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'transpose', True, True)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'padded', False, False)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'padded', False, True)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'padded', True, False)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'padded', True, True)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'negative', False, False)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'negative', False, True)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'negative', True, False)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'negative', True, True)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'stride2', False, False)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'stride2', False, True)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'stride2', True, False)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'stride2', True, True)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'reverse_cols', False, False)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'reverse_cols', False, True)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'reverse_cols', True, False)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'reverse_cols', True, True)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'rank3', False, False)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'rank3', False, True)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'rank3', True, False)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('memory', 'rank3', True, True)": [
+      "terminal-static-cpu-memory.json"
+    ],
+    "('dot', 'f32_NN_transpose', False, False)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_NN_transpose', False, True)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_NN_transpose', True, False)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_NN_transpose', True, True)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_NN_negative', False, False)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_NN_negative', False, True)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_NN_negative', True, False)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_NN_negative', True, True)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_NT_transpose', False, False)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_NT_transpose', False, True)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_NT_transpose', True, False)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_NT_transpose', True, True)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_NT_negative', False, False)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_NT_negative', False, True)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_NT_negative', True, False)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_NT_negative', True, True)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_TN_transpose', False, False)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_TN_transpose', False, True)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_TN_transpose', True, False)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_TN_transpose', True, True)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_TN_negative', False, False)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_TN_negative', False, True)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_TN_negative', True, False)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_TN_negative', True, True)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_TT_transpose', False, False)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_TT_transpose', False, True)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_TT_transpose', True, False)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_TT_transpose', True, True)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_TT_negative', False, False)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_TT_negative', False, True)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_TT_negative', True, False)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f32_TT_negative', True, True)": [
+      "terminal-static-cpu-dot.json"
+    ],
+    "('dot', 'f16_NN_transpose', False, False)": [
+      "terminal-static-cpu-dot.json",
+      "terminal-static-cpu-shard-dot-0.json"
+    ],
+    "('dot', 'f16_NN_transpose', False, True)": [
+      "terminal-static-cpu-dot.json",
+      "terminal-static-cpu-shard-dot-0.json"
+    ],
+    "('dot', 'f16_NN_transpose', True, False)": [
+      "terminal-static-cpu-dot.json",
+      "terminal-static-cpu-shard-dot-0.json"
+    ],
+    "('dot', 'f16_NN_transpose', True, True)": [
+      "terminal-static-cpu-dot.json",
+      "terminal-static-cpu-shard-dot-0.json"
+    ],
+    "('dot', 'f16_NN_negative', False, False)": [
+      "terminal-static-cpu-dot.json",
+      "terminal-static-cpu-shard-dot-1.json"
+    ],
+    "('dot', 'f16_NN_negative', False, True)": [
+      "terminal-static-cpu-dot.json",
+      "terminal-static-cpu-shard-dot-1.json"
+    ],
+    "('dot', 'f16_NN_negative', True, False)": [
+      "terminal-static-cpu-dot.json",
+      "terminal-static-cpu-shard-dot-1.json"
+    ],
+    "('dot', 'f16_NN_negative', True, True)": [
+      "terminal-static-cpu-dot.json",
+      "terminal-static-cpu-shard-dot-1.json"
+    ],
+    "('dot', 'f16_NT_transpose', False, False)": [
+      "terminal-static-cpu-dot.json",
+      "terminal-static-cpu-shard-dot-2.json"
+    ],
+    "('dot', 'f16_NT_transpose', False, True)": [
+      "terminal-static-cpu-dot.json",
+      "terminal-static-cpu-shard-dot-2.json"
+    ],
+    "('dot', 'f16_NT_transpose', True, False)": [
+      "terminal-static-cpu-dot.json",
+      "terminal-static-cpu-shard-dot-2.json"
+    ],
+    "('dot', 'f16_NT_transpose', True, True)": [
+      "terminal-static-cpu-dot.json",
+      "terminal-static-cpu-shard-dot-2.json"
+    ],
+    "('dot', 'f16_NT_negative', False, False)": [
+      "terminal-static-cpu-dot.json",
+      "terminal-static-cpu-shard-dot-3.json"
+    ],
+    "('dot', 'f16_NT_negative', False, True)": [
+      "terminal-static-cpu-dot.json",
+      "terminal-static-cpu-shard-dot-3.json"
+    ],
+    "('dot', 'f16_NT_negative', True, False)": [
+      "terminal-static-cpu-dot.json",
+      "terminal-static-cpu-shard-dot-3.json"
+    ],
+    "('dot', 'f16_NT_negative', True, True)": [
+      "terminal-static-cpu-dot.json",
+      "terminal-static-cpu-shard-dot-3.json"
+    ],
+    "('dot', 'f16_TN_transpose', False, False)": [
+      "terminal-static-cpu-dot.json",
+      "terminal-static-cpu-shard-dot-0.json"
+    ],
+    "('dot', 'f16_TN_transpose', False, True)": [
+      "terminal-static-cpu-dot.json",
+      "terminal-static-cpu-shard-dot-0.json"
+    ],
+    "('dot', 'f16_TN_transpose', True, False)": [
+      "terminal-static-cpu-dot.json",
+      "terminal-static-cpu-shard-dot-0.json"
+    ],
+    "('dot', 'f16_TN_transpose', True, True)": [
+      "terminal-static-cpu-shard-dot-0.json"
+    ],
+    "('dot', 'f16_TN_negative', False, False)": [
+      "terminal-static-cpu-shard-dot-1.json"
+    ],
+    "('dot', 'f16_TN_negative', False, True)": [
+      "terminal-static-cpu-shard-dot-1.json"
+    ],
+    "('dot', 'f16_TN_negative', True, False)": [
+      "terminal-static-cpu-shard-dot-1.json"
+    ],
+    "('dot', 'f16_TN_negative', True, True)": [
+      "terminal-static-cpu-shard-dot-1.json"
+    ],
+    "('dot', 'f16_TT_transpose', False, False)": [
+      "terminal-static-cpu-shard-dot-2.json"
+    ],
+    "('dot', 'f16_TT_transpose', False, True)": [
+      "terminal-static-cpu-shard-dot-2.json"
+    ],
+    "('dot', 'f16_TT_transpose', True, False)": [
+      "terminal-static-cpu-shard-dot-2.json"
+    ],
+    "('dot', 'f16_TT_transpose', True, True)": [
+      "terminal-static-cpu-shard-dot-2.json"
+    ],
+    "('dot', 'f16_TT_negative', False, False)": [
+      "terminal-static-cpu-shard-dot-3.json"
+    ],
+    "('dot', 'f16_TT_negative', False, True)": [
+      "terminal-static-cpu-shard-dot-3.json"
+    ],
+    "('dot', 'f16_TT_negative', True, False)": [
+      "terminal-static-cpu-shard-dot-3.json"
+    ],
+    "('dot', 'f16_TT_negative', True, True)": [
+      "terminal-static-cpu-shard-dot-3.json"
+    ],
+    "('fallback', 'dynamic', False, False)": [
+      "terminal-static-cpu-shard-fallback.json"
+    ],
+    "('fallback', 'dynamic', False, True)": [
+      "terminal-static-cpu-shard-fallback.json"
+    ],
+    "('fallback', 'dynamic', True, False)": [
+      "terminal-static-cpu-shard-fallback.json"
+    ],
+    "('fallback', 'dynamic', True, True)": [
+      "terminal-static-cpu-shard-fallback.json"
+    ],
+    "('fallback', 'collision', False, False)": [
+      "terminal-static-cpu-shard-fallback.json"
+    ],
+    "('fallback', 'collision', False, True)": [
+      "terminal-static-cpu-shard-fallback.json"
+    ],
+    "('fallback', 'collision', True, False)": [
+      "terminal-static-cpu-shard-fallback.json"
+    ],
+    "('fallback', 'collision', True, True)": [
+      "terminal-static-cpu-shard-fallback.json"
+    ],
+    "('fallback', 'scatter', False, False)": [
+      "terminal-static-cpu-shard-fallback.json"
+    ],
+    "('fallback', 'scatter', False, True)": [
+      "terminal-static-cpu-shard-fallback.json"
+    ],
+    "('fallback', 'scatter', True, False)": [
+      "terminal-static-cpu-shard-fallback.json"
+    ],
+    "('fallback', 'scatter', True, True)": [
+      "terminal-static-cpu-shard-fallback.json"
+    ],
+    "('fallback', 'small', False, False)": [
+      "terminal-static-cpu-shard-fallback.json"
+    ],
+    "('fallback', 'small', False, True)": [
+      "terminal-static-cpu-shard-fallback.json"
+    ],
+    "('fallback', 'small', True, False)": [
+      "terminal-static-cpu-shard-fallback.json"
+    ],
+    "('fallback', 'small', True, True)": [
+      "terminal-static-cpu-shard-fallback.json"
+    ]
+  }
+}

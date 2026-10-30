@@ -1,0 +1,15 @@
+ninja: Entering directory `build/cmake.linux-x86_64-cpython-3.11'
+[1/14] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/OrderedReductionUnroll.cpp.o
+[2/14] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/LocalMemoryReuse.cpp.o
+[3/14] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/RegisterAccumulator.cpp.o
+[4/14] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/MatmulRegisterTiling.cpp.o
+[5/14] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/ElementwiseFusion.cpp.o
+[6/14] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/LinalgToAffineLoops.cpp.o
+[7/14] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/GroupReduction.cpp.o
+[8/14] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/WorkDistribution.cpp.o
+[9/14] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/AccumulatorInitForwarding.cpp.o
+[10/14] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/TerminalStoreDistribution.cpp.o
+[11/14] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/CooperativeLoadStaging.cpp.o
+[12/14] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/VectorMemory.cpp.o
+[13/14] Building CXX object third_party/sycl/CMakeFiles/TritonSYCL.dir/triton_sycl.cc.o
+[14/14] Linking CXX shared library /work1/dtune/zzx/triton/triton-ocl/python/triton/_C/libtriton.so

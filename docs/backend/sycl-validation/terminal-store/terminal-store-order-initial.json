@@ -1,0 +1,29 @@
+[
+  {
+    "order": [
+      "terminal_store_distribution"
+    ],
+    "store_markers": 1,
+    "scheduled": 1,
+    "barriers": 1
+  },
+  {
+    "order": [
+      "terminal_store_distribution",
+      "work_distribution"
+    ],
+    "store_markers": 1,
+    "scheduled": 1,
+    "barriers": 1
+  },
+  {
+    "order": [
+      "terminal_store_distribution",
+      "work_distribution",
+      "terminal_store_distribution"
+    ],
+    "store_markers": 1,
+    "scheduled": 1,
+    "barriers": 1
+  }
+]

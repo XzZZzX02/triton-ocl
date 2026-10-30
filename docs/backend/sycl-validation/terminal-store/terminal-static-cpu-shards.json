@@ -1,0 +1,49 @@
+[
+  {
+    "suite": "dot",
+    "cases": [
+      "f16_NN_transpose",
+      "f16_TN_transpose"
+    ],
+    "file": "terminal-static-cpu-shard-dot-0.json",
+    "expected_rows": 8
+  },
+  {
+    "suite": "dot",
+    "cases": [
+      "f16_NN_negative",
+      "f16_TN_negative"
+    ],
+    "file": "terminal-static-cpu-shard-dot-1.json",
+    "expected_rows": 8
+  },
+  {
+    "suite": "dot",
+    "cases": [
+      "f16_NT_transpose",
+      "f16_TT_transpose"
+    ],
+    "file": "terminal-static-cpu-shard-dot-2.json",
+    "expected_rows": 8
+  },
+  {
+    "suite": "dot",
+    "cases": [
+      "f16_NT_negative",
+      "f16_TT_negative"
+    ],
+    "file": "terminal-static-cpu-shard-dot-3.json",
+    "expected_rows": 8
+  },
+  {
+    "suite": "fallback",
+    "cases": [
+      "dynamic",
+      "collision",
+      "scatter",
+      "small"
+    ],
+    "file": "terminal-static-cpu-shard-fallback.json",
+    "expected_rows": 16
+  }
+]

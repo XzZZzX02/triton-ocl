@@ -134,3 +134,24 @@ The fixed source was retrieved on 2026-10-31. This is a robustness repair in
 an existing pass. Device performance is measured separately; source equality
 on 200 recorded configurations supplies bounded preservation evidence rather
 than a general claim about every downstream optimization or model.
+
+
+## 2026-10-31: Terminal Output Store Distribution
+
+- AMD HIP performance guidelines, device-memory access and coalescing:
+  https://rocm.docs.amd.com/projects/HIP/en/latest/how-to/performance_guidelines.html
+  Distributing unique output addresses across lanes can expose parallel memory
+  transactions. Transposed and non-unit-stride outputs need separate device
+  measurement; contiguous-input results are not evidence for every output layout.
+- MLIR Affine dialect and dependence-oriented loop transformation framework:
+  https://mlir.llvm.org/docs/Dialects/Affine/
+  Establish independence before scheduling. This backend uses a conservative
+  modular linear-address proof and superincreasing absolute strides for distinct
+  coordinates, not an unqualified parallel annotation or kernel-name pattern.
+
+The official AMD page was retrieved on 2026-10-31; these sources motivate a
+candidate, not its profitability. The new pass preserves memory predicates,
+adds a local phase barrier, rejects prior/following external dependencies, and
+re-proves marked stores after work-distribution rebuilds ownership. Independent
+gfx906 paired timings and static-output layout tests are recorded in
+sycl-terminal-store-report.md. No MFMA or dtype conversion extension is involved.

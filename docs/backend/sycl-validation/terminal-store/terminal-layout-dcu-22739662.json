@@ -1,0 +1,338 @@
+[
+  {
+    "case": "dense",
+    "suite": "memory",
+    "dtype": "f32",
+    "enabled": false,
+    "optimized": false,
+    "round": 0,
+    "status": "PASS",
+    "stores": 0,
+    "elements_checked": 2454,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0
+    },
+    "source_sha256": "3cd73d951e027cc93334f8dbf7a01befd7f7d07babf17cd3a850f97c5b776926",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "dense",
+    "suite": "memory",
+    "dtype": "f32",
+    "enabled": false,
+    "optimized": true,
+    "round": 0,
+    "status": "PASS",
+    "stores": 0,
+    "elements_checked": 2454,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 1
+    },
+    "source_sha256": "3173f39fd825b5099d12fd4bc7805e1c83b5de5a9a59e3c882c3a85d8a1955c8",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "dense",
+    "suite": "memory",
+    "dtype": "f32",
+    "enabled": true,
+    "optimized": false,
+    "round": 0,
+    "status": "PASS",
+    "stores": 1,
+    "elements_checked": 2454,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0
+    },
+    "source_sha256": "4086bb274674fc847b8d35fbed339b568fc5e70b0955502908fb14e5060713ca",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "dense",
+    "suite": "memory",
+    "dtype": "f32",
+    "enabled": true,
+    "optimized": true,
+    "round": 0,
+    "status": "PASS",
+    "stores": 1,
+    "elements_checked": 2454,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 1
+    },
+    "source_sha256": "f165629da9a8b29aa754324e874c236e4f45973d902034692e36b5503fb7ed63",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "transpose",
+    "suite": "memory",
+    "dtype": "f32",
+    "enabled": false,
+    "optimized": false,
+    "round": 0,
+    "status": "PASS",
+    "stores": 0,
+    "elements_checked": 2859,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0
+    },
+    "source_sha256": "f80e62ed15a90c4f7161c3fd27be375b5b4b47155a7cc71443ea3997ce9df888",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "transpose",
+    "suite": "memory",
+    "dtype": "f32",
+    "enabled": false,
+    "optimized": true,
+    "round": 0,
+    "status": "PASS",
+    "stores": 0,
+    "elements_checked": 2859,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 1
+    },
+    "source_sha256": "ca5633e5534e45785587a539aa8db2ddd73af62c0b615c3964950c419c1f397c",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "transpose",
+    "suite": "memory",
+    "dtype": "f32",
+    "enabled": true,
+    "optimized": false,
+    "round": 0,
+    "status": "PASS",
+    "stores": 1,
+    "elements_checked": 2859,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0
+    },
+    "source_sha256": "752959603a9999aeb75ba7427228009436684670a3ca98bb01a317e4687b2348",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "transpose",
+    "suite": "memory",
+    "dtype": "f32",
+    "enabled": true,
+    "optimized": true,
+    "round": 0,
+    "status": "PASS",
+    "stores": 1,
+    "elements_checked": 2859,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 1
+    },
+    "source_sha256": "29a2cc255ffa6816b803086306a76c61677e9eb207d9ab23b39ccb5ce59150f1",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "padded",
+    "suite": "memory",
+    "dtype": "f32",
+    "enabled": false,
+    "optimized": false,
+    "round": 0,
+    "status": "PASS",
+    "stores": 0,
+    "elements_checked": 3399,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0
+    },
+    "source_sha256": "993e3161b35d58954b57a4298f175b9433dca29d485b582f23eeddfbd1970558",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "padded",
+    "suite": "memory",
+    "dtype": "f32",
+    "enabled": false,
+    "optimized": true,
+    "round": 0,
+    "status": "PASS",
+    "stores": 0,
+    "elements_checked": 3399,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 1
+    },
+    "source_sha256": "76ff1ca7059f1c2f23e4202ddf84c4b37519029f1d71f3128cce95fa230c6ff2",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "padded",
+    "suite": "memory",
+    "dtype": "f32",
+    "enabled": true,
+    "optimized": false,
+    "round": 0,
+    "status": "PASS",
+    "stores": 1,
+    "elements_checked": 3399,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0
+    },
+    "source_sha256": "45d2d2d6ff9a9d38315d6e4bd58f0cbe6212e14693940b70b8b7789aec3cfbba",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "padded",
+    "suite": "memory",
+    "dtype": "f32",
+    "enabled": true,
+    "optimized": true,
+    "round": 0,
+    "status": "PASS",
+    "stores": 1,
+    "elements_checked": 3399,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 1
+    },
+    "source_sha256": "b45d8b5d221177a3e94c4cb6e60d2696f8b45e7118a69ff5a9695e0bd8e3781d",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "negative",
+    "suite": "memory",
+    "dtype": "f32",
+    "enabled": false,
+    "optimized": false,
+    "round": 0,
+    "status": "PASS",
+    "stores": 0,
+    "elements_checked": 3399,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0
+    },
+    "source_sha256": "1b03c5c002b351bffe58450abb2c8bf13bdc33fc29b30eda04670b4553e6a381",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "negative",
+    "suite": "memory",
+    "dtype": "f32",
+    "enabled": false,
+    "optimized": true,
+    "round": 0,
+    "status": "PASS",
+    "stores": 0,
+    "elements_checked": 3399,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 1
+    },
+    "source_sha256": "23077ea13f9c8c3bb8482fef1233019e21e98e94f2b177c5d11252b7810e26eb",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "negative",
+    "suite": "memory",
+    "dtype": "f32",
+    "enabled": true,
+    "optimized": false,
+    "round": 0,
+    "status": "PASS",
+    "stores": 1,
+    "elements_checked": 3399,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0
+    },
+    "source_sha256": "7502a0432c88d1922d1b3dfc85838a99155802beb7013a1d461d0e187d91147f",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "negative",
+    "suite": "memory",
+    "dtype": "f32",
+    "enabled": true,
+    "optimized": true,
+    "round": 0,
+    "status": "PASS",
+    "stores": 1,
+    "elements_checked": 3399,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 1
+    },
+    "source_sha256": "7be1b71eabcb9b020359f6581d55dd3c8da48c1cf67d7242af940a96b4a027d7",
+    "samples_ns": [],
+    "median_ns": null
+  }
+]

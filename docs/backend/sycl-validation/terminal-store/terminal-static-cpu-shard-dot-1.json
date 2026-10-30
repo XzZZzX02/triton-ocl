@@ -1,0 +1,170 @@
+[
+  {
+    "case": "f16_NN_negative",
+    "suite": "dot",
+    "dtype": "f16",
+    "enabled": false,
+    "optimized": false,
+    "round": 0,
+    "status": "PASS",
+    "stores": 0,
+    "elements_checked": 3399,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0
+    },
+    "source_sha256": "16a5b723f5e8af8d4b7876d0ce2ce5ade8f3bb879a95178aeece184ffb15451f",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "f16_NN_negative",
+    "suite": "dot",
+    "dtype": "f16",
+    "enabled": false,
+    "optimized": true,
+    "round": 0,
+    "status": "PASS",
+    "stores": 0,
+    "elements_checked": 3399,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2
+    },
+    "source_sha256": "7ad3ae2d6fbc548528c7e815e786d07c8d8548cf7ac19cc2a9d00e00b514955d",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "f16_NN_negative",
+    "suite": "dot",
+    "dtype": "f16",
+    "enabled": true,
+    "optimized": false,
+    "round": 0,
+    "status": "PASS",
+    "stores": 1,
+    "elements_checked": 3399,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0
+    },
+    "source_sha256": "bba389995c8db3a0c70675ded043210b3d8e20d111df2a3e71d6eeb2e9a02065",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "f16_NN_negative",
+    "suite": "dot",
+    "dtype": "f16",
+    "enabled": true,
+    "optimized": true,
+    "round": 0,
+    "status": "PASS",
+    "stores": 1,
+    "elements_checked": 3399,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2
+    },
+    "source_sha256": "1ed618138af2c54da79d246679623d5cbac9bb51f0bc0e19e50f6b93c5ebf5da",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "f16_TN_negative",
+    "suite": "dot",
+    "dtype": "f16",
+    "enabled": false,
+    "optimized": false,
+    "round": 0,
+    "status": "PASS",
+    "stores": 0,
+    "elements_checked": 3399,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0
+    },
+    "source_sha256": "1de993a2ef6e442cea646381c331f2ed36aa252e069d00b84bfa198eeb9eebf7",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "f16_TN_negative",
+    "suite": "dot",
+    "dtype": "f16",
+    "enabled": false,
+    "optimized": true,
+    "round": 0,
+    "status": "PASS",
+    "stores": 0,
+    "elements_checked": 3399,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2
+    },
+    "source_sha256": "a2665213bbcba62d447084da589cc20dc4b4a9b5b2134a723a0b6bbe6c63c1ce",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "f16_TN_negative",
+    "suite": "dot",
+    "dtype": "f16",
+    "enabled": true,
+    "optimized": false,
+    "round": 0,
+    "status": "PASS",
+    "stores": 1,
+    "elements_checked": 3399,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0
+    },
+    "source_sha256": "a0fef43de344d7629a794f4c95bebed44cbb4fb1d1218e8498ace8692b9697a3",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "case": "f16_TN_negative",
+    "suite": "dot",
+    "dtype": "f16",
+    "enabled": true,
+    "optimized": true,
+    "round": 0,
+    "status": "PASS",
+    "stores": 1,
+    "elements_checked": 3399,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2
+    },
+    "source_sha256": "b0c362b56583240e2cc0464f8c1eb822f9828767e6f288fe5115daf5b9eb20ef",
+    "samples_ns": [],
+    "median_ns": null
+  }
+]

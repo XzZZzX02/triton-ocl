@@ -6,6 +6,7 @@
 
 namespace mlir {
 class ModuleOp;
+namespace affine { class AffineForOp; }
 template <typename T> class OperationPass;
 
 namespace triton::sycl {
@@ -24,6 +25,9 @@ std::unique_ptr<OperationPass<ModuleOp>> createAccumulatorInitForwardingPass();
 std::unique_ptr<OperationPass<ModuleOp>> createWorkDistributionPass();
 std::unique_ptr<OperationPass<ModuleOp>> createCooperativeLoadStagingPass();
 std::unique_ptr<OperationPass<ModuleOp>> createVectorMemoryPass();
+std::unique_ptr<OperationPass<ModuleOp>> createTerminalStoreDistributionPass();
+// Re-prove marked external stores after another pass rebuilds work ownership.
+bool planTerminalStoreDistribution(affine::AffineForOp loop);
 
 #define GEN_PASS_REGISTRATION
 #include "sycl/include/Conversion/LinalgToAffineLoops/Passes.h.inc"

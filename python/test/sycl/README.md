@@ -155,3 +155,22 @@ loops and delegates unchanged to upstream cleanup elsewhere. Exact loop counts
 NaN masking. The real chain may retain two generics due to its input+destination
 uses; constant folding is measured separately from actual generic fusion.
 See docs/backend/sycl-fusion-destination-report.md for limits and raw evidence.
+
+
+Terminal local-to-external store distribution (experimental, default off):
+
+    python-triton terminal_store_contracts.py --output terminal-contracts.json
+    python-triton terminal_store_semantics.py --kind dot --dtype f16 --rounds 3 --repeats 31 --output terminal-dot.json
+    python-triton terminal_store_layouts.py --suite memory --output output-layouts.json
+    python3 audit_terminal_store.py ../../../docs/backend/sycl-validation/terminal-store --output audit.json
+
+The cache-keyed terminal_store_distribution option runs last in memir and
+requires distribute_work. It proves unique modular addresses, read-only local
+inputs and a terminal phase, inserts a local barrier and uses the existing
+linear-lane schedule. Dynamic output strides, conflicting/scatter addresses,
+small domains and unproven effects keep the original source. Re-running work
+distribution re-proves a marked terminal store rather than dropping its schedule
+or trusting stale attributes. The store-pair schedule in model_layout_semantics
+checks runtime-output-stride fallback; terminal_store_layouts supplies actual
+static output transpose/reverse/padded/stride-2/rank-3 execution coverage.
+See docs/backend/sycl-terminal-store-report.md for measured profitability limits.

@@ -1,0 +1,12 @@
+{
+  "third_party/sycl/lib/Conversion/LinalgToAffineLoops/TerminalStoreDistribution.cpp": "5afce414635a59881ed9483c1359d4facb39c10b2b91c8c2e4ac5d246cc60c51",
+  "third_party/sycl/lib/Conversion/LinalgToAffineLoops/WorkDistribution.cpp": "cc5e1d14407bdadf4d3e839bb0d8f58723eddcc8dcbf75bdabb93ba2bcba3bc3",
+  "third_party/sycl/lib/Conversion/LinalgToAffineLoops/ElementwiseFusion.cpp": "8d0bf9233c848dce5383fb87c2694955f14f0e4c9edbf532f81c2cef703bb6af",
+  "third_party/sycl/lib/Conversion/LinalgToAffineLoops/CooperativeLoadStaging.cpp": "b2f52ad003966ce501f84c961b3bb546e53f0ff7ddd66263d2c924b0b719fba6",
+  "third_party/sycl/backend/compiler.py": "1bbb93dd9219eec62fe082d152fdfdfa9d6d95b444d83bcadcd7f318a3f076c0",
+  "python/test/sycl/terminal_store_contracts.py": "47847efa36e26e35122edd87b54277b19ba4831a2c4903f20667db33c28ed0d0",
+  "python/test/sycl/terminal_store_semantics.py": "25039303c59103296fafa1b08cc7ad8239135950ffeac1b09c9c6af646157b78",
+  "python/test/sycl/cooperative_staging_semantics.py": "c7b7b64e756ffe1ddb68009400bcb0713fcb353da212344ce7ce750f5ce101f0",
+  "python/test/sycl/register_accumulator.py": "a8547790edac1809116467b32c1326d824e4530c2abbb70b131bdca2f380b191",
+  "python/triton/_C/libtriton.so": "89e3dd0c6d0b2e87e03e6aa55b0ceab07153ae16f0ef014566868a2ed7402b6f"
+}
