@@ -1,0 +1,14 @@
+{
+  "python/test/sycl/cooperative_staging_semantics.py": "c7b7b64e756ffe1ddb68009400bcb0713fcb353da212344ce7ce750f5ce101f0",
+  "python/test/sycl/cooperative_staging_boundaries.py": "d37092d2c29009346dd5e9e692d4f4b03b5a4e14f474d3fa6d0b4e85a8803dc8",
+  "python/test/sycl/cooperative_staging_reuse.py": "289e4b352bef88c41b5f8b0c9b0e3fe0c802e6de3dd4807134af49d4f9ebbedd",
+  "python/test/sycl/cooperative_staging_ieee.py": "f8a9229baf259e9d9a7a4827b84981e324f946e0f4ec0bc6caaebb518523c56a",
+  "python/test/sycl/cooperative_staging_contracts.py": "596767389258377440107184cce3c313f7dd5fc2d4d3906bd1370afc84a91c26",
+  "python/test/sycl/model_layout_semantics.py": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+  "python/test/sycl/register_accumulator.py": "a8547790edac1809116467b32c1326d824e4530c2abbb70b131bdca2f380b191",
+  "python/test/sycl/optimization_semantics.py": "3dacd0baa1fa4ec152f0a96f0676b85eed0f1d2fe797d0eeea77afb75a3eff4c",
+  "python/test/sycl/accumulator_init_ieee.py": "1428aeb52a9400e4d865c6445d5b436871b45a38013143261a99fa17714eef16",
+  "python/test/sycl/pass_contracts.py": "c95a2d100cfeab23a2394870cb235c10e195b42cd1b7c97147abdcaea53ea27d",
+  "python/test/sycl/ordered_unroll_contracts.py": "fea8e58b7abd777fd75ed799bcdbe856dbae9d6114a5eb789fc1a3daee0bb17a",
+  "python/test/sycl/accumulator_init_contracts.py": "48a153ec125f363172d8f3cd203c8e80b8c2965611857bdd8d1898f8aed1a649"
+}

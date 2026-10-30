@@ -1,0 +1,261 @@
+[
+  {
+    "case": "zero_[]",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "zero_['local_memory_reuse']",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "zero_[4]",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "negative_zero_[]",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "negative_zero_['local_memory_reuse']",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "negative_zero_[4]",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "nonzero_[]",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "nonzero_['local_memory_reuse']",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "nonzero_[4]",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "negative_inf_[]",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "negative_inf_['local_memory_reuse']",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "negative_inf_[4]",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "nan_[]",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "nan_['local_memory_reuse']",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "nan_[4]",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "partial_fill_[]",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "partial_fill_['local_memory_reuse']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "partial_fill_[4]",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "partial_output_[]",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "partial_output_['local_memory_reuse']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "partial_output_[4]",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "view_escape_[]",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "view_escape_['local_memory_reuse']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "view_escape_[4]",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "prior_reader_[]",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "prior_reader_['local_memory_reuse']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "prior_reader_[4]",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "extra_reader_[]",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "extra_reader_['local_memory_reuse']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "extra_reader_[4]",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "conditional_[]",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "conditional_['local_memory_reuse']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "conditional_[4]",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "active_tiling_False_unroll_1",
+    "status": "PASS"
+  },
+  {
+    "case": "active_tiling_False_unroll_4",
+    "status": "PASS"
+  },
+  {
+    "case": "active_tiling_True_unroll_1",
+    "status": "PASS"
+  },
+  {
+    "case": "active_tiling_True_unroll_4",
+    "status": "PASS"
+  },
+  {
+    "case": "prerequisites_['accumulator_init_forwarding']",
+    "status": "PASS"
+  },
+  {
+    "case": "prerequisites_['work_distribution', 'accumulator_init_forwarding']",
+    "status": "PASS"
+  },
+  {
+    "case": "prerequisites_['work_distribution', 'register_accumulator', 'accumulator_init_forwarding']",
+    "status": "PASS"
+  },
+  {
+    "case": "rank3_False_False",
+    "status": "PASS"
+  },
+  {
+    "case": "rank3_False_True",
+    "status": "PASS"
+  },
+  {
+    "case": "rank3_True_False",
+    "status": "PASS"
+  },
+  {
+    "case": "rank3_True_True",
+    "status": "PASS"
+  },
+  {
+    "case": "rank1_row_reduction",
+    "status": "PASS"
+  },
+  {
+    "case": "work_gate_1",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "work_gate_32",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "work_gate_64",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "work_gate_127",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "work_gate_128",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "work_gate_256",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "fill_local_constant_must_not_escape",
+    "status": "PASS"
+  },
+  {
+    "case": "after_unroll_False",
+    "status": "PASS"
+  },
+  {
+    "case": "after_unroll_True",
+    "status": "PASS"
+  },
+  {
+    "case": "cache_key_and_default",
+    "status": "PASS"
+  }
+]

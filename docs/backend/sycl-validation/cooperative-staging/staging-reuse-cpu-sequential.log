@@ -1,0 +1,6 @@
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"case": "sequential", "status": "PASS", "stage": false, "reuse": false, "round": 0, "stages": 0, "local_bytes_before": 2048, "local_bytes": 2048, "elements_checked": 3093, "source_sha256": "4dbd270f659fe85028eea845fd0499026a720cde82baca062765fac03795aca5", "samples_ns": [], "median_ns": null}
+{"case": "sequential", "status": "PASS", "stage": false, "reuse": true, "round": 0, "stages": 0, "local_bytes_before": 2048, "local_bytes": 1024, "elements_checked": 3093, "source_sha256": "4c2b51d07d2f18273dd073dc1e9ef6ab8361399ac4bd4e94bd9b61ea474be3ea", "samples_ns": [], "median_ns": null}
+{"case": "sequential", "status": "PASS", "stage": true, "reuse": false, "round": 0, "stages": 1, "local_bytes_before": 2048, "local_bytes": 2048, "elements_checked": 3093, "source_sha256": "44891cea64a7735e5919815deed501b696b397f2f4c9523b13644b14befa90bd", "samples_ns": [], "median_ns": null}
+{"case": "sequential", "status": "PASS", "stage": true, "reuse": true, "round": 0, "stages": 1, "local_bytes_before": 2048, "local_bytes": 1024, "elements_checked": 3093, "source_sha256": "6f4b87e93c94b90f9446fe5ad80d7feb4be347f5ce4b672fd3098ce0ebed0b43", "samples_ns": [], "median_ns": null}

@@ -44,6 +44,7 @@ class SYCLOptions:
     reduction_unroll: int = 1
     accumulator_init_forwarding: bool = False
     distribute_work: bool = True
+    cooperative_load_staging: bool = False
 
     def __post_init__(self):
         if type(self.reduction_unroll) is not int or self.reduction_unroll not in (1, 2, 4, 8):
@@ -135,6 +136,8 @@ class SYCLBackend(BaseBackend):
         passes.common.add_cse(pm)
         passes.common.add_symbol_dce(pm)
         if opt.distribute_work:
+            if opt.cooperative_load_staging:
+                sycl.passes.memir.cooperative_load_staging(pm)
             sycl.passes.memir.work_distribution(pm)
         if opt.register_accumulator:
             sycl.passes.memir.register_accumulator(pm)

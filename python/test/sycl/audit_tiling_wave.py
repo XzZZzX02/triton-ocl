@@ -15,10 +15,18 @@ def audit(directory, repository):
 
     provenance = read('tile-wave-final-provenance')
     binary_hash = provenance['python/triton/_C/libtriton.so']
+    layout_harness = repository / 'python/test/sycl/model_layout_semantics.py'
     for name, expected in provenance.items():
         if name == 'python/triton/_C/libtriton.so':
             continue  # The build binary is verified in every device log.
-        assert hashlib.sha256((repository / name).read_bytes()).hexdigest() == expected, name
+        source = repository / name
+        if name == 'python/test/sycl/model_layout_semantics.py' and hashlib.sha256(source.read_bytes()).hexdigest() != expected:
+            # Audit historical evidence against its measured harness, not an
+            # evolving layout runner with new schedules. This is not a runtime
+            # validation of the current compiler or the current harness.
+            source = directory / 'frozen-model-layout-semantics.py'
+            layout_harness = source
+        assert hashlib.sha256(source.read_bytes()).hexdigest() == expected, name
 
     perf_ids = (22688636, 22688637, 22688638, 22688639, 22688640, 22688642)
     layout_manifest = read('tile-wave-layout-jobs')
@@ -62,7 +70,7 @@ def audit(directory, repository):
         assert sum(r['tile_fallback'] for r in rows) == 4, label
         source_checks[label] = dict(count=expected, changed=sum(r['changed'] for r in rows))
 
-    cases = set(runpy.run_path(str(repository / 'python/test/sycl/model_layout_semantics.py'),
+    cases = set(runpy.run_path(str(layout_harness),
                               run_name='case_catalog')['CASES'])
     assert len(cases) == 44
     harness_hash = provenance['python/test/sycl/model_layout_semantics.py']

@@ -1,0 +1,138 @@
+[
+  {
+    "kind": "holes",
+    "n": 1021,
+    "block": 256,
+    "stride": 1,
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "grid": 4,
+    "stack": false,
+    "enabled": false,
+    "distributed": true,
+    "round": 0,
+    "special": true,
+    "status": "PASS",
+    "stages": 0,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.distribution_depth": 0
+    },
+    "elements_checked": 3084,
+    "source_bytes": 13798,
+    "source_sha256": "d9f0c5f034051cbcccdc653502386e91bfdcd4a01fb6082444cd5b8392666536",
+    "local_bytes": 1024,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "kind": "holes",
+    "n": 1021,
+    "block": 256,
+    "stride": 1,
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "grid": 4,
+    "stack": false,
+    "enabled": true,
+    "distributed": true,
+    "round": 0,
+    "special": true,
+    "status": "PASS",
+    "stages": 1,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.distribution_depth": 1
+    },
+    "elements_checked": 3084,
+    "source_bytes": 13710,
+    "source_sha256": "0f98afd63937102f498580636b87ce839c14e3519371945fd7796c9d12097246",
+    "local_bytes": 1024,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "kind": "holes",
+    "n": 1021,
+    "block": 256,
+    "stride": 1,
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "grid": 4,
+    "stack": true,
+    "enabled": false,
+    "distributed": true,
+    "round": 0,
+    "special": true,
+    "status": "PASS",
+    "stages": 0,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.distribution_depth": 0
+    },
+    "elements_checked": 3084,
+    "source_bytes": 13798,
+    "source_sha256": "d9f0c5f034051cbcccdc653502386e91bfdcd4a01fb6082444cd5b8392666536",
+    "local_bytes": 1024,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "kind": "holes",
+    "n": 1021,
+    "block": 256,
+    "stride": 1,
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "grid": 4,
+    "stack": true,
+    "enabled": true,
+    "distributed": true,
+    "round": 0,
+    "special": true,
+    "status": "PASS",
+    "stages": 1,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.distribution_depth": 1
+    },
+    "elements_checked": 3084,
+    "source_bytes": 13710,
+    "source_sha256": "0f98afd63937102f498580636b87ce839c14e3519371945fd7796c9d12097246",
+    "local_bytes": 1024,
+    "samples_ns": [],
+    "median_ns": null
+  }
+]

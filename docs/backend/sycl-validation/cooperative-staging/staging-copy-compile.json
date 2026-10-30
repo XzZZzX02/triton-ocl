@@ -1,0 +1,314 @@
+[
+  {
+    "mode": "sequential",
+    "stage": false,
+    "reuse": false,
+    "vector": false,
+    "stages": 0,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "2048",
+      "2048"
+    ]
+  },
+  {
+    "mode": "sequential",
+    "stage": false,
+    "reuse": false,
+    "vector": true,
+    "stages": 0,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "2048",
+      "2048"
+    ]
+  },
+  {
+    "mode": "sequential",
+    "stage": false,
+    "reuse": true,
+    "vector": false,
+    "stages": 0,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "2048",
+      "1024"
+    ]
+  },
+  {
+    "mode": "sequential",
+    "stage": false,
+    "reuse": true,
+    "vector": true,
+    "stages": 0,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "2048",
+      "1024"
+    ]
+  },
+  {
+    "mode": "sequential",
+    "stage": true,
+    "reuse": false,
+    "vector": false,
+    "stages": 1,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "2048",
+      "2048"
+    ]
+  },
+  {
+    "mode": "sequential",
+    "stage": true,
+    "reuse": false,
+    "vector": true,
+    "stages": 1,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "2048",
+      "2048"
+    ]
+  },
+  {
+    "mode": "sequential",
+    "stage": true,
+    "reuse": true,
+    "vector": false,
+    "stages": 1,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "2048",
+      "1024"
+    ]
+  },
+  {
+    "mode": "sequential",
+    "stage": true,
+    "reuse": true,
+    "vector": true,
+    "stages": 1,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "2048",
+      "1024"
+    ]
+  },
+  {
+    "mode": "overlap",
+    "stage": false,
+    "reuse": false,
+    "vector": false,
+    "stages": 0,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "2048",
+      "2048"
+    ]
+  },
+  {
+    "mode": "overlap",
+    "stage": false,
+    "reuse": false,
+    "vector": true,
+    "stages": 0,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "2048",
+      "2048"
+    ]
+  },
+  {
+    "mode": "overlap",
+    "stage": false,
+    "reuse": true,
+    "vector": false,
+    "stages": 0,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "2048",
+      "2048"
+    ]
+  },
+  {
+    "mode": "overlap",
+    "stage": false,
+    "reuse": true,
+    "vector": true,
+    "stages": 0,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "2048",
+      "2048"
+    ]
+  },
+  {
+    "mode": "overlap",
+    "stage": true,
+    "reuse": false,
+    "vector": false,
+    "stages": 2,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "2048",
+      "2048"
+    ]
+  },
+  {
+    "mode": "overlap",
+    "stage": true,
+    "reuse": false,
+    "vector": true,
+    "stages": 2,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "2048",
+      "2048"
+    ]
+  },
+  {
+    "mode": "overlap",
+    "stage": true,
+    "reuse": true,
+    "vector": false,
+    "stages": 2,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "2048",
+      "2048"
+    ]
+  },
+  {
+    "mode": "overlap",
+    "stage": true,
+    "reuse": true,
+    "vector": true,
+    "stages": 2,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "2048",
+      "2048"
+    ]
+  },
+  {
+    "mode": "copy",
+    "stage": false,
+    "reuse": false,
+    "vector": false,
+    "stages": 0,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "1024",
+      "1024"
+    ]
+  },
+  {
+    "mode": "copy",
+    "stage": false,
+    "reuse": false,
+    "vector": true,
+    "stages": 0,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "1024",
+      "1024"
+    ]
+  },
+  {
+    "mode": "copy",
+    "stage": false,
+    "reuse": true,
+    "vector": false,
+    "stages": 0,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "1024",
+      "1024"
+    ]
+  },
+  {
+    "mode": "copy",
+    "stage": false,
+    "reuse": true,
+    "vector": true,
+    "stages": 0,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "1024",
+      "1024"
+    ]
+  },
+  {
+    "mode": "copy",
+    "stage": true,
+    "reuse": false,
+    "vector": false,
+    "stages": 1,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "1024",
+      "1024"
+    ]
+  },
+  {
+    "mode": "copy",
+    "stage": true,
+    "reuse": false,
+    "vector": true,
+    "stages": 1,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "1024",
+      "1024"
+    ]
+  },
+  {
+    "mode": "copy",
+    "stage": true,
+    "reuse": true,
+    "vector": false,
+    "stages": 1,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "1024",
+      "1024"
+    ]
+  },
+  {
+    "mode": "copy",
+    "stage": true,
+    "reuse": true,
+    "vector": true,
+    "stages": 1,
+    "packed_load": 0,
+    "packed_store": 0,
+    "storage": [
+      "1024",
+      "1024"
+    ]
+  }
+]

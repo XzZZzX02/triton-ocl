@@ -37,6 +37,9 @@ void init_triton_sycl_passes_lair(py::module &&m) {
 }
 
 void init_triton_sycl_passes_memir(py::module &&m) {
+  m.def("cooperative_load_staging", [](mlir::PassManager &pm) {
+    pm.addPass(mlir::triton::sycl::createCooperativeLoadStagingPass());
+  });
   m.def("accumulator_init_forwarding", [](mlir::PassManager &pm) {
     pm.addPass(mlir::triton::sycl::createAccumulatorInitForwardingPass());
   });

@@ -1,0 +1,268 @@
+{
+  "rows": 96,
+  "elements_checked": 453168,
+  "comparisons": [
+    {
+      "file": "staging-dcu-22714938.json",
+      "workload": "dot",
+      "fixed": {
+        "stack": false
+      },
+      "active": true,
+      "speedup": 2.754887268125354,
+      "round_ratios": [
+        2.7354224995039793,
+        2.7548983692454567,
+        2.74067783439349
+      ],
+      "before_median_ns": 248163,
+      "after_median_ns": 90081
+    },
+    {
+      "file": "staging-dcu-22714938.json",
+      "workload": "dot",
+      "fixed": {
+        "stack": true
+      },
+      "active": true,
+      "speedup": 2.9613953074783095,
+      "round_ratios": [
+        2.925404165774121,
+        2.9674800879053875,
+        2.9613953074783095
+      ],
+      "before_median_ns": 233124,
+      "after_median_ns": 78721
+    },
+    {
+      "file": "staging-dcu-22714939.json",
+      "workload": "dot",
+      "fixed": {
+        "stack": false
+      },
+      "active": true,
+      "speedup": 2.3265209154427664,
+      "round_ratios": [
+        2.3255381878875743,
+        2.3265209154427664,
+        2.329752076194193
+      ],
+      "before_median_ns": 381924,
+      "after_median_ns": 164161
+    },
+    {
+      "file": "staging-dcu-22714939.json",
+      "workload": "dot",
+      "fixed": {
+        "stack": true
+      },
+      "active": true,
+      "speedup": 2.6742896523316513,
+      "round_ratios": [
+        2.6742896523316513,
+        2.6721624037784513,
+        2.6742738096181116
+      ],
+      "before_median_ns": 337605,
+      "after_median_ns": 126241
+    },
+    {
+      "file": "staging-dcu-22714940.json",
+      "workload": "dot",
+      "fixed": {
+        "stack": false
+      },
+      "active": true,
+      "speedup": 2.6366935233624047,
+      "round_ratios": [
+        2.6351543145689442,
+        2.6343424977092105,
+        2.638433568680135
+      ],
+      "before_median_ns": 722251,
+      "after_median_ns": 273923
+    },
+    {
+      "file": "staging-dcu-22714940.json",
+      "workload": "dot",
+      "fixed": {
+        "stack": true
+      },
+      "active": true,
+      "speedup": 3.1401604322567698,
+      "round_ratios": [
+        3.1490083430554603,
+        3.1401604322567698,
+        3.1377138330024157
+      ],
+      "before_median_ns": 641607,
+      "after_median_ns": 204323
+    },
+    {
+      "file": "staging-dcu-22714941.json",
+      "workload": "dot",
+      "fixed": {
+        "stack": false
+      },
+      "active": true,
+      "speedup": 4.416085271317829,
+      "round_ratios": [
+        4.416085271317829,
+        4.424847395605641,
+        4.439324935400517
+      ],
+      "before_median_ns": 273444,
+      "after_median_ns": 61920
+    },
+    {
+      "file": "staging-dcu-22714941.json",
+      "workload": "dot",
+      "fixed": {
+        "stack": true
+      },
+      "active": true,
+      "speedup": 4.517080052141926,
+      "round_ratios": [
+        4.508544490276959,
+        4.621747461542594,
+        4.517080052141926
+      ],
+      "before_median_ns": 252961,
+      "after_median_ns": 56001
+    },
+    {
+      "file": "staging-dcu-22714942.json",
+      "workload": "copy",
+      "fixed": {
+        "stack": false
+      },
+      "active": true,
+      "speedup": 1.8211173496608317,
+      "round_ratios": [
+        1.8170524122862732,
+        1.813744591483009,
+        1.8251822870353904
+      ],
+      "before_median_ns": 71681,
+      "after_median_ns": 39361
+    },
+    {
+      "file": "staging-dcu-22714942.json",
+      "workload": "copy",
+      "fixed": {
+        "stack": true
+      },
+      "active": true,
+      "speedup": 1.8211427555194228,
+      "round_ratios": [
+        1.8251822870353904,
+        1.8211173496608317,
+        1.8211427555194228
+      ],
+      "before_median_ns": 71682,
+      "after_median_ns": 39361
+    },
+    {
+      "file": "staging-dcu-22714943.json",
+      "workload": "holes",
+      "fixed": {
+        "stack": false
+      },
+      "active": true,
+      "speedup": 2.3846118957556626,
+      "round_ratios": [
+        2.3846209667909397,
+        2.3846118957556626,
+        2.3788155042134957
+      ],
+      "before_median_ns": 262882,
+      "after_median_ns": 110241
+    },
+    {
+      "file": "staging-dcu-22714943.json",
+      "workload": "holes",
+      "fixed": {
+        "stack": true
+      },
+      "active": true,
+      "speedup": 2.39912511571343,
+      "round_ratios": [
+        2.392447379656798,
+        2.3991255521992727,
+        2.39912511571343
+      ],
+      "before_median_ns": 264350,
+      "after_median_ns": 110186
+    },
+    {
+      "file": "staging-dcu-22714944.json",
+      "workload": "gather",
+      "fixed": {
+        "stack": false
+      },
+      "active": true,
+      "speedup": 2.564709051724138,
+      "round_ratios": [
+        2.564709051724138,
+        2.540799356223176,
+        2.564709051724138
+      ],
+      "before_median_ns": 95202,
+      "after_median_ns": 37120
+    },
+    {
+      "file": "staging-dcu-22714944.json",
+      "workload": "gather",
+      "fixed": {
+        "stack": true
+      },
+      "active": true,
+      "speedup": 2.532242489270386,
+      "round_ratios": [
+        2.545091201716738,
+        2.465544181034483,
+        2.532242489270386
+      ],
+      "before_median_ns": 94402,
+      "after_median_ns": 37280
+    },
+    {
+      "file": "staging-dcu-22714945.json",
+      "workload": "broadcast",
+      "fixed": {
+        "stack": false
+      },
+      "active": true,
+      "speedup": 1.4310991361351073,
+      "round_ratios": [
+        1.4310991361351073,
+        1.5989604282045728,
+        1.4266270381378294
+      ],
+      "before_median_ns": 51521,
+      "after_median_ns": 36001
+    },
+    {
+      "file": "staging-dcu-22714945.json",
+      "workload": "broadcast",
+      "fixed": {
+        "stack": true
+      },
+      "active": true,
+      "speedup": 1.4439742152466368,
+      "round_ratios": [
+        1.4459333915148784,
+        1.4439742152466368,
+        1.4419519544655561
+      ],
+      "before_median_ns": 51521,
+      "after_median_ns": 35680
+    }
+  ],
+  "active_comparisons": 16,
+  "improved": 16,
+  "active_speedup_range": [
+    1.4310991361351073,
+    4.517080052141926
+  ]
+}

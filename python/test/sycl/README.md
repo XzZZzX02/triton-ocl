@@ -120,3 +120,21 @@ count; separate grid programs do not. Smaller cases keep the untiled source.
 The logical tiles are 8x16x16 (small) and 16x16x32 (wide). The same layout
 cases assert different tiling markers. See docs/backend/sycl-tiling-wave-report.md
 for the measured profitability and interaction limits.
+
+
+Cooperative external-to-local load staging (experimental, default off):
+
+    python-triton cooperative_staging_contracts.py --output stage-contracts.json
+    python-triton cooperative_staging_semantics.py --kind dot --shape 16 32 32 --rounds 3 --repeats 31 --output stage-dot.json
+    python-triton cooperative_staging_boundaries.py --case indirect --output stage-gather.json
+    python-triton cooperative_staging_reuse.py --case sequential --output stage-reuse.json
+    python-triton model_layout_semantics.py --all --schedule staging-pair --python /path/to/python-triton --output stage-layouts.json
+
+The option cooperative_load_staging requires proven independent static full
+local-buffer writes and read-only external accesses. It runs before work
+distribution. Small, nested, volatile, aliased and prior-external-write cases
+fall back. Staging-pair changes only staging in the existing forwarded stack.
+Boundary tests retain an existing fusion/bufferization failure for tensor
+recurrences as EXPECTED_COMPILE_FAILURE; it is not a runtime pass. The vector
+option does not actually transform the current boundary kernels. See
+sycl-cooperative-staging-report.md for exact validated scope, measured gains and remaining backend limitations.

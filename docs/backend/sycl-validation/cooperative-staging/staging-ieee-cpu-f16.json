@@ -1,0 +1,162 @@
+[
+  {
+    "initial": "zero",
+    "initial_bits": "00000000",
+    "dtype": "f16",
+    "stage": false,
+    "status": "PASS",
+    "stages": 0,
+    "elements_checked": 1550,
+    "source_sha256": "0b33c5d951fc5e5859b9a478b42e80fd328c1e922c55c40d489055e692793670"
+  },
+  {
+    "initial": "zero",
+    "initial_bits": "00000000",
+    "dtype": "f16",
+    "stage": true,
+    "status": "PASS",
+    "stages": 2,
+    "elements_checked": 1550,
+    "source_sha256": "4e5c3b257a5626a9537993262182a179dbd7d6e449066e2c85b71225ae83d9b9"
+  },
+  {
+    "initial": "negative_zero",
+    "initial_bits": "00000080",
+    "dtype": "f16",
+    "stage": false,
+    "status": "PASS",
+    "stages": 0,
+    "elements_checked": 1550,
+    "source_sha256": "c762a135d564b8ee5eb8defe9a920a85584e1751d334940509055946c17567cf"
+  },
+  {
+    "initial": "negative_zero",
+    "initial_bits": "00000080",
+    "dtype": "f16",
+    "stage": true,
+    "status": "PASS",
+    "stages": 2,
+    "elements_checked": 1550,
+    "source_sha256": "2c5f9d99bb3226f6db0e8eeb37d88433a1dd968504bb54fe6a07d6c7d518a7ce"
+  },
+  {
+    "initial": "finite",
+    "initial_bits": "00002040",
+    "dtype": "f16",
+    "stage": false,
+    "status": "PASS",
+    "stages": 0,
+    "elements_checked": 1550,
+    "source_sha256": "7ccf1e72a798f22dce559afd2504fc5b42244b20ac248ff1ae224767a0cbaf20"
+  },
+  {
+    "initial": "finite",
+    "initial_bits": "00002040",
+    "dtype": "f16",
+    "stage": true,
+    "status": "PASS",
+    "stages": 2,
+    "elements_checked": 1550,
+    "source_sha256": "50316ec55ade624015ba3e3744808c6efb8555064bc45174450b19d6d6e532ef"
+  },
+  {
+    "initial": "positive_inf",
+    "initial_bits": "0000807f",
+    "dtype": "f16",
+    "stage": false,
+    "status": "PASS",
+    "stages": 0,
+    "elements_checked": 1550,
+    "source_sha256": "175bd79b6e0a7f19654b9940f1dc466f956dad6f6c6cda403d9b2881743ea37b"
+  },
+  {
+    "initial": "positive_inf",
+    "initial_bits": "0000807f",
+    "dtype": "f16",
+    "stage": true,
+    "status": "PASS",
+    "stages": 2,
+    "elements_checked": 1550,
+    "source_sha256": "7f3e8e7d33efe16e5c441b10df356fa90644e0a85574783aff933e46a9689d58"
+  },
+  {
+    "initial": "negative_inf",
+    "initial_bits": "000080ff",
+    "dtype": "f16",
+    "stage": false,
+    "status": "PASS",
+    "stages": 0,
+    "elements_checked": 1550,
+    "source_sha256": "9d0720c16b6b97bc4cf60a640f9f609de63242ee2d8ae49f54789c1fe4349b8f"
+  },
+  {
+    "initial": "negative_inf",
+    "initial_bits": "000080ff",
+    "dtype": "f16",
+    "stage": true,
+    "status": "PASS",
+    "stages": 2,
+    "elements_checked": 1550,
+    "source_sha256": "4d0230ade1d8479c17507cdf794658213541265026e9b8cf4ca7a066b9d22daf"
+  },
+  {
+    "initial": "nan",
+    "initial_bits": "0000c07f",
+    "dtype": "f16",
+    "stage": false,
+    "status": "PASS",
+    "stages": 0,
+    "elements_checked": 1550,
+    "source_sha256": "4ae76e6501ff520a7f8607dd4bfae67cbaf2fb63c5ddd4038eca6e5a3abfc4fe"
+  },
+  {
+    "initial": "nan",
+    "initial_bits": "0000c07f",
+    "dtype": "f16",
+    "stage": true,
+    "status": "PASS",
+    "stages": 2,
+    "elements_checked": 1550,
+    "source_sha256": "6a44b026dd60b12aff154e7b58430e11e249d95533dfa93f3670a6c15b8eb957"
+  },
+  {
+    "initial": "subnormal",
+    "initial_bits": "01000000",
+    "dtype": "f16",
+    "stage": false,
+    "status": "PASS",
+    "stages": 0,
+    "elements_checked": 1550,
+    "source_sha256": "a35141c7aaade6642cdf8dbad455b90f4205823e2c5c04e0028697284af48bd9"
+  },
+  {
+    "initial": "subnormal",
+    "initial_bits": "01000000",
+    "dtype": "f16",
+    "stage": true,
+    "status": "PASS",
+    "stages": 2,
+    "elements_checked": 1550,
+    "source_sha256": "1a308871a65129ecec36206ac9e89fafa48852249742da6c814b7630841fe496"
+  },
+  {
+    "initial": "negative_subnormal",
+    "initial_bits": "01000080",
+    "dtype": "f16",
+    "stage": false,
+    "status": "PASS",
+    "stages": 0,
+    "elements_checked": 1550,
+    "source_sha256": "84c2be378a934d099c48a86081b79f9d26d9c0176c0dca729bb1fc7623069855"
+  },
+  {
+    "initial": "negative_subnormal",
+    "initial_bits": "01000080",
+    "dtype": "f16",
+    "stage": true,
+    "status": "PASS",
+    "stages": 2,
+    "elements_checked": 1550,
+    "source_sha256": "97d446cedd91cd0fe007cf368daf1bde9b8477cb5132bc9ef3676cb9bbe5e58b"
+  }
+]

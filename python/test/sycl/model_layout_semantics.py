@@ -166,15 +166,18 @@ def execute(case, mode, schedule='baseline', tile_shape='small'):
                     logical_a[a_batch][row][step] * logical_b[b_batch][step][col]
                     for step in range(k))
     schedules = (('baseline', 'optimized') if schedule == 'both' else
-                 ('optimized', 'forwarded') if schedule == 'init-pair' else (schedule,))
+                 ('optimized', 'forwarded') if schedule == 'init-pair' else
+                 ('forwarded', 'staged') if schedule == 'staging-pair' else (schedule,))
     variants = []
     for selected in schedules:
         options = (dict(register_accumulator=True, matmul_register_tiling=True,
                         fuse_elementwise=True, group_reduction=True,
                         reuse_local_memory=True, reduction_unroll=4)
-                   if selected in ('optimized', 'forwarded') else {})
-        if selected == 'forwarded':
+                   if selected in ('optimized', 'forwarded', 'staged') else {})
+        if selected in ('forwarded', 'staged'):
             options['accumulator_init_forwarding'] = True
+        if selected == 'staged':
+            options['cooperative_load_staging'] = True
         compiled = kernel.warmup(x, y, z, m, n, k, grid=(batch_count,), **kwargs, **options)
         code = compiled.asm['sycl']
         code = code.decode() if isinstance(code, bytes) else code
@@ -183,13 +186,16 @@ def execute(case, mode, schedule='baseline', tile_shape='small'):
             'sycl.register_accumulator', 'sycl.register_tile =',
             'sycl.register_tile_composed_accumulator', 'sycl.ordered_reduction_unroll',
             'sycl.accumulator_init_forwarded')}
-        if selected in ('optimized', 'forwarded'):
+        stages = memir.count('sycl.cooperative_load_staging')
+        expected_stages = sum(size >= 256 for size in (BM*BK, BK*BN)) if selected == 'staged' else 0
+        assert stages == expected_stages, (case, selected, stages, memir)
+        if selected in ('optimized', 'forwarded', 'staged'):
             expect_tile = half and BM * (BN // 4) >= 64
             assert markers['sycl.register_accumulator'], (case, memir)
             assert markers['sycl.register_tile ='] == expect_tile, (case, memir)
             assert markers['sycl.register_tile_composed_accumulator'] == expect_tile, (case, memir)
             assert markers['sycl.ordered_reduction_unroll'] == (not expect_tile or BK >= 32), (case, memir)
-        assert markers['sycl.accumulator_init_forwarded'] == (selected == 'forwarded'), (case, memir)
+        assert markers['sycl.accumulator_init_forwarded'] == (selected in ('forwarded', 'staged')), (case, memir)
         checks = 0
         if mode == 'run':
             for local_shape in (48, (3, 5)):
@@ -201,6 +207,7 @@ def execute(case, mode, schedule='baseline', tile_shape='small'):
                     assert got == want, (case, selected, local_shape, index, got, want)
                 checks += len(z.c_array)
         variants.append(dict(schedule=selected, source_bytes=len(code), markers=markers,
+                             cooperative_stages=stages,
                              source_sha256=hashlib.sha256(code.encode()).hexdigest(),
                              elements_checked=checks))
     return {"elements_checked": sum(v['elements_checked'] for v in variants), "max_abs_error": 0,
@@ -219,7 +226,7 @@ def main():
     parser.add_argument("--all", action="store_true")
     parser.add_argument("--mode", choices=("run", "compile"), default="run")
     parser.add_argument("--tile-shape", choices=("small", "wide"), default="small")
-    parser.add_argument("--schedule", choices=("baseline", "optimized", "both", "forwarded", "init-pair"), default="baseline")
+    parser.add_argument("--schedule", choices=("baseline", "optimized", "both", "forwarded", "init-pair", "staged", "staging-pair"), default="baseline")
     parser.add_argument("--python", default=sys.executable)
     parser.add_argument("--timeout", type=int, default=240)
     parser.add_argument("--jobs", type=int, default=1)

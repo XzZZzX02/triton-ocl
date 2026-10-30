@@ -1,0 +1,12 @@
+[
+  {
+    "job": 22730408,
+    "dtype": "f32",
+    "expected_rows": 16
+  },
+  {
+    "job": 22730409,
+    "dtype": "f16",
+    "expected_rows": 16
+  }
+]

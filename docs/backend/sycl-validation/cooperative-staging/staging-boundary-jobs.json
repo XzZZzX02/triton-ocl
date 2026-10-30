@@ -1,0 +1,57 @@
+[
+  {
+    "job": 22728141,
+    "case": "tail",
+    "expected_rows": 24
+  },
+  {
+    "job": 22728142,
+    "case": "empty",
+    "expected_rows": 24
+  },
+  {
+    "job": 22728143,
+    "case": "negative",
+    "expected_rows": 24
+  },
+  {
+    "job": 22728144,
+    "case": "indirect",
+    "expected_rows": 24
+  },
+  {
+    "job": 22728145,
+    "case": "rank3",
+    "expected_rows": 24
+  },
+  {
+    "job": 22728146,
+    "case": "volatile",
+    "expected_rows": 24
+  },
+  {
+    "job": 22728147,
+    "case": "loop",
+    "expected_rows": 24
+  },
+  {
+    "job": 22728148,
+    "case": "small",
+    "expected_rows": 24
+  },
+  {
+    "job": 22728149,
+    "case": "undistributed",
+    "expected_rows": 24
+  },
+  {
+    "job": 22728150,
+    "case": "sum",
+    "expected_rows": 24
+  },
+  {
+    "job": 22728151,
+    "case": "vector",
+    "expected_rows": 24
+  }
+]

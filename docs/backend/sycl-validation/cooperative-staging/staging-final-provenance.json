@@ -1,0 +1,12 @@
+{
+  "third_party/sycl/lib/Conversion/LinalgToAffineLoops/CooperativeLoadStaging.cpp": "b2f52ad003966ce501f84c961b3bb546e53f0ff7ddd66263d2c924b0b719fba6",
+  "third_party/sycl/include/Conversion/TritonToLinalg/ScalarMemory.hpp": "fd6067e8fc78cef398c6ed4ee0a08bc3f8dcb8ec225eefa20b1dec20120ebd43",
+  "third_party/sycl/backend/compiler.py": "7072a844dec03f82a4098ef3fad0511245004006858b63c6fe0f419bff439e0f",
+  "python/test/sycl/cooperative_staging_semantics.py": "c7b7b64e756ffe1ddb68009400bcb0713fcb353da212344ce7ce750f5ce101f0",
+  "python/test/sycl/cooperative_staging_boundaries.py": "d37092d2c29009346dd5e9e692d4f4b03b5a4e14f474d3fa6d0b4e85a8803dc8",
+  "python/test/sycl/cooperative_staging_contracts.py": "596767389258377440107184cce3c313f7dd5fc2d4d3906bd1370afc84a91c26",
+  "python/test/sycl/cooperative_staging_reuse.py": "289e4b352bef88c41b5f8b0c9b0e3fe0c802e6de3dd4807134af49d4f9ebbedd",
+  "python/test/sycl/cooperative_staging_ieee.py": "f8a9229baf259e9d9a7a4827b84981e324f946e0f4ec0bc6caaebb518523c56a",
+  "python/test/sycl/model_layout_semantics.py": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+  "python/triton/_C/libtriton.so": "e2e2983c2e8cc7927fca131fca1351339b99d206a4bc56d582adb5bbacc6d700"
+}

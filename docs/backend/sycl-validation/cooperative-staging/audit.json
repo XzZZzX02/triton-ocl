@@ -1,0 +1,1085 @@
+{
+  "status": "PASS",
+  "jobs": 31,
+  "contracts": 66,
+  "regressions": {
+    "pass_contracts": 150,
+    "ordered_unroll_contracts": 71,
+    "accumulator_init_contracts": 55
+  },
+  "layouts": {
+    "small": {
+      "cases_per_device": 44,
+      "elements_per_device": 28676
+    },
+    "wide": {
+      "cases_per_device": 44,
+      "elements_per_device": 28676
+    }
+  },
+  "ieee": {
+    "f32": {
+      "cases_per_device": 16,
+      "elements_per_device": 24800
+    },
+    "f16": {
+      "cases_per_device": 16,
+      "elements_per_device": 24800
+    }
+  },
+  "cpu_boundaries": {
+    "runtime_pass": 84,
+    "known_compile_failures": 4,
+    "elements_checked": 259272
+  },
+  "cpu_reuse": {
+    "runtime_pass": 8,
+    "elements_checked": 24744
+  },
+  "performance": {
+    "rows": 384,
+    "elements_checked": 1305216,
+    "comparisons": [
+      {
+        "file": "staging-dcu-22714938.json",
+        "workload": "dot",
+        "fixed": {
+          "stack": false
+        },
+        "active": true,
+        "speedup": 2.754887268125354,
+        "round_ratios": [
+          2.7354224995039793,
+          2.7548983692454567,
+          2.74067783439349
+        ],
+        "before_median_ns": 248163,
+        "after_median_ns": 90081
+      },
+      {
+        "file": "staging-dcu-22714938.json",
+        "workload": "dot",
+        "fixed": {
+          "stack": true
+        },
+        "active": true,
+        "speedup": 2.9613953074783095,
+        "round_ratios": [
+          2.925404165774121,
+          2.9674800879053875,
+          2.9613953074783095
+        ],
+        "before_median_ns": 233124,
+        "after_median_ns": 78721
+      },
+      {
+        "file": "staging-dcu-22714939.json",
+        "workload": "dot",
+        "fixed": {
+          "stack": false
+        },
+        "active": true,
+        "speedup": 2.3265209154427664,
+        "round_ratios": [
+          2.3255381878875743,
+          2.3265209154427664,
+          2.329752076194193
+        ],
+        "before_median_ns": 381924,
+        "after_median_ns": 164161
+      },
+      {
+        "file": "staging-dcu-22714939.json",
+        "workload": "dot",
+        "fixed": {
+          "stack": true
+        },
+        "active": true,
+        "speedup": 2.6742896523316513,
+        "round_ratios": [
+          2.6742896523316513,
+          2.6721624037784513,
+          2.6742738096181116
+        ],
+        "before_median_ns": 337605,
+        "after_median_ns": 126241
+      },
+      {
+        "file": "staging-dcu-22714940.json",
+        "workload": "dot",
+        "fixed": {
+          "stack": false
+        },
+        "active": true,
+        "speedup": 2.6366935233624047,
+        "round_ratios": [
+          2.6351543145689442,
+          2.6343424977092105,
+          2.638433568680135
+        ],
+        "before_median_ns": 722251,
+        "after_median_ns": 273923
+      },
+      {
+        "file": "staging-dcu-22714940.json",
+        "workload": "dot",
+        "fixed": {
+          "stack": true
+        },
+        "active": true,
+        "speedup": 3.1401604322567698,
+        "round_ratios": [
+          3.1490083430554603,
+          3.1401604322567698,
+          3.1377138330024157
+        ],
+        "before_median_ns": 641607,
+        "after_median_ns": 204323
+      },
+      {
+        "file": "staging-dcu-22714941.json",
+        "workload": "dot",
+        "fixed": {
+          "stack": false
+        },
+        "active": true,
+        "speedup": 4.416085271317829,
+        "round_ratios": [
+          4.416085271317829,
+          4.424847395605641,
+          4.439324935400517
+        ],
+        "before_median_ns": 273444,
+        "after_median_ns": 61920
+      },
+      {
+        "file": "staging-dcu-22714941.json",
+        "workload": "dot",
+        "fixed": {
+          "stack": true
+        },
+        "active": true,
+        "speedup": 4.517080052141926,
+        "round_ratios": [
+          4.508544490276959,
+          4.621747461542594,
+          4.517080052141926
+        ],
+        "before_median_ns": 252961,
+        "after_median_ns": 56001
+      },
+      {
+        "file": "staging-dcu-22714942.json",
+        "workload": "copy",
+        "fixed": {
+          "stack": false
+        },
+        "active": true,
+        "speedup": 1.8211173496608317,
+        "round_ratios": [
+          1.8170524122862732,
+          1.813744591483009,
+          1.8251822870353904
+        ],
+        "before_median_ns": 71681,
+        "after_median_ns": 39361
+      },
+      {
+        "file": "staging-dcu-22714942.json",
+        "workload": "copy",
+        "fixed": {
+          "stack": true
+        },
+        "active": true,
+        "speedup": 1.8211427555194228,
+        "round_ratios": [
+          1.8251822870353904,
+          1.8211173496608317,
+          1.8211427555194228
+        ],
+        "before_median_ns": 71682,
+        "after_median_ns": 39361
+      },
+      {
+        "file": "staging-dcu-22714943.json",
+        "workload": "holes",
+        "fixed": {
+          "stack": false
+        },
+        "active": true,
+        "speedup": 2.3846118957556626,
+        "round_ratios": [
+          2.3846209667909397,
+          2.3846118957556626,
+          2.3788155042134957
+        ],
+        "before_median_ns": 262882,
+        "after_median_ns": 110241
+      },
+      {
+        "file": "staging-dcu-22714943.json",
+        "workload": "holes",
+        "fixed": {
+          "stack": true
+        },
+        "active": true,
+        "speedup": 2.39912511571343,
+        "round_ratios": [
+          2.392447379656798,
+          2.3991255521992727,
+          2.39912511571343
+        ],
+        "before_median_ns": 264350,
+        "after_median_ns": 110186
+      },
+      {
+        "file": "staging-dcu-22714944.json",
+        "workload": "gather",
+        "fixed": {
+          "stack": false
+        },
+        "active": true,
+        "speedup": 2.564709051724138,
+        "round_ratios": [
+          2.564709051724138,
+          2.540799356223176,
+          2.564709051724138
+        ],
+        "before_median_ns": 95202,
+        "after_median_ns": 37120
+      },
+      {
+        "file": "staging-dcu-22714944.json",
+        "workload": "gather",
+        "fixed": {
+          "stack": true
+        },
+        "active": true,
+        "speedup": 2.532242489270386,
+        "round_ratios": [
+          2.545091201716738,
+          2.465544181034483,
+          2.532242489270386
+        ],
+        "before_median_ns": 94402,
+        "after_median_ns": 37280
+      },
+      {
+        "file": "staging-dcu-22714945.json",
+        "workload": "broadcast",
+        "fixed": {
+          "stack": false
+        },
+        "active": true,
+        "speedup": 1.4310991361351073,
+        "round_ratios": [
+          1.4310991361351073,
+          1.5989604282045728,
+          1.4266270381378294
+        ],
+        "before_median_ns": 51521,
+        "after_median_ns": 36001
+      },
+      {
+        "file": "staging-dcu-22714945.json",
+        "workload": "broadcast",
+        "fixed": {
+          "stack": true
+        },
+        "active": true,
+        "speedup": 1.4439742152466368,
+        "round_ratios": [
+          1.4459333915148784,
+          1.4439742152466368,
+          1.4419519544655561
+        ],
+        "before_median_ns": 51521,
+        "after_median_ns": 35680
+      },
+      {
+        "file": "staging-boundary-22728141.json",
+        "workload": "tail",
+        "fixed": {
+          "fuse": false,
+          "reuse": false
+        },
+        "active": true,
+        "speedup": 1.7845673076923076,
+        "round_ratios": [
+          1.7884134615384615,
+          1.7915007601534787,
+          1.7662779281113052
+        ],
+        "before_median_ns": 74238,
+        "after_median_ns": 41600
+      },
+      {
+        "file": "staging-boundary-22728141.json",
+        "workload": "tail",
+        "fixed": {
+          "fuse": false,
+          "reuse": true
+        },
+        "active": true,
+        "speedup": 1.762470365669676,
+        "round_ratios": [
+          1.762470365669676,
+          1.7816039656122034,
+          1.754807346919227
+        ],
+        "before_median_ns": 73599,
+        "after_median_ns": 41759
+      },
+      {
+        "file": "staging-boundary-22728141.json",
+        "workload": "tail",
+        "fixed": {
+          "fuse": true,
+          "reuse": false
+        },
+        "active": true,
+        "speedup": 1.7730955071035361,
+        "round_ratios": [
+          1.7730955071035361,
+          1.788456453280127,
+          1.7586149093608563
+        ],
+        "before_median_ns": 73759,
+        "after_median_ns": 41599
+      },
+      {
+        "file": "staging-boundary-22728141.json",
+        "workload": "tail",
+        "fixed": {
+          "fuse": true,
+          "reuse": true
+        },
+        "active": true,
+        "speedup": 1.7808308091735179,
+        "round_ratios": [
+          1.7846531083225154,
+          1.7876637949757475,
+          1.7730714680641362
+        ],
+        "before_median_ns": 74079,
+        "after_median_ns": 41598
+      },
+      {
+        "file": "staging-boundary-22728142.json",
+        "workload": "empty",
+        "fixed": {
+          "fuse": false,
+          "reuse": false
+        },
+        "active": true,
+        "speedup": 1.699951923076923,
+        "round_ratios": [
+          1.613212281582189,
+          1.7401082677165354,
+          1.6922596153846154
+        ],
+        "before_median_ns": 35359,
+        "after_median_ns": 20800
+      },
+      {
+        "file": "staging-boundary-22728142.json",
+        "workload": "empty",
+        "fixed": {
+          "fuse": false,
+          "reuse": true
+        },
+        "active": true,
+        "speedup": 1.6741950757575759,
+        "round_ratios": [
+          1.6540883458646616,
+          1.7132128494597607,
+          1.6741950757575759
+        ],
+        "before_median_ns": 35359,
+        "after_median_ns": 21120
+      },
+      {
+        "file": "staging-boundary-22728142.json",
+        "workload": "empty",
+        "fixed": {
+          "fuse": true,
+          "reuse": false
+        },
+        "active": true,
+        "speedup": 1.6666666666666667,
+        "round_ratios": [
+          1.6542130739226468,
+          1.6741950757575759,
+          1.6977082222975919
+        ],
+        "before_median_ns": 35200,
+        "after_median_ns": 21120
+      },
+      {
+        "file": "staging-boundary-22728142.json",
+        "workload": "empty",
+        "fixed": {
+          "fuse": true,
+          "reuse": true
+        },
+        "active": true,
+        "speedup": 1.674321700838108,
+        "round_ratios": [
+          1.6617322242586587,
+          1.7045788152848147,
+          1.7244094488188977
+        ],
+        "before_median_ns": 35360,
+        "after_median_ns": 21119
+      },
+      {
+        "file": "staging-boundary-22728143.json",
+        "workload": "negative",
+        "fixed": {
+          "fuse": false,
+          "reuse": false
+        },
+        "active": true,
+        "speedup": 1.7633826335877862,
+        "round_ratios": [
+          1.7595658396946565,
+          1.763340569165812,
+          1.7701204473072962
+        ],
+        "before_median_ns": 73921,
+        "after_median_ns": 41920
+      },
+      {
+        "file": "staging-boundary-22728143.json",
+        "workload": "negative",
+        "fixed": {
+          "fuse": false,
+          "reuse": true
+        },
+        "active": true,
+        "speedup": 1.777759153276981,
+        "round_ratios": [
+          1.762457795550873,
+          1.7777830990637198,
+          1.777759153276981
+        ],
+        "before_median_ns": 74241,
+        "after_median_ns": 41761
+      },
+      {
+        "file": "staging-boundary-22728143.json",
+        "workload": "negative",
+        "fixed": {
+          "fuse": true,
+          "reuse": false
+        },
+        "active": true,
+        "speedup": 1.7662891214290846,
+        "round_ratios": [
+          1.784620562005721,
+          1.7662891214290846,
+          1.7557071634741537
+        ],
+        "before_median_ns": 73762,
+        "after_median_ns": 41761
+      },
+      {
+        "file": "staging-boundary-22728143.json",
+        "workload": "negative",
+        "fixed": {
+          "fuse": true,
+          "reuse": true
+        },
+        "active": true,
+        "speedup": 1.771016221374046,
+        "round_ratios": [
+          1.7845965241220163,
+          1.7557729007633587,
+          1.77097397485747
+        ],
+        "before_median_ns": 74241,
+        "after_median_ns": 41920
+      },
+      {
+        "file": "staging-boundary-22728144.json",
+        "workload": "indirect",
+        "fixed": {
+          "fuse": false,
+          "reuse": false
+        },
+        "active": true,
+        "speedup": 1.2640925065605846,
+        "round_ratios": [
+          1.2640925065605846,
+          1.2647350793694971,
+          1.2518703703703704
+        ],
+        "before_median_ns": 136321,
+        "after_median_ns": 107841
+      },
+      {
+        "file": "staging-boundary-22728144.json",
+        "workload": "indirect",
+        "fixed": {
+          "fuse": false,
+          "reuse": true
+        },
+        "active": true,
+        "speedup": 1.2654428251121077,
+        "round_ratios": [
+          1.2522231804230302,
+          1.2660578756496055,
+          1.2735519431988043
+        ],
+        "before_median_ns": 135453,
+        "after_median_ns": 107040
+      },
+      {
+        "file": "staging-boundary-22728144.json",
+        "workload": "indirect",
+        "fixed": {
+          "fuse": true,
+          "reuse": false
+        },
+        "active": true,
+        "speedup": 1.2637829379383576,
+        "round_ratios": [
+          1.2637829379383576,
+          1.258157291695659,
+          1.2731317804871223
+        ],
+        "before_median_ns": 135681,
+        "after_median_ns": 107361
+      },
+      {
+        "file": "staging-boundary-22728144.json",
+        "workload": "indirect",
+        "fixed": {
+          "fuse": true,
+          "reuse": true
+        },
+        "active": true,
+        "speedup": 1.2527013638762603,
+        "round_ratios": [
+          1.245923648855103,
+          1.2564240673842182,
+          1.2548124554402273
+        ],
+        "before_median_ns": 135293,
+        "after_median_ns": 108001
+      },
+      {
+        "file": "staging-boundary-22728145.json",
+        "workload": "rank3",
+        "fixed": {
+          "fuse": false,
+          "reuse": false
+        },
+        "active": true,
+        "speedup": 3.6967794833194443,
+        "round_ratios": [
+          3.6637987207276694,
+          3.704696992146985,
+          3.6881905427565256
+        ],
+        "before_median_ns": 275033,
+        "after_median_ns": 74398
+      },
+      {
+        "file": "staging-boundary-22728145.json",
+        "workload": "rank3",
+        "fixed": {
+          "fuse": false,
+          "reuse": true
+        },
+        "active": true,
+        "speedup": 3.6653206999027175,
+        "round_ratios": [
+          3.6653206999027175,
+          3.6946423290948682,
+          3.653896681219231
+        ],
+        "before_median_ns": 275042,
+        "after_median_ns": 75039
+      },
+      {
+        "file": "staging-boundary-22728145.json",
+        "workload": "rank3",
+        "fixed": {
+          "fuse": true,
+          "reuse": false
+        },
+        "active": true,
+        "speedup": 3.663130680455236,
+        "round_ratios": [
+          3.663130680455236,
+          3.6652629334470537,
+          3.658817414944229
+        ],
+        "before_median_ns": 274874,
+        "after_median_ns": 75038
+      },
+      {
+        "file": "staging-boundary-22728145.json",
+        "workload": "rank3",
+        "fixed": {
+          "fuse": true,
+          "reuse": true
+        },
+        "active": true,
+        "speedup": 3.675231710248671,
+        "round_ratios": [
+          3.7068656635999946,
+          3.671659692422506,
+          3.670958091829376
+        ],
+        "before_median_ns": 275194,
+        "after_median_ns": 74878
+      },
+      {
+        "file": "staging-boundary-22728146.json",
+        "workload": "volatile",
+        "fixed": {
+          "fuse": false,
+          "reuse": false
+        },
+        "active": false,
+        "speedup": 0.9978402019411186,
+        "round_ratios": [
+          0.9978402019411186,
+          1.00381777916661,
+          1.0038201428166467
+        ],
+        "before_median_ns": 73921,
+        "after_median_ns": 74081
+      },
+      {
+        "file": "staging-boundary-22728146.json",
+        "workload": "volatile",
+        "fixed": {
+          "fuse": false,
+          "reuse": true
+        },
+        "active": false,
+        "speedup": 0.9973485207180639,
+        "round_ratios": [
+          1.0043290043290043,
+          0.9973485207180639,
+          0.9973214648070237
+        ],
+        "before_median_ns": 73725,
+        "after_median_ns": 73921
+      },
+      {
+        "file": "staging-boundary-22728146.json",
+        "workload": "volatile",
+        "fixed": {
+          "fuse": true,
+          "reuse": false
+        },
+        "active": false,
+        "speedup": 0.9973407486400021,
+        "round_ratios": [
+          0.9935345698468501,
+          0.9978806695464363,
+          0.9973407486400021
+        ],
+        "before_median_ns": 73884,
+        "after_median_ns": 74081
+      },
+      {
+        "file": "staging-boundary-22728146.json",
+        "workload": "volatile",
+        "fixed": {
+          "fuse": true,
+          "reuse": true
+        },
+        "active": false,
+        "speedup": 0.9974757360186822,
+        "round_ratios": [
+          1.002164472883213,
+          0.995680403882237,
+          0.9974757360186822
+        ],
+        "before_median_ns": 73894,
+        "after_median_ns": 74081
+      },
+      {
+        "file": "staging-boundary-22728147.json",
+        "workload": "loop",
+        "fixed": {
+          "fuse": false,
+          "reuse": false
+        },
+        "active": false,
+        "speedup": 0.9999576608464443,
+        "round_ratios": [
+          1.0054188821329535,
+          0.998646831471317,
+          0.9999576608464443
+        ],
+        "before_median_ns": 118089,
+        "after_median_ns": 118094
+      },
+      {
+        "file": "staging-boundary-22728147.json",
+        "workload": "loop",
+        "fixed": {
+          "fuse": false,
+          "reuse": true
+        },
+        "active": false,
+        "speedup": 0.9998899182007553,
+        "round_ratios": [
+          1.0013568405966706,
+          0.998646831471317,
+          1.0013633207444916
+        ],
+        "before_median_ns": 118081,
+        "after_median_ns": 118094
+      },
+      {
+        "file": "staging-boundary-22728148.json",
+        "workload": "small",
+        "fixed": {
+          "fuse": false,
+          "reuse": false
+        },
+        "active": false,
+        "speedup": 1.0,
+        "round_ratios": [
+          0.9927008964211583,
+          0.9963236138875485,
+          1.0000229779411764
+        ],
+        "before_median_ns": 43521,
+        "after_median_ns": 43521
+      },
+      {
+        "file": "staging-boundary-22728148.json",
+        "workload": "small",
+        "fixed": {
+          "fuse": false,
+          "reuse": true
+        },
+        "active": false,
+        "speedup": 1.0036899518000046,
+        "round_ratios": [
+          1.0036899518000046,
+          1.0036899518000046,
+          1.0036994485294117
+        ],
+        "before_median_ns": 43521,
+        "after_median_ns": 43361
+      },
+      {
+        "file": "staging-boundary-22728148.json",
+        "workload": "small",
+        "fixed": {
+          "fuse": true,
+          "reuse": false
+        },
+        "active": false,
+        "speedup": 1.0036668896012546,
+        "round_ratios": [
+          1.0,
+          1.0073799036000093,
+          0.9999770225867972
+        ],
+        "before_median_ns": 43520,
+        "after_median_ns": 43361
+      },
+      {
+        "file": "staging-boundary-22728148.json",
+        "workload": "small",
+        "fixed": {
+          "fuse": true,
+          "reuse": true
+        },
+        "active": false,
+        "speedup": 0.9963598901098901,
+        "round_ratios": [
+          0.9963598901098901,
+          0.9999771067512191,
+          0.9963465073529412
+        ],
+        "before_median_ns": 43521,
+        "after_median_ns": 43680
+      },
+      {
+        "file": "staging-boundary-22728149.json",
+        "workload": "undistributed",
+        "fixed": {
+          "fuse": false,
+          "reuse": false
+        },
+        "active": false,
+        "speedup": 1.0,
+        "round_ratios": [
+          0.9978402310952728,
+          1.0,
+          1.0021509158301993
+        ],
+        "before_median_ns": 74081,
+        "after_median_ns": 74081
+      },
+      {
+        "file": "staging-boundary-22728149.json",
+        "workload": "undistributed",
+        "fixed": {
+          "fuse": false,
+          "reuse": true
+        },
+        "active": false,
+        "speedup": 1.0043153594329157,
+        "round_ratios": [
+          1.0064798030356321,
+          0.9957082120679712,
+          1.0
+        ],
+        "before_median_ns": 74241,
+        "after_median_ns": 73922
+      },
+      {
+        "file": "staging-boundary-22728149.json",
+        "workload": "undistributed",
+        "fixed": {
+          "fuse": true,
+          "reuse": false
+        },
+        "active": false,
+        "speedup": 1.0021644436027164,
+        "round_ratios": [
+          0.9935761890741682,
+          1.0021644436027164,
+          1.00001352795552
+        ],
+        "before_median_ns": 74082,
+        "after_median_ns": 73922
+      },
+      {
+        "file": "staging-boundary-22728149.json",
+        "workload": "undistributed",
+        "fixed": {
+          "fuse": true,
+          "reuse": true
+        },
+        "active": false,
+        "speedup": 1.0,
+        "round_ratios": [
+          1.0,
+          1.0,
+          0.9978355563972836
+        ],
+        "before_median_ns": 73922,
+        "after_median_ns": 73922
+      },
+      {
+        "file": "staging-boundary-22728150.json",
+        "workload": "sum",
+        "fixed": {
+          "fuse": false,
+          "reuse": false
+        },
+        "active": true,
+        "speedup": 2.393146551724138,
+        "round_ratios": [
+          2.4,
+          2.23875,
+          2.4097222222222223
+        ],
+        "before_median_ns": 55521,
+        "after_median_ns": 23200
+      },
+      {
+        "file": "staging-boundary-22728150.json",
+        "workload": "sum",
+        "fixed": {
+          "fuse": false,
+          "reuse": true
+        },
+        "active": true,
+        "speedup": 2.3767551369863016,
+        "round_ratios": [
+          2.3289010067114093,
+          2.3630565068493152,
+          2.393146551724138
+        ],
+        "before_median_ns": 55521,
+        "after_median_ns": 23360
+      },
+      {
+        "file": "staging-boundary-22728150.json",
+        "workload": "sum",
+        "fixed": {
+          "fuse": true,
+          "reuse": false
+        },
+        "active": true,
+        "speedup": 2.4214732142857143,
+        "round_ratios": [
+          2.4388938848920865,
+          2.3542100694444446,
+          2.414330357142857
+        ],
+        "before_median_ns": 54241,
+        "after_median_ns": 22400
+      },
+      {
+        "file": "staging-boundary-22728150.json",
+        "workload": "sum",
+        "fixed": {
+          "fuse": true,
+          "reuse": true
+        },
+        "active": true,
+        "speedup": 2.3972074468085105,
+        "round_ratios": [
+          2.3732834507042253,
+          2.3972074468085105,
+          2.4255762411347517
+        ],
+        "before_median_ns": 54081,
+        "after_median_ns": 22560
+      },
+      {
+        "file": "staging-boundary-22728151.json",
+        "workload": "vector",
+        "fixed": {
+          "fuse": false,
+          "reuse": false
+        },
+        "active": true,
+        "speedup": 1.8156662826891499,
+        "round_ratios": [
+          1.822814399251987,
+          1.8117448101762212,
+          1.8156662826891499
+        ],
+        "before_median_ns": 74081,
+        "after_median_ns": 40801
+      },
+      {
+        "file": "staging-boundary-22728151.json",
+        "workload": "vector",
+        "fixed": {
+          "fuse": false,
+          "reuse": true
+        },
+        "active": true,
+        "speedup": 1.8117892156862745,
+        "round_ratios": [
+          1.8156617647058824,
+          1.8188774882507812,
+          1.8117448101762212
+        ],
+        "before_median_ns": 73921,
+        "after_median_ns": 40800
+      },
+      {
+        "file": "staging-boundary-22728151.json",
+        "workload": "vector",
+        "fixed": {
+          "fuse": true,
+          "reuse": false
+        },
+        "active": true,
+        "speedup": 1.8117448101762212,
+        "round_ratios": [
+          1.8117448101762212,
+          1.8117448101762212,
+          1.8117448101762212
+        ],
+        "before_median_ns": 73921,
+        "after_median_ns": 40801
+      },
+      {
+        "file": "staging-boundary-22728151.json",
+        "workload": "vector",
+        "fixed": {
+          "fuse": true,
+          "reuse": true
+        },
+        "active": true,
+        "speedup": 1.8117448101762212,
+        "round_ratios": [
+          1.8078676470588235,
+          1.8117448101762212,
+          1.8047119140625
+        ],
+        "before_median_ns": 73921,
+        "after_median_ns": 40801
+      },
+      {
+        "file": "staging-reuse-22729187.json",
+        "workload": "sequential",
+        "fixed": {
+          "reuse": false
+        },
+        "active": true,
+        "speedup": 1.3096154273893992,
+        "round_ratios": [
+          1.3048845352599618,
+          1.3096154273893992,
+          1.3225654696565783
+        ],
+        "before_median_ns": 58879,
+        "after_median_ns": 44959
+      },
+      {
+        "file": "staging-reuse-22729187.json",
+        "workload": "sequential",
+        "fixed": {
+          "reuse": true
+        },
+        "active": true,
+        "speedup": 1.321152398549237,
+        "round_ratios": [
+          1.321152398549237,
+          1.3163480988204277,
+          1.321152398549237
+        ],
+        "before_median_ns": 57918,
+        "after_median_ns": 43839
+      },
+      {
+        "file": "staging-reuse-22729188.json",
+        "workload": "overlap",
+        "fixed": {
+          "reuse": false
+        },
+        "active": true,
+        "speedup": 1.9570228494623656,
+        "round_ratios": [
+          1.951580928060213,
+          1.9677755376344086,
+          1.9570228494623656
+        ],
+        "before_median_ns": 58241,
+        "after_median_ns": 29760
+      },
+      {
+        "file": "staging-reuse-22729188.json",
+        "workload": "overlap",
+        "fixed": {
+          "reuse": true
+        },
+        "active": true,
+        "speedup": 1.9570228494623656,
+        "round_ratios": [
+          1.94649243006584,
+          1.962399193548387,
+          1.9462701612903226
+        ],
+        "before_median_ns": 58241,
+        "after_median_ns": 29760
+      }
+    ],
+    "active_comparisons": 48,
+    "improved": 48,
+    "active_speedup_range": [
+      1.2527013638762603,
+      4.517080052141926
+    ]
+  }
+}

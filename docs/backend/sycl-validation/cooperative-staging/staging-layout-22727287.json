@@ -1,0 +1,684 @@
+[
+  {
+    "case": "layout_2d_tn_f32_none",
+    "status": "PASS",
+    "harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "elements_checked": 348,
+    "max_abs_error": 0,
+    "tile_shape": "wide",
+    "logical_tile": [
+      16,
+      16,
+      32
+    ],
+    "schedules": [
+      {
+        "schedule": "forwarded",
+        "source_bytes": 18031,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 0,
+        "source_sha256": "725f6bcc08396efb4f954a6b8153dccb44690ffd0b61fb83000e9e0c90c20a20",
+        "elements_checked": 174
+      },
+      {
+        "schedule": "staged",
+        "source_bytes": 17727,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 2,
+        "source_sha256": "3c3c729bb28c3ee5f2640ee8ddb4490fc44282b3af6dff714665daa4eee3744c",
+        "elements_checked": 174
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "tn",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_tt_f32_none",
+    "status": "PASS",
+    "harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "elements_checked": 284,
+    "max_abs_error": 0,
+    "tile_shape": "wide",
+    "logical_tile": [
+      16,
+      16,
+      32
+    ],
+    "schedules": [
+      {
+        "schedule": "forwarded",
+        "source_bytes": 18213,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 0,
+        "source_sha256": "7ab7d4d5f6bd0ba6ab684a6ad03a5dd8ba6b818eaf256c1444cecf0a31097851",
+        "elements_checked": 142
+      },
+      {
+        "schedule": "staged",
+        "source_bytes": 17905,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 2,
+        "source_sha256": "c9282527957cd7fe7f4e55e044166160fcf56fd96cf1afcf06eff78d9ea8bd50",
+        "elements_checked": 142
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "tt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nn_f32_b",
+    "status": "PASS",
+    "harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "elements_checked": 768,
+    "max_abs_error": 0,
+    "tile_shape": "wide",
+    "logical_tile": [
+      16,
+      16,
+      32
+    ],
+    "schedules": [
+      {
+        "schedule": "forwarded",
+        "source_bytes": 18549,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 0,
+        "source_sha256": "6b26891d3b860306a25ccccad5ad187ec8dc13b29bd685c7e277dbe0a6610c2e",
+        "elements_checked": 384
+      },
+      {
+        "schedule": "staged",
+        "source_bytes": 18249,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 2,
+        "source_sha256": "e0bae8d04c4b9b0e228b82ba7e3e01ddc0ab532f583fbc29ccc3996abf7045ef",
+        "elements_checked": 384
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "nn",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tn_f32_none",
+    "status": "PASS",
+    "harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "elements_checked": 1140,
+    "max_abs_error": 0,
+    "tile_shape": "wide",
+    "logical_tile": [
+      16,
+      16,
+      32
+    ],
+    "schedules": [
+      {
+        "schedule": "forwarded",
+        "source_bytes": 18730,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 0,
+        "source_sha256": "5dfab43fe81c7c8f0040b33e8d87bf75c6cf868599a0fb3e788d6734ac1c3a11",
+        "elements_checked": 570
+      },
+      {
+        "schedule": "staged",
+        "source_bytes": 18426,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 2,
+        "source_sha256": "1146e3e81eda12d1bbc7b9104fa4ec80c1e2d35acb6341af608ec5b4373beef0",
+        "elements_checked": 570
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "tn",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tn_f16_a",
+    "status": "PASS",
+    "harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "elements_checked": 948,
+    "max_abs_error": 0,
+    "tile_shape": "wide",
+    "logical_tile": [
+      16,
+      16,
+      32
+    ],
+    "schedules": [
+      {
+        "schedule": "forwarded",
+        "source_bytes": 23213,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 0,
+        "source_sha256": "dfff638f893a3f2651bd82b7f821f5ebb436b9cd30b0b1255c2a4b960ab572ba",
+        "elements_checked": 474
+      },
+      {
+        "schedule": "staged",
+        "source_bytes": 22777,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 2,
+        "source_sha256": "6e90dc974a7abe1d00dd49435070011735c80b9684f7dfd56cc1c89532c063c6",
+        "elements_checked": 474
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "tn",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nt_f32_b",
+    "status": "PASS",
+    "harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "elements_checked": 1140,
+    "max_abs_error": 0,
+    "tile_shape": "wide",
+    "logical_tile": [
+      16,
+      16,
+      32
+    ],
+    "schedules": [
+      {
+        "schedule": "forwarded",
+        "source_bytes": 18731,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 0,
+        "source_sha256": "c2f2e9f2149ff427ba3312b34f210b82f805c85fe1514aa139ee69ce6437795c",
+        "elements_checked": 570
+      },
+      {
+        "schedule": "staged",
+        "source_bytes": 18427,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 2,
+        "source_sha256": "553f28f5ecb0e048bf2d5c0720f5073911a7cd029ae6391539afa379128c104a",
+        "elements_checked": 570
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "nt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f32_none",
+    "status": "PASS",
+    "harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "elements_checked": 948,
+    "max_abs_error": 0,
+    "tile_shape": "wide",
+    "logical_tile": [
+      16,
+      16,
+      32
+    ],
+    "schedules": [
+      {
+        "schedule": "forwarded",
+        "source_bytes": 18912,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 0,
+        "source_sha256": "b7899444c814bdca6fa7f44c087f5dbed470e26c648251b9096cd52ee3642a32",
+        "elements_checked": 474
+      },
+      {
+        "schedule": "staged",
+        "source_bytes": 18604,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 2,
+        "source_sha256": "f2ccbeb1f06d87ce6d546662b2da7b8eaf33188fcf1ecc5410d6ee530bafb234",
+        "elements_checked": 474
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "tt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f16_a",
+    "status": "PASS",
+    "harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "elements_checked": 768,
+    "max_abs_error": 0,
+    "tile_shape": "wide",
+    "logical_tile": [
+      16,
+      16,
+      32
+    ],
+    "schedules": [
+      {
+        "schedule": "forwarded",
+        "source_bytes": 23401,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 0,
+        "source_sha256": "5ffd9c3a70b4e1c50418c4578258de9708545ccc05cf13e0578e0b9319a54ab1",
+        "elements_checked": 384
+      },
+      {
+        "schedule": "staged",
+        "source_bytes": 22961,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 2,
+        "source_sha256": "1f03d95b8cc404c990b80ff6a553c59859ccfb811971d3d73dbcad721f7aa548",
+        "elements_checked": 384
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "tt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_tn_f32_none_negative_a_k",
+    "status": "PASS",
+    "harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "elements_checked": 348,
+    "max_abs_error": 0,
+    "tile_shape": "wide",
+    "logical_tile": [
+      16,
+      16,
+      32
+    ],
+    "schedules": [
+      {
+        "schedule": "forwarded",
+        "source_bytes": 18031,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 0,
+        "source_sha256": "725f6bcc08396efb4f954a6b8153dccb44690ffd0b61fb83000e9e0c90c20a20",
+        "elements_checked": 174
+      },
+      {
+        "schedule": "staged",
+        "source_bytes": 17727,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 2,
+        "source_sha256": "3c3c729bb28c3ee5f2640ee8ddb4490fc44282b3af6dff714665daa4eee3744c",
+        "elements_checked": 174
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "tn",
+    "precision": "f32",
+    "variant": "negative_a_k",
+    "expected_harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_tt_f32_none_negative_b_k",
+    "status": "PASS",
+    "harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "elements_checked": 284,
+    "max_abs_error": 0,
+    "tile_shape": "wide",
+    "logical_tile": [
+      16,
+      16,
+      32
+    ],
+    "schedules": [
+      {
+        "schedule": "forwarded",
+        "source_bytes": 18213,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 0,
+        "source_sha256": "7ab7d4d5f6bd0ba6ab684a6ad03a5dd8ba6b818eaf256c1444cecf0a31097851",
+        "elements_checked": 142
+      },
+      {
+        "schedule": "staged",
+        "source_bytes": 17905,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 2,
+        "source_sha256": "c9282527957cd7fe7f4e55e044166160fcf56fd96cf1afcf06eff78d9ea8bd50",
+        "elements_checked": 142
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "tt",
+    "precision": "f32",
+    "variant": "negative_b_k",
+    "expected_harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nt_f32_none_broadcast_b_cols",
+    "status": "PASS",
+    "harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "elements_checked": 224,
+    "max_abs_error": 0,
+    "tile_shape": "wide",
+    "logical_tile": [
+      16,
+      16,
+      32
+    ],
+    "schedules": [
+      {
+        "schedule": "forwarded",
+        "source_bytes": 18032,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 0,
+        "source_sha256": "b0ddb9b56be08bc5f244c3baa554dd1f394939e0a1579fec57fcf085594022d3",
+        "elements_checked": 112
+      },
+      {
+        "schedule": "staged",
+        "source_bytes": 17728,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 2,
+        "source_sha256": "d41c93b22e2f0da498e9ece650d54a31024e56ccdac88b42bbd47fff5ac75a6b",
+        "elements_checked": 112
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nt",
+    "precision": "f32",
+    "variant": "broadcast_b_cols",
+    "expected_harness_sha256": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+    "harness_match": true
+  }
+]

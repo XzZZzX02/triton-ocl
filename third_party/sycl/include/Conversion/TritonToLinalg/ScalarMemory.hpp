@@ -249,11 +249,15 @@ static LogicalResult lowerScalarMemory(ModuleOp module) {
       buffer = builder.create<memref::AllocOp>(
           loc, MemRefType::get(pointerType.getShape(), element));
     SmallVector<Value> indices;
+    affine::AffineForOp memoryRoot;
     for (int64_t size : pointerType.getShape()) {
       auto loop = builder.create<affine::AffineForOp>(loc, 0, size);
+      if (!memoryRoot) memoryRoot = loop;
       indices.push_back(loop.getInductionVar());
       builder.setInsertionPointToStart(loop.getBody());
     }
+    if (memoryRoot && load && cast<triton::LoadOp>(op).getIsVolatile())
+      memoryRoot->setAttr("sycl.scalar_memory_volatile", builder.getUnitAttr());
     auto scalarPtr = scalarMemoryElement(ptr, indices, builder, loc);
     if (failed(scalarPtr))
       return op->emitError("SYCL cannot scalarize this pointer expression "

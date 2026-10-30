@@ -1,0 +1,138 @@
+[
+  {
+    "kind": "gather",
+    "n": 1021,
+    "block": 256,
+    "stride": 1,
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "grid": 4,
+    "stack": false,
+    "enabled": false,
+    "distributed": true,
+    "round": 0,
+    "special": true,
+    "status": "PASS",
+    "stages": 0,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.distribution_depth": 0
+    },
+    "elements_checked": 3084,
+    "source_bytes": 13822,
+    "source_sha256": "60471da6b2ad495c0dddf49449d633173f262487a120ab6bee321af8071be578",
+    "local_bytes": 1024,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "kind": "gather",
+    "n": 1021,
+    "block": 256,
+    "stride": 1,
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "grid": 4,
+    "stack": false,
+    "enabled": true,
+    "distributed": true,
+    "round": 0,
+    "special": true,
+    "status": "PASS",
+    "stages": 1,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.distribution_depth": 1
+    },
+    "elements_checked": 3084,
+    "source_bytes": 13736,
+    "source_sha256": "aa481da98c81d30edde14348f0c40ae068100b162bf3619b2afd768dcc3f50e8",
+    "local_bytes": 1024,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "kind": "gather",
+    "n": 1021,
+    "block": 256,
+    "stride": 1,
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "grid": 4,
+    "stack": true,
+    "enabled": false,
+    "distributed": true,
+    "round": 0,
+    "special": true,
+    "status": "PASS",
+    "stages": 0,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.distribution_depth": 0
+    },
+    "elements_checked": 3084,
+    "source_bytes": 13822,
+    "source_sha256": "60471da6b2ad495c0dddf49449d633173f262487a120ab6bee321af8071be578",
+    "local_bytes": 1024,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "kind": "gather",
+    "n": 1021,
+    "block": 256,
+    "stride": 1,
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "grid": 4,
+    "stack": true,
+    "enabled": true,
+    "distributed": true,
+    "round": 0,
+    "special": true,
+    "status": "PASS",
+    "stages": 1,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.distribution_depth": 1
+    },
+    "elements_checked": 3084,
+    "source_bytes": 13736,
+    "source_sha256": "aa481da98c81d30edde14348f0c40ae068100b162bf3619b2afd768dcc3f50e8",
+    "local_bytes": 1024,
+    "samples_ns": [],
+    "median_ns": null
+  }
+]

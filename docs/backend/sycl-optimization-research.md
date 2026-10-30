@@ -87,3 +87,28 @@ See sycl-accumulator-init-report.md for the exact gate, paired gfx906 data,
 runtime/source-hash provenance and remaining interactions. A small f16 tiling
 regression found by its boundary matrix is tracked separately from initializer
 forwarding profitability.
+
+
+## 2026-10-31: Cooperative External-to-Local Load Staging
+
+- AMD HIP performance guidelines, device-memory access and coalescing sections:
+  https://rocm.docs.amd.com/projects/HIP/en/latest/how-to/performance_guidelines.html
+  Consecutive lanes accessing consecutive addresses can combine transactions;
+  on-chip shared storage can retain reused inputs. This motivates distributing
+  an existing external-to-local copy instead of populating it on one lane.
+  Transposed, strided and indirect inputs require separate measurements; lane
+  distribution does not itself prove coalescing or profitability.
+- MLIR Affine dialect and affine.parallel semantics:
+  https://mlir.llvm.org/docs/Dialects/Affine/
+  Independence must be proved before parallel scheduling. This backend's
+  existing distribution pass consumes proven parallel-loop annotations. The
+  candidate proves unique local writes and read-only external accesses while
+  retaining predicates and arithmetic. It neither parallelizes reductions nor
+  uses affine.parallel's unspecified reduction ordering.
+
+Both official pages were retrieved on 2026-10-31. Their guidance is not device
+performance evidence. Within-job timings, frozen source/binary fingerprints,
+fallback-source equality and actual pass markers provide backend evidence.
+This pass introduces no MFMA, asynchronous copy, double buffering, additional
+local allocation or dtype conversion. Its measured domain and exceptions must
+be reported separately from legality.

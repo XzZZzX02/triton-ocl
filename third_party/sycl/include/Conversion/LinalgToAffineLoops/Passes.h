@@ -22,6 +22,7 @@ std::unique_ptr<OperationPass<ModuleOp>> createMatmulRegisterTilingPass();
 std::unique_ptr<OperationPass<ModuleOp>> createOrderedReductionUnrollPass(unsigned factor);
 std::unique_ptr<OperationPass<ModuleOp>> createAccumulatorInitForwardingPass();
 std::unique_ptr<OperationPass<ModuleOp>> createWorkDistributionPass();
+std::unique_ptr<OperationPass<ModuleOp>> createCooperativeLoadStagingPass();
 std::unique_ptr<OperationPass<ModuleOp>> createVectorMemoryPass();
 
 #define GEN_PASS_REGISTRATION

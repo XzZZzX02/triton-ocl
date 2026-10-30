@@ -1,0 +1,6 @@
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"case": "overlap", "status": "PASS", "stage": false, "reuse": false, "round": 0, "stages": 0, "local_bytes_before": 2048, "local_bytes": 2048, "elements_checked": 3093, "source_sha256": "934ed9299aaee7d516e4ea42244f17cbaf929befd67111246cb1cabb946b13f7", "samples_ns": [], "median_ns": null}
+{"case": "overlap", "status": "PASS", "stage": false, "reuse": true, "round": 0, "stages": 0, "local_bytes_before": 2048, "local_bytes": 2048, "elements_checked": 3093, "source_sha256": "934ed9299aaee7d516e4ea42244f17cbaf929befd67111246cb1cabb946b13f7", "samples_ns": [], "median_ns": null}
+{"case": "overlap", "status": "PASS", "stage": true, "reuse": false, "round": 0, "stages": 2, "local_bytes_before": 2048, "local_bytes": 2048, "elements_checked": 3093, "source_sha256": "6e4dd5c5456f3305edeb91e7211a765da6942662dbad7782a56e643938a8fd8d", "samples_ns": [], "median_ns": null}
+{"case": "overlap", "status": "PASS", "stage": true, "reuse": true, "round": 0, "stages": 2, "local_bytes_before": 2048, "local_bytes": 2048, "elements_checked": 3093, "source_sha256": "6e4dd5c5456f3305edeb91e7211a765da6942662dbad7782a56e643938a8fd8d", "samples_ns": [], "median_ns": null}

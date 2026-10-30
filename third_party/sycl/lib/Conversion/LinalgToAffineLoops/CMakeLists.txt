@@ -9,6 +9,7 @@ add_triton_library(LinalgToAffineLoopsSYCL
   OrderedReductionUnroll.cpp
   AccumulatorInitForwarding.cpp
   WorkDistribution.cpp
+  CooperativeLoadStaging.cpp
   VectorMemory.cpp
 
   DEPENDS
