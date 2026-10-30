@@ -112,3 +112,25 @@ fallback-source equality and actual pass markers provide backend evidence.
 This pass introduces no MFMA, asynchronous copy, double buffering, additional
 local allocation or dtype conversion. Its measured domain and exceptions must
 be reported separately from legality.
+
+
+## 2026-10-31: Fusion and Bufferization Destination Contracts
+
+- Fixed LLVM revision used by this checkout, ElementwiseOpFusion.cpp:
+  https://github.com/llvm/llvm-project/blob/3c709802d31b5bc5ed3af8284b40593ff39b9eec/mlir/lib/Dialect/Linalg/Transforms/ElementwiseOpFusion.cpp
+  The population helper installs RemoveOutsDependency separately from its
+  caller's fusion callback. That cleanup replaces unused destination operands
+  with tensor.empty. Inspection of this exact source plus pre/post IR identified
+  the tensor-loop buffer equivalence failure. Global removal also changed an
+  existing successful sum optimization, motivating a loop-scoped wrapper.
+- Official one-shot bufferization and destination-passing-style documentation:
+  https://mlir.llvm.org/docs/Bufferization/
+  Tensor destinations and alias/equivalence relationships guide buffer reuse.
+  This backend keeps its existing loop allocation/equivalence policy and
+  preserves the needed destination tie instead of enabling allocation returns
+  from loops or silently retrying the whole compiler pipeline.
+
+The fixed source was retrieved on 2026-10-31. This is a robustness repair in
+an existing pass. Device performance is measured separately; source equality
+on 200 recorded configurations supplies bounded preservation evidence rather
+than a general claim about every downstream optimization or model.

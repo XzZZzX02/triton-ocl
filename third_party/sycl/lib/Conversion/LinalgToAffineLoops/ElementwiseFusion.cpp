@@ -3,10 +3,37 @@
 #include "mlir/Dialect/Linalg/IR/Linalg.h"
 #include "mlir/Dialect/Linalg/Transforms/Transforms.h"
 #include "mlir/Interfaces/SideEffectInterfaces.h"
+#include "mlir/Interfaces/LoopLikeInterface.h"
 #include "mlir/Transforms/GreedyPatternRewriteDriver.h"
+#include "llvm/ADT/STLExtras.h"
 
 using namespace mlir;
 namespace {
+// A tensor-carrying loop must yield a buffer equivalent to its iter_arg under
+// this backend's one-shot bufferization policy. Do not sever destination ties
+// within that loop, including under nested conditionals/loops. Outside it the
+// original upstream cleanup remains available, enabling existing fusion wins.
+struct GuardLoopDestinations : OpRewritePattern<linalg::GenericOp> {
+  GuardLoopDestinations(MLIRContext *context,
+                        std::unique_ptr<RewritePattern> original)
+      : OpRewritePattern(context, original->getBenefit()),
+        original(std::move(original)) {}
+
+  LogicalResult matchAndRewrite(linalg::GenericOp op,
+                                PatternRewriter &rewriter) const override {
+    for (Operation *parent = op->getParentOp(); parent;
+         parent = parent->getParentOp())
+      if (isa<LoopLikeOpInterface>(parent) &&
+          llvm::any_of(parent->getResultTypes(),
+                       [](Type type) { return isa<TensorType>(type); }))
+        return failure();
+    return original->matchAndRewrite(op.getOperation(), rewriter);
+  }
+
+private:
+  std::unique_ptr<RewritePattern> original;
+};
+
 // Fuse only single-use, same-domain elementwise producers. Identity maps avoid
 // rematerialization through broadcasts/permutations. Upstream Linalg patterns
 // retain operation order and indexing; no reassociation or fast math is added.
@@ -32,6 +59,23 @@ struct ElementwiseFusionPass
       }
       return true;
     });
+    // The helper installs this cleanup independently of the fusion callback.
+    // Guard only its loop case; preserve every other upstream pattern and all
+    // standalone behavior. This matches a pinned compiler pattern, not user IR.
+    unsigned guarded = 0;
+    for (auto &pattern : patterns.getNativePatterns()) {
+      if (!pattern->getDebugName().ends_with("RemoveOutsDependency")) continue;
+      pattern = RewritePattern::create<GuardLoopDestinations>(
+          &getContext(), std::move(pattern));
+      ++guarded;
+    }
+    if (guarded != 1) {
+      getOperation().emitError("SYCL fusion expected one upstream "
+                               "RemoveOutsDependency pattern; revalidate the "
+                               "destination-preservation guard after LLVM changes");
+      signalPassFailure();
+      return;
+    }
     if (failed(applyPatternsGreedily(getOperation(), std::move(patterns)))) signalPassFailure();
   }
 };

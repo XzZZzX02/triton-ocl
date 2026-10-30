@@ -134,7 +134,24 @@ The option cooperative_load_staging requires proven independent static full
 local-buffer writes and read-only external accesses. It runs before work
 distribution. Small, nested, volatile, aliased and prior-external-write cases
 fall back. Staging-pair changes only staging in the existing forwarded stack.
-Boundary tests retain an existing fusion/bufferization failure for tensor
-recurrences as EXPECTED_COMPILE_FAILURE; it is not a runtime pass. The vector
+Historical staging evidence retains a fusion/bufferization failure for tensor
+recurrences as EXPECTED_COMPILE_FAILURE; it is not a runtime pass. The loop
+destination guard repairs that failure; use the dedicated tests below to
+require successful current execution. The vector
 option does not actually transform the current boundary kernels. See
 sycl-cooperative-staging-report.md for exact validated scope, measured gains and remaining backend limitations.
+
+
+Fusion loop-destination regression:
+
+    python-triton fusion_destination_contracts.py --output fusion-contracts.json
+    python-triton fusion_destination_semantics.py --case nested --output fusion-nested.json
+    python-triton fusion_destination_semantics.py --case ieee --output fusion-ieee.json
+    python3 audit_fusion_destination.py ../../../docs/backend/sycl-validation/fusion-destination --output audit.json
+
+The existing fusion pass protects DPS destination ties under tensor-carrying
+loops and delegates unchanged to upstream cleanup elsewhere. Exact loop counts
+0/3, nested loops and IEEE special values are tested without tolerance-based
+NaN masking. The real chain may retain two generics due to its input+destination
+uses; constant folding is measured separately from actual generic fusion.
+See docs/backend/sycl-fusion-destination-report.md for limits and raw evidence.

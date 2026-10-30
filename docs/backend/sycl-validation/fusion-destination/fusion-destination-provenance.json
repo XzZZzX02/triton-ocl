@@ -1,0 +1,13 @@
+{
+  "third_party/sycl/lib/Conversion/LinalgToAffineLoops/ElementwiseFusion.cpp": "8d0bf9233c848dce5383fb87c2694955f14f0e4c9edbf532f81c2cef703bb6af",
+  "python/test/sycl/fusion_destination_semantics.py": "a1cb7b5bc54808dfbcc98edd4eeb7e3f7724fbf436fa11a2d0df2f6647f80563",
+  "python/test/sycl/fusion_destination_contracts.py": "3306bbe8187af253ca01af44c534132496832f1a38e1ccf1368b047d2a66ecfd",
+  "python/test/sycl/fusion_destination_invariants.py": "316a5f9a51f64285db244f1c85818efa91a179b5d5679ad889b9c46a78de460e",
+  "python/test/sycl/cooperative_staging_boundaries.py": "d37092d2c29009346dd5e9e692d4f4b03b5a4e14f474d3fa6d0b4e85a8803dc8",
+  "python/test/sycl/cooperative_staging_semantics.py": "c7b7b64e756ffe1ddb68009400bcb0713fcb353da212344ce7ce750f5ce101f0",
+  "python/test/sycl/register_accumulator.py": "a8547790edac1809116467b32c1326d824e4530c2abbb70b131bdca2f380b191",
+  "python/test/sycl/model_layout_semantics.py": "54bd740743286c4f42949a8a6383178d4a0dce732e69113d394918296933a240",
+  "third_party/sycl/backend/compiler.py": "7072a844dec03f82a4098ef3fad0511245004006858b63c6fe0f419bff439e0f",
+  "third_party/sycl/lib/Conversion/LinalgToAffineLoops/CooperativeLoadStaging.cpp": "b2f52ad003966ce501f84c961b3bb546e53f0ff7ddd66263d2c924b0b719fba6",
+  "python/triton/_C/libtriton.so": "e14c680cd52fc2106aa4fc80cf80c653b54c1cd65fb50766f42839a098049254"
+}

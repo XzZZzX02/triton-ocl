@@ -22,3 +22,10 @@ Default remains disabled: modest measured gains and structural savings do
 not establish general profitability. No artificial kernel-name/shape whitelist
 is used. Combined fusion/group gains retain separate measurable effects in
 the tested sum class; all code/source hashes and raw timings remain archived.
+
+
+2026-10-31 follow-up: a loop-carried destination/bufferization failure is fixed
+by guarding only the upstream destination-removal cleanup under tensor loops.
+See sycl-fusion-destination-report.md for the 16 new contracts, runtime checks,
+200 source invariants and paired device data; the original report remains the
+record of its earlier measured compiler version.

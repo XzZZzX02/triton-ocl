@@ -1,0 +1,219 @@
+{
+  "status": "PASS",
+  "jobs": 5,
+  "contracts": 16,
+  "regressions": {
+    "pass_contracts": 150,
+    "ordered_unroll_contracts": 71,
+    "accumulator_init_contracts": 55
+  },
+  "historical_failures_repaired": 4,
+  "layout_source_invariants": 176,
+  "other_source_invariants": 24,
+  "cpu_runtime_configurations": 32,
+  "cpu_elements_checked": 148224,
+  "gpu_runtime_configurations": 104,
+  "gpu_elements_checked": 371280,
+  "timed_configurations": 96,
+  "timing_samples": 2976,
+  "performance": [
+    {
+      "case": "single",
+      "stage": false,
+      "reuse": false,
+      "identical_source": true,
+      "speedup": 1.0,
+      "round_ratios": [
+        1.0,
+        1.0014184145671177,
+        0.999964591115911
+      ]
+    },
+    {
+      "case": "single",
+      "stage": false,
+      "reuse": true,
+      "identical_source": true,
+      "speedup": 1.0014272923112384,
+      "round_ratios": [
+        1.0014184271416033,
+        1.0014272923112384,
+        1.0
+      ]
+    },
+    {
+      "case": "single",
+      "stage": true,
+      "reuse": false,
+      "identical_source": true,
+      "speedup": 0.9985924345570595,
+      "round_ratios": [
+        1.0000088526128488,
+        0.9985835944831005,
+        1.0014204293247635
+      ]
+    },
+    {
+      "case": "single",
+      "stage": true,
+      "reuse": true,
+      "identical_source": true,
+      "speedup": 0.9985855978501087,
+      "round_ratios": [
+        1.0,
+        0.9971711957002175,
+        0.9971839937853656
+      ]
+    },
+    {
+      "case": "chain",
+      "stage": false,
+      "reuse": false,
+      "identical_source": false,
+      "speedup": 1.016853636698794,
+      "round_ratios": [
+        1.016853636698794,
+        1.0182581064236933,
+        1.016853636698794
+      ]
+    },
+    {
+      "case": "chain",
+      "stage": false,
+      "reuse": true,
+      "identical_source": false,
+      "speedup": 1.015445301542777,
+      "round_ratios": [
+        1.0154274995178907,
+        1.015436535764376,
+        1.0182493284879128
+      ]
+    },
+    {
+      "case": "chain",
+      "stage": true,
+      "reuse": false,
+      "identical_source": false,
+      "speedup": 1.0154580805997138,
+      "round_ratios": [
+        1.0168625626530665,
+        1.0154580805997138,
+        1.01687734041244
+      ]
+    },
+    {
+      "case": "chain",
+      "stage": true,
+      "reuse": true,
+      "identical_source": false,
+      "speedup": 1.0182749951653451,
+      "round_ratios": [
+        1.01828378544681,
+        1.0154491669738943,
+        1.0182749951653451
+      ]
+    },
+    {
+      "case": "nested",
+      "stage": false,
+      "reuse": false,
+      "identical_source": true,
+      "speedup": 1.0000114678899084,
+      "round_ratios": [
+        1.0009346330275228,
+        0.9972527786998775,
+        1.0009182631053362
+      ]
+    },
+    {
+      "case": "nested",
+      "stage": false,
+      "reuse": true,
+      "identical_source": true,
+      "speedup": 1.0000057391444084,
+      "round_ratios": [
+        1.0041956026856467,
+        1.0009182631053362,
+        1.0
+      ]
+    },
+    {
+      "case": "nested",
+      "stage": true,
+      "reuse": false,
+      "identical_source": true,
+      "speedup": 0.9990825793282188,
+      "round_ratios": [
+        0.9995926890553828,
+        0.9990825793282188,
+        0.9981668404349171
+      ]
+    },
+    {
+      "case": "nested",
+      "stage": true,
+      "reuse": true,
+      "identical_source": true,
+      "speedup": 1.0,
+      "round_ratios": [
+        1.0014125348109442,
+        0.999586952281515,
+        1.0
+      ]
+    },
+    {
+      "case": "sum",
+      "stage": false,
+      "reuse": false,
+      "identical_source": false,
+      "speedup": 1.0266215266215266,
+      "round_ratios": [
+        1.0291537619851263,
+        1.0236682014016012,
+        1.0300810300810301
+      ]
+    },
+    {
+      "case": "sum",
+      "stage": false,
+      "reuse": true,
+      "identical_source": false,
+      "speedup": 1.0211757327578257,
+      "round_ratios": [
+        1.0261279585798817,
+        1.0176654411764705,
+        1.0211757327578257
+      ]
+    },
+    {
+      "case": "sum",
+      "stage": true,
+      "reuse": false,
+      "identical_source": false,
+      "speedup": 1.0562056737588652,
+      "round_ratios": [
+        1.0567375886524824,
+        1.013986013986014,
+        1.0642726338827102
+      ]
+    },
+    {
+      "case": "sum",
+      "stage": true,
+      "reuse": true,
+      "identical_source": false,
+      "speedup": 1.0214701123792034,
+      "round_ratios": [
+        1.05,
+        0.9931972789115646,
+        1.0209891118982029
+      ]
+    }
+  ],
+  "active_comparisons": 8,
+  "active_speedup_range": [
+    1.015445301542777,
+    1.0562056737588652
+  ],
+  "active_improved_rounds": 23
+}

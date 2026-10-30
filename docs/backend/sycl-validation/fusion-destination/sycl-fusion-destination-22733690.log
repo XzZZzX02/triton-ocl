@@ -1,0 +1,23 @@
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+third_party/sycl/lib/Conversion/LinalgToAffineLoops/ElementwiseFusion.cpp: OK
+python/test/sycl/fusion_destination_semantics.py: OK
+python/test/sycl/fusion_destination_contracts.py: OK
+python/test/sycl/cooperative_staging_boundaries.py: OK
+third_party/sycl/lib/Conversion/LinalgToAffineLoops/CooperativeLoadStaging.cpp: OK
+third_party/sycl/backend/compiler.py: OK
+python/triton/_C/libtriton.so: OK
+e14c680cd52fc2106aa4fc80cf80c653b54c1cd65fb50766f42839a098049254  python/triton/_C/libtriton.so
+h01r4n19
+gfx906:sramecc-:xnack-
+HIP_DEVICE=Device 66a1 COUNT=4
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"case": "ieee", "status": "PASS", "fuse": false, "stage": false, "reuse": false, "round": 0, "count": 3, "linalg_generics": 1, "elements_checked": 4632, "source_sha256": "fc4fade43c2cc31219480b21bf07667a2dc7c1068a938277910da8b1329e24e9", "samples_ns": [], "median_ns": null}
+{"case": "ieee", "status": "PASS", "fuse": false, "stage": false, "reuse": true, "round": 0, "count": 3, "linalg_generics": 1, "elements_checked": 4632, "source_sha256": "fc4fade43c2cc31219480b21bf07667a2dc7c1068a938277910da8b1329e24e9", "samples_ns": [], "median_ns": null}
+{"case": "ieee", "status": "PASS", "fuse": false, "stage": true, "reuse": false, "round": 0, "count": 3, "linalg_generics": 1, "elements_checked": 4632, "source_sha256": "fc4fade43c2cc31219480b21bf07667a2dc7c1068a938277910da8b1329e24e9", "samples_ns": [], "median_ns": null}
+{"case": "ieee", "status": "PASS", "fuse": false, "stage": true, "reuse": true, "round": 0, "count": 3, "linalg_generics": 1, "elements_checked": 4632, "source_sha256": "fc4fade43c2cc31219480b21bf07667a2dc7c1068a938277910da8b1329e24e9", "samples_ns": [], "median_ns": null}
+{"case": "ieee", "status": "PASS", "fuse": true, "stage": false, "reuse": false, "round": 0, "count": 3, "linalg_generics": 1, "elements_checked": 4632, "source_sha256": "fc4fade43c2cc31219480b21bf07667a2dc7c1068a938277910da8b1329e24e9", "samples_ns": [], "median_ns": null}
+{"case": "ieee", "status": "PASS", "fuse": true, "stage": false, "reuse": true, "round": 0, "count": 3, "linalg_generics": 1, "elements_checked": 4632, "source_sha256": "fc4fade43c2cc31219480b21bf07667a2dc7c1068a938277910da8b1329e24e9", "samples_ns": [], "median_ns": null}
+{"case": "ieee", "status": "PASS", "fuse": true, "stage": true, "reuse": false, "round": 0, "count": 3, "linalg_generics": 1, "elements_checked": 4632, "source_sha256": "fc4fade43c2cc31219480b21bf07667a2dc7c1068a938277910da8b1329e24e9", "samples_ns": [], "median_ns": null}
+{"case": "ieee", "status": "PASS", "fuse": true, "stage": true, "reuse": true, "round": 0, "count": 3, "linalg_generics": 1, "elements_checked": 4632, "source_sha256": "fc4fade43c2cc31219480b21bf07667a2dc7c1068a938277910da8b1329e24e9", "samples_ns": [], "median_ns": null}

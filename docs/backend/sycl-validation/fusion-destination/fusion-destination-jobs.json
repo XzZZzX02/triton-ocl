@@ -1,0 +1,55 @@
+[
+  {
+    "job": 22733687,
+    "case": "single",
+    "expected_rows": 24,
+    "arguments": [
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "job": 22733688,
+    "case": "chain",
+    "expected_rows": 24,
+    "arguments": [
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "job": 22733689,
+    "case": "nested",
+    "expected_rows": 24,
+    "arguments": [
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "job": 22733690,
+    "case": "ieee",
+    "expected_rows": 8,
+    "arguments": [
+      "--rounds",
+      "1"
+    ]
+  },
+  {
+    "job": 22733691,
+    "case": "sum",
+    "expected_rows": 24,
+    "arguments": [
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  }
+]
