@@ -69,7 +69,8 @@ def main():
             should_forward = enabled and M * N >= 128
             assert memir.count('sycl.accumulator_init_forwarded') == int(should_forward), memir
             assert memir.count('sycl.register_accumulator') == 1, memir
-            expected_tile=tiled and half and M>=8 and N>=16 and K>=16 and N%4==0
+            expected_tile=(tiled and half and M>=8 and N>=16 and K>=16 and
+                           N%4==0 and M*(N//4)>=64)
             assert ('sycl.register_tile =' in memir) == expected_tile, memir
             expected_unroll=factor>1 and K%factor==0 and K//factor>=2 and (not expected_tile or K>=32)
             assert ('sycl.ordered_reduction_unroll' in memir) == expected_unroll, memir

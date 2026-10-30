@@ -3,6 +3,12 @@
 Date: 2026-10-29. Floating inputs follow the requested IEEE scope; no new dtype
 conversion matrix or MFMA lowering is added. Device work uses `wlx -> dfcs`.
 
+Update 2026-10-30: current tiling also requires at least 64 independent
+distributed output points after four-column tiling. Earlier eligibility and
+small-layout markers in this report are historical. See
+sycl-tiling-wave-report.md for the regression, shared gate and actual
+two-size runtime validation.
+
 ## Finding and change
 
 The previous four-column schedule was legal for both f32 and widened f16

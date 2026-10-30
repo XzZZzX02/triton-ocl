@@ -1,0 +1,12 @@
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+g09r2n18
+gfx906:sramecc-:xnack-
+HIP_DEVICE=Device 66a1 COUNT=4
+728e9ae165191653ee7b03f99b61a98fc4e62a25b5a146d8cba8622697b48bdd  python/triton/_C/libtriton.so
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"initial": "zero", "initial_bits": "00000000", "dtype": "f16", "tiled": true, "factor": 4, "enabled": false, "status": "PASS", "elements_checked": 1550, "source_sha256": "6876e2aaf1e74e204ac0df10dd8f71433d81c5e505765ce38368b53ff6a98c3c"}
+{"initial": "zero", "initial_bits": "00000000", "dtype": "f16", "tiled": true, "factor": 4, "enabled": true, "status": "PASS", "elements_checked": 1550, "source_sha256": "0b33c5d951fc5e5859b9a478b42e80fd328c1e922c55c40d489055e692793670"}
+{"initial": "negative_zero", "initial_bits": "00000080", "dtype": "f16", "tiled": true, "factor": 4, "enabled": false, "status": "PASS", "elements_checked": 1550, "source_sha256": "fd0677f00c9a2224901d1a75fb9b03012abab88ac44823eca44273cd09be407c"}
+{"initial": "negative_zero", "initial_bits": "00000080", "dtype": "f16", "tiled": true, "factor": 4, "enabled": true, "status": "PASS", "elements_checked": 1550, "source_sha256": "c762a135d564b8ee5eb8defe9a920a85584e1751d334940509055946c17567cf"}

@@ -76,11 +76,12 @@ def pack_matrix(logical, row_stride, col_stride, batch_stride, dtype):
     return Tensor(storage, dtype, pointer_offset)
 
 
-def execute(case, mode, schedule='baseline'):
+def execute(case, mode, schedule='baseline', tile_shape='small'):
     import triton
     import triton.language as tl
     from triton.backends.sycl.sycl_utils import run_standalone
     globals().update(triton=triton, tl=tl)
+    BM, BN, BK = (8, 16, 16) if tile_shape == 'small' else (16, 16, 32)
 
     @triton.jit(do_not_specialize=["m", "n", "k"])
     def kernel(x, y, z, m, n, k, a_rm, a_ck, a_bs, a_base,
@@ -183,10 +184,11 @@ def execute(case, mode, schedule='baseline'):
             'sycl.register_tile_composed_accumulator', 'sycl.ordered_reduction_unroll',
             'sycl.accumulator_init_forwarded')}
         if selected in ('optimized', 'forwarded'):
+            expect_tile = half and BM * (BN // 4) >= 64
             assert markers['sycl.register_accumulator'], (case, memir)
-            assert markers['sycl.register_tile ='] == half, (case, memir)
-            assert markers['sycl.register_tile_composed_accumulator'] == half, (case, memir)
-            assert markers['sycl.ordered_reduction_unroll'] == (not half), (case, memir)
+            assert markers['sycl.register_tile ='] == expect_tile, (case, memir)
+            assert markers['sycl.register_tile_composed_accumulator'] == expect_tile, (case, memir)
+            assert markers['sycl.ordered_reduction_unroll'] == (not expect_tile or BK >= 32), (case, memir)
         assert markers['sycl.accumulator_init_forwarded'] == (selected == 'forwarded'), (case, memir)
         checks = 0
         if mode == 'run':
@@ -202,6 +204,7 @@ def execute(case, mode, schedule='baseline'):
                              source_sha256=hashlib.sha256(code.encode()).hexdigest(),
                              elements_checked=checks))
     return {"elements_checked": sum(v['elements_checked'] for v in variants), "max_abs_error": 0,
+            "tile_shape": tile_shape, "logical_tile": [BM, BN, BK],
             "schedules": variants, "local_shapes": [48, [3, 5]],
             "shape": [m, n, k],
             "batch_count": batch_count, "broadcast": batch_mode,
@@ -215,6 +218,7 @@ def main():
     parser.add_argument("--cases", nargs='+', choices=CASES)
     parser.add_argument("--all", action="store_true")
     parser.add_argument("--mode", choices=("run", "compile"), default="run")
+    parser.add_argument("--tile-shape", choices=("small", "wide"), default="small")
     parser.add_argument("--schedule", choices=("baseline", "optimized", "both", "forwarded", "init-pair"), default="baseline")
     parser.add_argument("--python", default=sys.executable)
     parser.add_argument("--timeout", type=int, default=240)
@@ -224,7 +228,7 @@ def main():
     if args.case:
         print(json.dumps({"status": "HARNESS", "sha256": SCRIPT_SHA256}), flush=True)
         print(json.dumps(dict(case=args.case, status="PASS", harness_sha256=SCRIPT_SHA256,
-                              **execute(args.case, args.mode, args.schedule))), flush=True)
+                              **execute(args.case, args.mode, args.schedule, args.tile_shape))), flush=True)
         return
     if not args.all and not args.cases:
         parser.error("choose --all, --cases or --case")
@@ -233,7 +237,8 @@ def main():
         try:
             result = subprocess.run(
                 [args.python, str(pathlib.Path(__file__).resolve()), "--case", case,
-                 "--mode", args.mode, "--schedule", args.schedule], stdout=subprocess.PIPE,
+                 "--mode", args.mode, "--schedule", args.schedule,
+                 "--tile-shape", args.tile_shape], stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT, text=True, timeout=args.timeout)
         except subprocess.TimeoutExpired as error:
             return {"case": case, "status": "TIMEOUT", "output_tail": str(error.stdout)[-3000:]}

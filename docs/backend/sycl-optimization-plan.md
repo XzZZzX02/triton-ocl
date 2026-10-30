@@ -62,6 +62,8 @@ and all-on schedules; preserve source hashes and failed experiments. Avoid
 claiming pass independence when the transformations do not both match the
 tested program.
 
-The new boundary matrix identifies an 8x16x16 f16 tiling regression. Resolve
-that independently and recheck the initializer/tile/unroll combinations before
-claiming broad schedule profitability.
+The 8x16x16 f16 tiling regression is handled by the output-parallelism gate:
+require at least 64 distributed output points after the four-column tile.
+The follow-up reruns small and active layouts plus initializer/unroll
+combinations; see sycl-tiling-wave-report.md. Broader model coverage and
+additional pass interactions remain open.

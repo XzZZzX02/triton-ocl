@@ -47,10 +47,11 @@ def main():
         code = compiled.asm['sycl']
         code = code.decode() if isinstance(code, bytes) else code
         actual_hash = hashlib.sha256(code.encode()).hexdigest()
-        expected_hash = old_hash if half else before[config[:-1] + (False,)]
+        keeps_tiling = half and M*(N//4)>=64
+        expected_hash = old_hash if keeps_tiling else before[config[:-1] + (False,)]
         assert actual_hash == expected_hash, (config, actual_hash, expected_hash)
         memir = str(compiled.asm['memir'])
-        applies = tiled and half and M >= 8 and N >= 16 and K >= 16
+        applies = tiled and half and M >= 8 and N >= 16 and K >= 16 and M*(N//4)>=64
         assert ('sycl.register_tile =' in memir) == applies, config
         assert ('sycl.register_tile_composed_accumulator' in memir) == (applies and enabled), config
         result.append(dict(shape=[M,N,K], ta=ta, tb=tb, half=half,

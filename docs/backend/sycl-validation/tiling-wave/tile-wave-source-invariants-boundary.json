@@ -1,0 +1,722 @@
+[
+  {
+    "shape": [
+      4,
+      8,
+      8
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "special": false,
+    "tiled": false,
+    "unroll": 1,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "73c5728d9594283d693808f76dacf65f01647a470ecddabb23fe25c6cfd408f6",
+    "expected_sha256": "73c5728d9594283d693808f76dacf65f01647a470ecddabb23fe25c6cfd408f6",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      4,
+      8,
+      8
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "special": false,
+    "tiled": false,
+    "unroll": 1,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "73c5728d9594283d693808f76dacf65f01647a470ecddabb23fe25c6cfd408f6",
+    "expected_sha256": "73c5728d9594283d693808f76dacf65f01647a470ecddabb23fe25c6cfd408f6",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      4,
+      8,
+      8
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "special": false,
+    "tiled": false,
+    "unroll": 4,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "34b6a00c57d6d20cf93ce178be225656cb771257945318e4d7abdf82b0842979",
+    "expected_sha256": "34b6a00c57d6d20cf93ce178be225656cb771257945318e4d7abdf82b0842979",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      4,
+      8,
+      8
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "special": false,
+    "tiled": false,
+    "unroll": 4,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "34b6a00c57d6d20cf93ce178be225656cb771257945318e4d7abdf82b0842979",
+    "expected_sha256": "34b6a00c57d6d20cf93ce178be225656cb771257945318e4d7abdf82b0842979",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      4,
+      8,
+      8
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "special": false,
+    "tiled": true,
+    "unroll": 1,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "73c5728d9594283d693808f76dacf65f01647a470ecddabb23fe25c6cfd408f6",
+    "expected_sha256": "73c5728d9594283d693808f76dacf65f01647a470ecddabb23fe25c6cfd408f6",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      4,
+      8,
+      8
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "special": false,
+    "tiled": true,
+    "unroll": 1,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "73c5728d9594283d693808f76dacf65f01647a470ecddabb23fe25c6cfd408f6",
+    "expected_sha256": "73c5728d9594283d693808f76dacf65f01647a470ecddabb23fe25c6cfd408f6",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      4,
+      8,
+      8
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "special": false,
+    "tiled": true,
+    "unroll": 4,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "34b6a00c57d6d20cf93ce178be225656cb771257945318e4d7abdf82b0842979",
+    "expected_sha256": "34b6a00c57d6d20cf93ce178be225656cb771257945318e4d7abdf82b0842979",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      4,
+      8,
+      8
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "special": false,
+    "tiled": true,
+    "unroll": 4,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "34b6a00c57d6d20cf93ce178be225656cb771257945318e4d7abdf82b0842979",
+    "expected_sha256": "34b6a00c57d6d20cf93ce178be225656cb771257945318e4d7abdf82b0842979",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "special": false,
+    "tiled": false,
+    "unroll": 1,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "fb6a4a4cd7330d93d4d3bb2877518b7542b2703af0ea7fd4cb1807f3cc55b768",
+    "expected_sha256": "fb6a4a4cd7330d93d4d3bb2877518b7542b2703af0ea7fd4cb1807f3cc55b768",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "special": false,
+    "tiled": false,
+    "unroll": 1,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "c8831258098f2a9a69818fce9339ce2d709f58cec30a57aa23d6137e13b895a5",
+    "expected_sha256": "c8831258098f2a9a69818fce9339ce2d709f58cec30a57aa23d6137e13b895a5",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "special": false,
+    "tiled": false,
+    "unroll": 4,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "473ded58edc910a28dc007b86b521df4a8ced99c51937ee5bb50242540fb3b50",
+    "expected_sha256": "473ded58edc910a28dc007b86b521df4a8ced99c51937ee5bb50242540fb3b50",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "special": false,
+    "tiled": false,
+    "unroll": 4,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "68cb9228baeea32ed0d0c61115445ae1164f78f0e04021ad2d5097beabd35ff8",
+    "expected_sha256": "68cb9228baeea32ed0d0c61115445ae1164f78f0e04021ad2d5097beabd35ff8",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "special": false,
+    "tiled": true,
+    "unroll": 1,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "fb6a4a4cd7330d93d4d3bb2877518b7542b2703af0ea7fd4cb1807f3cc55b768",
+    "expected_sha256": "fb6a4a4cd7330d93d4d3bb2877518b7542b2703af0ea7fd4cb1807f3cc55b768",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "special": false,
+    "tiled": true,
+    "unroll": 1,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "c8831258098f2a9a69818fce9339ce2d709f58cec30a57aa23d6137e13b895a5",
+    "expected_sha256": "c8831258098f2a9a69818fce9339ce2d709f58cec30a57aa23d6137e13b895a5",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "special": false,
+    "tiled": true,
+    "unroll": 4,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "473ded58edc910a28dc007b86b521df4a8ced99c51937ee5bb50242540fb3b50",
+    "expected_sha256": "473ded58edc910a28dc007b86b521df4a8ced99c51937ee5bb50242540fb3b50",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "special": false,
+    "tiled": true,
+    "unroll": 4,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "68cb9228baeea32ed0d0c61115445ae1164f78f0e04021ad2d5097beabd35ff8",
+    "expected_sha256": "68cb9228baeea32ed0d0c61115445ae1164f78f0e04021ad2d5097beabd35ff8",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "special": false,
+    "tiled": false,
+    "unroll": 1,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "2a165432498a2975f722c60f62c3a042cdcfe2d371f175b8b986fa823a959fc8",
+    "expected_sha256": "2a165432498a2975f722c60f62c3a042cdcfe2d371f175b8b986fa823a959fc8",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "special": false,
+    "tiled": false,
+    "unroll": 1,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "a4499c91185d3f927442064c85ca1609d7bc186b7f15fda4fc1f2af71771f712",
+    "expected_sha256": "a4499c91185d3f927442064c85ca1609d7bc186b7f15fda4fc1f2af71771f712",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "special": false,
+    "tiled": false,
+    "unroll": 4,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "90fc8fb7d8e8e66da85bcffd9fadaaa582c3cdf876133313923112330a5b5015",
+    "expected_sha256": "90fc8fb7d8e8e66da85bcffd9fadaaa582c3cdf876133313923112330a5b5015",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "special": false,
+    "tiled": false,
+    "unroll": 4,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "6ae518d006ad1bf9fd482bce7ddc88b09e49dc7e2e2e28ddb37d1b9cac0cf16e",
+    "expected_sha256": "6ae518d006ad1bf9fd482bce7ddc88b09e49dc7e2e2e28ddb37d1b9cac0cf16e",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "special": false,
+    "tiled": true,
+    "unroll": 1,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "2a165432498a2975f722c60f62c3a042cdcfe2d371f175b8b986fa823a959fc8",
+    "expected_sha256": "2a165432498a2975f722c60f62c3a042cdcfe2d371f175b8b986fa823a959fc8",
+    "changed": true,
+    "tile_fallback": true
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "special": false,
+    "tiled": true,
+    "unroll": 1,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "a4499c91185d3f927442064c85ca1609d7bc186b7f15fda4fc1f2af71771f712",
+    "expected_sha256": "a4499c91185d3f927442064c85ca1609d7bc186b7f15fda4fc1f2af71771f712",
+    "changed": true,
+    "tile_fallback": true
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "special": false,
+    "tiled": true,
+    "unroll": 4,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "90fc8fb7d8e8e66da85bcffd9fadaaa582c3cdf876133313923112330a5b5015",
+    "expected_sha256": "90fc8fb7d8e8e66da85bcffd9fadaaa582c3cdf876133313923112330a5b5015",
+    "changed": true,
+    "tile_fallback": true
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "special": false,
+    "tiled": true,
+    "unroll": 4,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "6ae518d006ad1bf9fd482bce7ddc88b09e49dc7e2e2e28ddb37d1b9cac0cf16e",
+    "expected_sha256": "6ae518d006ad1bf9fd482bce7ddc88b09e49dc7e2e2e28ddb37d1b9cac0cf16e",
+    "changed": true,
+    "tile_fallback": true
+  },
+  {
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f32",
+    "special": false,
+    "tiled": false,
+    "unroll": 1,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "a99fd83c448c20c35db765383e40dba076be4637eaf629c6b20d4b48e54b1d59",
+    "expected_sha256": "a99fd83c448c20c35db765383e40dba076be4637eaf629c6b20d4b48e54b1d59",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f32",
+    "special": false,
+    "tiled": false,
+    "unroll": 1,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "656348624a37622753e74344ec8a899ffb3dfa6fdc65ba5f96d50430f9e5daec",
+    "expected_sha256": "656348624a37622753e74344ec8a899ffb3dfa6fdc65ba5f96d50430f9e5daec",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f32",
+    "special": false,
+    "tiled": false,
+    "unroll": 4,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "6913197844b1f939690faf449f65514384a3e5aaedf0e44c02f72635752ad468",
+    "expected_sha256": "6913197844b1f939690faf449f65514384a3e5aaedf0e44c02f72635752ad468",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f32",
+    "special": false,
+    "tiled": false,
+    "unroll": 4,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "e7623bd063bdf12c26a38762edc3cc77739055d1e1d161b669d75f9d5a0bb552",
+    "expected_sha256": "e7623bd063bdf12c26a38762edc3cc77739055d1e1d161b669d75f9d5a0bb552",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f32",
+    "special": false,
+    "tiled": true,
+    "unroll": 1,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "a99fd83c448c20c35db765383e40dba076be4637eaf629c6b20d4b48e54b1d59",
+    "expected_sha256": "a99fd83c448c20c35db765383e40dba076be4637eaf629c6b20d4b48e54b1d59",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f32",
+    "special": false,
+    "tiled": true,
+    "unroll": 1,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "656348624a37622753e74344ec8a899ffb3dfa6fdc65ba5f96d50430f9e5daec",
+    "expected_sha256": "656348624a37622753e74344ec8a899ffb3dfa6fdc65ba5f96d50430f9e5daec",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f32",
+    "special": false,
+    "tiled": true,
+    "unroll": 4,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "6913197844b1f939690faf449f65514384a3e5aaedf0e44c02f72635752ad468",
+    "expected_sha256": "6913197844b1f939690faf449f65514384a3e5aaedf0e44c02f72635752ad468",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f32",
+    "special": false,
+    "tiled": true,
+    "unroll": 4,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "e7623bd063bdf12c26a38762edc3cc77739055d1e1d161b669d75f9d5a0bb552",
+    "expected_sha256": "e7623bd063bdf12c26a38762edc3cc77739055d1e1d161b669d75f9d5a0bb552",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      16,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "special": false,
+    "tiled": false,
+    "unroll": 1,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "2a36b6e3ed5fda1d7bdf25d73e7b511bf74b705bb1365c03fe695db760589c19",
+    "expected_sha256": "2a36b6e3ed5fda1d7bdf25d73e7b511bf74b705bb1365c03fe695db760589c19",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      16,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "special": false,
+    "tiled": false,
+    "unroll": 1,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "71da945c49572b8208a60507de11a02abcbeba6d367c00b111f035b3c41f2a10",
+    "expected_sha256": "71da945c49572b8208a60507de11a02abcbeba6d367c00b111f035b3c41f2a10",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      16,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "special": false,
+    "tiled": false,
+    "unroll": 4,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "6e8249f3b4819d81a1238a1b1c4e07651edae432bf8f4ce719bb28adb99f547c",
+    "expected_sha256": "6e8249f3b4819d81a1238a1b1c4e07651edae432bf8f4ce719bb28adb99f547c",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      16,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "special": false,
+    "tiled": false,
+    "unroll": 4,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "0d2dfa3b3ad69dbcfb8dc6a133763b52c50e034dc54cb3a4dcdb760beaef4b91",
+    "expected_sha256": "0d2dfa3b3ad69dbcfb8dc6a133763b52c50e034dc54cb3a4dcdb760beaef4b91",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      16,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "special": false,
+    "tiled": true,
+    "unroll": 1,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "988b293ac5350ab62fb82076b81a8b172bd5be4bfe0a2dcb708efe9ac0ffe1a4",
+    "expected_sha256": "988b293ac5350ab62fb82076b81a8b172bd5be4bfe0a2dcb708efe9ac0ffe1a4",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      16,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "special": false,
+    "tiled": true,
+    "unroll": 1,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "7615096e95033beee84693d607a28702e078e90b01de310f804553d339f4b57b",
+    "expected_sha256": "7615096e95033beee84693d607a28702e078e90b01de310f804553d339f4b57b",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      16,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "special": false,
+    "tiled": true,
+    "unroll": 4,
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "2bc0c5613ab386660750df11eaeb49f33eaab1ddaaee2f70305849dfdbc25750",
+    "expected_sha256": "2bc0c5613ab386660750df11eaeb49f33eaab1ddaaee2f70305849dfdbc25750",
+    "changed": false,
+    "tile_fallback": false
+  },
+  {
+    "shape": [
+      16,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "special": false,
+    "tiled": true,
+    "unroll": 4,
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "c066e667efdea10dbc1d8f41c12bccc4185c4bcf598af9f601a9ccbc44484bf9",
+    "expected_sha256": "c066e667efdea10dbc1d8f41c12bccc4185c4bcf598af9f601a9ccbc44484bf9",
+    "changed": false,
+    "tile_fallback": false
+  }
+]

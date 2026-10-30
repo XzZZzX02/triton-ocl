@@ -185,7 +185,7 @@ def main():
                 count('sycl.distribution_depth',
                       1 if name in ('parallel','reduction','triangular') else 0))
 
-    def contraction(n=32, k=32, alias=False, permuted=False, half=False, mixed=False):
+    def contraction(n=32, k=32, alias=False, permuted=False, half=False, mixed=False, m=32):
         right='%a' if alias else '%b'
         aindices='%k,%r' if permuted else '%r,%k'
         dtype='f16' if half else 'f32'
@@ -200,7 +200,7 @@ def main():
           %a=memref.alloc() : memref<32x32x{dtype}>
           %b=memref.alloc() : memref<32x32x{rhs_dtype}>
           %c=memref.alloc() : memref<32x32xf32>
-          affine.for %r=0 to 32 {{
+          affine.for %r=0 to {m} {{
             affine.for %n=0 to {n} {{
               affine.for %k=0 to {k} {{
                 %x=affine.load %a[{aindices}] : memref<32x32x{dtype}>
@@ -242,7 +242,18 @@ def main():
                     assert s.count('memref.store') == 4, s
             run('tiling_'+name+'_'+'_'.join(order),contraction(**kw),order,check_tiling)
 
-    def batched_contraction(depth, half=True):
+    for m, n, expected in ((8, 16, 0), (12, 16, 0), (15, 16, 0),
+                           (16, 16, 1), (17, 16, 1), (8, 32, 1)):
+        for promoted in (False, True):
+            pipeline = ('work_distribution',) + (('register_accumulator',) if promoted else ())
+            pipeline += ('matmul_register_tiling',)
+            source = contraction(m=m, n=n, half=True)
+            run(f'tiling_wavefront_{m}_{n}_{promoted}', source, pipeline,
+                count('sycl.register_tile =', expected))
+            run(f'tiling_wavefront_repeat_{m}_{n}_{promoted}', source,
+                pipeline + ('matmul_register_tiling',), count('sycl.register_tile =', expected))
+
+    def batched_contraction(depth, half=True, m=32, n=32, batches=2):
         dtype='f16' if half else 'f32'
         widening='''%xf=arith.extf %x : f16 to f32
                   %yf=arith.extf %y : f16 to f32''' if half else ''
@@ -251,9 +262,9 @@ def main():
           %a=memref.alloc() : memref<2x32x32x{dtype}>
           %b=memref.alloc() : memref<2x32x32x{dtype}>
           %c=memref.alloc() : memref<2x32x32xf32>
-          affine.for %batch=0 to 2 {{
-            affine.for %r=0 to 32 {{
-              affine.for %n=0 to 32 {{
+          affine.for %batch=0 to {batches} {{
+            affine.for %r=0 to {m} {{
+              affine.for %n=0 to {n} {{
                 affine.for %k=0 to 32 {{
                   %x=affine.load %a[%batch,%r,%k] : memref<2x32x32x{dtype}>
                   %y=affine.load %b[%batch,%k,%n] : memref<2x32x32x{dtype}>
@@ -274,6 +285,12 @@ def main():
         ('matmul_register_tiling',),count('sycl.register_tile',1))
     run('tiling_batched_f32_rejected',batched_contraction(3,half=False),
         ('matmul_register_tiling',),count('sycl.register_tile',0))
+    for batches, expected in ((1, 0), (2, 1)):
+        for promoted in (False, True):
+            source = batched_contraction(3, m=8, n=16, batches=batches)
+            pipeline = (('register_accumulator',) if promoted else ()) + ('matmul_register_tiling',)
+            run(f'tiling_wavefront_physical_batches_{batches}_{promoted}', source,
+                pipeline, count('sycl.register_tile =', expected))
     pathlib.Path(args.output).write_text(json.dumps(rows,indent=2)+'\n')
     print(json.dumps(dict(passed=len(rows),cases=rows)))
 

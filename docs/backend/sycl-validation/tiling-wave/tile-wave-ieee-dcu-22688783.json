@@ -1,0 +1,46 @@
+[
+  {
+    "initial": "subnormal",
+    "initial_bits": "01000000",
+    "dtype": "f32",
+    "tiled": false,
+    "factor": 4,
+    "enabled": false,
+    "status": "PASS",
+    "elements_checked": 1550,
+    "source_sha256": "139b587bdfac8a522365ec4488ea556a46eb8e847a35b85b763ce25d4b771a52"
+  },
+  {
+    "initial": "subnormal",
+    "initial_bits": "01000000",
+    "dtype": "f32",
+    "tiled": false,
+    "factor": 4,
+    "enabled": true,
+    "status": "PASS",
+    "elements_checked": 1550,
+    "source_sha256": "9af1fc1dbae44c2eca0083e3555a70ac7381989bee761e20c04db585b916e6ef"
+  },
+  {
+    "initial": "negative_subnormal",
+    "initial_bits": "01000080",
+    "dtype": "f32",
+    "tiled": false,
+    "factor": 4,
+    "enabled": false,
+    "status": "PASS",
+    "elements_checked": 1550,
+    "source_sha256": "38d16552c80bd4258ab0a5676ab6b0e663bc33bd31d071c2fc948d242452cb65"
+  },
+  {
+    "initial": "negative_subnormal",
+    "initial_bits": "01000080",
+    "dtype": "f32",
+    "tiled": false,
+    "factor": 4,
+    "enabled": true,
+    "status": "PASS",
+    "elements_checked": 1550,
+    "source_sha256": "7e2d6ff4e685e1e693a160171b53d374028910145badacdc5b5bf70b7b652888"
+  }
+]

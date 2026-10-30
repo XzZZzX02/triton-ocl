@@ -137,7 +137,8 @@ def main():
                             source_sha256=code_hash,
                             samples_ns=samples,median_ns=statistics.median(samples) if samples else None,
                             private_loops=str(c.asm['memir']).count('sycl.thread_private'))
-                        should_tile=tiled and distributed and M>=8 and N>=16 and K>=16 and half
+                        should_tile=(tiled and distributed and M>=8 and N>=16 and K>=16 and
+                                     N%4==0 and M*(N//4)>=64 and half)
                         assert ('sycl.register_tile' in str(c.asm['memir'])) == should_tile,row
                         should_compose=enabled and should_tile
                         assert ('sycl.register_tile_composed_accumulator' in str(c.asm['memir'])) == should_compose,row

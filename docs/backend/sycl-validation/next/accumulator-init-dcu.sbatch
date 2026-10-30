@@ -9,6 +9,7 @@
 #SBATCH -J sycl-init-forward
 #SBATCH -D /public/home/dtune/zzx/triton
 #SBATCH -o /public/home/dtune/zzx/triton/logs/sycl-init-forward-%j.log
+# Current compiler rerun; historical timings require their archived compiler/harness.
 set -eo pipefail
 base=/public/home/dtune/zzx/triton
 source "$base/env.sh"
@@ -19,7 +20,7 @@ export ACPP_APPDB_DIR=/tmp/sycl-init-${SLURM_JOB_ID}/appdb
 export TRITON_CACHE_DIR=/tmp/sycl-init-${SLURM_JOB_ID}/cache
 mkdir -p "$TMPDIR" "$ACPP_APPDB_DIR" "$TRITON_CACHE_DIR"
 cd /work1/dtune/zzx/triton/triton-ocl
-test "$(sha256sum python/test/sycl/accumulator_init_semantics.py | cut -d ' ' -f1)" = 0a91bc5588b0463897f3ed0b78249971e8aec14eecfe1524fa8a478a7f8743d3
+test "$(sha256sum python/test/sycl/accumulator_init_semantics.py | cut -d ' ' -f1)" = 73dc98b12bbc95e939a77046a18a3b5b5a9e6f88e862b09e9a3726cc6d67962a
 test "$(sha256sum third_party/sycl/lib/Conversion/LinalgToAffineLoops/AccumulatorInitForwarding.cpp | cut -d ' ' -f1)" = 7385025e2f87f3263d508c9e8d13c828c0e633c828318f550008a38d4e434a03
 hostname
 /public/home/dtune/zzx/acpp-build/hip_probe

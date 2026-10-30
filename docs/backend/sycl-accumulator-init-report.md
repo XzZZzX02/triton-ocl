@@ -126,3 +126,8 @@ Job wrappers are in sycl-validation/next/accumulator-init*.sbatch. Historical
 jobs require their measured source; current wrappers pin the final benchmark
 and pass where applicable. Do not use the current gated source to claim a
 literal replay of the pre-threshold small-output measurement.
+
+Follow-up 2026-10-30: sycl-tiling-wave-report.md resolves the small f16 tiling
+regression using an output-parallelism gate. This report and its raw runs
+remain the historical initializer-forwarding experiment; the follow-up reruns
+actual tiling, initializer forwarding and unroll combinations separately.

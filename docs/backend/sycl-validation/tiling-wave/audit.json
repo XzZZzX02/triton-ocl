@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "completed_gpu_jobs": 22,
+  "contracts": {
+    "pass_contracts": 150,
+    "ordered_unroll_contracts": 71,
+    "accumulator_init_contracts": 55
+  },
+  "source_invariants": {
+    "initial": {
+      "count": 56,
+      "changed": 8
+    },
+    "boundary": {
+      "count": 40,
+      "changed": 4
+    }
+  },
+  "layouts": {
+    "small": {
+      "cpu_cases": 44,
+      "gpu_cases": 44,
+      "active_gpu_tile_schedules": 0,
+      "elements_per_device": 28676
+    },
+    "wide": {
+      "cpu_cases": 44,
+      "gpu_cases": 44,
+      "active_gpu_tile_schedules": 44,
+      "elements_per_device": 28676
+    }
+  },
+  "ieee": {
+    "f32": {
+      "cpu_cases": 16,
+      "gpu_cases": 16,
+      "elements_per_device": 24800
+    },
+    "f16": {
+      "cpu_cases": 16,
+      "gpu_cases": 16,
+      "elements_per_device": 24800
+    }
+  },
+  "performance_rows": 132,
+  "performance_elements": 184320,
+  "active_tiling_comparisons": 12,
+  "active_speedup_range": [
+    1.0435274409014763,
+    1.0966487323666918
+  ],
+  "active_nonregressing_rounds": 36
+}

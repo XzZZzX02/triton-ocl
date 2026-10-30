@@ -1,0 +1,66 @@
+[
+  {
+    "dtype": "f32",
+    "initials": [
+      "zero",
+      "negative_zero"
+    ],
+    "job": 22688780
+  },
+  {
+    "dtype": "f32",
+    "initials": [
+      "finite",
+      "positive_inf"
+    ],
+    "job": 22688781
+  },
+  {
+    "dtype": "f32",
+    "initials": [
+      "negative_inf",
+      "nan"
+    ],
+    "job": 22688782
+  },
+  {
+    "dtype": "f32",
+    "initials": [
+      "subnormal",
+      "negative_subnormal"
+    ],
+    "job": 22688783
+  },
+  {
+    "dtype": "f16",
+    "initials": [
+      "zero",
+      "negative_zero"
+    ],
+    "job": 22688784
+  },
+  {
+    "dtype": "f16",
+    "initials": [
+      "finite",
+      "positive_inf"
+    ],
+    "job": 22688785
+  },
+  {
+    "dtype": "f16",
+    "initials": [
+      "negative_inf",
+      "nan"
+    ],
+    "job": 22688786
+  },
+  {
+    "dtype": "f16",
+    "initials": [
+      "subnormal",
+      "negative_subnormal"
+    ],
+    "job": 22688787
+  }
+]

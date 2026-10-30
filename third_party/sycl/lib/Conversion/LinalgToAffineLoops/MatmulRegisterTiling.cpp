@@ -10,6 +10,42 @@
 
 using namespace mlir;
 namespace {
+// Four-column register tiling trades work-items for scalar reuse. Keep at
+// least one gfx906 wavefront of independent distributed output points. Count
+// batch loops in the same plan, but never Triton grid/program IDs: separate
+// work-groups cannot fill one another's wavefronts. Saturate to avoid overflow.
+static bool hasEnoughTiledOutputWork(affine::AffineForOp columns,
+                                    int64_t tile) {
+  constexpr uint64_t minimumWorkItems = 64;
+  uint64_t count = 1;
+  bool innermost = true;
+  auto current = columns;
+  while (current) {
+    if (!current.hasConstantBounds() || current.getConstantLowerBound() != 0 ||
+        current.getStep() != 1 || !current->hasAttr("sycl.parallel"))
+      return false;
+    int64_t extent = current.getConstantUpperBound();
+    if (innermost) {
+      if (tile <= 0 || extent % tile) return false;
+      extent /= tile;
+      innermost = false;
+    }
+    if (extent <= 0) return false;
+    auto size = static_cast<uint64_t>(extent);
+    if (count < minimumWorkItems) {
+      if (size >= minimumWorkItems ||
+          count >= (minimumWorkItems + size - 1) / size)
+        count = minimumWorkItems;
+      else
+        count *= size;
+    }
+    if (current->hasAttr("sycl.distribute"))
+      return count >= minimumWorkItems;
+    current = current->getParentOfType<affine::AffineForOp>();
+  }
+  return false;
+}
+
 static bool hasDistributedOutputNest(affine::AffineForOp rows,
                                      affine::AffineForOp columns) {
   auto root = rows;
@@ -39,6 +75,8 @@ static bool tilePromotedContraction(affine::AffineForOp columns,
       rows.getConstantUpperBound() < 8 ||
       columns.getConstantUpperBound() < 16 ||
       columns.getConstantUpperBound() % tile)
+    return false;
+  if (!hasEnoughTiledOutputWork(columns, tile))
     return false;
 
   memref::LoadOp initial;
@@ -229,6 +267,7 @@ struct MatmulRegisterTilingPass
           reduction.getStep()!=1 || columns.getStep()!=1 || rows.getStep()!=1 ||
           reduction.getConstantUpperBound()<16 || columns.getConstantUpperBound()<16 ||
           rows.getConstantUpperBound()<8 || columns.getConstantUpperBound()%tile) continue;
+      if (!hasEnoughTiledOutputWork(columns, tile)) continue;
       affine::AffineStoreOp store;
       SmallVector<affine::AffineLoadOp> loads;
       bool legal=true;

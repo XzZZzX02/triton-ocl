@@ -33,12 +33,15 @@ def main():
         code=c.asm['sycl']
         code=code.decode() if isinstance(code,bytes) else code
         actual=hashlib.sha256(code.encode()).hexdigest()
-        expected=before[key[:-1]+(False,)] if M*N<128 else old
+        reference_tiled = False if half and M*(N//4)<64 else tiled
+        reference_enabled = enabled and M*N>=128
+        expected=before[key[:4]+(reference_tiled,factor,reference_enabled)]
         assert actual==expected,(key,actual,expected)
         assert ('sycl.accumulator_init_forwarded' in str(c.asm['memir'])) == (enabled and M*N>=128),key
         rows.append(dict(shape=shape,layout=layout,dtype=dtype,special=special,
             tiled=tiled,unroll=factor,enabled=enabled,status='PASS',source_sha256=actual,
-            expected_sha256=expected,changed=actual!=old))
+            expected_sha256=expected,changed=actual!=old,
+            tile_fallback=reference_tiled!=tiled))
         pathlib.Path(args.output).write_text(json.dumps(rows,indent=2)+'\n')
     print(json.dumps(dict(status='PASS',configurations=len(rows),changed=sum(r['changed'] for r in rows))))
 

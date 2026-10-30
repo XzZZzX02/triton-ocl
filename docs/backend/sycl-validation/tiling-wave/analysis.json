@@ -1,0 +1,1127 @@
+{
+  "status": "PASS",
+  "rows": 132,
+  "jobs": [
+    {
+      "input": "tile-wave-dcu-22688636.json",
+      "mode": "combined",
+      "shape": [
+        8,
+        16,
+        16
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "rows": 24,
+      "elements_checked": 18432,
+      "comparisons": [
+        {
+          "axis": "tiling",
+          "before_ns": 93122,
+          "after_ns": 93441,
+          "speedup": 0.9965860810564955,
+          "round_speedups": [
+            0.9982740507279003,
+            0.9965860810564955,
+            0.9965860810564955
+          ],
+          "nonregressing_rounds": 0,
+          "identical_source": true,
+          "source_bytes_delta": 0,
+          "initializer": false,
+          "unroll": 1,
+          "active": false
+        },
+        {
+          "axis": "tiling",
+          "before_ns": 92162,
+          "after_ns": 92321,
+          "speedup": 0.998277748291288,
+          "round_speedups": [
+            1.0017252416965963,
+            0.9982669165195351,
+            0.998277748291288
+          ],
+          "nonregressing_rounds": 1,
+          "identical_source": true,
+          "source_bytes_delta": 0,
+          "initializer": false,
+          "unroll": 4,
+          "active": false
+        },
+        {
+          "axis": "tiling",
+          "before_ns": 93281,
+          "after_ns": 93442,
+          "speedup": 0.9982770060572334,
+          "round_speedups": [
+            0.9999892980597382,
+            0.9948931078323486,
+            0.9982770060572334
+          ],
+          "nonregressing_rounds": 0,
+          "identical_source": true,
+          "source_bytes_delta": 0,
+          "initializer": true,
+          "unroll": 1,
+          "active": false
+        },
+        {
+          "axis": "tiling",
+          "before_ns": 92162,
+          "after_ns": 92161,
+          "speedup": 1.0000108505767082,
+          "round_speedups": [
+            1.0017391115313965,
+            0.99828856152513,
+            1.0017360922733043
+          ],
+          "nonregressing_rounds": 2,
+          "identical_source": true,
+          "source_bytes_delta": 0,
+          "initializer": true,
+          "unroll": 4,
+          "active": false
+        }
+      ],
+      "initializer_comparisons": [
+        {
+          "axis": "initializer",
+          "before_ns": 93122,
+          "after_ns": 93281,
+          "speedup": 0.9982954728186876,
+          "round_speedups": [
+            0.996586044520548,
+            1.0000107387162938,
+            0.9982954728186876
+          ],
+          "nonregressing_rounds": 1,
+          "identical_source": false,
+          "source_bytes_delta": -347,
+          "tiled": false,
+          "unroll": 1
+        },
+        {
+          "axis": "initializer",
+          "before_ns": 92162,
+          "after_ns": 92162,
+          "speedup": 1.0,
+          "round_speedups": [
+            1.0017252416965963,
+            0.9999891495410256,
+            0.998277748291288
+          ],
+          "nonregressing_rounds": 1,
+          "identical_source": false,
+          "source_bytes_delta": -347,
+          "tiled": false,
+          "unroll": 4
+        },
+        {
+          "axis": "initializer",
+          "before_ns": 93441,
+          "after_ns": 93442,
+          "speedup": 0.9999892981742685,
+          "round_speedups": [
+            0.9982983914983786,
+            0.9983119477772199,
+            0.9999892981742685
+          ],
+          "nonregressing_rounds": 0,
+          "identical_source": false,
+          "source_bytes_delta": -347,
+          "tiled": true,
+          "unroll": 1
+        },
+        {
+          "axis": "initializer",
+          "before_ns": 92321,
+          "after_ns": 92161,
+          "speedup": 1.0017360922733043,
+          "round_speedups": [
+            1.0017391115313965,
+            1.0000108318890815,
+            1.0017360922733043
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": -347,
+          "tiled": true,
+          "unroll": 4
+        }
+      ],
+      "unroll_comparisons": [
+        {
+          "axis": "unroll",
+          "before_ns": 93122,
+          "after_ns": 92162,
+          "speedup": 1.0104164406154381,
+          "round_speedups": [
+            1.008676343154246,
+            1.0104274042165342,
+            1.0104164406154381
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1326,
+          "initializer": false,
+          "tiled": false
+        },
+        {
+          "axis": "unroll",
+          "before_ns": 93441,
+          "after_ns": 92321,
+          "speedup": 1.0121315843632543,
+          "round_speedups": [
+            1.0121634964898385,
+            1.0121315843632543,
+            1.0121315843632543
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1326,
+          "initializer": false,
+          "tiled": true
+        },
+        {
+          "axis": "unroll",
+          "before_ns": 93281,
+          "after_ns": 92162,
+          "speedup": 1.01214166359237,
+          "round_speedups": [
+            1.0138778876097265,
+            1.0104055901564637,
+            1.0103985008827894
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1326,
+          "initializer": true,
+          "tiled": false
+        },
+        {
+          "axis": "unroll",
+          "before_ns": 93442,
+          "after_ns": 92161,
+          "speedup": 1.0138995887631428,
+          "round_speedups": [
+            1.0156520037825676,
+            1.013853986135182,
+            1.0138995887631428
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1326,
+          "initializer": true,
+          "tiled": true
+        }
+      ]
+    },
+    {
+      "input": "tile-wave-dcu-22688637.json",
+      "mode": "combined",
+      "shape": [
+        8,
+        16,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "rows": 24,
+      "elements_checked": 18432,
+      "comparisons": [
+        {
+          "axis": "tiling",
+          "before_ns": 157284,
+          "after_ns": 157124,
+          "speedup": 1.0010183040146636,
+          "round_speedups": [
+            1.0030452842690043,
+            0.9979718087778081,
+            1.0010183040146636
+          ],
+          "nonregressing_rounds": 2,
+          "identical_source": true,
+          "source_bytes_delta": 0,
+          "initializer": false,
+          "unroll": 1,
+          "active": false
+        },
+        {
+          "axis": "tiling",
+          "before_ns": 155043,
+          "after_ns": 155043,
+          "speedup": 1.0,
+          "round_speedups": [
+            0.9989615784008308,
+            1.0020703933747412,
+            1.0010265747268925
+          ],
+          "nonregressing_rounds": 2,
+          "identical_source": true,
+          "source_bytes_delta": 0,
+          "initializer": false,
+          "unroll": 4,
+          "active": false
+        },
+        {
+          "axis": "tiling",
+          "before_ns": 157441,
+          "after_ns": 157284,
+          "speedup": 1.0009981943490756,
+          "round_speedups": [
+            1.0009981943490756,
+            1.0030676798920584,
+            0.9989837656563604
+          ],
+          "nonregressing_rounds": 2,
+          "identical_source": true,
+          "source_bytes_delta": 0,
+          "initializer": true,
+          "unroll": 1,
+          "active": false
+        },
+        {
+          "axis": "tiling",
+          "before_ns": 155044,
+          "after_ns": 155044,
+          "speedup": 1.0,
+          "round_speedups": [
+            1.0010330311717157,
+            1.0020574804571605,
+            1.0
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": true,
+          "source_bytes_delta": 0,
+          "initializer": true,
+          "unroll": 4,
+          "active": false
+        }
+      ],
+      "initializer_comparisons": [
+        {
+          "axis": "initializer",
+          "before_ns": 157284,
+          "after_ns": 157441,
+          "speedup": 0.999002801049282,
+          "round_speedups": [
+            1.0000063515856734,
+            0.9959391893606762,
+            1.0
+          ],
+          "nonregressing_rounds": 2,
+          "identical_source": false,
+          "source_bytes_delta": -347,
+          "tiled": false,
+          "unroll": 1
+        },
+        {
+          "axis": "initializer",
+          "before_ns": 155043,
+          "after_ns": 155044,
+          "speedup": 0.9999935502180026,
+          "round_speedups": [
+            0.9989551353164263,
+            1.0000064365389443,
+            0.9999935502180026
+          ],
+          "nonregressing_rounds": 1,
+          "identical_source": false,
+          "source_bytes_delta": -347,
+          "tiled": false,
+          "unroll": 4
+        },
+        {
+          "axis": "initializer",
+          "before_ns": 157124,
+          "after_ns": 157284,
+          "speedup": 0.9989827318735536,
+          "round_speedups": [
+            0.9979654637471072,
+            1.0010246814577208,
+            0.9979675313127208
+          ],
+          "nonregressing_rounds": 1,
+          "identical_source": false,
+          "source_bytes_delta": -347,
+          "tiled": true,
+          "unroll": 1
+        },
+        {
+          "axis": "initializer",
+          "before_ns": 155043,
+          "after_ns": 155044,
+          "speedup": 0.9999935502180026,
+          "round_speedups": [
+            1.0010265747268925,
+            0.9999935502180026,
+            0.9989680348804211
+          ],
+          "nonregressing_rounds": 1,
+          "identical_source": false,
+          "source_bytes_delta": -347,
+          "tiled": true,
+          "unroll": 4
+        }
+      ],
+      "unroll_comparisons": [
+        {
+          "axis": "unroll",
+          "before_ns": 157284,
+          "after_ns": 155043,
+          "speedup": 1.0144540546816045,
+          "round_speedups": [
+            1.0165287121808861,
+            1.010298396024819,
+            1.0144540546816045
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1329,
+          "initializer": false,
+          "tiled": false
+        },
+        {
+          "axis": "unroll",
+          "before_ns": 157124,
+          "after_ns": 155043,
+          "speedup": 1.0134220829060325,
+          "round_speedups": [
+            1.0123901111304605,
+            1.0144476048580071,
+            1.0144624364040185
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1329,
+          "initializer": false,
+          "tiled": true
+        },
+        {
+          "axis": "unroll",
+          "before_ns": 157441,
+          "after_ns": 155044,
+          "speedup": 1.0154601274476922,
+          "round_speedups": [
+            1.0154601274476922,
+            1.014424283774129,
+            1.0144475116741054
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1329,
+          "initializer": true,
+          "tiled": false
+        },
+        {
+          "axis": "unroll",
+          "before_ns": 157284,
+          "after_ns": 155044,
+          "speedup": 1.0144475116741054,
+          "round_speedups": [
+            1.0154954675757342,
+            1.0134026469905317,
+            1.0154794767936843
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1329,
+          "initializer": true,
+          "tiled": true
+        }
+      ]
+    },
+    {
+      "input": "tile-wave-dcu-22688638.json",
+      "mode": "combined",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "rows": 24,
+      "elements_checked": 36864,
+      "comparisons": [
+        {
+          "axis": "tiling",
+          "before_ns": 237604,
+          "after_ns": 220004,
+          "speedup": 1.0799985454809913,
+          "round_speedups": [
+            1.080056767526064,
+            1.0799985454809913,
+            1.0799985454809913
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1366,
+          "initializer": false,
+          "unroll": 1,
+          "active": true
+        },
+        {
+          "axis": "tiling",
+          "before_ns": 232484,
+          "after_ns": 219756,
+          "speedup": 1.057918782649848,
+          "round_speedups": [
+            1.057918782649848,
+            1.0574953148596278,
+            1.0575791257447933
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 3379,
+          "initializer": false,
+          "unroll": 4,
+          "active": true
+        },
+        {
+          "axis": "tiling",
+          "before_ns": 234084,
+          "after_ns": 217924,
+          "speedup": 1.074154292322094,
+          "round_speedups": [
+            1.074154292322094,
+            1.0734200914080139,
+            1.0757339019503318
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1282,
+          "initializer": true,
+          "unroll": 1,
+          "active": true
+        },
+        {
+          "axis": "tiling",
+          "before_ns": 229924,
+          "after_ns": 216804,
+          "speedup": 1.060515488644121,
+          "round_speedups": [
+            1.0582539038734537,
+            1.060515488644121,
+            1.060515488644121
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 3283,
+          "initializer": true,
+          "unroll": 4,
+          "active": true
+        }
+      ],
+      "initializer_comparisons": [
+        {
+          "axis": "initializer",
+          "before_ns": 237604,
+          "after_ns": 234084,
+          "speedup": 1.015037337024316,
+          "round_speedups": [
+            1.014353821705029,
+            1.0157316051367111,
+            1.015037337024316
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": -349,
+          "tiled": false,
+          "unroll": 1
+        },
+        {
+          "axis": "initializer",
+          "before_ns": 232484,
+          "after_ns": 229924,
+          "speedup": 1.0111341138811085,
+          "round_speedups": [
+            1.0125477454562877,
+            1.0111341138811085,
+            1.0097423496459699
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": -349,
+          "tiled": false,
+          "unroll": 4
+        },
+        {
+          "axis": "initializer",
+          "before_ns": 220004,
+          "after_ns": 217924,
+          "speedup": 1.0095446118830418,
+          "round_speedups": [
+            1.0088104109689617,
+            1.0095446118830418,
+            1.011029209021893
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": -433,
+          "tiled": true,
+          "unroll": 1
+        },
+        {
+          "axis": "initializer",
+          "before_ns": 219756,
+          "after_ns": 216804,
+          "speedup": 1.013615984944927,
+          "round_speedups": [
+            1.0128684943124204,
+            1.0140218815151012,
+            1.0125458939871959
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": -445,
+          "tiled": true,
+          "unroll": 4
+        }
+      ],
+      "unroll_comparisons": [
+        {
+          "axis": "unroll",
+          "before_ns": 237604,
+          "after_ns": 232484,
+          "speedup": 1.0220230209390753,
+          "round_speedups": [
+            1.0213348015347292,
+            1.0220230209390753,
+            1.023431712065609
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1326,
+          "initializer": false,
+          "tiled": false
+        },
+        {
+          "axis": "unroll",
+          "before_ns": 220004,
+          "after_ns": 219756,
+          "speedup": 1.001128524363385,
+          "round_speedups": [
+            1.000400444128943,
+            1.0007277887956916,
+            1.0021865490789161
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 3339,
+          "initializer": false,
+          "tiled": true
+        },
+        {
+          "axis": "unroll",
+          "before_ns": 234084,
+          "after_ns": 229924,
+          "speedup": 1.0180929350568013,
+          "round_speedups": [
+            1.0195162955187869,
+            1.017397052939232,
+            1.0180929350568013
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1326,
+          "initializer": true,
+          "tiled": false
+        },
+        {
+          "axis": "unroll",
+          "before_ns": 217924,
+          "after_ns": 216804,
+          "speedup": 1.005165956347669,
+          "round_speedups": [
+            1.0044246971847863,
+            1.005165956347669,
+            1.0036899688197636
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 3327,
+          "initializer": true,
+          "tiled": true
+        }
+      ]
+    },
+    {
+      "input": "tile-wave-dcu-22688639.json",
+      "mode": "combined",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "rows": 24,
+      "elements_checked": 36864,
+      "comparisons": [
+        {
+          "axis": "tiling",
+          "before_ns": 149281,
+          "after_ns": 139841,
+          "speedup": 1.0675052380918328,
+          "round_speedups": [
+            1.066734458583674,
+            1.0662776246053627,
+            1.0675123890704443
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1367,
+          "initializer": false,
+          "unroll": 1,
+          "active": true
+        },
+        {
+          "axis": "tiling",
+          "before_ns": 145762,
+          "after_ns": 139682,
+          "speedup": 1.0435274409014763,
+          "round_speedups": [
+            1.0435274409014763,
+            1.0435202817829068,
+            1.0457587849144034
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 41,
+          "initializer": false,
+          "unroll": 4,
+          "active": true
+        },
+        {
+          "axis": "tiling",
+          "before_ns": 145762,
+          "after_ns": 138080,
+          "speedup": 1.0556344148319814,
+          "round_speedups": [
+            1.0557483195656276,
+            1.0556191248678322,
+            1.0567859212050985
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1283,
+          "initializer": true,
+          "unroll": 1,
+          "active": true
+        },
+        {
+          "axis": "tiling",
+          "before_ns": 144321,
+          "after_ns": 138082,
+          "speedup": 1.045183296881563,
+          "round_speedups": [
+            1.0440318071870338,
+            1.0463957889241746,
+            1.0474935183441723
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": -43,
+          "initializer": true,
+          "unroll": 4,
+          "active": true
+        }
+      ],
+      "initializer_comparisons": [
+        {
+          "axis": "initializer",
+          "before_ns": 149281,
+          "after_ns": 145762,
+          "speedup": 1.0241420946474389,
+          "round_speedups": [
+            1.0242020874300408,
+            1.0241420946474389,
+            1.0230330110128083
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": -347,
+          "tiled": false,
+          "unroll": 1
+        },
+        {
+          "axis": "initializer",
+          "before_ns": 145762,
+          "after_ns": 144321,
+          "speedup": 1.0099846869132005,
+          "round_speedups": [
+            1.0110986251578087,
+            1.0099777579146485,
+            1.011068860619469
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": -347,
+          "tiled": false,
+          "unroll": 4
+        },
+        {
+          "axis": "initializer",
+          "before_ns": 139841,
+          "after_ns": 138080,
+          "speedup": 1.0127534762456547,
+          "round_speedups": [
+            1.0136539829561126,
+            1.013904781216958,
+            1.0127534762456547
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": -431,
+          "tiled": true,
+          "unroll": 1
+        },
+        {
+          "axis": "initializer",
+          "before_ns": 139682,
+          "after_ns": 138082,
+          "speedup": 1.0115873176807983,
+          "round_speedups": [
+            1.0115873176807983,
+            1.012760835834747,
+            1.0127460494488782
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": -431,
+          "tiled": true,
+          "unroll": 4
+        }
+      ],
+      "unroll_comparisons": [
+        {
+          "axis": "unroll",
+          "before_ns": 149281,
+          "after_ns": 145762,
+          "speedup": 1.0241420946474389,
+          "round_speedups": [
+            1.0219535955873273,
+            1.02414912082107,
+            1.0207944420511348
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1326,
+          "initializer": false,
+          "tiled": false
+        },
+        {
+          "axis": "unroll",
+          "before_ns": 139841,
+          "after_ns": 139682,
+          "speedup": 1.0011382998525222,
+          "round_speedups": [
+            0.9997207943757964,
+            1.002290917942183,
+            0.9999928490725247
+          ],
+          "nonregressing_rounds": 1,
+          "identical_source": true,
+          "source_bytes_delta": 0,
+          "initializer": false,
+          "tiled": true
+        },
+        {
+          "axis": "unroll",
+          "before_ns": 145762,
+          "after_ns": 144321,
+          "speedup": 1.0099846869132005,
+          "round_speedups": [
+            1.0088789001262468,
+            1.0099846869132005,
+            1.008856471238938
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1326,
+          "initializer": true,
+          "tiled": false
+        },
+        {
+          "axis": "unroll",
+          "before_ns": 138080,
+          "after_ns": 138082,
+          "speedup": 0.999985515852899,
+          "round_speedups": [
+            0.9976825364638403,
+            1.001160075984977,
+            0.999985515852899
+          ],
+          "nonregressing_rounds": 1,
+          "identical_source": true,
+          "source_bytes_delta": 0,
+          "initializer": true,
+          "tiled": true
+        }
+      ]
+    },
+    {
+      "input": "tile-wave-dcu-22688640.json",
+      "mode": "combined",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "rows": 24,
+      "elements_checked": 73728,
+      "comparisons": [
+        {
+          "axis": "tiling",
+          "before_ns": 379526,
+          "after_ns": 346078,
+          "speedup": 1.0966487323666918,
+          "round_speedups": [
+            1.0971337717713376,
+            1.0966242202015124,
+            1.097564710845532
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1371,
+          "initializer": false,
+          "unroll": 1,
+          "active": true
+        },
+        {
+          "axis": "tiling",
+          "before_ns": 370049,
+          "after_ns": 343685,
+          "speedup": 1.0767097778489023,
+          "round_speedups": [
+            1.0763518919941226,
+            1.0768087056461586,
+            1.0767254422718808
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 3418,
+          "initializer": false,
+          "unroll": 4,
+          "active": true
+        },
+        {
+          "axis": "tiling",
+          "before_ns": 371526,
+          "after_ns": 339045,
+          "speedup": 1.0958014422864222,
+          "round_speedups": [
+            1.0958014422864222,
+            1.0957535878114646,
+            1.0958020074149886
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1287,
+          "initializer": true,
+          "unroll": 1,
+          "active": true
+        },
+        {
+          "axis": "tiling",
+          "before_ns": 362725,
+          "after_ns": 337285,
+          "speedup": 1.0754258268230132,
+          "round_speedups": [
+            1.0754258268230132,
+            1.0763356290228898,
+            1.0754262740784446
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 3318,
+          "initializer": true,
+          "unroll": 4,
+          "active": true
+        }
+      ],
+      "initializer_comparisons": [
+        {
+          "axis": "initializer",
+          "before_ns": 379526,
+          "after_ns": 371526,
+          "speedup": 1.0215328133158919,
+          "round_speedups": [
+            1.0215328133158919,
+            1.0210904962279785,
+            1.0223915547851552
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": -348,
+          "tiled": false,
+          "unroll": 1
+        },
+        {
+          "axis": "initializer",
+          "before_ns": 370049,
+          "after_ns": 362725,
+          "speedup": 1.020191605210559,
+          "round_speedups": [
+            1.0198525053415122,
+            1.0189425748135341,
+            1.0201972303934408
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": -348,
+          "tiled": false,
+          "unroll": 4
+        },
+        {
+          "axis": "initializer",
+          "before_ns": 346078,
+          "after_ns": 339045,
+          "speedup": 1.0207435591145717,
+          "round_speedups": [
+            1.0202922915837132,
+            1.0202798316057593,
+            1.0207495804366997
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": -432,
+          "tiled": true,
+          "unroll": 1
+        },
+        {
+          "axis": "initializer",
+          "before_ns": 343685,
+          "after_ns": 337285,
+          "speedup": 1.018975050773085,
+          "round_speedups": [
+            1.018975050773085,
+            1.0184949206386837,
+            1.0189662686823824
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": -448,
+          "tiled": true,
+          "unroll": 4
+        }
+      ],
+      "unroll_comparisons": [
+        {
+          "axis": "unroll",
+          "before_ns": 379526,
+          "after_ns": 370049,
+          "speedup": 1.0256101219027751,
+          "round_speedups": [
+            1.0259511361731806,
+            1.0255077914954214,
+            1.0264667652121746
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1329,
+          "initializer": false,
+          "tiled": false
+        },
+        {
+          "axis": "unroll",
+          "before_ns": 346078,
+          "after_ns": 343685,
+          "speedup": 1.0069627711421796,
+          "round_speedups": [
+            1.0065175960545267,
+            1.0069773193476586,
+            1.006977420856611
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 3376,
+          "initializer": false,
+          "tiled": true
+        },
+        {
+          "axis": "unroll",
+          "before_ns": 371526,
+          "after_ns": 362725,
+          "speedup": 1.024263560548625,
+          "round_speedups": [
+            1.024263560548625,
+            1.0233505780513927,
+            1.024263694334244
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 1329,
+          "initializer": true,
+          "tiled": false
+        },
+        {
+          "axis": "unroll",
+          "before_ns": 339045,
+          "after_ns": 337285,
+          "speedup": 1.0052181389625985,
+          "round_speedups": [
+            1.0052181389625985,
+            1.0052156802313865,
+            1.005218169904798
+          ],
+          "nonregressing_rounds": 3,
+          "identical_source": false,
+          "source_bytes_delta": 3360,
+          "initializer": true,
+          "tiled": true
+        }
+      ]
+    },
+    {
+      "input": "tile-wave-dcu-22688642.json",
+      "mode": "standalone",
+      "shape": [
+        8,
+        16,
+        16
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "rows": 12,
+      "comparisons": [
+        {
+          "axis": "tiling",
+          "before_ns": 93601,
+          "after_ns": 93922,
+          "speedup": 0.9965822703945827,
+          "round_speedups": [
+            0.9948980134139731,
+            0.9931751879218926,
+            1.0
+          ],
+          "nonregressing_rounds": 1,
+          "identical_source": true,
+          "source_bytes_delta": 0,
+          "accumulator": false,
+          "active": false
+        },
+        {
+          "axis": "tiling",
+          "before_ns": 93441,
+          "after_ns": 93235,
+          "speedup": 1.0022094706923366,
+          "round_speedups": [
+            1.0034363892140334,
+            1.0002037861318174,
+            0.9982906165532419
+          ],
+          "nonregressing_rounds": 2,
+          "identical_source": true,
+          "source_bytes_delta": 0,
+          "accumulator": true,
+          "active": false
+        }
+      ]
+    }
+  ]
+}

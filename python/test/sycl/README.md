@@ -106,3 +106,17 @@ recurrence order. Views, escapes, partial domains and extra buffer uses fall
 back unchanged. The init-pair layout schedule holds the existing optimized
 stack fixed and toggles only forwarding. See the dedicated pass report for
 runtime-versus-source-consistency provenance and measured profitability limits.
+
+Tiling output parallelism regression checks:
+
+Four-column tiling requires at least 64 independent output points after
+tiling in the existing distributed nest. Physical batch loops in that nest
+count; separate grid programs do not. Smaller cases keep the untiled source.
+
+    python-triton model_layout_semantics.py --all --tile-shape small --schedule init-pair --python /path/to/python-triton --output small.json
+    python-triton model_layout_semantics.py --all --tile-shape wide --schedule init-pair --python /path/to/python-triton --output wide.json
+    python3 audit_tiling_wave.py ../../../docs/backend/sycl-validation/tiling-wave --output audit.json
+
+The logical tiles are 8x16x16 (small) and 16x16x32 (wide). The same layout
+cases assert different tiling markers. See docs/backend/sycl-tiling-wave-report.md
+for the measured profitability and interaction limits.

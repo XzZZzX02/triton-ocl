@@ -42,7 +42,7 @@ def main():
         negative_inf=-math.inf, nan=math.nan, subnormal=2**-149,
         negative_subnormal=-(2**-149))
     half = args.dtype == 'f16'
-    M, N, K, grid = 8, 16, 32, 3
+    M, N, K, grid = 16, 16, 32, 3
     # One exact nonzero sum, one all-negative-zero product sequence and one
     # all-positive-zero sequence exercise initial sign retention and cancellation.
     av = [(0.25 if batch == 0 else -0. if batch == 1 else 0.)
