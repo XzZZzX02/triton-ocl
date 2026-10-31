@@ -1,0 +1,6 @@
+Primary-source design basis, retrieved 2026-11-01.
+MLIR pass reference: https://mlir.llvm.org/docs/Passes/#-gpu-map-parallel-loops
+MLIR separates proving/mapping parallel loops from converting mapped loops to GPU launch operations. This backend similarly records an explicit ownership plan in a named pass and reuses its existing work-item emitter. Our address/effect proof is backend-specific, not provided by the upstream mapping pass.
+LLVM reference: https://llvm.org/docs/LangRef.html#volatile-memory-accesses
+The documented volatile constraints preserve access count and relative order and restrict merging/splitting target-legal operations. Volatile is not a cross-thread synchronization primitive. The optimization retains the established half-bit access workaround and uses an explicit local-memory barrier for the ownership handoff.
+The web tool returned no usable content; official documents were retrieved with curl. No claim is made that these sources establish the precise upstream cause of the observed half-copy miscompilation.

@@ -31,12 +31,20 @@ static bool isSerialCopy(Operation *load, Operation *store, Value from,
                          Value to, Value value) {
   if (!isLocalHalf(from) ||
       !(isLocalHalf(to) || isExternalHalfOutput(to)) ||
-      load->getBlock() != store->getBlock() || !value.hasOneUse() ||
+      !value.hasOneUse() ||
       !store->getParentOfType<affine::AffineForOp>())
     return false;
+  bool protectedOutput = false;
   for (Operation *parent = store->getParentOp(); parent;
        parent = parent->getParentOp())
-    if (parent->hasAttr("sycl.distribute")) return false;
+    if (parent->hasAttr("sycl.distribute")) {
+      if (!parent->hasAttr("sycl.half_store_distribution") ||
+          !isExternalHalfOutput(to))
+        return false;
+      protectedOutput = true;
+    }
+  if (!protectedOutput && load->getBlock() != store->getBlock())
+    return false;
   return true;
 }
 
@@ -46,7 +54,9 @@ static bool isSerialCopy(Operation *load, Operation *store, Value from,
 // Volatile accesses to the actual uint16_t storage member preserve the copy.
 // This is a code-generation correctness guard, not a floating-point conversion
 // or a scheduling optimization. Run after scheduling so proven distributed
-// copies retain their normal emission. Replanning makes the pass idempotent
+// copies retain their normal emission, except the explicit half-output schedule
+// which requires guarded accesses even after distribution.
+// Replanning makes the pass idempotent
 // and removes stale guards when a caller has changed work ownership.
 struct SerialHalfCopyGuardPass
     : PassWrapper<SerialHalfCopyGuardPass, OperationPass<ModuleOp>> {

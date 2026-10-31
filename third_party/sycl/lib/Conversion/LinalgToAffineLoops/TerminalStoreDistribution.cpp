@@ -15,8 +15,14 @@
 
 using namespace mlir;
 namespace {
-static bool defaultMemoryAttributes(Operation *op) {
+static bool defaultMemoryAttributes(Operation *op, bool half = false) {
   for (NamedAttribute attr : op->getAttrs()) {
+    if (half && isa<affine::AffineLoadOp>(op) &&
+        attr.getName().strref() == "map" && isa<AffineMapAttr>(attr.getValue()))
+      continue;
+    if (half && attr.getName().strref() == "sycl.scalar_half_bits" &&
+        isa<UnitAttr>(attr.getValue()))
+      continue;
     auto value = dyn_cast<BoolAttr>(attr.getValue());
     if (attr.getName().strref() != "nontemporal" || !value || value.getValue())
       return false;
@@ -156,13 +162,15 @@ static bool uniqueAddresses(const LinearForm &form,
   return !dimensions.empty();
 }
 
-static bool planStore(affine::AffineForOp root) {
+static bool planStore(affine::AffineForOp root, bool half = false) {
+  StringRef marker = half ? "sycl.half_store_distribution"
+                          : "sycl.terminal_store_distribution";
   // A previous scheduling marker is a request to re-prove, not a capability.
   // Later transformations may have changed the body or the address arithmetic.
-  if (root->hasAttr("sycl.terminal_store_distribution")) {
+  if (root->hasAttr(marker)) {
     root->removeAttr("sycl.distribute");
     root->removeAttr("sycl.distribution_depth");
-    root->removeAttr("sycl.terminal_store_distribution");
+    root->removeAttr(marker);
   }
   auto function = dyn_cast<func::FuncOp>(root->getParentOp());
   if (!function || root->hasAttr("sycl.distribute") ||
@@ -191,6 +199,11 @@ static bool planStore(affine::AffineForOp root) {
   DenseSet<Value> uniform;
   auto localBuffer = [&](Value buffer) {
     auto alloc = buffer.getDefiningOp<memref::AllocOp>();
+    if (half && alloc)
+      for (Operation *user : buffer.getUsers())
+        if (!isa<memref::LoadOp, memref::StoreOp, affine::AffineLoadOp,
+                 affine::AffineStoreOp, memref::DeallocOp>(user))
+          return false;
     return alloc && alloc->getBlock() == root->getBlock() &&
            alloc->isBeforeInBlock(root) && alloc.getType().hasStaticShape() &&
            alloc.getType().getLayout().isIdentity() &&
@@ -204,13 +217,14 @@ static bool planStore(affine::AffineForOp root) {
       if (!llvm::any_of(loops, [&](auto l) { return l.getOperation() == op; })) legal = false;
     } else if (isa<affine::AffineYieldOp, scf::YieldOp>(op)) {
     } else if (auto write = dyn_cast<memref::StoreOp>(op)) {
-      if (store || !defaultMemoryAttributes(op)) legal = false;
+      if (store || !defaultMemoryAttributes(op, half)) legal = false;
       store = write;
     } else if (auto read = dyn_cast<memref::LoadOp>(op)) {
-      if (!localBuffer(read.getMemRef()) || !defaultMemoryAttributes(op)) legal = false;
+      if (!localBuffer(read.getMemRef()) || !defaultMemoryAttributes(op, half)) legal = false;
       ++reads;
     } else if (auto read = dyn_cast<affine::AffineLoadOp>(op)) {
-      if (!localBuffer(read.getMemRef()) || !op->getAttrs().empty()) legal = false;
+      if (!localBuffer(read.getMemRef()) ||
+          (half ? !defaultMemoryAttributes(op, true) : !op->getAttrs().empty())) legal = false;
       ++reads;
     } else if (auto view = dyn_cast<memref::ReinterpretCastOp>(op)) {
       auto arg = dyn_cast<BlockArgument>(view.getSource());
@@ -228,19 +242,38 @@ static bool planStore(affine::AffineForOp root) {
       store.getIndices().size() != 1 || getConstantIntValue(store.getIndices()[0]) != std::optional<int64_t>(0) ||
       getConstantIntValue(view.getMixedStrides()[0]) != std::optional<int64_t>(1)) return false;
   Type element = store.getValueToStore().getType();
-  if (!(element.isF32() || element.isF64() || element.isInteger(32) || element.isInteger(64))) return false;
+  if (half) {
+    // Preserve IEEE payload bits without conversion or arithmetic. The final
+    // half-copy guard emits volatile uint16_t member accesses even under this
+    // proven distributed schedule. No aggregate half-copy bypass is allowed.
+    Value value = store.getValueToStore();
+    auto *load = value.getDefiningOp();
+    if (!element.isF16() || !value.hasOneUse() || reads != 1 ||
+        !isa_and_nonnull<memref::LoadOp, affine::AffineLoadOp>(load) ||
+        view.getType().getRank() != 1 || view.getType().getDimSize(0) != 1)
+      return false;
+  } else if (!(element.isF32() || element.isF64() ||
+               element.isInteger(32) || element.isInteger(64))) return false;
   auto offset = dyn_cast<Value>(view.getMixedOffsets()[0]);
   if (!offset) return false;
   auto form = addressForm(offset, root, loops, function, uniform);
   // Account for element-to-byte scaling of the 64-bit target pointer.
-  unsigned pointerBits = element.isF64() || element.isInteger(64) ? 61 : 62;
+  unsigned pointerBits = half ? 63 :
+      (element.isF64() || element.isInteger(64) ? 61 : 62);
   if (!form || !uniqueAddresses(*form, loops, pointerBits)) return false;
   OpBuilder builder(root);
   if (!isa_and_nonnull<gpu::BarrierOp>(root->getPrevNode()))
     builder.create<gpu::BarrierOp>(root.getLoc());
   root->setAttr("sycl.distribute", builder.getUnitAttr());
   root->setAttr("sycl.distribution_depth", builder.getI64IntegerAttr(loops.size()));
-  root->setAttr("sycl.terminal_store_distribution", builder.getUnitAttr());
+  root->setAttr(marker, builder.getUnitAttr());
+  if (half) {
+    // The optimizer's standalone output must already emit safe copies. The
+    // final guard pass later re-plans these attributes after all scheduling.
+    store.getValueToStore().getDefiningOp()->setAttr(
+        "sycl.scalar_half_bits", builder.getUnitAttr());
+    store->setAttr("sycl.scalar_half_bits", builder.getUnitAttr());
+  }
   return true;
 }
 struct TerminalStoreDistributionPass
@@ -261,6 +294,9 @@ struct TerminalStoreDistributionPass
 namespace mlir::triton::sycl {
 bool planTerminalStoreDistribution(affine::AffineForOp loop) {
   return planStore(loop);
+}
+bool planHalfStoreDistribution(affine::AffineForOp loop) {
+  return planStore(loop, true);
 }
 std::unique_ptr<OperationPass<ModuleOp>> createTerminalStoreDistributionPass() {
   return std::make_unique<TerminalStoreDistributionPass>();

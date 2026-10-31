@@ -27,6 +27,8 @@ std::unique_ptr<OperationPass<ModuleOp>> createCooperativeLoadStagingPass();
 std::unique_ptr<OperationPass<ModuleOp>> createVectorMemoryPass();
 std::unique_ptr<OperationPass<ModuleOp>> createTerminalStoreDistributionPass();
 std::unique_ptr<OperationPass<ModuleOp>> createSerialHalfCopyGuardPass();
+std::unique_ptr<OperationPass<ModuleOp>> createHalfStoreDistributionPass();
+bool planHalfStoreDistribution(affine::AffineForOp loop);
 // Re-prove marked external stores after another pass rebuilds work ownership.
 bool planTerminalStoreDistribution(affine::AffineForOp loop);
 

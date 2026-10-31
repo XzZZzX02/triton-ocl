@@ -1,0 +1,331 @@
+[
+  {
+    "case": "masked_['cooperative_load_staging']",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "masked_['cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "masked_['work_distribution', 'cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "masked_['cooperative_load_staging', 'work_distribution', 'local_memory_reuse']",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "unmasked_['cooperative_load_staging']",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "unmasked_['cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "unmasked_['work_distribution', 'cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "unmasked_['cooperative_load_staging', 'work_distribution', 'local_memory_reuse']",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "small_['cooperative_load_staging']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "small_['cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "small_['work_distribution', 'cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "small_['cooperative_load_staging', 'work_distribution', 'local_memory_reuse']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "partial_['cooperative_load_staging']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "partial_['cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "partial_['work_distribution', 'cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "partial_['cooperative_load_staging', 'work_distribution', 'local_memory_reuse']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "duplicate_['cooperative_load_staging']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "duplicate_['cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "duplicate_['work_distribution', 'cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "duplicate_['cooperative_load_staging', 'work_distribution', 'local_memory_reuse']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "local_read_['cooperative_load_staging']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "local_read_['cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "local_read_['work_distribution', 'cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "local_read_['cooperative_load_staging', 'work_distribution', 'local_memory_reuse']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "extra_store_['cooperative_load_staging']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "extra_store_['cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "extra_store_['work_distribution', 'cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "extra_store_['cooperative_load_staging', 'work_distribution', 'local_memory_reuse']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "escape_['cooperative_load_staging']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "escape_['cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "escape_['work_distribution', 'cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "escape_['cooperative_load_staging', 'work_distribution', 'local_memory_reuse']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "dynamic_['cooperative_load_staging']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "dynamic_['cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "dynamic_['work_distribution', 'cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "dynamic_['cooperative_load_staging', 'work_distribution', 'local_memory_reuse']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "strided_loop_['cooperative_load_staging']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "strided_loop_['cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "strided_loop_['work_distribution', 'cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "strided_loop_['cooperative_load_staging', 'work_distribution', 'local_memory_reuse']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "conditional_phase_['cooperative_load_staging']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "conditional_phase_['cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "conditional_phase_['work_distribution', 'cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "conditional_phase_['cooperative_load_staging', 'work_distribution', 'local_memory_reuse']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "call_['cooperative_load_staging']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "call_['cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "call_['work_distribution', 'cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "call_['cooperative_load_staging', 'work_distribution', 'local_memory_reuse']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "local_source_alias_['cooperative_load_staging']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "local_source_alias_['cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "local_source_alias_['work_distribution', 'cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "local_source_alias_['cooperative_load_staging', 'work_distribution', 'local_memory_reuse']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "default_nontemporal_false",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "nontemporal_store",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "unknown_store_attr",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "prior_external_write",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "volatile_stage",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "thread_capture",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "unknown_capture",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "default_and_cache_key",
+    "status": "PASS"
+  },
+  {
+    "case": "rank1_['cooperative_load_staging']",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "rank1_['cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "rank3_['cooperative_load_staging']",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "rank3_['cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": true
+  },
+  {
+    "case": "rank4_['cooperative_load_staging']",
+    "status": "PASS",
+    "transformed": false
+  },
+  {
+    "case": "rank4_['cooperative_load_staging', 'work_distribution']",
+    "status": "PASS",
+    "transformed": false
+  }
+]

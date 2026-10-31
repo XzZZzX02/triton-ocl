@@ -1,0 +1,50 @@
+[
+  {
+    "job": 22786267,
+    "retrieved": false,
+    "stdout": "",
+    "stderr": "job script retrieval failed: Invalid job id specified\n"
+  },
+  {
+    "job": 22786268,
+    "retrieved": false,
+    "stdout": "",
+    "stderr": "job script retrieval failed: Invalid job id specified\n"
+  },
+  {
+    "job": 22786269,
+    "retrieved": false,
+    "stdout": "",
+    "stderr": "job script retrieval failed: Invalid job id specified\n"
+  },
+  {
+    "job": 22786270,
+    "retrieved": false,
+    "stdout": "",
+    "stderr": "job script retrieval failed: Invalid job id specified\n"
+  },
+  {
+    "job": 22786271,
+    "retrieved": false,
+    "stdout": "",
+    "stderr": "job script retrieval failed: Invalid job id specified\n"
+  },
+  {
+    "job": 22786272,
+    "retrieved": false,
+    "stdout": "",
+    "stderr": "job script retrieval failed: Invalid job id specified\n"
+  },
+  {
+    "job": 22786273,
+    "retrieved": true,
+    "stdout": "batch script for job 22786273 written to /public/home/dtune/zzx/triton/gap-validation/next/half-store-submitted-22786273.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22786274,
+    "retrieved": true,
+    "stdout": "batch script for job 22786274 written to /public/home/dtune/zzx/triton/gap-validation/next/half-store-submitted-22786274.sbatch\n",
+    "stderr": ""
+  }
+]

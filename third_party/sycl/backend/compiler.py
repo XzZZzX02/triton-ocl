@@ -46,6 +46,7 @@ class SYCLOptions:
     distribute_work: bool = True
     cooperative_load_staging: bool = False
     terminal_store_distribution: bool = False
+    half_store_distribution: bool = False
 
     def __post_init__(self):
         if type(self.reduction_unroll) is not int or self.reduction_unroll not in (1, 2, 4, 8):
@@ -158,6 +159,8 @@ class SYCLBackend(BaseBackend):
             sycl.passes.memir.vector_memory(pm)
         if opt.distribute_work and opt.terminal_store_distribution:
             sycl.passes.memir.terminal_store_distribution(pm)
+        if opt.distribute_work and opt.half_store_distribution:
+            sycl.passes.memir.half_store_distribution(pm)
         sycl.passes.memir.serial_half_copy_guard(pm)
         pm.run(mod)
         return mod

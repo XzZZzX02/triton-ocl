@@ -1,0 +1,5047 @@
+[
+  {
+    "case": "dense",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "dense",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "dense",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "dense",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "dense",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "dense",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "dense",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "dense",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "dense",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "dense",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "dense",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "dense",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "dense",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "dense",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "mask",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "mask",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "mask",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "mask",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "mask",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "mask",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "mask",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "mask",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "mask",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "mask",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "mask",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "mask",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "mask",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "mask",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "transpose",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "transpose",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "transpose",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "transpose",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "transpose",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "transpose",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "transpose",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "transpose",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "transpose",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "transpose",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "transpose",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "transpose",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "transpose",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "transpose",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "negative",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "negative",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "negative",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "negative",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "negative",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "negative",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "negative",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "negative",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "negative",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "negative",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "negative",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "negative",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "negative",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "negative",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "padded",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "padded",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "padded",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "padded",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "padded",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "padded",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "padded",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "padded",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "padded",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "padded",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "padded",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "padded",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "padded",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "padded",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "stride2",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "stride2",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "stride2",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "stride2",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "stride2",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "stride2",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "stride2",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "stride2",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "stride2",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "stride2",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "stride2",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "stride2",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "stride2",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "stride2",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank1",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank1",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank1",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank1",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank1",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank1",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank1",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank1",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank1",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank1",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank1",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank1",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank1",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank1",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank3",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank3",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank3",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank3",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank3",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank3",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank3",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank3",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank3",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank3",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank3",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank3",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank3",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "rank3",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "small",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "small",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "small",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "small",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "small",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "small",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "small",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "small",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "small",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "small",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "small",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "small",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "small",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "small",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "collision",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "collision",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "collision",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "collision",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "collision",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "collision",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "collision",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "collision",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "collision",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "collision",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "collision",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "collision",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "collision",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "collision",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "zero_stride",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "zero_stride",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "zero_stride",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "zero_stride",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "zero_stride",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "zero_stride",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "zero_stride",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "zero_stride",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "zero_stride",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "zero_stride",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "zero_stride",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "zero_stride",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "zero_stride",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "zero_stride",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "wrap32",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "wrap32",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "wrap32",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "wrap32",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "wrap32",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "wrap32",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "wrap32",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "wrap32",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "wrap32",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "wrap32",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "wrap32",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "wrap32",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "wrap32",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "wrap32",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "pointer_wrap",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "pointer_wrap",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "pointer_wrap",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "pointer_wrap",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "pointer_wrap",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "pointer_wrap",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "pointer_wrap",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "pointer_wrap",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "pointer_wrap",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "pointer_wrap",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "pointer_wrap",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "pointer_wrap",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "pointer_wrap",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "pointer_wrap",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "rank4",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "rank4",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "rank4",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "rank4",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "rank4",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "rank4",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "rank4",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "rank4",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "rank4",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "rank4",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "rank4",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "rank4",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "rank4",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "rank4",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_stride",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_stride",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_stride",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_stride",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_stride",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_stride",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_stride",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_stride",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_stride",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_stride",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_stride",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_stride",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_stride",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_stride",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "modulo",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "modulo",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "modulo",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "modulo",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "modulo",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "modulo",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "modulo",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "modulo",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "modulo",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "modulo",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "modulo",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "modulo",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "modulo",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "modulo",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "select",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "select",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "select",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "select",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "select",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "select",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "select",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "select",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "select",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "select",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "select",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "select",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "select",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "select",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "trunc8",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "trunc8",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "trunc8",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "trunc8",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "trunc8",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "trunc8",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "trunc8",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "trunc8",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "trunc8",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "trunc8",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "trunc8",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "trunc8",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "trunc8",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "trunc8",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "thread",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "thread",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "thread",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "thread",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "thread",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "thread",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "thread",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "thread",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "thread",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "thread",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "thread",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "thread",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "thread",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "thread",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "external_read",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "external_read",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "external_read",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "external_read",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "external_read",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "external_read",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "external_read",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "external_read",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "external_read",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "external_read",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "external_read",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "external_read",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "external_read",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "external_read",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "extra_store",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "extra_store",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "extra_store",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "extra_store",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "extra_store",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "extra_store",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "extra_store",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "extra_store",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "extra_store",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "extra_store",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "extra_store",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "extra_store",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "extra_store",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "extra_store",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nontemporal",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nontemporal",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nontemporal",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nontemporal",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nontemporal",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nontemporal",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nontemporal",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nontemporal",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nontemporal",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nontemporal",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nontemporal",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nontemporal",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nontemporal",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nontemporal",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "unknown_attr",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "unknown_attr",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "unknown_attr",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "unknown_attr",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "unknown_attr",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "unknown_attr",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "unknown_attr",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "unknown_attr",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "unknown_attr",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "unknown_attr",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "unknown_attr",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "unknown_attr",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "unknown_attr",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "unknown_attr",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nested",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nested",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nested",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nested",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nested",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nested",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nested",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nested",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nested",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nested",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nested",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nested",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nested",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "nested",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "following_read",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "following_read",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "following_read",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "following_read",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "following_read",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "following_read",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "following_read",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "following_read",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "following_read",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "following_read",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "following_read",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "following_read",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "following_read",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "following_read",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "prior_write",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "prior_write",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "prior_write",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "prior_write",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "prior_write",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "prior_write",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "prior_write",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "prior_write",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "prior_write",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "prior_write",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "prior_write",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "prior_write",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "prior_write",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "prior_write",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_bound",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_bound",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_bound",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_bound",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_bound",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_bound",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_bound",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_bound",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_bound",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_bound",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_bound",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_bound",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_bound",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dynamic_bound",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "step2",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "step2",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "step2",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "step2",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "step2",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "step2",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "step2",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "step2",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "step2",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "step2",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "step2",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "step2",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "step2",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "step2",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "escape",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "escape",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "escape",
+    "dialect": "memref",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "escape",
+    "dialect": "memref",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "escape",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "escape",
+    "dialect": "memref",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "escape",
+    "dialect": "memref",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "escape",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "escape",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "escape",
+    "dialect": "affine",
+    "pipeline": [
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "escape",
+    "dialect": "affine",
+    "pipeline": [
+      "local_memory_reuse",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "escape",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "local_memory_reuse",
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "escape",
+    "dialect": "affine",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "escape",
+    "dialect": "affine",
+    "pipeline": [
+      "half_store_distribution",
+      "serial_half_copy_guard",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "arithmetic",
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "multiuse",
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dtype_f16",
+    "pipeline": [
+      "half_store_distribution",
+      "terminal_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "dtype_f16",
+    "pipeline": [
+      "terminal_store_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "dtype_f16",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution",
+      "terminal_store_distribution",
+      "half_store_distribution"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "dtype_f32",
+    "pipeline": [
+      "half_store_distribution",
+      "terminal_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dtype_f32",
+    "pipeline": [
+      "terminal_store_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dtype_f32",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution",
+      "terminal_store_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dtype_bf16",
+    "pipeline": [
+      "half_store_distribution",
+      "terminal_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dtype_bf16",
+    "pipeline": [
+      "terminal_store_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dtype_bf16",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution",
+      "terminal_store_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dtype_i16",
+    "pipeline": [
+      "half_store_distribution",
+      "terminal_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dtype_i16",
+    "pipeline": [
+      "terminal_store_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "dtype_i16",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution",
+      "terminal_store_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "forged_collision",
+    "pipeline": [
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "forged_collision",
+    "pipeline": [
+      "work_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "forged_collision",
+    "pipeline": [
+      "half_store_distribution",
+      "work_distribution",
+      "half_store_distribution"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -48,
+      -14
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      26,
+      -2
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -39,
+      42
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -13,
+      -12
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      2,
+      -5
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      13,
+      -5
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      19,
+      4
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -29,
+      -4
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -28,
+      47
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -33,
+      18
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -44,
+      35
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -24,
+      9
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      11,
+      4
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      9,
+      41
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -16,
+      -40
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      20,
+      -45
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -45,
+      33
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      15,
+      44
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      27,
+      -36
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -37,
+      -42
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      33,
+      -33
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      16,
+      47
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      11,
+      13
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -11,
+      -47
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      26,
+      28
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      14,
+      -46
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -13,
+      -43
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -30,
+      1
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      23,
+      -43
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -19,
+      -21
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -10,
+      41
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -38,
+      1
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -5,
+      15
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      30,
+      -11
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      10,
+      1
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      41,
+      30
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      10,
+      24
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      35,
+      -40
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -11,
+      2
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -16,
+      30
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -48,
+      -26
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -41,
+      13
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -37,
+      -17
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      16,
+      -32
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -18,
+      33
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -41,
+      34
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      -41,
+      39
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      16,
+      16
+    ],
+    "coefficients": [
+      17,
+      36
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      256
+    ],
+    "coefficients": [
+      0
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      256
+    ],
+    "coefficients": [
+      1
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      256
+    ],
+    "coefficients": [
+      -1
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      256
+    ],
+    "coefficients": [
+      2
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      256
+    ],
+    "coefficients": [
+      16777216
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      256
+    ],
+    "coefficients": [
+      33554432
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      256
+    ],
+    "coefficients": [
+      1073741824
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "enumerated",
+    "shape": [
+      256
+    ],
+    "coefficients": [
+      2147483648
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "case": "cache_default",
+    "selected": false,
+    "status": "PASS"
+  }
+]

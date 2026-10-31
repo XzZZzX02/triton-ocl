@@ -37,6 +37,9 @@ void init_triton_sycl_passes_lair(py::module &&m) {
 }
 
 void init_triton_sycl_passes_memir(py::module &&m) {
+  m.def("half_store_distribution", [](mlir::PassManager &pm) {
+    pm.addPass(mlir::triton::sycl::createHalfStoreDistributionPass());
+  });
   m.def("serial_half_copy_guard", [](mlir::PassManager &pm) {
     pm.addPass(mlir::triton::sycl::createSerialHalfCopyGuardPass());
   });
