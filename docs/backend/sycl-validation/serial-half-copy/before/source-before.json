@@ -1,0 +1,1730 @@
+[
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "baseline",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": false,
+      "matmul_register_tiling": false,
+      "reduction_unroll": 1,
+      "accumulator_init_forwarding": false,
+      "cooperative_load_staging": false,
+      "terminal_store_distribution": false,
+      "reuse_local_memory": true,
+      "fuse_elementwise": false,
+      "group_reduction": false,
+      "vectorize_memory": false
+    },
+    "source_sha256": "96619a63d21c25118206dbc014922a8d97f9ee19eef2637ac8dd079bf6a2f5af"
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "all",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "51de29e780ec55d5d1d201517d0f3ad835191abf2bf8be89fe26581933a4fdd3"
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_accumulator",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": false,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "51de29e780ec55d5d1d201517d0f3ad835191abf2bf8be89fe26581933a4fdd3"
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_tiling",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": false,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "fec47eb16fb2342361fafd068a9615c16743dc3ede2372f77f701d75c1aab3d1"
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_unroll",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 1,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "51de29e780ec55d5d1d201517d0f3ad835191abf2bf8be89fe26581933a4fdd3"
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_initializer",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": false,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "0d7f6a37c18b82f0e1a2e2273d92d2721eec1ce3bee06232ab92f071bb96edaf"
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_staging",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": false,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "9654ad24628a1fb587729a991ce577779ac121996ee13941bbfc9f9fad5a05a7"
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_store",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": false,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "94f2f8ef2097a5afd583053c3c18a7c24fd1d0cabcf6f9d24fea97bc4c4f79ff"
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_reuse",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": false,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "51de29e780ec55d5d1d201517d0f3ad835191abf2bf8be89fe26581933a4fdd3"
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_fusion",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": false,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "51de29e780ec55d5d1d201517d0f3ad835191abf2bf8be89fe26581933a4fdd3"
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_group",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": false,
+      "vectorize_memory": false
+    },
+    "source_sha256": "51de29e780ec55d5d1d201517d0f3ad835191abf2bf8be89fe26581933a4fdd3"
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_distribution",
+    "options": {
+      "distribute_work": false,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "20db6b939ab6f60a606f072b1d9f09a85bf9ea35cb840cbcd71c2d5dfefb73cb"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "baseline",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": false,
+      "matmul_register_tiling": false,
+      "reduction_unroll": 1,
+      "accumulator_init_forwarding": false,
+      "cooperative_load_staging": false,
+      "terminal_store_distribution": false,
+      "reuse_local_memory": true,
+      "fuse_elementwise": false,
+      "group_reduction": false,
+      "vectorize_memory": false
+    },
+    "source_sha256": "a30836b2a4555a7acb8c8e006bb10e11f49fc2353eedb930f012ea785287c3d8"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "all",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "5fe77e8e513e2f8c128d8958fb760417a3c532037e229dea2582a3073cd8af91"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_accumulator",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": false,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "5fe77e8e513e2f8c128d8958fb760417a3c532037e229dea2582a3073cd8af91"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_tiling",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": false,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "d1c2e1f3a537b4a2785e9b83e4f7be66cc35026071acf14bb988b3db2dfd4a27"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_unroll",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 1,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "02297d058ebe3f59ce20fd7533943b41a1a26355b93ba5fc3269b899565259c6"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_initializer",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": false,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "5a60a2e6898527498ca72066547739619c644dc4faf410302fbb72470716f66e"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_staging",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": false,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "4b095117f6d112e9f1eae48fe481213207d76ca98f4e956ad3aa31f7fce44e4c"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_store",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": false,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "ce0e59401f1e0465da0a3eabac4b4def8a781ad837481a6ee54f72d82fa33b28"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_reuse",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": false,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "5fe77e8e513e2f8c128d8958fb760417a3c532037e229dea2582a3073cd8af91"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_fusion",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": false,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "5fe77e8e513e2f8c128d8958fb760417a3c532037e229dea2582a3073cd8af91"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_group",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": false,
+      "vectorize_memory": false
+    },
+    "source_sha256": "5fe77e8e513e2f8c128d8958fb760417a3c532037e229dea2582a3073cd8af91"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_distribution",
+    "options": {
+      "distribute_work": false,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "49583c64312830dcc18725b55b0185179ba54f2392216ad6ad29e97b226de2a8"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "baseline",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": false,
+      "matmul_register_tiling": false,
+      "reduction_unroll": 1,
+      "accumulator_init_forwarding": false,
+      "cooperative_load_staging": false,
+      "terminal_store_distribution": false,
+      "reuse_local_memory": true,
+      "fuse_elementwise": false,
+      "group_reduction": false,
+      "vectorize_memory": false
+    },
+    "source_sha256": "34660494c797df4ac1fde2fddcc1f4fca561e754ad2a63a8d1de409f971adbbf"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "all",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "b10ec8b497057c3e4d7754d6f3f2ead78d1794e85007971a9714aab8f095325b"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_accumulator",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": false,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "48992a20ef36a204e95b10d859809ed58f857cdb775cdd6953a7fee982bb9ff1"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_tiling",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": false,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "b10ec8b497057c3e4d7754d6f3f2ead78d1794e85007971a9714aab8f095325b"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_unroll",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 1,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "dc7fe68a88626b6268d912c0320fc3775050909debffb6233851a0a6459366a3"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_initializer",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": false,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "7d99f5cde1e608379bcb2106e9c231bea701cb48e1c04f82e2d7f8aced29a35c"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_staging",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": false,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "729c502f5e64ad4746b1a7a34fd6c0fb992c787ca18392a8aeb0cb9e6bd19a74"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_store",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": false,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "257a03a0fb0625cb81cec79c82bda869fe95049b116e368fe166fcf2cc5410aa"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_reuse",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": false,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "b10ec8b497057c3e4d7754d6f3f2ead78d1794e85007971a9714aab8f095325b"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_fusion",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": false,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "b10ec8b497057c3e4d7754d6f3f2ead78d1794e85007971a9714aab8f095325b"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_group",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": false,
+      "vectorize_memory": false
+    },
+    "source_sha256": "b10ec8b497057c3e4d7754d6f3f2ead78d1794e85007971a9714aab8f095325b"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_distribution",
+    "options": {
+      "distribute_work": false,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "005b4a2c34d3d4cd4f5d1444f45a76dc7d8c0feb4b7e4ed40ba0eccad5927d83"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "baseline",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": false,
+      "matmul_register_tiling": false,
+      "reduction_unroll": 1,
+      "accumulator_init_forwarding": false,
+      "cooperative_load_staging": false,
+      "terminal_store_distribution": false,
+      "reuse_local_memory": true,
+      "fuse_elementwise": false,
+      "group_reduction": false,
+      "vectorize_memory": false
+    },
+    "source_sha256": "c02a4c75e31f79b19c2b0bf10e1fa0d60d83e9f2b2bc90bf5159b3c5b937cbd5"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "all",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "278d84e282734ec6c4a4b7b56e4d535ddcd38d24a50c7eb1c01d62ab2ce192f7"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_accumulator",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": false,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "278d84e282734ec6c4a4b7b56e4d535ddcd38d24a50c7eb1c01d62ab2ce192f7"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_tiling",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": false,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "3289014380a8ca266420b5c6603265f0a87dd927c478a73a43a97cd38a480b7e"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_unroll",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 1,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "4cab63005084b58ce51305d79a4a1b49dee44b54afdc3cee51338b06e5300588"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_initializer",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": false,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "a2168706c5d83936edcb3122c018453e426324f1f92a37b45ca925991d8cf36c"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_staging",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": false,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "ad1575ccc7cf984ddb22cf5012176a504200dc0370c0ea548d010343ae1df380"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_store",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": false,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "31a2295f34f7cbd85dec9fecf81970b4fb49fe58ffc0e138d2254542ac81d9d0"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_reuse",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": false,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "278d84e282734ec6c4a4b7b56e4d535ddcd38d24a50c7eb1c01d62ab2ce192f7"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_fusion",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": false,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "278d84e282734ec6c4a4b7b56e4d535ddcd38d24a50c7eb1c01d62ab2ce192f7"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_group",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": false,
+      "vectorize_memory": false
+    },
+    "source_sha256": "278d84e282734ec6c4a4b7b56e4d535ddcd38d24a50c7eb1c01d62ab2ce192f7"
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "baseline",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": false,
+      "matmul_register_tiling": false,
+      "reduction_unroll": 1,
+      "accumulator_init_forwarding": false,
+      "cooperative_load_staging": false,
+      "terminal_store_distribution": false,
+      "reuse_local_memory": true,
+      "fuse_elementwise": false,
+      "group_reduction": false,
+      "vectorize_memory": false
+    },
+    "source_sha256": "cea4706023f3a50434ef86c4436cea686b1c51ff8a91d35cee69f5e3b443849f"
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "all",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "058a40fbc486563e0b77f061d82d015cefe257b123e162e46b2cb103e6773249"
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_accumulator",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": false,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "058a40fbc486563e0b77f061d82d015cefe257b123e162e46b2cb103e6773249"
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_tiling",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": false,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "49f572697f7c0980b1c75db420bb4758de90e8c1472909ed94d0c33006b1466f"
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_unroll",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 1,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "2a7dfbdc7feadfd3b577f04a9c67019f8a1bbf556839e77f53473758b2bc705f"
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_initializer",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": false,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "426e6a5bfca2bcf5d3f208416a75af7fbdc4b2739a5d83a516973f5a99ed8cce"
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_staging",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": false,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "72af01b66a35eb9e8033e8b2c2935d2a9ea188ca1f1ea5ec05abfd43204bf616"
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_store",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": false,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "c615e9c530009c53b4faca45c700c82ac44d3d339466d631e63c8300592c096b"
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_reuse",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": false,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "058a40fbc486563e0b77f061d82d015cefe257b123e162e46b2cb103e6773249"
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_fusion",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": false,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "058a40fbc486563e0b77f061d82d015cefe257b123e162e46b2cb103e6773249"
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_group",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": false,
+      "vectorize_memory": false
+    },
+    "source_sha256": "058a40fbc486563e0b77f061d82d015cefe257b123e162e46b2cb103e6773249"
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_distribution",
+    "options": {
+      "distribute_work": false,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "bc707c5c90bd8cbe56eae4fd0301055322d41ebc3effdabfad9f8d13397c2ad2"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "baseline",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": false,
+      "matmul_register_tiling": false,
+      "reduction_unroll": 1,
+      "accumulator_init_forwarding": false,
+      "cooperative_load_staging": false,
+      "terminal_store_distribution": false,
+      "reuse_local_memory": true,
+      "fuse_elementwise": false,
+      "group_reduction": false,
+      "vectorize_memory": false
+    },
+    "source_sha256": "042e0311a3921fee6023a9573a2186324c2e0cbdfb5382f942cc091c36eb6002"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "all",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "3224cd63179aaa224c9d25ed65e9a7a9a9cdc4e263ca11b14e0bb2d7b268fa38"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_accumulator",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": false,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "3224cd63179aaa224c9d25ed65e9a7a9a9cdc4e263ca11b14e0bb2d7b268fa38"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_tiling",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": false,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "1f8ce29551289931c50b30d4cc1ee7a6fbecb76b34e02ae904ca11cf870e05c0"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_unroll",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 1,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "b41ef2fabb8426304913411fa0e9a6e5542bc231752818bfdad4782219133cac"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_initializer",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": false,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "cc96519b7a6443b5b897e0d0ef46bfcee4a0db1e9dbf24491f2dd09d8a7bddc7"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_staging",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": false,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "f930551a860c592392e202e8707aadfae9a76d84210c08e6dae7c0e5e41aed6b"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_store",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": false,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "99a2ccd9c0fb53c844b7ba53439b5a7f174f46a50d1ff9933216f9bcb5df399e"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_reuse",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": false,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "3224cd63179aaa224c9d25ed65e9a7a9a9cdc4e263ca11b14e0bb2d7b268fa38"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_fusion",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": false,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "3224cd63179aaa224c9d25ed65e9a7a9a9cdc4e263ca11b14e0bb2d7b268fa38"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_group",
+    "options": {
+      "distribute_work": true,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": false,
+      "vectorize_memory": false
+    },
+    "source_sha256": "3224cd63179aaa224c9d25ed65e9a7a9a9cdc4e263ca11b14e0bb2d7b268fa38"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_distribution",
+    "options": {
+      "distribute_work": false,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "dceea76d14e95f04e68284825873b65a18bdb2df5ad04f9ec6c9d1208188f7e1"
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_distribution",
+    "options": {
+      "distribute_work": false,
+      "register_accumulator": true,
+      "matmul_register_tiling": true,
+      "reduction_unroll": 4,
+      "accumulator_init_forwarding": true,
+      "cooperative_load_staging": true,
+      "terminal_store_distribution": true,
+      "reuse_local_memory": true,
+      "fuse_elementwise": true,
+      "group_reduction": true,
+      "vectorize_memory": false
+    },
+    "source_sha256": "5de22d80704c0cbeaa071ad4833a611d695b28e73bd4a3a9802e8efc36432aef"
+  }
+]

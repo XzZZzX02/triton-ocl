@@ -1,0 +1,452 @@
+[
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": false,
+    "accumulator": false,
+    "unroll": 1,
+    "block": 1,
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 1,
+    "source_sha256": "d78d30b0390c8cc533e83bcca749cd5688dbbe6a1820e2f00f41d235864c86e8",
+    "source_bytes": 18921
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": false,
+    "accumulator": false,
+    "unroll": 1,
+    "block": 3,
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 1,
+    "source_sha256": "d78d30b0390c8cc533e83bcca749cd5688dbbe6a1820e2f00f41d235864c86e8",
+    "source_bytes": 18921
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": false,
+    "accumulator": false,
+    "unroll": 1,
+    "block": 48,
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 1,
+    "source_sha256": "d78d30b0390c8cc533e83bcca749cd5688dbbe6a1820e2f00f41d235864c86e8",
+    "source_bytes": 18921
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": false,
+    "accumulator": false,
+    "unroll": 1,
+    "block": [
+      3,
+      5
+    ],
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 1,
+    "source_sha256": "d78d30b0390c8cc533e83bcca749cd5688dbbe6a1820e2f00f41d235864c86e8",
+    "source_bytes": 18921
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": false,
+    "accumulator": true,
+    "unroll": 1,
+    "block": 1,
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 1,
+    "source_sha256": "01a95175bb73d7612091e6c302797b758fa14f586fe0aab67956c5c66a91ede7",
+    "source_bytes": 19027
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": false,
+    "accumulator": true,
+    "unroll": 1,
+    "block": 3,
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 1,
+    "source_sha256": "01a95175bb73d7612091e6c302797b758fa14f586fe0aab67956c5c66a91ede7",
+    "source_bytes": 19027
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": false,
+    "accumulator": true,
+    "unroll": 1,
+    "block": 48,
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 1,
+    "source_sha256": "01a95175bb73d7612091e6c302797b758fa14f586fe0aab67956c5c66a91ede7",
+    "source_bytes": 19027
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": false,
+    "accumulator": true,
+    "unroll": 1,
+    "block": [
+      3,
+      5
+    ],
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 1,
+    "source_sha256": "01a95175bb73d7612091e6c302797b758fa14f586fe0aab67956c5c66a91ede7",
+    "source_bytes": 19027
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": false,
+    "accumulator": true,
+    "unroll": 4,
+    "block": 1,
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 1,
+    "source_sha256": "9fb8e4b0242154abc1e63bcc3d0f92acd6c379a41a649044d6046af9d3e9df0f",
+    "source_bytes": 20437
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": false,
+    "accumulator": true,
+    "unroll": 4,
+    "block": 3,
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 1,
+    "source_sha256": "9fb8e4b0242154abc1e63bcc3d0f92acd6c379a41a649044d6046af9d3e9df0f",
+    "source_bytes": 20437
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": false,
+    "accumulator": true,
+    "unroll": 4,
+    "block": 48,
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 1,
+    "source_sha256": "9fb8e4b0242154abc1e63bcc3d0f92acd6c379a41a649044d6046af9d3e9df0f",
+    "source_bytes": 20437
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": false,
+    "accumulator": true,
+    "unroll": 4,
+    "block": [
+      3,
+      5
+    ],
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 1,
+    "source_sha256": "9fb8e4b0242154abc1e63bcc3d0f92acd6c379a41a649044d6046af9d3e9df0f",
+    "source_bytes": 20437
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": true,
+    "accumulator": false,
+    "unroll": 1,
+    "block": 1,
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 0,
+    "source_sha256": "dc2fde362c8535d928114f5decc6cee36c317b70c30bc2a9b4fc006a3d25be80",
+    "source_bytes": 18934
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": true,
+    "accumulator": false,
+    "unroll": 1,
+    "block": 3,
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 0,
+    "source_sha256": "dc2fde362c8535d928114f5decc6cee36c317b70c30bc2a9b4fc006a3d25be80",
+    "source_bytes": 18934
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": true,
+    "accumulator": false,
+    "unroll": 1,
+    "block": 48,
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 0,
+    "source_sha256": "dc2fde362c8535d928114f5decc6cee36c317b70c30bc2a9b4fc006a3d25be80",
+    "source_bytes": 18934
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": true,
+    "accumulator": false,
+    "unroll": 1,
+    "block": [
+      3,
+      5
+    ],
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 0,
+    "source_sha256": "dc2fde362c8535d928114f5decc6cee36c317b70c30bc2a9b4fc006a3d25be80",
+    "source_bytes": 18934
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": true,
+    "accumulator": true,
+    "unroll": 1,
+    "block": 1,
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 0,
+    "source_sha256": "dc2fde362c8535d928114f5decc6cee36c317b70c30bc2a9b4fc006a3d25be80",
+    "source_bytes": 18934
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": true,
+    "accumulator": true,
+    "unroll": 1,
+    "block": 3,
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 0,
+    "source_sha256": "dc2fde362c8535d928114f5decc6cee36c317b70c30bc2a9b4fc006a3d25be80",
+    "source_bytes": 18934
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": true,
+    "accumulator": true,
+    "unroll": 1,
+    "block": 48,
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 0,
+    "source_sha256": "dc2fde362c8535d928114f5decc6cee36c317b70c30bc2a9b4fc006a3d25be80",
+    "source_bytes": 18934
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": true,
+    "accumulator": true,
+    "unroll": 1,
+    "block": [
+      3,
+      5
+    ],
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 0,
+    "source_sha256": "dc2fde362c8535d928114f5decc6cee36c317b70c30bc2a9b4fc006a3d25be80",
+    "source_bytes": 18934
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": true,
+    "accumulator": true,
+    "unroll": 4,
+    "block": 1,
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 0,
+    "source_sha256": "75b9e9c42c56bed4152dd8ff5d007af4508a5e7251343a634207daef9849d593",
+    "source_bytes": 22267
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": true,
+    "accumulator": true,
+    "unroll": 4,
+    "block": 3,
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 0,
+    "source_sha256": "75b9e9c42c56bed4152dd8ff5d007af4508a5e7251343a634207daef9849d593",
+    "source_bytes": 22267
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": true,
+    "accumulator": true,
+    "unroll": 4,
+    "block": 48,
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 0,
+    "source_sha256": "75b9e9c42c56bed4152dd8ff5d007af4508a5e7251343a634207daef9849d593",
+    "source_bytes": 22267
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TN",
+    "distributed": true,
+    "accumulator": true,
+    "unroll": 4,
+    "block": [
+      3,
+      5
+    ],
+    "status": "PASS",
+    "compile_only": false,
+    "elements_checked": 1543,
+    "guarded_copies": 0,
+    "source_sha256": "75b9e9c42c56bed4152dd8ff5d007af4508a5e7251343a634207daef9849d593",
+    "source_bytes": 22267
+  }
+]

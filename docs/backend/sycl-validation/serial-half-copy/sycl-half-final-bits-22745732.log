@@ -1,0 +1,16 @@
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+python/triton/_C/libtriton.so: OK
+python/triton/_C/triton-sycl-translate: OK
+third_party/sycl/lib/Conversion/LinalgToAffineLoops/SerialHalfCopyGuard.cpp: OK
+third_party/sycl/backend/compiler.py: OK
+third_party/sycl/tool/triton-sycl-translate/EmitSYCL.cpp: OK
+python/test/sycl/serial_half_copy_bits.py: OK
+h02r3n00
+gfx906:sramecc-:xnack-
+HIP_DEVICE=Device 66a1 COUNT=4
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"shape": [16, 32], "variant": "before", "round": 0, "status": "PASS", "elements_checked": 9258, "samples_ns": [139051, 139371, 138251, 138091, 135531, 138891, 135051, 138091, 138251, 138731, 139371, 138411, 138891, 139051, 139212, 138411, 137611, 138251, 139051, 138731, 138252, 139051, 139211, 138571, 138892, 138731, 138571, 138251, 138892, 139371, 138571], "median_ns": 138731, "source_sha256": "92ee7e2b92c5535d66b900bf29fdb14ad8c2bc80d146ae4dbc690ae104b7af8b"}
+slurmstepd: error: *** JOB 22745732 ON h02r3n00 CANCELLED AT 2026-10-31T10:50:01 DUE TO TIME LIMIT ***

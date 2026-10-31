@@ -1,0 +1,28 @@
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+g09r3n00
+gfx906:sramecc-:xnack-
+HIP_DEVICE=Device 66a1 COUNT=4
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"variant": "original", "block": 1, "status": "MISMATCH", "mismatches": [{"index": 512, "got": 0, "want": 15360}, {"index": 1024, "got": 0, "want": 31744}], "mismatch_count": 2, "error": null, "source_sha256": "4ba02f12f2a070312b691c370d62be92bccfa1c7107a331efe8b851275e9b3d6"}
+{"variant": "original", "block": 3, "status": "MISMATCH", "mismatches": [{"index": 512, "got": 0, "want": 15360}, {"index": 1024, "got": 0, "want": 31744}], "mismatch_count": 2, "error": null, "source_sha256": "4ba02f12f2a070312b691c370d62be92bccfa1c7107a331efe8b851275e9b3d6"}
+{"variant": "original", "block": 48, "status": "MISMATCH", "mismatches": [{"index": 512, "got": 0, "want": 15360}, {"index": 1024, "got": 0, "want": 31744}], "mismatch_count": 2, "error": null, "source_sha256": "4ba02f12f2a070312b691c370d62be92bccfa1c7107a331efe8b851275e9b3d6"}
+{"variant": "original", "block": [3, 5], "status": "MISMATCH", "mismatches": [{"index": 512, "got": 0, "want": 15360}, {"index": 1024, "got": 0, "want": 31744}], "mismatch_count": 2, "error": null, "source_sha256": "4ba02f12f2a070312b691c370d62be92bccfa1c7107a331efe8b851275e9b3d6"}
+{"variant": "middle", "block": 1, "status": "MISMATCH", "mismatches": [{"index": 512, "got": 0, "want": 15360}, {"index": 1024, "got": 0, "want": 31744}], "mismatch_count": 2, "error": null, "source_sha256": "3d7681680ec6b94b2aeda922c1288cffac1a9f242b0d5fd9782a4daebf76a049"}
+{"variant": "middle", "block": 3, "status": "MISMATCH", "mismatches": [{"index": 512, "got": 0, "want": 15360}, {"index": 1024, "got": 0, "want": 31744}], "mismatch_count": 2, "error": null, "source_sha256": "3d7681680ec6b94b2aeda922c1288cffac1a9f242b0d5fd9782a4daebf76a049"}
+{"variant": "middle", "block": 48, "status": "MISMATCH", "mismatches": [{"index": 512, "got": 0, "want": 15360}, {"index": 1024, "got": 0, "want": 31744}], "mismatch_count": 2, "error": null, "source_sha256": "3d7681680ec6b94b2aeda922c1288cffac1a9f242b0d5fd9782a4daebf76a049"}
+{"variant": "middle", "block": [3, 5], "status": "MISMATCH", "mismatches": [{"index": 512, "got": 0, "want": 15360}, {"index": 1024, "got": 0, "want": 31744}], "mismatch_count": 2, "error": null, "source_sha256": "3d7681680ec6b94b2aeda922c1288cffac1a9f242b0d5fd9782a4daebf76a049"}
+{"variant": "input", "block": 1, "status": "MISMATCH", "mismatches": [{"index": 512, "got": 0, "want": 15360}, {"index": 1024, "got": 0, "want": 31744}], "mismatch_count": 2, "error": null, "source_sha256": "d0ad871ff3efcdb4829d77ced1a3930455912316dcd979a0b7f74ef07e6a4421"}
+{"variant": "input", "block": 3, "status": "MISMATCH", "mismatches": [{"index": 512, "got": 0, "want": 15360}, {"index": 1024, "got": 0, "want": 31744}], "mismatch_count": 2, "error": null, "source_sha256": "d0ad871ff3efcdb4829d77ced1a3930455912316dcd979a0b7f74ef07e6a4421"}
+{"variant": "input", "block": 48, "status": "MISMATCH", "mismatches": [{"index": 512, "got": 0, "want": 15360}, {"index": 1024, "got": 0, "want": 31744}], "mismatch_count": 2, "error": null, "source_sha256": "d0ad871ff3efcdb4829d77ced1a3930455912316dcd979a0b7f74ef07e6a4421"}
+{"variant": "input", "block": [3, 5], "status": "MISMATCH", "mismatches": [{"index": 512, "got": 0, "want": 15360}, {"index": 1024, "got": 0, "want": 31744}], "mismatch_count": 2, "error": null, "source_sha256": "d0ad871ff3efcdb4829d77ced1a3930455912316dcd979a0b7f74ef07e6a4421"}
+{"variant": "output", "block": 1, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "source_sha256": "8109a11d00d46dd2ec1307cb564774b5dc7d7539b0c16f067faea23d9323166d"}
+{"variant": "output", "block": 3, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "source_sha256": "8109a11d00d46dd2ec1307cb564774b5dc7d7539b0c16f067faea23d9323166d"}
+{"variant": "output", "block": 48, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "source_sha256": "8109a11d00d46dd2ec1307cb564774b5dc7d7539b0c16f067faea23d9323166d"}
+{"variant": "output", "block": [3, 5], "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "source_sha256": "8109a11d00d46dd2ec1307cb564774b5dc7d7539b0c16f067faea23d9323166d"}
+{"variant": "all", "block": 1, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "source_sha256": "7e60317a4eaa9ecea576251d21583d3194b923fc350a6d17771b63d11565e185"}
+{"variant": "all", "block": 3, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "source_sha256": "7e60317a4eaa9ecea576251d21583d3194b923fc350a6d17771b63d11565e185"}
+{"variant": "all", "block": 48, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "source_sha256": "7e60317a4eaa9ecea576251d21583d3194b923fc350a6d17771b63d11565e185"}
+{"variant": "all", "block": [3, 5], "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "source_sha256": "7e60317a4eaa9ecea576251d21583d3194b923fc350a6d17771b63d11565e185"}

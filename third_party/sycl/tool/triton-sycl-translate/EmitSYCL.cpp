@@ -567,9 +567,18 @@ void ModuleEmitter::emitAffineMaxMin(OpType op, const char *syntax) {
 }
 
 void ModuleEmitter::emitAffineLoad(affine::AffineLoadOp op) {
+  bool halfBits = state.target == EmitTarget::SYCL &&
+      op.getResult().getType().isF16() && op->hasAttr("sycl.scalar_half_bits");
   indent();
   emitValue(op.getResult());
+  if (halfBits) {
+    os << ";\n";
+    indent();
+    emitValue(op.getResult());
+    os << ".bits";
+  }
   os << " = ";
+  if (halfBits) os << "*reinterpret_cast<const volatile uint16_t*>(&";
   auto affineMap = op.getAffineMap();
   AffineExprEmitter affineEmitter(state, affineMap.getNumDims(),
                                   op.getMapOperands());
@@ -599,11 +608,15 @@ void ModuleEmitter::emitAffineLoad(affine::AffineLoadOp op) {
       }
     }
   }
+  if (halfBits) os << ".bits)";
   os << ";";
   emitInfoAndNewLine(op);
 }
 
 void ModuleEmitter::emitAffineStore(affine::AffineStoreOp op) {
+  bool halfBits = state.target == EmitTarget::SYCL &&
+      op.getValueToStore().getType().isF16() &&
+      op->hasAttr("sycl.scalar_half_bits");
   bool scalarOwner = state.target == EmitTarget::SYCL &&
       !op->getParentOfType<affine::AffineForOp>() &&
       !op->hasAttr("sycl.scalar_owner");
@@ -612,6 +625,7 @@ void ModuleEmitter::emitAffineStore(affine::AffineStoreOp op) {
     addIndent();
   }
   indent();
+  if (halfBits) os << "*reinterpret_cast<volatile uint16_t*>(&";
   auto affineMap = op.getAffineMap();
   AffineExprEmitter affineEmitter(state, affineMap.getNumDims(),
                                   op.getMapOperands());
@@ -641,8 +655,10 @@ void ModuleEmitter::emitAffineStore(affine::AffineStoreOp op) {
       }
     }
   }
+  if (halfBits) os << ".bits)";
   os << " = ";
   emitValue(op.getValueToStore());
+  if (halfBits) os << ".bits";
   os << ";";
   emitInfoAndNewLine(op);
   if (scalarOwner) {
@@ -781,15 +797,28 @@ template <typename OpType> void ModuleEmitter::emitAlloc(OpType op) {
 }
 
 void ModuleEmitter::emitLoad(memref::LoadOp op) {
+  bool halfBits = state.target == EmitTarget::SYCL &&
+      op.getResult().getType().isF16() && op->hasAttr("sycl.scalar_half_bits");
   indent();
   emitValue(op.getResult());
+  if (halfBits) {
+    os << ";\n";
+    indent();
+    emitValue(op.getResult());
+    os << ".bits";
+  }
   os << " = ";
+  if (halfBits) os << "*reinterpret_cast<const volatile uint16_t*>(&";
   emitMemRefAccess(op.getMemRef(), op.getIndices());
+  if (halfBits) os << ".bits)";
   os << ";";
   emitInfoAndNewLine(op);
 }
 
 void ModuleEmitter::emitStore(memref::StoreOp op) {
+  bool halfBits = state.target == EmitTarget::SYCL &&
+      op.getValueToStore().getType().isF16() &&
+      op->hasAttr("sycl.scalar_half_bits");
   bool scalarOwner = state.target == EmitTarget::SYCL &&
       !op->getParentOfType<affine::AffineForOp>();
   if (scalarOwner) {
@@ -797,9 +826,12 @@ void ModuleEmitter::emitStore(memref::StoreOp op) {
     addIndent();
   }
   indent();
+  if (halfBits) os << "*reinterpret_cast<volatile uint16_t*>(&";
   emitMemRefAccess(op.getMemRef(), op.getIndices());
+  if (halfBits) os << ".bits)";
   os << " = ";
   emitValue(op.getValueToStore());
+  if (halfBits) os << ".bits";
   os << ";";
   emitInfoAndNewLine(op);
   if (scalarOwner) {

@@ -1,0 +1,62 @@
+Source: https://llvm.org/docs/LangRef.html#volatile-memory-accesses
+Retrieved: 2026-10-31
+id="volatile-memory-accesses">
+   Volatile Memory Accesses #  
+ Certain memory accesses, such as   load  ’s,
+  store  ’s, and   llvm.memcpy  ’s may be
+marked   volatile  . The optimizers must not change the number of
+volatile operations or change their order of execution relative to other
+volatile operations. The optimizers  may  change the order of volatile
+operations relative to non-volatile operations. This is not Java’s
+“volatile” and has no cross-thread synchronization behavior. 
+ A volatile load or store may have additional target-specific semantics.
+Any volatile operation can have side effects, and any volatile operation
+can read and/or modify state which is not accessible via a regular load
+or store in this module. Volatile operations may use addresses which do
+not point to memory (like MMIO registers). This means the compiler may
+not use a volatile operation to prove a non-volatile access to that
+address has defined behavior. This includes addresses typically forbidden,
+such as the pointer with bit-value 0. 
+ The allowed side-effects for volatile accesses are limited.  If a
+non-volatile store to a given address would be legal, a volatile
+operation may modify the memory at that address. A volatile operation
+may not modify any other memory accessible by the module being compiled.
+A volatile operation may not call any code in the current module. 
+ In general (without target-specific context), the address space of a
+volatile operation may not be changed. Different address spaces may
+have different trapping behavior when dereferencing an invalid
+pointer. 
+ Volatile operations are permitted to trap. The compiler may not assume
+that execution will continue after a volatile operation. 
+ IR-level volatile loads and stores cannot safely be optimized into   llvm.memcpy  
+or   llvm.memmove   intrinsics even when those intrinsics are flagged volatile.
+Likewise, the backend should never split or merge target-legal volatile
+load/store instructions. Similarly, IR-level volatile loads and stores cannot
+change from integer to floating-point or vice versa. 
+ 
+ Rationale 
+ Platforms may rely on volatile loads and stores of natively supported
+data width to be executed as single instruction. For example, in C
+this holds for an l-value of volatile primitive type with native
+hardware support, but not necessarily for aggregate types. The
+frontend upholds these expectations, which are intentionally
+unspecified in the IR. The rules above ensure that IR transformations
+do not violate the frontend’s contract with the language. 
+ 
+ 
+ 
+   Memory Model for Concurrent Operations #  
+ The LLVM IR does not define any way to start parallel threads of
+execution or to register signal handlers. Nonetheless, there are
+platform-specific ways to create them, and we define LLVM IR’s behavior
+in their presence. This model is inspired by the C++ memory model.
+The memory model is defined axiomatically: we consider a set of candidate
+executions where every read can (in principle) read from every write
+to the same location (including “later” writes), and provide constraints that
+reduce this candidate set to the set of actually valid executions. 
+ For a more informal introduction to this model, see the   LLVM Atomic Instructions and Concurrency Guide  . 
+ We define a  happens-before  partial order as the least partial order
+that 
+ 
+  Is a superset of single-thread program order, and  
+  When   a    synchronizes-with    b</s

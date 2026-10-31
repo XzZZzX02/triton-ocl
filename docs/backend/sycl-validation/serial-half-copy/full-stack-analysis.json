@@ -1,0 +1,2944 @@
+{
+  "status": "PASS",
+  "files": 6,
+  "configurations": 216,
+  "elements_checked": 751032,
+  "event_samples": 6696,
+  "comparisons": [
+    {
+      "file": "half-stack-dcu-22745330.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "ablation": "baseline",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ],
+        "matmul_register_tiling": [
+          false,
+          true
+        ],
+        "reduction_unroll": [
+          1,
+          4
+        ],
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ],
+        "cooperative_load_staging": [
+          false,
+          true
+        ],
+        "terminal_store_distribution": [
+          false,
+          true
+        ],
+        "fuse_elementwise": [
+          false,
+          true
+        ],
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_accumulator": [
+          0,
+          1
+        ],
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          4,
+          6
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 3.8841875592622426,
+      "round_ratios": [
+        3.87155618337212,
+        3.8969016274383446,
+        3.8890610821667804
+      ],
+      "all_median_ns": 98081,
+      "without_median_ns": 380965,
+      "source_bytes_without": 19078,
+      "source_bytes_all": 22961,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745330.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "ablation": "without_accumulator",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ]
+      },
+      "identical_source": true,
+      "without_over_all": 1.0,
+      "round_ratios": [
+        0.9967480005284499,
+        1.0027720665705138,
+        1.004893914213762
+      ],
+      "all_median_ns": 98081,
+      "without_median_ns": 98081,
+      "source_bytes_without": 22961,
+      "source_bytes_all": 22961,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745330.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "ablation": "without_tiling",
+      "changed_options": {
+        "matmul_register_tiling": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.2554827132676054,
+      "round_ratios": [
+        1.2520401215434802,
+        1.259592270946492,
+        1.2528624300323201
+      ],
+      "all_median_ns": 98081,
+      "without_median_ns": 123139,
+      "source_bytes_without": 19647,
+      "source_bytes_all": 22961,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745330.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "ablation": "without_unroll",
+      "changed_options": {
+        "reduction_unroll": [
+          1,
+          4
+        ]
+      },
+      "marker_changes": {
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.0228382663308897,
+      "round_ratios": [
+        1.0195119968293005,
+        1.022401571178691,
+        1.0244797667234224
+      ],
+      "all_median_ns": 98081,
+      "without_median_ns": 100321,
+      "source_bytes_without": 19605,
+      "source_bytes_all": 22961,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745330.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "ablation": "without_initializer",
+      "changed_options": {
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          7,
+          6
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 0.9979812603868231,
+      "round_ratios": [
+        0.9947358258554283,
+        1.0011354221008377,
+        0.9983686952620793
+      ],
+      "all_median_ns": 98081,
+      "without_median_ns": 97883,
+      "source_bytes_without": 23409,
+      "source_bytes_all": 22961,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "mixed_rounds"
+    },
+    {
+      "file": "half-stack-dcu-22745330.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "ablation": "without_staging",
+      "changed_options": {
+        "cooperative_load_staging": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.distribution_depth": [
+          4,
+          6
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 3.200691265382694,
+      "round_ratios": [
+        3.1886261318482534,
+        3.2111680526999518,
+        3.2039334835493114
+      ],
+      "all_median_ns": 98081,
+      "without_median_ns": 313927,
+      "source_bytes_without": 23390,
+      "source_bytes_all": 22961,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745330.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "ablation": "without_store",
+      "changed_options": {
+        "terminal_store_distribution": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          5,
+          6
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.2854885247907342,
+      "round_ratios": [
+        1.281308116787431,
+        1.2906680578144658,
+        1.2854885247907342
+      ],
+      "all_median_ns": 98081,
+      "without_median_ns": 126082,
+      "source_bytes_without": 23042,
+      "source_bytes_all": 22961,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745330.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "ablation": "without_reuse",
+      "changed_options": {
+        "reuse_local_memory": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0,
+      "round_ratios": [
+        0.9967480005284499,
+        0.9967267110606479,
+        1.0016313047379206
+      ],
+      "all_median_ns": 98081,
+      "without_median_ns": 98081,
+      "source_bytes_without": 22961,
+      "source_bytes_all": 22961,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745330.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "ablation": "without_fusion",
+      "changed_options": {
+        "fuse_elementwise": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0016313047379206,
+      "round_ratios": [
+        0.998374000264225,
+        1.0049099334090281,
+        0.9983788909166913
+      ],
+      "all_median_ns": 98081,
+      "without_median_ns": 98241,
+      "source_bytes_without": 22961,
+      "source_bytes_all": 22961,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745330.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "ablation": "without_group",
+      "changed_options": {
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0016313047379206,
+      "round_ratios": [
+        0.9983841627625736,
+        1.0049099334090281,
+        1.0016313047379206
+      ],
+      "all_median_ns": 98081,
+      "without_median_ns": 98241,
+      "source_bytes_without": 22961,
+      "source_bytes_all": 22961,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745330.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "ablation": "without_distribution",
+      "changed_options": {
+        "distribute_work": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          0,
+          6
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 51.75054291860809,
+      "round_ratios": [
+        51.53502505055843,
+        51.926381685948385,
+        51.75054291860809
+      ],
+      "all_median_ns": 98081,
+      "without_median_ns": 5075745,
+      "source_bytes_without": 21396,
+      "source_bytes_all": 22961,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745331.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "baseline",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ],
+        "matmul_register_tiling": [
+          false,
+          true
+        ],
+        "reduction_unroll": [
+          1,
+          4
+        ],
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ],
+        "cooperative_load_staging": [
+          false,
+          true
+        ],
+        "terminal_store_distribution": [
+          false,
+          true
+        ],
+        "fuse_elementwise": [
+          false,
+          true
+        ],
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_accumulator": [
+          0,
+          1
+        ],
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          2,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 4.987130610186586,
+      "round_ratios": [
+        4.990302614866636,
+        5.0,
+        4.987130610186586
+      ],
+      "all_median_ns": 49575,
+      "without_median_ns": 247237,
+      "source_bytes_without": 17102,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745331.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_accumulator",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_accumulator": [
+          0,
+          1
+        ],
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          5,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.2329198184568835,
+      "round_ratios": [
+        1.2322735428721194,
+        1.2368666019103125,
+        1.2355017650025215
+      ],
+      "all_median_ns": 49575,
+      "without_median_ns": 61122,
+      "source_bytes_without": 16728,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745331.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_tiling",
+      "changed_options": {
+        "matmul_register_tiling": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0000201714573878,
+      "round_ratios": [
+        1.0032257414165038,
+        1.0005059090173223,
+        1.0000201714573878
+      ],
+      "all_median_ns": 49575,
+      "without_median_ns": 49576,
+      "source_bytes_without": 17373,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745331.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_unroll",
+      "changed_options": {
+        "reduction_unroll": [
+          1,
+          4
+        ]
+      },
+      "marker_changes": {
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.000504286434695,
+      "round_ratios": [
+        1.0,
+        1.0037234903674923,
+        0.9967725668179526
+      ],
+      "all_median_ns": 49575,
+      "without_median_ns": 49600,
+      "source_bytes_without": 16473,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "mixed_rounds"
+    },
+    {
+      "file": "half-stack-dcu-22745331.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_initializer",
+      "changed_options": {
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          5,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.010206757438225,
+      "round_ratios": [
+        1.0096772242495111,
+        1.0134571798607739,
+        1.0195259707513868
+      ],
+      "all_median_ns": 49575,
+      "without_median_ns": 50081,
+      "source_bytes_without": 17722,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745331.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_staging",
+      "changed_options": {
+        "cooperative_load_staging": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.distribution_depth": [
+          2,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 4.153787191124559,
+      "round_ratios": [
+        4.151609846575674,
+        4.18655900922778,
+        4.144084720121029
+      ],
+      "all_median_ns": 49575,
+      "without_median_ns": 205924,
+      "source_bytes_without": 17670,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745331.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_store",
+      "changed_options": {
+        "terminal_store_distribution": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          3,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.58791729702471,
+      "round_ratios": [
+        1.5870849378036733,
+        1.5897887323943662,
+        1.58791729702471
+      ],
+      "all_median_ns": 49575,
+      "without_median_ns": 78721,
+      "source_bytes_without": 17450,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745331.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_reuse",
+      "changed_options": {
+        "reuse_local_memory": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0005244578920827,
+      "round_ratios": [
+        0.9935485171669926,
+        1.0037437267281852,
+        1.0005244578920827
+      ],
+      "all_median_ns": 49575,
+      "without_median_ns": 49601,
+      "source_bytes_without": 17373,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745331.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_fusion",
+      "changed_options": {
+        "fuse_elementwise": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 0.9972970247100353,
+      "round_ratios": [
+        0.9967742585834963,
+        1.0005059090173223,
+        1.0069591527987898
+      ],
+      "all_median_ns": 49575,
+      "without_median_ns": 49441,
+      "source_bytes_without": 17373,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745331.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_group",
+      "changed_options": {
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0005244578920827,
+      "round_ratios": [
+        1.0,
+        1.0005059090173223,
+        1.00375189107413
+      ],
+      "all_median_ns": 49575,
+      "without_median_ns": 49601,
+      "source_bytes_without": 17373,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745331.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_distribution",
+      "changed_options": {
+        "distribute_work": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          0,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 13.823277861825517,
+      "round_ratios": [
+        13.774117457309329,
+        13.867755382871945,
+        13.836207766011094
+      ],
+      "all_median_ns": 49575,
+      "without_median_ns": 685289,
+      "source_bytes_without": 18380,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745332.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "baseline",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ],
+        "matmul_register_tiling": [
+          false,
+          true
+        ],
+        "reduction_unroll": [
+          1,
+          4
+        ],
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ],
+        "cooperative_load_staging": [
+          false,
+          true
+        ],
+        "terminal_store_distribution": [
+          false,
+          true
+        ],
+        "fuse_elementwise": [
+          false,
+          true
+        ],
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_accumulator": [
+          0,
+          1
+        ],
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          3,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 3.8863067456920914,
+      "round_ratios": [
+        3.8863067456920914,
+        3.8795253949215533,
+        3.900676798860128
+      ],
+      "all_median_ns": 185763,
+      "without_median_ns": 721932,
+      "source_bytes_without": 18549,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745332.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_accumulator",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ]
+      },
+      "identical_source": true,
+      "without_over_all": 1.0000053832033289,
+      "round_ratios": [
+        1.0017226250652713,
+        0.999144807258919,
+        1.0025852205263273
+      ],
+      "all_median_ns": 185763,
+      "without_median_ns": 185764,
+      "source_bytes_without": 22408,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745332.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_tiling",
+      "changed_options": {
+        "matmul_register_tiling": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.2428955174065879,
+      "round_ratios": [
+        1.2428955174065879,
+        1.2383890105043485,
+        1.2461140735303642
+      ],
+      "all_median_ns": 185763,
+      "without_median_ns": 230884,
+      "source_bytes_without": 19116,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745332.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_unroll",
+      "changed_options": {
+        "reduction_unroll": [
+          1,
+          4
+        ]
+      },
+      "marker_changes": {
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.0163703213234068,
+      "round_ratios": [
+        1.0146423130548063,
+        1.0154956621827316,
+        1.020724941171391
+      ],
+      "all_median_ns": 185763,
+      "without_median_ns": 188804,
+      "source_bytes_without": 19073,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745332.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_initializer",
+      "changed_options": {
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          6,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.0000053832033289,
+      "round_ratios": [
+        0.997416062402093,
+        0.999144807258919,
+        1.0034541568618984
+      ],
+      "all_median_ns": 185763,
+      "without_median_ns": 185764,
+      "source_bytes_without": 22855,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "mixed_rounds"
+    },
+    {
+      "file": "half-stack-dcu-22745332.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_staging",
+      "changed_options": {
+        "cooperative_load_staging": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.distribution_depth": [
+          3,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 3.347125100262162,
+      "round_ratios": [
+        3.3462368717128816,
+        3.349402709723918,
+        3.3557781567755445
+      ],
+      "all_median_ns": 185763,
+      "without_median_ns": 621772,
+      "source_bytes_without": 22836,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745332.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_store",
+      "changed_options": {
+        "terminal_store_distribution": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          4,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.0981896287204664,
+      "round_ratios": [
+        1.0941952918503686,
+        1.0972445582310957,
+        1.1018922303059087
+      ],
+      "all_median_ns": 185763,
+      "without_median_ns": 204003,
+      "source_bytes_without": 22489,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745332.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_reuse",
+      "changed_options": {
+        "reuse_local_memory": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0012166039523478,
+      "round_ratios": [
+        1.0012166039523478,
+        1.0025817139353388,
+        1.0025852205263273
+      ],
+      "all_median_ns": 185763,
+      "without_median_ns": 185989,
+      "source_bytes_without": 22408,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745332.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_fusion",
+      "changed_options": {
+        "fuse_elementwise": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0017280082686004,
+      "round_ratios": [
+        0.9994939788870766,
+        1.0017211426235593,
+        1.0043176960773732
+      ],
+      "all_median_ns": 185763,
+      "without_median_ns": 186084,
+      "source_bytes_without": 22408,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745332.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_group",
+      "changed_options": {
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0017172418619424,
+      "round_ratios": [
+        1.0017172418619424,
+        1.0008605713117795,
+        1.0025798234062304
+      ],
+      "all_median_ns": 185763,
+      "without_median_ns": 186082,
+      "source_bytes_without": 22408,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745332.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_distribution",
+      "changed_options": {
+        "distribute_work": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          0,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 49.350629565629326,
+      "round_ratios": [
+        49.34636606859278,
+        49.30815982960688,
+        49.4843915286803
+      ],
+      "all_median_ns": 185763,
+      "without_median_ns": 9167521,
+      "source_bytes_without": 20575,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745333.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "baseline",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ],
+        "matmul_register_tiling": [
+          false,
+          true
+        ],
+        "reduction_unroll": [
+          1,
+          4
+        ],
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ],
+        "cooperative_load_staging": [
+          false,
+          true
+        ],
+        "terminal_store_distribution": [
+          false,
+          true
+        ],
+        "fuse_elementwise": [
+          false,
+          true
+        ],
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_accumulator": [
+          0,
+          1
+        ],
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          3,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 3.5978737124055487,
+      "round_ratios": [
+        3.604781087846687,
+        3.5978737124055487,
+        3.591002786893356
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 217603,
+      "source_bytes_without": 18409,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745333.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_accumulator",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ]
+      },
+      "identical_source": true,
+      "without_over_all": 1.0,
+      "round_ratios": [
+        1.002652475920492,
+        1.0,
+        0.9947230421661912
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 60481,
+      "source_bytes_without": 22261,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745333.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_tiling",
+      "changed_options": {
+        "matmul_register_tiling": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.2142987053785486,
+      "round_ratios": [
+        1.2175196034548499,
+        1.2142821712603957,
+        1.2131066440197227
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 73442,
+      "source_bytes_without": 18974,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745333.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_unroll",
+      "changed_options": {
+        "reduction_unroll": [
+          1,
+          4
+        ]
+      },
+      "marker_changes": {
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.0264380549263405,
+      "round_ratios": [
+        1.0318297110459045,
+        1.0264380549263405,
+        1.0232351049619894
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 62080,
+      "source_bytes_without": 18930,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745333.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_initializer",
+      "changed_options": {
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          6,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.0026454589044493,
+      "round_ratios": [
+        1.005304951840984,
+        1.0026454589044493,
+        0.9968503157929454
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 60641,
+      "source_bytes_without": 22708,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "mixed_rounds"
+    },
+    {
+      "file": "half-stack-dcu-22745333.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_staging",
+      "changed_options": {
+        "cooperative_load_staging": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.distribution_depth": [
+          3,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 3.103156363155371,
+      "round_ratios": [
+        3.1114039886606655,
+        3.103156363155371,
+        3.0948862980491745
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 187682,
+      "source_bytes_without": 22691,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745333.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_store",
+      "changed_options": {
+        "terminal_store_distribution": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          4,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.2142821712603957,
+      "round_ratios": [
+        1.2175030254803467,
+        1.2089912534514973,
+        1.2110783133523524
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 73441,
+      "source_bytes_without": 22342,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745333.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_reuse",
+      "changed_options": {
+        "reuse_local_memory": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0052909178088987,
+      "round_ratios": [
+        1.002652475920492,
+        1.007936376713348,
+        1.0026384789169045
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 60801,
+      "source_bytes_without": 22261,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745333.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_fusion",
+      "changed_options": {
+        "fuse_elementwise": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0,
+      "round_ratios": [
+        1.0,
+        1.0,
+        0.9973615210830956
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 60481,
+      "source_bytes_without": 22261,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745333.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_group",
+      "changed_options": {
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0,
+      "round_ratios": [
+        1.005288373866481,
+        1.0,
+        0.9973615210830956
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 60481,
+      "source_bytes_without": 22261,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745333.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_distribution",
+      "changed_options": {
+        "distribute_work": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          0,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 40.89137084373605,
+      "round_ratios": [
+        40.99195968236601,
+        40.915246110348704,
+        40.783479823881535
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 2473151,
+      "source_bytes_without": 20436,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745334.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "baseline",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ],
+        "matmul_register_tiling": [
+          false,
+          true
+        ],
+        "reduction_unroll": [
+          1,
+          4
+        ],
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ],
+        "cooperative_load_staging": [
+          false,
+          true
+        ],
+        "terminal_store_distribution": [
+          false,
+          true
+        ],
+        "fuse_elementwise": [
+          false,
+          true
+        ],
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_accumulator": [
+          0,
+          1
+        ],
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          1
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          3,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 2.3585959817553386,
+      "round_ratios": [
+        2.3526392846460227,
+        2.370568360273473,
+        2.361121194425593
+      ],
+      "all_median_ns": 63361,
+      "without_median_ns": 149443,
+      "source_bytes_without": 18528,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745334.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_accumulator",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ]
+      },
+      "identical_source": true,
+      "without_over_all": 0.9974747873297454,
+      "round_ratios": [
+        0.9949622959336283,
+        1.0050760616106977,
+        0.9974747873297454
+      ],
+      "all_median_ns": 63361,
+      "without_median_ns": 63201,
+      "source_bytes_without": 19266,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745334.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_tiling",
+      "changed_options": {
+        "matmul_register_tiling": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.ordered_reduction_unroll": [
+          1,
+          0
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.08838244345891,
+      "round_ratios": [
+        1.0831378599203414,
+        1.0964451706032583,
+        1.08838244345891
+      ],
+      "all_median_ns": 63361,
+      "without_median_ns": 68961,
+      "source_bytes_without": 19309,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745334.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_unroll",
+      "changed_options": {
+        "reduction_unroll": [
+          1,
+          4
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 0.9974747873297454,
+      "round_ratios": [
+        0.9949622959336283,
+        1.0000158626925335,
+        0.9974747873297454
+      ],
+      "all_median_ns": 63361,
+      "without_median_ns": 63201,
+      "source_bytes_without": 19266,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745334.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_initializer",
+      "changed_options": {
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          5,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.0,
+      "round_ratios": [
+        0.9974811479668141,
+        1.0050760616106977,
+        1.0101166332602074
+      ],
+      "all_median_ns": 63361,
+      "without_median_ns": 63361,
+      "source_bytes_without": 19697,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "mixed_rounds"
+    },
+    {
+      "file": "half-stack-dcu-22745334.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_staging",
+      "changed_options": {
+        "cooperative_load_staging": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.cooperative_load_staging": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          3,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 2.0202017013620366,
+      "round_ratios": [
+        2.0151131121991153,
+        2.0355324312748846,
+        2.017676488691782
+      ],
+      "all_median_ns": 63361,
+      "without_median_ns": 128002,
+      "source_bytes_without": 19481,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745334.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_store",
+      "changed_options": {
+        "terminal_store_distribution": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          3,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.166664036236802,
+      "round_ratios": [
+        1.1637253821570819,
+        1.175124125569074,
+        1.1616136108962927
+      ],
+      "all_median_ns": 63361,
+      "without_median_ns": 73921,
+      "source_bytes_without": 19343,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745334.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_reuse",
+      "changed_options": {
+        "reuse_local_memory": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 0.9999842174208109,
+      "round_ratios": [
+        0.9974811479668141,
+        0.9999841373074666,
+        0.9999842174208109
+      ],
+      "all_median_ns": 63361,
+      "without_median_ns": 63360,
+      "source_bytes_without": 19266,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745334.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_fusion",
+      "changed_options": {
+        "fuse_elementwise": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 0.9999842174208109,
+      "round_ratios": [
+        0.9974811479668141,
+        1.0050601989181644,
+        0.9974747873297454
+      ],
+      "all_median_ns": 63361,
+      "without_median_ns": 63360,
+      "source_bytes_without": 19266,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745334.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_group",
+      "changed_options": {
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 0.9974747873297454,
+      "round_ratios": [
+        0.9924434439004424,
+        1.0025380308053489,
+        1.0
+      ],
+      "all_median_ns": 63361,
+      "without_median_ns": 63201,
+      "source_bytes_without": 19266,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745334.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_distribution",
+      "changed_options": {
+        "distribute_work": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.ordered_reduction_unroll": [
+          1,
+          0
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          1
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          0,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 21.41916952068307,
+      "round_ratios": [
+        21.372821586561923,
+        21.527894544820036,
+        21.41156231751393
+      ],
+      "all_median_ns": 63361,
+      "without_median_ns": 1357140,
+      "source_bytes_without": 20555,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745335.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "baseline",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ],
+        "matmul_register_tiling": [
+          false,
+          true
+        ],
+        "reduction_unroll": [
+          1,
+          4
+        ],
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ],
+        "cooperative_load_staging": [
+          false,
+          true
+        ],
+        "terminal_store_distribution": [
+          false,
+          true
+        ],
+        "fuse_elementwise": [
+          false,
+          true
+        ],
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_accumulator": [
+          0,
+          1
+        ],
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          2,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 4.6473898485464575,
+      "round_ratios": [
+        4.643660057282444,
+        4.647384828541739,
+        4.6696061199719985
+      ],
+      "all_median_ns": 199203,
+      "without_median_ns": 925774,
+      "source_bytes_without": 17756,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745335.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_accumulator",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ]
+      },
+      "identical_source": true,
+      "without_over_all": 1.0023995622555886,
+      "round_ratios": [
+        1.0015950803308538,
+        0.9975903977349738,
+        1.0064463167861082
+      ],
+      "all_median_ns": 199203,
+      "without_median_ns": 199681,
+      "source_bytes_without": 21602,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745335.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_tiling",
+      "changed_options": {
+        "matmul_register_tiling": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.2313268374472273,
+      "round_ratios": [
+        1.230338628531874,
+        1.234539640467262,
+        1.2296550716900934
+      ],
+      "all_median_ns": 199203,
+      "without_median_ns": 245284,
+      "source_bytes_without": 18323,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745335.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_unroll",
+      "changed_options": {
+        "reduction_unroll": [
+          1,
+          4
+        ]
+      },
+      "marker_changes": {
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.0184585573510438,
+      "round_ratios": [
+        1.0160461068503182,
+        1.0184585573510438,
+        1.0265910567426964
+      ],
+      "all_median_ns": 199203,
+      "without_median_ns": 202880,
+      "source_bytes_without": 18279,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745335.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_initializer",
+      "changed_options": {
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          5,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.003212803020035,
+      "round_ratios": [
+        1.0016000963067369,
+        1.003212803020035,
+        1.0064463167861082
+      ],
+      "all_median_ns": 199203,
+      "without_median_ns": 199843,
+      "source_bytes_without": 22047,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745335.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_staging",
+      "changed_options": {
+        "cooperative_load_staging": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.distribution_depth": [
+          2,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 4.253003217823025,
+      "round_ratios": [
+        4.249589943971549,
+        4.254614639337761,
+        4.2634831262621935
+      ],
+      "all_median_ns": 199203,
+      "without_median_ns": 847211,
+      "source_bytes_without": 22029,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745335.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_store",
+      "changed_options": {
+        "terminal_store_distribution": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          3,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.038553636240418,
+      "round_ratios": [
+        1.0377201386415733,
+        1.0377504354854095,
+        1.0427068487079667
+      ],
+      "all_median_ns": 199203,
+      "without_median_ns": 206883,
+      "source_bytes_without": 21683,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "half-stack-dcu-22745335.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_reuse",
+      "changed_options": {
+        "reuse_local_memory": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0016064015100175,
+      "round_ratios": [
+        1.0040127807065504,
+        1.0016064015100175,
+        1.0032231583930542
+      ],
+      "all_median_ns": 199203,
+      "without_median_ns": 199523,
+      "source_bytes_without": 21602,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745335.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_fusion",
+      "changed_options": {
+        "fuse_elementwise": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0024045822603074,
+      "round_ratios": [
+        1.0016000963067369,
+        1.0040160037750436,
+        1.0040289479913176
+      ],
+      "all_median_ns": 199203,
+      "without_median_ns": 199682,
+      "source_bytes_without": 21602,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745335.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_group",
+      "changed_options": {
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0024096022650262,
+      "round_ratios": [
+        1.0024076684239303,
+        0.9975903977349738,
+        1.0056405271878446
+      ],
+      "all_median_ns": 199203,
+      "without_median_ns": 199683,
+      "source_bytes_without": 21602,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "half-stack-dcu-22745335.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_distribution",
+      "changed_options": {
+        "distribute_work": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          0,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 45.27706912044497,
+      "round_ratios": [
+        45.23754658587602,
+        45.318042398959854,
+        45.423004285793425
+      ],
+      "all_median_ns": 199203,
+      "without_median_ns": 9019328,
+      "source_bytes_without": 19492,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "all_rounds_faster"
+    }
+  ],
+  "changed_source_comparisons": 35,
+  "aggregate_regressions": [
+    {
+      "file": "half-stack-dcu-22745330.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "TT",
+      "dtype": "f16",
+      "ablation": "without_initializer",
+      "changed_options": {
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          7,
+          6
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 0.9979812603868231,
+      "round_ratios": [
+        0.9947358258554283,
+        1.0011354221008377,
+        0.9983686952620793
+      ],
+      "all_median_ns": 98081,
+      "without_median_ns": 97883,
+      "source_bytes_without": 23409,
+      "source_bytes_all": 22961,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "mixed_rounds"
+    }
+  ],
+  "consistent_regressions": []
+}

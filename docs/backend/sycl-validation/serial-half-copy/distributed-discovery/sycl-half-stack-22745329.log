@@ -1,0 +1,23 @@
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+python/triton/_C/libtriton.so: OK
+python/triton/_C/triton-sycl-translate: OK
+third_party/sycl/backend/compiler.py: OK
+python/test/sycl/full_stack_ablation.py: OK
+h02r1n01
+gfx906:sramecc-:xnack-
+HIP_DEVICE=Device 66a1 COUNT=4
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"shape": [16, 32], "dialect": "affine", "distribution_requested": false, "distributed": false, "block": 1, "status": "PASS", "elements_checked": 1543, "special_bits": [0, 32768, 15360, 48128, 31744, 64512, 32256, 32001, 65109, 1, 32769, 1023, 33791, 1024, 33792, 31743, 64511], "guard_markers": 2, "source_sha256": "92ee7e2b92c5535d66b900bf29fdb14ad8c2bc80d146ae4dbc690ae104b7af8b"}
+{"shape": [16, 32], "dialect": "affine", "distribution_requested": false, "distributed": false, "block": 3, "status": "PASS", "elements_checked": 1543, "special_bits": [0, 32768, 15360, 48128, 31744, 64512, 32256, 32001, 65109, 1, 32769, 1023, 33791, 1024, 33792, 31743, 64511], "guard_markers": 2, "source_sha256": "92ee7e2b92c5535d66b900bf29fdb14ad8c2bc80d146ae4dbc690ae104b7af8b"}
+{"shape": [16, 32], "dialect": "affine", "distribution_requested": false, "distributed": false, "block": 48, "status": "PASS", "elements_checked": 1543, "special_bits": [0, 32768, 15360, 48128, 31744, 64512, 32256, 32001, 65109, 1, 32769, 1023, 33791, 1024, 33792, 31743, 64511], "guard_markers": 2, "source_sha256": "92ee7e2b92c5535d66b900bf29fdb14ad8c2bc80d146ae4dbc690ae104b7af8b"}
+{"shape": [16, 32], "dialect": "affine", "distribution_requested": false, "distributed": false, "block": [3, 5], "status": "PASS", "elements_checked": 1543, "special_bits": [0, 32768, 15360, 48128, 31744, 64512, 32256, 32001, 65109, 1, 32769, 1023, 33791, 1024, 33792, 31743, 64511], "guard_markers": 2, "source_sha256": "92ee7e2b92c5535d66b900bf29fdb14ad8c2bc80d146ae4dbc690ae104b7af8b"}
+Traceback (most recent call last):
+  File "/work1/dtune/zzx/triton/triton-ocl/python/test/sycl/serial_half_copy_bits.py", line 106, in <module>
+    main()
+  File "/work1/dtune/zzx/triton/triton-ocl/python/test/sycl/serial_half_copy_bits.py", line 96, in main
+    assert actual == expected, [(i,a,b) for i,(a,b) in enumerate(zip(actual,expected)) if a!=b][:8]
+           ^^^^^^^^^^^^^^^^^^
+AssertionError: [(512, 0, 15360), (1024, 0, 31744)]

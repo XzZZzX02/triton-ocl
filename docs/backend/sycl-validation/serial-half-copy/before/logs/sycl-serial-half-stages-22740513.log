@@ -1,0 +1,29 @@
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+third_party/sycl/lib/Conversion/LinalgToAffineLoops/WorkDistribution.cpp: OK
+third_party/sycl/lib/Conversion/LinalgToAffineLoops/TerminalStoreDistribution.cpp: OK
+third_party/sycl/lib/Conversion/LinalgToAffineLoops/ElementwiseFusion.cpp: OK
+third_party/sycl/lib/Conversion/LinalgToAffineLoops/CooperativeLoadStaging.cpp: OK
+third_party/sycl/backend/compiler.py: OK
+python/test/sycl/serial_half_stages.py: OK
+python/test/sycl/cooperative_staging_semantics.py: OK
+python/test/sycl/register_accumulator.py: OK
+python/triton/_C/libtriton.so: OK
+20559bef65d7ec811e12a0e28168ff5343ca9a6b5c1b16d2f32d3d9381ff528c  python/triton/_C/libtriton.so
+g09r1n07
+gfx906:sramecc-:xnack-
+HIP_DEVICE=Device 66a1 COUNT=4
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"stage": "A_loaded", "block": 1, "status": "PASS", "mismatch_count": 0, "mismatches": [], "error": null, "elements_checked": 1543, "source_sha256": "e64e7ae8ec4aa746331aa7afa6deaaac109543d75d8d0d10049462bba48ce8f5"}
+{"stage": "A_loaded", "block": 3, "status": "PASS", "mismatch_count": 0, "mismatches": [], "error": null, "elements_checked": 1543, "source_sha256": "e64e7ae8ec4aa746331aa7afa6deaaac109543d75d8d0d10049462bba48ce8f5"}
+{"stage": "A_loaded", "block": 48, "status": "PASS", "mismatch_count": 0, "mismatches": [], "error": null, "elements_checked": 1543, "source_sha256": "e64e7ae8ec4aa746331aa7afa6deaaac109543d75d8d0d10049462bba48ce8f5"}
+{"stage": "A_transposed", "block": 1, "status": "MISMATCH", "mismatch_count": 656, "mismatches": [{"index": 0, "got": 0.0, "want": -1.25}, {"index": 2, "got": 0.0, "want": 1.25}, {"index": 4, "got": 0.0, "want": 1.0}, {"index": 6, "got": 0.0, "want": 0.75}, {"index": 8, "got": 0.0, "want": 0.5}, {"index": 10, "got": 0.0, "want": 0.25}, {"index": 14, "got": 0.0, "want": -0.25}, {"index": 16, "got": 0.0, "want": -0.5}, {"index": 18, "got": 0.0, "want": -0.75}, {"index": 20, "got": 0.0, "want": -1.0}, {"index": 22, "got": 0.0, "want": -1.25}, {"index": 24, "got": 0.0, "want": 1.25}, {"index": 26, "got": 0.0, "want": 1.0}, {"index": 28, "got": 0.0, "want": 0.75}, {"index": 30, "got": 0.0, "want": 0.5}, {"index": 32, "got": 0.0, "want": -1.0}], "error": null, "elements_checked": 1543, "source_sha256": "a9ff710967a175bb8943188064c3fdb12dad90af2b5fdad9246655e41031fca6"}
+{"stage": "A_transposed", "block": 3, "status": "MISMATCH", "mismatch_count": 656, "mismatches": [{"index": 0, "got": 0.0, "want": -1.25}, {"index": 2, "got": 0.0, "want": 1.25}, {"index": 4, "got": 0.0, "want": 1.0}, {"index": 6, "got": 0.0, "want": 0.75}, {"index": 8, "got": 0.0, "want": 0.5}, {"index": 10, "got": 0.0, "want": 0.25}, {"index": 14, "got": 0.0, "want": -0.25}, {"index": 16, "got": 0.0, "want": -0.5}, {"index": 18, "got": 0.0, "want": -0.75}, {"index": 20, "got": 0.0, "want": -1.0}, {"index": 22, "got": 0.0, "want": -1.25}, {"index": 24, "got": 0.0, "want": 1.25}, {"index": 26, "got": 0.0, "want": 1.0}, {"index": 28, "got": 0.0, "want": 0.75}, {"index": 30, "got": 0.0, "want": 0.5}, {"index": 32, "got": 0.0, "want": -1.0}], "error": null, "elements_checked": 1543, "source_sha256": "a9ff710967a175bb8943188064c3fdb12dad90af2b5fdad9246655e41031fca6"}
+{"stage": "A_transposed", "block": 48, "status": "MISMATCH", "mismatch_count": 656, "mismatches": [{"index": 0, "got": 0.0, "want": -1.25}, {"index": 2, "got": 0.0, "want": 1.25}, {"index": 4, "got": 0.0, "want": 1.0}, {"index": 6, "got": 0.0, "want": 0.75}, {"index": 8, "got": 0.0, "want": 0.5}, {"index": 10, "got": 0.0, "want": 0.25}, {"index": 14, "got": 0.0, "want": -0.25}, {"index": 16, "got": 0.0, "want": -0.5}, {"index": 18, "got": 0.0, "want": -0.75}, {"index": 20, "got": 0.0, "want": -1.0}, {"index": 22, "got": 0.0, "want": -1.25}, {"index": 24, "got": 0.0, "want": 1.25}, {"index": 26, "got": 0.0, "want": 1.0}, {"index": 28, "got": 0.0, "want": 0.75}, {"index": 30, "got": 0.0, "want": 0.5}, {"index": 32, "got": 0.0, "want": -1.0}], "error": null, "elements_checked": 1543, "source_sha256": "a9ff710967a175bb8943188064c3fdb12dad90af2b5fdad9246655e41031fca6"}
+{"stage": "B_loaded", "block": 1, "status": "PASS", "mismatch_count": 0, "mismatches": [], "error": null, "elements_checked": 3079, "source_sha256": "9605dab3daa93516bf1efd69151688361367dc100f451d893f2b80afadfe6f19"}
+{"stage": "B_loaded", "block": 3, "status": "PASS", "mismatch_count": 0, "mismatches": [], "error": null, "elements_checked": 3079, "source_sha256": "9605dab3daa93516bf1efd69151688361367dc100f451d893f2b80afadfe6f19"}
+{"stage": "B_loaded", "block": 48, "status": "PASS", "mismatch_count": 0, "mismatches": [], "error": null, "elements_checked": 3079, "source_sha256": "9605dab3daa93516bf1efd69151688361367dc100f451d893f2b80afadfe6f19"}
+{"stage": "B_transposed", "block": 1, "status": "PASS", "mismatch_count": 0, "mismatches": [], "error": null, "elements_checked": 3079, "source_sha256": "dc147f5db1e9f4b78c2cede74bddadae9572b4b2e3439d4e95941d23baa2fb71"}
+{"stage": "B_transposed", "block": 3, "status": "PASS", "mismatch_count": 0, "mismatches": [], "error": null, "elements_checked": 3079, "source_sha256": "dc147f5db1e9f4b78c2cede74bddadae9572b4b2e3439d4e95941d23baa2fb71"}
+{"stage": "B_transposed", "block": 48, "status": "PASS", "mismatch_count": 0, "mismatches": [], "error": null, "elements_checked": 3079, "source_sha256": "dc147f5db1e9f4b78c2cede74bddadae9572b4b2e3439d4e95941d23baa2fb71"}

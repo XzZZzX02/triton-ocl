@@ -1,0 +1,6 @@
+{
+  "third_party/sycl/tool/triton-sycl-translate/EmitSYCL.cpp": "79e90ce5d3f43e9b5c1b48a215e3e24aac47b8d1db8f72e0be588766ee98dbf3",
+  "third_party/sycl/backend/compiler.py": "1bbb93dd9219eec62fe082d152fdfdfa9d6d95b444d83bcadcd7f318a3f076c0",
+  "python/triton/_C/triton-sycl-translate": "0ca9ee8ad12cf470dc33a86b09f7748999d28337b53e8d372cca204cad4cd82b",
+  "python/triton/_C/libtriton.so": "20559bef65d7ec811e12a0e28168ff5343ca9a6b5c1b16d2f32d3d9381ff528c"
+}

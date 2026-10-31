@@ -158,6 +158,7 @@ class SYCLBackend(BaseBackend):
             sycl.passes.memir.vector_memory(pm)
         if opt.distribute_work and opt.terminal_store_distribution:
             sycl.passes.memir.terminal_store_distribution(pm)
+        sycl.passes.memir.serial_half_copy_guard(pm)
         pm.run(mod)
         return mod
 

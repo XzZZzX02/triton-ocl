@@ -12,6 +12,7 @@ add_triton_library(LinalgToAffineLoopsSYCL
   TerminalStoreDistribution.cpp
   CooperativeLoadStaging.cpp
   VectorMemory.cpp
+  SerialHalfCopyGuard.cpp
 
   DEPENDS
   LinalgToAffineLoopsSYCLConversionPassIncGen

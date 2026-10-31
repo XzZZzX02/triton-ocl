@@ -1,0 +1,2580 @@
+{
+  "status": "PASS",
+  "files": 5,
+  "configurations": 180,
+  "elements_checked": 584388,
+  "event_samples": 5580,
+  "comparisons": [
+    {
+      "file": "full-stack-dcu-22740272.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "baseline",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ],
+        "matmul_register_tiling": [
+          false,
+          true
+        ],
+        "reduction_unroll": [
+          1,
+          4
+        ],
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ],
+        "cooperative_load_staging": [
+          false,
+          true
+        ],
+        "terminal_store_distribution": [
+          false,
+          true
+        ],
+        "fuse_elementwise": [
+          false,
+          true
+        ],
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_accumulator": [
+          0,
+          1
+        ],
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          2,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 4.977472317678504,
+      "round_ratios": [
+        4.945668017811146,
+        4.96782620928036,
+        5.006451482833008
+      ],
+      "all_median_ns": 49761,
+      "without_median_ns": 247684,
+      "source_bytes_without": 17102,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740272.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_accumulator",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_accumulator": [
+          0,
+          1
+        ],
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          5,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.2314865054962723,
+      "round_ratios": [
+        1.2236177392623948,
+        1.2282912320893873,
+        1.2419507671216305
+      ],
+      "all_median_ns": 49761,
+      "without_median_ns": 61280,
+      "source_bytes_without": 16728,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740272.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_tiling",
+      "changed_options": {
+        "matmul_register_tiling": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 0.9967846305339523,
+      "round_ratios": [
+        0.9903955591941056,
+        0.9967846305339523,
+        1.0
+      ],
+      "all_median_ns": 49761,
+      "without_median_ns": 49601,
+      "source_bytes_without": 17373,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740272.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_unroll",
+      "changed_options": {
+        "reduction_unroll": [
+          1,
+          4
+        ]
+      },
+      "marker_changes": {
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 0.9967846305339523,
+      "round_ratios": [
+        0.9872207024620115,
+        0.9967846305339523,
+        1.0
+      ],
+      "all_median_ns": 49761,
+      "without_median_ns": 49601,
+      "source_bytes_without": 16473,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "mixed_rounds"
+    },
+    {
+      "file": "full-stack-dcu-22740272.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_initializer",
+      "changed_options": {
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          5,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.0096461083981432,
+      "round_ratios": [
+        1.0063896487689943,
+        1.0096461083981432,
+        1.012902965666015
+      ],
+      "all_median_ns": 49761,
+      "without_median_ns": 50241,
+      "source_bytes_without": 17722,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740272.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_staging",
+      "changed_options": {
+        "cooperative_load_staging": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.distribution_depth": [
+          2,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 4.1350254215148405,
+      "round_ratios": [
+        4.108604061420499,
+        4.167179116175318,
+        4.1451382028588135
+      ],
+      "all_median_ns": 49761,
+      "without_median_ns": 205763,
+      "source_bytes_without": 17670,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740272.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_store",
+      "changed_options": {
+        "terminal_store_distribution": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          3,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.5851972428206829,
+      "round_ratios": [
+        1.581478005630878,
+        1.5851972428206829,
+        1.5871050986875264
+      ],
+      "all_median_ns": 49761,
+      "without_median_ns": 78881,
+      "source_bytes_without": 17450,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740272.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_reuse",
+      "changed_options": {
+        "reuse_local_memory": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 0.9935692610679046,
+      "round_ratios": [
+        0.9872406701144146,
+        0.9935692610679046,
+        0.9935485171669926
+      ],
+      "all_median_ns": 49761,
+      "without_median_ns": 49441,
+      "source_bytes_without": 17373,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740272.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_fusion",
+      "changed_options": {
+        "fuse_elementwise": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0000200960591628,
+      "round_ratios": [
+        0.9962860166530221,
+        0.9967846305339523,
+        1.0032459023003568
+      ],
+      "all_median_ns": 49761,
+      "without_median_ns": 49762,
+      "source_bytes_without": 17373,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740272.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_group",
+      "changed_options": {
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 0.9962822290548823,
+      "round_ratios": [
+        0.989916335536431,
+        1.0,
+        0.9967742585834963
+      ],
+      "all_median_ns": 49761,
+      "without_median_ns": 49576,
+      "source_bytes_without": 17373,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740272.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_distribution",
+      "changed_options": {
+        "distribute_work": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          0,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 13.762022467394145,
+      "round_ratios": [
+        13.674087977476487,
+        13.752255782641024,
+        13.809640934658576
+      ],
+      "all_median_ns": 49761,
+      "without_median_ns": 684812,
+      "source_bytes_without": 18380,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740274.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "baseline",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ],
+        "matmul_register_tiling": [
+          false,
+          true
+        ],
+        "reduction_unroll": [
+          1,
+          4
+        ],
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ],
+        "cooperative_load_staging": [
+          false,
+          true
+        ],
+        "terminal_store_distribution": [
+          false,
+          true
+        ],
+        "fuse_elementwise": [
+          false,
+          true
+        ],
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_accumulator": [
+          0,
+          1
+        ],
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          3,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 3.880282296702232,
+      "round_ratios": [
+        3.8693002584868044,
+        3.880282296702232,
+        3.8870546273497735
+      ],
+      "all_median_ns": 185762,
+      "without_median_ns": 720809,
+      "source_bytes_without": 18549,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740274.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_accumulator",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ]
+      },
+      "identical_source": true,
+      "without_over_all": 0.9991440660630269,
+      "round_ratios": [
+        0.9948410118065595,
+        1.0017280175708703,
+        1.0
+      ],
+      "all_median_ns": 185762,
+      "without_median_ns": 185603,
+      "source_bytes_without": 22408,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740274.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_tiling",
+      "changed_options": {
+        "matmul_register_tiling": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.245480776477428,
+      "round_ratios": [
+        1.2390331196294126,
+        1.2480647279852715,
+        1.2465477389912878
+      ],
+      "all_median_ns": 185762,
+      "without_median_ns": 231363,
+      "source_bytes_without": 19116,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740274.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_unroll",
+      "changed_options": {
+        "reduction_unroll": [
+          1,
+          4
+        ]
+      },
+      "marker_changes": {
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.0172263433856226,
+      "round_ratios": [
+        1.016336795945895,
+        1.013786457940806,
+        1.018097767816253
+      ],
+      "all_median_ns": 185762,
+      "without_median_ns": 188962,
+      "source_bytes_without": 19073,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740274.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_initializer",
+      "changed_options": {
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          6,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 0.999983850303076,
+      "round_ratios": [
+        0.9982803372688531,
+        0.9982773656614378,
+        1.000840503655652
+      ],
+      "all_median_ns": 185762,
+      "without_median_ns": 185759,
+      "source_bytes_without": 22855,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "mixed_rounds"
+    },
+    {
+      "file": "full-stack-dcu-22740274.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_staging",
+      "changed_options": {
+        "cooperative_load_staging": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.distribution_depth": [
+          3,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 3.350286926282017,
+      "round_ratios": [
+        3.344507558455098,
+        3.3479829028541896,
+        3.3542992300771
+      ],
+      "all_median_ns": 185762,
+      "without_median_ns": 622356,
+      "source_bytes_without": 22836,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740274.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_store",
+      "changed_options": {
+        "terminal_store_distribution": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          4,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.0990514744673292,
+      "round_ratios": [
+        1.098880607040944,
+        1.0990514744673292,
+        1.0965501635210637
+      ],
+      "all_median_ns": 185762,
+      "without_median_ns": 204162,
+      "source_bytes_without": 22489,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740274.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_reuse",
+      "changed_options": {
+        "reuse_local_memory": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0017280175708703,
+      "round_ratios": [
+        0.9965499266456366,
+        1.0034506519094324,
+        1.0025861650943142
+      ],
+      "all_median_ns": 185762,
+      "without_median_ns": 186083,
+      "source_bytes_without": 22408,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740274.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_fusion",
+      "changed_options": {
+        "fuse_elementwise": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 0.9982827488937458,
+      "round_ratios": [
+        0.9965553005916714,
+        0.9982827488937458,
+        1.0025807772503676
+      ],
+      "all_median_ns": 185762,
+      "without_median_ns": 185443,
+      "source_bytes_without": 22408,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740274.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_group",
+      "changed_options": {
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0,
+      "round_ratios": [
+        0.9991347946883917,
+        1.0,
+        1.0008566671874917
+      ],
+      "all_median_ns": 185762,
+      "without_median_ns": 185762,
+      "source_bytes_without": 22408,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740274.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_distribution",
+      "changed_options": {
+        "distribute_work": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          0,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 48.5410148469547,
+      "round_ratios": [
+        48.448751363638806,
+        48.5410148469547,
+        48.610550476016016
+      ],
+      "all_median_ns": 185762,
+      "without_median_ns": 9017076,
+      "source_bytes_without": 20453,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740275.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "baseline",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ],
+        "matmul_register_tiling": [
+          false,
+          true
+        ],
+        "reduction_unroll": [
+          1,
+          4
+        ],
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ],
+        "cooperative_load_staging": [
+          false,
+          true
+        ],
+        "terminal_store_distribution": [
+          false,
+          true
+        ],
+        "fuse_elementwise": [
+          false,
+          true
+        ],
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_accumulator": [
+          0,
+          1
+        ],
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          3,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 3.592599328714803,
+      "round_ratios": [
+        3.59258279459665,
+        3.5883807984696823,
+        3.592599328714803
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 217284,
+      "source_bytes_without": 18409,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740275.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_accumulator",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ]
+      },
+      "identical_source": true,
+      "without_over_all": 1.0026454589044493,
+      "round_ratios": [
+        1.0026454589044493,
+        1.0052769578338088,
+        1.002149435359865
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 60641,
+      "source_bytes_without": 22261,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740275.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_tiling",
+      "changed_options": {
+        "matmul_register_tiling": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.2142821712603957,
+      "round_ratios": [
+        1.2142821712603957,
+        1.2110783133523524,
+        1.2136869430068948
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 73441,
+      "source_bytes_without": 18974,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740275.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_unroll",
+      "changed_options": {
+        "reduction_unroll": [
+          1,
+          4
+        ]
+      },
+      "marker_changes": {
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.0211636712355947,
+      "round_ratios": [
+        1.0264545890444934,
+        1.0184693524183308,
+        1.0211636712355947
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 61761,
+      "source_bytes_without": 18930,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740275.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_initializer",
+      "changed_options": {
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          6,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.0026454589044493,
+      "round_ratios": [
+        1.0105818356177974,
+        1.0,
+        1.0
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 60641,
+      "source_bytes_without": 22708,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "mixed_rounds"
+    },
+    {
+      "file": "full-stack-dcu-22740275.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_staging",
+      "changed_options": {
+        "cooperative_load_staging": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.distribution_depth": [
+          3,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 3.1031728972735237,
+      "round_ratios": [
+        3.1031728972735237,
+        3.0949852410085588,
+        3.1005274383690744
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 187683,
+      "source_bytes_without": 22691,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740275.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_store",
+      "changed_options": {
+        "terminal_store_distribution": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          4,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.2089912534514973,
+      "round_ratios": [
+        1.206345794547048,
+        1.2058013555185436,
+        1.2089912534514973
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 73121,
+      "source_bytes_without": 22342,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740275.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_reuse",
+      "changed_options": {
+        "reuse_local_memory": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0,
+      "round_ratios": [
+        1.0,
+        0.9973615210830956,
+        1.0052909178088987
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 60481,
+      "source_bytes_without": 22261,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740275.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_fusion",
+      "changed_options": {
+        "fuse_elementwise": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0026454589044493,
+      "round_ratios": [
+        1.0,
+        1.0,
+        1.0026454589044493
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 60641,
+      "source_bytes_without": 22261,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740275.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_group",
+      "changed_options": {
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0026454589044493,
+      "round_ratios": [
+        1.0,
+        1.0000164904932307,
+        1.0026454589044493
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 60641,
+      "source_bytes_without": 22261,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740275.json",
+      "shape": [
+        16,
+        16,
+        32
+      ],
+      "layout": "NT",
+      "dtype": "f16",
+      "ablation": "without_distribution",
+      "changed_options": {
+        "distribute_work": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          0,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 37.38092954812255,
+      "round_ratios": [
+        37.37572130090442,
+        37.282333734602005,
+        37.38092954812255
+      ],
+      "all_median_ns": 60481,
+      "without_median_ns": 2260836,
+      "source_bytes_without": 20314,
+      "source_bytes_all": 22261,
+      "local_bytes_without": 4096,
+      "local_bytes_all": 4096,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740276.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "baseline",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ],
+        "matmul_register_tiling": [
+          false,
+          true
+        ],
+        "reduction_unroll": [
+          1,
+          4
+        ],
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ],
+        "cooperative_load_staging": [
+          false,
+          true
+        ],
+        "terminal_store_distribution": [
+          false,
+          true
+        ],
+        "fuse_elementwise": [
+          false,
+          true
+        ],
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_accumulator": [
+          0,
+          1
+        ],
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          1
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          3,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 2.3720175938231756,
+      "round_ratios": [
+        2.3720175938231756,
+        2.36706116895035,
+        2.366134276064518
+      ],
+      "all_median_ns": 63204,
+      "without_median_ns": 149921,
+      "source_bytes_without": 18528,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740276.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_accumulator",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ]
+      },
+      "identical_source": true,
+      "without_over_all": 0.9999525346497057,
+      "round_ratios": [
+        1.0,
+        0.9999841777158951,
+        0.9969697926201825
+      ],
+      "all_median_ns": 63204,
+      "without_median_ns": 63201,
+      "source_bytes_without": 19266,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740276.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_tiling",
+      "changed_options": {
+        "matmul_register_tiling": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.ordered_reduction_unroll": [
+          1,
+          0
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.0959432947281817,
+      "round_ratios": [
+        1.0936174925637618,
+        1.1012626182715737,
+        1.0932104415895962
+      ],
+      "all_median_ns": 63204,
+      "without_median_ns": 69268,
+      "source_bytes_without": 19309,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740276.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_unroll",
+      "changed_options": {
+        "reduction_unroll": [
+          1,
+          4
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0025156635655972,
+      "round_ratios": [
+        1.0050155053477627,
+        1.0025473877408944,
+        0.9999842176698968
+      ],
+      "all_median_ns": 63204,
+      "without_median_ns": 63363,
+      "source_bytes_without": 19266,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740276.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_initializer",
+      "changed_options": {
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          5,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.0025156635655972,
+      "round_ratios": [
+        1.0050155053477627,
+        1.0025473877408944,
+        0.9999842176698968
+      ],
+      "all_median_ns": 63204,
+      "without_median_ns": 63363,
+      "source_bytes_without": 19697,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "mixed_rounds"
+    },
+    {
+      "file": "full-stack-dcu-22740276.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_staging",
+      "changed_options": {
+        "cooperative_load_staging": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.cooperative_load_staging": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          3,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 2.030282893487754,
+      "round_ratios": [
+        2.030282893487754,
+        2.030410430049682,
+        2.02522016350494
+      ],
+      "all_median_ns": 63204,
+      "without_median_ns": 128322,
+      "source_bytes_without": 19481,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740276.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_store",
+      "changed_options": {
+        "terminal_store_distribution": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          3,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.1721410037339408,
+      "round_ratios": [
+        1.1721410037339408,
+        1.172178095629885,
+        1.1666614058899656
+      ],
+      "all_median_ns": 63204,
+      "without_median_ns": 74084,
+      "source_bytes_without": 19343,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740276.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_reuse",
+      "changed_options": {
+        "reuse_local_memory": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0025156635655972,
+      "round_ratios": [
+        1.0024998417821658,
+        1.0025473877408944,
+        1.0025251728165145
+      ],
+      "all_median_ns": 63204,
+      "without_median_ns": 63363,
+      "source_bytes_without": 19266,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740276.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_fusion",
+      "changed_options": {
+        "fuse_elementwise": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0024998417821658,
+      "round_ratios": [
+        1.0024998417821658,
+        1.0025473877408944,
+        0.9974748271834853
+      ],
+      "all_median_ns": 63204,
+      "without_median_ns": 63362,
+      "source_bytes_without": 19266,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740276.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_group",
+      "changed_options": {
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 1.0025314853490286,
+      "round_ratios": [
+        1.0025156635655972,
+        1.0025632100249993,
+        1.0025093904864115
+      ],
+      "all_median_ns": 63204,
+      "without_median_ns": 63364,
+      "source_bytes_without": 19266,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740276.json",
+      "shape": [
+        8,
+        32,
+        16
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_distribution",
+      "changed_options": {
+        "distribute_work": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.ordered_reduction_unroll": [
+          1,
+          0
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          1
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          0,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 20.65486361622682,
+      "round_ratios": [
+        20.66813809252579,
+        20.638381696781746,
+        20.603358479845966
+      ],
+      "all_median_ns": 63204,
+      "without_median_ns": 1305470,
+      "source_bytes_without": 20433,
+      "source_bytes_all": 19266,
+      "local_bytes_without": 2560,
+      "local_bytes_all": 2560,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740277.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "baseline",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ],
+        "matmul_register_tiling": [
+          false,
+          true
+        ],
+        "reduction_unroll": [
+          1,
+          4
+        ],
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ],
+        "cooperative_load_staging": [
+          false,
+          true
+        ],
+        "terminal_store_distribution": [
+          false,
+          true
+        ],
+        "fuse_elementwise": [
+          false,
+          true
+        ],
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_accumulator": [
+          0,
+          1
+        ],
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          2,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 4.634522062689991,
+      "round_ratios": [
+        4.637340312145034,
+        4.633770864528923,
+        4.653187851971038
+      ],
+      "all_median_ns": 199681,
+      "without_median_ns": 925426,
+      "source_bytes_without": 17756,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740277.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_accumulator",
+      "changed_options": {
+        "register_accumulator": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ]
+      },
+      "identical_source": true,
+      "without_over_all": 0.9959886018199028,
+      "round_ratios": [
+        0.9983987430132654,
+        0.9959886018199028,
+        0.998390989541432
+      ],
+      "all_median_ns": 199681,
+      "without_median_ns": 198880,
+      "source_bytes_without": 21602,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740277.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_tiling",
+      "changed_options": {
+        "matmul_register_tiling": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.226756676899655,
+      "round_ratios": [
+        1.224981610564293,
+        1.2299617890535404,
+        1.2316975060337891
+      ],
+      "all_median_ns": 199681,
+      "without_median_ns": 244960,
+      "source_bytes_without": 18323,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740277.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_unroll",
+      "changed_options": {
+        "reduction_unroll": [
+          1,
+          4
+        ]
+      },
+      "marker_changes": {
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.0168218308201582,
+      "round_ratios": [
+        1.0136357040276618,
+        1.0184243868971008,
+        1.0209171359613838
+      ],
+      "all_median_ns": 199681,
+      "without_median_ns": 203040,
+      "source_bytes_without": 18279,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740277.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_initializer",
+      "changed_options": {
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          5,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 0.9999949920122596,
+      "round_ratios": [
+        0.9991943675785492,
+        0.9999949920122596,
+        0.998390989541432
+      ],
+      "all_median_ns": 199681,
+      "without_median_ns": 199680,
+      "source_bytes_without": 22047,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "all_rounds_slower"
+    },
+    {
+      "file": "full-stack-dcu-22740277.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_staging",
+      "changed_options": {
+        "cooperative_load_staging": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.distribution_depth": [
+          2,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 4.243563483756592,
+      "round_ratios": [
+        4.236110346622098,
+        4.243563483756592,
+        4.261464199517297
+      ],
+      "all_median_ns": 199681,
+      "without_median_ns": 847359,
+      "source_bytes_without": 22029,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740277.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_store",
+      "changed_options": {
+        "terminal_store_distribution": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          3,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 1.0328473915895855,
+      "round_ratios": [
+        1.028817621833139,
+        1.0328473915895855,
+        1.0402252614641996
+      ],
+      "all_median_ns": 199681,
+      "without_median_ns": 206240,
+      "source_bytes_without": 21683,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "all_rounds_faster"
+    },
+    {
+      "file": "full-stack-dcu-22740277.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_reuse",
+      "changed_options": {
+        "reuse_local_memory": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 0.9983924359353168,
+      "round_ratios": [
+        0.9991893636504656,
+        0.9975911578968455,
+        1.002413515687852
+      ],
+      "all_median_ns": 199681,
+      "without_median_ns": 199360,
+      "source_bytes_without": 21602,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740277.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_fusion",
+      "changed_options": {
+        "fuse_elementwise": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 0.9967898798583741,
+      "round_ratios": [
+        0.9983887351570984,
+        0.9959886018199028,
+        1.000804505229284
+      ],
+      "all_median_ns": 199681,
+      "without_median_ns": 199040,
+      "source_bytes_without": 21602,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740277.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_group",
+      "changed_options": {
+        "group_reduction": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {},
+      "identical_source": true,
+      "without_over_all": 0.9935847677044887,
+      "round_ratios": [
+        0.9919837072101599,
+        0.9935847677044887,
+        1.005631536604988
+      ],
+      "all_median_ns": 199681,
+      "without_median_ns": 198400,
+      "source_bytes_without": 21602,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "identical_source"
+    },
+    {
+      "file": "full-stack-dcu-22740277.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_distribution",
+      "changed_options": {
+        "distribute_work": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.register_tile =": [
+          0,
+          1
+        ],
+        "sycl.register_tile_composed_accumulator": [
+          0,
+          1
+        ],
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.cooperative_load_staging": [
+          0,
+          2
+        ],
+        "sycl.terminal_store_distribution": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          0,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 45.114362408040826,
+      "round_ratios": [
+        45.076129761863065,
+        45.11751744031731,
+        45.29606295253419
+      ],
+      "all_median_ns": 199681,
+      "without_median_ns": 9008481,
+      "source_bytes_without": 19492,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "all_rounds_faster"
+    }
+  ],
+  "changed_source_comparisons": 29,
+  "aggregate_regressions": [
+    {
+      "file": "full-stack-dcu-22740272.json",
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "layout": "NN",
+      "dtype": "f32",
+      "ablation": "without_unroll",
+      "changed_options": {
+        "reduction_unroll": [
+          1,
+          4
+        ]
+      },
+      "marker_changes": {
+        "sycl.ordered_reduction_unroll": [
+          0,
+          1
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 0.9967846305339523,
+      "round_ratios": [
+        0.9872207024620115,
+        0.9967846305339523,
+        1.0
+      ],
+      "all_median_ns": 49761,
+      "without_median_ns": 49601,
+      "source_bytes_without": 16473,
+      "source_bytes_all": 17373,
+      "local_bytes_without": 8192,
+      "local_bytes_all": 8192,
+      "interpretation": "mixed_rounds"
+    },
+    {
+      "file": "full-stack-dcu-22740274.json",
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "layout": "TN",
+      "dtype": "f16",
+      "ablation": "without_initializer",
+      "changed_options": {
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          6,
+          5
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 0.999983850303076,
+      "round_ratios": [
+        0.9982803372688531,
+        0.9982773656614378,
+        1.000840503655652
+      ],
+      "all_median_ns": 185762,
+      "without_median_ns": 185759,
+      "source_bytes_without": 22855,
+      "source_bytes_all": 22408,
+      "local_bytes_without": 12288,
+      "local_bytes_all": 12288,
+      "interpretation": "mixed_rounds"
+    },
+    {
+      "file": "full-stack-dcu-22740277.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_initializer",
+      "changed_options": {
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          5,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 0.9999949920122596,
+      "round_ratios": [
+        0.9991943675785492,
+        0.9999949920122596,
+        0.998390989541432
+      ],
+      "all_median_ns": 199681,
+      "without_median_ns": 199680,
+      "source_bytes_without": 22047,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "all_rounds_slower"
+    }
+  ],
+  "consistent_regressions": [
+    {
+      "file": "full-stack-dcu-22740277.json",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "layout": "NN",
+      "dtype": "f16",
+      "ablation": "without_initializer",
+      "changed_options": {
+        "accumulator_init_forwarding": [
+          false,
+          true
+        ]
+      },
+      "marker_changes": {
+        "sycl.accumulator_init_forwarded": [
+          0,
+          1
+        ],
+        "sycl.distribution_depth": [
+          5,
+          4
+        ]
+      },
+      "identical_source": false,
+      "without_over_all": 0.9999949920122596,
+      "round_ratios": [
+        0.9991943675785492,
+        0.9999949920122596,
+        0.998390989541432
+      ],
+      "all_median_ns": 199681,
+      "without_median_ns": 199680,
+      "source_bytes_without": 22047,
+      "source_bytes_all": 21602,
+      "local_bytes_without": 9216,
+      "local_bytes_all": 9216,
+      "interpretation": "all_rounds_slower"
+    }
+  ]
+}

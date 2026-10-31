@@ -1,0 +1,349 @@
+//===------------------------------------------------------------*- C++ -*-===//
+//
+// Automatically generated file for SYCL
+//
+//===----------------------------------------------------------------------===//
+
+#include <sycl/sycl.hpp>
+#include <algorithm>
+#include <cstdint>
+#include <stdexcept>
+
+
+#include <type_traits>
+
+template<int Predicate, class T>
+inline bool triton_sycl_cmp(T a, T b) {
+  // MLIR CmpFPredicate values form the IEEE ordered/unordered truth table.
+  const bool unordered = a != a || b != b;
+  if constexpr (Predicate == 0) return false;
+  if constexpr (Predicate == 1) return !unordered && a == b;
+  if constexpr (Predicate == 2) return !unordered && a > b;
+  if constexpr (Predicate == 3) return !unordered && a >= b;
+  if constexpr (Predicate == 4) return !unordered && a < b;
+  if constexpr (Predicate == 5) return !unordered && a <= b;
+  if constexpr (Predicate == 6) return !unordered && a != b;
+  if constexpr (Predicate == 7) return !unordered;
+  if constexpr (Predicate == 8) return unordered || a == b;
+  if constexpr (Predicate == 9) return unordered || a > b;
+  if constexpr (Predicate == 10) return unordered || a >= b;
+  if constexpr (Predicate == 11) return unordered || a < b;
+  if constexpr (Predicate == 12) return unordered || a <= b;
+  if constexpr (Predicate == 13) return unordered || a != b;
+  if constexpr (Predicate == 14) return unordered;
+  return true;
+}
+
+template<class T> inline T triton_sycl_maximum(T a, T b) {
+  if (a != a) return a;
+  if (b != b) return b;
+  if (a == T(0) && b == T(0)) {
+    bool negative = sycl::signbit(static_cast<double>(a)) && sycl::signbit(static_cast<double>(b));
+    if constexpr (std::is_same<T, sycl::half>::value)
+      return sycl::bit_cast<sycl::half>(uint16_t(negative ? 0x8000 : 0));
+    else return negative ? T(-0.0) : T(0.0);
+  }
+  return a > b ? a : b;
+}
+template<class T> inline T triton_sycl_minimum(T a, T b) {
+  if (a != a) return a;
+  if (b != b) return b;
+  if (a == T(0) && b == T(0)) {
+    bool negative = sycl::signbit(static_cast<double>(a)) || sycl::signbit(static_cast<double>(b));
+    if constexpr (std::is_same<T, sycl::half>::value)
+      return sycl::bit_cast<sycl::half>(uint16_t(negative ? 0x8000 : 0));
+    else return negative ? T(-0.0) : T(0.0);
+  }
+  return a < b ? a : b;
+}
+template<class T> inline T triton_sycl_fmax(T a, T b) {
+  if (a != a) return b;
+  if (b != b) return a;
+  return triton_sycl_maximum(a, b);
+}
+template<class T> inline T triton_sycl_fmin(T a, T b) {
+  if (a != a) return b;
+  if (b != b) return a;
+  return triton_sycl_minimum(a, b);
+}
+
+// IEEE binary16 and bfloat16 have a byte-stable software ABI. Convert
+// directly from binary64, with explicit rounding and subnormal handling;
+// AdaptiveCpp's half conversions do not implement every rounding mode.
+template<int Mantissa, int Bias>
+struct triton_sycl_float16_storage {
+  uint16_t bits;
+  triton_sycl_float16_storage() = default;
+  static triton_sycl_float16_storage from(double value, bool towardZero = false) {
+    triton_sycl_float16_storage result;
+    uint64_t u = sycl::bit_cast<uint64_t>(value);
+    uint16_t sign = uint16_t(u >> 48) & 0x8000;
+    uint64_t magnitude = u & 0x7fffffffffffffffULL;
+    constexpr unsigned infinity = ((1U << (15-Mantissa))-1) << Mantissa;
+    if (magnitude >= 0x7ff0000000000000ULL) {
+      result.bits = sign | (magnitude == 0x7ff0000000000000ULL ? infinity : infinity | (1U << (Mantissa-1)));
+      return result;
+    }
+    int exponent = int((u >> 52) & 2047) - 1023;
+    if (exponent > Bias) {
+      result.bits = sign | (towardZero ? infinity-1 : infinity);
+      return result;
+    }
+    if (exponent < -Bias-Mantissa) { result.bits = sign; return result; }
+    uint64_t significand = (u & 0xfffffffffffffULL) | 0x10000000000000ULL;
+    unsigned shift = exponent >= 1-Bias ? 52-Mantissa : unsigned(53-Bias-Mantissa-exponent);
+    uint64_t rounded = significand >> shift;
+    uint64_t remainder = significand & ((1ULL << shift)-1);
+    uint64_t midpoint = 1ULL << (shift-1);
+    if (!towardZero) rounded += remainder > midpoint || (remainder == midpoint && (rounded & 1));
+    unsigned encoded = exponent >= 1-Bias ? ((exponent+Bias-1) << Mantissa)+rounded : rounded;
+    result.bits = sign | uint16_t(encoded);
+    return result;
+  }
+  triton_sycl_float16_storage(float value) : triton_sycl_float16_storage(from(double(value))) {}
+  triton_sycl_float16_storage(double value) : triton_sycl_float16_storage(from(value)) {}
+  template<class T, typename std::enable_if<std::is_integral<T>::value, int>::type = 0>
+  triton_sycl_float16_storage(T value) : triton_sycl_float16_storage(from(double(value))) {}
+  operator float() const {
+    unsigned magnitude = bits & 0x7fff, exponent = magnitude >> Mantissa;
+    unsigned fraction = magnitude & ((1U << Mantissa)-1);
+    constexpr unsigned maxExponent = (1U << (15-Mantissa))-1;
+    if (exponent == maxExponent)
+      return sycl::bit_cast<float>((uint32_t(bits & 0x8000) << 16) | (fraction ? 0x7fc00000U : 0x7f800000U));
+    float decoded = sycl::ldexp(float(exponent ? (1U << Mantissa)+fraction : fraction),
+                               (exponent ? int(exponent)-Bias : 1-Bias)-Mantissa);
+    return bits & 0x8000 ? -decoded : decoded;
+  }
+};
+using triton_sycl_bfloat16 = triton_sycl_float16_storage<7, 127>;
+using triton_sycl_float16 = triton_sycl_float16_storage<10, 15>;
+static_assert(sizeof(triton_sycl_bfloat16) == 2 && sizeof(triton_sycl_float16) == 2, "16-bit float ABI");
+
+// Four MLIR fp8 encodings. Special: 0=IEEE, 1=finite/NaN, 2=FNUZ.
+template<int Mantissa, int Bias, int Special>
+struct triton_sycl_fp8 {
+  uint8_t bits;
+  triton_sycl_fp8() = default;
+  static float decode(uint8_t code) {
+    unsigned magnitude = code & 127, fraction = magnitude & ((1 << Mantissa) - 1);
+    unsigned exponent = magnitude >> Mantissa;
+    bool negative = code & 128;
+    if constexpr (Special == 2) {
+      if (code == 128) return sycl::bit_cast<float>(0x7fc00000U);
+    } else if constexpr (Special == 1) {
+      if (magnitude == 127) return sycl::bit_cast<float>(0x7fc00000U);
+    } else {
+      if (exponent == (1U << (7 - Mantissa)) - 1)
+        return sycl::bit_cast<float>((negative ? 0x80000000U : 0U) |
+                                    (fraction ? 0x7fc00000U : 0x7f800000U));
+    }
+    float result = sycl::ldexp(float(exponent ? (1U << Mantissa) + fraction : fraction),
+                              (exponent ? int(exponent) - Bias : 1 - Bias) - Mantissa);
+    return negative ? -result : result;
+  }
+  // Binary search in monotonically ordered positive encodings. The reference
+  // value remains binary64, including halfway cases from fp64 conversions.
+  static triton_sycl_fp8 from(double value, bool towardZero = false) {
+    triton_sycl_fp8 result;
+    uint8_t sign = sycl::signbit(value) ? 128 : 0;
+    constexpr unsigned maxCode = Special == 0 ? 123 : (Special == 1 ? 126 : 127);
+    constexpr uint8_t nanCode = Special == 2 ? 128 : 127;
+    if (value != value) { result.bits = nanCode; return result; }
+    double magnitude = value < 0 ? -value : value;
+    unsigned low = 0, high = maxCode;
+    while (low < high) {
+      unsigned middle = (low + high + 1) / 2;
+      if (double(decode(uint8_t(middle))) <= magnitude) low = middle;
+      else high = middle - 1;
+    }
+    unsigned code = low;
+    if (!towardZero) {
+      double below = decode(uint8_t(code));
+      double above = code == maxCode
+          ? below + (below - double(decode(uint8_t(code - 1))))
+          : double(decode(uint8_t(code + 1)));
+      double midpoint = (below + above) / 2;
+      if (magnitude > midpoint || (magnitude == midpoint && (code & 1))) ++code;
+    }
+    if (code > maxCode || magnitude == double(INFINITY)) {
+      if constexpr (Special == 0) code = (towardZero && magnitude != double(INFINITY)) ? maxCode : 124;
+      else if (towardZero && magnitude != double(INFINITY)) code = maxCode;
+      else { result.bits = nanCode; return result; }
+    }
+    result.bits = uint8_t(code) | ((Special == 2 && code == 0) ? 0 : sign);
+    return result;
+  }
+  triton_sycl_fp8(float v) : triton_sycl_fp8(from(double(v))) {}
+  triton_sycl_fp8(double v) : triton_sycl_fp8(from(v)) {}
+  template<class T, typename std::enable_if<std::is_integral<T>::value, int>::type = 0>
+  triton_sycl_fp8(T v) : triton_sycl_fp8(from(double(v))) {}
+  operator float() const { return decode(bits); }
+};
+using triton_sycl_fp8e5 = triton_sycl_fp8<2, 15, 0>;
+using triton_sycl_fp8e5b16 = triton_sycl_fp8<2, 16, 2>;
+using triton_sycl_fp8e4nv = triton_sycl_fp8<3, 7, 1>;
+using triton_sycl_fp8e4b8 = triton_sycl_fp8<3, 8, 2>;
+static_assert(sizeof(triton_sycl_fp8e5) == 1, "fp8 ABI");
+// Explicit toward-zero narrowing is separate from the default RTNE constructors.
+template<class Target, class Source> inline Target triton_sycl_rtz(Source value) {
+  if constexpr (std::is_same<Target, float>::value) {
+    double input = double(value);
+    float result = float(input);
+    if (input != input || input == double(INFINITY) || input == -double(INFINITY)) return result;
+    if ((input >= 0 && double(result) > input) || (input < 0 && double(result) < input)) {
+      uint32_t bits = sycl::bit_cast<uint32_t>(result)-1;
+      result = sycl::bit_cast<float>(bits);
+    }
+    return result;
+  } else return Target::from(double(value), true);
+}
+// SYCL local storage: 4096 -> 4096 bytes (pipeline phase reuse)
+inline void kernel(
+  sycl::nd_item<3> item,
+  triton_sycl_float16* var_0,
+  triton_sycl_float16* var_1,
+  float* var_2,
+  int32_t var_3,
+  int32_t var_4,
+  int32_t var_5,
+  sycl::local_accessor<float, 2> var_6,
+  sycl::local_accessor<triton_sycl_float16, 2> var_7,
+  sycl::local_accessor<triton_sycl_float16, 2> var_8,
+  sycl::local_accessor<triton_sycl_float16, 2> var_9
+) {	// L28
+  for (int64_t linear_2 = item.get_local_linear_id(); linear_2 < 256; linear_2 += item.get_local_range().size()) {
+    int64_t var_10 = (linear_2 / 16) % 16;
+    int64_t var_11 = (linear_2 / 1) % 16;
+    var_6[var_10][var_11] = static_cast<float>(0x0p+0f);	//
+  }
+  item.barrier(sycl::access::fence_space::local_space);
+  int64_t var_12 = item.get_group(0);
+  int32_t var_14 = uint64_t(static_cast<uint32_t>(var_12)) * uint64_t(static_cast<uint32_t>(static_cast<int32_t>(512ULL)));	// L35
+  item.barrier(sycl::access::fence_space::local_space);
+  if (item.get_local_id(0) == 0 && item.get_local_id(1) == 0 && item.get_local_id(2) == 0) {
+    #pragma clang loop vectorize(disable) interleave(disable)
+    for (int64_t var_16 = 0; var_16 < 16; var_16 += 1) {	// L35
+      #pragma clang loop vectorize(disable) interleave(disable)
+      for (int64_t var_17 = 0; var_17 < 32; var_17 += 1) {	// L35
+        int32_t var_19 = uint64_t(static_cast<uint32_t>(var_16)) * uint64_t(static_cast<uint32_t>(static_cast<int32_t>(32ULL)));	// L35
+        int64_t var_21 = uint64_t(static_cast<uint64_t>(var_19)) + uint64_t(static_cast<uint64_t>(var_14));	// L35
+        int64_t var_23 = uint64_t(static_cast<uint64_t>(var_17)) + uint64_t(static_cast<uint64_t>(var_21));	// L35
+        bool var_24 = var_16 < var_3;	// L35
+        bool var_25 = var_17 < var_5;	// L35
+        bool var_26 = var_24 & var_25;	// L35
+        triton_sycl_float16 var_27;
+        if (var_26) {	// L35
+          triton_sycl_float16 var_28 = (var_0 + var_23 + 0 * 1)[0];	// L35
+          var_27 = var_28;	// L35
+        } else {
+          var_27 = static_cast<triton_sycl_float16>(0x0p+0f);	// L35
+        }
+        var_7[var_16][var_17] = var_27;	// L35
+      }
+    }
+  }
+  item.barrier(sycl::access::fence_space::local_space);
+  item.barrier(sycl::access::fence_space::local_space);
+  if (item.get_local_id(0) == 0 && item.get_local_id(1) == 0 && item.get_local_id(2) == 0) {
+    #pragma clang loop vectorize(disable) interleave(disable)
+    for (int64_t var_29 = 0; var_29 < 16; var_29 += 1) {	// L36
+      #pragma clang loop vectorize(disable) interleave(disable)
+      for (int64_t var_30 = 0; var_30 < 32; var_30 += 1) {	// L36
+        int32_t var_32 = uint64_t(static_cast<uint32_t>(var_29)) * uint64_t(static_cast<uint32_t>(static_cast<int32_t>(32ULL)));	// L36
+        int64_t var_34 = uint64_t(static_cast<uint64_t>(var_32)) + uint64_t(static_cast<uint64_t>(var_14));	// L36
+        int64_t var_36 = uint64_t(static_cast<uint64_t>(var_30)) + uint64_t(static_cast<uint64_t>(var_34));	// L36
+        bool var_37 = var_29 < var_4;	// L36
+        bool var_38 = var_30 < var_5;	// L36
+        bool var_39 = var_37 & var_38;	// L36
+        triton_sycl_float16 var_40;
+        if (var_39) {	// L36
+          triton_sycl_float16 var_41 = (var_1 + var_36 + 0 * 1)[0];	// L36
+          var_40 = var_41;	// L36
+        } else {
+          var_40 = static_cast<triton_sycl_float16>(0x0p+0f);	// L36
+        }
+        var_8[var_29][var_30] = var_40;	// L36
+      }
+    }
+  }
+  item.barrier(sycl::access::fence_space::local_space);
+  #pragma clang loop vectorize(disable) interleave(disable)
+  for (int64_t linear_2 = item.get_local_linear_id(); linear_2 < 512; linear_2 += item.get_local_range().size()) {
+    int64_t var_42 = (linear_2 / 16) % 32;
+    int64_t var_43 = (linear_2 / 1) % 16;
+    triton_sycl_float16 var_44 = var_8[var_43][var_42];	// L36
+    var_9[var_42][var_43] = var_44;	// L36
+  }
+  item.barrier(sycl::access::fence_space::local_space);
+  for (int64_t linear_2 = item.get_local_linear_id(); linear_2 < 256; linear_2 += item.get_local_range().size()) {
+    int64_t var_45 = (linear_2 / 16) % 16;
+    int64_t var_46 = (linear_2 / 1) % 16;
+    for (int64_t var_47 = 0; var_47 < 32; var_47 += 1) {	// L38
+      triton_sycl_float16 var_48 = var_7[var_45][var_47];	// L38
+      triton_sycl_float16 var_49 = var_9[var_47][var_46];	// L38
+      float var_50 = var_6[var_45][var_46];	// L38
+      float var_51 = static_cast<double>(var_48);	// L38
+      float var_52 = static_cast<double>(var_49);	// L38
+      float var_53 = var_51 * var_52;	// L38
+      float var_54 = var_50 + var_53;	// L38
+      var_6[var_45][var_46] = var_54;	// L38
+    }
+  }
+  item.barrier(sycl::access::fence_space::local_space);
+  int32_t var_55 = uint64_t(static_cast<uint32_t>(var_12)) * uint64_t(static_cast<uint32_t>(static_cast<int32_t>(256ULL)));	// L39
+  item.barrier(sycl::access::fence_space::local_space);
+  if (item.get_local_id(0) == 0 && item.get_local_id(1) == 0 && item.get_local_id(2) == 0) {
+    for (int64_t var_57 = 0; var_57 < 16; var_57 += 1) {	// L39
+      for (int64_t var_58 = 0; var_58 < 16; var_58 += 1) {	// L39
+        int32_t var_60 = uint64_t(static_cast<uint32_t>(var_57)) * uint64_t(static_cast<uint32_t>(static_cast<int32_t>(16ULL)));	// L39
+        int64_t var_62 = uint64_t(static_cast<uint64_t>(var_60)) + uint64_t(static_cast<uint64_t>(var_55));	// L39
+        int64_t var_64 = uint64_t(static_cast<uint64_t>(var_58)) + uint64_t(static_cast<uint64_t>(var_62));	// L39
+        bool var_65 = var_57 < var_3;	// L39
+        bool var_66 = var_58 < var_4;	// L39
+        bool var_67 = var_65 & var_66;	// L39
+        float var_68 = var_6[var_57][var_58];	// L39
+        if (var_67) {	// L39
+          (var_2 + var_64 + 0 * 1)[0] = var_68;	// L39
+        }
+      }
+    }
+  }
+  item.barrier(sycl::access::fence_space::local_space);
+}
+
+extern "C" void launch_kernel(sycl::queue* q, size_t gridX, size_t gridY, size_t gridZ, size_t blockX, size_t blockY, size_t blockZ, triton_sycl_float16* var_0, triton_sycl_float16* var_1, float* var_2, int32_t var_3, int32_t var_4, int32_t var_5) {
+  auto device = q->get_device();
+  if (4096ULL > device.get_info<sycl::info::device::local_mem_size>()) throw std::runtime_error("SYCL kernel local-memory requirement exceeds device limit: 4096 bytes");
+  auto max_group = device.get_info<sycl::info::device::max_work_group_size>();
+  auto max_axis = device.get_info<sycl::info::device::max_work_item_sizes<3>>();
+  if (!blockX || !blockY || !blockZ || blockX > max_axis[0] || blockY > max_axis[1] || blockZ > max_axis[2] || blockX > max_group/blockY || blockX*blockY > max_group/blockZ) throw std::runtime_error("SYCL local range exceeds device limit");
+  q->submit([&](sycl::handler &h) {
+    sycl::local_accessor<float, 2> var_6(sycl::range<2>(16, 16), h);
+    sycl::local_accessor<triton_sycl_float16, 2> var_7(sycl::range<2>(16, 32), h);
+    sycl::local_accessor<triton_sycl_float16, 2> var_8(sycl::range<2>(16, 32), h);
+    sycl::local_accessor<triton_sycl_float16, 2> var_9(sycl::range<2>(32, 16), h);
+    h.parallel_for(sycl::nd_range<3>(sycl::range<3>(gridX, gridY, gridZ) * sycl::range<3>(blockX, blockY, blockZ), sycl::range<3>(blockX, blockY, blockZ)), [=](sycl::nd_item<3> item) {
+      kernel(item, var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9);
+    });
+  });
+}
+
+extern "C" void profile_kernel(sycl::queue* q, size_t gridX, size_t gridY, size_t gridZ, size_t blockX, size_t blockY, size_t blockZ, triton_sycl_float16* var_0, triton_sycl_float16* var_1, float* var_2, int32_t var_3, int32_t var_4, int32_t var_5, uint64_t* elapsed_ns) {
+  auto device = q->get_device();
+  if (4096ULL > device.get_info<sycl::info::device::local_mem_size>()) throw std::runtime_error("SYCL kernel local-memory requirement exceeds device limit: 4096 bytes");
+  auto max_group = device.get_info<sycl::info::device::max_work_group_size>();
+  auto max_axis = device.get_info<sycl::info::device::max_work_item_sizes<3>>();
+  if (!blockX || !blockY || !blockZ || blockX > max_axis[0] || blockY > max_axis[1] || blockZ > max_axis[2] || blockX > max_group/blockY || blockX*blockY > max_group/blockZ) throw std::runtime_error("SYCL local range exceeds device limit");
+  sycl::event kernel_event = q->submit([&](sycl::handler &h) {
+    sycl::local_accessor<float, 2> var_6(sycl::range<2>(16, 16), h);
+    sycl::local_accessor<triton_sycl_float16, 2> var_7(sycl::range<2>(16, 32), h);
+    sycl::local_accessor<triton_sycl_float16, 2> var_8(sycl::range<2>(16, 32), h);
+    sycl::local_accessor<triton_sycl_float16, 2> var_9(sycl::range<2>(32, 16), h);
+    h.parallel_for(sycl::nd_range<3>(sycl::range<3>(gridX, gridY, gridZ) * sycl::range<3>(blockX, blockY, blockZ), sycl::range<3>(blockX, blockY, blockZ)), [=](sycl::nd_item<3> item) {
+      kernel(item, var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9);
+    });
+  });
+  kernel_event.wait_and_throw();
+  *elapsed_ns = kernel_event.get_profiling_info<sycl::info::event_profiling::command_end>() - kernel_event.get_profiling_info<sycl::info::event_profiling::command_start>();
+}
+

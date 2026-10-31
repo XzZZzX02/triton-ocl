@@ -1,0 +1,20 @@
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+python/triton/_C/libtriton.so: OK
+python/triton/_C/triton-sycl-translate: OK
+third_party/sycl/lib/Conversion/LinalgToAffineLoops/SerialHalfCopyGuard.cpp: OK
+third_party/sycl/backend/compiler.py: OK
+third_party/sycl/tool/triton-sycl-translate/EmitSYCL.cpp: OK
+python/test/sycl/serial_half_copy_bits.py: OK
+i02r1n10
+gfx906:sramecc-:xnack-
+HIP_DEVICE=Device 66a1 COUNT=4
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"shape": [16, 32], "variant": "before", "round": 0, "status": "PASS", "elements_checked": 9258, "samples_ns": [141443, 140482, 141923, 152643, 141763, 141123, 141762, 141443, 141442, 140963, 142243, 141763, 140323, 141443, 141762, 141763, 141123, 141763, 141923, 141602, 141443, 141923, 141923, 142243, 142402, 140963, 141762, 141923, 142083, 141443, 142083], "median_ns": 141762, "source_sha256": "92ee7e2b92c5535d66b900bf29fdb14ad8c2bc80d146ae4dbc690ae104b7af8b"}
+{"shape": [16, 32], "variant": "after", "round": 0, "status": "PASS", "elements_checked": 9258, "samples_ns": [318246, 318566, 313765, 316325, 315845, 317445, 318405, 317126, 313605, 317445, 315686, 315045, 315365, 319045, 318085, 314565, 318565, 318085, 315046, 318725, 315205, 314886, 318725, 316005, 318405, 317765, 316165, 315045, 314405, 316006, 318245], "median_ns": 316325, "source_sha256": "c2d9b1646db519b280532eb5a6f29d2d97b9999ee665fb63f98d5d6ab94f5895"}
+{"shape": [16, 32], "variant": "after", "round": 1, "status": "PASS", "elements_checked": 9258, "samples_ns": [315685, 318885, 316485, 314725, 314885, 316805, 317285, 315045, 315685, 317285, 315045, 314885, 316005, 317605, 317765, 315045, 315205, 318565, 315525, 318245, 318245, 317765, 318085, 315685, 314245, 319045, 315685, 314725, 316645, 315045, 318085], "median_ns": 316005, "source_sha256": "c2d9b1646db519b280532eb5a6f29d2d97b9999ee665fb63f98d5d6ab94f5895"}
+{"shape": [16, 32], "variant": "before", "round": 1, "status": "PASS", "elements_checked": 9258, "samples_ns": [137922, 137442, 137762, 142082, 137922, 137922, 140962, 142242, 141602, 141122, 142402, 142242, 141442, 142882, 141442, 141762, 141122, 142562, 141602, 142562, 141282, 142562, 142082, 140802, 141442, 141762, 141282, 141442, 141602, 141122, 142082], "median_ns": 141442, "source_sha256": "92ee7e2b92c5535d66b900bf29fdb14ad8c2bc80d146ae4dbc690ae104b7af8b"}
+{"shape": [16, 32], "variant": "before", "round": 2, "status": "PASS", "elements_checked": 9258, "samples_ns": [137923, 134883, 134722, 134242, 138722, 137922, 138242, 138882, 137442, 137443, 144802, 137762, 138082, 142722, 138402, 139843, 141123, 139203, 138243, 139683, 138403, 141283, 138083, 139362, 138562, 139042, 138882, 138722, 138722, 139202, 139202], "median_ns": 138722, "source_sha256": "92ee7e2b92c5535d66b900bf29fdb14ad8c2bc80d146ae4dbc690ae104b7af8b"}
+{"shape": [16, 32], "variant": "after", "round": 2, "status": "PASS", "elements_checked": 9258, "samples_ns": [311205, 312485, 318565, 316805, 313445, 313605, 312166, 316325, 308325, 317445, 318885, 315205, 318885, 319045, 316805, 319365, 312005, 315846, 318086, 318885, 318085, 318885, 318085, 318565, 312005, 316645, 317605, 315525, 317925, 314405, 312645], "median_ns": 316805, "source_sha256": "c2d9b1646db519b280532eb5a6f29d2d97b9999ee665fb63f98d5d6ab94f5895"}
