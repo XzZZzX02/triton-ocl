@@ -1,0 +1,23 @@
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+python/triton/_C/libtriton.so: OK
+python/triton/_C/triton-sycl-translate: OK
+third_party/sycl/lib/Conversion/LinalgToAffineLoops/SerialHalfCopyGuard.cpp: OK
+third_party/sycl/tool/triton-sycl-translate/EmitSYCL.cpp: OK
+python/test/sycl/single_lane_half_dot.py: OK
+453a54a59d2b8827434bd9e38581fbc60d8b08cdde96bcff9d143c895ce5864d  python/test/sycl/single_lane_half_mixed_bits.py
+i01r1n19
+gfx906:sramecc-:xnack-
+HIP_DEVICE=Device 66a1 COUNT=4
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"load_dialect": "memref", "store_dialect": "affine", "block": 1, "status": "PASS", "elements_checked": 391, "special_bits": [0, 32768, 15360, 48128, 31744, 64512, 32256, 32001, 65109, 1, 32769, 1023, 33791, 1024, 33792, 31743, 64511], "source_sha256": "9a68e9e3d12030c1c947695c0656c4973d05209554d5a1053f731bff16ac95d5"}
+{"load_dialect": "memref", "store_dialect": "affine", "block": 3, "status": "PASS", "elements_checked": 391, "special_bits": [0, 32768, 15360, 48128, 31744, 64512, 32256, 32001, 65109, 1, 32769, 1023, 33791, 1024, 33792, 31743, 64511], "source_sha256": "9a68e9e3d12030c1c947695c0656c4973d05209554d5a1053f731bff16ac95d5"}
+{"load_dialect": "memref", "store_dialect": "affine", "block": 48, "status": "PASS", "elements_checked": 391, "special_bits": [0, 32768, 15360, 48128, 31744, 64512, 32256, 32001, 65109, 1, 32769, 1023, 33791, 1024, 33792, 31743, 64511], "source_sha256": "9a68e9e3d12030c1c947695c0656c4973d05209554d5a1053f731bff16ac95d5"}
+{"load_dialect": "memref", "store_dialect": "affine", "block": [3, 5], "status": "PASS", "elements_checked": 391, "special_bits": [0, 32768, 15360, 48128, 31744, 64512, 32256, 32001, 65109, 1, 32769, 1023, 33791, 1024, 33792, 31743, 64511], "source_sha256": "9a68e9e3d12030c1c947695c0656c4973d05209554d5a1053f731bff16ac95d5"}
+{"load_dialect": "memref", "store_dialect": "affine", "block": 64, "status": "PASS", "elements_checked": 391, "special_bits": [0, 32768, 15360, 48128, 31744, 64512, 32256, 32001, 65109, 1, 32769, 1023, 33791, 1024, 33792, 31743, 64511], "source_sha256": "9a68e9e3d12030c1c947695c0656c4973d05209554d5a1053f731bff16ac95d5"}
+{"load_dialect": "affine", "store_dialect": "memref", "block": 1, "status": "PASS", "elements_checked": 391, "special_bits": [0, 32768, 15360, 48128, 31744, 64512, 32256, 32001, 65109, 1, 32769, 1023, 33791, 1024, 33792, 31743, 64511], "source_sha256": "9a68e9e3d12030c1c947695c0656c4973d05209554d5a1053f731bff16ac95d5"}
+{"load_dialect": "affine", "store_dialect": "memref", "block": 3, "status": "PASS", "elements_checked": 391, "special_bits": [0, 32768, 15360, 48128, 31744, 64512, 32256, 32001, 65109, 1, 32769, 1023, 33791, 1024, 33792, 31743, 64511], "source_sha256": "9a68e9e3d12030c1c947695c0656c4973d05209554d5a1053f731bff16ac95d5"}
+{"load_dialect": "affine", "store_dialect": "memref", "block": 48, "status": "PASS", "elements_checked": 391, "special_bits": [0, 32768, 15360, 48128, 31744, 64512, 32256, 32001, 65109, 1, 32769, 1023, 33791, 1024, 33792, 31743, 64511], "source_sha256": "9a68e9e3d12030c1c947695c0656c4973d05209554d5a1053f731bff16ac95d5"}
+{"load_dialect": "affine", "store_dialect": "memref", "block": [3, 5], "status": "PASS", "elements_checked": 391, "special_bits": [0, 32768, 15360, 48128, 31744, 64512, 32256, 32001, 65109, 1, 32769, 1023, 33791, 1024, 33792, 31743, 64511], "source_sha256": "9a68e9e3d12030c1c947695c0656c4973d05209554d5a1053f731bff16ac95d5"}
+{"load_dialect": "affine", "store_dialect": "memref", "block": 64, "status": "PASS", "elements_checked": 391, "special_bits": [0, 32768, 15360, 48128, 31744, 64512, 32256, 32001, 65109, 1, 32769, 1023, 33791, 1024, 33792, 31743, 64511], "source_sha256": "9a68e9e3d12030c1c947695c0656c4973d05209554d5a1053f731bff16ac95d5"}

@@ -96,7 +96,9 @@ def main():
             guards = str(mod).count('sycl.scalar_half_bits')
             selected = distributed and dialect=='affine'
             assert guards == (2 if selected else 4), (R,C,dialect,distributed,guards)
-            for block in (1,3,48,(3,5)):
+            single=str(mod).count('sycl.single_lane_half_bits')
+            assert single==(2 if selected else 0),(R,C,dialect,distributed,single)
+            for block in (1,3,48,(3,5),64):
                 y.c_array[:] = [sentinel] * len(expected)
                 run_standalone(grid,1,1,'half_copy',code,[x,y],block_size=block)
                 actual = list(y.c_array)
@@ -104,7 +106,7 @@ def main():
                 row = dict(shape=[R,C],dialect=dialect,distribution_requested=distributed,
                     distributed=selected,block=block,
                     status='PASS',elements_checked=len(expected),special_bits=special,
-                    guard_markers=guards,source_sha256=hashlib.sha256(code.encode()).hexdigest())
+                    guard_markers=guards,single_lane_markers=single,source_sha256=hashlib.sha256(code.encode()).hexdigest())
                 rows.append(row);print(json.dumps(row),flush=True)
                 pathlib.Path(args.output).write_text(json.dumps(rows,indent=2)+'\n')
 

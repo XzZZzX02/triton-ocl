@@ -60,11 +60,13 @@ def main():
         pm=ir.pass_manager(ctx);sycl.passes.memir.serial_half_copy_guard(pm);pm.run(mod)
         first=str(mod)
         count=2*int(dtype=='f16' and not distributed and variant in ('plain','conditional','stale'))
+        single=2*int(dtype=='f16' and distributed and variant in ('plain','conditional','stale'))
         assert first.count('sycl.scalar_half_bits')==count,(dtype,dialect,distributed,variant,first)
+        assert first.count('sycl.single_lane_half_bits')==single,(dtype,dialect,distributed,variant,first)
         pm=ir.pass_manager(ctx);sycl.passes.memir.serial_half_copy_guard(pm);pm.run(mod)
         assert str(mod)==first,(first,str(mod))
         rows.append(dict(dtype=dtype,dialect=dialect,store_dialect=store_dialect,
-            distributed=distributed,variant=variant,markers=count,status='PASS'))
+            distributed=distributed,variant=variant,markers=count,single_lane_markers=single,status='PASS'))
     # Replanning after ownership changes removes stale guards; a subsequent
     # serial schedule restores them. No pass relies on the original marker.
     for dtype in ('f16','f32'):
@@ -83,8 +85,10 @@ def main():
             pm=ir.pass_manager(ctx);sycl.passes.memir.serial_half_copy_guard(pm);pm.run(mod)
             count=2*int(dtype=='f16' and not distributed)
             assert str(mod).count('sycl.scalar_half_bits')==count,str(mod)
+            single=2*int(dtype=='f16' and distributed)
+            assert str(mod).count('sycl.single_lane_half_bits')==single,str(mod)
             rows.append(dict(dtype=dtype,variant='ownership_replanning',distributed=distributed,
-                             markers=count,status='PASS'))
+                             markers=count,single_lane_markers=single,status='PASS'))
     # Serial local-to-external copies have the same storage-emission hazard.
     # Wider output views and ranked/indirect bases are deliberately rejected.
     for dtype,dialect,store_dialect,distributed,variant in itertools.product(
@@ -113,10 +117,20 @@ def main():
         pm=ir.pass_manager(ctx);sycl.passes.memir.serial_half_copy_guard(pm);pm.run(mod)
         first=str(mod);count=2*int(dtype=='f16' and not distributed and variant=='scalar_view')
         assert first.count('sycl.scalar_half_bits')==count,(dtype,dialect,variant,first)
+        assert 'sycl.single_lane_half_bits' not in first
         pm=ir.pass_manager(ctx);sycl.passes.memir.serial_half_copy_guard(pm);pm.run(mod)
         assert str(mod)==first
         rows.append(dict(dtype=dtype,dialect=dialect,store_dialect=store_dialect,
                          distributed=distributed,variant='output_'+variant,markers=count,status='PASS'))
+    for dtype in ('f16','f32'):
+        text=source(dtype,distributed=True,variant='stale').replace('sycl.scalar_half_bits','sycl.single_lane_half_bits')
+        with tempfile.NamedTemporaryFile(mode='w',suffix='.mlir') as f:
+            f.write(text);f.flush();mod=ir.parse_mlir_module(f.name,ctx)
+        pm=ir.pass_manager(ctx);sycl.passes.memir.serial_half_copy_guard(pm);pm.run(mod)
+        assert str(mod).count('sycl.single_lane_half_bits')==2*int(dtype=='f16')
+        assert 'sycl.scalar_half_bits' not in str(mod)
+        rows.append(dict(dtype=dtype,variant='stale_single_lane',markers=0,
+                         single_lane_markers=2*int(dtype=='f16'),status='PASS'))
     pathlib.Path(args.output).write_text(json.dumps(rows,indent=2)+'\n')
     print(json.dumps(dict(status='PASS',count=len(rows))))
 

@@ -15,6 +15,28 @@ using namespace mlir;
 LogicalResult emitSYCL(ModuleOp module, llvm::raw_ostream &os);
 void registerEmitSYCLTranslation();
 
+// Keep the single-work-item workaround separate from normal aggregate copies.
+// Volatile accesses preserve the actual uint16_t storage without conversion;
+// they do not provide synchronization. Work-group barriers remain unchanged.
+static constexpr const char *singleLaneHalfCopySupport = R"CPP(
+inline triton_sycl_float16 triton_sycl_single_lane_half_load(
+    const triton_sycl_float16* address, size_t local_size) {
+  if (local_size == 1) {
+    triton_sycl_float16 value;
+    value.bits = *reinterpret_cast<const volatile uint16_t*>(&address->bits);
+    return value;
+  }
+  return *address;
+}
+inline void triton_sycl_single_lane_half_store(
+    triton_sycl_float16* address, triton_sycl_float16 value, size_t local_size) {
+  if (local_size == 1)
+    *reinterpret_cast<volatile uint16_t*>(&address->bits) = value.bits;
+  else
+    *address = value;
+}
+)CPP";
+
 static unsigned getSYCLAccessorRank(MemRefType type) {
   return std::max<unsigned>(type.getRank(), 1);
 }
@@ -569,6 +591,8 @@ void ModuleEmitter::emitAffineMaxMin(OpType op, const char *syntax) {
 void ModuleEmitter::emitAffineLoad(affine::AffineLoadOp op) {
   bool halfBits = state.target == EmitTarget::SYCL &&
       op.getResult().getType().isF16() && op->hasAttr("sycl.scalar_half_bits");
+  bool singleLane = state.target == EmitTarget::SYCL &&
+      op.getResult().getType().isF16() && op->hasAttr("sycl.single_lane_half_bits");
   indent();
   emitValue(op.getResult());
   if (halfBits) {
@@ -579,6 +603,7 @@ void ModuleEmitter::emitAffineLoad(affine::AffineLoadOp op) {
   }
   os << " = ";
   if (halfBits) os << "*reinterpret_cast<const volatile uint16_t*>(&";
+  if (singleLane) os << "triton_sycl_single_lane_half_load(&";
   auto affineMap = op.getAffineMap();
   AffineExprEmitter affineEmitter(state, affineMap.getNumDims(),
                                   op.getMapOperands());
@@ -609,6 +634,7 @@ void ModuleEmitter::emitAffineLoad(affine::AffineLoadOp op) {
     }
   }
   if (halfBits) os << ".bits)";
+  if (singleLane) os << ", item.get_local_range().size())";
   os << ";";
   emitInfoAndNewLine(op);
 }
@@ -617,6 +643,9 @@ void ModuleEmitter::emitAffineStore(affine::AffineStoreOp op) {
   bool halfBits = state.target == EmitTarget::SYCL &&
       op.getValueToStore().getType().isF16() &&
       op->hasAttr("sycl.scalar_half_bits");
+  bool singleLane = state.target == EmitTarget::SYCL &&
+      op.getValueToStore().getType().isF16() &&
+      op->hasAttr("sycl.single_lane_half_bits");
   bool scalarOwner = state.target == EmitTarget::SYCL &&
       !op->getParentOfType<affine::AffineForOp>() &&
       !op->hasAttr("sycl.scalar_owner");
@@ -626,6 +655,7 @@ void ModuleEmitter::emitAffineStore(affine::AffineStoreOp op) {
   }
   indent();
   if (halfBits) os << "*reinterpret_cast<volatile uint16_t*>(&";
+  if (singleLane) os << "triton_sycl_single_lane_half_store(&";
   auto affineMap = op.getAffineMap();
   AffineExprEmitter affineEmitter(state, affineMap.getNumDims(),
                                   op.getMapOperands());
@@ -656,9 +686,10 @@ void ModuleEmitter::emitAffineStore(affine::AffineStoreOp op) {
     }
   }
   if (halfBits) os << ".bits)";
-  os << " = ";
+  os << (singleLane ? ", " : " = ");
   emitValue(op.getValueToStore());
   if (halfBits) os << ".bits";
+  if (singleLane) os << ", item.get_local_range().size())";
   os << ";";
   emitInfoAndNewLine(op);
   if (scalarOwner) {
@@ -799,6 +830,8 @@ template <typename OpType> void ModuleEmitter::emitAlloc(OpType op) {
 void ModuleEmitter::emitLoad(memref::LoadOp op) {
   bool halfBits = state.target == EmitTarget::SYCL &&
       op.getResult().getType().isF16() && op->hasAttr("sycl.scalar_half_bits");
+  bool singleLane = state.target == EmitTarget::SYCL &&
+      op.getResult().getType().isF16() && op->hasAttr("sycl.single_lane_half_bits");
   indent();
   emitValue(op.getResult());
   if (halfBits) {
@@ -809,8 +842,10 @@ void ModuleEmitter::emitLoad(memref::LoadOp op) {
   }
   os << " = ";
   if (halfBits) os << "*reinterpret_cast<const volatile uint16_t*>(&";
+  if (singleLane) os << "triton_sycl_single_lane_half_load(&";
   emitMemRefAccess(op.getMemRef(), op.getIndices());
   if (halfBits) os << ".bits)";
+  if (singleLane) os << ", item.get_local_range().size())";
   os << ";";
   emitInfoAndNewLine(op);
 }
@@ -819,6 +854,9 @@ void ModuleEmitter::emitStore(memref::StoreOp op) {
   bool halfBits = state.target == EmitTarget::SYCL &&
       op.getValueToStore().getType().isF16() &&
       op->hasAttr("sycl.scalar_half_bits");
+  bool singleLane = state.target == EmitTarget::SYCL &&
+      op.getValueToStore().getType().isF16() &&
+      op->hasAttr("sycl.single_lane_half_bits");
   bool scalarOwner = state.target == EmitTarget::SYCL &&
       !op->getParentOfType<affine::AffineForOp>();
   if (scalarOwner) {
@@ -827,11 +865,13 @@ void ModuleEmitter::emitStore(memref::StoreOp op) {
   }
   indent();
   if (halfBits) os << "*reinterpret_cast<volatile uint16_t*>(&";
+  if (singleLane) os << "triton_sycl_single_lane_half_store(&";
   emitMemRefAccess(op.getMemRef(), op.getIndices());
   if (halfBits) os << ".bits)";
-  os << " = ";
+  os << (singleLane ? ", " : " = ");
   emitValue(op.getValueToStore());
   if (halfBits) os << ".bits";
+  if (singleLane) os << ", item.get_local_range().size())";
   os << ";";
   emitInfoAndNewLine(op);
   if (scalarOwner) {
@@ -1678,6 +1718,11 @@ void ModuleEmitter::emitModule(ModuleOp module) {
 
 )XXX";
     os << tritonSYCLNumericSupport;
+    bool needsSingleLaneHalfCopy = false;
+    module.walk([&](Operation *op) {
+      needsSingleLaneHalfCopy |= op->hasAttr("sycl.single_lane_half_bits");
+    });
+    if (needsSingleLaneHalfCopy) os << singleLaneHalfCopySupport;
   } else {
     os << R"XXX(//===------------------------------------------------------------*- C++ -*-===//
 //

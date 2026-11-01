@@ -1,0 +1,2 @@
+Official source retrieved 2026-11-01: https://llvm.org/docs/LangRef.html#volatile-memory-accesses
+The volatile access constraints motivate retaining the established bit-storage workaround. They do not provide cross-thread synchronization and do not prove the precise cause of the observed toolchain failure. The existing work-group barriers remain in place. The web tool returned no usable content; curl retrieved the official reference.

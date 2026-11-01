@@ -1,0 +1,62 @@
+[
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "base",
+    "variant": "after",
+    "round": 0,
+    "status": "PASS",
+    "guarded_copies": 0,
+    "check_blocks": [
+      1,
+      3,
+      48,
+      [
+        3,
+        5
+      ],
+      64
+    ],
+    "elements_checked": 7715,
+    "output_elements": 1543,
+    "source_sha256": "dd9e107f66b089c13b356822ca0798ddaeb82337017f5e30e1e3ce22f2c3858a",
+    "reconstructed_baseline_sha256": "dd9e107f66b089c13b356822ca0798ddaeb82337017f5e30e1e3ce22f2c3858a",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "all",
+    "variant": "after",
+    "round": 0,
+    "status": "PASS",
+    "guarded_copies": 0,
+    "check_blocks": [
+      1,
+      3,
+      48,
+      [
+        3,
+        5
+      ],
+      64
+    ],
+    "elements_checked": 7715,
+    "output_elements": 1543,
+    "source_sha256": "551b5465e597cbbcba1845d3f822bbdc7669e20178be4e59c372c8b81f6caf3b",
+    "reconstructed_baseline_sha256": "551b5465e597cbbcba1845d3f822bbdc7669e20178be4e59c372c8b81f6caf3b",
+    "samples_ns": [],
+    "median_ns": null
+  }
+]

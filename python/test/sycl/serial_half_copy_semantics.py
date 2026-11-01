@@ -26,9 +26,11 @@ def main():
         memir=str(c.asm['memir'])
         # Each direct transpose has exactly one guarded load and store.
         copies=0 if distributed else args.layout.count('T')
+        single=args.layout.count('T') if distributed else 0
         assert memir.count('sycl.scalar_half_bits')==2*copies,(copies,memir)
-        assert source.count('reinterpret_cast<const volatile uint16_t*>')==copies,(copies,source)
-        assert source.count('reinterpret_cast<volatile uint16_t*>')==copies,(copies,source)
+        assert memir.count('sycl.single_lane_half_bits')==2*single,(single,memir)
+        assert source.count('reinterpret_cast<const volatile uint16_t*>')==copies+bool(single),(copies,single,source)
+        assert source.count('reinterpret_cast<volatile uint16_t*>')==copies+bool(single),(copies,single,source)
         if args.dump_dir:
             path=pathlib.Path(args.dump_dir);path.mkdir(parents=True,exist_ok=True)
             for ext,data in [('sycl',source),('memir',memir)]:
@@ -41,6 +43,7 @@ def main():
                 check(list(output.c_array),expected);checked=len(expected)
             row=dict(shape=args.shape,layout=args.layout,distributed=distributed,accumulator=accumulator,unroll=unroll,
                 block=block,status='PASS',compile_only=args.compile_only,elements_checked=checked,guarded_copies=copies,
+                single_lane_copies=single,
                 source_sha256=hashlib.sha256(source.encode()).hexdigest(),source_bytes=len(source))
             rows.append(row);print(json.dumps(row),flush=True)
             pathlib.Path(args.output).write_text(json.dumps(rows,indent=2)+'\n')

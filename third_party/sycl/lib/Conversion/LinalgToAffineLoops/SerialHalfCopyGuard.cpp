@@ -7,6 +7,8 @@
 using namespace mlir;
 namespace {
 constexpr StringLiteral guard = "sycl.scalar_half_bits";
+constexpr StringLiteral singleLaneGuard = "sycl.single_lane_half_bits";
+enum class CopyGuard { None, Always, SingleLane };
 
 static bool isLocalHalf(Value value) {
   auto alloc = value.getDefiningOp<memref::AllocOp>();
@@ -27,25 +29,28 @@ static bool isExternalHalfOutput(Value value) {
   return function && argument.getOwner() == &function.front();
 }
 
-static bool isSerialCopy(Operation *load, Operation *store, Value from,
-                         Value to, Value value) {
+static CopyGuard classifyCopy(Operation *load, Operation *store, Value from,
+                              Value to, Value value) {
   if (!isLocalHalf(from) ||
       !(isLocalHalf(to) || isExternalHalfOutput(to)) ||
       !value.hasOneUse() ||
       !store->getParentOfType<affine::AffineForOp>())
-    return false;
-  bool protectedOutput = false;
+    return CopyGuard::None;
+  bool protectedOutput = false, singleLane = false;
   for (Operation *parent = store->getParentOp(); parent;
        parent = parent->getParentOp())
     if (parent->hasAttr("sycl.distribute")) {
-      if (!parent->hasAttr("sycl.half_store_distribution") ||
-          !isExternalHalfOutput(to))
-        return false;
-      protectedOutput = true;
+      if (parent->hasAttr("sycl.half_store_distribution") &&
+          isExternalHalfOutput(to))
+        protectedOutput = true;
+      else if (isLocalHalf(to))
+        singleLane = true;
+      else
+        return CopyGuard::None;
     }
   if (!protectedOutput && load->getBlock() != store->getBlock())
-    return false;
-  return true;
+    return CopyGuard::None;
+  return singleLane ? CopyGuard::SingleLane : CopyGuard::Always;
 }
 
 // AdaptiveCpp 25.10 SSCP on gfx906 corrupts some serial local binary16
@@ -56,6 +61,8 @@ static bool isSerialCopy(Operation *load, Operation *store, Value from,
 // or a scheduling optimization. Run after scheduling so proven distributed
 // copies retain their normal emission, except the explicit half-output schedule
 // which requires guarded accesses even after distribution.
+// A distributed local copy can also execute with one work-item. Guard that
+// runtime ownership case; keep aggregate copies for larger local ranges.
 // Replanning makes the pass idempotent
 // and removes stale guards when a caller has changed work ownership.
 struct SerialHalfCopyGuardPass
@@ -67,7 +74,10 @@ struct SerialHalfCopyGuardPass
   }
   void runOnOperation() override {
     auto module = getOperation();
-    module.walk([](Operation *op) { op->removeAttr(guard); });
+    module.walk([](Operation *op) {
+      op->removeAttr(guard);
+      op->removeAttr(singleLaneGuard);
+    });
     module.walk([&](Operation *op) {
       Value value, to;
       if (auto store = dyn_cast<affine::AffineStoreOp>(op)) {
@@ -84,10 +94,12 @@ struct SerialHalfCopyGuardPass
       else if (auto read = dyn_cast_or_null<memref::LoadOp>(load))
         from = read.getMemRef();
       else return;
-      if (!isSerialCopy(load, op, from, to, value)) return;
+      CopyGuard kind = classifyCopy(load, op, from, to, value);
+      if (kind == CopyGuard::None) return;
       auto attr = UnitAttr::get(&getContext());
-      load->setAttr(guard, attr);
-      op->setAttr(guard, attr);
+      auto name = kind == CopyGuard::Always ? guard : singleLaneGuard;
+      load->setAttr(name, attr);
+      op->setAttr(name, attr);
     });
   }
 };

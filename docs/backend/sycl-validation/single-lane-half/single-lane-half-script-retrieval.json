@@ -1,0 +1,92 @@
+[
+  {
+    "job": 22801397,
+    "retrieved": true,
+    "stdout": "batch script for job 22801397 written to /public/home/dtune/zzx/triton/gap-validation/next/single-lane-half-submitted-22801397.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22801432,
+    "retrieved": true,
+    "stdout": "batch script for job 22801432 written to /public/home/dtune/zzx/triton/gap-validation/next/single-lane-half-submitted-22801432.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22801433,
+    "retrieved": true,
+    "stdout": "batch script for job 22801433 written to /public/home/dtune/zzx/triton/gap-validation/next/single-lane-half-submitted-22801433.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22801434,
+    "retrieved": true,
+    "stdout": "batch script for job 22801434 written to /public/home/dtune/zzx/triton/gap-validation/next/single-lane-half-submitted-22801434.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22801435,
+    "retrieved": true,
+    "stdout": "batch script for job 22801435 written to /public/home/dtune/zzx/triton/gap-validation/next/single-lane-half-submitted-22801435.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22801436,
+    "retrieved": true,
+    "stdout": "batch script for job 22801436 written to /public/home/dtune/zzx/triton/gap-validation/next/single-lane-half-submitted-22801436.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22801437,
+    "retrieved": true,
+    "stdout": "batch script for job 22801437 written to /public/home/dtune/zzx/triton/gap-validation/next/single-lane-half-submitted-22801437.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22801438,
+    "retrieved": true,
+    "stdout": "batch script for job 22801438 written to /public/home/dtune/zzx/triton/gap-validation/next/single-lane-half-submitted-22801438.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22801439,
+    "retrieved": true,
+    "stdout": "batch script for job 22801439 written to /public/home/dtune/zzx/triton/gap-validation/next/single-lane-half-submitted-22801439.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22801440,
+    "retrieved": true,
+    "stdout": "batch script for job 22801440 written to /public/home/dtune/zzx/triton/gap-validation/next/single-lane-half-submitted-22801440.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22801458,
+    "retrieved": true,
+    "stdout": "batch script for job 22801458 written to /public/home/dtune/zzx/triton/gap-validation/next/single-lane-half-submitted-22801458.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22801459,
+    "retrieved": true,
+    "stdout": "batch script for job 22801459 written to /public/home/dtune/zzx/triton/gap-validation/next/single-lane-half-submitted-22801459.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22801460,
+    "retrieved": true,
+    "stdout": "batch script for job 22801460 written to /public/home/dtune/zzx/triton/gap-validation/next/single-lane-half-submitted-22801460.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22801461,
+    "retrieved": true,
+    "stdout": "batch script for job 22801461 written to /public/home/dtune/zzx/triton/gap-validation/next/single-lane-half-submitted-22801461.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22801462,
+    "retrieved": true,
+    "stdout": "batch script for job 22801462 written to /public/home/dtune/zzx/triton/gap-validation/next/single-lane-half-submitted-22801462.sbatch\n",
+    "stderr": ""
+  }
+]
