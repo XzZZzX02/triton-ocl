@@ -1,0 +1,172 @@
+[
+  {
+    "case": "plain",
+    "coalesced": 1,
+    "status": "PASS",
+    "barriers_before": 4,
+    "barriers_after": 3
+  },
+  {
+    "case": "pure",
+    "coalesced": 1,
+    "status": "PASS",
+    "barriers_before": 4,
+    "barriers_after": 3
+  },
+  {
+    "case": "alloc",
+    "coalesced": 1,
+    "status": "PASS",
+    "barriers_before": 4,
+    "barriers_after": 3
+  },
+  {
+    "case": "dealloc",
+    "coalesced": 1,
+    "status": "PASS",
+    "barriers_before": 4,
+    "barriers_after": 3
+  },
+  {
+    "case": "view",
+    "coalesced": 1,
+    "status": "PASS",
+    "barriers_before": 4,
+    "barriers_after": 3
+  },
+  {
+    "case": "read",
+    "coalesced": 0,
+    "status": "PASS",
+    "barriers_before": 4,
+    "barriers_after": 4
+  },
+  {
+    "case": "write",
+    "coalesced": 0,
+    "status": "PASS",
+    "barriers_before": 5,
+    "barriers_after": 5
+  },
+  {
+    "case": "conditional",
+    "coalesced": 0,
+    "status": "PASS",
+    "barriers_before": 4,
+    "barriers_after": 4
+  },
+  {
+    "case": "scf",
+    "coalesced": 0,
+    "status": "PASS",
+    "barriers_before": 5,
+    "barriers_after": 5
+  },
+  {
+    "case": "explicit",
+    "coalesced": 2,
+    "status": "PASS",
+    "barriers_before": 5,
+    "barriers_after": 3
+  },
+  {
+    "case": "two_explicit",
+    "coalesced": 3,
+    "status": "PASS",
+    "barriers_before": 6,
+    "barriers_after": 3
+  },
+  {
+    "case": "pure_after_read",
+    "coalesced": 0,
+    "status": "PASS",
+    "barriers_before": 4,
+    "barriers_after": 4
+  },
+  {
+    "case": "explicit_after_read",
+    "coalesced": 1,
+    "status": "PASS",
+    "barriers_before": 5,
+    "barriers_after": 4
+  },
+  {
+    "case": "first_explicit",
+    "coalesced": 1,
+    "status": "PASS",
+    "barriers_before": 3,
+    "barriers_after": 2
+  },
+  {
+    "case": "distributed_first",
+    "coalesced": 1,
+    "status": "PASS",
+    "barriers_before": 3,
+    "barriers_after": 2
+  },
+  {
+    "case": "distributed_second",
+    "coalesced": 0,
+    "status": "PASS",
+    "barriers_before": 3,
+    "barriers_after": 3
+  },
+  {
+    "case": "nested",
+    "coalesced": 0,
+    "status": "PASS",
+    "barriers_before": 4,
+    "barriers_after": 4
+  },
+  {
+    "case": "stale",
+    "coalesced": 1,
+    "status": "PASS",
+    "barriers_before": 4,
+    "barriers_after": 3
+  },
+  {
+    "case": "only_first",
+    "coalesced": 0,
+    "status": "PASS",
+    "barriers_before": 2,
+    "barriers_after": 2
+  },
+  {
+    "case": "pipeline",
+    "pipeline": [
+      "work_distribution"
+    ],
+    "coalesced": 1,
+    "status": "PASS"
+  },
+  {
+    "case": "pipeline",
+    "pipeline": [
+      "local_memory_reuse"
+    ],
+    "coalesced": 1,
+    "status": "PASS"
+  },
+  {
+    "case": "pipeline",
+    "pipeline": [
+      "work_distribution",
+      "local_memory_reuse"
+    ],
+    "coalesced": 1,
+    "status": "PASS"
+  },
+  {
+    "case": "pipeline",
+    "pipeline": [
+      "serial_half_copy_guard"
+    ],
+    "coalesced": 1,
+    "status": "PASS"
+  },
+  {
+    "case": "default_cache",
+    "status": "PASS"
+  }
+]

@@ -1,0 +1,586 @@
+diff --git a/third_party/sycl/backend/compiler.py b/third_party/sycl/backend/compiler.py
+index e4720436..b84a2c5c 100644
+--- a/third_party/sycl/backend/compiler.py
++++ b/third_party/sycl/backend/compiler.py
+@@ -47,6 +47,7 @@ class SYCLOptions:
+     cooperative_load_staging: bool = False
+     terminal_store_distribution: bool = False
+     half_store_distribution: bool = False
++    phase_barrier_coalescing: bool = False
+ 
+     def __post_init__(self):
+         if type(self.reduction_unroll) is not int or self.reduction_unroll not in (1, 2, 4, 8):
+@@ -162,6 +163,8 @@ class SYCLBackend(BaseBackend):
+         if opt.distribute_work and opt.half_store_distribution:
+             sycl.passes.memir.half_store_distribution(pm)
+         sycl.passes.memir.serial_half_copy_guard(pm)
++        if opt.phase_barrier_coalescing:
++            sycl.passes.memir.phase_barrier_coalescing(pm)
+         pm.run(mod)
+         return mod
+ 
+diff --git a/third_party/sycl/include/Conversion/LinalgToAffineLoops/Passes.h b/third_party/sycl/include/Conversion/LinalgToAffineLoops/Passes.h
+index f1fef04f..98b48665 100644
+--- a/third_party/sycl/include/Conversion/LinalgToAffineLoops/Passes.h
++++ b/third_party/sycl/include/Conversion/LinalgToAffineLoops/Passes.h
+@@ -28,6 +28,7 @@ std::unique_ptr<OperationPass<ModuleOp>> createVectorMemoryPass();
+ std::unique_ptr<OperationPass<ModuleOp>> createTerminalStoreDistributionPass();
+ std::unique_ptr<OperationPass<ModuleOp>> createSerialHalfCopyGuardPass();
+ std::unique_ptr<OperationPass<ModuleOp>> createHalfStoreDistributionPass();
++std::unique_ptr<OperationPass<ModuleOp>> createPhaseBarrierCoalescingPass();
+ bool planHalfStoreDistribution(affine::AffineForOp loop);
+ // Re-prove marked external stores after another pass rebuilds work ownership.
+ bool planTerminalStoreDistribution(affine::AffineForOp loop);
+diff --git a/third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeLists.txt b/third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeLists.txt
+index e54cee79..23283ec9 100644
+--- a/third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeLists.txt
++++ b/third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeLists.txt
+@@ -14,6 +14,7 @@ add_triton_library(LinalgToAffineLoopsSYCL
+   VectorMemory.cpp
+   SerialHalfCopyGuard.cpp
+   HalfStoreDistribution.cpp
++  PhaseBarrierCoalescing.cpp
+ 
+   DEPENDS
+   LinalgToAffineLoopsSYCLConversionPassIncGen
+diff --git a/third_party/sycl/tool/triton-sycl-translate/EmitSYCL.cpp b/third_party/sycl/tool/triton-sycl-translate/EmitSYCL.cpp
+index 708ae4ee..1be239ef 100644
+--- a/third_party/sycl/tool/triton-sycl-translate/EmitSYCL.cpp
++++ b/third_party/sycl/tool/triton-sycl-translate/EmitSYCL.cpp
+@@ -384,7 +384,8 @@ void ModuleEmitter::emitAffineFor(affine::AffineForOp op) {
+   bool guardScalarReduction = state.target == EmitTarget::SYCL &&
+       !op->getParentOfType<affine::AffineForOp>();
+   if (guardScalarReduction) {
+-    indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
++    if (!op->hasAttr("sycl.coalesced_entry_barrier"))
++      indent() << "item.barrier(sycl::access::fence_space::local_space);\n";
+     indent() << "if (item.get_local_id(0) == 0 && item.get_local_id(1) == 0 && "
+                  "item.get_local_id(2) == 0) {\n";
+     addIndent();
+@@ -1590,6 +1591,9 @@ void ModuleEmitter::emitAllReduce(gpu::AllReduceOp op) {
+ }
+ 
+ void ModuleEmitter::emitBarrier(gpu::BarrierOp op) {
++  if (state.target == EmitTarget::SYCL &&
++      op->hasAttr("sycl.coalesced_local_barrier"))
++    return;
+   indent();
+   if (state.target == EmitTarget::SYCL)
+     os << "item.barrier(sycl::access::fence_space::local_space);\n";
+diff --git a/third_party/sycl/triton_sycl.cc b/third_party/sycl/triton_sycl.cc
+index 79f47e0d..c0272d44 100644
+--- a/third_party/sycl/triton_sycl.cc
++++ b/third_party/sycl/triton_sycl.cc
+@@ -37,6 +37,9 @@ void init_triton_sycl_passes_lair(py::module &&m) {
+ }
+ 
+ void init_triton_sycl_passes_memir(py::module &&m) {
++  m.def("phase_barrier_coalescing", [](mlir::PassManager &pm) {
++    pm.addPass(mlir::triton::sycl::createPhaseBarrierCoalescingPass());
++  });
+   m.def("half_store_distribution", [](mlir::PassManager &pm) {
+     pm.addPass(mlir::triton::sycl::createHalfStoreDistributionPass());
+   });
+diff --git a/third_party/sycl/lib/Conversion/LinalgToAffineLoops/PhaseBarrierCoalescing.cpp b/third_party/sycl/lib/Conversion/LinalgToAffineLoops/PhaseBarrierCoalescing.cpp
+new file mode 100644
+index 00000000..37ce11c8
+--- /dev/null
++++ b/third_party/sycl/lib/Conversion/LinalgToAffineLoops/PhaseBarrierCoalescing.cpp
+@@ -0,0 +1,87 @@
++#include "sycl/include/Conversion/LinalgToAffineLoops/Passes.h"
++#include "mlir/Dialect/Affine/IR/AffineOps.h"
++#include "mlir/Dialect/Func/IR/FuncOps.h"
++#include "mlir/Dialect/GPU/IR/GPUDialect.h"
++#include "mlir/Dialect/MemRef/IR/MemRef.h"
++#include "mlir/Interfaces/SideEffectInterfaces.h"
++#include "llvm/ADT/STLExtras.h"
++
++using namespace mlir;
++namespace {
++constexpr StringLiteral entry = "sycl.coalesced_entry_barrier";
++constexpr StringLiteral explicitBarrier = "sycl.coalesced_local_barrier";
++constexpr StringLiteral count = "sycl.phase_barriers_coalesced";
++
++// Only operations emitted without device memory effects may separate the two
++// barriers. Allocations are local accessors created in the host command group;
++// deallocation is likewise owned by that command group in this backend.
++static bool transparent(Operation *op) {
++  if (isa<memref::AllocOp, memref::DeallocOp, memref::CastOp,
++          memref::ReinterpretCastOp>(op))
++    return true;
++  // Shaped "pure" arithmetic may materialize local arrays in source emission.
++  // Only scalar register computations are transparent to this proof.
++  auto scalar = [](Type type) { return type.isIntOrIndexOrFloat(); };
++  return !op->getNumRegions() && isMemoryEffectFree(op) &&
++         llvm::all_of(op->getOperandTypes(), scalar) &&
++         llvm::all_of(op->getResultTypes(), scalar) &&
++         (op->getName().getDialectNamespace() == "arith" ||
++          isa<affine::AffineApplyOp, affine::AffineMaxOp,
++              affine::AffineMinOp>(op));
++}
++
++// This pass plans SYCL source emission, rather than deleting a general GPU IR
++// barrier: every top-level affine phase in this backend ends with a uniform
++// local-space barrier, whether scalar-owned, distributed or vector-copy.
++// Keep its exit barrier; coalesce only a later identical barrier reached with
++// no intervening memory access/control flow. Do not infer disjointness.
++struct PhaseBarrierCoalescingPass
++    : PassWrapper<PhaseBarrierCoalescingPass, OperationPass<ModuleOp>> {
++  MLIR_DEFINE_EXPLICIT_INTERNAL_INLINE_TYPE_ID(PhaseBarrierCoalescingPass)
++  StringRef getArgument() const final { return "sycl-phase-barrier-coalescing"; }
++  StringRef getDescription() const final {
++    return "Coalesce duplicate local barriers between unconditional SYCL phases";
++  }
++  void runOnOperation() override {
++    getOperation().walk([](Operation *op) {
++      op->removeAttr(entry);
++      op->removeAttr(explicitBarrier);
++      op->removeAttr(count);
++    });
++    for (auto function : getOperation().getOps<func::FuncOp>()) {
++      if (function.empty()) continue;
++      bool synchronized = false;
++      int64_t removed = 0;
++      Builder builder(&getContext());
++      for (Operation &op : function.front()) {
++        if (auto loop = dyn_cast<affine::AffineForOp>(&op)) {
++          // Distributed/vector phases have no implicit entry barrier to skip.
++          if (synchronized && !loop->hasAttr("sycl.distribute") &&
++              !loop->hasAttr("sycl.vector_copy")) {
++            loop->setAttr(entry, builder.getUnitAttr());
++            ++removed;
++          }
++          synchronized = true; // The phase's exit barrier is always retained.
++        } else if (isa<gpu::BarrierOp>(&op)) {
++          if (synchronized) {
++            op.setAttr(explicitBarrier, builder.getUnitAttr());
++            ++removed;
++          }
++          synchronized = true;
++        } else if (!transparent(&op)) {
++          // Reads count as effects too: a later barrier may protect those
++          // readers against subsequent writes by a faster work-item.
++          synchronized = false;
++        }
++      }
++      if (removed)
++        function->setAttr(count, builder.getI64IntegerAttr(removed));
++    }
++  }
++};
++} // namespace
++
++std::unique_ptr<OperationPass<ModuleOp>>
++mlir::triton::sycl::createPhaseBarrierCoalescingPass() {
++  return std::make_unique<PhaseBarrierCoalescingPass>();
++}
+diff --git a/python/test/sycl/phase_barrier_contracts.py b/python/test/sycl/phase_barrier_contracts.py
+new file mode 100644
+index 00000000..036e51f2
+--- /dev/null
++++ b/python/test/sycl/phase_barrier_contracts.py
+@@ -0,0 +1,92 @@
++"""Emission contracts for identical local barriers with no intervening memory."""
++import argparse
++import json
++import pathlib
++import tempfile
++from triton._C.libtriton import ir,sycl
++from triton.backends.sycl.compiler import SYCLBackend,SYCLOptions
++
++
++def source(variant):
++    first='affine.for %i = 0 to 16 { affine.store %v,%a[%i] : memref<16xf32> }'
++    second='affine.for %j = 0 to 16 { %x = affine.load %a[%j] : memref<16xf32>\naffine.store %x,%b[%j] : memref<16xf32> }'
++    between=''
++    if variant=='pure':between='%two = arith.addi %one,%one : index'
++    if variant=='alloc':between='%tmp = memref.alloc() : memref<16xf32>'
++    if variant=='dealloc':between='%tmp = memref.alloc() : memref<16xf32>\nmemref.dealloc %tmp : memref<16xf32>'
++    if variant=='view':between='%alias = memref.reinterpret_cast %a to offset:[0], sizes:[16], strides:[1] : memref<16xf32> to memref<16xf32>'
++    if variant=='read':between='%r = memref.load %a[%zero] : memref<16xf32>'
++    if variant=='write':between='memref.store %v,%a[%zero] : memref<16xf32>'
++    if variant=='conditional':between='scf.if %flag { %r = memref.load %a[%zero] : memref<16xf32> }'
++    if variant=='scf':between='scf.for %k = %zero to %one step %one { %r = memref.load %a[%k] : memref<16xf32> }'
++    if variant=='explicit':between='gpu.barrier'
++    if variant=='two_explicit':between='gpu.barrier\ngpu.barrier'
++    if variant=='pure_after_read':between='%r = memref.load %a[%zero] : memref<16xf32>\n%two = arith.addi %one,%one : index'
++    if variant=='explicit_after_read':between='%r = memref.load %a[%zero] : memref<16xf32>\ngpu.barrier'
++    if variant=='first_explicit':first='gpu.barrier'
++    if variant=='distributed_first':first=first[:-1]+'} {sycl.distribute, sycl.distribution_depth = 1 : i64}'
++    if variant=='distributed_second':second=second[:-1]+'} {sycl.distribute, sycl.distribution_depth = 1 : i64}'
++    if variant=='nested':second='scf.if %flag { '+second+' }'
++    if variant=='stale_explicit':between='%r = memref.load %a[%zero] : memref<16xf32>\ngpu.barrier {sycl.coalesced_local_barrier}'
++    if variant=='nested_stale':second='scf.if %flag { '+second+' {sycl.coalesced_entry_barrier} }'
++    if variant=='stale':first+=' {sycl.coalesced_entry_barrier}'
++    if variant=='only_first':second=''
++    return f'''module {{func.func @phases(%flag:i1) {{
++      %zero = arith.constant 0 : index
++      %one = arith.constant 1 : index
++      %v = arith.constant 3.0 : f32
++      %a = memref.alloc() : memref<16xf32>
++      %b = memref.alloc() : memref<16xf32>
++      {first}
++      {between}
++      {second}
++      return
++    }} }}'''
++
++
++def main():
++    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=pathlib.Path,required=True)
++    args=p.parse_args();ctx=ir.context();ir.load_dialects(ctx);sycl.load_dialects(ctx);rows=[]
++    def transform(text,order):
++        with tempfile.NamedTemporaryFile(mode='w',suffix='.mlir') as f:
++            f.write(text);f.flush();mod=ir.parse_mlir_module(f.name,ctx)
++        pm=ir.pass_manager(ctx)
++        for name in order:getattr(sycl.passes.memir,name)(pm)
++        pm.run(mod)
++        return str(mod).replace(f.name,'phases.mlir'),SYCLBackend.emit_sycl(mod,{},None)
++    cases={'plain':1,'pure':1,'alloc':1,'dealloc':1,'view':1,'read':0,'write':0,'conditional':0,
++           'scf':0,'explicit':2,'two_explicit':3,'pure_after_read':0,'explicit_after_read':1,
++           'first_explicit':1,'distributed_first':1,'distributed_second':0,'nested':0,
++           'stale':1,'only_first':0,'stale_explicit':1,'nested_stale':0}
++    stage='phase_barrier_coalescing'
++    for variant,count in cases.items():
++        text=source(variant)
++        clean=text.replace(' {sycl.coalesced_entry_barrier}','').replace(' {sycl.coalesced_local_barrier}','')
++        base,basecode=transform(clean,[])
++        out,code=transform(text,[stage])
++        actual=out.count('sycl.coalesced_entry_barrier')+out.count('sycl.coalesced_local_barrier')
++        assert actual==count,(variant,count,out)
++        token='item.barrier(sycl::access::fence_space::local_space);'
++        assert basecode.count(token)-code.count(token)==count,(variant,basecode,code)
++        again,againcode=transform(text,[stage,stage])
++        assert out==again and code==againcode
++        rows.append(dict(case=variant,coalesced=count,status='PASS',
++            barriers_before=basecode.count(token),barriers_after=code.count(token)))
++    # Work-distribution/reuse ordering can change phase emission. Replan the
++    # coalescing proof last and verify exact actual source barrier differences.
++    text=source('plain')
++    for order in [['work_distribution'],['local_memory_reuse'],
++                  ['work_distribution','local_memory_reuse'],['serial_half_copy_guard']]:
++        base,basecode=transform(text,order)
++        out,code=transform(text,order+[stage])
++        assert basecode.count('item.barrier(')-code.count('item.barrier(')==1
++        assert transform(text,order+[stage,stage])==(out,code)
++        rows.append(dict(case='pipeline',pipeline=order,coalesced=1,status='PASS'))
++    assert not SYCLOptions().phase_barrier_coalescing
++    assert SYCLOptions().hash()!=SYCLOptions(phase_barrier_coalescing=True).hash()
++    rows.append(dict(case='default_cache',status='PASS'))
++    args.output.write_text(json.dumps(rows,indent=2)+'\n')
++    print(json.dumps(dict(status='PASS',count=len(rows))))
++
++
++if __name__=='__main__':main()
+diff --git a/python/test/sycl/phase_barrier_pipeline.py b/python/test/sycl/phase_barrier_pipeline.py
+new file mode 100644
+index 00000000..a5929ca2
+--- /dev/null
++++ b/python/test/sycl/phase_barrier_pipeline.py
+@@ -0,0 +1,50 @@
++"""Explicit repeated pass orders over dot IR, preserving scheduling markers."""
++import argparse
++import json
++import pathlib
++import re
++import tempfile
++from types import SimpleNamespace
++from cooperative_staging_semantics import prepare
++
++
++def main():
++    from triton._C.libtriton import ir,sycl
++    from triton.backends.sycl.compiler import SYCLBackend
++    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=pathlib.Path,required=True)
++    args=p.parse_args();rows=[];ctx=ir.context();ir.load_dialects(ctx);sycl.load_dialects(ctx)
++    stage='phase_barrier_coalescing'
++    for dtype in ('f16','f32'):
++        kernel,warm,kw,_,_,_,grid=prepare(SimpleNamespace(kind='dot',shape=[16,32,32],layout='TT',dtype=dtype))
++        c=kernel.warmup(*warm,grid=(grid,),**kw,distribute_work=False,register_accumulator=False,
++            matmul_register_tiling=False,group_reduction=False,accumulator_init_forwarding=False,
++            reduction_unroll=1,reuse_local_memory=False,cooperative_load_staging=False,
++            terminal_store_distribution=False,phase_barrier_coalescing=False)
++        text=str(c.asm['memir'])
++        def run(order):
++            with tempfile.NamedTemporaryFile(mode='w',suffix='.mlir') as f:
++                f.write(text);f.flush();mod=ir.parse_mlir_module(f.name,ctx)
++            pm=ir.pass_manager(ctx)
++            for name in order:getattr(sycl.passes.memir,name)(pm)
++            pm.run(mod);return str(mod).replace(f.name,'pipeline.mlir'),SYCLBackend.emit_sycl(mod,{},None)
++        for schedule in ([],['cooperative_load_staging','work_distribution'],
++            ['cooperative_load_staging','work_distribution','register_accumulator','matmul_register_tiling',
++             'accumulator_init_forwarding','local_memory_reuse','terminal_store_distribution']):
++            base,basecode=run(schedule+['serial_half_copy_guard'])
++            for order in [schedule+['serial_half_copy_guard',stage],
++                [stage]+schedule+['serial_half_copy_guard',stage],
++                schedule+[stage,'local_memory_reuse','serial_half_copy_guard',stage]]:
++                result,code=run(order)
++                assert (result,code)==run(order+[stage])
++                m=re.search(r'sycl.phase_barriers_coalesced = (\d+)',result);removed=int(m[1]) if m else 0
++                assert basecode.count('item.barrier(')-code.count('item.barrier(')==removed
++                for token in ('sycl.register_accumulator','sycl.register_tile =','sycl.distribution_depth',
++                              'sycl.accumulator_init_forwarded','sycl.cooperative_load_staging',
++                              'sycl.terminal_store_distribution','sycl.single_lane_half_bits','sycl.scalar_half_bits'):
++                    assert base.count(token)==result.count(token),(dtype,order,token)
++                rows.append(dict(dtype=dtype,pipeline=order,removed=removed,status='PASS'))
++    args.output.write_text(json.dumps(rows,indent=2)+'\n')
++    print(json.dumps(dict(status='PASS',count=len(rows))))
++
++
++if __name__=='__main__':main()
+diff --git a/python/test/sycl/phase_barrier_sources.py b/python/test/sycl/phase_barrier_sources.py
+new file mode 100644
+index 00000000..ac06b1e8
+--- /dev/null
++++ b/python/test/sycl/phase_barrier_sources.py
+@@ -0,0 +1,42 @@
++"""Exact default preservation and bounded scheduling composition over archived dots."""
++import argparse
++import hashlib
++import json
++import pathlib
++import re
++from types import SimpleNamespace
++from cooperative_staging_semantics import prepare
++from full_stack_ablation import expected_markers
++
++
++def main():
++    p=argparse.ArgumentParser(description=__doc__);p.add_argument('options',type=pathlib.Path)
++    p.add_argument('reference',type=pathlib.Path);p.add_argument('--output',type=pathlib.Path,required=True)
++    args=p.parse_args();rows=[];key=lambda r:(tuple(r['shape']),r['layout'],r['dtype'],r['config'])
++    golden={key(r):r['source_sha256'] for r in json.loads(args.reference.read_text())}
++    for old in json.loads(args.options.read_text()):
++        fixture=SimpleNamespace(kind='dot',shape=old['shape'],layout=old['layout'],dtype=old['dtype'])
++        kernel,warm,kw,_,_,_,grid=prepare(fixture);before=None
++        for enabled in (False,True):
++            c=kernel.warmup(*warm,grid=(grid,),**kw,**old['options'],phase_barrier_coalescing=enabled)
++            code=c.asm['sycl'];code=code.decode() if isinstance(code,bytes) else code;memir=str(c.asm['memir'])
++            expected_markers(fixture,old['options'],memir)
++            digest=hashlib.sha256(code.encode()).hexdigest()
++            m=re.search(r'sycl.phase_barriers_coalesced = (\d+)',memir);removed=int(m[1]) if m else 0
++            barriers=code.count('item.barrier(sycl::access::fence_space::local_space);')
++            markers={k:memir.count(k) for k in ('sycl.register_accumulator','sycl.register_tile =',
++                'sycl.ordered_reduction_unroll','sycl.accumulator_init_forwarded','sycl.cooperative_load_staging',
++                'sycl.terminal_store_distribution','sycl.distribution_depth','sycl.single_lane_half_bits')}
++            if not enabled:
++                assert digest==golden[key(old)],(key(old),digest,golden[key(old)])
++                before=(barriers,markers,digest)
++            else:
++                assert before[0]-barriers==removed and before[1]==markers
++                assert (digest!=before[2])==bool(removed)
++            rows.append(dict(shape=old['shape'],layout=old['layout'],dtype=old['dtype'],config=old['config'],
++                enabled=enabled,status='PASS',source_sha256=digest,removed=removed,barriers=barriers,markers=markers))
++            args.output.write_text(json.dumps(rows,indent=2)+'\n')
++    print(json.dumps(dict(status='PASS',count=len(rows),active=sum(bool(r['removed']) for r in rows))))
++
++
++if __name__=='__main__':main()
+diff --git a/python/test/sycl/phase_barrier_semantics.py b/python/test/sycl/phase_barrier_semantics.py
+new file mode 100644
+index 00000000..bfb2b6c5
+--- /dev/null
++++ b/python/test/sycl/phase_barrier_semantics.py
+@@ -0,0 +1,97 @@
++"""Paired phase-barrier timings with independent output and actual emitter checks."""
++import argparse
++import hashlib
++import itertools
++import json
++import pathlib
++import re
++import statistics
++from types import SimpleNamespace
++import triton
++import triton.language as tl
++from cooperative_staging_semantics import prepare,check
++from register_accumulator import Tensor
++from full_stack_ablation import ALL
++from triton.backends.sycl.sycl_utils import run_standalone,profile_standalone
++
++
++@triton.jit(do_not_specialize=['n'])
++def reduction(x,y,n,B:tl.constexpr):
++    p=tl.program_id(0)
++    i=tl.arange(0,B)
++    v=tl.load(x+p*B+i,i<n,0.)
++    tl.store(y+p,tl.sum(v,0))
++
++
++def fixture(args):
++    if args.kind=='reduce':
++        B=args.block;n=B-7;grid=3
++        raw=[(i%17-8)/4 for i in range(grid*B)]
++        x,y=Tensor(raw),Tensor([-999.]*10)
++        expected=[sum(raw[b*B:b*B+n]) for b in range(grid)]+[-999.]*7
++        return reduction,[x,y,n],dict(B=B),[x,y,n,B],y,expected,grid
++    return prepare(args)
++
++
++def main():
++    p=argparse.ArgumentParser(description=__doc__)
++    p.add_argument('--kind',choices=('copy','holes','or','negative','gather','broadcast','empty','dot','reduce'),required=True)
++    p.add_argument('--block',type=int,default=256);p.add_argument('--n',type=int,default=1021)
++    p.add_argument('--stride',type=int,default=1);p.add_argument('--special',action='store_true')
++    p.add_argument('--shape',nargs=3,type=int,default=[16,32,32])
++    p.add_argument('--layout',choices=('NN','NT','TN','TT'),default='NN')
++    p.add_argument('--dtype',choices=('f16','f32'),default='f32')
++    p.add_argument('--rounds',type=int,default=1);p.add_argument('--repeats',type=int,default=0)
++    p.add_argument('--compile-only',action='store_true')
++    p.add_argument('--configs',nargs='+',choices=('base','all','no_staging','no_store','no_reuse','no_fusion','no_accumulator','no_tiling','no_unroll','serial'),default=['base','all'])
++    p.add_argument('--output',type=pathlib.Path,required=True);p.add_argument('--dump-dir',type=pathlib.Path)
++    args=p.parse_args();kernel,warm,kw,bound,out,expected,grid=fixture(args);rows=[];compare={}
++    for round_ in range(args.rounds):
++        configs=list(itertools.product(args.configs,(False,True)))
++        for plan,enabled in (configs if round_%2==0 else reversed(configs)):
++            opts=dict(ALL,half_store_distribution=True)
++            if plan=='base':
++                opts.update({k:False for k in opts if k not in ('distribute_work','reuse_local_memory','reduction_unroll')})
++                opts['reduction_unroll']=1
++            elif plan=='serial':opts['distribute_work']=False
++            elif plan.startswith('no_'):
++                name={'staging':'cooperative_load_staging','store':'terminal_store_distribution',
++                    'reuse':'reuse_local_memory','fusion':'fuse_elementwise','accumulator':'register_accumulator',
++                    'tiling':'matmul_register_tiling','unroll':'reduction_unroll'}[plan[3:]]
++                opts[name]=1 if name=='reduction_unroll' else False
++            c=kernel.warmup(*warm,grid=(grid,),**kw,**opts,phase_barrier_coalescing=enabled)
++            code=c.asm['sycl'];code=code.decode() if isinstance(code,bytes) else code;memir=str(c.asm['memir'])
++            m=re.search(r'sycl.phase_barriers_coalesced = (\d+)',memir);removed=int(m[1]) if m else 0
++            actual=code.count('item.barrier(sycl::access::fence_space::local_space);')
++            markers={k:memir.count(k) for k in ('sycl.register_accumulator','sycl.register_tile =',
++                'sycl.ordered_reduction_unroll','sycl.accumulator_init_forwarded','sycl.cooperative_load_staging',
++                'sycl.terminal_store_distribution','sycl.half_store_distribution','sycl.distribution_depth',
++                'sycl.scalar_half_bits','sycl.single_lane_half_bits')}
++            compare[plan,enabled]=(actual,markers,removed)
++            if (plan,not enabled) in compare:
++                a,b=compare[plan,False],compare[plan,True]
++                assert a[0]-b[0]==b[2] and a[1]==b[1],(plan,a,b)
++            if args.dump_dir:
++                args.dump_dir.mkdir(parents=True,exist_ok=True)
++                for ext,data in [('sycl',code),('memir',memir)]:
++                    (args.dump_dir/f'{plan}-enabled{enabled}.{ext}').write_text(data)
++            checked=0;samples=[]
++            if not args.compile_only:
++                for block in (1,3,48,(3,5),64):
++                    out.c_array[:]=[-999.]*len(expected)
++                    run_standalone(grid,1,1,c.name,code,bound,signature=c.src.signature,metadata=c.metadata,block_size=block)
++                    check(list(out.c_array),expected);checked+=len(expected)
++                if args.repeats:
++                    samples=profile_standalone(grid,1,1,c.name,code,bound,signature=c.src.signature,
++                        metadata=c.metadata,block_size=64,warmup=10,repeats=args.repeats)
++                    check(list(out.c_array),expected);checked+=len(expected)
++            row=dict(kind=args.kind,block=args.block,n=args.n,stride=args.stride,special=args.special,
++                shape=args.shape,layout=args.layout,dtype=args.dtype,plan=plan,enabled=enabled,round=round_,
++                grid=grid,status='PASS',compile_only=args.compile_only,barriers=actual,removed=removed,markers=markers,
++                source_sha256=hashlib.sha256(code.encode()).hexdigest(),source_bytes=len(code),
++                output_elements=len(expected),elements_checked=checked,samples_ns=samples,
++                median_ns=statistics.median(samples) if samples else None)
++            rows.append(row);print(json.dumps(row),flush=True);args.output.write_text(json.dumps(rows,indent=2)+'\n')
++
++
++if __name__=='__main__':main()
+diff --git a/python/test/sycl/phase_barrier_backend_probe.py b/python/test/sycl/phase_barrier_backend_probe.py
+new file mode 100644
+index 00000000..5f5e7606
+--- /dev/null
++++ b/python/test/sycl/phase_barrier_backend_probe.py
+@@ -0,0 +1,35 @@
++"""Dump final AdaptiveCpp LLVM IR for a fixed guarded barrier-copy pair."""
++import argparse
++import hashlib
++import json
++import os
++import pathlib
++from types import SimpleNamespace
++from cooperative_staging_semantics import prepare,check
++from triton.backends.sycl.sycl_utils import run_standalone
++
++
++def main():
++    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=pathlib.Path,required=True)
++    args=p.parse_args();args.output.parent.mkdir(parents=True,exist_ok=True);rows=[]
++    fixture=SimpleNamespace(kind='copy',block=16,n=61,stride=1,special=False)
++    kernel,warm,kw,bound,out,expected,grid=prepare(fixture)
++    for enabled in (False,True):
++        c=kernel.warmup(*warm,grid=(grid,),**kw,phase_barrier_coalescing=enabled)
++        code=c.asm['sycl'];code=code.decode() if isinstance(code,bytes) else code
++        irfile=args.output.with_suffix(f'.enabled{enabled}.ll')
++        os.environ['ACPP_S2_DUMP_IR_FINAL']=str(irfile)
++        out.c_array[:]=[-999.]*len(expected)
++        run_standalone(grid,1,1,c.name,code,bound,signature=c.src.signature,metadata=c.metadata,block_size=64)
++        check(list(out.c_array),expected)
++        assert irfile.is_file() and irfile.stat().st_size>0,irfile
++        text=irfile.read_text()
++        row=dict(enabled=enabled,status='PASS',elements_checked=len(expected),
++            source_barriers=code.count('item.barrier('),llvm_barrier_calls=sum(
++                'call ' in line and 'llvm.amdgcn.s.barrier' in line for line in text.splitlines()),
++            source_sha256=hashlib.sha256(code.encode()).hexdigest(),
++            ir_sha256=hashlib.sha256(text.encode()).hexdigest(),ir_bytes=len(text))
++        rows.append(row);print(json.dumps(row),flush=True);args.output.write_text(json.dumps(rows,indent=2)+'\n')
++
++
++if __name__=='__main__':main()
+diff --git a/docs/backend/sycl-validation/next/phase-barrier-dcu.sbatch b/docs/backend/sycl-validation/next/phase-barrier-dcu.sbatch
+new file mode 100644
+index 00000000..823fa1a0
+--- /dev/null
++++ b/docs/backend/sycl-validation/next/phase-barrier-dcu.sbatch
+@@ -0,0 +1,27 @@
++#!/bin/bash
++#SBATCH -p debug
++#SBATCH -N 1
++#SBATCH -n 1
++#SBATCH -c 8
++#SBATCH --gres=dcu:1
++#SBATCH --exclusive
++#SBATCH -t 00:25:00
++#SBATCH -J sycl-phase-barrier
++#SBATCH -D /public/home/dtune/zzx/triton
++#SBATCH -o /public/home/dtune/zzx/triton/logs/sycl-phase-barrier-%j.log
++set -eo pipefail
++base=/public/home/dtune/zzx/triton
++source "$base/env.sh"
++unset LD_PRELOAD
++export ACPP_VISIBILITY_MASK=hip
++node_tmp=/tmp/sycl-phase-barrier-$SLURM_JOB_ID
++export TMPDIR=$node_tmp/tmp ACPP_APPDB_DIR=$node_tmp/appdb TRITON_CACHE_DIR=$node_tmp/cache
++mkdir -p "$TMPDIR" "$ACPP_APPDB_DIR" "$TRITON_CACHE_DIR"
++cd /work1/dtune/zzx/triton/triton-ocl
++sha256sum --check "$base/gap-validation/next/phase-barrier-sha256.txt"
++hostname
++/public/home/dtune/zzx/acpp-build/hip_probe
++"$base/bin/python-triton" python/test/sycl/phase_barrier_semantics.py "$@" \
++  --rounds 3 --repeats 31 \
++  --dump-dir "$base/gap-validation/next/phase-barrier-$SLURM_JOB_ID-sources" \
++  --output "$base/gap-validation/next/phase-barrier-dcu-$SLURM_JOB_ID.json"
+diff --git a/docs/backend/sycl-validation/next/phase-barrier-ir-dcu.sbatch b/docs/backend/sycl-validation/next/phase-barrier-ir-dcu.sbatch
+new file mode 100644
+index 00000000..1db1186b
+--- /dev/null
++++ b/docs/backend/sycl-validation/next/phase-barrier-ir-dcu.sbatch
+@@ -0,0 +1,25 @@
++#!/bin/bash
++#SBATCH -p debug
++#SBATCH -N 1
++#SBATCH -n 1
++#SBATCH -c 8
++#SBATCH --gres=dcu:1
++#SBATCH --exclusive
++#SBATCH -t 00:15:00
++#SBATCH -J sycl-phase-barrier-ir
++#SBATCH -D /public/home/dtune/zzx/triton
++#SBATCH -o /public/home/dtune/zzx/triton/logs/sycl-phase-barrier-ir-%j.log
++set -eo pipefail
++base=/public/home/dtune/zzx/triton
++source "$base/env.sh"
++unset LD_PRELOAD
++export ACPP_VISIBILITY_MASK=hip
++node_tmp=/tmp/sycl-phase-barrier-ir-$SLURM_JOB_ID
++export TMPDIR=$node_tmp/tmp ACPP_APPDB_DIR=$node_tmp/appdb TRITON_CACHE_DIR=$node_tmp/cache
++mkdir -p "$TMPDIR" "$ACPP_APPDB_DIR" "$TRITON_CACHE_DIR"
++cd /work1/dtune/zzx/triton/triton-ocl
++sha256sum --check "$base/gap-validation/next/phase-barrier-sha256.txt"
++hostname
++/public/home/dtune/zzx/acpp-build/hip_probe
++"$base/bin/python-triton" python/test/sycl/phase_barrier_backend_probe.py \
++  --output "$base/gap-validation/next/phase-barrier-ir-$SLURM_JOB_ID.json"

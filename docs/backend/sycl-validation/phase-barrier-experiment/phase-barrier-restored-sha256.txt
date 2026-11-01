@@ -1,0 +1,2 @@
+b109ccab452f3b7ab9e58fb2d7acdff42a61dd628b54eb2a1ba9f025178c1319  python/triton/_C/libtriton.so
+77722519f18ef7ab87b0bda0ed360967e294b3d239cfc22c5ce455248fb28f64  python/triton/_C/triton-sycl-translate

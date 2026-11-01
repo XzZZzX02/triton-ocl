@@ -1,0 +1,236 @@
+[
+  {
+    "dtype": "f16",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "phase_barrier_coalescing"
+    ],
+    "removed": 5,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "pipeline": [
+      "phase_barrier_coalescing",
+      "serial_half_copy_guard",
+      "phase_barrier_coalescing"
+    ],
+    "removed": 5,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "pipeline": [
+      "phase_barrier_coalescing",
+      "local_memory_reuse",
+      "serial_half_copy_guard",
+      "phase_barrier_coalescing"
+    ],
+    "removed": 5,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "pipeline": [
+      "cooperative_load_staging",
+      "work_distribution",
+      "serial_half_copy_guard",
+      "phase_barrier_coalescing"
+    ],
+    "removed": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "pipeline": [
+      "phase_barrier_coalescing",
+      "cooperative_load_staging",
+      "work_distribution",
+      "serial_half_copy_guard",
+      "phase_barrier_coalescing"
+    ],
+    "removed": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "pipeline": [
+      "cooperative_load_staging",
+      "work_distribution",
+      "phase_barrier_coalescing",
+      "local_memory_reuse",
+      "serial_half_copy_guard",
+      "phase_barrier_coalescing"
+    ],
+    "removed": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "pipeline": [
+      "cooperative_load_staging",
+      "work_distribution",
+      "register_accumulator",
+      "matmul_register_tiling",
+      "accumulator_init_forwarding",
+      "local_memory_reuse",
+      "terminal_store_distribution",
+      "serial_half_copy_guard",
+      "phase_barrier_coalescing"
+    ],
+    "removed": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "pipeline": [
+      "phase_barrier_coalescing",
+      "cooperative_load_staging",
+      "work_distribution",
+      "register_accumulator",
+      "matmul_register_tiling",
+      "accumulator_init_forwarding",
+      "local_memory_reuse",
+      "terminal_store_distribution",
+      "serial_half_copy_guard",
+      "phase_barrier_coalescing"
+    ],
+    "removed": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "pipeline": [
+      "cooperative_load_staging",
+      "work_distribution",
+      "register_accumulator",
+      "matmul_register_tiling",
+      "accumulator_init_forwarding",
+      "local_memory_reuse",
+      "terminal_store_distribution",
+      "phase_barrier_coalescing",
+      "local_memory_reuse",
+      "serial_half_copy_guard",
+      "phase_barrier_coalescing"
+    ],
+    "removed": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "pipeline": [
+      "serial_half_copy_guard",
+      "phase_barrier_coalescing"
+    ],
+    "removed": 5,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "pipeline": [
+      "phase_barrier_coalescing",
+      "serial_half_copy_guard",
+      "phase_barrier_coalescing"
+    ],
+    "removed": 5,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "pipeline": [
+      "phase_barrier_coalescing",
+      "local_memory_reuse",
+      "serial_half_copy_guard",
+      "phase_barrier_coalescing"
+    ],
+    "removed": 5,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "pipeline": [
+      "cooperative_load_staging",
+      "work_distribution",
+      "serial_half_copy_guard",
+      "phase_barrier_coalescing"
+    ],
+    "removed": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "pipeline": [
+      "phase_barrier_coalescing",
+      "cooperative_load_staging",
+      "work_distribution",
+      "serial_half_copy_guard",
+      "phase_barrier_coalescing"
+    ],
+    "removed": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "pipeline": [
+      "cooperative_load_staging",
+      "work_distribution",
+      "phase_barrier_coalescing",
+      "local_memory_reuse",
+      "serial_half_copy_guard",
+      "phase_barrier_coalescing"
+    ],
+    "removed": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "pipeline": [
+      "cooperative_load_staging",
+      "work_distribution",
+      "register_accumulator",
+      "matmul_register_tiling",
+      "accumulator_init_forwarding",
+      "local_memory_reuse",
+      "terminal_store_distribution",
+      "serial_half_copy_guard",
+      "phase_barrier_coalescing"
+    ],
+    "removed": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "pipeline": [
+      "phase_barrier_coalescing",
+      "cooperative_load_staging",
+      "work_distribution",
+      "register_accumulator",
+      "matmul_register_tiling",
+      "accumulator_init_forwarding",
+      "local_memory_reuse",
+      "terminal_store_distribution",
+      "serial_half_copy_guard",
+      "phase_barrier_coalescing"
+    ],
+    "removed": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "pipeline": [
+      "cooperative_load_staging",
+      "work_distribution",
+      "register_accumulator",
+      "matmul_register_tiling",
+      "accumulator_init_forwarding",
+      "local_memory_reuse",
+      "terminal_store_distribution",
+      "phase_barrier_coalescing",
+      "local_memory_reuse",
+      "serial_half_copy_guard",
+      "phase_barrier_coalescing"
+    ],
+    "removed": 1,
+    "status": "PASS"
+  }
+]

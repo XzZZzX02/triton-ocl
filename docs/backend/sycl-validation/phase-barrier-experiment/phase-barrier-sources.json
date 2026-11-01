@@ -1,0 +1,3602 @@
+[
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "baseline",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "60bef59ce1b59a370c8a6bb49adb56aeb7558b490eb133a6d9c27cccbd686e16",
+    "removed": 0,
+    "barriers": 9,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 3,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "baseline",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "054ec3d554933c2e63f3ea4b015a868a431b335487cc3e5efbdcbd0153e577d5",
+    "removed": 2,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 3,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "all",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "d2305f6f739553e6bafe860b0fd41d9f7cbd80dfceabb0106f336089631f88e1",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 1,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "all",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "d82b1a096c18b9b723682f91746bb4df5e217d54bc2d02e5e67c541c2daf85ab",
+    "removed": 1,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 1,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_accumulator",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "d2305f6f739553e6bafe860b0fd41d9f7cbd80dfceabb0106f336089631f88e1",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 1,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_accumulator",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "d82b1a096c18b9b723682f91746bb4df5e217d54bc2d02e5e67c541c2daf85ab",
+    "removed": 1,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 1,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_tiling",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "757166e39219b3b173d2c37a82e4b0a0bb814ed83194427dd522c5461b4a2fad",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 1,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_tiling",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "12e0cc6f5ca585ac2193fafd69d1361e3bf7ea5f651b1bf67165e4333209b281",
+    "removed": 1,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 1,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_unroll",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "d2305f6f739553e6bafe860b0fd41d9f7cbd80dfceabb0106f336089631f88e1",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 1,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_unroll",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "d82b1a096c18b9b723682f91746bb4df5e217d54bc2d02e5e67c541c2daf85ab",
+    "removed": 1,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 1,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_initializer",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "19edbda92c51008f80574a921dac98897e4cb083bc94f289753eb25e7c328913",
+    "removed": 0,
+    "barriers": 8,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 1,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_initializer",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "f63bcf71f6bc5e5036f19dcf355e35059dff9a238ab48af55af033ca4720ef14",
+    "removed": 1,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 1,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_staging",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "dc57b7bdeb26f9b4eab4c6666fb4aeb66b52622c284094ab8adff1485deb1dc3",
+    "removed": 0,
+    "barriers": 8,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 3,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_staging",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "6cb31ee6695fcb4bc686a54b2ed56b7efe8d3ba657a083545effac658a1b88ff",
+    "removed": 2,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 3,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_store",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "d75afe3b0b079231caf18a4c338557afabf49f6aee1abc696f81cf84ea8950f8",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 1,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 3,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_store",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "ad6c09cdf367afdf0f159cf2c72615f4172db2b3175e9b1fcedd73bc4f5d52a2",
+    "removed": 1,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 1,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 3,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_reuse",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "d2305f6f739553e6bafe860b0fd41d9f7cbd80dfceabb0106f336089631f88e1",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 1,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_reuse",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "d82b1a096c18b9b723682f91746bb4df5e217d54bc2d02e5e67c541c2daf85ab",
+    "removed": 1,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 1,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_fusion",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "d2305f6f739553e6bafe860b0fd41d9f7cbd80dfceabb0106f336089631f88e1",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 1,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_fusion",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "d82b1a096c18b9b723682f91746bb4df5e217d54bc2d02e5e67c541c2daf85ab",
+    "removed": 1,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 1,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_group",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "d2305f6f739553e6bafe860b0fd41d9f7cbd80dfceabb0106f336089631f88e1",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 1,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_group",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "d82b1a096c18b9b723682f91746bb4df5e217d54bc2d02e5e67c541c2daf85ab",
+    "removed": 1,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 1,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_distribution",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "3daf0a8e71fafa960bfb9f45546d31cd1aad667df6e51839661e78b148f5a05c",
+    "removed": 0,
+    "barriers": 12,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 0,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      8,
+      32,
+      16
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_distribution",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "074d79283d39a7c4ba8b6decda51976f7d398dd638b1c7535f76e8322febcda8",
+    "removed": 4,
+    "barriers": 8,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 0,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "baseline",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "a30836b2a4555a7acb8c8e006bb10e11f49fc2353eedb930f012ea785287c3d8",
+    "removed": 0,
+    "barriers": 8,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 2,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "baseline",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "2479b917f891762facc01cfd55efca861e2e89fd1be04423862d213f7b7998b7",
+    "removed": 2,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 2,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "all",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "5fe77e8e513e2f8c128d8958fb760417a3c532037e229dea2582a3073cd8af91",
+    "removed": 0,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "all",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "cd23f68c5a69a19e5f5b0e73cd604e187e922d8a7de15ebb6a4b1b51c07c4a75",
+    "removed": 1,
+    "barriers": 4,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_accumulator",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "5fe77e8e513e2f8c128d8958fb760417a3c532037e229dea2582a3073cd8af91",
+    "removed": 0,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_accumulator",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "cd23f68c5a69a19e5f5b0e73cd604e187e922d8a7de15ebb6a4b1b51c07c4a75",
+    "removed": 1,
+    "barriers": 4,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_tiling",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "d1c2e1f3a537b4a2785e9b83e4f7be66cc35026071acf14bb988b3db2dfd4a27",
+    "removed": 0,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_tiling",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "1553f21f886565e924a778076d27e5570f34a2da9c03934191ef88388d27fc44",
+    "removed": 1,
+    "barriers": 4,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_unroll",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "02297d058ebe3f59ce20fd7533943b41a1a26355b93ba5fc3269b899565259c6",
+    "removed": 0,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_unroll",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "59e501432edace97f51374b09d0e2a6c16299f64efd0c5cb5fd5ff15e8305c5f",
+    "removed": 1,
+    "barriers": 4,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_initializer",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "5a60a2e6898527498ca72066547739619c644dc4faf410302fbb72470716f66e",
+    "removed": 0,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_initializer",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "df8f07383e32586c801efc05dcb9a24355c633dd8809b28e34789409a6fce4c9",
+    "removed": 1,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_staging",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "4b095117f6d112e9f1eae48fe481213207d76ca98f4e956ad3aa31f7fce44e4c",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 2,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_staging",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "887f63304f87814623711a77e7ff8abc76dfeb252612249f23c44c158b2fd49f",
+    "removed": 2,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 2,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_store",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "ce0e59401f1e0465da0a3eabac4b4def8a781ad837481a6ee54f72d82fa33b28",
+    "removed": 0,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 3,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_store",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "9774398edea7b419d25440a7021904f417d225bf6aca2748ceef9cef05a79177",
+    "removed": 1,
+    "barriers": 4,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 3,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_reuse",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "5fe77e8e513e2f8c128d8958fb760417a3c532037e229dea2582a3073cd8af91",
+    "removed": 0,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_reuse",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "cd23f68c5a69a19e5f5b0e73cd604e187e922d8a7de15ebb6a4b1b51c07c4a75",
+    "removed": 1,
+    "barriers": 4,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_fusion",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "5fe77e8e513e2f8c128d8958fb760417a3c532037e229dea2582a3073cd8af91",
+    "removed": 0,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_fusion",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "cd23f68c5a69a19e5f5b0e73cd604e187e922d8a7de15ebb6a4b1b51c07c4a75",
+    "removed": 1,
+    "barriers": 4,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_group",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "5fe77e8e513e2f8c128d8958fb760417a3c532037e229dea2582a3073cd8af91",
+    "removed": 0,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_group",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "cd23f68c5a69a19e5f5b0e73cd604e187e922d8a7de15ebb6a4b1b51c07c4a75",
+    "removed": 1,
+    "barriers": 4,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_distribution",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "49583c64312830dcc18725b55b0185179ba54f2392216ad6ad29e97b226de2a8",
+    "removed": 0,
+    "barriers": 10,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 0,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      128
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "config": "without_distribution",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "3011bc68d4a04c460c0247d56eac64d817570c4c15ad6e689a5bdb9588433229",
+    "removed": 3,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 0,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "baseline",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "34660494c797df4ac1fde2fddcc1f4fca561e754ad2a63a8d1de409f971adbbf",
+    "removed": 0,
+    "barriers": 8,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 2,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "baseline",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "94b0475412eabf6a383c82dfbb364f4f75674966be18259874d2ad48a8aada29",
+    "removed": 2,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 2,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "all",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "b10ec8b497057c3e4d7754d6f3f2ead78d1794e85007971a9714aab8f095325b",
+    "removed": 0,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "all",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "925609e8817bf9abc4d6a5b24776de90c87409cf2451cad55eaee631b098c168",
+    "removed": 1,
+    "barriers": 4,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_accumulator",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "48992a20ef36a204e95b10d859809ed58f857cdb775cdd6953a7fee982bb9ff1",
+    "removed": 0,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_accumulator",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "b5936eed73f0eb84d555e07f36081eed6026a4e37752a90f27a626018e7e3dcf",
+    "removed": 1,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_tiling",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "b10ec8b497057c3e4d7754d6f3f2ead78d1794e85007971a9714aab8f095325b",
+    "removed": 0,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_tiling",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "925609e8817bf9abc4d6a5b24776de90c87409cf2451cad55eaee631b098c168",
+    "removed": 1,
+    "barriers": 4,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_unroll",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "dc7fe68a88626b6268d912c0320fc3775050909debffb6233851a0a6459366a3",
+    "removed": 0,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_unroll",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "f371ce05f4ed5cb4f852f5f3516f6fa10ded8bd27feb6a3a3ab6c6230a255b0c",
+    "removed": 1,
+    "barriers": 4,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_initializer",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "7d99f5cde1e608379bcb2106e9c231bea701cb48e1c04f82e2d7f8aced29a35c",
+    "removed": 0,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_initializer",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "82201f298e1950de956da41b21086a7644c5d86cf2d25c8230098ea89b15a469",
+    "removed": 1,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_staging",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "729c502f5e64ad4746b1a7a34fd6c0fb992c787ca18392a8aeb0cb9e6bd19a74",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 2,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_staging",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "3398b20753b0ebec570f66062947eb56b1b92d3294c7062c1e2785d181166d0c",
+    "removed": 2,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 2,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_store",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "257a03a0fb0625cb81cec79c82bda869fe95049b116e368fe166fcf2cc5410aa",
+    "removed": 0,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 3,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_store",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "ea76b9765768f8cf0f45636bd0097d8d491a4da75898eb49a1f8c8460987a283",
+    "removed": 1,
+    "barriers": 4,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 3,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_reuse",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "b10ec8b497057c3e4d7754d6f3f2ead78d1794e85007971a9714aab8f095325b",
+    "removed": 0,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_reuse",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "925609e8817bf9abc4d6a5b24776de90c87409cf2451cad55eaee631b098c168",
+    "removed": 1,
+    "barriers": 4,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_fusion",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "b10ec8b497057c3e4d7754d6f3f2ead78d1794e85007971a9714aab8f095325b",
+    "removed": 0,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_fusion",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "925609e8817bf9abc4d6a5b24776de90c87409cf2451cad55eaee631b098c168",
+    "removed": 1,
+    "barriers": 4,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_group",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "b10ec8b497057c3e4d7754d6f3f2ead78d1794e85007971a9714aab8f095325b",
+    "removed": 0,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_group",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "925609e8817bf9abc4d6a5b24776de90c87409cf2451cad55eaee631b098c168",
+    "removed": 1,
+    "barriers": 4,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_distribution",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "005b4a2c34d3d4cd4f5d1444f45a76dc7d8c0feb4b7e4ed40ba0eccad5927d83",
+    "removed": 0,
+    "barriers": 10,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 0,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f32",
+    "config": "without_distribution",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "1e3df7f7fc826d562f8fe804a2b238892cb2e1f4592dd4a7d8b24918ce2b558f",
+    "removed": 3,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 0,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "baseline",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "1facfe3babbe4405d229411f7e86eb9a796f488fe179616e123563c1f948f900",
+    "removed": 0,
+    "barriers": 10,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "baseline",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "2bf662f1cc6a993e433e4ab4acf40a2d97af781183736f1084804a617a0b74b4",
+    "removed": 2,
+    "barriers": 8,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "all",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "24a9a38033fc5784d643ea261a232f9ca732cfd019ca7e39953445dd5a8a4f0d",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 6,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "all",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "503ecebced6997eb364f5224b14cbaa5a54f65d69d5f34fdab3b51d09930a632",
+    "removed": 1,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 6,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_accumulator",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "24a9a38033fc5784d643ea261a232f9ca732cfd019ca7e39953445dd5a8a4f0d",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 6,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_accumulator",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "503ecebced6997eb364f5224b14cbaa5a54f65d69d5f34fdab3b51d09930a632",
+    "removed": 1,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 6,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_tiling",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "8511f2277907a78093f6f44e46e131c97e59063b2a9387c5a5e1a8457c01cb3d",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 6,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_tiling",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "a49f5d7420752cdc8d8bc594d0ed66a033a56d84c5443230880081e6de741ac0",
+    "removed": 1,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 6,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_unroll",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "eaa20dd66f46cf7a345673108927bc1988c97e933a6a23a29d6f5169c46b0cfd",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 6,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_unroll",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "f36adcbf786293c4ca35e38453e8cdabcbd46fd459bed822ad9c322c99559f8b",
+    "removed": 1,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 6,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_initializer",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "c38be96c54bc078892ca4439f33ec465ee5b98c633ef3ee662e4798c2a526f6e",
+    "removed": 0,
+    "barriers": 8,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 7,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_initializer",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "04b1d7045a640f53bab46ebbcfcedf6a8b86fe3f040a5cae794d875cfbeb071c",
+    "removed": 1,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 7,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_staging",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "c4d9939cb6496380f1941ad8ce8eaa688ae046e7139fdd05edf638dfb33ad6fa",
+    "removed": 0,
+    "barriers": 9,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_staging",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "c42b3ca193e7cea4d76087821f36ad5da945f33b28cc4b6bd51a99cb3e703b34",
+    "removed": 2,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_store",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "09b0a6708e8b39b96a6c0645a10c05a22798cdbace109b4fefcfb933e7b1fec4",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_store",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "dde6d96f0c2b4855747bd5fa76db7d1cabf6238ff72779d2fb2ef97d2987a28e",
+    "removed": 1,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_reuse",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "24a9a38033fc5784d643ea261a232f9ca732cfd019ca7e39953445dd5a8a4f0d",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 6,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_reuse",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "503ecebced6997eb364f5224b14cbaa5a54f65d69d5f34fdab3b51d09930a632",
+    "removed": 1,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 6,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_fusion",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "24a9a38033fc5784d643ea261a232f9ca732cfd019ca7e39953445dd5a8a4f0d",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 6,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_fusion",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "503ecebced6997eb364f5224b14cbaa5a54f65d69d5f34fdab3b51d09930a632",
+    "removed": 1,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 6,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_group",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "24a9a38033fc5784d643ea261a232f9ca732cfd019ca7e39953445dd5a8a4f0d",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 6,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_group",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "503ecebced6997eb364f5224b14cbaa5a54f65d69d5f34fdab3b51d09930a632",
+    "removed": 1,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 6,
+      "sycl.single_lane_half_bits": 4
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "baseline",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "bd0626393f9663396c4c01ae304af86c63692ed41658ce78721b8b2eddf6497c",
+    "removed": 0,
+    "barriers": 9,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 3,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "baseline",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "f93b9e86fb2f9a0e729b4f4fd2cc8f6aa9c9797b6ed1f35df9b10f8e9b9fae05",
+    "removed": 2,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 3,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "all",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "10ae114eff851eab9f70437c002f733ebb01f44916004d09651ac18037ff2488",
+    "removed": 0,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "all",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "43b4e6744c571eea4db2f2b1e79bb5fc55d068b19396c14643b2777e38c3c6ef",
+    "removed": 1,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_accumulator",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "10ae114eff851eab9f70437c002f733ebb01f44916004d09651ac18037ff2488",
+    "removed": 0,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_accumulator",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "43b4e6744c571eea4db2f2b1e79bb5fc55d068b19396c14643b2777e38c3c6ef",
+    "removed": 1,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_tiling",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "b20933db64582dee0b3ffaff0c3f623117c7bfa94d9002d225a83f4cbdb8f1be",
+    "removed": 0,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_tiling",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "bbdc250736f2a8edded2c5bc7c0972c6524048c98b86eb9e6ae9c633ab16d1ba",
+    "removed": 1,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_unroll",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "98ab171bafa670606816b739c6b78622ac193235d39a8bcde23f362c5d4f1f86",
+    "removed": 0,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_unroll",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "5c0d25d385ccfb1e5a1ad10ca25adb5e77f0b65fcf2eceeb3c3ac146b5590b2f",
+    "removed": 1,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_initializer",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "144017a9080461f6131640b6efe9b3817e56dc6e3e81f1f3fb3e41e8b5628f28",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 6,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_initializer",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "0e909c56ddb586e6fa2c5bafc38f2c0b8a39625f34dbf496881fb1afba39a29b",
+    "removed": 1,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 6,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_staging",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "676f702a37412a124ef6d94bdf2bb4073550cde57a5b31e5f06547a1fd27243c",
+    "removed": 0,
+    "barriers": 8,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 3,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_staging",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "0a1c22dad2dfb614883581357edf7c8b8d4627ac699f28f2d25c1194a9be29d9",
+    "removed": 2,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 3,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_store",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "152a57de55983f9e929fb29eb9ec14763bbecdee48511ad84f5c8d0da428c65a",
+    "removed": 0,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_store",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "832dde9be605a6c2850f7661e24ff3b2c6277d2fda320ea695c132025bfb84e9",
+    "removed": 1,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_reuse",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "10ae114eff851eab9f70437c002f733ebb01f44916004d09651ac18037ff2488",
+    "removed": 0,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_reuse",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "43b4e6744c571eea4db2f2b1e79bb5fc55d068b19396c14643b2777e38c3c6ef",
+    "removed": 1,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_fusion",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "10ae114eff851eab9f70437c002f733ebb01f44916004d09651ac18037ff2488",
+    "removed": 0,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_fusion",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "43b4e6744c571eea4db2f2b1e79bb5fc55d068b19396c14643b2777e38c3c6ef",
+    "removed": 1,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_group",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "10ae114eff851eab9f70437c002f733ebb01f44916004d09651ac18037ff2488",
+    "removed": 0,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_group",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "43b4e6744c571eea4db2f2b1e79bb5fc55d068b19396c14643b2777e38c3c6ef",
+    "removed": 1,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_distribution",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "d21a6fe876acda54dc2753db9239d4cb74d3b926c0467d1ee2cdb572f57d032b",
+    "removed": 0,
+    "barriers": 12,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 0,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      32,
+      16,
+      64
+    ],
+    "layout": "TN",
+    "dtype": "f16",
+    "config": "without_distribution",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "7d1738bfaa7f9fb7b5d4fb20002f60b3519a025df03536921820cee0e47dca12",
+    "removed": 4,
+    "barriers": 8,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 0,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "baseline",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "b6ca7219201bf41ddce87a6a78ab70adea864298da44346cf57640e3a7dc631c",
+    "removed": 0,
+    "barriers": 9,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 3,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "baseline",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "553a4b1bfc8abaee18621687e024616e9675e138bc99411f952989b290705c18",
+    "removed": 2,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 3,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "all",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "26ca6056b6b41bfbe90139470ef30c6d535cd91b38048dd1646a58da89035552",
+    "removed": 0,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "all",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "e7d9c8c92f980106c727cd73db6cf57b1341373394959bf5196c265a7c7befa8",
+    "removed": 1,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_accumulator",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "26ca6056b6b41bfbe90139470ef30c6d535cd91b38048dd1646a58da89035552",
+    "removed": 0,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_accumulator",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "e7d9c8c92f980106c727cd73db6cf57b1341373394959bf5196c265a7c7befa8",
+    "removed": 1,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_tiling",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "2bf65097382fbad510b6b78f407ce3ebaa631dc274463e9683d32461d5dda4d9",
+    "removed": 0,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_tiling",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "a9249c8c170753500d9bbd605a76b6714e4f16cc6a4f1b644040d697a16dbcf1",
+    "removed": 1,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_unroll",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "7271faf354eae95bdd1acefb670ab2a2e619dd2fbcb91498993758e91ba5c5a3",
+    "removed": 0,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_unroll",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "e0036a7bd1bfe78718fb6f9e366d37f3ab8561eeb6e17b5177d949a0639a6c0d",
+    "removed": 1,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_initializer",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "3f15277c5dbb2914afcaad936d848894ee6097c6c894910cb4ec423ead9cd56e",
+    "removed": 0,
+    "barriers": 7,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 6,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_initializer",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "8848167f86c0476fdae034d6784b3d51cf8d4f9ffb9a86151f3adc35b7dbb64e",
+    "removed": 1,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 6,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_staging",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "c00f97acec8f9b0c905c9b939917349eb35cf4b2ad45b94ebb95fd22b9d3c9dc",
+    "removed": 0,
+    "barriers": 8,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 3,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_staging",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "c695389ba347b3704c2f7447f2086ef2d1eb965639ca438e61f117c48a12d8e6",
+    "removed": 2,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 3,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_store",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "8d6ba4b147935380e574fcf7d0aeb77ee203143076793f47338a3ffbd404bc75",
+    "removed": 0,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_store",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "02eb7babdf387a3dd8dc34938091a4cdc4faaef25ea2572b8ecde0fce470092a",
+    "removed": 1,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 4,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_reuse",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "26ca6056b6b41bfbe90139470ef30c6d535cd91b38048dd1646a58da89035552",
+    "removed": 0,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_reuse",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "e7d9c8c92f980106c727cd73db6cf57b1341373394959bf5196c265a7c7befa8",
+    "removed": 1,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_fusion",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "26ca6056b6b41bfbe90139470ef30c6d535cd91b38048dd1646a58da89035552",
+    "removed": 0,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_fusion",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "e7d9c8c92f980106c727cd73db6cf57b1341373394959bf5196c265a7c7befa8",
+    "removed": 1,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_group",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "26ca6056b6b41bfbe90139470ef30c6d535cd91b38048dd1646a58da89035552",
+    "removed": 0,
+    "barriers": 6,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_group",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "e7d9c8c92f980106c727cd73db6cf57b1341373394959bf5196c265a7c7befa8",
+    "removed": 1,
+    "barriers": 5,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1,
+      "sycl.distribution_depth": 5,
+      "sycl.single_lane_half_bits": 2
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_distribution",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "268dcdc984402bff607806489a42bf8b3e5845526aa67c00739bcbcfe8806bdb",
+    "removed": 0,
+    "barriers": 12,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 0,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "without_distribution",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "ababa42cc6280cd0ba0d120c6b7b54cfcb3b09846c2ea37e196935c5d4a5061d",
+    "removed": 4,
+    "barriers": 8,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 0,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_distribution",
+    "enabled": false,
+    "status": "PASS",
+    "source_sha256": "2b45da5becf2c5ca71fdbfde8a67242070468ec66f77bbdfe6a0fb1c819d8f16",
+    "removed": 0,
+    "barriers": 14,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 0,
+      "sycl.single_lane_half_bits": 0
+    }
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "TT",
+    "dtype": "f16",
+    "config": "without_distribution",
+    "enabled": true,
+    "status": "PASS",
+    "source_sha256": "5fe167c0cf295e2b15a4a3c762ed6e04e8633f254ae6a6c55cd537fea692d1b2",
+    "removed": 5,
+    "barriers": 9,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.distribution_depth": 0,
+      "sycl.single_lane_half_bits": 0
+    }
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "job": 22810818,
+    "retrieved": true,
+    "stdout": "batch script for job 22810818 written to /public/home/dtune/zzx/triton/gap-validation/next/phase-barrier-submitted-22810818.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22810819,
+    "retrieved": true,
+    "stdout": "batch script for job 22810819 written to /public/home/dtune/zzx/triton/gap-validation/next/phase-barrier-submitted-22810819.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22810820,
+    "retrieved": true,
+    "stdout": "batch script for job 22810820 written to /public/home/dtune/zzx/triton/gap-validation/next/phase-barrier-submitted-22810820.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22810821,
+    "retrieved": true,
+    "stdout": "batch script for job 22810821 written to /public/home/dtune/zzx/triton/gap-validation/next/phase-barrier-submitted-22810821.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22810822,
+    "retrieved": true,
+    "stdout": "batch script for job 22810822 written to /public/home/dtune/zzx/triton/gap-validation/next/phase-barrier-submitted-22810822.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22810823,
+    "retrieved": true,
+    "stdout": "batch script for job 22810823 written to /public/home/dtune/zzx/triton/gap-validation/next/phase-barrier-submitted-22810823.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22810824,
+    "retrieved": true,
+    "stdout": "batch script for job 22810824 written to /public/home/dtune/zzx/triton/gap-validation/next/phase-barrier-submitted-22810824.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22810825,
+    "retrieved": true,
+    "stdout": "batch script for job 22810825 written to /public/home/dtune/zzx/triton/gap-validation/next/phase-barrier-submitted-22810825.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22810826,
+    "retrieved": true,
+    "stdout": "batch script for job 22810826 written to /public/home/dtune/zzx/triton/gap-validation/next/phase-barrier-submitted-22810826.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22810827,
+    "retrieved": true,
+    "stdout": "batch script for job 22810827 written to /public/home/dtune/zzx/triton/gap-validation/next/phase-barrier-submitted-22810827.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22810828,
+    "retrieved": true,
+    "stdout": "batch script for job 22810828 written to /public/home/dtune/zzx/triton/gap-validation/next/phase-barrier-submitted-22810828.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22810829,
+    "retrieved": true,
+    "stdout": "batch script for job 22810829 written to /public/home/dtune/zzx/triton/gap-validation/next/phase-barrier-submitted-22810829.sbatch\n",
+    "stderr": ""
+  }
+]

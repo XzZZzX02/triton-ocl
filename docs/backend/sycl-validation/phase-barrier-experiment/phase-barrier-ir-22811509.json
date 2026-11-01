@@ -1,0 +1,22 @@
+[
+  {
+    "enabled": false,
+    "status": "PASS",
+    "elements_checked": 68,
+    "source_barriers": 4,
+    "llvm_barrier_calls": 4,
+    "source_sha256": "4656342853312fe4a566ac80902da30a593fbaedeaae4d129001e64a6462dc0e",
+    "ir_sha256": "679e752ebc742dd7ff132981353352fbc042acc366d944ac99792df3103a182d",
+    "ir_bytes": 25480
+  },
+  {
+    "enabled": true,
+    "status": "PASS",
+    "elements_checked": 68,
+    "source_barriers": 3,
+    "llvm_barrier_calls": 3,
+    "source_sha256": "dcdf0360a981319321456fb85a810644b3f2dff83c638e91f8062102470db2c1",
+    "ir_sha256": "b2403e5344fe448b55e4c97acc9c9725129740a43d3ead2cf32e0263be1ff0ba",
+    "ir_bytes": 25365
+  }
+]
