@@ -1,0 +1,34 @@
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+python/triton/_C/libtriton.so: OK
+python/triton/_C/triton-sycl-translate: OK
+third_party/sycl/lib/Conversion/LinalgToAffineLoops/LocalCopyForwarding.cpp: OK
+third_party/sycl/backend/compiler.py: OK
+python/test/sycl/local_copy_dot.py: OK
+b014f7625f39200f14e9f4f4cfc8f9edbfe131d3a9f5f1ddd14bf49f80401984  python/test/sycl/local_copy_baseline_probe.py
+h02r4n15
+gfx906:sramecc-:xnack-
+HIP_DEVICE=Device 66a1 COUNT=4
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"variant": "original", "block": 1, "status": "MISMATCH", "mismatches": [{"index": 160, "got": -5.25, "want": -4.3125}, {"index": 161, "got": -3.9375, "want": -3.5625}, {"index": 162, "got": 2.25, "want": 2.0625}, {"index": 163, "got": 4.375, "want": 3.625}, {"index": 164, "got": -1.625, "want": -0.5}, {"index": 165, "got": -1.9375, "want": -1.375}, {"index": 167, "got": 3.125, "want": 2.5625}, {"index": 168, "got": -0.4375, "want": -1.5625}], "mismatch_count": 53, "error": null, "elements_checked": 775, "source_sha256": "4f959d8966e5294d1147f6bcbd8cfbb283fb0980edaff2fc321e7f7c16e418f4"}
+{"variant": "original", "block": 3, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "elements_checked": 775, "source_sha256": "4f959d8966e5294d1147f6bcbd8cfbb283fb0980edaff2fc321e7f7c16e418f4"}
+{"variant": "original", "block": 48, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "elements_checked": 775, "source_sha256": "4f959d8966e5294d1147f6bcbd8cfbb283fb0980edaff2fc321e7f7c16e418f4"}
+{"variant": "original", "block": [3, 5], "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "elements_checked": 775, "source_sha256": "4f959d8966e5294d1147f6bcbd8cfbb283fb0980edaff2fc321e7f7c16e418f4"}
+{"variant": "original", "block": 64, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "elements_checked": 775, "source_sha256": "4f959d8966e5294d1147f6bcbd8cfbb283fb0980edaff2fc321e7f7c16e418f4"}
+{"variant": "A", "block": 1, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "elements_checked": 775, "source_sha256": "a4f5e93004d263d4a8caca75cdfb9d611b6a4fc35f53e67ff39584bed5b87d16"}
+{"variant": "A", "block": 3, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "elements_checked": 775, "source_sha256": "a4f5e93004d263d4a8caca75cdfb9d611b6a4fc35f53e67ff39584bed5b87d16"}
+{"variant": "A", "block": 48, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "elements_checked": 775, "source_sha256": "a4f5e93004d263d4a8caca75cdfb9d611b6a4fc35f53e67ff39584bed5b87d16"}
+{"variant": "A", "block": [3, 5], "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "elements_checked": 775, "source_sha256": "a4f5e93004d263d4a8caca75cdfb9d611b6a4fc35f53e67ff39584bed5b87d16"}
+{"variant": "A", "block": 64, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "elements_checked": 775, "source_sha256": "a4f5e93004d263d4a8caca75cdfb9d611b6a4fc35f53e67ff39584bed5b87d16"}
+{"variant": "B", "block": 1, "status": "MISMATCH", "mismatches": [{"index": 160, "got": -5.25, "want": -4.3125}, {"index": 161, "got": -3.9375, "want": -3.5625}, {"index": 162, "got": 2.25, "want": 2.0625}, {"index": 163, "got": 4.375, "want": 3.625}, {"index": 164, "got": -1.625, "want": -0.5}, {"index": 165, "got": -1.9375, "want": -1.375}, {"index": 167, "got": 3.125, "want": 2.5625}, {"index": 168, "got": -0.4375, "want": -1.5625}], "mismatch_count": 53, "error": null, "elements_checked": 775, "source_sha256": "ecefcace2017a6b3a40c58b5f4b9d27255853913c631ffe5a2ded9b3e70c11dc"}
+{"variant": "B", "block": 3, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "elements_checked": 775, "source_sha256": "ecefcace2017a6b3a40c58b5f4b9d27255853913c631ffe5a2ded9b3e70c11dc"}
+{"variant": "B", "block": 48, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "elements_checked": 775, "source_sha256": "ecefcace2017a6b3a40c58b5f4b9d27255853913c631ffe5a2ded9b3e70c11dc"}
+{"variant": "B", "block": [3, 5], "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "elements_checked": 775, "source_sha256": "ecefcace2017a6b3a40c58b5f4b9d27255853913c631ffe5a2ded9b3e70c11dc"}
+{"variant": "B", "block": 64, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "elements_checked": 775, "source_sha256": "ecefcace2017a6b3a40c58b5f4b9d27255853913c631ffe5a2ded9b3e70c11dc"}
+{"variant": "both", "block": 1, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "elements_checked": 775, "source_sha256": "731a4add24d8945377f2ce5676b20c23231a21b2294c555c83e1bd42c60131f8"}
+{"variant": "both", "block": 3, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "elements_checked": 775, "source_sha256": "731a4add24d8945377f2ce5676b20c23231a21b2294c555c83e1bd42c60131f8"}
+{"variant": "both", "block": 48, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "elements_checked": 775, "source_sha256": "731a4add24d8945377f2ce5676b20c23231a21b2294c555c83e1bd42c60131f8"}
+{"variant": "both", "block": [3, 5], "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "elements_checked": 775, "source_sha256": "731a4add24d8945377f2ce5676b20c23231a21b2294c555c83e1bd42c60131f8"}
+{"variant": "both", "block": 64, "status": "PASS", "mismatches": [], "mismatch_count": 0, "error": null, "elements_checked": 775, "source_sha256": "731a4add24d8945377f2ce5676b20c23231a21b2294c555c83e1bd42c60131f8"}

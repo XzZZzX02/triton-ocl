@@ -1,0 +1,634 @@
+[
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": false,
+    "enabled": false,
+    "block": 1,
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "866fabd04c17fc0453f7bb747c49cb44fbd48960dd55d4d41108a3ed00b9909f"
+  },
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": false,
+    "enabled": false,
+    "block": 3,
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "866fabd04c17fc0453f7bb747c49cb44fbd48960dd55d4d41108a3ed00b9909f"
+  },
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": false,
+    "enabled": false,
+    "block": 48,
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "866fabd04c17fc0453f7bb747c49cb44fbd48960dd55d4d41108a3ed00b9909f"
+  },
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": false,
+    "enabled": false,
+    "block": [
+      3,
+      5
+    ],
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "866fabd04c17fc0453f7bb747c49cb44fbd48960dd55d4d41108a3ed00b9909f"
+  },
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": false,
+    "enabled": false,
+    "block": 64,
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "866fabd04c17fc0453f7bb747c49cb44fbd48960dd55d4d41108a3ed00b9909f"
+  },
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": false,
+    "enabled": true,
+    "block": 1,
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "2ac5587238992f5cbe517ede62bba79272753e5f837b42622960f9d5ae7579c1"
+  },
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": false,
+    "enabled": true,
+    "block": 3,
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "2ac5587238992f5cbe517ede62bba79272753e5f837b42622960f9d5ae7579c1"
+  },
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": false,
+    "enabled": true,
+    "block": 48,
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "2ac5587238992f5cbe517ede62bba79272753e5f837b42622960f9d5ae7579c1"
+  },
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": false,
+    "enabled": true,
+    "block": [
+      3,
+      5
+    ],
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "2ac5587238992f5cbe517ede62bba79272753e5f837b42622960f9d5ae7579c1"
+  },
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": false,
+    "enabled": true,
+    "block": 64,
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "2ac5587238992f5cbe517ede62bba79272753e5f837b42622960f9d5ae7579c1"
+  },
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": true,
+    "enabled": false,
+    "block": 1,
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "fca5a17e20171a0e88c42a083d1b50ae1fe2ee1e76d27720d8b12aa46039b26a"
+  },
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": true,
+    "enabled": false,
+    "block": 3,
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "fca5a17e20171a0e88c42a083d1b50ae1fe2ee1e76d27720d8b12aa46039b26a"
+  },
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": true,
+    "enabled": false,
+    "block": 48,
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "fca5a17e20171a0e88c42a083d1b50ae1fe2ee1e76d27720d8b12aa46039b26a"
+  },
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": true,
+    "enabled": false,
+    "block": [
+      3,
+      5
+    ],
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "fca5a17e20171a0e88c42a083d1b50ae1fe2ee1e76d27720d8b12aa46039b26a"
+  },
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": true,
+    "enabled": false,
+    "block": 64,
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "fca5a17e20171a0e88c42a083d1b50ae1fe2ee1e76d27720d8b12aa46039b26a"
+  },
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": true,
+    "enabled": true,
+    "block": 1,
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "2ac5587238992f5cbe517ede62bba79272753e5f837b42622960f9d5ae7579c1"
+  },
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": true,
+    "enabled": true,
+    "block": 3,
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "2ac5587238992f5cbe517ede62bba79272753e5f837b42622960f9d5ae7579c1"
+  },
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": true,
+    "enabled": true,
+    "block": 48,
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "2ac5587238992f5cbe517ede62bba79272753e5f837b42622960f9d5ae7579c1"
+  },
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": true,
+    "enabled": true,
+    "block": [
+      3,
+      5
+    ],
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "2ac5587238992f5cbe517ede62bba79272753e5f837b42622960f9d5ae7579c1"
+  },
+  {
+    "shape": [
+      16,
+      16
+    ],
+    "middle": true,
+    "enabled": true,
+    "block": 64,
+    "status": "PASS",
+    "special_bits": [
+      0,
+      32768,
+      15360,
+      48128,
+      31744,
+      64512,
+      32256,
+      32001,
+      65109,
+      1,
+      32769,
+      1023,
+      33791,
+      1024,
+      33792,
+      31743,
+      64511
+    ],
+    "elements_checked": 775,
+    "source_sha256": "2ac5587238992f5cbe517ede62bba79272753e5f837b42622960f9d5ae7579c1"
+  }
+]

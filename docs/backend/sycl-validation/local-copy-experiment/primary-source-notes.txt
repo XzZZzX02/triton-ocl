@@ -1,0 +1,7 @@
+Retrieved 2026-11-01 from https://mlir.llvm.org/docs/Passes/#-affine-scalrep
+Official MLIR scalar replacement motivates forwarding and eliminating materialized storage when memory dependencies allow it. The candidate differs by redirecting whole immutable local permutations across synchronized phases; the reference does not establish gfx906 profitability.
+id=-affine-scalrep> -affine-scalrep &nbsp; ¶    Replace affine memref accesses by scalars by forwarding stores to loads and eliminating redundant loads   This pass performs store to load forwarding and redundant load elimination
+for affine memref accesses and potentially eliminates the entire memref
+if all its accesses are forwarded.  Input       func  .  func   @store_load_affine_apply  ()   -&gt;   memref  &lt;  10x10x  f32  &gt;   { 
+       %cf7   =  arith .  constant   7.0   :   f32</sp
+The web search returned no usable content; the official document was retrieved with curl. No local-memory bank/conflict mechanism is inferred as proven without lower-level profiling.

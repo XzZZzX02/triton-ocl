@@ -1,0 +1,658 @@
+diff --git a/third_party/sycl/backend/compiler.py b/third_party/sycl/backend/compiler.py
+index e4720436..16782908 100644
+--- a/third_party/sycl/backend/compiler.py
++++ b/third_party/sycl/backend/compiler.py
+@@ -47,6 +47,7 @@ class SYCLOptions:
+     cooperative_load_staging: bool = False
+     terminal_store_distribution: bool = False
+     half_store_distribution: bool = False
++    local_copy_forwarding: bool = False
+ 
+     def __post_init__(self):
+         if type(self.reduction_unroll) is not int or self.reduction_unroll not in (1, 2, 4, 8):
+@@ -153,6 +154,8 @@ class SYCLBackend(BaseBackend):
+         if opt.reduction_unroll != 1:
+             sycl.passes.memir.ordered_reduction_unroll(pm, opt.reduction_unroll)
+             passes.common.add_cse(pm)
++        if opt.local_copy_forwarding:
++            sycl.passes.memir.local_copy_forwarding(pm)
+         if opt.reuse_local_memory:
+             sycl.passes.memir.local_memory_reuse(pm)
+         if opt.vectorize_memory:
+diff --git a/third_party/sycl/include/Conversion/LinalgToAffineLoops/Passes.h b/third_party/sycl/include/Conversion/LinalgToAffineLoops/Passes.h
+index f1fef04f..2a553d32 100644
+--- a/third_party/sycl/include/Conversion/LinalgToAffineLoops/Passes.h
++++ b/third_party/sycl/include/Conversion/LinalgToAffineLoops/Passes.h
+@@ -28,6 +28,7 @@ std::unique_ptr<OperationPass<ModuleOp>> createVectorMemoryPass();
+ std::unique_ptr<OperationPass<ModuleOp>> createTerminalStoreDistributionPass();
+ std::unique_ptr<OperationPass<ModuleOp>> createSerialHalfCopyGuardPass();
+ std::unique_ptr<OperationPass<ModuleOp>> createHalfStoreDistributionPass();
++std::unique_ptr<OperationPass<ModuleOp>> createLocalCopyForwardingPass();
+ bool planHalfStoreDistribution(affine::AffineForOp loop);
+ // Re-prove marked external stores after another pass rebuilds work ownership.
+ bool planTerminalStoreDistribution(affine::AffineForOp loop);
+diff --git a/third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeLists.txt b/third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeLists.txt
+index e54cee79..6ad111f5 100644
+--- a/third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeLists.txt
++++ b/third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeLists.txt
+@@ -14,6 +14,7 @@ add_triton_library(LinalgToAffineLoopsSYCL
+   VectorMemory.cpp
+   SerialHalfCopyGuard.cpp
+   HalfStoreDistribution.cpp
++  LocalCopyForwarding.cpp
+ 
+   DEPENDS
+   LinalgToAffineLoopsSYCLConversionPassIncGen
+diff --git a/third_party/sycl/triton_sycl.cc b/third_party/sycl/triton_sycl.cc
+index 79f47e0d..a05a3683 100644
+--- a/third_party/sycl/triton_sycl.cc
++++ b/third_party/sycl/triton_sycl.cc
+@@ -37,6 +37,9 @@ void init_triton_sycl_passes_lair(py::module &&m) {
+ }
+ 
+ void init_triton_sycl_passes_memir(py::module &&m) {
++  m.def("local_copy_forwarding", [](mlir::PassManager &pm) {
++    pm.addPass(mlir::triton::sycl::createLocalCopyForwardingPass());
++  });
+   m.def("half_store_distribution", [](mlir::PassManager &pm) {
+     pm.addPass(mlir::triton::sycl::createHalfStoreDistributionPass());
+   });
+diff --git a/third_party/sycl/lib/Conversion/LinalgToAffineLoops/LocalCopyForwarding.cpp b/third_party/sycl/lib/Conversion/LinalgToAffineLoops/LocalCopyForwarding.cpp
+new file mode 100644
+index 00000000..634deec0
+--- /dev/null
++++ b/third_party/sycl/lib/Conversion/LinalgToAffineLoops/LocalCopyForwarding.cpp
+@@ -0,0 +1,186 @@
++#include "sycl/include/Conversion/LinalgToAffineLoops/Passes.h"
++#include "mlir/Dialect/Affine/IR/AffineOps.h"
++#include "mlir/Dialect/Func/IR/FuncOps.h"
++#include "mlir/Dialect/MemRef/IR/MemRef.h"
++#include "mlir/IR/BuiltinOps.h"
++#include "llvm/ADT/STLExtras.h"
++#include <optional>
++
++using namespace mlir;
++namespace {
++static bool defaultAccess(Operation *op) {
++  for (NamedAttribute attr : op->getAttrs()) {
++    if (attr.getName().strref() == "map" && isa<AffineMapAttr>(attr.getValue()))
++      continue;
++    if (attr.getName().strref() == "sycl.scalar_half_bits" &&
++        isa<UnitAttr>(attr.getValue()))
++      continue;
++    if (attr.getName().strref() == "nontemporal") {
++      auto flag = dyn_cast<BoolAttr>(attr.getValue());
++      if (flag && !flag.getValue()) continue;
++    }
++    return false;
++  }
++  return true;
++}
++
++static Operation *phase(Operation *op, Block *body) {
++  while (op && op->getBlock() != body) op = op->getParentOp();
++  return op;
++}
++
++// Only full permutations are accepted: one bijective source and destination
++// coordinate per loop IV. No guessed equalities, address arithmetic or slices.
++static std::optional<SmallVector<unsigned>>
++permutation(ValueRange indices, ArrayRef<affine::AffineForOp> loops) {
++  if (indices.size() != loops.size()) return std::nullopt;
++  SmallVector<unsigned> result;
++  for (Value value : indices) {
++    auto found = llvm::find_if(loops, [&](auto loop) {
++      return affine::AffineForOp(loop).getInductionVar() == value;
++    });
++    if (found == loops.end()) return std::nullopt;
++    unsigned index = found - loops.begin();
++    if (llvm::is_contained(result, index)) return std::nullopt;
++    result.push_back(index);
++  }
++  return result;
++}
++
++static bool forwardCopy(affine::AffineForOp root) {
++  auto function = dyn_cast<func::FuncOp>(root->getParentOp());
++  if (!function) return false;
++  SmallVector<affine::AffineForOp> loops;
++  auto current = root;
++  while (current) {
++    if (loops.size() == 3 || !current.hasConstantBounds() ||
++        current.getConstantLowerBound() || current.getStep() != 1 ||
++        current.getConstantUpperBound() <= 0 || current.getNumResults() ||
++        current->hasAttr("sycl.reduction"))
++      return false;
++    loops.push_back(current);
++    auto &ops = current.getBody()->getOperations();
++    if (ops.size() != 2 || !isa<affine::AffineForOp>(ops.front())) break;
++    current = cast<affine::AffineForOp>(ops.front());
++  }
++  auto &ops = loops.back().getBody()->getOperations();
++  if (ops.size() != 3) return false;
++  auto load = dyn_cast<affine::AffineLoadOp>(ops.front());
++  auto store = dyn_cast<affine::AffineStoreOp>(*std::next(ops.begin()));
++  if (!load || !store || !load.getResult().hasOneUse() ||
++      store.getValueToStore() != load.getResult() ||
++      !load.getAffineMap().isIdentity() || !store.getAffineMap().isIdentity() ||
++      !defaultAccess(load) || !defaultAccess(store))
++    return false;
++  auto src = load.getMemRef().getDefiningOp<memref::AllocOp>();
++  auto dst = store.getMemRef().getDefiningOp<memref::AllocOp>();
++  if (!src || !dst || src == dst ||
++      src->getBlock() != root->getBlock() || dst->getBlock() != root->getBlock() ||
++      !src->isBeforeInBlock(root) || !dst->isBeforeInBlock(root) ||
++      src->hasAttr("sycl.thread_private") || dst->hasAttr("sycl.thread_private"))
++    return false;
++  auto a = src.getType(), b = dst.getType();
++  if (!a.hasStaticShape() || !b.hasStaticShape() ||
++      !a.getLayout().isIdentity() || !b.getLayout().isIdentity() ||
++      a.getElementType() != b.getElementType() ||
++      a.getMemorySpace() != b.getMemorySpace() ||
++      a.getRank() != int64_t(loops.size()) || b.getRank() != a.getRank())
++    return false;
++  auto in = permutation(load.getMapOperands(), loops);
++  auto out = permutation(store.getMapOperands(), loops);
++  if (!in || !out) return false;
++  SmallVector<unsigned> remap;
++  for (unsigned i = 0; i < loops.size(); ++i) {
++    if (a.getDimSize(i) != loops[(*in)[i]].getConstantUpperBound() ||
++        b.getDimSize(i) != loops[(*out)[i]].getConstantUpperBound())
++      return false;
++    remap.push_back(llvm::find(*out, (*in)[i]) - out->begin());
++  }
++  auto *body = &function.front();
++  SmallVector<Operation *> readers, deallocations;
++  Operation *last = root;
++  for (Operation *user : dst.getResult().getUsers()) {
++    if (user == store.getOperation()) continue;
++    auto *top = phase(user, body);
++    if (!top || top == root || !root->isBeforeInBlock(top)) return false;
++    if (isa<memref::DeallocOp>(user)) {
++      if (top != user) return false;
++      deallocations.push_back(user);
++      continue;
++    }
++    if (!isa<memref::LoadOp, affine::AffineLoadOp>(user) || !defaultAccess(user))
++      return false;
++    if (!isa<affine::AffineForOp>(top)) return false;
++    readers.push_back(user);
++    if (last->isBeforeInBlock(top)) last = top;
++  }
++  if (readers.empty()) return false;
++  for (Operation *user : src.getResult().getUsers()) {
++    auto *top = phase(user, body);
++    if (!top || !isa<memref::LoadOp, affine::AffineLoadOp, memref::StoreOp,
++                     affine::AffineStoreOp, memref::DeallocOp>(user))
++      return false; // No escaping aliases/calls may mutate the source.
++    if (isa<memref::StoreOp, affine::AffineStoreOp, memref::DeallocOp>(user)) {
++      if (top == root || (root->isBeforeInBlock(top) &&
++                         (top == last || top->isBeforeInBlock(last))))
++        return false; // Preserve the snapshot through every forwarded use.
++      // Prior source writes must complete a top-level affine phase: its SYCL
++      // emission has the work-group local barrier required by later readers.
++      if (top->isBeforeInBlock(root) &&
++          !isa<affine::AffineForOp>(top))
++        return false;
++    }
++  }
++  for (Operation *reader : readers) {
++    OpBuilder builder(reader);
++    Value replacement;
++    if (auto read = dyn_cast<memref::LoadOp>(reader)) {
++      SmallVector<Value> indices;
++      for (unsigned dim : remap) indices.push_back(read.getIndices()[dim]);
++      replacement = builder.create<memref::LoadOp>(reader->getLoc(), src, indices);
++    } else {
++      auto affineRead = cast<affine::AffineLoadOp>(reader);
++      SmallVector<AffineExpr> expressions;
++      for (unsigned dim : remap)
++        expressions.push_back(affineRead.getAffineMap().getResult(dim));
++      auto map = AffineMap::get(affineRead.getAffineMap().getNumDims(),
++                               affineRead.getAffineMap().getNumSymbols(), expressions,
++                               reader->getContext());
++      replacement = builder.create<affine::AffineLoadOp>(
++          reader->getLoc(), src, map, affineRead.getMapOperands());
++    }
++    reader->getResult(0).replaceAllUsesWith(replacement);
++    reader->erase();
++  }
++  root.erase();
++  for (auto *op : deallocations) op->erase();
++  dst.erase();
++  auto prior = function->getAttrOfType<IntegerAttr>("sycl.local_copies_forwarded");
++  function->setAttr("sycl.local_copies_forwarded",
++      IntegerAttr::get(IntegerType::get(function.getContext(),64),
++                       (prior ? prior.getInt() : 0)+1));
++  return true;
++}
++
++struct LocalCopyForwardingPass
++    : PassWrapper<LocalCopyForwardingPass, OperationPass<ModuleOp>> {
++  MLIR_DEFINE_EXPLICIT_INTERNAL_INLINE_TYPE_ID(LocalCopyForwardingPass)
++  StringRef getArgument() const final { return "sycl-local-copy-forwarding"; }
++  StringRef getDescription() const final {
++    return "Forward complete immutable local buffer permutations into readers";
++  }
++  void runOnOperation() override {
++    // Process top-level phases in order, so chains of copies can collapse.
++    for (auto function : getOperation().getOps<func::FuncOp>())
++      if (!function.empty())
++        for (Operation &op : llvm::make_early_inc_range(function.front()))
++          if (auto root = dyn_cast<affine::AffineForOp>(&op))
++            forwardCopy(root);
++  }
++};
++} // namespace
++
++std::unique_ptr<OperationPass<ModuleOp>>
++mlir::triton::sycl::createLocalCopyForwardingPass() {
++  return std::make_unique<LocalCopyForwardingPass>();
++}
+diff --git a/python/test/sycl/local_copy_dot.py b/python/test/sycl/local_copy_dot.py
+new file mode 100644
+index 00000000..4ca5c45a
+--- /dev/null
++++ b/python/test/sycl/local_copy_dot.py
+@@ -0,0 +1,71 @@
++"""Paired dot/layout forwarding tests with existing schedules held fixed."""
++import argparse
++import hashlib
++import itertools
++import json
++import pathlib
++import re
++import statistics
++from types import SimpleNamespace
++from cooperative_staging_semantics import prepare,check
++from full_stack_ablation import ALL
++from triton.backends.sycl.sycl_utils import run_standalone,profile_standalone
++
++
++def main():
++    p=argparse.ArgumentParser(description=__doc__)
++    p.add_argument('--shape',nargs=3,type=int,default=[16,32,32])
++    p.add_argument('--layout',choices=('NN','NT','TN','TT'),required=True)
++    p.add_argument('--dtype',choices=('f16','f32'),required=True)
++    p.add_argument('--configs',nargs='+',choices=('base','all','no_staging','no_reuse','no_fusion','no_accumulator','no_tiling','no_unroll'),default=['base','all'])
++    p.add_argument('--rounds',type=int,default=1);p.add_argument('--repeats',type=int,default=0)
++    p.add_argument('--compile-only',action='store_true')
++    p.add_argument('--output',required=True,type=pathlib.Path);p.add_argument('--dump-dir',type=pathlib.Path)
++    args=p.parse_args();fixture=SimpleNamespace(kind='dot',shape=args.shape,layout=args.layout,dtype=args.dtype)
++    kernel,warm,kw,bound,out,expected,grid=prepare(fixture);rows=[];reference={}
++    for round_ in range(args.rounds):
++        configs=list(itertools.product(args.configs,(False,True)))
++        for config,enabled in (configs if round_%2==0 else reversed(configs)):
++            opts=dict(ALL,half_store_distribution=True)
++            if config=='base':
++                opts.update({k:False for k in opts if k not in ('distribute_work','reuse_local_memory','reduction_unroll')})
++                opts['reduction_unroll']=1
++            elif config.startswith('no_'):
++                name={'staging':'cooperative_load_staging','reuse':'reuse_local_memory',
++                    'fusion':'fuse_elementwise','accumulator':'register_accumulator',
++                    'tiling':'matmul_register_tiling','unroll':'reduction_unroll'}[config[3:]]
++                opts[name]=1 if name=='reduction_unroll' else False
++            c=kernel.warmup(*warm,grid=(grid,),**kw,**opts,local_copy_forwarding=enabled)
++            code=c.asm['sycl'];code=code.decode() if isinstance(code,bytes) else code;memir=str(c.asm['memir'])
++            marker=re.search(r'sycl.local_copies_forwarded = (\d+)',memir);copies=int(marker[1]) if marker else 0
++            assert copies==(args.layout.count('T') if enabled else 0),(config,enabled,copies,memir)
++            preserved={x:memir.count(x) for x in ('sycl.register_accumulator','sycl.register_tile =',
++                'sycl.ordered_reduction_unroll','sycl.accumulator_init_forwarded','sycl.cooperative_load_staging',
++                'sycl.terminal_store_distribution')}
++            # Compare schedules within every fixed option set, not just final output.
++            key=(config,enabled);reference.setdefault(key,preserved);assert reference[key]==preserved
++            if (config,not enabled) in reference:assert reference[config,not enabled]==preserved,(config,preserved,reference)
++            if args.dump_dir:
++                args.dump_dir.mkdir(parents=True,exist_ok=True)
++                for ext,data in [('sycl',code),('memir',memir)]:
++                    (args.dump_dir/f'{config}-enabled{enabled}.{ext}').write_text(data)
++            checks=0;samples=[]
++            if not args.compile_only:
++                for block in (1,3,48,(3,5),64):
++                    out.c_array[:]=[-999.]*len(expected)
++                    run_standalone(grid,1,1,c.name,code,bound,signature=c.src.signature,metadata=c.metadata,block_size=block)
++                    check(list(out.c_array),expected);checks+=len(expected)
++                if args.repeats:
++                    samples=profile_standalone(grid,1,1,c.name,code,bound,signature=c.src.signature,
++                        metadata=c.metadata,block_size=64,warmup=10,repeats=args.repeats)
++                    check(list(out.c_array),expected);checks+=len(expected)
++            storage=re.search(r'local storage: (\d+) -> (\d+) bytes',code)
++            row=dict(shape=args.shape,layout=args.layout,dtype=args.dtype,config=config,enabled=enabled,
++                round=round_,status='PASS',compile_only=args.compile_only,copies=copies,markers=preserved,
++                source_sha256=hashlib.sha256(code.encode()).hexdigest(),source_bytes=len(code),
++                local_bytes=int(storage[2]) if storage else None,elements_checked=checks,
++                output_elements=len(expected),samples_ns=samples,median_ns=statistics.median(samples) if samples else None)
++            rows.append(row);print(json.dumps(row),flush=True);args.output.write_text(json.dumps(rows,indent=2)+'\n')
++
++
++if __name__=='__main__':main()
+diff --git a/python/test/sycl/local_copy_bits.py b/python/test/sycl/local_copy_bits.py
+new file mode 100644
+index 00000000..408b7890
+--- /dev/null
++++ b/python/test/sycl/local_copy_bits.py
+@@ -0,0 +1,46 @@
++"""Bit-preserving local transpose elimination under both work ownership plans."""
++import argparse
++import hashlib
++import itertools
++import json
++import pathlib
++import re
++import tempfile
++from serial_half_copy_bits import Bits,source
++from half_store_semantics import SPECIAL
++from triton.backends.sycl.sycl_utils import run_standalone
++
++
++def main():
++    from triton._C.libtriton import ir,sycl
++    from triton.backends.sycl.compiler import SYCLBackend
++    p=argparse.ArgumentParser(description=__doc__)
++    p.add_argument('--output',type=pathlib.Path,required=True)
++    p.add_argument('--shape',type=int,nargs=2,default=[16,32]);args=p.parse_args();R,C=args.shape
++    ctx=ir.context();ir.load_dialects(ctx);sycl.load_dialects(ctx)
++    raw=[SPECIAL[i%len(SPECIAL)] for i in range(3*R*C)];expected=[0x3555]*(3*R*C+7)
++    for b in range(3):
++        for r in range(R):
++            for c in range(C):expected[b*R*C+r*C+c]=raw[b*R*C+c*R+r]
++    rows=[];x,y=Bits(raw),Bits(expected)
++    for middle,enabled in itertools.product((False,True),repeat=2):
++        with tempfile.NamedTemporaryFile(mode='w',suffix='.mlir') as f:
++            f.write(source(R,C,'affine'));f.flush();mod=ir.parse_mlir_module(f.name,ctx)
++        pm=ir.pass_manager(ctx)
++        if middle:sycl.passes.memir.work_distribution(pm)
++        if enabled:sycl.passes.memir.local_copy_forwarding(pm)
++        sycl.passes.memir.local_memory_reuse(pm)
++        sycl.passes.memir.serial_half_copy_guard(pm);pm.run(mod)
++        count=re.search(r'sycl.local_copies_forwarded = (\d+)',str(mod))
++        assert (int(count[1]) if count else 0)==int(enabled)
++        code=SYCLBackend.emit_sycl(mod,{},None)
++        for block in (1,3,48,(3,5),64):
++            y.c_array[:]=[0x3555]*len(expected)
++            run_standalone(3,1,1,'half_copy',code,[x,y],block_size=block)
++            assert list(y.c_array)==expected,[(i,a,b) for i,(a,b) in enumerate(zip(y.c_array,expected)) if a!=b][:8]
++            row=dict(shape=[R,C],middle=middle,enabled=enabled,block=block,status='PASS',
++                special_bits=SPECIAL,elements_checked=len(expected),source_sha256=hashlib.sha256(code.encode()).hexdigest())
++            rows.append(row);print(json.dumps(row),flush=True);args.output.write_text(json.dumps(rows,indent=2)+'\n')
++
++
++if __name__=='__main__':main()
+diff --git a/python/test/sycl/local_copy_contracts.py b/python/test/sycl/local_copy_contracts.py
+new file mode 100644
+index 00000000..ea6dfe64
+--- /dev/null
++++ b/python/test/sycl/local_copy_contracts.py
+@@ -0,0 +1,119 @@
++"""Proof boundaries for immutable complete local permutation forwarding."""
++import argparse
++import itertools
++import json
++import pathlib
++import re
++import tempfile
++
++
++def source(shape=(8,16),perm=(1,0),outperm=None,dtype='f16',reader='memref',variant='plain'):
++    rank=len(shape);outperm=tuple(range(rank)) if outperm is None else outperm
++    srcshape=tuple(shape[i] for i in perm);dstshape=tuple(shape[i] for i in outperm)
++    ty=lambda dims:'memref<'+'x'.join(map(str,dims))+'x'+dtype+'>'
++    a,b=ty(srcshape),ty(dstshape);local='%a = memref.alloc() : '+a
++    if variant=='external':local='';signature='%a:'+a
++    else:signature=''
++    value='%v'
++    ld=f'%v = affine.load %a[{",".join("%d"+str(i) for i in perm)}] : {a}'
++    if variant=='arithmetic':ld+=f'\n%v2 = arith.addf %v,%v : {dtype}';value='%v2'
++    indices=','.join('%d'+str(i) for i in outperm)
++    if variant=='collision':indices=','.join(['%d0']*rank)
++    copy=f'{ld}\naffine.store {value},%b[{indices}] : {b}'
++    if variant=='extra_store':copy+=f'\naffine.store {value},%b[{indices}] : {b}'
++    if variant=='conditional':copy='scf.if %flag {\n'+copy+'\n}'
++    for i in reversed(range(rank)):
++        high='%limit' if variant=='dynamic' and i==rank-1 else shape[i]-(1 if variant=='partial' and i==0 else 0)
++        copy=f'affine.for %d{i} = 0 to {high} {{\n{copy}\n}}'
++    def phase(buffer,typ,dims,name,load=False):
++        idx=','.join('%'+name+str(i) for i in range(rank))
++        body=(f'%read = {reader}.load {buffer}[{idx}] : {typ}' if load else
++              f'affine.store %zero,{buffer}[{idx}] : {typ}')
++        for i in reversed(range(rank)):body=f'affine.for %{name}{i} = 0 to {dims[i]} {{\n{body}\n}}'
++        return body
++    producer=phase('%a',a,srcshape,'p')
++    consumer=phase('%b',b,dstshape,'q',True)
++    between=phase('%a',a,srcshape,'w') if variant=='source_mutation' else ''
++    if variant=='dst_mutation':between=phase('%b',b,dstshape,'w')
++    before=consumer if variant=='early_read' else ''
++    if variant=='source_alias':between=f'%alias = memref.cast %a : {a} to memref<*x{dtype}>'
++    if variant=='dst_alias':between=f'%alias = memref.cast %b : {b} to memref<*x{dtype}>'
++    if variant=='private':local='%a = memref.alloc() {sycl.thread_private} : '+a
++    if variant=='unknown_attr':copy=copy.replace('affine.store '+value+',%b','affine.store '+value+',%b').replace('] : '+b,'] {custom.flag} : '+b)
++    return f'''module {{func.func @copy({signature}{',' if signature else ''}%flag:i1,%limit:index) {{
++      %zero = arith.constant 0.0 : {dtype}
++      {local}
++      %b = memref.alloc() : {b}
++      {producer if variant!='external' else ''}
++      {before}
++      {copy}
++      {between}
++      {consumer}
++      return
++    }} }}'''
++
++
++def main():
++    from triton._C.libtriton import ir,sycl
++    from triton.backends.sycl.compiler import SYCLOptions
++    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',required=True,type=pathlib.Path)
++    args=p.parse_args();ctx=ir.context();ir.load_dialects(ctx);sycl.load_dialects(ctx);rows=[]
++    def transform(text,order):
++        with tempfile.NamedTemporaryFile(mode='w',suffix='.mlir') as f:
++            f.write(text);f.flush();mod=ir.parse_mlir_module(f.name,ctx)
++        pm=ir.pass_manager(ctx)
++        for stage in order:getattr(sycl.passes.memir,stage)(pm)
++        pm.run(mod);return str(mod).replace(f.name,'local-copy.mlir')
++    stage='local_copy_forwarding'
++    for rank in (1,2,3):
++        shape=(4,8,16)[:rank]
++        for perm,outperm,reader,dtype in itertools.product(itertools.permutations(range(rank)),
++            itertools.permutations(range(rank)),('affine','memref'),('f16','f32')):
++            text=source(shape,perm,outperm,dtype,reader)
++            for order in ([stage],['work_distribution',stage],[stage,'work_distribution'],
++                          [stage,'local_memory_reuse']):
++                out=transform(text,order)
++                assert 'sycl.local_copies_forwarded = 1' in out,(rank,perm,outperm,reader,order,out)
++                assert out.count('memref.alloc()')==1
++                assert out==transform(text,order+[stage]),out
++                rows.append(dict(rank=rank,perm=perm,outperm=outperm,reader=reader,dtype=dtype,pipeline=order,status='PASS'))
++            # Independently enumerate the permutation correspondence.
++            for coords in itertools.product(*(range(n) for n in shape)):
++                src=tuple(coords[i] for i in perm);dst=tuple(coords[i] for i in outperm)
++                assert src==tuple(dst[outperm.index(i)] for i in perm)
++    for variant in ('partial','dynamic','collision','conditional','arithmetic','extra_store',
++                    'source_mutation','dst_mutation','early_read','source_alias','dst_alias',
++                    'private','unknown_attr','external'):
++        for reader in ('affine','memref'):
++            text=source(reader=reader,variant=variant)
++            out=transform(text,[stage])
++            assert 'sycl.local_copies_forwarded' not in out,(variant,reader,out)
++            rows.append(dict(variant=variant,reader=reader,status='PASS',selected=False))
++    # Multiple readers share the same immutable snapshot. Nontrivial affine
++    # consumer expressions must be permuted as expressions, not just operands.
++    for reader in ('affine','memref'):
++        text=source(reader=reader)
++        start=text.rfind('affine.for %q0')
++        end=text.index('\n      return',start)
++        readphase=text[start:end]
++        for variant in ('fanout','source_write_after','read_map'):
++            probe=text
++            if variant=='fanout':probe=text[:end]+readphase+text[end:]
++            if variant=='source_write_after':
++                probe=text[:end]+readphase.replace('%read = '+reader+'.load %b[%q0,%q1] : memref<8x16xf16>',
++                     'affine.store %zero,%a[%q1,%q0] : memref<16x8xf16>')+text[end:]
++            if variant=='read_map':
++                if reader!='affine':continue
++                probe=text.replace('affine.load %b[%q0,%q1]',
++                     'affine.load %b[7-%q0,15-%q1]')
++            out=transform(probe,[stage])
++            assert 'sycl.local_copies_forwarded = 1' in out,(variant,out)
++            rows.append(dict(variant=variant,reader=reader,status='PASS',selected=True))
++    assert not SYCLOptions().local_copy_forwarding
++    assert SYCLOptions().hash()!=SYCLOptions(local_copy_forwarding=True).hash()
++    rows.append(dict(variant='cache_default',status='PASS'))
++    args.output.write_text(json.dumps(rows,indent=2)+'\n')
++    print(json.dumps(dict(status='PASS',count=len(rows))))
++
++
++if __name__=='__main__':main()
+diff --git a/python/test/sycl/local_copy_source_contracts.py b/python/test/sycl/local_copy_source_contracts.py
+new file mode 100644
+index 00000000..a00719d3
+--- /dev/null
++++ b/python/test/sycl/local_copy_source_contracts.py
+@@ -0,0 +1,34 @@
++"""Default source preservation and transformed schedule checks against archives."""
++import argparse
++import hashlib
++import json
++import pathlib
++import re
++from types import SimpleNamespace
++from cooperative_staging_semantics import prepare
++from full_stack_ablation import expected_markers
++
++
++def main():
++    p=argparse.ArgumentParser(description=__doc__);p.add_argument('before',type=pathlib.Path)
++    p.add_argument('--output',required=True,type=pathlib.Path);args=p.parse_args();rows=[]
++    for old in json.loads(args.before.read_text()):
++        fixture=SimpleNamespace(kind='dot',shape=old['shape'],layout=old['layout'],dtype=old['dtype'])
++        kernel,warm,kw,_,_,_,grid=prepare(fixture);markers=None
++        for enabled in (False,True):
++            c=kernel.warmup(*warm,grid=(grid,),**kw,**old['options'],local_copy_forwarding=enabled)
++            code=c.asm['sycl'];code=code.decode() if isinstance(code,bytes) else code
++            memir=str(c.asm['memir']);expected_markers(fixture,old['options'],memir)
++            digest=hashlib.sha256(code.encode()).hexdigest()
++            selected=enabled and old['layout']!='NN'
++            assert (digest!=old['after_source_sha256'])==selected,(old,enabled,digest)
++            copied=re.search(r'sycl.local_copies_forwarded = (\d+)',memir)
++            assert (int(copied[1]) if copied else 0)==(old['layout'].count('T') if selected else 0)
++            row=dict(shape=old['shape'],layout=old['layout'],dtype=old['dtype'],config=old['config'],
++                enabled=enabled,selected=selected,status='PASS',source_sha256=digest,
++                before_source_sha256=old['after_source_sha256'])
++            rows.append(row);args.output.write_text(json.dumps(rows,indent=2)+'\n')
++    print(json.dumps(dict(status='PASS',count=len(rows),transformed=sum(r['selected'] for r in rows))))
++
++
++if __name__=='__main__':main()
+diff --git a/python/test/sycl/local_copy_baseline_probe.py b/python/test/sycl/local_copy_baseline_probe.py
+new file mode 100644
+index 00000000..bde58baa
+--- /dev/null
++++ b/python/test/sycl/local_copy_baseline_probe.py
+@@ -0,0 +1,43 @@
++"""Diagnostic only: isolate the pre-existing short TT dot copy failure."""
++import argparse
++import hashlib
++import json
++import pathlib
++import re
++from types import SimpleNamespace
++from cooperative_staging_semantics import prepare,fbits
++from triton.backends.sycl.sycl_utils import run_standalone
++
++
++def main():
++    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=pathlib.Path,required=True)
++    args=p.parse_args();rows=[]
++    k,w,kw,bound,out,expected,grid=prepare(SimpleNamespace(kind='dot',shape=[8,32,16],layout='TT',dtype='f16'))
++    c=k.warmup(*w,grid=(grid,),**kw,local_copy_forwarding=False,
++        distribute_work=True,register_accumulator=False,matmul_register_tiling=False,
++        reduction_unroll=1,accumulator_init_forwarding=False,cooperative_load_staging=False,
++        terminal_store_distribution=False,half_store_distribution=False,
++        reuse_local_memory=True,fuse_elementwise=False,group_reduction=False)
++    source=c.asm['sycl'];source=source.decode() if isinstance(source,bytes) else source
++    matches=list(re.finditer(r'(?m)^([ \t]*)triton_sycl_float16 (var_\d+) = (var_\d+\[[^\n;]+\]);[^\n]*\n\1(var_\d+\[[^\n;]+\]) = \2;',source))
++    assert len(matches)==2,len(matches)
++    for variant,selected in [('original',()),('A',(0,)),('B',(1,)),('both',(0,1))]:
++        code=source
++        for index in reversed(selected):
++            m=matches[index];pad,tmp,src,dst=m.groups()
++            replacement=f'{pad}triton_sycl_float16 {tmp};\n{pad}{tmp}.bits = *reinterpret_cast<const volatile uint16_t*>(&{src}.bits);\n{pad}*reinterpret_cast<volatile uint16_t*>(&{dst}.bits) = {tmp}.bits;'
++            code=code[:m.start()]+replacement+code[m.end():]
++        args.output.with_suffix('.'+variant+'.sycl').write_text(code)
++        for block in (1,3,48,(3,5),64):
++            out.c_array[:]=[-999.]*len(expected);error=None
++            try:
++                run_standalone(grid,1,1,c.name,code,bound,signature=c.src.signature,metadata=c.metadata,block_size=block)
++                diff=[dict(index=i,got=a,want=b) for i,(a,b) in enumerate(zip(out.c_array,expected)) if fbits(a)!=fbits(b)]
++            except Exception as e:error=repr(e);diff=[]
++            row=dict(variant=variant,block=block,status='EXECUTION_ERROR' if error else 'MISMATCH' if diff else 'PASS',
++                mismatches=diff[:8],mismatch_count=len(diff),error=error,elements_checked=len(expected) if not error else 0,
++                source_sha256=hashlib.sha256(code.encode()).hexdigest())
++            rows.append(row);print(json.dumps(row),flush=True);args.output.write_text(json.dumps(rows,indent=2)+'\n')
++
++
++if __name__=='__main__':main()
+diff --git a/docs/backend/sycl-validation/next/local-copy-dcu.sbatch b/docs/backend/sycl-validation/next/local-copy-dcu.sbatch
+new file mode 100644
+index 00000000..6fab0a26
+--- /dev/null
++++ b/docs/backend/sycl-validation/next/local-copy-dcu.sbatch
+@@ -0,0 +1,26 @@
++#!/bin/bash
++#SBATCH -p debug
++#SBATCH -N 1
++#SBATCH -n 1
++#SBATCH -c 8
++#SBATCH --gres=dcu:1
++#SBATCH --exclusive
++#SBATCH -t 00:25:00
++#SBATCH -J sycl-local-copy
++#SBATCH -D /public/home/dtune/zzx/triton
++#SBATCH -o /public/home/dtune/zzx/triton/logs/sycl-local-copy-%j.log
++set -eo pipefail
++base=/public/home/dtune/zzx/triton
++source "$base/env.sh"
++unset LD_PRELOAD
++export ACPP_VISIBILITY_MASK=hip
++node_tmp=/tmp/sycl-local-copy-$SLURM_JOB_ID
++export TMPDIR=$node_tmp/tmp ACPP_APPDB_DIR=$node_tmp/appdb TRITON_CACHE_DIR=$node_tmp/cache
++mkdir -p "$TMPDIR" "$ACPP_APPDB_DIR" "$TRITON_CACHE_DIR"
++cd /work1/dtune/zzx/triton/triton-ocl
++sha256sum --check "$base/gap-validation/next/local-copy-sha256.txt"
++hostname
++/public/home/dtune/zzx/acpp-build/hip_probe
++"$base/bin/python-triton" python/test/sycl/local_copy_dot.py "$@" --rounds 3 --repeats 31 \
++  --dump-dir "$base/gap-validation/next/local-copy-$SLURM_JOB_ID-sources" \
++  --output "$base/gap-validation/next/local-copy-dcu-$SLURM_JOB_ID.json"
+diff --git a/docs/backend/sycl-validation/next/local-copy-bits-dcu.sbatch b/docs/backend/sycl-validation/next/local-copy-bits-dcu.sbatch
+new file mode 100644
+index 00000000..b6bb684d
+--- /dev/null
++++ b/docs/backend/sycl-validation/next/local-copy-bits-dcu.sbatch
+@@ -0,0 +1,26 @@
++#!/bin/bash
++#SBATCH -p debug
++#SBATCH -N 1
++#SBATCH -n 1
++#SBATCH -c 8
++#SBATCH --gres=dcu:1
++#SBATCH --exclusive
++#SBATCH -t 00:15:00
++#SBATCH -J sycl-local-copy-bits
++#SBATCH -D /public/home/dtune/zzx/triton
++#SBATCH -o /public/home/dtune/zzx/triton/logs/sycl-local-copy-bits-%j.log
++set -eo pipefail
++base=/public/home/dtune/zzx/triton
++source "$base/env.sh"
++unset LD_PRELOAD
++export ACPP_VISIBILITY_MASK=hip
++node_tmp=/tmp/sycl-local-copy-bits-$SLURM_JOB_ID
++export TMPDIR=$node_tmp/tmp ACPP_APPDB_DIR=$node_tmp/appdb TRITON_CACHE_DIR=$node_tmp/cache
++mkdir -p "$TMPDIR" "$ACPP_APPDB_DIR" "$TRITON_CACHE_DIR"
++cd /work1/dtune/zzx/triton/triton-ocl
++sha256sum --check "$base/gap-validation/next/local-copy-sha256.txt"
++sha256sum python/test/sycl/local_copy_bits.py
++hostname
++/public/home/dtune/zzx/acpp-build/hip_probe
++"$base/bin/python-triton" python/test/sycl/local_copy_bits.py "$@" \
++  --output "$base/gap-validation/next/local-copy-bits-dcu-$SLURM_JOB_ID.json"

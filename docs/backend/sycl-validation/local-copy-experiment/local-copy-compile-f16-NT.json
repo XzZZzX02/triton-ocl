@@ -1,0 +1,482 @@
+[
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "base",
+    "enabled": false,
+    "round": 0,
+    "status": "PASS",
+    "compile_only": true,
+    "copies": 0,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0
+    },
+    "source_sha256": "3f850e2941d558e8df3a297eaf45a91bc59718c96681ec876fa4543b7c461abf",
+    "source_bytes": 18411,
+    "local_bytes": 7168,
+    "elements_checked": 0,
+    "output_elements": 1543,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "base",
+    "enabled": true,
+    "round": 0,
+    "status": "PASS",
+    "compile_only": true,
+    "copies": 1,
+    "markers": {
+      "sycl.register_accumulator": 0,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0
+    },
+    "source_sha256": "b19d8e6664711b024469d7664d49c8f23b3bf746a34a48697393fc0925dec56e",
+    "source_bytes": 17748,
+    "local_bytes": 5120,
+    "elements_checked": 0,
+    "output_elements": 1543,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "all",
+    "enabled": false,
+    "round": 0,
+    "status": "PASS",
+    "compile_only": true,
+    "copies": 0,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1
+    },
+    "source_sha256": "78ffffe9a07a3dbb7c443901c37feb7f23cc5c012678ee0e89e60cd4f07e6256",
+    "source_bytes": 22268,
+    "local_bytes": 7168,
+    "elements_checked": 0,
+    "output_elements": 1543,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "all",
+    "enabled": true,
+    "round": 0,
+    "status": "PASS",
+    "compile_only": true,
+    "copies": 1,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1
+    },
+    "source_sha256": "225ba8c397adbf7acae005ea406a64c374a5e92f71a915ff01fa32c127b52045",
+    "source_bytes": 21596,
+    "local_bytes": 5120,
+    "elements_checked": 0,
+    "output_elements": 1543,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "no_staging",
+    "enabled": false,
+    "round": 0,
+    "status": "PASS",
+    "compile_only": true,
+    "copies": 0,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 1
+    },
+    "source_sha256": "3266a17aa9317210a2a4077d1a6c6f01f9fb1b69da3bd16d4386db9febfbeeb0",
+    "source_bytes": 22697,
+    "local_bytes": 7168,
+    "elements_checked": 0,
+    "output_elements": 1543,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "no_staging",
+    "enabled": true,
+    "round": 0,
+    "status": "PASS",
+    "compile_only": true,
+    "copies": 1,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 1
+    },
+    "source_sha256": "4781e0a8a72cb7173dbff038942b10e5c1fecd13ed5a8c261d9ac5e87e42cf89",
+    "source_bytes": 22025,
+    "local_bytes": 5120,
+    "elements_checked": 0,
+    "output_elements": 1543,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "no_reuse",
+    "enabled": false,
+    "round": 0,
+    "status": "PASS",
+    "compile_only": true,
+    "copies": 0,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1
+    },
+    "source_sha256": "78ffffe9a07a3dbb7c443901c37feb7f23cc5c012678ee0e89e60cd4f07e6256",
+    "source_bytes": 22268,
+    "local_bytes": 7168,
+    "elements_checked": 0,
+    "output_elements": 1543,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "no_reuse",
+    "enabled": true,
+    "round": 0,
+    "status": "PASS",
+    "compile_only": true,
+    "copies": 1,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1
+    },
+    "source_sha256": "225ba8c397adbf7acae005ea406a64c374a5e92f71a915ff01fa32c127b52045",
+    "source_bytes": 21596,
+    "local_bytes": 5120,
+    "elements_checked": 0,
+    "output_elements": 1543,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "no_fusion",
+    "enabled": false,
+    "round": 0,
+    "status": "PASS",
+    "compile_only": true,
+    "copies": 0,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1
+    },
+    "source_sha256": "78ffffe9a07a3dbb7c443901c37feb7f23cc5c012678ee0e89e60cd4f07e6256",
+    "source_bytes": 22268,
+    "local_bytes": 7168,
+    "elements_checked": 0,
+    "output_elements": 1543,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "no_fusion",
+    "enabled": true,
+    "round": 0,
+    "status": "PASS",
+    "compile_only": true,
+    "copies": 1,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1
+    },
+    "source_sha256": "225ba8c397adbf7acae005ea406a64c374a5e92f71a915ff01fa32c127b52045",
+    "source_bytes": 21596,
+    "local_bytes": 5120,
+    "elements_checked": 0,
+    "output_elements": 1543,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "no_accumulator",
+    "enabled": false,
+    "round": 0,
+    "status": "PASS",
+    "compile_only": true,
+    "copies": 0,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1
+    },
+    "source_sha256": "78ffffe9a07a3dbb7c443901c37feb7f23cc5c012678ee0e89e60cd4f07e6256",
+    "source_bytes": 22268,
+    "local_bytes": 7168,
+    "elements_checked": 0,
+    "output_elements": 1543,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "no_accumulator",
+    "enabled": true,
+    "round": 0,
+    "status": "PASS",
+    "compile_only": true,
+    "copies": 1,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1
+    },
+    "source_sha256": "225ba8c397adbf7acae005ea406a64c374a5e92f71a915ff01fa32c127b52045",
+    "source_bytes": 21596,
+    "local_bytes": 5120,
+    "elements_checked": 0,
+    "output_elements": 1543,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "no_tiling",
+    "enabled": false,
+    "round": 0,
+    "status": "PASS",
+    "compile_only": true,
+    "copies": 0,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1
+    },
+    "source_sha256": "0500a5bf0bface524923a5f553b3b1c313ddaeddf057abfa80018ecb449f9891",
+    "source_bytes": 18977,
+    "local_bytes": 7168,
+    "elements_checked": 0,
+    "output_elements": 1543,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "no_tiling",
+    "enabled": true,
+    "round": 0,
+    "status": "PASS",
+    "compile_only": true,
+    "copies": 1,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 0,
+      "sycl.ordered_reduction_unroll": 1,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1
+    },
+    "source_sha256": "7735d0650225f476ae70307b3426c4c6e05bb76607d51bbf8a8d785e62f92eec",
+    "source_bytes": 18313,
+    "local_bytes": 5120,
+    "elements_checked": 0,
+    "output_elements": 1543,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "no_unroll",
+    "enabled": false,
+    "round": 0,
+    "status": "PASS",
+    "compile_only": true,
+    "copies": 0,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1
+    },
+    "source_sha256": "4e24e23eedd3ada7cc853d6c5f6ca6ea7f8571253386d4e1734a82dfc8e81e74",
+    "source_bytes": 18935,
+    "local_bytes": 7168,
+    "elements_checked": 0,
+    "output_elements": 1543,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      16,
+      32,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f16",
+    "config": "no_unroll",
+    "enabled": true,
+    "round": 0,
+    "status": "PASS",
+    "compile_only": true,
+    "copies": 1,
+    "markers": {
+      "sycl.register_accumulator": 1,
+      "sycl.register_tile =": 1,
+      "sycl.ordered_reduction_unroll": 0,
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 1
+    },
+    "source_sha256": "2682e3c832a6bd853008036ddf27f5022bc4bf19f536d3e918e3357856dc58f9",
+    "source_bytes": 18271,
+    "local_bytes": 5120,
+    "elements_checked": 0,
+    "output_elements": 1543,
+    "samples_ns": [],
+    "median_ns": null
+  }
+]

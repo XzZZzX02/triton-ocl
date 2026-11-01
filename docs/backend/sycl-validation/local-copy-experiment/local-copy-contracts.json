@@ -1,0 +1,12968 @@
+[
+  {
+    "rank": 1,
+    "perm": [
+      0
+    ],
+    "outperm": [
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 1,
+    "perm": [
+      0
+    ],
+    "outperm": [
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 1,
+    "perm": [
+      0
+    ],
+    "outperm": [
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 1,
+    "perm": [
+      0
+    ],
+    "outperm": [
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 1,
+    "perm": [
+      0
+    ],
+    "outperm": [
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 1,
+    "perm": [
+      0
+    ],
+    "outperm": [
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 1,
+    "perm": [
+      0
+    ],
+    "outperm": [
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 1,
+    "perm": [
+      0
+    ],
+    "outperm": [
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 1,
+    "perm": [
+      0
+    ],
+    "outperm": [
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 1,
+    "perm": [
+      0
+    ],
+    "outperm": [
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 1,
+    "perm": [
+      0
+    ],
+    "outperm": [
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 1,
+    "perm": [
+      0
+    ],
+    "outperm": [
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 1,
+    "perm": [
+      0
+    ],
+    "outperm": [
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 1,
+    "perm": [
+      0
+    ],
+    "outperm": [
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 1,
+    "perm": [
+      0
+    ],
+    "outperm": [
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 1,
+    "perm": [
+      0
+    ],
+    "outperm": [
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 2,
+    "perm": [
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      1,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      0,
+      2,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      0,
+      2
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      1,
+      2,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      0,
+      1
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      1,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      0,
+      2,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      0,
+      2
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      1,
+      2,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      0,
+      1
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "affine",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f16",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "work_distribution",
+      "local_copy_forwarding"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "work_distribution"
+    ],
+    "status": "PASS"
+  },
+  {
+    "rank": 3,
+    "perm": [
+      2,
+      1,
+      0
+    ],
+    "outperm": [
+      2,
+      1,
+      0
+    ],
+    "reader": "memref",
+    "dtype": "f32",
+    "pipeline": [
+      "local_copy_forwarding",
+      "local_memory_reuse"
+    ],
+    "status": "PASS"
+  },
+  {
+    "variant": "partial",
+    "reader": "affine",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "partial",
+    "reader": "memref",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "dynamic",
+    "reader": "affine",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "dynamic",
+    "reader": "memref",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "collision",
+    "reader": "affine",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "collision",
+    "reader": "memref",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "conditional",
+    "reader": "affine",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "conditional",
+    "reader": "memref",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "arithmetic",
+    "reader": "affine",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "arithmetic",
+    "reader": "memref",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "extra_store",
+    "reader": "affine",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "extra_store",
+    "reader": "memref",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "source_mutation",
+    "reader": "affine",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "source_mutation",
+    "reader": "memref",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "dst_mutation",
+    "reader": "affine",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "dst_mutation",
+    "reader": "memref",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "early_read",
+    "reader": "affine",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "early_read",
+    "reader": "memref",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "source_alias",
+    "reader": "affine",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "source_alias",
+    "reader": "memref",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "dst_alias",
+    "reader": "affine",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "dst_alias",
+    "reader": "memref",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "private",
+    "reader": "affine",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "private",
+    "reader": "memref",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "unknown_attr",
+    "reader": "affine",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "unknown_attr",
+    "reader": "memref",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "external",
+    "reader": "affine",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "external",
+    "reader": "memref",
+    "status": "PASS",
+    "selected": false
+  },
+  {
+    "variant": "fanout",
+    "reader": "affine",
+    "status": "PASS",
+    "selected": true
+  },
+  {
+    "variant": "source_write_after",
+    "reader": "affine",
+    "status": "PASS",
+    "selected": true
+  },
+  {
+    "variant": "read_map",
+    "reader": "affine",
+    "status": "PASS",
+    "selected": true
+  },
+  {
+    "variant": "fanout",
+    "reader": "memref",
+    "status": "PASS",
+    "selected": true
+  },
+  {
+    "variant": "source_write_after",
+    "reader": "memref",
+    "status": "PASS",
+    "selected": true
+  },
+  {
+    "variant": "cache_default",
+    "status": "PASS"
+  }
+]

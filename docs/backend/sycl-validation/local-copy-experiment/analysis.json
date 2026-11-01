@@ -1,0 +1,1157 @@
+{
+  "status": "PASS",
+  "decision": "REJECTED_FOR_PRODUCTION",
+  "contracts": 690,
+  "source_checks": 144,
+  "regressions": {
+    "pass": 150,
+    "terminal_store": 241,
+    "serial_half_copy": 294,
+    "half_store": 482,
+    "accumulator_init": 55,
+    "cooperative_staging": 66,
+    "ordered_unroll": 71,
+    "fusion_destination": 16
+  },
+  "dot_records": 150,
+  "dot_elements": 1388700,
+  "event_samples": 4650,
+  "cpu_dot_records": 32,
+  "cpu_dot_elements": 246880,
+  "gpu_bit_records": 80,
+  "gpu_bit_elements": 108080,
+  "cpu_bit_records": 80,
+  "cpu_bit_elements": 108080,
+  "active_comparisons": 21,
+  "aggregate_regressions": [
+    {
+      "job": 22799783,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "NT",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9795490932525098,
+      "after_cost_percent": 2.087787828947363,
+      "round_ratios": [
+        0.9806451612903225,
+        0.9790662332303419,
+        0.9779480621482011
+      ],
+      "local_bytes_before": 7168,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799785,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9903227757504889,
+      "after_cost_percent": 0.9771788033631212,
+      "round_ratios": [
+        0.9870970343339852,
+        0.9935081299583673,
+        0.9887280851834706
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799787,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "NT",
+      "config": "base",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9596924614865716,
+      "after_cost_percent": 4.200047424670994,
+      "round_ratios": [
+        0.9603129422097884,
+        0.9603385849489806,
+        0.9539003494304
+      ],
+      "local_bytes_before": 12288,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799787,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "NT",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.7934383904535508,
+      "after_cost_percent": 26.03373015873016,
+      "round_ratios": [
+        0.7909352812455723,
+        0.795985516372796,
+        0.7934383904535508
+      ],
+      "local_bytes_before": 12288,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799788,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "TN",
+      "config": "base",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9861195977700832,
+      "after_cost_percent": 1.407577971404761,
+      "round_ratios": [
+        0.9843092880716643,
+        0.9903052649111915,
+        0.9861195977700832
+      ],
+      "local_bytes_before": 10240,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799788,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "TN",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9753091182654655,
+      "after_cost_percent": 2.531595498506767,
+      "round_ratios": [
+        0.9753091182654655,
+        0.97230822484183,
+        0.984520423366421
+      ],
+      "local_bytes_before": 10240,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799790,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "TT",
+      "config": "base",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9500589377976726,
+      "after_cost_percent": 5.2566277959655405,
+      "round_ratios": [
+        0.9500330687830688,
+        0.9473069843860349,
+        0.9500589377976726
+      ],
+      "local_bytes_before": 14336,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799790,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "TT",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.8842650780806116,
+      "after_cost_percent": 13.088261064273055,
+      "round_ratios": [
+        0.8842995127494361,
+        0.8791208791208791,
+        0.884280303030303
+      ],
+      "local_bytes_before": 14336,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799791,
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.992914979757085,
+      "after_cost_percent": 0.7135575942915473,
+      "round_ratios": [
+        0.995563516578584,
+        0.989344257769582,
+        0.9964491936019114
+      ],
+      "local_bytes_before": 14336,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799793,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9867785917990991,
+      "after_cost_percent": 1.3398555978799243,
+      "round_ratios": [
+        0.9883909586528675,
+        0.987096904265078,
+        0.9838971024848784
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799793,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "no_reuse",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9919094669350027,
+      "after_cost_percent": 0.8156523689603512,
+      "round_ratios": [
+        0.9871176819879027,
+        0.9902913603220033,
+        0.995137812623454
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799793,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "no_fusion",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9886998246003105,
+      "after_cost_percent": 1.1429328820056872,
+      "round_ratios": [
+        0.987127616747182,
+        0.9935376867143334,
+        0.9886998246003105
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799793,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "no_accumulator",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9871176819879027,
+      "after_cost_percent": 1.3050437903365575,
+      "round_ratios": [
+        0.9887179074284679,
+        0.9839487966613497,
+        0.9903013754045308
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 5120
+    }
+  ],
+  "consistent_regressions": [
+    {
+      "job": 22799783,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "NT",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9795490932525098,
+      "after_cost_percent": 2.087787828947363,
+      "round_ratios": [
+        0.9806451612903225,
+        0.9790662332303419,
+        0.9779480621482011
+      ],
+      "local_bytes_before": 7168,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799785,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9903227757504889,
+      "after_cost_percent": 0.9771788033631212,
+      "round_ratios": [
+        0.9870970343339852,
+        0.9935081299583673,
+        0.9887280851834706
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799787,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "NT",
+      "config": "base",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9596924614865716,
+      "after_cost_percent": 4.200047424670994,
+      "round_ratios": [
+        0.9603129422097884,
+        0.9603385849489806,
+        0.9539003494304
+      ],
+      "local_bytes_before": 12288,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799787,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "NT",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.7934383904535508,
+      "after_cost_percent": 26.03373015873016,
+      "round_ratios": [
+        0.7909352812455723,
+        0.795985516372796,
+        0.7934383904535508
+      ],
+      "local_bytes_before": 12288,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799788,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "TN",
+      "config": "base",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9861195977700832,
+      "after_cost_percent": 1.407577971404761,
+      "round_ratios": [
+        0.9843092880716643,
+        0.9903052649111915,
+        0.9861195977700832
+      ],
+      "local_bytes_before": 10240,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799788,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "TN",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9753091182654655,
+      "after_cost_percent": 2.531595498506767,
+      "round_ratios": [
+        0.9753091182654655,
+        0.97230822484183,
+        0.984520423366421
+      ],
+      "local_bytes_before": 10240,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799790,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "TT",
+      "config": "base",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9500589377976726,
+      "after_cost_percent": 5.2566277959655405,
+      "round_ratios": [
+        0.9500330687830688,
+        0.9473069843860349,
+        0.9500589377976726
+      ],
+      "local_bytes_before": 14336,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799790,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "TT",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.8842650780806116,
+      "after_cost_percent": 13.088261064273055,
+      "round_ratios": [
+        0.8842995127494361,
+        0.8791208791208791,
+        0.884280303030303
+      ],
+      "local_bytes_before": 14336,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799791,
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.992914979757085,
+      "after_cost_percent": 0.7135575942915473,
+      "round_ratios": [
+        0.995563516578584,
+        0.989344257769582,
+        0.9964491936019114
+      ],
+      "local_bytes_before": 14336,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799793,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9867785917990991,
+      "after_cost_percent": 1.3398555978799243,
+      "round_ratios": [
+        0.9883909586528675,
+        0.987096904265078,
+        0.9838971024848784
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799793,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "no_reuse",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9919094669350027,
+      "after_cost_percent": 0.8156523689603512,
+      "round_ratios": [
+        0.9871176819879027,
+        0.9902913603220033,
+        0.995137812623454
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799793,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "no_fusion",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9886998246003105,
+      "after_cost_percent": 1.1429328820056872,
+      "round_ratios": [
+        0.987127616747182,
+        0.9935376867143334,
+        0.9886998246003105
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799793,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "no_accumulator",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9871176819879027,
+      "after_cost_percent": 1.3050437903365575,
+      "round_ratios": [
+        0.9887179074284679,
+        0.9839487966613497,
+        0.9903013754045308
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 5120
+    }
+  ],
+  "comparisons": [
+    {
+      "job": 22799782,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "NN",
+      "config": "base",
+      "active": false,
+      "identical_source": true,
+      "before_over_after": 1.0004432807178394,
+      "after_cost_percent": -0.0443084307109709,
+      "round_ratios": [
+        0.9995622258749287,
+        1.000440526208556,
+        1.0013227440324954
+      ],
+      "local_bytes_before": 5120,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799782,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "NN",
+      "config": "all",
+      "active": false,
+      "identical_source": true,
+      "before_over_after": 1.0,
+      "after_cost_percent": 0.0,
+      "round_ratios": [
+        1.0032102728731942,
+        1.0016,
+        0.9984
+      ],
+      "local_bytes_before": 5120,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799783,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "NT",
+      "config": "base",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 1.0044376973928875,
+      "after_cost_percent": -0.4418091240906197,
+      "round_ratios": [
+        1.0040019760103462,
+        1.0035464532694474,
+        1.0048845199571494
+      ],
+      "local_bytes_before": 7168,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799783,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "NT",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9795490932525098,
+      "after_cost_percent": 2.087787828947363,
+      "round_ratios": [
+        0.9806451612903225,
+        0.9790662332303419,
+        0.9779480621482011
+      ],
+      "local_bytes_before": 7168,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799784,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TN",
+      "config": "base",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 1.0050145997983713,
+      "after_cost_percent": -0.4989579056241866,
+      "round_ratios": [
+        1.0041814449360378,
+        1.0050172115690996,
+        1.0058526308085205
+      ],
+      "local_bytes_before": 6144,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799784,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TN",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 1.0096307220031902,
+      "after_cost_percent": -0.9538855933466484,
+      "round_ratios": [
+        1.0096307220031902,
+        1.0080155696672386,
+        1.0096307220031902
+      ],
+      "local_bytes_before": 6144,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799785,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "base",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 1.0038130976879311,
+      "after_cost_percent": -0.3798613204702983,
+      "round_ratios": [
+        1.004235927191546,
+        1.003787819005382,
+        1.0037894138513603
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799785,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9903227757504889,
+      "after_cost_percent": 0.9771788033631212,
+      "round_ratios": [
+        0.9870970343339852,
+        0.9935081299583673,
+        0.9887280851834706
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799786,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "NN",
+      "config": "base",
+      "active": false,
+      "identical_source": true,
+      "before_over_after": 1.0006447401294316,
+      "after_cost_percent": -0.06443247074363612,
+      "round_ratios": [
+        1.0051853740877021,
+        1.0006475199182758,
+        0.9980657796117053
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799786,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "NN",
+      "config": "all",
+      "active": false,
+      "identical_source": true,
+      "before_over_after": 1.003195273406885,
+      "after_cost_percent": -0.3185096153846212,
+      "round_ratios": [
+        1.0032154340836013,
+        1.0032251602564102,
+        0.9967645344747895
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799787,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "NT",
+      "config": "base",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9596924614865716,
+      "after_cost_percent": 4.200047424670994,
+      "round_ratios": [
+        0.9603129422097884,
+        0.9603385849489806,
+        0.9539003494304
+      ],
+      "local_bytes_before": 12288,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799787,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "NT",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.7934383904535508,
+      "after_cost_percent": 26.03373015873016,
+      "round_ratios": [
+        0.7909352812455723,
+        0.795985516372796,
+        0.7934383904535508
+      ],
+      "local_bytes_before": 12288,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799788,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "TN",
+      "config": "base",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9861195977700832,
+      "after_cost_percent": 1.407577971404761,
+      "round_ratios": [
+        0.9843092880716643,
+        0.9903052649111915,
+        0.9861195977700832
+      ],
+      "local_bytes_before": 10240,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799788,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "TN",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9753091182654655,
+      "after_cost_percent": 2.531595498506767,
+      "round_ratios": [
+        0.9753091182654655,
+        0.97230822484183,
+        0.984520423366421
+      ],
+      "local_bytes_before": 10240,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799790,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "TT",
+      "config": "base",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9500589377976726,
+      "after_cost_percent": 5.2566277959655405,
+      "round_ratios": [
+        0.9500330687830688,
+        0.9473069843860349,
+        0.9500589377976726
+      ],
+      "local_bytes_before": 14336,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799790,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f32",
+      "layout": "TT",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.8842650780806116,
+      "after_cost_percent": 13.088261064273055,
+      "round_ratios": [
+        0.8842995127494361,
+        0.8791208791208791,
+        0.884280303030303
+      ],
+      "local_bytes_before": 14336,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799791,
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "base",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 1.0066459869661515,
+      "after_cost_percent": -0.6602109432911285,
+      "round_ratios": [
+        1.0059296185856992,
+        1.007363300183637,
+        1.0073595404774727
+      ],
+      "local_bytes_before": 14336,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799791,
+      "shape": [
+        32,
+        16,
+        64
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.992914979757085,
+      "after_cost_percent": 0.7135575942915473,
+      "round_ratios": [
+        0.995563516578584,
+        0.989344257769582,
+        0.9964491936019114
+      ],
+      "local_bytes_before": 14336,
+      "local_bytes_after": 8192
+    },
+    {
+      "job": 22799793,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "all",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9867785917990991,
+      "after_cost_percent": 1.3398555978799243,
+      "round_ratios": [
+        0.9883909586528675,
+        0.987096904265078,
+        0.9838971024848784
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799793,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "no_staging",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 1.0097836336544124,
+      "after_cost_percent": -0.9688841577878748,
+      "round_ratios": [
+        1.0097836336544124,
+        1.010287734573228,
+        1.007711256636145
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799793,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "no_reuse",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9919094669350027,
+      "after_cost_percent": 0.8156523689603512,
+      "round_ratios": [
+        0.9871176819879027,
+        0.9902913603220033,
+        0.995137812623454
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799793,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "no_fusion",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9886998246003105,
+      "after_cost_percent": 1.1429328820056872,
+      "round_ratios": [
+        0.987127616747182,
+        0.9935376867143334,
+        0.9886998246003105
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799793,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "no_accumulator",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 0.9871176819879027,
+      "after_cost_percent": 1.3050437903365575,
+      "round_ratios": [
+        0.9887179074284679,
+        0.9839487966613497,
+        0.9903013754045308
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799793,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "no_tiling",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 1.0052218895080818,
+      "after_cost_percent": -0.5194763029520932,
+      "round_ratios": [
+        1.0052218895080818,
+        1.005230048710438,
+        0.9999918515017682
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 5120
+    },
+    {
+      "job": 22799793,
+      "shape": [
+        16,
+        32,
+        32
+      ],
+      "dtype": "f16",
+      "layout": "TT",
+      "config": "no_unroll",
+      "active": true,
+      "identical_source": false,
+      "before_over_after": 1.0,
+      "after_cost_percent": 0.0,
+      "round_ratios": [
+        1.0031796186444888,
+        0.9968153183188861,
+        1.0015948804338075
+      ],
+      "local_bytes_before": 8192,
+      "local_bytes_after": 5120
+    }
+  ],
+  "failed_baseline_job": 22799792,
+  "baseline_probe_records": 20,
+  "baseline_probe_mismatches": 2
+}
