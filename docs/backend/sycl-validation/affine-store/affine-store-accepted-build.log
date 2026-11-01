@@ -1,0 +1,4 @@
+ninja: Entering directory `build/cmake.linux-x86_64-cpython-3.11'
+[1/3] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/SerialHalfCopyGuard.cpp.o
+[2/3] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/TerminalStoreDistribution.cpp.o
+[3/3] Linking CXX shared library /work1/dtune/zzx/triton/triton-ocl/python/triton/_C/libtriton.so

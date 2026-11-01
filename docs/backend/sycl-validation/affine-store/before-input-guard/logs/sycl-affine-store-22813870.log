@@ -1,0 +1,22 @@
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+python/triton/_C/libtriton.so: OK
+python/triton/_C/triton-sycl-translate: OK
+third_party/sycl/lib/Conversion/LinalgToAffineLoops/TerminalStoreDistribution.cpp: OK
+python/test/sycl/affine_store_semantics.py: OK
+python/test/sycl/affine_store_cases.py: OK
+h01r1n07
+gfx906:sramecc-:xnack-
+HIP_DEVICE=Device 66a1 COUNT=4
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"variant": "original", "block": 1, "status": "MISMATCH", "mismatch_count": 504, "mismatches": [{"index": 12, "got": 0, "want": 1024}, {"index": 14, "got": 0, "want": 1023}, {"index": 16, "got": 0, "want": 1}, {"index": 18, "got": 0, "want": 32001}, {"index": 22, "got": 0, "want": 48128}, {"index": 24, "got": 0, "want": 32768}, {"index": 28, "got": 0, "want": 33792}, {"index": 32, "got": 0, "want": 32769}], "error": null, "source_sha256": "833f090192c3404d386bf7cd81e70f0ed2b4358219d38ff7e1cdf131f4c33dc3"}
+{"variant": "original", "block": 3, "status": "PASS", "mismatch_count": 0, "mismatches": [], "error": null, "source_sha256": "833f090192c3404d386bf7cd81e70f0ed2b4358219d38ff7e1cdf131f4c33dc3"}
+{"variant": "original", "block": 48, "status": "PASS", "mismatch_count": 0, "mismatches": [], "error": null, "source_sha256": "833f090192c3404d386bf7cd81e70f0ed2b4358219d38ff7e1cdf131f4c33dc3"}
+{"variant": "original", "block": [3, 5], "status": "PASS", "mismatch_count": 0, "mismatches": [], "error": null, "source_sha256": "833f090192c3404d386bf7cd81e70f0ed2b4358219d38ff7e1cdf131f4c33dc3"}
+{"variant": "original", "block": 64, "status": "PASS", "mismatch_count": 0, "mismatches": [], "error": null, "source_sha256": "833f090192c3404d386bf7cd81e70f0ed2b4358219d38ff7e1cdf131f4c33dc3"}
+{"variant": "input_bits", "block": 1, "status": "PASS", "mismatch_count": 0, "mismatches": [], "error": null, "source_sha256": "965ed0825cb83d19ea85f572ba36bd7eb3605957cc5fd9e2306ecbc4a5bb8409"}
+{"variant": "input_bits", "block": 3, "status": "PASS", "mismatch_count": 0, "mismatches": [], "error": null, "source_sha256": "965ed0825cb83d19ea85f572ba36bd7eb3605957cc5fd9e2306ecbc4a5bb8409"}
+{"variant": "input_bits", "block": 48, "status": "PASS", "mismatch_count": 0, "mismatches": [], "error": null, "source_sha256": "965ed0825cb83d19ea85f572ba36bd7eb3605957cc5fd9e2306ecbc4a5bb8409"}
+{"variant": "input_bits", "block": [3, 5], "status": "PASS", "mismatch_count": 0, "mismatches": [], "error": null, "source_sha256": "965ed0825cb83d19ea85f572ba36bd7eb3605957cc5fd9e2306ecbc4a5bb8409"}
+{"variant": "input_bits", "block": 64, "status": "PASS", "mismatch_count": 0, "mismatches": [], "error": null, "source_sha256": "965ed0825cb83d19ea85f572ba36bd7eb3605957cc5fd9e2306ecbc4a5bb8409"}

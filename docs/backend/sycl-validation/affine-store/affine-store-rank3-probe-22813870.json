@@ -1,0 +1,139 @@
+[
+  {
+    "variant": "original",
+    "block": 1,
+    "status": "MISMATCH",
+    "mismatch_count": 504,
+    "mismatches": [
+      {
+        "index": 12,
+        "got": 0,
+        "want": 1024
+      },
+      {
+        "index": 14,
+        "got": 0,
+        "want": 1023
+      },
+      {
+        "index": 16,
+        "got": 0,
+        "want": 1
+      },
+      {
+        "index": 18,
+        "got": 0,
+        "want": 32001
+      },
+      {
+        "index": 22,
+        "got": 0,
+        "want": 48128
+      },
+      {
+        "index": 24,
+        "got": 0,
+        "want": 32768
+      },
+      {
+        "index": 28,
+        "got": 0,
+        "want": 33792
+      },
+      {
+        "index": 32,
+        "got": 0,
+        "want": 32769
+      }
+    ],
+    "error": null,
+    "source_sha256": "833f090192c3404d386bf7cd81e70f0ed2b4358219d38ff7e1cdf131f4c33dc3"
+  },
+  {
+    "variant": "original",
+    "block": 3,
+    "status": "PASS",
+    "mismatch_count": 0,
+    "mismatches": [],
+    "error": null,
+    "source_sha256": "833f090192c3404d386bf7cd81e70f0ed2b4358219d38ff7e1cdf131f4c33dc3"
+  },
+  {
+    "variant": "original",
+    "block": 48,
+    "status": "PASS",
+    "mismatch_count": 0,
+    "mismatches": [],
+    "error": null,
+    "source_sha256": "833f090192c3404d386bf7cd81e70f0ed2b4358219d38ff7e1cdf131f4c33dc3"
+  },
+  {
+    "variant": "original",
+    "block": [
+      3,
+      5
+    ],
+    "status": "PASS",
+    "mismatch_count": 0,
+    "mismatches": [],
+    "error": null,
+    "source_sha256": "833f090192c3404d386bf7cd81e70f0ed2b4358219d38ff7e1cdf131f4c33dc3"
+  },
+  {
+    "variant": "original",
+    "block": 64,
+    "status": "PASS",
+    "mismatch_count": 0,
+    "mismatches": [],
+    "error": null,
+    "source_sha256": "833f090192c3404d386bf7cd81e70f0ed2b4358219d38ff7e1cdf131f4c33dc3"
+  },
+  {
+    "variant": "input_bits",
+    "block": 1,
+    "status": "PASS",
+    "mismatch_count": 0,
+    "mismatches": [],
+    "error": null,
+    "source_sha256": "965ed0825cb83d19ea85f572ba36bd7eb3605957cc5fd9e2306ecbc4a5bb8409"
+  },
+  {
+    "variant": "input_bits",
+    "block": 3,
+    "status": "PASS",
+    "mismatch_count": 0,
+    "mismatches": [],
+    "error": null,
+    "source_sha256": "965ed0825cb83d19ea85f572ba36bd7eb3605957cc5fd9e2306ecbc4a5bb8409"
+  },
+  {
+    "variant": "input_bits",
+    "block": 48,
+    "status": "PASS",
+    "mismatch_count": 0,
+    "mismatches": [],
+    "error": null,
+    "source_sha256": "965ed0825cb83d19ea85f572ba36bd7eb3605957cc5fd9e2306ecbc4a5bb8409"
+  },
+  {
+    "variant": "input_bits",
+    "block": [
+      3,
+      5
+    ],
+    "status": "PASS",
+    "mismatch_count": 0,
+    "mismatches": [],
+    "error": null,
+    "source_sha256": "965ed0825cb83d19ea85f572ba36bd7eb3605957cc5fd9e2306ecbc4a5bb8409"
+  },
+  {
+    "variant": "input_bits",
+    "block": 64,
+    "status": "PASS",
+    "mismatch_count": 0,
+    "mismatches": [],
+    "error": null,
+    "source_sha256": "965ed0825cb83d19ea85f572ba36bd7eb3605957cc5fd9e2306ecbc4a5bb8409"
+  }
+]

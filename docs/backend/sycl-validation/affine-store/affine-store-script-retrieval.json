@@ -1,0 +1,176 @@
+[
+  {
+    "job": 22814525,
+    "retrieved": true,
+    "stdout": "batch script for job 22814525 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814525.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814527,
+    "retrieved": true,
+    "stdout": "batch script for job 22814527 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814527.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814528,
+    "retrieved": true,
+    "stdout": "batch script for job 22814528 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814528.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814529,
+    "retrieved": true,
+    "stdout": "batch script for job 22814529 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814529.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814530,
+    "retrieved": true,
+    "stdout": "batch script for job 22814530 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814530.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814531,
+    "retrieved": true,
+    "stdout": "batch script for job 22814531 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814531.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814532,
+    "retrieved": true,
+    "stdout": "batch script for job 22814532 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814532.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814533,
+    "retrieved": true,
+    "stdout": "batch script for job 22814533 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814533.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814534,
+    "retrieved": true,
+    "stdout": "batch script for job 22814534 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814534.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814535,
+    "retrieved": true,
+    "stdout": "batch script for job 22814535 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814535.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814536,
+    "retrieved": true,
+    "stdout": "batch script for job 22814536 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814536.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814537,
+    "retrieved": true,
+    "stdout": "batch script for job 22814537 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814537.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814538,
+    "retrieved": true,
+    "stdout": "batch script for job 22814538 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814538.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814539,
+    "retrieved": true,
+    "stdout": "batch script for job 22814539 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814539.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814540,
+    "retrieved": true,
+    "stdout": "batch script for job 22814540 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814540.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814541,
+    "retrieved": true,
+    "stdout": "batch script for job 22814541 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814541.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814542,
+    "retrieved": true,
+    "stdout": "batch script for job 22814542 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814542.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814543,
+    "retrieved": true,
+    "stdout": "batch script for job 22814543 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814543.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814544,
+    "retrieved": true,
+    "stdout": "batch script for job 22814544 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814544.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814545,
+    "retrieved": true,
+    "stdout": "batch script for job 22814545 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814545.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814546,
+    "retrieved": true,
+    "stdout": "batch script for job 22814546 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814546.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814547,
+    "retrieved": true,
+    "stdout": "batch script for job 22814547 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814547.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814548,
+    "retrieved": true,
+    "stdout": "batch script for job 22814548 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814548.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814549,
+    "retrieved": true,
+    "stdout": "batch script for job 22814549 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814549.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814550,
+    "retrieved": true,
+    "stdout": "batch script for job 22814550 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814550.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814551,
+    "retrieved": true,
+    "stdout": "batch script for job 22814551 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814551.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814552,
+    "retrieved": true,
+    "stdout": "batch script for job 22814552 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814552.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814553,
+    "retrieved": true,
+    "stdout": "batch script for job 22814553 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814553.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22814554,
+    "retrieved": true,
+    "stdout": "batch script for job 22814554 written to /public/home/dtune/zzx/triton/gap-validation/next/affine-store-submitted-22814554.sbatch\n",
+    "stderr": ""
+  }
+]

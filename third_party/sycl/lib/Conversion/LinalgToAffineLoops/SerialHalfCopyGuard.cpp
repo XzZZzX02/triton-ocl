@@ -17,7 +17,7 @@ static bool isLocalHalf(Value value) {
          alloc.getType().getLayout().isIdentity();
 }
 
-static bool isExternalHalfOutput(Value value) {
+static bool isExternalHalfView(Value value) {
   auto view = value.getDefiningOp<memref::ReinterpretCastOp>();
   if (!view || !view.getType().getElementType().isF16() ||
       view.getType().getRank() != 1 || view.getType().getDimSize(0) != 1)
@@ -31,8 +31,9 @@ static bool isExternalHalfOutput(Value value) {
 
 static CopyGuard classifyCopy(Operation *load, Operation *store, Value from,
                               Value to, Value value) {
-  if (!isLocalHalf(from) ||
-      !(isLocalHalf(to) || isExternalHalfOutput(to)) ||
+  if (!(isLocalHalf(from) ||
+        (isExternalHalfView(from) && isLocalHalf(to))) ||
+      !(isLocalHalf(to) || isExternalHalfView(to)) ||
       !value.hasOneUse() ||
       !store->getParentOfType<affine::AffineForOp>())
     return CopyGuard::None;
@@ -41,7 +42,7 @@ static CopyGuard classifyCopy(Operation *load, Operation *store, Value from,
        parent = parent->getParentOp())
     if (parent->hasAttr("sycl.distribute")) {
       if (parent->hasAttr("sycl.half_store_distribution") &&
-          isExternalHalfOutput(to))
+          isExternalHalfView(to))
         protectedOutput = true;
       else if (isLocalHalf(to))
         singleLane = true;
@@ -49,6 +50,11 @@ static CopyGuard classifyCopy(Operation *load, Operation *store, Value from,
         return CopyGuard::None;
     }
   if (!protectedOutput && load->getBlock() != store->getBlock())
+    return CopyGuard::None;
+  // Direct unmasked external-to-local staging exhibits the same one-work-item
+  // hazard. Serial external loads keep their original path; this extension
+  // protects only explicitly distributed direct copies into local storage.
+  if (!singleLane && !isLocalHalf(from))
     return CopyGuard::None;
   return singleLane ? CopyGuard::SingleLane : CopyGuard::Always;
 }
@@ -61,7 +67,8 @@ static CopyGuard classifyCopy(Operation *load, Operation *store, Value from,
 // or a scheduling optimization. Run after scheduling so proven distributed
 // copies retain their normal emission, except the explicit half-output schedule
 // which requires guarded accesses even after distribution.
-// A distributed local copy can also execute with one work-item. Guard that
+// A distributed local copy or external-to-local stage can execute with one
+// work-item. Guard that
 // runtime ownership case; keep aggregate copies for larger local ranges.
 // Replanning makes the pass idempotent
 // and removes stale guards when a caller has changed work ownership.

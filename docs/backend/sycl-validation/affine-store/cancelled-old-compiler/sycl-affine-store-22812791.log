@@ -1,0 +1,12 @@
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+python/triton/_C/libtriton.so: OK
+python/triton/_C/triton-sycl-translate: OK
+third_party/sycl/lib/Conversion/LinalgToAffineLoops/TerminalStoreDistribution.cpp: OK
+python/test/sycl/affine_store_semantics.py: OK
+python/test/sycl/affine_store_cases.py: OK
+h01r4n09
+gfx906:sramecc-:xnack-
+HIP_DEVICE=Device 66a1 COUNT=4
+slurmstepd: error: *** JOB 22812791 ON h01r4n09 CANCELLED AT 2026-11-01T23:28:11 ***

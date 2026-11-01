@@ -1,0 +1,20 @@
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+Traceback (most recent call last):
+  File "/work1/dtune/zzx/triton/triton-ocl/python/test/sycl/affine_store_semantics.py", line 70, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/work1/dtune/zzx/triton/triton-ocl/python/test/sycl/affine_store_semantics.py", line 54, in main
+    run_standalone(args.grid,1,1,'affine_copy',code,[x,y,1],block_size=block)
+  File "/work1/dtune/zzx/triton/triton-ocl/python/triton/backends/sycl/sycl_utils.py", line 625, in run_standalone
+    main_src = generate_standalone_wrapper(kernel_name, source_code, bound_args, signature=signature, metadata=metadata, block_size=block_size)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work1/dtune/zzx/triton/triton-ocl/python/triton/backends/sycl/sycl_utils.py", line 487, in generate_standalone_wrapper
+    runtime_args = _runtime_arguments(kernel_name, source_code, list(bound_args), signature)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work1/dtune/zzx/triton/triton-ocl/python/triton/backends/sycl/sycl_utils.py", line 232, in _runtime_arguments
+    result.append((index, ty, element_type, arg, _buffer_nbytes(arg, element_type)))
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work1/dtune/zzx/triton/triton-ocl/python/triton/backends/sycl/sycl_utils.py", line 141, in _buffer_nbytes
+    raise ValueError(
+ValueError: pointer ABI says fp32, but the supplied buffer has dtype u32

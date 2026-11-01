@@ -131,6 +131,30 @@ def main():
         assert 'sycl.scalar_half_bits' not in str(mod)
         rows.append(dict(dtype=dtype,variant='stale_single_lane',markers=0,
                          single_lane_markers=2*int(dtype=='f16'),status='PASS'))
+    for dtype,dialect,store_dialect,distributed in itertools.product(
+        ('f16','f32'),('affine','memref'),('affine','memref'),(False,True)):
+        mark=' {sycl.distribute, sycl.distribution_depth = 1 : i64}' if distributed else ''
+        text=f'''module {{func.func @input(%input:memref<*x{dtype}>) {{
+          %zero = arith.constant 0 : index
+          %a = memref.alloc() : memref<512x{dtype}>
+          affine.for %i = 0 to 512 {{
+            %view = memref.reinterpret_cast %input to offset:[%i], sizes:[1], strides:[1] : memref<*x{dtype}> to memref<1x{dtype}, strided<[1], offset: ?>>
+            %v = {dialect}.load %view[%zero] : memref<1x{dtype}, strided<[1], offset: ?>>
+            {store_dialect}.store %v,%a[%i] : memref<512x{dtype}>
+          }}{mark}
+          return
+        }} }}'''
+        with tempfile.NamedTemporaryFile(mode='w',suffix='.mlir') as f:
+            f.write(text);f.flush();mod=ir.parse_mlir_module(f.name,ctx)
+        pm=ir.pass_manager(ctx);sycl.passes.memir.serial_half_copy_guard(pm);pm.run(mod)
+        first=str(mod);expected=2*int(dtype=='f16' and distributed)
+        assert first.count('sycl.single_lane_half_bits')==expected,first
+        assert 'sycl.scalar_half_bits' not in first
+        pm=ir.pass_manager(ctx);sycl.passes.memir.serial_half_copy_guard(pm);pm.run(mod)
+        assert str(mod)==first
+        rows.append(dict(dtype=dtype,dialect=dialect,store_dialect=store_dialect,
+            distributed=distributed,variant='external_input',markers=0,
+            single_lane_markers=expected,status='PASS'))
     pathlib.Path(args.output).write_text(json.dumps(rows,indent=2)+'\n')
     print(json.dumps(dict(status='PASS',count=len(rows))))
 

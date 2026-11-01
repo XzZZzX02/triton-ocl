@@ -1,0 +1,98 @@
+[
+  {
+    "variant": "original",
+    "block": 1,
+    "status": "EXECUTION_ERROR",
+    "mismatch_count": 0,
+    "mismatches": [],
+    "error": "AttributeError(\"'Raw' object has no attribute 'words'\")",
+    "source_sha256": "833f090192c3404d386bf7cd81e70f0ed2b4358219d38ff7e1cdf131f4c33dc3"
+  },
+  {
+    "variant": "original",
+    "block": 3,
+    "status": "EXECUTION_ERROR",
+    "mismatch_count": 0,
+    "mismatches": [],
+    "error": "AttributeError(\"'Raw' object has no attribute 'words'\")",
+    "source_sha256": "833f090192c3404d386bf7cd81e70f0ed2b4358219d38ff7e1cdf131f4c33dc3"
+  },
+  {
+    "variant": "original",
+    "block": 48,
+    "status": "EXECUTION_ERROR",
+    "mismatch_count": 0,
+    "mismatches": [],
+    "error": "AttributeError(\"'Raw' object has no attribute 'words'\")",
+    "source_sha256": "833f090192c3404d386bf7cd81e70f0ed2b4358219d38ff7e1cdf131f4c33dc3"
+  },
+  {
+    "variant": "original",
+    "block": [
+      3,
+      5
+    ],
+    "status": "EXECUTION_ERROR",
+    "mismatch_count": 0,
+    "mismatches": [],
+    "error": "AttributeError(\"'Raw' object has no attribute 'words'\")",
+    "source_sha256": "833f090192c3404d386bf7cd81e70f0ed2b4358219d38ff7e1cdf131f4c33dc3"
+  },
+  {
+    "variant": "original",
+    "block": 64,
+    "status": "EXECUTION_ERROR",
+    "mismatch_count": 0,
+    "mismatches": [],
+    "error": "AttributeError(\"'Raw' object has no attribute 'words'\")",
+    "source_sha256": "833f090192c3404d386bf7cd81e70f0ed2b4358219d38ff7e1cdf131f4c33dc3"
+  },
+  {
+    "variant": "input_bits",
+    "block": 1,
+    "status": "EXECUTION_ERROR",
+    "mismatch_count": 0,
+    "mismatches": [],
+    "error": "AttributeError(\"'Raw' object has no attribute 'words'\")",
+    "source_sha256": "965ed0825cb83d19ea85f572ba36bd7eb3605957cc5fd9e2306ecbc4a5bb8409"
+  },
+  {
+    "variant": "input_bits",
+    "block": 3,
+    "status": "EXECUTION_ERROR",
+    "mismatch_count": 0,
+    "mismatches": [],
+    "error": "AttributeError(\"'Raw' object has no attribute 'words'\")",
+    "source_sha256": "965ed0825cb83d19ea85f572ba36bd7eb3605957cc5fd9e2306ecbc4a5bb8409"
+  },
+  {
+    "variant": "input_bits",
+    "block": 48,
+    "status": "EXECUTION_ERROR",
+    "mismatch_count": 0,
+    "mismatches": [],
+    "error": "AttributeError(\"'Raw' object has no attribute 'words'\")",
+    "source_sha256": "965ed0825cb83d19ea85f572ba36bd7eb3605957cc5fd9e2306ecbc4a5bb8409"
+  },
+  {
+    "variant": "input_bits",
+    "block": [
+      3,
+      5
+    ],
+    "status": "EXECUTION_ERROR",
+    "mismatch_count": 0,
+    "mismatches": [],
+    "error": "AttributeError(\"'Raw' object has no attribute 'words'\")",
+    "source_sha256": "965ed0825cb83d19ea85f572ba36bd7eb3605957cc5fd9e2306ecbc4a5bb8409"
+  },
+  {
+    "variant": "input_bits",
+    "block": 64,
+    "status": "EXECUTION_ERROR",
+    "mismatch_count": 0,
+    "mismatches": [],
+    "error": "AttributeError(\"'Raw' object has no attribute 'words'\")",
+    "source_sha256": "965ed0825cb83d19ea85f572ba36bd7eb3605957cc5fd9e2306ecbc4a5bb8409"
+  }
+]

@@ -90,9 +90,69 @@ static bool assignChecked(int64_t &out, __int128 value) {
 }
 static std::optional<LinearForm> addressForm(
     Value value, affine::AffineForOp root, ArrayRef<affine::AffineForOp> loops,
-    func::FuncOp function, DenseSet<Value> &uniform, unsigned depth = 0) {
-  if (depth > 64 || width(value.getType()) < 32 || width(value.getType()) > 64)
+    func::FuncOp function, DenseSet<Value> &uniform, unsigned depth,
+    bool allowAffine, unsigned &budget);
+
+// Interpret only the linear subset of affine maps. Substitute SSA operands
+// recursively so narrow integer wrap through index casts retains its weakest
+// congruence width. Uniform symbols affect the base, never justify uniqueness.
+static std::optional<LinearForm> affineAddressForm(
+    AffineExpr expr, unsigned dims, ValueRange operands,
+    affine::AffineForOp root, ArrayRef<affine::AffineForOp> loops,
+    func::FuncOp function, DenseSet<Value> &uniform, unsigned depth,
+    unsigned &budget) {
+  if (depth > 64 || !budget) return std::nullopt;
+  --budget;
+  if (auto dim = dyn_cast<AffineDimExpr>(expr))
+    return addressForm(operands[dim.getPosition()], root, loops, function,
+                       uniform, depth+1, true, budget);
+  if (auto symbol = dyn_cast<AffineSymbolExpr>(expr))
+    return addressForm(operands[dims+symbol.getPosition()], root, loops,
+                       function, uniform, depth+1, true, budget);
+  if (isa<AffineConstantExpr>(expr))
+    return LinearForm{SmallVector<int64_t>(loops.size(), 0), 64};
+  auto binary = dyn_cast<AffineBinaryOpExpr>(expr);
+  if (!binary) return std::nullopt;
+  if (binary.getKind() == AffineExprKind::Add) {
+    auto a = affineAddressForm(binary.getLHS(), dims, operands, root, loops,
+                               function, uniform, depth+1, budget);
+    auto b = affineAddressForm(binary.getRHS(), dims, operands, root, loops,
+                               function, uniform, depth+1, budget);
+    if (!a || !b) return std::nullopt;
+    a->bits = std::min(a->bits, b->bits);
+    for (unsigned i = 0; i < loops.size(); ++i)
+      if (!assignChecked(a->coefficients[i],
+                         __int128(a->coefficients[i])+b->coefficients[i]))
+        return std::nullopt;
+    return a;
+  }
+  if (binary.getKind() == AffineExprKind::Mul) {
+    auto coefficient = dyn_cast<AffineConstantExpr>(binary.getRHS());
+    auto input = binary.getLHS();
+    if (!coefficient) {
+      coefficient = dyn_cast<AffineConstantExpr>(binary.getLHS());
+      input = binary.getRHS();
+    }
+    if (!coefficient) return std::nullopt; // No dynamic symbolic stride.
+    auto form = affineAddressForm(input, dims, operands, root, loops, function,
+                                  uniform, depth+1, budget);
+    if (!form) return std::nullopt;
+    for (auto &value : form->coefficients)
+      if (!assignChecked(value, __int128(value)*coefficient.getValue()))
+        return std::nullopt;
+    return form;
+  }
+  // Floor/ceil division and modulo are not injective linear substitutions.
+  return std::nullopt;
+}
+static std::optional<LinearForm> addressForm(
+    Value value, affine::AffineForOp root, ArrayRef<affine::AffineForOp> loops,
+    func::FuncOp function, DenseSet<Value> &uniform, unsigned depth,
+    bool allowAffine, unsigned &budget) {
+  if (depth > 64 || !budget ||
+      width(value.getType()) < 32 || width(value.getType()) > 64)
     return std::nullopt;
+  --budget;
   LinearForm result{SmallVector<int64_t>(loops.size(), 0), width(value.getType())};
   for (unsigned i = 0; i < loops.size(); ++i)
     if (value == affine::AffineForOp(loops[i]).getInductionVar()) {
@@ -106,16 +166,23 @@ static std::optional<LinearForm> addressForm(
   auto *op = value.getDefiningOp();
   if (!op) return std::nullopt;
   if (isa<arith::ConstantOp>(op)) return result;
+  if (auto apply = dyn_cast<affine::AffineApplyOp>(op)) {
+    if (!allowAffine) return std::nullopt;
+    return affineAddressForm(apply.getAffineMap().getResult(0),
+                             apply.getAffineMap().getNumDims(),
+                             apply.getMapOperands(), root, loops,
+                             function, uniform, depth+1, budget);
+  }
   if (isa<arith::IndexCastOp, arith::IndexCastUIOp, arith::ExtSIOp,
           arith::ExtUIOp, arith::TruncIOp>(op)) {
-    auto input = addressForm(op->getOperand(0), root, loops, function, uniform, depth+1);
+    auto input = addressForm(op->getOperand(0), root, loops, function, uniform, depth+1, allowAffine, budget);
     if (!input) return std::nullopt;
     input->bits = std::min(input->bits, result.bits);
     return input;
   }
   if (isa<arith::AddIOp, arith::SubIOp>(op)) {
-    auto a = addressForm(op->getOperand(0), root, loops, function, uniform, depth+1);
-    auto b = addressForm(op->getOperand(1), root, loops, function, uniform, depth+1);
+    auto a = addressForm(op->getOperand(0), root, loops, function, uniform, depth+1, allowAffine, budget);
+    auto b = addressForm(op->getOperand(1), root, loops, function, uniform, depth+1, allowAffine, budget);
     if (!a || !b) return std::nullopt;
     result.bits = std::min({result.bits, a->bits, b->bits});
     for (unsigned i = 0; i < loops.size(); ++i)
@@ -128,7 +195,7 @@ static std::optional<LinearForm> addressForm(
     for (unsigned side = 0; side < 2; ++side) {
       auto constant = getConstantIntValue(op->getOperand(side));
       if (!constant) continue;
-      auto input = addressForm(op->getOperand(1-side), root, loops, function, uniform, depth+1);
+      auto input = addressForm(op->getOperand(1-side), root, loops, function, uniform, depth+1, allowAffine, budget);
       if (!input) return std::nullopt;
       input->bits = std::min(input->bits, result.bits);
       for (int64_t &coefficient : input->coefficients)
@@ -256,7 +323,14 @@ static bool planStore(affine::AffineForOp root, bool half = false) {
                element.isInteger(32) || element.isInteger(64))) return false;
   auto offset = dyn_cast<Value>(view.getMixedOffsets()[0]);
   if (!offset) return false;
-  auto form = addressForm(offset, root, loops, function, uniform);
+  // General linear-affine output copies had stable gfx906 regressions for
+  // wide values, including unit strides. Retain only the measured profitable
+  // class here: half copies whose serial path requires volatile bit accesses.
+  // The pre-existing wide arithmetic-address domain is unchanged.
+  // A depth bound alone does not bound repeated traversal of a shared SSA DAG.
+  // Exhausting this analysis budget conservatively retains the serial path.
+  unsigned budget = 1024;
+  auto form = addressForm(offset, root, loops, function, uniform, 0, half, budget);
   // Account for element-to-byte scaling of the 64-bit target pointer.
   unsigned pointerBits = half ? 63 :
       (element.isF64() || element.isInteger(64) ? 61 : 62);

@@ -1,0 +1,3 @@
+Linear affine half-store optimization, wide-copy rejection study and input guard repair.
+
+analysis.json separates accepted_half_* fields from broad_candidate_* and wide stride-probe evidence. The final accepted source is scoped to guarded f16 copies. measured-candidate/ preserves the broader version that was timed and partially rejected. first-matrix/, before-input-guard/ and cancelled-old-compiler/ preserve intermediate failures and build/test harness issues; none is treated as successful final timing evidence. The final 116-source replay establishes exact half-program identity and restores wide fallback. Raw generated source/logs keep native whitespace and EOF blanks. The readonly auditor needs no installed Triton package.

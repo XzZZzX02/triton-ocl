@@ -1,0 +1,118 @@
+#include "sycl/include/Conversion/LinalgToAffineLoops/Passes.h"
+#include "mlir/Dialect/Affine/IR/AffineOps.h"
+#include "mlir/Dialect/Func/IR/FuncOps.h"
+#include "mlir/Dialect/MemRef/IR/MemRef.h"
+#include "mlir/IR/BuiltinOps.h"
+
+using namespace mlir;
+namespace {
+constexpr StringLiteral guard = "sycl.scalar_half_bits";
+constexpr StringLiteral singleLaneGuard = "sycl.single_lane_half_bits";
+enum class CopyGuard { None, Always, SingleLane };
+
+static bool isLocalHalf(Value value) {
+  auto alloc = value.getDefiningOp<memref::AllocOp>();
+  return alloc && alloc.getType().getElementType().isF16() &&
+         alloc.getType().hasStaticShape() &&
+         alloc.getType().getLayout().isIdentity();
+}
+
+static bool isExternalHalfView(Value value) {
+  auto view = value.getDefiningOp<memref::ReinterpretCastOp>();
+  if (!view || !view.getType().getElementType().isF16() ||
+      view.getType().getRank() != 1 || view.getType().getDimSize(0) != 1)
+    return false;
+  auto argument = dyn_cast<BlockArgument>(view.getSource());
+  if (!argument || !isa<UnrankedMemRefType>(argument.getType()))
+    return false;
+  auto function = dyn_cast<func::FuncOp>(argument.getOwner()->getParentOp());
+  return function && argument.getOwner() == &function.front();
+}
+
+static CopyGuard classifyCopy(Operation *load, Operation *store, Value from,
+                              Value to, Value value) {
+  if (!(isLocalHalf(from) ||
+        (isExternalHalfView(from) && isLocalHalf(to))) ||
+      !(isLocalHalf(to) || isExternalHalfView(to)) ||
+      !value.hasOneUse() ||
+      !store->getParentOfType<affine::AffineForOp>())
+    return CopyGuard::None;
+  bool protectedOutput = false, singleLane = false;
+  for (Operation *parent = store->getParentOp(); parent;
+       parent = parent->getParentOp())
+    if (parent->hasAttr("sycl.distribute")) {
+      if (parent->hasAttr("sycl.half_store_distribution") &&
+          isExternalHalfView(to))
+        protectedOutput = true;
+      else if (isLocalHalf(to))
+        singleLane = true;
+      else
+        return CopyGuard::None;
+    }
+  if (!protectedOutput && load->getBlock() != store->getBlock())
+    return CopyGuard::None;
+  // Direct unmasked external-to-local staging exhibits the same one-work-item
+  // hazard. Serial external loads keep their original path; this extension
+  // protects only explicitly distributed direct copies into local storage.
+  if (!singleLane && !isLocalHalf(from))
+    return CopyGuard::None;
+  return singleLane ? CopyGuard::SingleLane : CopyGuard::Always;
+}
+
+// AdaptiveCpp 25.10 SSCP on gfx906 corrupts some serial local binary16
+// transposes and serial local-to-external copies even when loop vectorization
+// and interleaving are disabled.
+// Volatile accesses to the actual uint16_t storage member preserve the copy.
+// This is a code-generation correctness guard, not a floating-point conversion
+// or a scheduling optimization. Run after scheduling so proven distributed
+// copies retain their normal emission, except the explicit half-output schedule
+// which requires guarded accesses even after distribution.
+// A distributed local copy or external-to-local stage can execute with one
+// work-item. Guard that
+// runtime ownership case; keep aggregate copies for larger local ranges.
+// Replanning makes the pass idempotent
+// and removes stale guards when a caller has changed work ownership.
+struct SerialHalfCopyGuardPass
+    : PassWrapper<SerialHalfCopyGuardPass, OperationPass<ModuleOp>> {
+  MLIR_DEFINE_EXPLICIT_INTERNAL_INLINE_TYPE_ID(SerialHalfCopyGuardPass)
+  StringRef getArgument() const final { return "sycl-serial-half-copy-guard"; }
+  StringRef getDescription() const final {
+    return "Preserve serial local IEEE binary16 copies in SYCL emission";
+  }
+  void runOnOperation() override {
+    auto module = getOperation();
+    module.walk([](Operation *op) {
+      op->removeAttr(guard);
+      op->removeAttr(singleLaneGuard);
+    });
+    module.walk([&](Operation *op) {
+      Value value, to;
+      if (auto store = dyn_cast<affine::AffineStoreOp>(op)) {
+        value = store.getValueToStore();
+        to = store.getMemRef();
+      } else if (auto store = dyn_cast<memref::StoreOp>(op)) {
+        value = store.getValueToStore();
+        to = store.getMemRef();
+      } else return;
+      Value from;
+      auto *load = value.getDefiningOp();
+      if (auto read = dyn_cast_or_null<affine::AffineLoadOp>(load))
+        from = read.getMemRef();
+      else if (auto read = dyn_cast_or_null<memref::LoadOp>(load))
+        from = read.getMemRef();
+      else return;
+      CopyGuard kind = classifyCopy(load, op, from, to, value);
+      if (kind == CopyGuard::None) return;
+      auto attr = UnitAttr::get(&getContext());
+      auto name = kind == CopyGuard::Always ? guard : singleLaneGuard;
+      load->setAttr(name, attr);
+      op->setAttr(name, attr);
+    });
+  }
+};
+} // namespace
+
+std::unique_ptr<OperationPass<ModuleOp>>
+mlir::triton::sycl::createSerialHalfCopyGuardPass() {
+  return std::make_unique<SerialHalfCopyGuardPass>();
+}
