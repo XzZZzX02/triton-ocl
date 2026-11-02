@@ -1,0 +1,5 @@
+Official source basis, retrieved 2026-11-02.
+https://mlir.llvm.org/docs/Dialects/GPU/#gpuall_reduce-gpuallreduceop
+https://github.khronos.org/SYCL_Reference/iface/group-algorithms-library.html
+The MLIR GPU enum distinguishes MINSI/MAXSI/MINUI/MAXUI even though integer element types are signless. SYCL minimum/maximum require the comparison template type to match signedness. All participants must execute the group collective uniformly. This extension applies only to top-level eligible integer reducers and does not extend floating NaN/signed-zero reduction contracts. The operation is associative on the existing 32/64-bit integer domains; no new dtype conversion matrix or MFMA support is introduced.
+Browser requests returned no usable content; official documents were retrieved with curl. Pinned LLVM GPUOpsEnums.h.inc was also inspected to verify enum names. Source references motivate semantic choices, not profitability. Paired gfx906 event measurements and independent integer references determine acceptance.

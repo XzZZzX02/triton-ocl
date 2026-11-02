@@ -1,0 +1,134 @@
+[
+  {
+    "job": 22828102,
+    "retrieved": true,
+    "stdout": "batch script for job 22828102 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828102.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828103,
+    "retrieved": true,
+    "stdout": "batch script for job 22828103 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828103.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828104,
+    "retrieved": true,
+    "stdout": "batch script for job 22828104 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828104.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828105,
+    "retrieved": true,
+    "stdout": "batch script for job 22828105 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828105.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828106,
+    "retrieved": true,
+    "stdout": "batch script for job 22828106 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828106.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828107,
+    "retrieved": true,
+    "stdout": "batch script for job 22828107 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828107.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828108,
+    "retrieved": true,
+    "stdout": "batch script for job 22828108 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828108.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828109,
+    "retrieved": true,
+    "stdout": "batch script for job 22828109 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828109.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828110,
+    "retrieved": true,
+    "stdout": "batch script for job 22828110 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828110.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828111,
+    "retrieved": true,
+    "stdout": "batch script for job 22828111 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828111.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828112,
+    "retrieved": false,
+    "stdout": "",
+    "stderr": "job script retrieval failed: Invalid job id specified\n"
+  },
+  {
+    "job": 22828266,
+    "retrieved": true,
+    "stdout": "batch script for job 22828266 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828266.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828267,
+    "retrieved": true,
+    "stdout": "batch script for job 22828267 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828267.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828268,
+    "retrieved": true,
+    "stdout": "batch script for job 22828268 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828268.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828270,
+    "retrieved": true,
+    "stdout": "batch script for job 22828270 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828270.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828271,
+    "retrieved": true,
+    "stdout": "batch script for job 22828271 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828271.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828272,
+    "retrieved": true,
+    "stdout": "batch script for job 22828272 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828272.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828274,
+    "retrieved": true,
+    "stdout": "batch script for job 22828274 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828274.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828275,
+    "retrieved": true,
+    "stdout": "batch script for job 22828275 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828275.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828291,
+    "retrieved": true,
+    "stdout": "batch script for job 22828291 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828291.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828292,
+    "retrieved": true,
+    "stdout": "batch script for job 22828292 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828292.sbatch\n",
+    "stderr": ""
+  },
+  {
+    "job": 22828293,
+    "retrieved": true,
+    "stdout": "batch script for job 22828293 written to /public/home/dtune/zzx/triton/gap-validation/next/integer-extrema-submitted-22828293.sbatch\n",
+    "stderr": ""
+  }
+]

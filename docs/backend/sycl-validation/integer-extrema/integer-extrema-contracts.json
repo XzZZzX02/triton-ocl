@@ -1,0 +1,6658 @@
+[
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minsi",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxsi",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minui",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "plain",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "short",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "short256",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "short512",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "dynamic",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "conditional",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "nested",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "alias",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "multiuse",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "two_stores",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "permuted",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "rank2",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "private_input",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 32,
+    "variant": "unknown_load",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "plain",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": true,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "short",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "short256",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "short512",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "dynamic",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "conditional",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "nested",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "alias",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "multiuse",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "two_stores",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "permuted",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "rank2",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "private_input",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "unequal_extent",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxui",
+    "bits": 64,
+    "variant": "unknown_load",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxnumf",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxnumf",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxnumf",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxnumf",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maxnumf",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minnumf",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minnumf",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minnumf",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minnumf",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minnumf",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maximumf",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maximumf",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maximumf",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maximumf",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.maximumf",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minimumf",
+    "pipeline": [
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minimumf",
+    "pipeline": [
+      "register_accumulator",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minimumf",
+    "pipeline": [
+      "group_reduction",
+      "register_accumulator"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minimumf",
+    "pipeline": [
+      "group_reduction",
+      "local_memory_reuse"
+    ],
+    "selected": false,
+    "status": "PASS"
+  },
+  {
+    "op": "arith.minimumf",
+    "pipeline": [
+      "local_memory_reuse",
+      "group_reduction"
+    ],
+    "selected": false,
+    "status": "PASS"
+  }
+]

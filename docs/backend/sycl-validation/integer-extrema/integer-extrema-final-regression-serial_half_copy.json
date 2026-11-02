@@ -1,0 +1,3056 @@
+[
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "plain",
+    "markers": 2,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "conditional",
+    "markers": 2,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "stale",
+    "markers": 2,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "plain",
+    "markers": 2,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "conditional",
+    "markers": 2,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "stale",
+    "markers": 2,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "plain",
+    "markers": 2,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "conditional",
+    "markers": 2,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "stale",
+    "markers": 2,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "plain",
+    "markers": 2,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "conditional",
+    "markers": 2,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "stale",
+    "markers": 2,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "plain",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "conditional",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "external",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "arithmetic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "multiuse",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "no_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "stale",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "dynamic",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "nonidentity",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "bf16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "scf_loop",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "variant": "ownership_replanning",
+    "distributed": false,
+    "markers": 2,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "variant": "ownership_replanning",
+    "distributed": true,
+    "markers": 0,
+    "single_lane_markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "variant": "ownership_replanning",
+    "distributed": false,
+    "markers": 2,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "variant": "ownership_replanning",
+    "distributed": false,
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "variant": "ownership_replanning",
+    "distributed": true,
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "variant": "ownership_replanning",
+    "distributed": false,
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "output_scalar_view",
+    "markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "output_wide_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "output_ranked_base",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "output_scalar_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "output_wide_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "output_ranked_base",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "output_scalar_view",
+    "markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "output_wide_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "output_ranked_base",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "output_scalar_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "output_wide_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "output_ranked_base",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "output_scalar_view",
+    "markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "output_wide_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "output_ranked_base",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "output_scalar_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "output_wide_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "output_ranked_base",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "output_scalar_view",
+    "markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "output_wide_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "output_ranked_base",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "output_scalar_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "output_wide_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "output_ranked_base",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "output_scalar_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "output_wide_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "output_ranked_base",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "output_scalar_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "output_wide_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "output_ranked_base",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "output_scalar_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "output_wide_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "output_ranked_base",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "output_scalar_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "output_wide_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "output_ranked_base",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "output_scalar_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "output_wide_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "output_ranked_base",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "output_scalar_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "output_wide_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "output_ranked_base",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "output_scalar_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "output_wide_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "output_ranked_base",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "output_scalar_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "output_wide_view",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "output_ranked_base",
+    "markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "variant": "stale_single_lane",
+    "markers": 0,
+    "single_lane_markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "variant": "stale_single_lane",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "external_input",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "external_input",
+    "markers": 0,
+    "single_lane_markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "external_input",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "external_input",
+    "markers": 0,
+    "single_lane_markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "external_input",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "external_input",
+    "markers": 0,
+    "single_lane_markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "external_input",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "external_input",
+    "markers": 0,
+    "single_lane_markers": 2,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "external_input",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "external_input",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "external_input",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "affine",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "external_input",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": false,
+    "variant": "external_input",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "affine",
+    "distributed": true,
+    "variant": "external_input",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": false,
+    "variant": "external_input",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "dialect": "memref",
+    "store_dialect": "memref",
+    "distributed": true,
+    "variant": "external_input",
+    "markers": 0,
+    "single_lane_markers": 0,
+    "status": "PASS"
+  }
+]

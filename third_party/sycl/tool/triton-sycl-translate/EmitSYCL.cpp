@@ -1580,9 +1580,19 @@ void ModuleEmitter::emitAllReduce(gpu::AllReduceOp op) {
   else if (kind == gpu::AllReduceOperation::AND) function = "bit_and";
   else if (kind == gpu::AllReduceOperation::OR) function = "bit_or";
   else if (kind == gpu::AllReduceOperation::XOR) function = "bit_xor";
+  else if (kind == gpu::AllReduceOperation::MINSI ||
+           kind == gpu::AllReduceOperation::MINUI) function = "minimum";
+  else if (kind == gpu::AllReduceOperation::MAXSI ||
+           kind == gpu::AllReduceOperation::MAXUI) function = "maximum";
   else { emitError(op, "unsupported group reduction operation"); return; }
   Type type = op.getResult().getType();
   std::string name = isa<IntegerType>(type) ? unsignedType(type) : getDataTypeName(type, state.target);
+  // MLIR integer element types are signless. Signed extrema must instantiate
+  // the SYCL comparator on signed storage; unsigned extrema use unsigned
+  // storage. Existing add/mul/bit operations retain modular unsigned arithmetic.
+  if (kind == gpu::AllReduceOperation::MINSI ||
+      kind == gpu::AllReduceOperation::MAXSI)
+    name = getDataTypeName(type, state.target);
   indent(); emitValue(op.getResult());
   os << " = sycl::reduce_over_group(item.get_group(), static_cast<" << name << ">(";
   emitValue(op.getValue());

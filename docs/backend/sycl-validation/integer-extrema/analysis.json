@@ -1,0 +1,1329 @@
+{
+  "status": "PASS",
+  "contracts": 620,
+  "regressions": {
+    "pass": 150,
+    "terminal_store": 241,
+    "serial_half_copy": 312,
+    "half_store": 482,
+    "accumulator_init": 55,
+    "cooperative_staging": 66,
+    "ordered_unroll": 71,
+    "fusion_destination": 16
+  },
+  "source_checks": 136,
+  "old_composition_records": 96,
+  "gpu_records": 408,
+  "gpu_elements": 28224,
+  "event_samples": 12648,
+  "cpu_records": 64,
+  "cpu_elements": 3840,
+  "gpu_special_records": 160,
+  "gpu_special_elements": 9600,
+  "cpu_special_records": 160,
+  "cpu_special_elements": 9600,
+  "final_gpu_records": 64,
+  "final_gpu_elements": 4992,
+  "final_cpu_records": 32,
+  "final_cpu_elements": 3072,
+  "accepted_comparisons": 44,
+  "unique_active_source_pairs": 20,
+  "ratio_min": 1.2978441141663473,
+  "ratio_max": 4.008119753663544,
+  "accepted_regressions_or_ties": [],
+  "comparisons": [
+    {
+      "job": 22828102,
+      "dtype": "i32",
+      "kind": "min",
+      "block": 1024,
+      "grid": 3,
+      "stack": false,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 211259,
+      "after_ns": 155683,
+      "before_over_after": 1.3569818156124946,
+      "round_ratios": [
+        1.3569818156124946,
+        1.34871765286565,
+        1.3631745786796807
+      ]
+    },
+    {
+      "job": 22828102,
+      "dtype": "i32",
+      "kind": "min",
+      "block": 1024,
+      "grid": 3,
+      "stack": false,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 211205,
+      "after_ns": 156964,
+      "before_over_after": 1.3455633138808898,
+      "round_ratios": [
+        1.3438515287729762,
+        1.3455633138808898,
+        1.3514876287865163
+      ]
+    },
+    {
+      "job": 22828102,
+      "dtype": "i32",
+      "kind": "min",
+      "block": 1024,
+      "grid": 3,
+      "stack": true,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 91842,
+      "after_ns": 36961,
+      "before_over_after": 2.4848353670084684,
+      "round_ratios": [
+        2.502169700608608,
+        2.4848353670084684,
+        2.489164254213901
+      ]
+    },
+    {
+      "job": 22828102,
+      "dtype": "i32",
+      "kind": "min",
+      "block": 1024,
+      "grid": 3,
+      "stack": true,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 92002,
+      "after_ns": 36801,
+      "before_over_after": 2.499986413412679,
+      "round_ratios": [
+        2.510903086706149,
+        2.4956387054699603,
+        2.467798610552292
+      ]
+    },
+    {
+      "job": 22828103,
+      "dtype": "i32",
+      "kind": "max",
+      "block": 1024,
+      "grid": 3,
+      "stack": false,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 210402,
+      "after_ns": 157122,
+      "before_over_after": 1.3390995532134264,
+      "round_ratios": [
+        1.3377203021286335,
+        1.3387422513586005,
+        1.3407861407059483
+      ]
+    },
+    {
+      "job": 22828103,
+      "dtype": "i32",
+      "kind": "max",
+      "block": 1024,
+      "grid": 3,
+      "stack": false,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 210083,
+      "after_ns": 155842,
+      "before_over_after": 1.3480512313753674,
+      "round_ratios": [
+        1.3483960894644211,
+        1.3480512313753674,
+        1.3469407277968393
+      ]
+    },
+    {
+      "job": 22828103,
+      "dtype": "i32",
+      "kind": "max",
+      "block": 1024,
+      "grid": 3,
+      "stack": true,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 91842,
+      "after_ns": 36960,
+      "before_over_after": 2.4849025974025976,
+      "round_ratios": [
+        2.4956387054699603,
+        2.4784084480482744,
+        2.4849025974025976
+      ]
+    },
+    {
+      "job": 22828103,
+      "dtype": "i32",
+      "kind": "max",
+      "block": 1024,
+      "grid": 3,
+      "stack": true,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 91841,
+      "after_ns": 36801,
+      "before_over_after": 2.495611532295318,
+      "round_ratios": [
+        2.491290997527241,
+        2.495679347826087,
+        2.495611532295318
+      ]
+    },
+    {
+      "job": 22828104,
+      "dtype": "u32",
+      "kind": "min",
+      "block": 1024,
+      "grid": 3,
+      "stack": false,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 211203,
+      "after_ns": 155522,
+      "before_over_after": 1.3580265171486992,
+      "round_ratios": [
+        1.3865561113955962,
+        1.3539113437327195,
+        1.3562646783280503
+      ]
+    },
+    {
+      "job": 22828104,
+      "dtype": "u32",
+      "kind": "min",
+      "block": 1024,
+      "grid": 3,
+      "stack": false,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 211523,
+      "after_ns": 155682,
+      "before_over_after": 1.3586862964247632,
+      "round_ratios": [
+        1.3496387660707687,
+        1.3586862964247632,
+        1.3590553105026941
+      ]
+    },
+    {
+      "job": 22828104,
+      "dtype": "u32",
+      "kind": "min",
+      "block": 1024,
+      "grid": 3,
+      "stack": true,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 91842,
+      "after_ns": 36960,
+      "before_over_after": 2.4849025974025976,
+      "round_ratios": [
+        2.4957065217391303,
+        2.484875541125541,
+        2.489137198668867
+      ]
+    },
+    {
+      "job": 22828104,
+      "dtype": "u32",
+      "kind": "min",
+      "block": 1024,
+      "grid": 3,
+      "stack": true,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 91841,
+      "after_ns": 36641,
+      "before_over_after": 2.5065091018258236,
+      "round_ratios": [
+        2.4892045454545455,
+        2.5022106986899564,
+        2.5065091018258236
+      ]
+    },
+    {
+      "job": 22828105,
+      "dtype": "u32",
+      "kind": "max",
+      "block": 1024,
+      "grid": 3,
+      "stack": false,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 210564,
+      "after_ns": 161603,
+      "before_over_after": 1.3029708606894674,
+      "round_ratios": [
+        1.3111996184411836,
+        1.2878139523461627,
+        1.3029708606894674
+      ]
+    },
+    {
+      "job": 22828105,
+      "dtype": "u32",
+      "kind": "max",
+      "block": 1024,
+      "grid": 3,
+      "stack": false,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 211364,
+      "after_ns": 161763,
+      "before_over_after": 1.306627597163752,
+      "round_ratios": [
+        1.3079050771943936,
+        1.306627597163752,
+        1.2920300141959036
+      ]
+    },
+    {
+      "job": 22828105,
+      "dtype": "u32",
+      "kind": "max",
+      "block": 1024,
+      "grid": 3,
+      "stack": true,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 91842,
+      "after_ns": 36801,
+      "before_over_after": 2.4956387054699603,
+      "round_ratios": [
+        2.4956387054699603,
+        2.497862554112554,
+        2.4956521739130433
+      ]
+    },
+    {
+      "job": 22828105,
+      "dtype": "u32",
+      "kind": "max",
+      "block": 1024,
+      "grid": 3,
+      "stack": true,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 91682,
+      "after_ns": 36961,
+      "before_over_after": 2.4805064798030356,
+      "round_ratios": [
+        2.469881465517241,
+        2.4847812559184006,
+        2.491290997527241
+      ]
+    },
+    {
+      "job": 22828106,
+      "dtype": "i64",
+      "kind": "min",
+      "block": 1024,
+      "grid": 3,
+      "stack": false,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 292164,
+      "after_ns": 219043,
+      "before_over_after": 1.33382030012372,
+      "round_ratios": [
+        1.3374816414489186,
+        1.33382030012372,
+        1.3304916868177659
+      ]
+    },
+    {
+      "job": 22828106,
+      "dtype": "i64",
+      "kind": "min",
+      "block": 1024,
+      "grid": 3,
+      "stack": false,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 291844,
+      "after_ns": 219364,
+      "before_over_after": 1.330409729946573,
+      "round_ratios": [
+        1.337457407846067,
+        1.3311464624774993,
+        1.330409729946573
+      ]
+    },
+    {
+      "job": 22828106,
+      "dtype": "i64",
+      "kind": "min",
+      "block": 1024,
+      "grid": 3,
+      "stack": true,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 110562,
+      "after_ns": 37761,
+      "before_over_after": 2.927941526972273,
+      "round_ratios": [
+        2.927941526972273,
+        2.953018162393162,
+        2.9198575949367087
+      ]
+    },
+    {
+      "job": 22828106,
+      "dtype": "i64",
+      "kind": "min",
+      "block": 1024,
+      "grid": 3,
+      "stack": true,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 110562,
+      "after_ns": 37761,
+      "before_over_after": 2.927941526972273,
+      "round_ratios": [
+        2.915561298488964,
+        2.9404005212627324,
+        2.927941526972273
+      ]
+    },
+    {
+      "job": 22828107,
+      "dtype": "i64",
+      "kind": "max",
+      "block": 1024,
+      "grid": 3,
+      "stack": false,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 292643,
+      "after_ns": 219522,
+      "before_over_after": 1.3330918996729257,
+      "round_ratios": [
+        1.3330918996729257,
+        1.336257269865636,
+        1.3309045785739286
+      ]
+    },
+    {
+      "job": 22828107,
+      "dtype": "i64",
+      "kind": "max",
+      "block": 1024,
+      "grid": 3,
+      "stack": false,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 292004,
+      "after_ns": 219683,
+      "before_over_after": 1.3292061743512242,
+      "round_ratios": [
+        1.332605464939233,
+        1.3197956889831584,
+        1.3292061743512242
+      ]
+    },
+    {
+      "job": 22828107,
+      "dtype": "i64",
+      "kind": "max",
+      "block": 1024,
+      "grid": 3,
+      "stack": true,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 110722,
+      "after_ns": 37921,
+      "before_over_after": 2.919806967115846,
+      "round_ratios": [
+        2.919780596503257,
+        2.919806967115846,
+        2.9364158788167685
+      ]
+    },
+    {
+      "job": 22828107,
+      "dtype": "i64",
+      "kind": "max",
+      "block": 1024,
+      "grid": 3,
+      "stack": true,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 110881,
+      "after_ns": 38080,
+      "before_over_after": 2.9117909663865547,
+      "round_ratios": [
+        2.9034138655462183,
+        2.9240770042194093,
+        2.9117407631102123
+      ]
+    },
+    {
+      "job": 22828108,
+      "dtype": "u64",
+      "kind": "min",
+      "block": 1024,
+      "grid": 3,
+      "stack": false,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 306887,
+      "after_ns": 234729,
+      "before_over_after": 1.307409821538881,
+      "round_ratios": [
+        1.3047750241280935,
+        1.303302957879086,
+        1.3108344729745274
+      ]
+    },
+    {
+      "job": 22828108,
+      "dtype": "u64",
+      "kind": "min",
+      "block": 1024,
+      "grid": 3,
+      "stack": false,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 305284,
+      "after_ns": 235209,
+      "before_over_after": 1.29792652492039,
+      "round_ratios": [
+        1.3023950307591232,
+        1.2965957935283088,
+        1.2971535907666605
+      ]
+    },
+    {
+      "job": 22828108,
+      "dtype": "u64",
+      "kind": "min",
+      "block": 1024,
+      "grid": 3,
+      "stack": true,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 110559,
+      "after_ns": 38081,
+      "before_over_after": 2.9032588429925683,
+      "round_ratios": [
+        2.8991097922848663,
+        2.9075917124025104,
+        2.914125306412926
+      ]
+    },
+    {
+      "job": 22828108,
+      "dtype": "u64",
+      "kind": "min",
+      "block": 1024,
+      "grid": 3,
+      "stack": true,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 110561,
+      "after_ns": 38080,
+      "before_over_after": 2.903387605042017,
+      "round_ratios": [
+        2.899112441573447,
+        2.9240018986340384,
+        2.903387605042017
+      ]
+    },
+    {
+      "job": 22829148,
+      "dtype": "u64",
+      "kind": "max",
+      "block": 1024,
+      "grid": 3,
+      "stack": false,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 308164,
+      "after_ns": 237443,
+      "before_over_after": 1.2978441141663473,
+      "round_ratios": [
+        1.2940827630876124,
+        1.3018234914311517,
+        1.2978441141663473
+      ]
+    },
+    {
+      "job": 22829148,
+      "dtype": "u64",
+      "kind": "max",
+      "block": 1024,
+      "grid": 3,
+      "stack": false,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 308644,
+      "after_ns": 237443,
+      "before_over_after": 1.2998656519669984,
+      "round_ratios": [
+        1.30284168138108,
+        1.2998656519669984,
+        1.2993589878312772
+      ]
+    },
+    {
+      "job": 22829148,
+      "dtype": "u64",
+      "kind": "max",
+      "block": 1024,
+      "grid": 3,
+      "stack": true,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 110401,
+      "after_ns": 38080,
+      "before_over_after": 2.899185924369748,
+      "round_ratios": [
+        2.8980567226890757,
+        2.899185924369748,
+        2.911445147679325
+      ]
+    },
+    {
+      "job": 22829148,
+      "dtype": "u64",
+      "kind": "max",
+      "block": 1024,
+      "grid": 3,
+      "stack": true,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 110401,
+      "after_ns": 37921,
+      "before_over_after": 2.911342000474671,
+      "round_ratios": [
+        2.923677868700511,
+        2.899185924369748,
+        2.911342000474671
+      ]
+    },
+    {
+      "job": 22828110,
+      "dtype": "i32",
+      "kind": "max",
+      "block": 256,
+      "grid": 3,
+      "stack": false,
+      "reg": false,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 52002,
+      "after_ns": 52161,
+      "before_over_after": 0.9969517455570254,
+      "round_ratios": [
+        0.9969134027338433,
+        0.9938835006954898,
+        1.003086300682844
+      ]
+    },
+    {
+      "job": 22828110,
+      "dtype": "i32",
+      "kind": "max",
+      "block": 256,
+      "grid": 3,
+      "stack": false,
+      "reg": true,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 52160,
+      "after_ns": 52000,
+      "before_over_after": 1.003076923076923,
+      "round_ratios": [
+        1.003076923076923,
+        1.0792062869990307,
+        0.9939225460122699
+      ]
+    },
+    {
+      "job": 22828110,
+      "dtype": "i32",
+      "kind": "max",
+      "block": 256,
+      "grid": 3,
+      "stack": true,
+      "reg": false,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 22080,
+      "after_ns": 22080,
+      "before_over_after": 1.0,
+      "round_ratios": [
+        0.9927989130434782,
+        0.9857142857142858,
+        1.0145985401459854
+      ]
+    },
+    {
+      "job": 22828110,
+      "dtype": "i32",
+      "kind": "max",
+      "block": 256,
+      "grid": 3,
+      "stack": true,
+      "reg": true,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 25280,
+      "after_ns": 22240,
+      "before_over_after": 1.1366906474820144,
+      "round_ratios": [
+        0.9858156028368794,
+        1.1366906474820144,
+        1.1798561151079137
+      ]
+    },
+    {
+      "job": 22828111,
+      "dtype": "u64",
+      "kind": "min",
+      "block": 4096,
+      "grid": 3,
+      "stack": false,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 1175535,
+      "after_ns": 885931,
+      "before_over_after": 1.326892274906285,
+      "round_ratios": [
+        1.322714338735618,
+        1.326892274906285,
+        1.329656242964029
+      ]
+    },
+    {
+      "job": 22828111,
+      "dtype": "u64",
+      "kind": "min",
+      "block": 4096,
+      "grid": 3,
+      "stack": false,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 1178094,
+      "after_ns": 887370,
+      "before_over_after": 1.3276243280705906,
+      "round_ratios": [
+        1.326429992490168,
+        1.3276220742193223,
+        1.3300247242512164
+      ]
+    },
+    {
+      "job": 22828111,
+      "dtype": "u64",
+      "kind": "min",
+      "block": 4096,
+      "grid": 3,
+      "stack": true,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 394564,
+      "after_ns": 98721,
+      "before_over_after": 3.9967585417489695,
+      "round_ratios": [
+        4.004839593352408,
+        3.993486760803063,
+        3.9967585417489695
+      ]
+    },
+    {
+      "job": 22828111,
+      "dtype": "u64",
+      "kind": "min",
+      "block": 4096,
+      "grid": 3,
+      "stack": true,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 394407,
+      "after_ns": 98402,
+      "before_over_after": 4.008119753663544,
+      "round_ratios": [
+        4.008119753663544,
+        3.998348898928304,
+        4.012998513873903
+      ]
+    },
+    {
+      "job": 22828112,
+      "dtype": "i64",
+      "kind": "max",
+      "block": 64,
+      "grid": 3,
+      "stack": false,
+      "reg": false,
+      "accepted_active": false,
+      "measured_collective": false,
+      "before_ns": 30080,
+      "after_ns": 29760,
+      "before_over_after": 1.010752688172043,
+      "round_ratios": [
+        1.0,
+        1.0161818857471032,
+        1.0
+      ]
+    },
+    {
+      "job": 22828112,
+      "dtype": "i64",
+      "kind": "max",
+      "block": 64,
+      "grid": 3,
+      "stack": false,
+      "reg": true,
+      "accepted_active": false,
+      "measured_collective": false,
+      "before_ns": 29760,
+      "after_ns": 29920,
+      "before_over_after": 0.9946524064171123,
+      "round_ratios": [
+        1.0000336021505376,
+        0.9946524064171123,
+        0.9946524064171123
+      ]
+    },
+    {
+      "job": 22828112,
+      "dtype": "i64",
+      "kind": "max",
+      "block": 64,
+      "grid": 3,
+      "stack": true,
+      "reg": false,
+      "accepted_active": false,
+      "measured_collective": false,
+      "before_ns": 29760,
+      "after_ns": 29760,
+      "before_over_after": 1.0,
+      "round_ratios": [
+        0.9893288122070409,
+        1.0000336190956463,
+        1.010752688172043
+      ]
+    },
+    {
+      "job": 22828112,
+      "dtype": "i64",
+      "kind": "max",
+      "block": 64,
+      "grid": 3,
+      "stack": true,
+      "reg": true,
+      "accepted_active": false,
+      "measured_collective": false,
+      "before_ns": 29920,
+      "after_ns": 29920,
+      "before_over_after": 1.0,
+      "round_ratios": [
+        0.9999665786571305,
+        0.9786430481283422,
+        1.0053761634353684
+      ]
+    },
+    {
+      "job": 22828291,
+      "dtype": "i32",
+      "kind": "min",
+      "block": 512,
+      "grid": 3,
+      "stack": false,
+      "reg": false,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 88801,
+      "after_ns": 86881,
+      "before_over_after": 1.02209919314925,
+      "round_ratios": [
+        1.0202201236184831,
+        1.0296842569079672,
+        1.02209919314925
+      ]
+    },
+    {
+      "job": 22828291,
+      "dtype": "i32",
+      "kind": "min",
+      "block": 512,
+      "grid": 3,
+      "stack": false,
+      "reg": true,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 88800,
+      "after_ns": 86881,
+      "before_over_after": 1.0220876831528183,
+      "round_ratios": [
+        1.0220876831528183,
+        1.0277261122214392,
+        1.0165439275743615
+      ]
+    },
+    {
+      "job": 22828291,
+      "dtype": "i32",
+      "kind": "min",
+      "block": 512,
+      "grid": 3,
+      "stack": true,
+      "reg": false,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 29281,
+      "after_ns": 26240,
+      "before_over_after": 1.115891768292683,
+      "round_ratios": [
+        1.1097560975609757,
+        1.1091287878787879,
+        1.1227377300613497
+      ]
+    },
+    {
+      "job": 22828291,
+      "dtype": "i32",
+      "kind": "min",
+      "block": 512,
+      "grid": 3,
+      "stack": true,
+      "reg": true,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 29440,
+      "after_ns": 26560,
+      "before_over_after": 1.108433734939759,
+      "round_ratios": [
+        1.1084713855421686,
+        1.103030303030303,
+        1.108433734939759
+      ]
+    },
+    {
+      "job": 22828292,
+      "dtype": "u64",
+      "kind": "max",
+      "block": 2048,
+      "grid": 3,
+      "stack": false,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 602885,
+      "after_ns": 456485,
+      "before_over_after": 1.3207115239274019,
+      "round_ratios": [
+        1.3125284757904008,
+        1.3211774966909478,
+        1.3207115239274019
+      ]
+    },
+    {
+      "job": 22828292,
+      "dtype": "u64",
+      "kind": "max",
+      "block": 2048,
+      "grid": 3,
+      "stack": false,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 601765,
+      "after_ns": 458174,
+      "before_over_after": 1.3133984032267216,
+      "round_ratios": [
+        1.3120386578024943,
+        1.313200638089398,
+        1.3166572997465464
+      ]
+    },
+    {
+      "job": 22828292,
+      "dtype": "u64",
+      "kind": "max",
+      "block": 2048,
+      "grid": 3,
+      "stack": true,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 205281,
+      "after_ns": 58560,
+      "before_over_after": 3.505481557377049,
+      "round_ratios": [
+        3.5027663934426227,
+        3.505481557377049,
+        3.544172234595397
+      ]
+    },
+    {
+      "job": 22828292,
+      "dtype": "u64",
+      "kind": "max",
+      "block": 2048,
+      "grid": 3,
+      "stack": true,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 205122,
+      "after_ns": 58081,
+      "before_over_after": 3.531654069316988,
+      "round_ratios": [
+        3.5316368519825763,
+        3.539918389834886,
+        3.5220123626373625
+      ]
+    },
+    {
+      "job": 22828293,
+      "dtype": "i64",
+      "kind": "min",
+      "block": 1024,
+      "grid": 1,
+      "stack": false,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 296973,
+      "after_ns": 224322,
+      "before_over_after": 1.3238692593682295,
+      "round_ratios": [
+        1.323838054225622,
+        1.32430505105429,
+        1.3238751610415431
+      ]
+    },
+    {
+      "job": 22828293,
+      "dtype": "i64",
+      "kind": "min",
+      "block": 1024,
+      "grid": 1,
+      "stack": false,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 297285,
+      "after_ns": 224480,
+      "before_over_after": 1.3243273342836779,
+      "round_ratios": [
+        1.3252542093320792,
+        1.3250222736992159,
+        1.3235908606964508
+      ]
+    },
+    {
+      "job": 22828293,
+      "dtype": "i64",
+      "kind": "min",
+      "block": 1024,
+      "grid": 1,
+      "stack": true,
+      "reg": false,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 110562,
+      "after_ns": 37920,
+      "before_over_after": 2.9156645569620254,
+      "round_ratios": [
+        2.9034138655462183,
+        2.9156909282700423,
+        2.9279925847457626
+      ]
+    },
+    {
+      "job": 22828293,
+      "dtype": "i64",
+      "kind": "min",
+      "block": 1024,
+      "grid": 1,
+      "stack": true,
+      "reg": true,
+      "accepted_active": true,
+      "measured_collective": true,
+      "before_ns": 110241,
+      "after_ns": 37759,
+      "before_over_after": 2.9195953282661087,
+      "round_ratios": [
+        2.919518008474576,
+        2.9063829787234043,
+        2.9322810455785375
+      ]
+    },
+    {
+      "job": 22828517,
+      "dtype": "u64",
+      "kind": "max",
+      "block": 512,
+      "grid": 3,
+      "stack": false,
+      "reg": false,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 170562,
+      "after_ns": 125922,
+      "before_over_after": 1.3545051698670605,
+      "round_ratios": [
+        1.3443401470751735,
+        1.3387650758300529,
+        1.359698981991534
+      ]
+    },
+    {
+      "job": 22828517,
+      "dtype": "u64",
+      "kind": "max",
+      "block": 512,
+      "grid": 3,
+      "stack": false,
+      "reg": true,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 171042,
+      "after_ns": 127362,
+      "before_over_after": 1.3429594384510293,
+      "round_ratios": [
+        1.3408546232045238,
+        1.3429515868155337,
+        1.358317053414018
+      ]
+    },
+    {
+      "job": 22828517,
+      "dtype": "u64",
+      "kind": "max",
+      "block": 512,
+      "grid": 3,
+      "stack": true,
+      "reg": false,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 71976,
+      "after_ns": 26881,
+      "before_over_after": 2.6775789591161043,
+      "round_ratios": [
+        2.646176470588235,
+        2.67265625,
+        2.6785089840407723
+      ]
+    },
+    {
+      "job": 22828517,
+      "dtype": "u64",
+      "kind": "max",
+      "block": 512,
+      "grid": 3,
+      "stack": true,
+      "reg": true,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 71681,
+      "after_ns": 27040,
+      "before_over_after": 2.6509245562130177,
+      "round_ratios": [
+        2.6509615384615386,
+        2.6390902366863904,
+        2.6198238368480684
+      ]
+    },
+    {
+      "job": 22828518,
+      "dtype": "i64",
+      "kind": "max",
+      "block": 512,
+      "grid": 3,
+      "stack": false,
+      "reg": false,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 162723,
+      "after_ns": 117762,
+      "before_over_after": 1.3817954858103634,
+      "round_ratios": [
+        1.3599482417415132,
+        1.3831541583872557,
+        1.387450759707372
+      ]
+    },
+    {
+      "job": 22828518,
+      "dtype": "i64",
+      "kind": "max",
+      "block": 512,
+      "grid": 3,
+      "stack": false,
+      "reg": true,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 162243,
+      "after_ns": 117762,
+      "before_over_after": 1.377719468079686,
+      "round_ratios": [
+        1.381473408150406,
+        1.377719468079686,
+        1.354364859650006
+      ]
+    },
+    {
+      "job": 22828518,
+      "dtype": "i64",
+      "kind": "max",
+      "block": 512,
+      "grid": 3,
+      "stack": true,
+      "reg": false,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 71842,
+      "after_ns": 27361,
+      "before_over_after": 2.6257081247030443,
+      "round_ratios": [
+        2.6256715763312743,
+        2.601228323699422,
+        2.6257081247030443
+      ]
+    },
+    {
+      "job": 22828518,
+      "dtype": "i64",
+      "kind": "max",
+      "block": 512,
+      "grid": 3,
+      "stack": true,
+      "reg": true,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 71841,
+      "after_ns": 27361,
+      "before_over_after": 2.6256715763312743,
+      "round_ratios": [
+        2.625767543859649,
+        2.6046875,
+        2.6257081247030443
+      ]
+    },
+    {
+      "job": 22828519,
+      "dtype": "u32",
+      "kind": "max",
+      "block": 512,
+      "grid": 3,
+      "stack": false,
+      "reg": false,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 88801,
+      "after_ns": 89601,
+      "before_over_after": 0.9910715282195511,
+      "round_ratios": [
+        0.9910715282195511,
+        0.9893049319860518,
+        0.9892556069855325
+      ]
+    },
+    {
+      "job": 22828519,
+      "dtype": "u32",
+      "kind": "max",
+      "block": 512,
+      "grid": 3,
+      "stack": false,
+      "reg": true,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 88642,
+      "after_ns": 89602,
+      "before_over_after": 0.9892859534385393,
+      "round_ratios": [
+        0.9910874433217098,
+        0.9892859534385393,
+        0.9910444757496478
+      ]
+    },
+    {
+      "job": 22828519,
+      "dtype": "u32",
+      "kind": "max",
+      "block": 512,
+      "grid": 3,
+      "stack": true,
+      "reg": false,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 29280,
+      "after_ns": 26401,
+      "before_over_after": 1.1090488996628916,
+      "round_ratios": [
+        1.2119205298013245,
+        1.1090867770160222,
+        1.103026400515132
+      ]
+    },
+    {
+      "job": 22828519,
+      "dtype": "u32",
+      "kind": "max",
+      "block": 512,
+      "grid": 3,
+      "stack": true,
+      "reg": true,
+      "accepted_active": false,
+      "measured_collective": true,
+      "before_ns": 29280,
+      "after_ns": 26401,
+      "before_over_after": 1.1090488996628916,
+      "round_ratios": [
+        1.095808383233533,
+        1.1091287878787879,
+        1.1090488996628916
+      ]
+    }
+  ],
+  "final_source_replays": 136
+}

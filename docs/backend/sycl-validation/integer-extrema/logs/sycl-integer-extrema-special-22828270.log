@@ -1,0 +1,71 @@
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+python/triton/_C/libtriton.so: OK
+python/triton/_C/triton-sycl-translate: OK
+third_party/sycl/lib/Conversion/LinalgToAffineLoops/GroupReduction.cpp: OK
+third_party/sycl/tool/triton-sycl-translate/EmitSYCL.cpp: OK
+third_party/sycl/backend/compiler.py: OK
+python/test/sycl/integer_extrema.py: OK
+h01r4n08
+gfx906:sramecc-:xnack-
+HIP_DEVICE=Device 66a1 COUNT=4
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "boundary", "conditional": false, "epoch": "after", "stack": true, "reg": false, "group": false, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 0, "source_sha256": "b40be49b0bb2ea6b0f3ffe931e85c36da296abd9a016b3a8a09b74f9c6a3dee9", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [4294967295, 4294967295, 4294967295, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "boundary", "conditional": false, "epoch": "after", "stack": true, "reg": false, "group": true, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 1, "source_sha256": "6f9954c857abc694c03451213ade7f994519fb7db063a81731e3c131515cf9e2", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [4294967295, 4294967295, 4294967295, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "boundary", "conditional": false, "epoch": "after", "stack": true, "reg": true, "group": false, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 0, "source_sha256": "b40be49b0bb2ea6b0f3ffe931e85c36da296abd9a016b3a8a09b74f9c6a3dee9", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [4294967295, 4294967295, 4294967295, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "boundary", "conditional": false, "epoch": "after", "stack": true, "reg": true, "group": true, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 1, "source_sha256": "6f9954c857abc694c03451213ade7f994519fb7db063a81731e3c131515cf9e2", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [4294967295, 4294967295, 4294967295, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "identity", "conditional": false, "epoch": "after", "stack": true, "reg": false, "group": false, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 0, "source_sha256": "b40be49b0bb2ea6b0f3ffe931e85c36da296abd9a016b3a8a09b74f9c6a3dee9", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [0, 0, 0, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "identity", "conditional": false, "epoch": "after", "stack": true, "reg": false, "group": true, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 1, "source_sha256": "6f9954c857abc694c03451213ade7f994519fb7db063a81731e3c131515cf9e2", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [0, 0, 0, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "identity", "conditional": false, "epoch": "after", "stack": true, "reg": true, "group": false, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 0, "source_sha256": "b40be49b0bb2ea6b0f3ffe931e85c36da296abd9a016b3a8a09b74f9c6a3dee9", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [0, 0, 0, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "identity", "conditional": false, "epoch": "after", "stack": true, "reg": true, "group": true, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 1, "source_sha256": "6f9954c857abc694c03451213ade7f994519fb7db063a81731e3c131515cf9e2", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [0, 0, 0, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "high", "conditional": false, "epoch": "after", "stack": true, "reg": false, "group": false, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 0, "source_sha256": "b40be49b0bb2ea6b0f3ffe931e85c36da296abd9a016b3a8a09b74f9c6a3dee9", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [88, 88, 88, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "high", "conditional": false, "epoch": "after", "stack": true, "reg": false, "group": true, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 1, "source_sha256": "6f9954c857abc694c03451213ade7f994519fb7db063a81731e3c131515cf9e2", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [88, 88, 88, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "high", "conditional": false, "epoch": "after", "stack": true, "reg": true, "group": false, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 0, "source_sha256": "b40be49b0bb2ea6b0f3ffe931e85c36da296abd9a016b3a8a09b74f9c6a3dee9", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [88, 88, 88, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "high", "conditional": false, "epoch": "after", "stack": true, "reg": true, "group": true, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 1, "source_sha256": "6f9954c857abc694c03451213ade7f994519fb7db063a81731e3c131515cf9e2", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [88, 88, 88, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "empty", "conditional": false, "epoch": "after", "stack": true, "reg": false, "group": false, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 0, "source_sha256": "b40be49b0bb2ea6b0f3ffe931e85c36da296abd9a016b3a8a09b74f9c6a3dee9", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [0, 0, 0, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "empty", "conditional": false, "epoch": "after", "stack": true, "reg": false, "group": true, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 1, "source_sha256": "6f9954c857abc694c03451213ade7f994519fb7db063a81731e3c131515cf9e2", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [0, 0, 0, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "empty", "conditional": false, "epoch": "after", "stack": true, "reg": true, "group": false, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 0, "source_sha256": "b40be49b0bb2ea6b0f3ffe931e85c36da296abd9a016b3a8a09b74f9c6a3dee9", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [0, 0, 0, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "empty", "conditional": false, "epoch": "after", "stack": true, "reg": true, "group": true, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 1, "source_sha256": "6f9954c857abc694c03451213ade7f994519fb7db063a81731e3c131515cf9e2", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [0, 0, 0, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "one", "conditional": false, "epoch": "after", "stack": true, "reg": false, "group": false, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 0, "source_sha256": "b40be49b0bb2ea6b0f3ffe931e85c36da296abd9a016b3a8a09b74f9c6a3dee9", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [2147483648, 2147483649, 2147483650, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "one", "conditional": false, "epoch": "after", "stack": true, "reg": false, "group": true, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 1, "source_sha256": "6f9954c857abc694c03451213ade7f994519fb7db063a81731e3c131515cf9e2", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [2147483648, 2147483649, 2147483650, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "one", "conditional": false, "epoch": "after", "stack": true, "reg": true, "group": false, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 0, "source_sha256": "b40be49b0bb2ea6b0f3ffe931e85c36da296abd9a016b3a8a09b74f9c6a3dee9", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [2147483648, 2147483649, 2147483650, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+{"dtype": "u32", "kind": "max", "block": 1024, "grid": 3, "data": "one", "conditional": false, "epoch": "after", "stack": true, "reg": true, "group": true, "round": 0, "status": "PASS", "compile_only": false, "eligible": true, "collectives": 1, "source_sha256": "6f9954c857abc694c03451213ade7f994519fb7db063a81731e3c131515cf9e2", "staging": 1, "promoted": 0, "output_elements": 10, "elements_checked": 60, "neutral": 0, "reference": [2147483648, 2147483649, 2147483650, 123, 123, 123, 123, 123, 123, 123], "samples_ns": [], "median_ns": null}
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+Traceback (most recent call last):
+  File "/work1/dtune/zzx/triton/triton-ocl/python/test/sycl/integer_extrema.py", line 114, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/work1/dtune/zzx/triton/triton-ocl/python/test/sycl/integer_extrema.py", line 75, in main
+    c=extrema.warmup(x,y,n,1,grid=(a.grid,),**kw,register_accumulator=reg,group_reduction=group,
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work1/dtune/zzx/triton/triton-ocl/python/triton/runtime/jit.py", line 716, in warmup
+    return self.run(grid=grid, warmup=True, *map(MockTensor.wrap_dtype, args), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work1/dtune/zzx/triton/triton-ocl/python/triton/runtime/jit.py", line 610, in run
+    kernel = self.compile(src, target=target, options=options.__dict__)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work1/dtune/zzx/triton/triton-ocl/python/triton/compiler/compiler.py", line 337, in compile
+    module = src.make_ir(options, codegen_fns, module_map, context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work1/dtune/zzx/triton/triton-ocl/python/triton/compiler/compiler.py", line 82, in make_ir
+    return ast_to_ttir(self.fn, self, context=context, options=options, codegen_fns=codegen_fns,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+triton.compiler.errors.CompilationError: at 5:8:
+def extrema(x,y,n,flag,B:tl.constexpr,MAX:tl.constexpr,OTHER:tl.constexpr,CONDITIONAL:tl.constexpr):
+    p=tl.program_id(0);i=tl.arange(0,B)
+    v=tl.load(x+p*B+i,i<n,OTHER)
+    if CONDITIONAL:
+        if flag:
+        ^
+AssertionError('Mismatched type for r between then block (uint32) and else block (int32)')

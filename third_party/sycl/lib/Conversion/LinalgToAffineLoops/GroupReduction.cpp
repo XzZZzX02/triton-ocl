@@ -70,9 +70,45 @@ struct GroupReductionPass : PassWrapper<GroupReductionPass, OperationPass<Module
       else if (isa<arith::AndIOp>(combine)) kind = gpu::AllReduceOperation::AND;
       else if (isa<arith::OrIOp>(combine)) kind = gpu::AllReduceOperation::OR;
       else if (isa<arith::XOrIOp>(combine)) kind = gpu::AllReduceOperation::XOR;
+      else if (isa<arith::MinSIOp>(combine)) kind = gpu::AllReduceOperation::MINSI;
+      else if (isa<arith::MaxSIOp>(combine)) kind = gpu::AllReduceOperation::MAXSI;
+      else if (isa<arith::MinUIOp>(combine)) kind = gpu::AllReduceOperation::MINUI;
+      else if (isa<arith::MaxUIOp>(combine)) kind = gpu::AllReduceOperation::MAXUI;
       if (!kind) continue;
       Type type = combine->getResult(0).getType();
       if (!(type.isF32() || type.isF64() || type.isInteger(32) || type.isInteger(64))) continue;
+      if (isa<arith::MinSIOp, arith::MaxSIOp, arith::MinUIOp,
+              arith::MaxUIOp>(combine)) {
+        // Integer extrema are exactly associative with their own signed or
+        // unsigned identity. Restrict the new opportunity to a complete rank1
+        // shared input and a scalar shared accumulator. Smaller domains did
+        // not establish a stable benefit in paired gfx906 measurements.
+        if (loop.getConstantUpperBound() < 1024) continue;
+        auto inputAlloc = input.getMemRef().getDefiningOp<memref::AllocOp>();
+        auto accAlloc = store.getMemRef().getDefiningOp<memref::AllocOp>();
+        if (!inputAlloc.getType().hasStaticShape() ||
+            inputAlloc.getType().getRank() != 1 ||
+            inputAlloc.getType().getDimSize(0) != loop.getConstantUpperBound() ||
+            !inputAlloc.getType().getLayout().isIdentity() ||
+            accAlloc.getType().getRank() != 0 ||
+            !accAlloc.getType().getLayout().isIdentity() ||
+            inputAlloc->getBlock() != loop->getBlock() ||
+            accAlloc->getBlock() != loop->getBlock() ||
+            inputAlloc->hasAttr("sycl.thread_private") ||
+            accAlloc->hasAttr("sycl.thread_private") ||
+            input.getMapOperands().size() != 1 ||
+            input.getMapOperands()[0] != loop.getInductionVar())
+          continue;
+        auto defaultAccess = [](Operation *op) {
+          return llvm::all_of(op->getAttrs(), [](NamedAttribute attr) {
+            return attr.getName().strref() == "map" &&
+                   isa<AffineMapAttr>(attr.getValue());
+          });
+        };
+        if (!defaultAccess(input) || !defaultAccess(accumulator) ||
+            !defaultAccess(store))
+          continue;
+      }
       OpBuilder builder(loop);
       Location loc = loop.getLoc();
       auto binary = [&](auto tag, Value a, Value b) -> Value {
