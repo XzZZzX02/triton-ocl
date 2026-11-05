@@ -6,6 +6,7 @@ import hashlib
 import itertools
 import json
 import pathlib
+import statistics
 import struct
 import subprocess
 import sys
@@ -76,10 +77,10 @@ def pack_matrix(logical, row_stride, col_stride, batch_stride, dtype):
     return Tensor(storage, dtype, pointer_offset)
 
 
-def execute(case, mode, schedule='baseline', tile_shape='small'):
+def execute(case, mode, schedule='baseline', tile_shape='small', repeats=0, rounds=1):
     import triton
     import triton.language as tl
-    from triton.backends.sycl.sycl_utils import run_standalone
+    from triton.backends.sycl.sycl_utils import run_standalone, profile_standalone
     globals().update(triton=triton, tl=tl)
     BM, BN, BK = (8, 16, 16) if tile_shape == 'small' else (16, 16, 32)
 
@@ -168,19 +169,24 @@ def execute(case, mode, schedule='baseline', tile_shape='small'):
     schedules = (('baseline', 'optimized') if schedule == 'both' else
                  ('optimized', 'forwarded') if schedule == 'init-pair' else
                  ('forwarded', 'staged') if schedule == 'staging-pair' else
-                 ('staged', 'stored') if schedule == 'store-pair' else (schedule,))
+                 ('staged', 'stored') if schedule == 'store-pair' else
+                 ('stored', 'two-column') if schedule == 'two-column-pair' else (schedule,))
     variants = []
-    for selected in schedules:
+    plans = [(r, s) for r in range(rounds)
+             for s in (schedules if r % 2 == 0 else reversed(schedules))]
+    for round_index, selected in plans:
         options = (dict(register_accumulator=True, matmul_register_tiling=True,
                         fuse_elementwise=True, group_reduction=True,
                         reuse_local_memory=True, reduction_unroll=4)
-                   if selected in ('optimized', 'forwarded', 'staged', 'stored') else {})
-        if selected in ('forwarded', 'staged', 'stored'):
+                   if selected in ('optimized', 'forwarded', 'staged', 'stored', 'two-column') else {})
+        if selected in ('forwarded', 'staged', 'stored', 'two-column'):
             options['accumulator_init_forwarding'] = True
-        if selected in ('staged', 'stored'):
+        if selected in ('staged', 'stored', 'two-column'):
             options['cooperative_load_staging'] = True
-        if selected == 'stored':
+        if selected in ('stored', 'two-column'):
             options['terminal_store_distribution'] = True
+        if selected == 'two-column':
+            options['matmul_register_tiling_2col'] = True
         compiled = kernel.warmup(x, y, z, m, n, k, grid=(batch_count,), **kwargs, **options)
         code = compiled.asm['sycl']
         code = code.decode() if isinstance(code, bytes) else code
@@ -190,15 +196,20 @@ def execute(case, mode, schedule='baseline', tile_shape='small'):
             'sycl.register_tile_composed_accumulator', 'sycl.ordered_reduction_unroll',
             'sycl.accumulator_init_forwarded')}
         stages = memir.count('sycl.cooperative_load_staging')
-        expected_stages = sum(size >= 256 for size in (BM*BK, BK*BN)) if selected in ('staged', 'stored') else 0
+        guarded = selected == 'two-column' and half and BM*(BN//4)<64 and BM*(BN//2)>=64
+        assert memir.count('sycl.two_column_launch_guard') == int(guarded), (case, memir)
+        expected_stages = sum(size >= 256 for size in (BM*BK, BK*BN)) if selected in ('staged', 'stored', 'two-column') else 0
         assert stages == expected_stages, (case, selected, stages, memir)
-        if selected in ('optimized', 'forwarded', 'staged', 'stored'):
-            expect_tile = half and BM * (BN // 4) >= 64
+        if selected in ('optimized', 'forwarded', 'staged', 'stored', 'two-column'):
+            width = 4 if BM * (BN // 4) >= 64 else 2 if selected == 'two-column' and BM * (BN // 2) >= 64 else 0
+            expect_tile = half and width > 0
+            if expect_tile:
+                assert f'sycl.register_tile = {width} : i64' in memir, (case, memir)
             assert markers['sycl.register_accumulator'], (case, memir)
             assert markers['sycl.register_tile ='] == expect_tile, (case, memir)
             assert markers['sycl.register_tile_composed_accumulator'] == expect_tile, (case, memir)
-            assert markers['sycl.ordered_reduction_unroll'] == (not expect_tile or BK >= 32), (case, memir)
-        assert markers['sycl.accumulator_init_forwarded'] == (selected in ('forwarded', 'staged', 'stored')), (case, memir)
+            assert markers['sycl.ordered_reduction_unroll'] == (not expect_tile or BK >= 32 or guarded), (case, memir)
+        assert markers['sycl.accumulator_init_forwarded'] == (selected in ('forwarded', 'staged', 'stored', 'two-column')), (case, memir)
         stores = memir.count('sycl.terminal_store_distribution')
         # z_rm is a runtime argument in this kernel; no dynamic stride proof.
         expected_stores = 0
@@ -213,10 +224,25 @@ def execute(case, mode, schedule='baseline', tile_shape='small'):
                 for index, (got, want) in enumerate(zip(z.c_array, expected)):
                     assert got == want, (case, selected, local_shape, index, got, want)
                 checks += len(z.c_array)
+        samples = []
+        if mode == 'run' and repeats:
+            z.c_array[:] = [-99.] * len(z.c_array)
+            samples = profile_standalone(batch_count, 1, 1, compiled.name, code, bound,
+                                         signature=compiled.src.signature, metadata=compiled.metadata,
+                                         block_size=64, warmup=10, repeats=repeats)
+            for index, (got, want) in enumerate(zip(z.c_array, expected)):
+                assert got == want, (case, selected, 'profile', index, got, want)
+            checks += len(z.c_array)
         variants.append(dict(schedule=selected, source_bytes=len(code), markers=markers,
+                             two_column_guard=guarded,
+                             unrolled_loops=memir.count('sycl.ordered_reduction_unroll'),
                              cooperative_stages=stages, terminal_stores=stores,
+                             round=round_index, samples_ns=samples,
+                             median_ns=statistics.median(samples) if samples else None,
                              source_sha256=hashlib.sha256(code.encode()).hexdigest(),
                              elements_checked=checks))
+    if schedule == 'two-column-pair' and (not half or BM * (BN // 4) >= 64):
+        assert len({v['source_sha256'] for v in variants}) == 1, (case, 'fallback changed source', variants)
     return {"elements_checked": sum(v['elements_checked'] for v in variants), "max_abs_error": 0,
             "tile_shape": tile_shape, "logical_tile": [BM, BN, BK],
             "schedules": variants, "local_shapes": [48, [3, 5]],
@@ -233,7 +259,9 @@ def main():
     parser.add_argument("--all", action="store_true")
     parser.add_argument("--mode", choices=("run", "compile"), default="run")
     parser.add_argument("--tile-shape", choices=("small", "wide"), default="small")
-    parser.add_argument("--schedule", choices=("baseline", "optimized", "both", "forwarded", "init-pair", "staged", "staging-pair", "stored", "store-pair"), default="baseline")
+    parser.add_argument("--schedule", choices=("baseline", "optimized", "both", "forwarded", "init-pair", "staged", "staging-pair", "stored", "store-pair", "two-column-pair"), default="baseline")
+    parser.add_argument("--repeats", type=int, default=0)
+    parser.add_argument("--rounds", type=int, default=1)
     parser.add_argument("--python", default=sys.executable)
     parser.add_argument("--timeout", type=int, default=240)
     parser.add_argument("--jobs", type=int, default=1)
@@ -242,7 +270,7 @@ def main():
     if args.case:
         print(json.dumps({"status": "HARNESS", "sha256": SCRIPT_SHA256}), flush=True)
         print(json.dumps(dict(case=args.case, status="PASS", harness_sha256=SCRIPT_SHA256,
-                              **execute(args.case, args.mode, args.schedule, args.tile_shape))), flush=True)
+                              **execute(args.case, args.mode, args.schedule, args.tile_shape, args.repeats, args.rounds))), flush=True)
         return
     if not args.all and not args.cases:
         parser.error("choose --all, --cases or --case")
@@ -252,7 +280,8 @@ def main():
             result = subprocess.run(
                 [args.python, str(pathlib.Path(__file__).resolve()), "--case", case,
                  "--mode", args.mode, "--schedule", args.schedule,
-                 "--tile-shape", args.tile_shape], stdout=subprocess.PIPE,
+                 "--tile-shape", args.tile_shape, "--repeats", str(args.repeats),
+                 "--rounds", str(args.rounds)], stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT, text=True, timeout=args.timeout)
         except subprocess.TimeoutExpired as error:
             return {"case": case, "status": "TIMEOUT", "output_tail": str(error.stdout)[-3000:]}

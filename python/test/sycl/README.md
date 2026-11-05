@@ -174,3 +174,37 @@ or trusting stale attributes. The store-pair schedule in model_layout_semantics
 checks runtime-output-stride fallback; terminal_store_layouts supplies actual
 static output transpose/reverse/padded/stride-2/rank-3 execution coverage.
 See docs/backend/sycl-terminal-store-report.md for measured profitability limits.
+
+
+Two-column register tiling and exact-wave64 launch specialization (default off):
+
+    python-triton two_column_contracts.py --output two-column-contracts.json
+    python-triton two_column_extended_contracts.py --output two-column-extended.json
+    python-triton two_column_guard_contracts.py --output two-column-guard.json
+    python-triton two_column_template_contracts.py --output two-column-templates.json
+    python-triton two_column_semantics.py --layout TT --rounds 3 --repeats 31 --output two-column-dot.json
+    python-triton two_column_launch_performance.py --layout TT --k 32 --blocks 48 64 128 256 --capture-codegen --dump-dir launch-sources --output launch.json
+    python-triton model_layout_semantics.py --all --schedule two-column-pair --rounds 3 --repeats 31 --python /path/to/python-triton --output two-column-layouts.json
+    python3 -m unittest discover -s . -p test_compare_two_column_llvm.py
+    python3 audit_two_column_wave64.py ../../../docs/backend/sycl-validation/two-column --repo ../../.. --output wave64-analysis.json
+
+The cache-keyed `matmul_register_tiling_2col` option requires
+`matmul_register_tiling` and preserves its four-column decisions. It recognizes
+two-f16-input/f32-accumulator static contractions where four-column tiling loses
+one wavefront of output work. A mandatory late pipeline pass proves the untiled
+alternative and records actual local-product=64 selection. The renderer validates
+that predicate and emits host dispatch between separate template kernels.
+Other local sizes retain the untiled branch, including restored K=16 unroll.
+Malformed predicates and called specialized entries must fail with translator
+exit 1, not a signal or assertion abort. Use Slurm-allocated gfx906 nodes for
+device tests; `ACPP_VISIBILITY_MASK=omp` provides CPU correctness checks.
+
+The accepted audit uses `wave64-matrix/` and `wave64-extended/`, retains all
+fallback timing and checks final LLVM instructions/attributes/metadata under
+bounded identifier renaming. Three different fallback LLVM pairs are measured
+SSA-enabling cases when independent accumulator promotion is off. Three cached
+no-fusion contexts reuse same-job IR only after both source hashes match.
+Historical `audit_two_column.py` and `audit_two_column_launch.py` concern older
+experiments; they do not accept the final guard. The unguarded launch audit is
+expected to fail. See docs/backend/sycl-two-column-tiling-report.md for the
+complete 37-job evidence, scope, compile costs and interaction limits.

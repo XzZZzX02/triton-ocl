@@ -1,0 +1,87 @@
+/public/home/dtune/zzx/triton/tmp/tmpznnla28u.mlir:1:1: error: SYCL ordered reduction unroll factor must be 1, 2, 4, or 8
+module {
+  func.func @recurrence(%arg0: index, %arg1: i1, %arg2: memref<128xf32>) {
+    %alloc = memref.alloc() : memref<128xf32>
+    %cst = arith.constant 0.000000e+00 : f32
+    %c0 = arith.constant 0 : index
+    %c32 = arith.constant 32 : index
+    %c1 = arith.constant 1 : index
+    %0 = scf.for %arg3 = %c0 to %c32 step %c1 iter_args(%arg4 = %cst) -> (f32) {
+      %1 = memref.load %alloc[%arg3] : memref<128xf32>
+      %2 = arith.addf %arg4, %1 : f32
+      scf.yield %2 : f32
+    } {sycl.register_accumulator, sycl.thread_private}
+    return
+  }
+}
+
+{-#
+  external_resources: {
+    mlir_reproducer: {
+      pipeline: "builtin.module(sycl-ordered-reduction-unroll)",
+      disable_threading: false,
+      verify_each: true
+    }
+  }
+#-}
+/public/home/dtune/zzx/triton/tmp/tmpznnla28u.mlir:1:1: error: Failures have been detected while processing an MLIR pass pipeline
+/public/home/dtune/zzx/triton/tmp/tmpznnla28u.mlir:1:1: note: Pipeline failed while executing [`(anonymous namespace)::OrderedReductionUnrollPass` on 'builtin.module' operation]: reproducer generated at `std::errs, please share the reproducer above with Triton project.`
+/public/home/dtune/zzx/triton/tmp/tmpz50pwunk.mlir:1:1: error: SYCL ordered reduction unroll factor must be 1, 2, 4, or 8
+module {
+  func.func @recurrence(%arg0: index, %arg1: i1, %arg2: memref<128xf32>) {
+    %alloc = memref.alloc() : memref<128xf32>
+    %cst = arith.constant 0.000000e+00 : f32
+    %c0 = arith.constant 0 : index
+    %c32 = arith.constant 32 : index
+    %c1 = arith.constant 1 : index
+    %0 = scf.for %arg3 = %c0 to %c32 step %c1 iter_args(%arg4 = %cst) -> (f32) {
+      %1 = memref.load %alloc[%arg3] : memref<128xf32>
+      %2 = arith.addf %arg4, %1 : f32
+      scf.yield %2 : f32
+    } {sycl.register_accumulator, sycl.thread_private}
+    return
+  }
+}
+
+{-#
+  external_resources: {
+    mlir_reproducer: {
+      pipeline: "builtin.module(sycl-ordered-reduction-unroll)",
+      disable_threading: false,
+      verify_each: true
+    }
+  }
+#-}
+/public/home/dtune/zzx/triton/tmp/tmpz50pwunk.mlir:1:1: error: Failures have been detected while processing an MLIR pass pipeline
+/public/home/dtune/zzx/triton/tmp/tmpz50pwunk.mlir:1:1: note: Pipeline failed while executing [`(anonymous namespace)::OrderedReductionUnrollPass` on 'builtin.module' operation]: reproducer generated at `std::errs, please share the reproducer above with Triton project.`
+/public/home/dtune/zzx/triton/tmp/tmprkk5r_yf.mlir:1:1: error: SYCL ordered reduction unroll factor must be 1, 2, 4, or 8
+module {
+  func.func @recurrence(%arg0: index, %arg1: i1, %arg2: memref<128xf32>) {
+    %alloc = memref.alloc() : memref<128xf32>
+    %cst = arith.constant 0.000000e+00 : f32
+    %c0 = arith.constant 0 : index
+    %c32 = arith.constant 32 : index
+    %c1 = arith.constant 1 : index
+    %0 = scf.for %arg3 = %c0 to %c32 step %c1 iter_args(%arg4 = %cst) -> (f32) {
+      %1 = memref.load %alloc[%arg3] : memref<128xf32>
+      %2 = arith.addf %arg4, %1 : f32
+      scf.yield %2 : f32
+    } {sycl.register_accumulator, sycl.thread_private}
+    return
+  }
+}
+
+{-#
+  external_resources: {
+    mlir_reproducer: {
+      pipeline: "builtin.module(sycl-ordered-reduction-unroll)",
+      disable_threading: false,
+      verify_each: true
+    }
+  }
+#-}
+/public/home/dtune/zzx/triton/tmp/tmprkk5r_yf.mlir:1:1: error: Failures have been detected while processing an MLIR pass pipeline
+/public/home/dtune/zzx/triton/tmp/tmprkk5r_yf.mlir:1:1: note: Pipeline failed while executing [`(anonymous namespace)::OrderedReductionUnrollPass` on 'builtin.module' operation]: reproducer generated at `std::errs, please share the reproducer above with Triton project.`
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"status": "PASS", "count": 71}

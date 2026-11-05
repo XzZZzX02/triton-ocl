@@ -1,0 +1,6 @@
+112f2e13787ace13e87235fb75683eec0c69db25435570073e1525a49387497f  python/triton/_C/libtriton.so
+4ee80564c5d9cbd2a6439b261176fb194f79354d7c54420f4bf8fc81a9e0caf4  python/triton/_C/triton-sycl-translate
+6d9fd14e0253bc30b20625164eb2c30af29e7481f962dc0a5157f07d3a657f5d  python/test/sycl/two_column_template_contracts.py
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"status": "PASS", "count": 33}

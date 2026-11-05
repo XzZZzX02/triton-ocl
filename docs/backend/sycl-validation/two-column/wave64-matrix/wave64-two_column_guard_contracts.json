@@ -1,0 +1,2924 @@
+[
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      9,
+      16,
+      24
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      31
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": false,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": false,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "cse": true,
+    "reuse_before": true,
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "dtype": "f16",
+    "promote": false,
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "dtype": "f16",
+    "promote": true,
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "dtype": "f32",
+    "promote": false,
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "dtype": "f32",
+    "promote": true,
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "dtype": "f16",
+    "promote": false,
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "dtype": "f16",
+    "promote": true,
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "dtype": "f32",
+    "promote": false,
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "dtype": "f32",
+    "promote": true,
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      4,
+      16,
+      32
+    ],
+    "dtype": "f16",
+    "promote": false,
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      4,
+      16,
+      32
+    ],
+    "dtype": "f16",
+    "promote": true,
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      4,
+      16,
+      32
+    ],
+    "dtype": "f32",
+    "promote": false,
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      4,
+      16,
+      32
+    ],
+    "dtype": "f32",
+    "promote": true,
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      8,
+      8,
+      32
+    ],
+    "dtype": "f16",
+    "promote": false,
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      8,
+      8,
+      32
+    ],
+    "dtype": "f16",
+    "promote": true,
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      8,
+      8,
+      32
+    ],
+    "dtype": "f32",
+    "promote": false,
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      8,
+      8,
+      32
+    ],
+    "dtype": "f32",
+    "promote": true,
+    "status": "PASS"
+  },
+  {
+    "case": "private_entry",
+    "inert": true,
+    "status": "PASS"
+  },
+  {
+    "case": "called_entry",
+    "inert": true,
+    "status": "PASS"
+  },
+  {
+    "case": "shared_yield",
+    "rejected": true,
+    "diagnostic": "PassManager::run failed",
+    "status": "PASS"
+  },
+  {
+    "case": "swapped_yield",
+    "rejected": true,
+    "diagnostic": "PassManager::run failed",
+    "status": "PASS"
+  },
+  {
+    "case": "missing_distribution",
+    "rejected": true,
+    "diagnostic": "PassManager::run failed",
+    "status": "PASS"
+  },
+  {
+    "case": "stale_depth",
+    "rejected": true,
+    "diagnostic": "PassManager::run failed",
+    "status": "PASS"
+  },
+  {
+    "case": "effect",
+    "rejected": true,
+    "diagnostic": "PassManager::run failed",
+    "status": "PASS"
+  },
+  {
+    "case": "stale_width",
+    "rejected": true,
+    "diagnostic": "PassManager::run failed",
+    "status": "PASS"
+  },
+  {
+    "case": "different_initial",
+    "rejected": true,
+    "diagnostic": "PassManager::run failed",
+    "status": "PASS"
+  },
+  {
+    "case": "shared_column",
+    "rejected": true,
+    "diagnostic": "PassManager::run failed",
+    "status": "PASS"
+  }
+]

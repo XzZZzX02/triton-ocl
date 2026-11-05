@@ -1,0 +1,108 @@
+[
+  {
+    "label": "launch-NN-16",
+    "mode": "launch",
+    "args": [
+      "launch",
+      "--layout",
+      "NN",
+      "--k",
+      "16"
+    ],
+    "jobid": "22880445"
+  },
+  {
+    "label": "launch-TT-16",
+    "mode": "launch",
+    "args": [
+      "launch",
+      "--layout",
+      "TT",
+      "--k",
+      "16"
+    ],
+    "jobid": "22880446"
+  },
+  {
+    "label": "launch-NN-32",
+    "mode": "launch",
+    "args": [
+      "launch",
+      "--layout",
+      "NN",
+      "--k",
+      "32"
+    ],
+    "jobid": "22880447"
+  },
+  {
+    "label": "launch-TT-32",
+    "mode": "launch",
+    "args": [
+      "launch",
+      "--layout",
+      "TT",
+      "--k",
+      "32"
+    ],
+    "jobid": "22880448"
+  },
+  {
+    "label": "launch-NT-64",
+    "mode": "launch",
+    "args": [
+      "launch",
+      "--layout",
+      "NT",
+      "--k",
+      "64"
+    ],
+    "jobid": "22880449"
+  },
+  {
+    "label": "launch-TN-128",
+    "mode": "launch",
+    "args": [
+      "launch",
+      "--layout",
+      "TN",
+      "--k",
+      "128"
+    ],
+    "jobid": "22880450"
+  },
+  {
+    "label": "small-launch-TT-16",
+    "mode": "launch",
+    "args": [
+      "launch",
+      "--layout",
+      "TT",
+      "--k",
+      "16",
+      "--blocks",
+      "1",
+      "3",
+      "3x5",
+      "48"
+    ],
+    "jobid": "22880451"
+  },
+  {
+    "label": "small-launch-NN-32",
+    "mode": "launch",
+    "args": [
+      "launch",
+      "--layout",
+      "NN",
+      "--k",
+      "32",
+      "--blocks",
+      "1",
+      "3",
+      "3x5",
+      "48"
+    ],
+    "jobid": "22880452"
+  }
+]

@@ -536,6 +536,7 @@ private:
 
   /// Track local allocations for SYCL local_accessor generation
   SmallVector<memref::AllocOp, 4> localAllocs;
+  uint64_t twoColumnLaunchLimit = 0;
 
   unsigned numDSPs = 0;
 

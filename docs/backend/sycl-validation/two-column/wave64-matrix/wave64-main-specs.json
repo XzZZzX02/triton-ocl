@@ -1,0 +1,419 @@
+[
+  {
+    "label": "layouts-0",
+    "mode": "layouts",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_2d_nn_f32_none",
+      "layout_2d_nn_f16_none",
+      "layout_2d_tn_f32_none",
+      "layout_2d_tn_f16_none",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "label": "layouts-1",
+    "mode": "layouts",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_2d_nt_f32_none",
+      "layout_2d_nt_f16_none",
+      "layout_2d_tt_f32_none",
+      "layout_2d_tt_f16_none",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "label": "layouts-2",
+    "mode": "layouts",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_3d_nn_f32_none",
+      "layout_3d_nn_f32_a",
+      "layout_3d_nn_f32_b",
+      "layout_3d_nn_f16_none",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "label": "layouts-3",
+    "mode": "layouts",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_3d_nn_f16_a",
+      "layout_3d_nn_f16_b",
+      "layout_3d_tn_f32_none",
+      "layout_3d_tn_f32_a",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "label": "layouts-4",
+    "mode": "layouts",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_3d_tn_f32_b",
+      "layout_3d_tn_f16_none",
+      "layout_3d_tn_f16_a",
+      "layout_3d_tn_f16_b",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "label": "layouts-5",
+    "mode": "layouts",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_3d_nt_f32_none",
+      "layout_3d_nt_f32_a",
+      "layout_3d_nt_f32_b",
+      "layout_3d_nt_f16_none",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "label": "layouts-6",
+    "mode": "layouts",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_3d_nt_f16_a",
+      "layout_3d_nt_f16_b",
+      "layout_3d_tt_f32_none",
+      "layout_3d_tt_f32_a",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "label": "layouts-7",
+    "mode": "layouts",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_3d_tt_f32_b",
+      "layout_3d_tt_f16_none",
+      "layout_3d_tt_f16_a",
+      "layout_3d_tt_f16_b",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "label": "layouts-8",
+    "mode": "layouts",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_2d_nn_f32_none_negative_a_rows",
+      "layout_2d_nn_f16_none_negative_a_rows",
+      "layout_2d_tn_f32_none_negative_a_k",
+      "layout_2d_tn_f16_none_negative_a_k",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "label": "layouts-9",
+    "mode": "layouts",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_2d_nt_f32_none_negative_b_cols",
+      "layout_2d_nt_f16_none_negative_b_cols",
+      "layout_2d_tt_f32_none_negative_b_k",
+      "layout_2d_tt_f16_none_negative_b_k",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "label": "layouts-10",
+    "mode": "layouts",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_2d_nn_f32_none_broadcast_a_rows",
+      "layout_2d_nn_f16_none_broadcast_a_rows",
+      "layout_2d_nt_f32_none_broadcast_b_cols",
+      "layout_2d_nt_f16_none_broadcast_b_cols",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "label": "composition-a",
+    "mode": "dot",
+    "args": [
+      "dot",
+      "--layout",
+      "TT",
+      "--configs",
+      "full",
+      "no_staging",
+      "no_init",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "label": "composition-b",
+    "mode": "dot",
+    "args": [
+      "dot",
+      "--layout",
+      "TT",
+      "--configs",
+      "no_accumulator",
+      "no_reuse",
+      "no_fusion",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "label": "composition-c",
+    "mode": "dot",
+    "args": [
+      "dot",
+      "--layout",
+      "TT",
+      "--configs",
+      "no_unroll",
+      "no_distribution",
+      "tiling_off",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "label": "length-16",
+    "mode": "dot",
+    "args": [
+      "dot",
+      "--layout",
+      "TT",
+      "--shape",
+      "8",
+      "16",
+      "16",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "label": "length-64",
+    "mode": "dot",
+    "args": [
+      "dot",
+      "--layout",
+      "NT",
+      "--shape",
+      "8",
+      "16",
+      "64",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "label": "length-128",
+    "mode": "dot",
+    "args": [
+      "dot",
+      "--layout",
+      "TN",
+      "--shape",
+      "8",
+      "16",
+      "128",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "label": "length-256",
+    "mode": "dot",
+    "args": [
+      "dot",
+      "--layout",
+      "TT",
+      "--shape",
+      "8",
+      "16",
+      "256",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ]
+  },
+  {
+    "label": "rounding-NN",
+    "mode": "dot",
+    "args": [
+      "dot",
+      "--layout",
+      "NN",
+      "--rounds",
+      "1",
+      "--repeats",
+      "0",
+      "--rounding",
+      "--bounds",
+      "full"
+    ]
+  },
+  {
+    "label": "rounding-TT",
+    "mode": "dot",
+    "args": [
+      "dot",
+      "--layout",
+      "TT",
+      "--rounds",
+      "1",
+      "--repeats",
+      "0",
+      "--rounding",
+      "--bounds",
+      "full"
+    ]
+  },
+  {
+    "label": "ieee-NT",
+    "mode": "dot",
+    "args": [
+      "dot",
+      "--layout",
+      "NT",
+      "--rounds",
+      "1",
+      "--repeats",
+      "0",
+      "--special"
+    ]
+  },
+  {
+    "label": "ieee-TN",
+    "mode": "dot",
+    "args": [
+      "dot",
+      "--layout",
+      "TN",
+      "--rounds",
+      "1",
+      "--repeats",
+      "0",
+      "--special"
+    ]
+  },
+  {
+    "label": "empty",
+    "mode": "dot",
+    "args": [
+      "dot",
+      "--layout",
+      "TT",
+      "--rounds",
+      "1",
+      "--repeats",
+      "0",
+      "--bounds",
+      "empty"
+    ]
+  },
+  {
+    "label": "unit",
+    "mode": "dot",
+    "args": [
+      "dot",
+      "--layout",
+      "NN",
+      "--rounds",
+      "1",
+      "--repeats",
+      "0",
+      "--bounds",
+      "unit"
+    ]
+  },
+  {
+    "label": "four-column",
+    "mode": "dot",
+    "args": [
+      "dot",
+      "--layout",
+      "NT",
+      "--rounds",
+      "1",
+      "--repeats",
+      "0",
+      "--shape",
+      "16",
+      "16",
+      "32"
+    ]
+  },
+  {
+    "label": "fp32",
+    "mode": "dot",
+    "args": [
+      "dot",
+      "--layout",
+      "NN",
+      "--rounds",
+      "1",
+      "--repeats",
+      "0",
+      "--dtype",
+      "f32"
+    ]
+  }
+]

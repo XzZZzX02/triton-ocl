@@ -155,3 +155,85 @@ adds a local phase barrier, rejects prior/following external dependencies, and
 re-proves marked stores after work-distribution rebuilds ownership. Independent
 gfx906 paired timings and static-output layout tests are recorded in
 sycl-terminal-store-report.md. No MFMA or dtype conversion extension is involved.
+
+
+## 2026-11-02: Narrow Register Tiles and Composition
+
+Re-read the original register-optimization paper and AMD performance guidance:
+
+- https://arxiv.org/abs/1406.0582
+  Register promotion, unrolling and scheduling interact; their marginal speedups
+  cannot be multiplied or assumed independent. The two-column candidate keeps
+  each output's recurrence order and reuses the existing short-tiled-unroll guard.
+- https://rocm.docs.amd.com/projects/HIP/en/latest/how-to/performance_guidelines.html
+  Register reuse must be balanced against available parallel work. The narrower
+  tile is considered only when four columns fail the existing 64-output-point
+  gate and two columns satisfy it. This is an IR/target-resource rule, not a
+  workload-name or benchmark-shape lookup. External strides do not establish
+  profitability, so transposed, padded, reversed and broadcast layouts are timed.
+
+The new option is cache keyed, defaults off, and preserves all four-column
+decisions. Standalone tiling already creates SSA accumulators: initializer
+forwarding can therefore become applicable when the separate promotion option
+is off. That is a supported enabling interaction, not evidence of a lost pass.
+Unchanged output, actual markers, inert-source equality and alternating paired
+device timings are checked separately. See sycl-two-column-tiling-report.md.
+
+## 2026-11-02: Next Candidate, LDS Bank-Conflict Reduction
+
+Primary sources retrieved from the network:
+
+- IREE Common/GPU pass catalogue:
+  https://iree.dev/reference/mlir-passes/CodegenCommonGPU/
+- IREE GPUReduceBankConflicts implementation:
+  https://raw.githubusercontent.com/iree-org/iree/main/compiler/src/iree/compiler/Codegen/Common/GPU/GPUReduceBankConflicts.cpp
+  Retrieved source SHA256:
+  41aabd5e1345201fd255b1c6eb839180679fab2c6ae627b91368e3e954ab2a60.
+- AMD Composable Kernel, LDS bank mapping and access phases:
+  https://rocmdocs.amd.com/projects/composable_kernel/en/latest/conceptual/ck_tile/hardware/lds_bank_conflicts.html
+
+IREE pads shared allocations and checks memory capacity; its generic heuristic
+is not gfx906 performance evidence. AMD documents the GCN 32-bank, four-byte
+bank mapping and emphasizes instruction-dependent access phases. The MFMA and
+128-bit examples on that page are not schedules to transplant to gfx906.
+
+Investigate padding only for proven owned, non-escaping, read-only contraction
+inputs whose scalar lane/row address mapping predicts conflicts within the
+relevant access phase. Reject unknown layouts, views, escapes, observable shape
+uses and dynamic domains. Keep accumulation destinations and all arithmetic
+unchanged. Check the padded physical storage in local-memory reuse and prevent
+capacity/occupancy losses; a smaller bank-conflict estimate alone is not an
+acceptance result. Place the candidate after schedule construction and before
+storage planning, then measure both raw/promoted contractions and tiling,
+staging, unroll and reuse combinations. This remains a research candidate until
+its own implementation, semantic and paired gfx906 acceptance cycle completes.
+
+## 2026-11-06: Launch Specialization and Fallback Evidence
+
+Primary sources checked again while closing the two-column iteration:
+
+- Halide Func specialization API:
+  https://halide-lang.org/docs/api/generated/Func.html
+  Conditional schedules inherit the existing schedule and specialize under
+  explicit conditions. This motivates preserving the untiled schedule as a
+  separately compiled alternative, rather than assuming one register tile is
+  profitable for every physical launch. Halide's API does not establish the
+  gfx906 predicate; paired device experiments reject both unguarded tiling and
+  a `<=64` condition. The accepted local-product=64 rule is recorded by a
+  pipeline pass and mechanically lowered to host template dispatch.
+- AdaptiveCpp 25.10.0 environment-variable documentation:
+  https://raw.githubusercontent.com/AdaptiveCpp/AdaptiveCpp/v25.10.0/doc/env_variables.md
+  `ACPP_S2_DUMP_IR_FINAL` captures the final LLVM state before backend-specific
+  lowering. These dumps support the bounded fallback comparison of instructions,
+  attributes and transitive alias/TBAA/loop metadata. They are not final ISA
+  dumps or a universal semantic-equivalence proof. Reused JIT-cache dumps require
+  exact generated-source identity at the same local size.
+- Domagala et al., A Tiling Perspective for Register Optimization:
+  https://arxiv.org/abs/1406.0582
+  The paper jointly considers promotion, unrolling and instruction scheduling.
+  The current study likewise distinguishes pass coexistence, enabling effects
+  and inert controls instead of multiplying standalone speedups.
+
+The completed iteration remains opt-in. Its 37-job gfx906 evidence and failed
+cost-rule candidates are in sycl-two-column-tiling-report.md. LDS bank padding
+remains the next independent candidate and is not part of this acceptance.

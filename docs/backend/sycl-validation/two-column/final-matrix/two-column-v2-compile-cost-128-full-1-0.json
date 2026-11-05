@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+  "shape": [
+    8,
+    16,
+    128
+  ],
+  "layout": "TT",
+  "plan": "full",
+  "enabled": true,
+  "round": 0,
+  "seconds": 0.9009739309549332,
+  "source_bytes": 21812,
+  "source_sha256": "6971d9c7c0ff15d536826ac3f48a6f34119c150d0a927256e81f668b8131ce41"
+}

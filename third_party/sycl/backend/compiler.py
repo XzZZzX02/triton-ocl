@@ -41,6 +41,7 @@ class SYCLOptions:
     group_reduction: bool = False
     register_accumulator: bool = False
     matmul_register_tiling: bool = False
+    matmul_register_tiling_2col: bool = False
     reduction_unroll: int = 1
     accumulator_init_forwarding: bool = False
     distribute_work: bool = True
@@ -144,7 +145,7 @@ class SYCLBackend(BaseBackend):
         if opt.register_accumulator:
             sycl.passes.memir.register_accumulator(pm)
         if opt.matmul_register_tiling:
-            sycl.passes.memir.matmul_register_tiling(pm)
+            sycl.passes.memir.matmul_register_tiling(pm, opt.matmul_register_tiling_2col)
             passes.common.add_cse(pm)
         if opt.group_reduction:
             sycl.passes.memir.group_reduction(pm)
@@ -161,6 +162,13 @@ class SYCLBackend(BaseBackend):
             sycl.passes.memir.terminal_store_distribution(pm)
         if opt.distribute_work and opt.half_store_distribution:
             sycl.passes.memir.half_store_distribution(pm)
+        if opt.matmul_register_tiling and opt.matmul_register_tiling_2col:
+            sycl.passes.memir.two_column_launch_guard(pm)
+            if opt.reduction_unroll != 1:
+                # The untiled launch alternative retains the original unroll
+                # opportunity, including a K=16 reduction.
+                sycl.passes.memir.ordered_reduction_unroll(pm, opt.reduction_unroll)
+                passes.common.add_cse(pm)
         sycl.passes.memir.serial_half_copy_guard(pm)
         pm.run(mod)
         return mod

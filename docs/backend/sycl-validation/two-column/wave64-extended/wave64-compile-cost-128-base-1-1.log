@@ -1,0 +1,3 @@
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"status": "PASS", "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation", "shape": [8, 16, 128], "layout": "TT", "plan": "base", "enabled": true, "round": 1, "seconds": 0.7627009842544794, "source_bytes": 23829, "source_sha256": "74a99ca62f1a07aef6f04e834eaa184b84afd97988deba16967016c9535230af"}

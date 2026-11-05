@@ -1,0 +1,3082 @@
+[
+  {
+    "case": "layout_2d_nn_f32_none",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 17692,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "70a7d8300a48751547573aefd7416e76d6a5632a2b64f70d99bac0b7a92f637b",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 17692,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "70a7d8300a48751547573aefd7416e76d6a5632a2b64f70d99bac0b7a92f637b",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nn",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nn_f16_none",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18706,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "bc1c5d2d6a14e51f4ccf522eec90f29f279c099e81988f297990ed983fe53d27",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 17814,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "cd15e84e27d3e37ecb365186aba5298c9c5853025f73d0d5cdffd1268e1f7d0c",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nn",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_tn_f32_none",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 17873,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "448a9d26669d7c505d85b1c94af001916b006fff61e063e2ad027a11e251e6ee",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 17873,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "448a9d26669d7c505d85b1c94af001916b006fff61e063e2ad027a11e251e6ee",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "tn",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_tn_f16_none",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18887,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "e49d09924b33d2daea61595d669c2cbd6201aaf4504a3c5c86d7f8233e174aec",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 17995,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "93660147d395bf14e336dd2bdd9bb07a730a4e41c507cc3ecf271be5250c0f86",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "tn",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nt_f32_none",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 17870,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "83701367972a3b094410f7205683ac54a5c02375d45dc24cb12c893428ee7103",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 17870,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "83701367972a3b094410f7205683ac54a5c02375d45dc24cb12c893428ee7103",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nt_f16_none",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18884,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "61b535d4012b62a3cab81eb42b1af3d6f4999d1e73b368d6352ed976dddf6ecb",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 17992,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "1592b70634c93f3c8e2f6d207c02324e15babc0430d34870a760069502ab9ba3",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_tt_f32_none",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18051,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "461d43345eb9495c8e5dfab5b70db00e79355c4a5c02b18fdc771b140209b1b8",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18051,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "461d43345eb9495c8e5dfab5b70db00e79355c4a5c02b18fdc771b140209b1b8",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "tt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_tt_f16_none",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 19065,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "a4dc931bf6e47ac252aca426260d6ec2139096ca9d2d314de43156f79dfc90c3",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18173,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "12d789d4f4c939332be5f8e594ae573773ff981103f5a50f07fe2bd79f8ef846",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "tt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nn_f32_none",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18393,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "df8c3a3f501fb059981cf4221cd74ea381ce3f7ea3179b72a5a2109f792fff21",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18393,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "df8c3a3f501fb059981cf4221cd74ea381ce3f7ea3179b72a5a2109f792fff21",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "nn",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nn_f32_a",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18393,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "df8c3a3f501fb059981cf4221cd74ea381ce3f7ea3179b72a5a2109f792fff21",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18393,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "df8c3a3f501fb059981cf4221cd74ea381ce3f7ea3179b72a5a2109f792fff21",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "nn",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nn_f32_b",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18393,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "df8c3a3f501fb059981cf4221cd74ea381ce3f7ea3179b72a5a2109f792fff21",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18393,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "df8c3a3f501fb059981cf4221cd74ea381ce3f7ea3179b72a5a2109f792fff21",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "nn",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nn_f16_none",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 19407,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "d9a5fe95071b5613d16527db0b24051c666c988f713c10e7cb1b6c608ae85799",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18515,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "9728ac31d453c467f9972e22960d357aaf94d48405deafe2b89ca601e9ee965c",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "nn",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nn_f16_a",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 19407,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "d9a5fe95071b5613d16527db0b24051c666c988f713c10e7cb1b6c608ae85799",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18515,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "9728ac31d453c467f9972e22960d357aaf94d48405deafe2b89ca601e9ee965c",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "nn",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nn_f16_b",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 19407,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "d9a5fe95071b5613d16527db0b24051c666c988f713c10e7cb1b6c608ae85799",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18515,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "9728ac31d453c467f9972e22960d357aaf94d48405deafe2b89ca601e9ee965c",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "nn",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tn_f32_none",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18574,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "d0fdae6dc25c7bab7e4784edb92140885f18eef42a283568fcfa8d7173fe301d",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18574,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "d0fdae6dc25c7bab7e4784edb92140885f18eef42a283568fcfa8d7173fe301d",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "tn",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tn_f32_a",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18574,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "d0fdae6dc25c7bab7e4784edb92140885f18eef42a283568fcfa8d7173fe301d",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18574,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "d0fdae6dc25c7bab7e4784edb92140885f18eef42a283568fcfa8d7173fe301d",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "tn",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tn_f32_b",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18574,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "d0fdae6dc25c7bab7e4784edb92140885f18eef42a283568fcfa8d7173fe301d",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18574,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "d0fdae6dc25c7bab7e4784edb92140885f18eef42a283568fcfa8d7173fe301d",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "tn",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tn_f16_none",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 19592,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "f51a8392732bc68b9e090b1e51f07ec0193180084a126954ea750bb6886e7908",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18696,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "75488d34066ac3b9d62a96348af1815287242277b5f4a78ca5440386a80486dd",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "tn",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tn_f16_a",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 19592,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "f51a8392732bc68b9e090b1e51f07ec0193180084a126954ea750bb6886e7908",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18696,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "75488d34066ac3b9d62a96348af1815287242277b5f4a78ca5440386a80486dd",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "tn",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tn_f16_b",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 19592,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "f51a8392732bc68b9e090b1e51f07ec0193180084a126954ea750bb6886e7908",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18696,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "75488d34066ac3b9d62a96348af1815287242277b5f4a78ca5440386a80486dd",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "tn",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nt_f32_none",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18571,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "ea6299d6191c23b2beda509b330dae1be68cb53c51a9994d81c566b65125bae9",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18571,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "ea6299d6191c23b2beda509b330dae1be68cb53c51a9994d81c566b65125bae9",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "nt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nt_f32_a",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18571,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "ea6299d6191c23b2beda509b330dae1be68cb53c51a9994d81c566b65125bae9",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18571,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "ea6299d6191c23b2beda509b330dae1be68cb53c51a9994d81c566b65125bae9",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "nt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nt_f32_b",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18571,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "ea6299d6191c23b2beda509b330dae1be68cb53c51a9994d81c566b65125bae9",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18571,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "ea6299d6191c23b2beda509b330dae1be68cb53c51a9994d81c566b65125bae9",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "nt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nt_f16_none",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 19589,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "08b84257da1c322ad3f9c38ccb97f90bcfd5e3210bb25934eaafbeaf268f1d5c",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18693,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "47e5268e7bd1f9ed6a112bb021933e6299b40b2e14ef0a4aaadaec8d10daddb3",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "nt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nt_f16_a",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 19589,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "08b84257da1c322ad3f9c38ccb97f90bcfd5e3210bb25934eaafbeaf268f1d5c",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18693,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "47e5268e7bd1f9ed6a112bb021933e6299b40b2e14ef0a4aaadaec8d10daddb3",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "nt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_nt_f16_b",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 19589,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "08b84257da1c322ad3f9c38ccb97f90bcfd5e3210bb25934eaafbeaf268f1d5c",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18693,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "47e5268e7bd1f9ed6a112bb021933e6299b40b2e14ef0a4aaadaec8d10daddb3",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "nt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f32_none",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18752,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "723bd85be5fdf3caf8b51215bf1d357666282d101f0a8f062f3be3a5ea0ff6c6",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18752,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "723bd85be5fdf3caf8b51215bf1d357666282d101f0a8f062f3be3a5ea0ff6c6",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "tt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f32_a",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18752,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "723bd85be5fdf3caf8b51215bf1d357666282d101f0a8f062f3be3a5ea0ff6c6",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18752,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "723bd85be5fdf3caf8b51215bf1d357666282d101f0a8f062f3be3a5ea0ff6c6",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "tt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f32_b",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18752,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "723bd85be5fdf3caf8b51215bf1d357666282d101f0a8f062f3be3a5ea0ff6c6",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18752,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "723bd85be5fdf3caf8b51215bf1d357666282d101f0a8f062f3be3a5ea0ff6c6",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "tt",
+    "precision": "f32",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f16_none",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 19776,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "63b22acc8c60872ef3e83df6b94856ad17dc4cfe4d2d4c5133e177dd89efb8a0",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18874,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "bbdea370a57ea5f6dab58e8936d719137e3a4a7fa6cf6b0721d7cc3a9cde0899",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 3,
+    "broadcast": "none",
+    "layout": "tt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f16_a",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 19776,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "63b22acc8c60872ef3e83df6b94856ad17dc4cfe4d2d4c5133e177dd89efb8a0",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18874,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "bbdea370a57ea5f6dab58e8936d719137e3a4a7fa6cf6b0721d7cc3a9cde0899",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 3,
+    "broadcast": "a",
+    "layout": "tt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_3d_tt_f16_b",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 19776,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "63b22acc8c60872ef3e83df6b94856ad17dc4cfe4d2d4c5133e177dd89efb8a0",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18874,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "bbdea370a57ea5f6dab58e8936d719137e3a4a7fa6cf6b0721d7cc3a9cde0899",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 3,
+    "broadcast": "b",
+    "layout": "tt",
+    "precision": "f16",
+    "variant": "base",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nn_f32_none_negative_a_rows",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 17692,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "70a7d8300a48751547573aefd7416e76d6a5632a2b64f70d99bac0b7a92f637b",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 17692,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "70a7d8300a48751547573aefd7416e76d6a5632a2b64f70d99bac0b7a92f637b",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nn",
+    "precision": "f32",
+    "variant": "negative_a_rows",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nn_f16_none_negative_a_rows",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18706,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "bc1c5d2d6a14e51f4ccf522eec90f29f279c099e81988f297990ed983fe53d27",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 17814,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "cd15e84e27d3e37ecb365186aba5298c9c5853025f73d0d5cdffd1268e1f7d0c",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nn",
+    "precision": "f16",
+    "variant": "negative_a_rows",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_tn_f32_none_negative_a_k",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 17873,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "448a9d26669d7c505d85b1c94af001916b006fff61e063e2ad027a11e251e6ee",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 17873,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "448a9d26669d7c505d85b1c94af001916b006fff61e063e2ad027a11e251e6ee",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "tn",
+    "precision": "f32",
+    "variant": "negative_a_k",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_tn_f16_none_negative_a_k",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18887,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "e49d09924b33d2daea61595d669c2cbd6201aaf4504a3c5c86d7f8233e174aec",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 17995,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "93660147d395bf14e336dd2bdd9bb07a730a4e41c507cc3ecf271be5250c0f86",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "tn",
+    "precision": "f16",
+    "variant": "negative_a_k",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nt_f32_none_negative_b_cols",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 17870,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "83701367972a3b094410f7205683ac54a5c02375d45dc24cb12c893428ee7103",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 17870,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "83701367972a3b094410f7205683ac54a5c02375d45dc24cb12c893428ee7103",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nt",
+    "precision": "f32",
+    "variant": "negative_b_cols",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nt_f16_none_negative_b_cols",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18884,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "61b535d4012b62a3cab81eb42b1af3d6f4999d1e73b368d6352ed976dddf6ecb",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 17992,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "1592b70634c93f3c8e2f6d207c02324e15babc0430d34870a760069502ab9ba3",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nt",
+    "precision": "f16",
+    "variant": "negative_b_cols",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_tt_f32_none_negative_b_k",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18051,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "461d43345eb9495c8e5dfab5b70db00e79355c4a5c02b18fdc771b140209b1b8",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18051,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "461d43345eb9495c8e5dfab5b70db00e79355c4a5c02b18fdc771b140209b1b8",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "tt",
+    "precision": "f32",
+    "variant": "negative_b_k",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_tt_f16_none_negative_b_k",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 19065,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "a4dc931bf6e47ac252aca426260d6ec2139096ca9d2d314de43156f79dfc90c3",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 18173,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "12d789d4f4c939332be5f8e594ae573773ff981103f5a50f07fe2bd79f8ef846",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "tt",
+    "precision": "f16",
+    "variant": "negative_b_k",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nn_f32_none_broadcast_a_rows",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 17692,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "70a7d8300a48751547573aefd7416e76d6a5632a2b64f70d99bac0b7a92f637b",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 17692,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "70a7d8300a48751547573aefd7416e76d6a5632a2b64f70d99bac0b7a92f637b",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nn",
+    "precision": "f32",
+    "variant": "broadcast_a_rows",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nn_f16_none_broadcast_a_rows",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18706,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "bc1c5d2d6a14e51f4ccf522eec90f29f279c099e81988f297990ed983fe53d27",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 17814,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "cd15e84e27d3e37ecb365186aba5298c9c5853025f73d0d5cdffd1268e1f7d0c",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      7,
+      9,
+      5
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nn",
+    "precision": "f16",
+    "variant": "broadcast_a_rows",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nt_f32_none_broadcast_b_cols",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 17870,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "83701367972a3b094410f7205683ac54a5c02375d45dc24cb12c893428ee7103",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 17870,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "83701367972a3b094410f7205683ac54a5c02375d45dc24cb12c893428ee7103",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      3,
+      16,
+      15
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nt",
+    "precision": "f32",
+    "variant": "broadcast_b_cols",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  },
+  {
+    "case": "layout_2d_nt_f16_none_broadcast_b_cols",
+    "status": "PASS",
+    "harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "elements_checked": 0,
+    "max_abs_error": 0,
+    "tile_shape": "small",
+    "logical_tile": [
+      8,
+      16,
+      16
+    ],
+    "schedules": [
+      {
+        "schedule": "stored",
+        "source_bytes": 18884,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": false,
+          "sycl.register_tile_composed_accumulator": false,
+          "sycl.ordered_reduction_unroll": true,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "61b535d4012b62a3cab81eb42b1af3d6f4999d1e73b368d6352ed976dddf6ecb",
+        "elements_checked": 0
+      },
+      {
+        "schedule": "two-column",
+        "source_bytes": 17992,
+        "markers": {
+          "sycl.register_accumulator": true,
+          "sycl.register_tile =": true,
+          "sycl.register_tile_composed_accumulator": true,
+          "sycl.ordered_reduction_unroll": false,
+          "sycl.accumulator_init_forwarded": true
+        },
+        "cooperative_stages": 1,
+        "terminal_stores": 0,
+        "round": 0,
+        "samples_ns": [],
+        "median_ns": null,
+        "source_sha256": "1592b70634c93f3c8e2f6d207c02324e15babc0430d34870a760069502ab9ba3",
+        "elements_checked": 0
+      }
+    ],
+    "local_shapes": [
+      48,
+      [
+        3,
+        5
+      ]
+    ],
+    "shape": [
+      5,
+      11,
+      13
+    ],
+    "batch_count": 1,
+    "broadcast": "none",
+    "layout": "nt",
+    "precision": "f16",
+    "variant": "broadcast_b_cols",
+    "expected_harness_sha256": "8130b326eec3606dc2682d4e75891b66f0714b3c49e0eec3cc5f9ab10359a0e4",
+    "harness_match": true
+  }
+]

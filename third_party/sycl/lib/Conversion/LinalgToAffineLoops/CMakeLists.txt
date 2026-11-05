@@ -6,6 +6,7 @@ add_triton_library(LinalgToAffineLoopsSYCL
   GroupReduction.cpp
   RegisterAccumulator.cpp
   MatmulRegisterTiling.cpp
+  TwoColumnLaunchGuard.cpp
   OrderedReductionUnroll.cpp
   AccumulatorInitForwarding.cpp
   WorkDistribution.cpp

@@ -1,6 +1,7 @@
 #include "sycl/include/Conversion/LinalgToAffineLoops/Passes.h"
 #include "mlir/Dialect/Affine/IR/AffineOps.h"
 #include "mlir/Dialect/Arith/IR/Arith.h"
+#include "mlir/Dialect/Func/IR/FuncOps.h"
 #include "mlir/Dialect/MemRef/IR/MemRef.h"
 #include "mlir/Dialect/SCF/IR/SCF.h"
 #include "mlir/IR/BuiltinOps.h"
@@ -10,6 +11,25 @@
 
 using namespace mlir;
 namespace {
+static bool isDirectLaunchEntry(Operation *op) {
+  auto function = op->getParentOfType<func::FuncOp>();
+  if (!function || function.isPrivate() ||
+      function.getFunctionType().getNumResults())
+    return false;
+  bool called = false;
+  auto module = function->getParentOfType<ModuleOp>();
+  if (!module)
+    return false;
+  module.walk([&](func::CallOp call) {
+    called |= call.getCallee() == function.getName();
+  });
+  return !called;
+}
+
+static bool hasStaticIdentityBuffer(Value buffer) {
+  auto type = dyn_cast<MemRefType>(buffer.getType());
+  return type && type.hasStaticShape() && type.getLayout().isIdentity();
+}
 // Four-column register tiling trades work-items for scalar reuse. Keep at
 // least one gfx906 wavefront of independent distributed output points. Count
 // batch loops in the same plan, but never Triton grid/program IDs: separate
@@ -46,8 +66,18 @@ static bool hasEnoughTiledOutputWork(affine::AffineForOp columns,
   return false;
 }
 
+static bool hasTwoColumnOpportunity(affine::AffineForOp columns) {
+  return columns.hasConstantBounds() &&
+         columns.getConstantUpperBound() % 4 == 0 &&
+         !hasEnoughTiledOutputWork(columns, 4) &&
+         hasEnoughTiledOutputWork(columns, 2);
+}
+
 static bool hasDistributedOutputNest(affine::AffineForOp rows,
                                      affine::AffineForOp columns) {
+  for (Operation *parent = rows; parent; parent = parent->getParentOp())
+    if (parent->hasAttr("sycl.two_column_untiled_path"))
+      return false;
   auto root = rows;
   while (root && !root->hasAttr("sycl.distribute"))
     root = root->getParentOfType<affine::AffineForOp>();
@@ -168,6 +198,12 @@ static bool tilePromotedContraction(affine::AffineForOp columns,
   // Inspect the actual loaded types, independently of the kernel or layout name.
   if (!lhs.getResult().getType().isF16() || !rhs.getResult().getType().isF16())
     return false;
+  if (tile == 2 &&
+      (!isDirectLaunchEntry(columns) ||
+       !hasStaticIdentityBuffer(lhs.getMemRef()) ||
+       !hasStaticIdentityBuffer(rhs.getMemRef()) ||
+       !hasStaticIdentityBuffer(store.getMemRef())))
+    return false;
 
   auto c = store.getIndices();
   auto a = lhs.getIndices();
@@ -192,6 +228,8 @@ static bool tilePromotedContraction(affine::AffineForOp columns,
       loc, 0, columns.getConstantUpperBound() / tile);
   tiled->setAttr("sycl.parallel", builder.getUnitAttr());
   tiled->setAttr("sycl.register_tile", builder.getI64IntegerAttr(tile));
+  if (tile == 2)
+    tiled->setAttr("sycl.two_column_candidate", builder.getUnitAttr());
   builder.setInsertionPointToStart(tiled.getBody());
 
   SmallVector<Value> indices, initialValues;
@@ -244,6 +282,8 @@ static bool tilePromotedContraction(affine::AffineForOp columns,
 struct MatmulRegisterTilingPass
     : PassWrapper<MatmulRegisterTilingPass, OperationPass<ModuleOp>> {
   MLIR_DEFINE_EXPLICIT_INTERNAL_INLINE_TYPE_ID(MatmulRegisterTilingPass)
+  explicit MatmulRegisterTilingPass(bool twoColumnFallback = false)
+      : twoColumnFallback(twoColumnFallback) {}
   StringRef getArgument() const final { return "sycl-matmul-register-tiling"; }
   StringRef getDescription() const final { return "Register-tile independent static contractions without reassociation"; }
   void getDependentDialects(DialectRegistry &registry) const override {
@@ -254,7 +294,6 @@ struct MatmulRegisterTilingPass
     getOperation().walk([&](affine::AffineForOp loop) {
       if (loop->hasAttr("sycl.reduction")) candidates.push_back(loop);
     });
-    constexpr int64_t tile = 4;
     for (auto reduction : candidates) {
       auto columns = dyn_cast<affine::AffineForOp>(reduction->getParentOp());
       auto rows = columns ? dyn_cast<affine::AffineForOp>(columns->getParentOp()) : affine::AffineForOp();
@@ -266,8 +305,14 @@ struct MatmulRegisterTilingPass
           reduction.getConstantLowerBound() || columns.getConstantLowerBound() || rows.getConstantLowerBound() ||
           reduction.getStep()!=1 || columns.getStep()!=1 || rows.getStep()!=1 ||
           reduction.getConstantUpperBound()<16 || columns.getConstantUpperBound()<16 ||
-          rows.getConstantUpperBound()<8 || columns.getConstantUpperBound()%tile) continue;
-      if (!hasEnoughTiledOutputWork(columns, tile)) continue;
+          rows.getConstantUpperBound()<8) continue;
+      int64_t tile = 4;
+      if (!hasEnoughTiledOutputWork(columns, tile)) {
+        if (!twoColumnFallback || !hasTwoColumnOpportunity(columns)) continue;
+        tile = 2;
+      }
+      if (columns.getConstantUpperBound()%tile ||
+          !hasEnoughTiledOutputWork(columns, tile)) continue;
       affine::AffineStoreOp store;
       SmallVector<affine::AffineLoadOp> loads;
       bool legal=true;
@@ -294,6 +339,11 @@ struct MatmulRegisterTilingPass
       // F32-only tiling also has no stable benefit across held-out shapes.
       if (!lhs.getResult().getType().isF16() ||
           !rhs.getResult().getType().isF16()) continue;
+      if (tile == 2 &&
+          (!isDirectLaunchEntry(columns) ||
+           !hasStaticIdentityBuffer(lhs.getMemRef()) ||
+           !hasStaticIdentityBuffer(rhs.getMemRef()) ||
+           !hasStaticIdentityBuffer(store.getMemRef()))) continue;
       auto c=store.getMapOperands(), a=lhs.getMapOperands(), b=rhs.getMapOperands();
       if (c.size()<2 || a.size()!=c.size() || b.size()!=c.size() || c.size()>3) continue;
       unsigned rank=c.size();
@@ -313,6 +363,8 @@ struct MatmulRegisterTilingPass
       auto tiled=builder.create<affine::AffineForOp>(loc,0,columns.getConstantUpperBound()/tile);
       tiled->setAttr("sycl.parallel",builder.getUnitAttr());
       tiled->setAttr("sycl.register_tile",builder.getI64IntegerAttr(tile));
+      if (tile == 2)
+        tiled->setAttr("sycl.two_column_candidate",builder.getUnitAttr());
       builder.setInsertionPointToStart(tiled.getBody());
       SmallVector<Value> indices, initial;
       for (int64_t lane=0;lane<tile;++lane) {
@@ -363,11 +415,22 @@ struct MatmulRegisterTilingPass
           if (reduction->hasAttr("sycl.register_accumulator"))
             promotedColumns.push_back(columns);
     });
-    for (auto columns : promotedColumns)
-      tilePromotedContraction(columns, tile);
+    for (auto columns : promotedColumns) {
+      // Keep every existing four-column decision and source unchanged. The
+      // narrower candidate is only an opportunity when four columns cannot
+      // preserve one complete wavefront of distributed output work.
+      if (twoColumnFallback && hasTwoColumnOpportunity(columns))
+        tilePromotedContraction(columns, 2);
+      else
+        tilePromotedContraction(columns, 4);
+    }
   }
+  bool twoColumnFallback;
 };
 }
 namespace mlir::triton::sycl {
-std::unique_ptr<OperationPass<ModuleOp>> createMatmulRegisterTilingPass() { return std::make_unique<MatmulRegisterTilingPass>(); }
+std::unique_ptr<OperationPass<ModuleOp>>
+createMatmulRegisterTilingPass(bool twoColumnFallback) {
+  return std::make_unique<MatmulRegisterTilingPass>(twoColumnFallback);
+}
 }

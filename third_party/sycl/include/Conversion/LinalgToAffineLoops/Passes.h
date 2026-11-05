@@ -19,7 +19,9 @@ std::unique_ptr<OperationPass<ModuleOp>> createLocalMemoryReusePass();
 std::unique_ptr<OperationPass<ModuleOp>> createElementwiseFusionPass();
 std::unique_ptr<OperationPass<ModuleOp>> createGroupReductionPass();
 std::unique_ptr<OperationPass<ModuleOp>> createRegisterAccumulatorPass();
-std::unique_ptr<OperationPass<ModuleOp>> createMatmulRegisterTilingPass();
+std::unique_ptr<OperationPass<ModuleOp>>
+createMatmulRegisterTilingPass(bool twoColumnFallback = false);
+std::unique_ptr<OperationPass<ModuleOp>> createTwoColumnLaunchGuardPass();
 std::unique_ptr<OperationPass<ModuleOp>> createOrderedReductionUnrollPass(unsigned factor);
 std::unique_ptr<OperationPass<ModuleOp>> createAccumulatorInitForwardingPass();
 std::unique_ptr<OperationPass<ModuleOp>> createWorkDistributionPass();

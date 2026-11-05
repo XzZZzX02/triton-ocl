@@ -1,0 +1,17 @@
+ninja: Entering directory `build/cmake.linux-x86_64-cpython-3.11'
+[1/16] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/OrderedReductionUnroll.cpp.o
+[2/16] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/LocalMemoryReuse.cpp.o
+[3/16] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/RegisterAccumulator.cpp.o
+[4/16] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/MatmulRegisterTiling.cpp.o
+[5/16] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/GroupReduction.cpp.o
+[6/16] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/ElementwiseFusion.cpp.o
+[7/16] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/LinalgToAffineLoops.cpp.o
+[8/16] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/WorkDistribution.cpp.o
+[9/16] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/AccumulatorInitForwarding.cpp.o
+[10/16] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/CooperativeLoadStaging.cpp.o
+[11/16] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/VectorMemory.cpp.o
+[12/16] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/SerialHalfCopyGuard.cpp.o
+[13/16] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/TerminalStoreDistribution.cpp.o
+[14/16] Building CXX object third_party/sycl/CMakeFiles/TritonSYCL.dir/triton_sycl.cc.o
+[15/16] Building CXX object third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeFiles/LinalgToAffineLoopsSYCL.dir/HalfStoreDistribution.cpp.o
+[16/16] Linking CXX shared library /work1/dtune/zzx/triton/triton-ocl/python/triton/_C/libtriton.so

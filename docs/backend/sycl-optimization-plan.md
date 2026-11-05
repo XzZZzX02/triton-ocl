@@ -51,6 +51,16 @@ optimization is dedicated scalar/vector register tiling.
   an explicit 128-element minimum work gate, bitwise IEEE tests, measured
   tiling/unroll combinations, and paired boundary/fallback experiments. It
   remains opt-in; see sycl-accumulator-init-report.md.
+- The 2026-11-06 two-column iteration is accepted as an opt-in extension to
+  the existing tiling pass, with the mandatory late
+  `sycl-two-column-launch-guard` pass. It preserves four-column decisions and
+  selects the narrower schedule only for actual local-product=64; other local
+  ranges use a separately compiled untiled alternative. The final 37-job
+  gfx906 audit covers 2,555 structural checks, 44 representative layouts,
+  902 runtime records and 26,970 device-event samples. All 177 paired rounds
+  in 59 active contexts improve. Fallback LLVM equality and the measured
+  SSA-enabling exception are reported separately, including small timing
+  losses on equal-code controls; see sycl-two-column-tiling-report.md.
 
 ## Next Work
 
@@ -61,6 +71,11 @@ candidate, compare baseline, pass-alone, useful combinations, order variants,
 and all-on schedules; preserve source hashes and failed experiments. Avoid
 claiming pass independence when the transformations do not both match the
 tested program.
+
+The next research candidate is LDS bank-conflict reduction for proven owned,
+non-escaping contraction inputs. It is not implemented in the two-column
+iteration. Preserve storage-capacity and reuse accounting, and require its
+own legality, correctness and paired gfx906 performance cycle before committing.
 
 The 8x16x16 f16 tiling regression is handled by the output-parallelism gate:
 require at least 64 distributed output points after the four-column tile.

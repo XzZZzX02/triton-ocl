@@ -1,0 +1,234 @@
+[
+  {
+    "k": 16,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "status": "PASS"
+  },
+  {
+    "k": 16,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "status": "PASS"
+  },
+  {
+    "k": 16,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "status": "PASS"
+  },
+  {
+    "k": 16,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "status": "PASS"
+  },
+  {
+    "k": 16,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "status": "PASS"
+  },
+  {
+    "k": 16,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "status": "PASS"
+  },
+  {
+    "k": 16,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "status": "PASS"
+  },
+  {
+    "k": 16,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "status": "PASS"
+  },
+  {
+    "k": 32,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "status": "PASS"
+  },
+  {
+    "k": 32,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "status": "PASS"
+  },
+  {
+    "k": 32,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "status": "PASS"
+  },
+  {
+    "k": 32,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "status": "PASS"
+  },
+  {
+    "k": 32,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "status": "PASS"
+  },
+  {
+    "k": 32,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "status": "PASS"
+  },
+  {
+    "k": 32,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "status": "PASS"
+  },
+  {
+    "k": 32,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "status": "PASS"
+  },
+  {
+    "k": 64,
+    "promote": false,
+    "init": false,
+    "unroll": false,
+    "status": "PASS"
+  },
+  {
+    "k": 64,
+    "promote": false,
+    "init": false,
+    "unroll": true,
+    "status": "PASS"
+  },
+  {
+    "k": 64,
+    "promote": false,
+    "init": true,
+    "unroll": false,
+    "status": "PASS"
+  },
+  {
+    "k": 64,
+    "promote": false,
+    "init": true,
+    "unroll": true,
+    "status": "PASS"
+  },
+  {
+    "k": 64,
+    "promote": true,
+    "init": false,
+    "unroll": false,
+    "status": "PASS"
+  },
+  {
+    "k": 64,
+    "promote": true,
+    "init": false,
+    "unroll": true,
+    "status": "PASS"
+  },
+  {
+    "k": 64,
+    "promote": true,
+    "init": true,
+    "unroll": false,
+    "status": "PASS"
+  },
+  {
+    "k": 64,
+    "promote": true,
+    "init": true,
+    "unroll": true,
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "dtype": "f32",
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "dtype": "f16",
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "dtype": "f16",
+    "status": "PASS"
+  },
+  {
+    "case": "inert",
+    "shape": [
+      4,
+      16,
+      32
+    ],
+    "dtype": "f16",
+    "status": "PASS"
+  },
+  {
+    "case": "two_independent_phases",
+    "status": "PASS"
+  },
+  {
+    "case": "predicate",
+    "rejected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "duplicate_dimension",
+    "rejected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "threshold",
+    "rejected": true,
+    "status": "PASS"
+  },
+  {
+    "case": "called_entry",
+    "rejected": true,
+    "status": "PASS"
+  }
+]

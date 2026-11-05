@@ -1,0 +1,239 @@
+[
+  {
+    "label": "layouts-0",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_2d_nn_f32_none",
+      "layout_2d_nn_f16_none",
+      "layout_2d_tn_f32_none",
+      "layout_2d_tn_f16_none"
+    ]
+  },
+  {
+    "label": "layouts-1",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_2d_nt_f32_none",
+      "layout_2d_nt_f16_none",
+      "layout_2d_tt_f32_none",
+      "layout_2d_tt_f16_none"
+    ]
+  },
+  {
+    "label": "layouts-2",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_3d_nn_f32_none",
+      "layout_3d_nn_f32_a",
+      "layout_3d_nn_f32_b",
+      "layout_3d_nn_f16_none"
+    ]
+  },
+  {
+    "label": "layouts-3",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_3d_nn_f16_a",
+      "layout_3d_nn_f16_b",
+      "layout_3d_tn_f32_none",
+      "layout_3d_tn_f32_a"
+    ]
+  },
+  {
+    "label": "layouts-4",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_3d_tn_f32_b",
+      "layout_3d_tn_f16_none",
+      "layout_3d_tn_f16_a",
+      "layout_3d_tn_f16_b"
+    ]
+  },
+  {
+    "label": "layouts-5",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_3d_nt_f32_none",
+      "layout_3d_nt_f32_a",
+      "layout_3d_nt_f32_b",
+      "layout_3d_nt_f16_none"
+    ]
+  },
+  {
+    "label": "layouts-6",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_3d_nt_f16_a",
+      "layout_3d_nt_f16_b",
+      "layout_3d_tt_f32_none",
+      "layout_3d_tt_f32_a"
+    ]
+  },
+  {
+    "label": "layouts-7",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_3d_tt_f32_b",
+      "layout_3d_tt_f16_none",
+      "layout_3d_tt_f16_a",
+      "layout_3d_tt_f16_b"
+    ]
+  },
+  {
+    "label": "layouts-8",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_2d_nn_f32_none_negative_a_rows",
+      "layout_2d_nn_f16_none_negative_a_rows",
+      "layout_2d_tn_f32_none_negative_a_k",
+      "layout_2d_tn_f16_none_negative_a_k"
+    ]
+  },
+  {
+    "label": "layouts-9",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_2d_nt_f32_none_negative_b_cols",
+      "layout_2d_nt_f16_none_negative_b_cols",
+      "layout_2d_tt_f32_none_negative_b_k",
+      "layout_2d_tt_f16_none_negative_b_k"
+    ]
+  },
+  {
+    "label": "layouts-10",
+    "args": [
+      "layouts",
+      "--cases",
+      "layout_2d_nn_f32_none_broadcast_a_rows",
+      "layout_2d_nn_f16_none_broadcast_a_rows",
+      "layout_2d_nt_f32_none_broadcast_b_cols",
+      "layout_2d_nt_f16_none_broadcast_b_cols"
+    ]
+  },
+  {
+    "label": "composition-a",
+    "args": [
+      "dot",
+      "--layout",
+      "TT",
+      "--configs",
+      "full",
+      "no_staging",
+      "no_init"
+    ]
+  },
+  {
+    "label": "composition-b",
+    "args": [
+      "dot",
+      "--layout",
+      "TT",
+      "--configs",
+      "no_accumulator",
+      "no_reuse",
+      "no_fusion"
+    ]
+  },
+  {
+    "label": "composition-c",
+    "args": [
+      "dot",
+      "--layout",
+      "TT",
+      "--configs",
+      "no_unroll",
+      "no_distribution",
+      "tiling_off"
+    ]
+  },
+  {
+    "label": "heldout-128",
+    "args": [
+      "dot",
+      "--layout",
+      "TT",
+      "--shape",
+      "8",
+      "16",
+      "128"
+    ]
+  },
+  {
+    "label": "heldout-256",
+    "args": [
+      "dot",
+      "--layout",
+      "TN",
+      "--shape",
+      "8",
+      "16",
+      "256"
+    ]
+  },
+  {
+    "label": "rounding",
+    "args": [
+      "dot",
+      "--layout",
+      "NN",
+      "--rounds",
+      "1",
+      "--repeats",
+      "0",
+      "--rounding",
+      "--bounds",
+      "full"
+    ]
+  },
+  {
+    "label": "ieee",
+    "args": [
+      "dot",
+      "--layout",
+      "TT",
+      "--rounds",
+      "1",
+      "--repeats",
+      "0",
+      "--special"
+    ]
+  },
+  {
+    "label": "empty",
+    "args": [
+      "dot",
+      "--layout",
+      "NT",
+      "--rounds",
+      "1",
+      "--repeats",
+      "0",
+      "--bounds",
+      "empty"
+    ]
+  },
+  {
+    "label": "unit",
+    "args": [
+      "dot",
+      "--layout",
+      "TN",
+      "--rounds",
+      "1",
+      "--repeats",
+      "0",
+      "--bounds",
+      "unit"
+    ]
+  }
+]

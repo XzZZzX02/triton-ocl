@@ -1,0 +1,33 @@
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+python/triton/_C/libtriton.so: OK
+python/triton/_C/triton-sycl-translate: OK
+third_party/sycl/backend/compiler.py: OK
+third_party/sycl/include/Conversion/LinalgToAffineLoops/Passes.h: OK
+third_party/sycl/include/Utils/EmitUtils.h: OK
+third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeLists.txt: OK
+third_party/sycl/lib/Conversion/LinalgToAffineLoops/MatmulRegisterTiling.cpp: OK
+third_party/sycl/lib/Conversion/LinalgToAffineLoops/TwoColumnLaunchGuard.cpp: OK
+third_party/sycl/tool/triton-sycl-translate/EmitSYCL.cpp: OK
+third_party/sycl/triton_sycl.cc: OK
+python/test/sycl/two_column_contracts.py: OK
+python/test/sycl/two_column_extended_contracts.py: OK
+python/test/sycl/two_column_guard_contracts.py: OK
+python/test/sycl/two_column_template_contracts.py: OK
+python/test/sycl/two_column_semantics.py: OK
+python/test/sycl/two_column_launch_performance.py: OK
+python/test/sycl/model_layout_semantics.py: OK
+python/test/sycl/two_column_compile_cost.py: OK
+python/test/sycl/cooperative_staging_semantics.py: OK
+python/test/sycl/full_stack_ablation.py: OK
+python/test/sycl/register_accumulator.py: OK
+third_party/sycl/backend/sycl_utils.py: OK
+h02r1n08
+gfx906:sramecc-:xnack-
+HIP_DEVICE=Device 66a1 COUNT=4
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"shape": [8, 16, 32], "layout": "TN", "dtype": "f16", "plan": "base", "enabled": false, "round": 0, "tile": 0, "status": "PASS", "guarded": false, "special": true, "rounding": false, "bounds": "tail", "check_blocks": "all", "options": {"distribute_work": true, "register_accumulator": true, "matmul_register_tiling": true, "reduction_unroll": 1, "accumulator_init_forwarding": false, "cooperative_load_staging": false, "terminal_store_distribution": false, "reuse_local_memory": true, "fuse_elementwise": false, "group_reduction": false, "vectorize_memory": false, "matmul_register_tiling_2col": false}, "compile_only": false, "elements_checked": 3128, "output_elements": 391, "source_sha256": "614c2569d5cab7af627acaeac31bc069519b92d986ee80821af18b9088fb7774", "source_bytes": 19313, "markers": {"sycl.accumulator_init_forwarded": 0, "sycl.cooperative_load_staging": 0, "sycl.terminal_store_distribution": 0, "sycl.single_lane_half_bits": 2}, "composed": 0, "unrolled": 0, "samples_ns": [], "median_ns": null}
+{"shape": [8, 16, 32], "layout": "TN", "dtype": "f16", "plan": "base", "enabled": true, "round": 0, "tile": 2, "status": "PASS", "guarded": true, "special": true, "rounding": false, "bounds": "tail", "check_blocks": "all", "options": {"distribute_work": true, "register_accumulator": true, "matmul_register_tiling": true, "reduction_unroll": 1, "accumulator_init_forwarding": false, "cooperative_load_staging": false, "terminal_store_distribution": false, "reuse_local_memory": true, "fuse_elementwise": false, "group_reduction": false, "vectorize_memory": false, "matmul_register_tiling_2col": true}, "compile_only": false, "elements_checked": 3128, "output_elements": 391, "source_sha256": "3895140c8e3ef38da2ab41b7878088643486964bc0710c352691f8f3f47abad2", "source_bytes": 22792, "markers": {"sycl.accumulator_init_forwarded": 0, "sycl.cooperative_load_staging": 0, "sycl.terminal_store_distribution": 0, "sycl.single_lane_half_bits": 2}, "composed": 1, "unrolled": 0, "samples_ns": [], "median_ns": null}
+{"shape": [8, 16, 32], "layout": "TN", "dtype": "f16", "plan": "full", "enabled": false, "round": 0, "tile": 0, "status": "PASS", "guarded": false, "special": true, "rounding": false, "bounds": "tail", "check_blocks": "all", "options": {"distribute_work": true, "register_accumulator": true, "matmul_register_tiling": true, "reduction_unroll": 4, "accumulator_init_forwarding": true, "cooperative_load_staging": true, "terminal_store_distribution": true, "reuse_local_memory": true, "fuse_elementwise": true, "group_reduction": true, "vectorize_memory": false, "matmul_register_tiling_2col": false}, "compile_only": false, "elements_checked": 3128, "output_elements": 391, "source_sha256": "e726b82f8f6868f8348c0b2a812935707928d955f5edcb0331ee68a63c222076", "source_bytes": 19861, "markers": {"sycl.accumulator_init_forwarded": 1, "sycl.cooperative_load_staging": 2, "sycl.terminal_store_distribution": 0, "sycl.single_lane_half_bits": 2}, "composed": 0, "unrolled": 1, "samples_ns": [], "median_ns": null}
+{"shape": [8, 16, 32], "layout": "TN", "dtype": "f16", "plan": "full", "enabled": true, "round": 0, "tile": 2, "status": "PASS", "guarded": true, "special": true, "rounding": false, "bounds": "tail", "check_blocks": "all", "options": {"distribute_work": true, "register_accumulator": true, "matmul_register_tiling": true, "reduction_unroll": 4, "accumulator_init_forwarding": true, "cooperative_load_staging": true, "terminal_store_distribution": true, "reuse_local_memory": true, "fuse_elementwise": true, "group_reduction": true, "vectorize_memory": false, "matmul_register_tiling_2col": true}, "compile_only": false, "elements_checked": 3128, "output_elements": 391, "source_sha256": "16d8400e212e3ff278335d13116f93976539f7dc9bb8e03c3034247536614730", "source_bytes": 25465, "markers": {"sycl.accumulator_init_forwarded": 2, "sycl.cooperative_load_staging": 2, "sycl.terminal_store_distribution": 0, "sycl.single_lane_half_bits": 2}, "composed": 1, "unrolled": 2, "samples_ns": [], "median_ns": null}

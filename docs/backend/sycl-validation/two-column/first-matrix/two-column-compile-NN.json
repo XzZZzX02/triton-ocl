@@ -1,0 +1,272 @@
+[
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "base",
+    "enabled": false,
+    "round": 0,
+    "tile": 0,
+    "status": "PASS",
+    "special": false,
+    "compile_only": true,
+    "elements_checked": 0,
+    "output_elements": 391,
+    "source_sha256": "b0cbf50e869bdd3dd19baaf972aca9fdf14939de46821f1a9eb6eb40e0524b07",
+    "source_bytes": 17964,
+    "markers": {
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.single_lane_half_bits": 0
+    },
+    "composed": 0,
+    "unrolled": 0,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "base",
+    "enabled": true,
+    "round": 0,
+    "tile": 2,
+    "status": "PASS",
+    "special": false,
+    "compile_only": true,
+    "elements_checked": 0,
+    "output_elements": 391,
+    "source_sha256": "4724f4fbe552e279af7503cba99338a90761a5c598f9cb810b40f7207782e1a3",
+    "source_bytes": 18441,
+    "markers": {
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.single_lane_half_bits": 0
+    },
+    "composed": 1,
+    "unrolled": 0,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": false,
+    "round": 0,
+    "tile": 0,
+    "status": "PASS",
+    "special": false,
+    "compile_only": true,
+    "elements_checked": 0,
+    "output_elements": 391,
+    "source_sha256": "97f797141c50078bd0ef66ed601834caad6306a9d7df401f2c53e045164cf4fb",
+    "source_bytes": 18511,
+    "markers": {
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.single_lane_half_bits": 0
+    },
+    "composed": 0,
+    "unrolled": 1,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": true,
+    "round": 0,
+    "tile": 2,
+    "status": "PASS",
+    "special": false,
+    "compile_only": true,
+    "elements_checked": 0,
+    "output_elements": 391,
+    "source_sha256": "028328f6188ee1a0e99ebff5e5af93cfeb243bceba793326643c9087d4446949",
+    "source_bytes": 19608,
+    "markers": {
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.single_lane_half_bits": 0
+    },
+    "composed": 1,
+    "unrolled": 1,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "no_staging",
+    "enabled": false,
+    "round": 0,
+    "tile": 0,
+    "status": "PASS",
+    "special": false,
+    "compile_only": true,
+    "elements_checked": 0,
+    "output_elements": 391,
+    "source_sha256": "6e34fb8e336e08fef03b6c695c3ed2d3ffb4c778afbee78ff1ce2eb8e0f7ea5b",
+    "source_bytes": 18941,
+    "markers": {
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.single_lane_half_bits": 0
+    },
+    "composed": 0,
+    "unrolled": 1,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "no_staging",
+    "enabled": true,
+    "round": 0,
+    "tile": 2,
+    "status": "PASS",
+    "special": false,
+    "compile_only": true,
+    "elements_checked": 0,
+    "output_elements": 391,
+    "source_sha256": "4288828382cce76bee8662a579d68d5e365d3f57e809b1e810b0869e411bd62f",
+    "source_bytes": 20038,
+    "markers": {
+      "sycl.accumulator_init_forwarded": 1,
+      "sycl.cooperative_load_staging": 0,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.single_lane_half_bits": 0
+    },
+    "composed": 1,
+    "unrolled": 1,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "no_init",
+    "enabled": false,
+    "round": 0,
+    "tile": 0,
+    "status": "PASS",
+    "special": false,
+    "compile_only": true,
+    "elements_checked": 0,
+    "output_elements": 391,
+    "source_sha256": "eafc33dcd6ada8f9d62ebe47da41b928a14e620886b2d4ab935188bcdbd2b145",
+    "source_bytes": 18860,
+    "markers": {
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.single_lane_half_bits": 0
+    },
+    "composed": 0,
+    "unrolled": 1,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "no_init",
+    "enabled": true,
+    "round": 0,
+    "tile": 2,
+    "status": "PASS",
+    "special": false,
+    "compile_only": true,
+    "elements_checked": 0,
+    "output_elements": 391,
+    "source_sha256": "4c3af21e19013e8d782c3686dd1a7166cadfd4ea39ff2997aef933879343db8c",
+    "source_bytes": 19993,
+    "markers": {
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.single_lane_half_bits": 0
+    },
+    "composed": 1,
+    "unrolled": 1,
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "no_accumulator",
+    "enabled": false,
+    "round": 0,
+    "tile": 0,
+    "status": "PASS",
+    "special": false,
+    "compile_only": true,
+    "elements_checked": 0,
+    "output_elements": 391,
+    "source_sha256": "38f0b12429d56caeca512e4e4a37cb29564972111768207e82fda32b689b58a9",
+    "source_bytes": 17440,
+    "markers": {
+      "sycl.accumulator_init_forwarded": 0,
+      "sycl.cooperative_load_staging": 2,
+      "sycl.terminal_store_distribution": 0,
+      "sycl.single_lane_half_bits": 0
+    },
+    "composed": 0,
+    "unrolled": 0,
+    "samples_ns": [],
+    "median_ns": null
+  }
+]

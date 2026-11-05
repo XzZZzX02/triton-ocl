@@ -1,0 +1,62 @@
+[
+  {
+    "label": "standalone",
+    "mode": "launch",
+    "args": [
+      "launch",
+      "--layout",
+      "TT",
+      "--k",
+      "32",
+      "--plans",
+      "no_accumulator",
+      "no_init",
+      "--blocks",
+      "48",
+      "64",
+      "128",
+      "256"
+    ],
+    "jobid": "22898368"
+  },
+  {
+    "label": "unroll-staging",
+    "mode": "launch",
+    "args": [
+      "launch",
+      "--layout",
+      "TT",
+      "--k",
+      "32",
+      "--plans",
+      "no_unroll",
+      "no_staging",
+      "--blocks",
+      "48",
+      "64",
+      "128",
+      "256"
+    ],
+    "jobid": "22898369"
+  },
+  {
+    "label": "reuse-fusion",
+    "mode": "launch",
+    "args": [
+      "launch",
+      "--layout",
+      "TT",
+      "--k",
+      "32",
+      "--plans",
+      "no_reuse",
+      "no_fusion",
+      "--blocks",
+      "48",
+      "64",
+      "128",
+      "256"
+    ],
+    "jobid": "22898370"
+  }
+]

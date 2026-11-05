@@ -1,0 +1,104 @@
+[
+  {
+    "label": "launch-NN-16",
+    "mode": "launch",
+    "args": [
+      "launch",
+      "--layout",
+      "NN",
+      "--k",
+      "16"
+    ]
+  },
+  {
+    "label": "launch-TT-16",
+    "mode": "launch",
+    "args": [
+      "launch",
+      "--layout",
+      "TT",
+      "--k",
+      "16"
+    ]
+  },
+  {
+    "label": "launch-NN-32",
+    "mode": "launch",
+    "args": [
+      "launch",
+      "--layout",
+      "NN",
+      "--k",
+      "32"
+    ]
+  },
+  {
+    "label": "launch-TT-32",
+    "mode": "launch",
+    "args": [
+      "launch",
+      "--layout",
+      "TT",
+      "--k",
+      "32"
+    ]
+  },
+  {
+    "label": "launch-NT-64",
+    "mode": "launch",
+    "args": [
+      "launch",
+      "--layout",
+      "NT",
+      "--k",
+      "64"
+    ]
+  },
+  {
+    "label": "launch-TN-128",
+    "mode": "launch",
+    "args": [
+      "launch",
+      "--layout",
+      "TN",
+      "--k",
+      "128"
+    ]
+  },
+  {
+    "label": "fallback-TT-16",
+    "mode": "launch",
+    "args": [
+      "launch",
+      "--layout",
+      "TT",
+      "--k",
+      "16",
+      "--blocks",
+      "1",
+      "3",
+      "3x5",
+      "48",
+      "4x4x4",
+      "4x4x8"
+    ]
+  },
+  {
+    "label": "fallback-NN-32",
+    "mode": "launch",
+    "args": [
+      "launch",
+      "--layout",
+      "NN",
+      "--k",
+      "32",
+      "--blocks",
+      "1",
+      "3",
+      "3x5",
+      "48",
+      "4x4x4",
+      "4x4x8"
+    ]
+  }
+]

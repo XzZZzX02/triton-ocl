@@ -1,0 +1,3966 @@
+{
+  "status": "PASS",
+  "totals": {
+    "completed_device_jobs": 37,
+    "device_event_samples": 26970,
+    "runtime_records": 902,
+    "timed_records": 870,
+    "device_elements_checked": 797428,
+    "launch_records": 504,
+    "inert_source_pairs": 76,
+    "dot_records": 134,
+    "layout_cases": 44,
+    "layout_schedule_records": 264,
+    "structural_contracts": 2555,
+    "cpu_records": 8,
+    "cpu_elements_checked": 25024,
+    "cold_triton_to_sycl_compilations": 36
+  },
+  "active_contexts": 59,
+  "active_paired_rounds": 177,
+  "active_speedup_range": [
+    1.0223910645822027,
+    1.1446512450620074
+  ],
+  "comparisons": [
+    {
+      "kind": "launch",
+      "label": "launch-NN-16",
+      "plan": "base",
+      "block": "64",
+      "ratios": [
+        1.0271643976613152,
+        1.0219592276263976,
+        1.0220336648976176
+      ],
+      "speedup": 1.025423459497251
+    },
+    {
+      "kind": "launch",
+      "label": "launch-NN-16",
+      "plan": "full",
+      "block": "64",
+      "ratios": [
+        1.0229405444126074,
+        1.0345815096990327,
+        1.037463302173952
+      ],
+      "speedup": 1.0345815096990327
+    },
+    {
+      "kind": "launch",
+      "label": "launch-TT-16",
+      "plan": "base",
+      "block": "64",
+      "ratios": [
+        1.0313694319530493,
+        1.0277401674591913,
+        1.0401391782375846
+      ],
+      "speedup": 1.0331115732624863
+    },
+    {
+      "kind": "launch",
+      "label": "launch-TT-16",
+      "plan": "full",
+      "block": "64",
+      "ratios": [
+        1.0224894662921349,
+        1.0252804550481909,
+        1.0253697183098591
+      ],
+      "speedup": 1.0224894662921349
+    },
+    {
+      "kind": "launch",
+      "label": "launch-NN-32",
+      "plan": "base",
+      "block": "64",
+      "ratios": [
+        1.0323206601249977,
+        1.0302730679557135,
+        1.0303026600359233
+      ],
+      "speedup": 1.0303087694431887
+    },
+    {
+      "kind": "launch",
+      "label": "launch-NN-32",
+      "plan": "full",
+      "block": "64",
+      "ratios": [
+        1.0749790043163219,
+        1.065236801242236,
+        1.0749790043163219
+      ],
+      "speedup": 1.0749790043163219
+    },
+    {
+      "kind": "launch",
+      "label": "launch-TT-32",
+      "plan": "base",
+      "block": "64",
+      "ratios": [
+        1.0423343760953963,
+        1.0380947341966376,
+        1.0380544654536805
+      ],
+      "speedup": 1.0391529212576553
+    },
+    {
+      "kind": "launch",
+      "label": "launch-TT-32",
+      "plan": "full",
+      "block": "64",
+      "ratios": [
+        1.0880289302490125,
+        1.0849039916668304,
+        1.0883263342599712
+      ],
+      "speedup": 1.0849039916668304
+    },
+    {
+      "kind": "launch",
+      "label": "launch-NT-64",
+      "plan": "base",
+      "block": "64",
+      "ratios": [
+        1.0581947995084815,
+        1.0411492187637619,
+        1.0458347016202847
+      ],
+      "speedup": 1.0546812520918107
+    },
+    {
+      "kind": "launch",
+      "label": "launch-NT-64",
+      "plan": "full",
+      "block": "64",
+      "ratios": [
+        1.1188494147178607,
+        1.11428425657836,
+        1.1165614375910635
+      ],
+      "speedup": 1.1165614375910635
+    },
+    {
+      "kind": "launch",
+      "label": "launch-TN-128",
+      "plan": "base",
+      "block": "64",
+      "ratios": [
+        1.0427992753866926,
+        1.0417310021616726,
+        1.042542524906301
+      ],
+      "speedup": 1.0427875836883749
+    },
+    {
+      "kind": "launch",
+      "label": "launch-TN-128",
+      "plan": "full",
+      "block": "64",
+      "ratios": [
+        1.1261355670577573,
+        1.1262833821563665,
+        1.1272762137439278
+      ],
+      "speedup": 1.1272762137439278
+    },
+    {
+      "kind": "launch",
+      "label": "fallback-TT-16",
+      "plan": "base",
+      "block": "4x4x4",
+      "ratios": [
+        1.0436186341772014,
+        1.043630017452007,
+        1.0418848167539267
+      ],
+      "speedup": 1.043630017452007
+    },
+    {
+      "kind": "launch",
+      "label": "fallback-TT-16",
+      "plan": "full",
+      "block": "4x4x4",
+      "ratios": [
+        1.0338204225352112,
+        1.0367055084745762,
+        1.0338028169014084
+      ],
+      "speedup": 1.0338028169014084
+    },
+    {
+      "kind": "launch",
+      "label": "fallback-NN-32",
+      "plan": "base",
+      "block": "4x4x4",
+      "ratios": [
+        1.0369252264165065,
+        1.0369189890471795,
+        1.0358621290688048
+      ],
+      "speedup": 1.0369252264165065
+    },
+    {
+      "kind": "launch",
+      "label": "fallback-NN-32",
+      "plan": "full",
+      "block": "4x4x4",
+      "ratios": [
+        1.0909269019023922,
+        1.094042044630787,
+        1.0946550738352951
+      ],
+      "speedup": 1.0909269019023922
+    },
+    {
+      "kind": "layout",
+      "label": "layout_2d_nn_f16_none",
+      "ratios": [
+        1.033309414133932,
+        1.0447517548564633,
+        1.0408921933085502
+      ],
+      "speedup": 1.0408921933085502
+    },
+    {
+      "kind": "layout",
+      "label": "layout_2d_tn_f16_none",
+      "ratios": [
+        1.0423798060996887,
+        1.053191489361702,
+        1.0387323943661972
+      ],
+      "speedup": 1.0423798060996887
+    },
+    {
+      "kind": "layout",
+      "label": "layout_2d_nt_f16_none",
+      "ratios": [
+        1.037036179718062,
+        1.0481470336334806,
+        1.0405894698000506
+      ],
+      "speedup": 1.0444434156616744
+    },
+    {
+      "kind": "layout",
+      "label": "layout_2d_tt_f16_none",
+      "ratios": [
+        1.0404641544117648,
+        1.0444202680493506,
+        1.0481470336334806
+      ],
+      "speedup": 1.0481470336334806
+    },
+    {
+      "kind": "layout",
+      "label": "layout_3d_nn_f16_none",
+      "ratios": [
+        1.0331872693726938,
+        1.0332341613044582,
+        1.033210332103321
+      ],
+      "speedup": 1.033210332103321
+    },
+    {
+      "kind": "layout",
+      "label": "layout_3d_nn_f16_a",
+      "ratios": [
+        1.0342205323193916,
+        1.0264150943396226,
+        1.0304895437262358
+      ],
+      "speedup": 1.0342205323193916
+    },
+    {
+      "kind": "layout",
+      "label": "layout_3d_nn_f16_b",
+      "ratios": [
+        1.024802332258492,
+        1.0283687943262412,
+        1.0319148936170213
+      ],
+      "speedup": 1.0283909574468084
+    },
+    {
+      "kind": "layout",
+      "label": "layout_3d_tn_f16_none",
+      "ratios": [
+        1.0353349086813455,
+        1.0457736405448823,
+        1.0353349086813455
+      ],
+      "speedup": 1.0353349086813455
+    },
+    {
+      "kind": "layout",
+      "label": "layout_3d_tn_f16_a",
+      "ratios": [
+        1.0387088969980445,
+        1.0417998030586202,
+        1.0353690641265247
+      ],
+      "speedup": 1.0353690641265247
+    },
+    {
+      "kind": "layout",
+      "label": "layout_3d_tn_f16_b",
+      "ratios": [
+        1.0402921178544446,
+        1.0439550376593942,
+        1.0439550376593942
+      ],
+      "speedup": 1.0439550376593942
+    },
+    {
+      "kind": "layout",
+      "label": "layout_3d_nt_f16_none",
+      "ratios": [
+        1.0394256401066284,
+        1.039568345323741,
+        1.0469314079422383
+      ],
+      "speedup": 1.0431654676258992
+    },
+    {
+      "kind": "layout",
+      "label": "layout_3d_nt_f16_a",
+      "ratios": [
+        1.0420085877862595,
+        1.0419837313041196,
+        1.038046577946768
+      ],
+      "speedup": 1.0419837313041196
+    },
+    {
+      "kind": "layout",
+      "label": "layout_3d_nt_f16_b",
+      "ratios": [
+        1.054139215124606,
+        1.054139215124606,
+        1.0495867768595042
+      ],
+      "speedup": 1.054139215124606
+    },
+    {
+      "kind": "layout",
+      "label": "layout_3d_tt_f16_none",
+      "ratios": [
+        1.0391459074733096,
+        1.0320284697508897,
+        1.03584229390681
+      ],
+      "speedup": 1.0320284697508897
+    },
+    {
+      "kind": "layout",
+      "label": "layout_3d_tt_f16_a",
+      "ratios": [
+        1.029008152173913,
+        1.0289855072463767,
+        1.032846715328467
+      ],
+      "speedup": 1.0289855072463767
+    },
+    {
+      "kind": "layout",
+      "label": "layout_3d_tt_f16_b",
+      "ratios": [
+        1.0264688230789927,
+        1.0299993750130205,
+        1.0298997113847304
+      ],
+      "speedup": 1.0298789476962689
+    },
+    {
+      "kind": "layout",
+      "label": "layout_2d_nn_f16_none_negative_a_rows",
+      "ratios": [
+        1.036639483283381,
+        1.0373125626734452,
+        1.0410438189407896
+      ],
+      "speedup": 1.0405074508523589
+    },
+    {
+      "kind": "layout",
+      "label": "layout_2d_tn_f16_none_negative_a_k",
+      "ratios": [
+        1.0424239747355404,
+        1.035086949847591,
+        1.0385956448323501
+      ],
+      "speedup": 1.0351088791912457
+    },
+    {
+      "kind": "layout",
+      "label": "layout_2d_nt_f16_none_negative_b_cols",
+      "ratios": [
+        1.0367638611245147,
+        1.044280442804428,
+        1.044092642801342
+      ],
+      "speedup": 1.0404172698237633
+    },
+    {
+      "kind": "layout",
+      "label": "layout_2d_tt_f16_none_negative_b_k",
+      "ratios": [
+        1.0442573800738006,
+        1.047971586060564,
+        1.0405673431734317
+      ],
+      "speedup": 1.0442573800738006
+    },
+    {
+      "kind": "layout",
+      "label": "layout_2d_nn_f16_none_broadcast_a_rows",
+      "ratios": [
+        1.0342434828069675,
+        1.0461778846153846,
+        1.0458004341499487
+      ],
+      "speedup": 1.038190882851077
+    },
+    {
+      "kind": "layout",
+      "label": "layout_2d_nt_f16_none_broadcast_b_cols",
+      "ratios": [
+        1.0407397976898682,
+        1.0331112132352942,
+        1.033087475012063
+      ],
+      "speedup": 1.0331112132352942
+    },
+    {
+      "kind": "dot",
+      "label": "composition-a",
+      "plan": "full",
+      "ratios": [
+        1.0849039916668304,
+        1.0849039916668304,
+        1.0883263342599712
+      ],
+      "speedup": 1.0849039916668304
+    },
+    {
+      "kind": "dot",
+      "label": "composition-a",
+      "plan": "no_staging",
+      "ratios": [
+        1.0286620400472393,
+        1.0264827001761099,
+        1.02756458689572
+      ],
+      "speedup": 1.027571214591535
+    },
+    {
+      "kind": "dot",
+      "label": "composition-a",
+      "plan": "no_init",
+      "ratios": [
+        1.0613496932515338,
+        1.064813564553153,
+        1.0645949116363147
+      ],
+      "speedup": 1.0645949116363147
+    },
+    {
+      "kind": "dot",
+      "label": "composition-b",
+      "plan": "no_accumulator",
+      "ratios": [
+        1.141531869730144,
+        1.1482847003154575,
+        1.1415235250186706
+      ],
+      "speedup": 1.1415908331531672
+    },
+    {
+      "kind": "dot",
+      "label": "composition-b",
+      "plan": "no_reuse",
+      "ratios": [
+        1.0849056603773586,
+        1.088328075709779,
+        1.0880451231256019
+      ],
+      "speedup": 1.0849056603773586
+    },
+    {
+      "kind": "dot",
+      "label": "composition-b",
+      "plan": "no_fusion",
+      "ratios": [
+        1.0883477917981073,
+        1.0880503144654088,
+        1.0817365328302184
+      ],
+      "speedup": 1.0849253144654087
+    },
+    {
+      "kind": "dot",
+      "label": "composition-c",
+      "plan": "no_unroll",
+      "ratios": [
+        1.097857456852889,
+        1.094212676993253,
+        1.1039038232925567
+      ],
+      "speedup": 1.100361231627836
+    },
+    {
+      "kind": "dot",
+      "label": "length-16",
+      "plan": "base",
+      "ratios": [
+        1.0349145406354643,
+        1.0296164022604284,
+        1.03315845158757
+      ],
+      "speedup": 1.03315845158757
+    },
+    {
+      "kind": "dot",
+      "label": "length-16",
+      "plan": "full",
+      "ratios": [
+        1.022471515598392,
+        1.0252096426883284,
+        1.0223910645822027
+      ],
+      "speedup": 1.0223910645822027
+    },
+    {
+      "kind": "dot",
+      "label": "length-64",
+      "plan": "base",
+      "ratios": [
+        1.0505889751165478,
+        1.0473153621624274,
+        1.0460405802797528
+      ],
+      "speedup": 1.048847932735835
+    },
+    {
+      "kind": "dot",
+      "label": "length-64",
+      "plan": "full",
+      "ratios": [
+        1.118836607668861,
+        1.1168145899770752,
+        1.1145165000894661
+      ],
+      "speedup": 1.1168002868778977
+    },
+    {
+      "kind": "dot",
+      "label": "length-128",
+      "plan": "base",
+      "ratios": [
+        1.0436128030938299,
+        1.0422526419904836,
+        1.0443223542938032
+      ],
+      "speedup": 1.0427867085779985
+    },
+    {
+      "kind": "dot",
+      "label": "length-128",
+      "plan": "full",
+      "ratios": [
+        1.125005326628883,
+        1.117511634640509,
+        1.1235801393110973
+      ],
+      "speedup": 1.122446376565124
+    },
+    {
+      "kind": "dot",
+      "label": "length-256",
+      "plan": "base",
+      "ratios": [
+        1.0271242679810975,
+        1.0245212853482524,
+        1.0286531600948194
+      ],
+      "speedup": 1.0271242679810975
+    },
+    {
+      "kind": "dot",
+      "label": "length-256",
+      "plan": "full",
+      "ratios": [
+        1.130710141536558,
+        1.12153604559176,
+        1.1301621818961036
+      ],
+      "speedup": 1.1300756262863805
+    },
+    {
+      "kind": "launch",
+      "label": "standalone",
+      "plan": "no_accumulator",
+      "block": "64",
+      "ratios": [
+        1.1446512450620074,
+        1.141486999076276,
+        1.1416446143291188
+      ],
+      "speedup": 1.1446512450620074
+    },
+    {
+      "kind": "launch",
+      "label": "standalone",
+      "plan": "no_init",
+      "block": "64",
+      "ratios": [
+        1.07384473375512,
+        1.0674833688004448,
+        1.0582492615750507
+      ],
+      "speedup": 1.0679542751927578
+    },
+    {
+      "kind": "launch",
+      "label": "unroll-staging",
+      "plan": "no_unroll",
+      "block": "64",
+      "ratios": [
+        1.097857456852889,
+        1.0912044072948328,
+        1.094799411326236
+      ],
+      "speedup": 1.097857456852889
+    },
+    {
+      "kind": "launch",
+      "label": "unroll-staging",
+      "plan": "no_staging",
+      "block": "64",
+      "ratios": [
+        1.0265039799049596,
+        1.0254030255884008,
+        1.028699331168098
+      ],
+      "speedup": 1.0265039799049596
+    },
+    {
+      "kind": "launch",
+      "label": "reuse-fusion",
+      "plan": "no_reuse",
+      "block": "64",
+      "ratios": [
+        1.0914808461978274,
+        1.0880699685534592,
+        1.0849039916668304
+      ],
+      "speedup": 1.0880699685534592
+    },
+    {
+      "kind": "launch",
+      "label": "reuse-fusion",
+      "plan": "no_fusion",
+      "block": "64",
+      "ratios": [
+        1.0946353581356834,
+        1.0883263342599712,
+        1.0911949685534592
+      ],
+      "speedup": 1.0946156424360718
+    }
+  ],
+  "active_regressions": [],
+  "fallback_llvm": {
+    "status": "DIFFERENCES",
+    "pairs": 59,
+    "equal_pairs": 56,
+    "results": [
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882024-sources",
+        "configuration": "base-128",
+        "equal": true,
+        "left_sha256": "d4057003785df67f822e019c9ecc750e8a691afc7bbab369189349ba966be7b9",
+        "right_sha256": "43325b5daedab867944941668fa53de73be2f38234abea689c6f88c05c3bea2d",
+        "canonical_left_sha256": "7003f649ad940a0d6e523fc15ccc3d4da472e0dee631964e50d02b33539d8a22",
+        "canonical_right_sha256": "7003f649ad940a0d6e523fc15ccc3d4da472e0dee631964e50d02b33539d8a22",
+        "left": {
+          "local_identifiers": 714,
+          "attribute_groups": 7,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 714,
+          "attribute_groups": 7,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-NN-16",
+            "plan": "base",
+            "block": "128",
+            "ratios": [
+              0.998223820783517,
+              1.008901316815579,
+              1.0017793396425752
+            ],
+            "speedup": 1.0017793396425752
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882024-sources",
+        "configuration": "base-256",
+        "equal": true,
+        "left_sha256": "a59015998b3cb4c42bfb74aac3e66a79b4560fefcc02d0b82f23853ad35acaae",
+        "right_sha256": "a3dc0b5d8423d8e892abe069a2c6d84cba0cd2099e55e93158571579f9a3e53e",
+        "canonical_left_sha256": "d920b6dc66a7c70f36833806625289fa38f6ff8a34e8a0bd9ef34656523304ee",
+        "canonical_right_sha256": "d920b6dc66a7c70f36833806625289fa38f6ff8a34e8a0bd9ef34656523304ee",
+        "left": {
+          "local_identifiers": 719,
+          "attribute_groups": 7,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 719,
+          "attribute_groups": 7,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-NN-16",
+            "plan": "base",
+            "block": "256",
+            "ratios": [
+              0.9947627447137475,
+              0.9982517673539406,
+              0.9999890927335792
+            ],
+            "speedup": 0.9964987674788944
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882024-sources",
+        "configuration": "full-128",
+        "equal": true,
+        "left_sha256": "c1682a5c7326c23bdc671ea1b3d22f4e3b27d91be755c63863af026f5509d6bb",
+        "right_sha256": "8a9509d0e9de0be70063aaf1e18baf9dec20d4e9dd6810f30d81f59144f83142",
+        "canonical_left_sha256": "c010da58f3060530f8b919f83ee89e13a7ae9c81f02e5565bdbcae30749c6a12",
+        "canonical_right_sha256": "c010da58f3060530f8b919f83ee89e13a7ae9c81f02e5565bdbcae30749c6a12",
+        "left": {
+          "local_identifiers": 702,
+          "attribute_groups": 7,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 702,
+          "attribute_groups": 7,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-NN-16",
+            "plan": "full",
+            "block": "128",
+            "ratios": [
+              1.0,
+              0.9718755493056777,
+              1.0032355305466238
+            ],
+            "speedup": 1.0
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882024-sources",
+        "configuration": "full-256",
+        "equal": true,
+        "left_sha256": "e71bd47383ab0c754cadead0e63e12ce0a0786b28e7b4304335406597122a3ff",
+        "right_sha256": "4d489811e11ad29e625fac3ebec8b856fbe9ab3cda4f123cf6f114e7e43a3321",
+        "canonical_left_sha256": "d9f1b9968ca6e9af34afc7910c0b42769239ebc1d8259685968a6c3ea04065ed",
+        "canonical_right_sha256": "d9f1b9968ca6e9af34afc7910c0b42769239ebc1d8259685968a6c3ea04065ed",
+        "left": {
+          "local_identifiers": 700,
+          "attribute_groups": 7,
+          "metadata_nodes": 28,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 700,
+          "attribute_groups": 7,
+          "metadata_nodes": 28,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-NN-16",
+            "plan": "full",
+            "block": "256",
+            "ratios": [
+              1.0033112582781456,
+              0.9933994760834142,
+              0.9868421052631579
+            ],
+            "speedup": 0.9933994760834142
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882025-sources",
+        "configuration": "base-128",
+        "equal": true,
+        "left_sha256": "82caebe8cd4246cfc2b9cd790690f8a0c353d135444c8b692c9d2fdf09457847",
+        "right_sha256": "39aaf7d38e803e37ad588f6c736ff21ccbca5853027fd106ce920d3ed1ba96d4",
+        "canonical_left_sha256": "84e6eee3065fc5ef877ff99d22ad14648da75ae9270497a888b7cf397e1b3d55",
+        "canonical_right_sha256": "84e6eee3065fc5ef877ff99d22ad14648da75ae9270497a888b7cf397e1b3d55",
+        "left": {
+          "local_identifiers": 661,
+          "attribute_groups": 7,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 661,
+          "attribute_groups": 7,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-TT-16",
+            "plan": "base",
+            "block": "128",
+            "ratios": [
+              0.9999890353281726,
+              0.9999890353281726,
+              1.0
+            ],
+            "speedup": 0.9999890353281726
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882025-sources",
+        "configuration": "base-256",
+        "equal": true,
+        "left_sha256": "c3cec24d81e4350d6677bc04775ac462dd707585f6e4ed1bdaa66f63778aec97",
+        "right_sha256": "bf9616bd4619bcad07a331b9dc5fab87782f20f10138b4a18f6568baa3d90324",
+        "canonical_left_sha256": "a91c5a573ed614097e166b3ebe67b5ba4f3fcf80afea84150df9b381851924fe",
+        "canonical_right_sha256": "a91c5a573ed614097e166b3ebe67b5ba4f3fcf80afea84150df9b381851924fe",
+        "left": {
+          "local_identifiers": 664,
+          "attribute_groups": 7,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 664,
+          "attribute_groups": 7,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-TT-16",
+            "plan": "base",
+            "block": "256",
+            "ratios": [
+              1.0071941637346702,
+              0.9999887794259554,
+              1.0
+            ],
+            "speedup": 1.0017985409336676
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882025-sources",
+        "configuration": "full-128",
+        "equal": true,
+        "left_sha256": "0c0f42e43d846aa7b18793d28b047644095da4671ee72e87709cc1e168a8acde",
+        "right_sha256": "2b4c7320acb8fcbf1f3cdcb1325012ab05512393c11d1120e0bc76f3f2607244",
+        "canonical_left_sha256": "e3b857fa7e329be2f3e17c60cf0f1e363a9c5c5e1c3d9e386ddcce8ecfe973c1",
+        "canonical_right_sha256": "e3b857fa7e329be2f3e17c60cf0f1e363a9c5c5e1c3d9e386ddcce8ecfe973c1",
+        "left": {
+          "local_identifiers": 649,
+          "attribute_groups": 7,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 649,
+          "attribute_groups": 7,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-TT-16",
+            "plan": "full",
+            "block": "128",
+            "ratios": [
+              1.0062891845679134,
+              1.0,
+              1.00001953125
+            ],
+            "speedup": 1.00001953125
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882025-sources",
+        "configuration": "full-256",
+        "equal": true,
+        "left_sha256": "f71f6b846ee82fae19fbb9ce52787a38478b625e62b6fe8e08002344e6424e45",
+        "right_sha256": "5112d2bfe01f031298856fa190d9ee6520c8d4293090243e714ef4e29ed9a615",
+        "canonical_left_sha256": "431445147accb533fbabef61d61911d18bbbd5b7250bcf294ad41ea101e3099b",
+        "canonical_right_sha256": "431445147accb533fbabef61d61911d18bbbd5b7250bcf294ad41ea101e3099b",
+        "left": {
+          "local_identifiers": 645,
+          "attribute_groups": 7,
+          "metadata_nodes": 28,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 645,
+          "attribute_groups": 7,
+          "metadata_nodes": 28,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-TT-16",
+            "plan": "full",
+            "block": "256",
+            "ratios": [
+              1.0032263955682716,
+              0.9935897435897436,
+              0.9968046623794212
+            ],
+            "speedup": 0.9967845659163987
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882026-sources",
+        "configuration": "base-128",
+        "equal": true,
+        "left_sha256": "16b576d47348fcad54eaccd89bf404b96cb68dd0853c5b41269ac17a1102b420",
+        "right_sha256": "ea263b5cd656461eaf877ab6e836ace8d17d0256e295203c379bf67a97a92cfe",
+        "canonical_left_sha256": "b652806614686eacda3e8017d6131b84d63e95ecc71200fe3d826d827d49c5e0",
+        "canonical_right_sha256": "b652806614686eacda3e8017d6131b84d63e95ecc71200fe3d826d827d49c5e0",
+        "left": {
+          "local_identifiers": 898,
+          "attribute_groups": 7,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 898,
+          "attribute_groups": 7,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-NN-32",
+            "plan": "base",
+            "block": "128",
+            "ratios": [
+              0.9979508459164201,
+              0.9989743721234343,
+              1.0010223568218206
+            ],
+            "speedup": 0.9989743721234343
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882026-sources",
+        "configuration": "base-256",
+        "equal": true,
+        "left_sha256": "70034328a98590f771a1bf19234e28e338828e69bee91ff6ac7e42f0fb86c38e",
+        "right_sha256": "3a3f1828be366e54963a9b868d7f178e6fda21fe73b8adaad5ef3a97d0665b7c",
+        "canonical_left_sha256": "f40930c0de39ef52b05e41da54d46720de454933c5d3de0a278b6c32d7ea0ac1",
+        "canonical_right_sha256": "f40930c0de39ef52b05e41da54d46720de454933c5d3de0a278b6c32d7ea0ac1",
+        "left": {
+          "local_identifiers": 903,
+          "attribute_groups": 7,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 903,
+          "attribute_groups": 7,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-NN-32",
+            "plan": "base",
+            "block": "256",
+            "ratios": [
+              1.0010214374178061,
+              1.0020407902960422,
+              0.9969419349906347
+            ],
+            "speedup": 1.0
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882026-sources",
+        "configuration": "full-128",
+        "equal": true,
+        "left_sha256": "f41dac0043aa26e7bce8f5f7f40896e680c82680ab50fb661e35f29394c6601c",
+        "right_sha256": "5e8cd452e47405adddc48e25960df5d2086446a3d7796ab63a9a891ddc2c4e7d",
+        "canonical_left_sha256": "7beede444b369534a676603c4d0ad0957cf46a0cda1a72c4e9ff57157e7a4c2e",
+        "canonical_right_sha256": "7beede444b369534a676603c4d0ad0957cf46a0cda1a72c4e9ff57157e7a4c2e",
+        "left": {
+          "local_identifiers": 517,
+          "attribute_groups": 6,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 517,
+          "attribute_groups": 6,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-NN-32",
+            "plan": "full",
+            "block": "128",
+            "ratios": [
+              0.9958245798319327,
+              0.9916320179911613,
+              1.0084122254159964
+            ],
+            "speedup": 0.9958245798319327
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882026-sources",
+        "configuration": "full-256",
+        "equal": true,
+        "left_sha256": "8cd9c7d89b3c6f9813ae664550bcdd766773061418364d44621b98a5b114376c",
+        "right_sha256": "7944fa71b5087a1f5148161cc91bceacd9073e5db509fe7fce0c1c32e42057a8",
+        "canonical_left_sha256": "55bc75428ce285df74986b71d2061a0116bf5b3b3f1b6bd8b3aa128e3a6e1a26",
+        "canonical_right_sha256": "55bc75428ce285df74986b71d2061a0116bf5b3b3f1b6bd8b3aa128e3a6e1a26",
+        "left": {
+          "local_identifiers": 515,
+          "attribute_groups": 6,
+          "metadata_nodes": 28,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 515,
+          "attribute_groups": 6,
+          "metadata_nodes": 28,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-NN-32",
+            "plan": "full",
+            "block": "256",
+            "ratios": [
+              1.0046082949308757,
+              1.0,
+              0.9819004524886877
+            ],
+            "speedup": 1.0
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882027-sources",
+        "configuration": "base-128",
+        "equal": true,
+        "left_sha256": "9fbfa5df606194f2dcda0a96cf6d81d61202171ec3ab8adbf5897b2101a004ce",
+        "right_sha256": "3760768a1004cb768d1fc91b4c26145760929e632771ce4b5913451fb0db3a32",
+        "canonical_left_sha256": "65d57a90cdfa858ea6f3d7fa304e14b60c311f07ce9d88c4cc97f755122a6060",
+        "canonical_right_sha256": "65d57a90cdfa858ea6f3d7fa304e14b60c311f07ce9d88c4cc97f755122a6060",
+        "left": {
+          "local_identifiers": 494,
+          "attribute_groups": 7,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 494,
+          "attribute_groups": 7,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-TT-32",
+            "plan": "base",
+            "block": "128",
+            "ratios": [
+              1.0031591471670245,
+              1.00107921285766,
+              1.0
+            ],
+            "speedup": 1.0010860433187845
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882027-sources",
+        "configuration": "base-256",
+        "equal": true,
+        "left_sha256": "e6dca09e76ea0363b21d753237b13e7a06c570cf1f4408d96da8c3948d9ac435",
+        "right_sha256": "5fbf8f203e8962dfc1ebfa2ac3d439f2bced842e401bd42402362f520ba8f14f",
+        "canonical_left_sha256": "d27b1aee227b251b02544b61574a38144c094cb6800d79caf0a5943ec851f449",
+        "canonical_right_sha256": "d27b1aee227b251b02544b61574a38144c094cb6800d79caf0a5943ec851f449",
+        "left": {
+          "local_identifiers": 494,
+          "attribute_groups": 7,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 494,
+          "attribute_groups": 7,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-TT-32",
+            "plan": "base",
+            "block": "256",
+            "ratios": [
+              1.0,
+              0.9934139213238018,
+              1.0022074750624301
+            ],
+            "speedup": 1.0
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882027-sources",
+        "configuration": "full-128",
+        "equal": true,
+        "left_sha256": "acddc1d4f6a6ac155c99409b193f30b835999547806a6ea3eff1909e6b341253",
+        "right_sha256": "71729adbbbd39f42d678627ca38e2527ae8dbddee308b31985f5b853107c924a",
+        "canonical_left_sha256": "4d96d154d3d38f129426833f4ae9bc3ae774d4d435d1c4e197c9bcff3dd2387c",
+        "canonical_right_sha256": "4d96d154d3d38f129426833f4ae9bc3ae774d4d435d1c4e197c9bcff3dd2387c",
+        "left": {
+          "local_identifiers": 565,
+          "attribute_groups": 6,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 565,
+          "attribute_groups": 6,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-TT-32",
+            "plan": "full",
+            "block": "128",
+            "ratios": [
+              1.0000260416666666,
+              0.991701460024377,
+              1.0000259336099586
+            ],
+            "speedup": 0.9958765560165975
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882027-sources",
+        "configuration": "full-256",
+        "equal": true,
+        "left_sha256": "e14fbcf79c99acdbc0b8911094364d0c4838a8fdc4ae0920ea188b28a6b22a98",
+        "right_sha256": "ca5e915f2ae32b6254837701fb2a04fc2a1f464f36b9c33db62f7599a6b2a165",
+        "canonical_left_sha256": "01b21d9bdea94069e4225bccc61fd2f76c831b9a2bd2328bcec215238e11caf3",
+        "canonical_right_sha256": "01b21d9bdea94069e4225bccc61fd2f76c831b9a2bd2328bcec215238e11caf3",
+        "left": {
+          "local_identifiers": 558,
+          "attribute_groups": 6,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 558,
+          "attribute_groups": 6,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-TT-32",
+            "plan": "full",
+            "block": "256",
+            "ratios": [
+              0.9954205069124424,
+              0.9908543577981651,
+              1.0000288018433179
+            ],
+            "speedup": 0.9954205069124424
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882029-sources",
+        "configuration": "base-128",
+        "equal": true,
+        "left_sha256": "3a944e25fac01df755e2e45050bdda95b534c22858ac8ab587c723e38c281f83",
+        "right_sha256": "3109bae06080c4d913a9015d1dc659f58d9a966104aba91149fe2dd72b18fb36",
+        "canonical_left_sha256": "9a0e02e9d2162a3cf3e6302f29d8b4cf14a6f3987a998c0fe64d594c24261606",
+        "canonical_right_sha256": "9a0e02e9d2162a3cf3e6302f29d8b4cf14a6f3987a998c0fe64d594c24261606",
+        "left": {
+          "local_identifiers": 509,
+          "attribute_groups": 7,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 509,
+          "attribute_groups": 7,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-NT-64",
+            "plan": "base",
+            "block": "128",
+            "ratios": [
+              1.0081617462820758,
+              0.9994147612667658,
+              1.0089019120565272
+            ],
+            "speedup": 1.0022734977228176
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882029-sources",
+        "configuration": "base-256",
+        "equal": true,
+        "left_sha256": "bd729edbbb06588ac2c9bfcdf55ee080c561af847e6db70653716d566fa728ec",
+        "right_sha256": "b2847c1284dfb8da5a0179c611bce660eb4dec19ad228eaf65f3ff0f5b5dc8dc",
+        "canonical_left_sha256": "eff85153e5e3701ea49dfbb2e926b54b47d28de268f6d09a2a73f8b71d6a5ea5",
+        "canonical_right_sha256": "eff85153e5e3701ea49dfbb2e926b54b47d28de268f6d09a2a73f8b71d6a5ea5",
+        "left": {
+          "local_identifiers": 515,
+          "attribute_groups": 7,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 515,
+          "attribute_groups": 7,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-NT-64",
+            "plan": "base",
+            "block": "256",
+            "ratios": [
+              1.0011667838358111,
+              0.9958787219258611,
+              1.0
+            ],
+            "speedup": 1.0000036764300393
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882029-sources",
+        "configuration": "full-128",
+        "equal": true,
+        "left_sha256": "ecbfce647bd944360c111a41090e435e9dfb008f3f224eedf1fc13a56caad195",
+        "right_sha256": "ec4b28aff3cf957ea4042b704cb06bc8c85ba35a1485fd9e2ae105c2214d24cd",
+        "canonical_left_sha256": "c4af4fe173e120cd9e2bd7ab23c29b431abc4e2be2f8c127a23019f683622c0f",
+        "canonical_right_sha256": "c4af4fe173e120cd9e2bd7ab23c29b431abc4e2be2f8c127a23019f683622c0f",
+        "left": {
+          "local_identifiers": 541,
+          "attribute_groups": 6,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 541,
+          "attribute_groups": 6,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-NT-64",
+            "plan": "full",
+            "block": "128",
+            "ratios": [
+              0.9971444478367846,
+              1.0028998036778876,
+              1.0
+            ],
+            "speedup": 1.0
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882029-sources",
+        "configuration": "full-256",
+        "equal": true,
+        "left_sha256": "b49c3fc6b577b25faa16ce4c26d62894279e18b1fae2236c14e5839391c04ed7",
+        "right_sha256": "ca780b108de79cb7e80b71f4d783bb8e022729f2dd11cf032e6f3ba57e3d4f05",
+        "canonical_left_sha256": "5ac43e8aa6f2b51a43b8cf216b728909f5708fd53f0ae4838b2b0a75dbde73e4",
+        "canonical_right_sha256": "5ac43e8aa6f2b51a43b8cf216b728909f5708fd53f0ae4838b2b0a75dbde73e4",
+        "left": {
+          "local_identifiers": 545,
+          "attribute_groups": 6,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 545,
+          "attribute_groups": 6,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-NT-64",
+            "plan": "full",
+            "block": "256",
+            "ratios": [
+              0.9966778098461411,
+              1.0033332638903356,
+              0.9966778098461411
+            ],
+            "speedup": 0.9966778098461411
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882030-sources",
+        "configuration": "base-128",
+        "equal": true,
+        "left_sha256": "cf3f0ef86a00ddc23d7f638b756742ed6964bd605282dadd0dbe3ba38a4e1862",
+        "right_sha256": "c155bf8a89861ff5a3ca6bac7ebcf5d39e93ed05c405c24fd2d4aa4d1371a4fc",
+        "canonical_left_sha256": "0430f50627a82f5f60e720f1ea34ad361731b7a98c092f5cd1b8dd82ade55a32",
+        "canonical_right_sha256": "0430f50627a82f5f60e720f1ea34ad361731b7a98c092f5cd1b8dd82ade55a32",
+        "left": {
+          "local_identifiers": 643,
+          "attribute_groups": 7,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 643,
+          "attribute_groups": 7,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-TN-128",
+            "plan": "base",
+            "block": "128",
+            "ratios": [
+              1.0015686005106539,
+              0.9984330598261023,
+              0.9994798621879377
+            ],
+            "speedup": 0.9994662610032661
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882030-sources",
+        "configuration": "base-256",
+        "equal": true,
+        "left_sha256": "d3a40e5f653335b86d95d0b76606d564c67cd8b12930c5710a854046bf87895d",
+        "right_sha256": "612dee4d7cf9b28e92982a2041ddb3df729cf19f28674534ce042987516b3630",
+        "canonical_left_sha256": "3bf4bbb166386b141a7f4284db3e57fc572ceceb322221bbc66bd573fbff3452",
+        "canonical_right_sha256": "3bf4bbb166386b141a7f4284db3e57fc572ceceb322221bbc66bd573fbff3452",
+        "left": {
+          "local_identifiers": 649,
+          "attribute_groups": 7,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 649,
+          "attribute_groups": 7,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-TN-128",
+            "plan": "base",
+            "block": "256",
+            "ratios": [
+              0.9999950200277883,
+              0.9994695118514368,
+              1.0013307018330793
+            ],
+            "speedup": 1.000541156980344
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882030-sources",
+        "configuration": "full-128",
+        "equal": true,
+        "left_sha256": "d34086e82ea16df7f37afe12830b8141b8dd7107fd900feca1b1c2314888ff8b",
+        "right_sha256": "8396f604bccba70a4bdc3756677f3f0dd82c81e35dc89828a217bc061753ffe9",
+        "canonical_left_sha256": "eb23fc22e8bdec91e402e9428dec8d86937ba20764888f022ab1e6341d527bdb",
+        "canonical_right_sha256": "eb23fc22e8bdec91e402e9428dec8d86937ba20764888f022ab1e6341d527bdb",
+        "left": {
+          "local_identifiers": 541,
+          "attribute_groups": 6,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 541,
+          "attribute_groups": 6,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-TN-128",
+            "plan": "full",
+            "block": "128",
+            "ratios": [
+              1.0,
+              1.0000113222073777,
+              1.010928588504491
+            ],
+            "speedup": 1.001826183616524
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882030-sources",
+        "configuration": "full-256",
+        "equal": true,
+        "left_sha256": "7069ccf41904db6fe859837332680cd12bda6772c702c3d77dad60bf85b3d575",
+        "right_sha256": "bb2e837fbd405b41c14593944972fa90d5bd110019e45b62974e90e1b288fa14",
+        "canonical_left_sha256": "5ff346cf6ef740b3e96c2f97d410412eadeacc531a3de25d1a71282ac97d9884",
+        "canonical_right_sha256": "5ff346cf6ef740b3e96c2f97d410412eadeacc531a3de25d1a71282ac97d9884",
+        "left": {
+          "local_identifiers": 545,
+          "attribute_groups": 6,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 545,
+          "attribute_groups": 6,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "launch-TN-128",
+            "plan": "full",
+            "block": "256",
+            "ratios": [
+              1.0043195378094545,
+              1.0,
+              0.9978495201741888
+            ],
+            "speedup": 1.0
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882031-sources",
+        "configuration": "base-1",
+        "equal": true,
+        "left_sha256": "b964b90e773ac9c81096fa209894033dda5027de9cec18bae4cd1cd89ae30eea",
+        "right_sha256": "5bbfb66c0a4997e14aad159c5cc747fc2a82f9989b8e4894b8fe04fe747d3f55",
+        "canonical_left_sha256": "a24237857ae14214483130903b77865231689bdf464f256f886ddc8496106a1a",
+        "canonical_right_sha256": "a24237857ae14214483130903b77865231689bdf464f256f886ddc8496106a1a",
+        "left": {
+          "local_identifiers": 653,
+          "attribute_groups": 7,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 653,
+          "attribute_groups": 7,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-TT-16",
+            "plan": "base",
+            "block": "1",
+            "ratios": [
+              0.9999972778856794,
+              0.9999986386371124,
+              0.999776834616761
+            ],
+            "speedup": 0.9999918336570381
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882031-sources",
+        "configuration": "base-3",
+        "equal": true,
+        "left_sha256": "1d1e6ea65e293ece2b7a5a229fc66fbca0eed0d6e9b1c2f179de30dd4defc256",
+        "right_sha256": "273610f8484ee149a8486d41e4691b108f9531d57d0e9bd3842db643292877fd",
+        "canonical_left_sha256": "bca4b8c8f12e90020062b27048248eb23205eb9cb3df27f7aef809e427667270",
+        "canonical_right_sha256": "bca4b8c8f12e90020062b27048248eb23205eb9cb3df27f7aef809e427667270",
+        "left": {
+          "local_identifiers": 677,
+          "attribute_groups": 7,
+          "metadata_nodes": 33,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 677,
+          "attribute_groups": 7,
+          "metadata_nodes": 33,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-TT-16",
+            "plan": "base",
+            "block": "3",
+            "ratios": [
+              1.000478238647063,
+              1.0,
+              1.0028656285596713
+            ],
+            "speedup": 1.000478238647063
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882031-sources",
+        "configuration": "base-3x5",
+        "equal": true,
+        "left_sha256": "9fb0c5ef577fe5448f84860981ce0c6a51df95ad394c1054a4c0bf0cce307432",
+        "right_sha256": "2541cf0608aa6ea47df10d8a93685146a9e5429e26a55c4726bcba3c79f83e08",
+        "canonical_left_sha256": "eed3b814b5a2f80b72b165ae3c0db78fd32a0f055bf642f1bce53aab0032be0b",
+        "canonical_right_sha256": "eed3b814b5a2f80b72b165ae3c0db78fd32a0f055bf642f1bce53aab0032be0b",
+        "left": {
+          "local_identifiers": 701,
+          "attribute_groups": 7,
+          "metadata_nodes": 33,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 701,
+          "attribute_groups": 7,
+          "metadata_nodes": 33,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-TT-16",
+            "plan": "base",
+            "block": "3x5",
+            "ratios": [
+              0.999977679235737,
+              0.9976292927266106,
+              1.0
+            ],
+            "speedup": 0.9988257938896692
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882031-sources",
+        "configuration": "base-48",
+        "equal": true,
+        "left_sha256": "2627979cf6ff7d7d5991dabba27cab559bbe8fa8e5cf7727a3c624e0a0457bed",
+        "right_sha256": "b80a508ca9e48634faed98ada1fff45018ed5b818a45b484c4a276bcfe3e413e",
+        "canonical_left_sha256": "95df838bd13b95bdc035611955d443e7ed08c0c248effcff270226f647052fec",
+        "canonical_right_sha256": "95df838bd13b95bdc035611955d443e7ed08c0c248effcff270226f647052fec",
+        "left": {
+          "local_identifiers": 677,
+          "attribute_groups": 7,
+          "metadata_nodes": 33,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 677,
+          "attribute_groups": 7,
+          "metadata_nodes": 33,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-TT-16",
+            "plan": "base",
+            "block": "48",
+            "ratios": [
+              1.0000197160883282,
+              1.0015896681444327,
+              1.0
+            ],
+            "speedup": 1.0015797788309637
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882031-sources",
+        "configuration": "base-4x4x8",
+        "equal": true,
+        "left_sha256": "af0f956990ec8c8891d934c8130c957f0e9cbea274ba38d8e4baf107837841bf",
+        "right_sha256": "0fd48e1e26521530f3d4ce99a6222fa780fea903991d2ff553b2d32a3bd8de86",
+        "canonical_left_sha256": "71c437b1e23bae4263ae7b6c8058aaed37d5990bbedeb8b562882e7cc6f64aeb",
+        "canonical_right_sha256": "71c437b1e23bae4263ae7b6c8058aaed37d5990bbedeb8b562882e7cc6f64aeb",
+        "left": {
+          "local_identifiers": 715,
+          "attribute_groups": 7,
+          "metadata_nodes": 33,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 715,
+          "attribute_groups": 7,
+          "metadata_nodes": 33,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-TT-16",
+            "plan": "base",
+            "block": "4x4x8",
+            "ratios": [
+              0.9982254464285715,
+              0.9999888392857142,
+              0.9982142857142857
+            ],
+            "speedup": 0.9982254464285715
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882031-sources",
+        "configuration": "full-1",
+        "equal": true,
+        "left_sha256": "0e6cab83ecd18f1fc2b772bc819c7ef45f5b323494a3f5c1e22b7c2fcff33559",
+        "right_sha256": "31ccb50fbde4ff398cf2f0a9666ba4f5a476df674f269e2c4f5918241005a67b",
+        "canonical_left_sha256": "861b8c43662025e761c3b73f3c46790c3869f0de14d00209371d45c199c9be1c",
+        "canonical_right_sha256": "861b8c43662025e761c3b73f3c46790c3869f0de14d00209371d45c199c9be1c",
+        "left": {
+          "local_identifiers": 647,
+          "attribute_groups": 7,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 647,
+          "attribute_groups": 7,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-TT-16",
+            "plan": "full",
+            "block": "1",
+            "ratios": [
+              0.9995431396474584,
+              1.0011477025888502,
+              1.0
+            ],
+            "speedup": 1.0000128955347063
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882031-sources",
+        "configuration": "full-3",
+        "equal": true,
+        "left_sha256": "1c59f06dc7dbfd0506b22163393e005119485383cb6189630317f98050aa23d1",
+        "right_sha256": "81f34dcf1019518eb0ce6d4fc85fa99345e7a50a1c18bc71c43a72eb5ac99cba",
+        "canonical_left_sha256": "78fc123c11df03ad9a70d72619656c0becc53950d1fa516436ce02dcf030a9b9",
+        "canonical_right_sha256": "78fc123c11df03ad9a70d72619656c0becc53950d1fa516436ce02dcf030a9b9",
+        "left": {
+          "local_identifiers": 660,
+          "attribute_groups": 7,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 660,
+          "attribute_groups": 7,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-TT-16",
+            "plan": "full",
+            "block": "3",
+            "ratios": [
+              0.999448431822726,
+              0.9994484261184022,
+              0.998344570293813
+            ],
+            "speedup": 0.999448431822726
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882031-sources",
+        "configuration": "full-3x5",
+        "equal": true,
+        "left_sha256": "122ed94239c04f2940b4e55f11a1823eba58bb1c607094ecd5492837b66efd3a",
+        "right_sha256": "e1f331842af4e7e0c477c4bca3003cdf04088a2e8e5073590ac8b70427fc277f",
+        "canonical_left_sha256": "0ba01d5d25f18bfc30394bb3214835c9656833b573fbb24d5681a3749067065c",
+        "canonical_right_sha256": "0ba01d5d25f18bfc30394bb3214835c9656833b573fbb24d5681a3749067065c",
+        "left": {
+          "local_identifiers": 686,
+          "attribute_groups": 7,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 686,
+          "attribute_groups": 7,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-TT-16",
+            "plan": "full",
+            "block": "3x5",
+            "ratios": [
+              0.998415071770335,
+              1.0,
+              0.9968152866242038
+            ],
+            "speedup": 0.996835159585585
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882031-sources",
+        "configuration": "full-48",
+        "equal": true,
+        "left_sha256": "0091d40f8b5760bd301d990ca69434245c7c40a45a4d513686fbb853cd30ee8d",
+        "right_sha256": "21c948ff34265e7162c6d48a157197d6a4582cbe74d682440275273902de4bb2",
+        "canonical_left_sha256": "c66fba481531158dfdfc72c3073709c9b49676364fda13405897c8b1bded04c9",
+        "canonical_right_sha256": "c66fba481531158dfdfc72c3073709c9b49676364fda13405897c8b1bded04c9",
+        "left": {
+          "local_identifiers": 660,
+          "attribute_groups": 7,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 660,
+          "attribute_groups": 7,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-TT-16",
+            "plan": "full",
+            "block": "48",
+            "ratios": [
+              1.0,
+              0.9975523022214012,
+              0.9950617283950617
+            ],
+            "speedup": 1.0
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882031-sources",
+        "configuration": "full-4x4x8",
+        "equal": true,
+        "left_sha256": "1d9d782a57161c1b7bdc4e817d71dca42f6fda3f3134b01536cac6bd8c89d0bb",
+        "right_sha256": "4d15517db8e3fd9041d43c962e62e8619df512f15bf128c822652cbf1ba74dcf",
+        "canonical_left_sha256": "73153b199f185f93f2c015fb6143b452daf7eea3c9601e79a5562234d92eb59c",
+        "canonical_right_sha256": "73153b199f185f93f2c015fb6143b452daf7eea3c9601e79a5562234d92eb59c",
+        "left": {
+          "local_identifiers": 698,
+          "attribute_groups": 7,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 698,
+          "attribute_groups": 7,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-TT-16",
+            "plan": "full",
+            "block": "4x4x8",
+            "ratios": [
+              1.00001953125,
+              1.003125,
+              0.9968652647975078
+            ],
+            "speedup": 1.00001953125
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882032-sources",
+        "configuration": "base-1",
+        "equal": true,
+        "left_sha256": "6fcf9ff234a45e6aa5d7c3637549f5fe9ff9ebc4da8eed193480c3d3bffb1b36",
+        "right_sha256": "6755e1ffd20f8a555a1060586739bbff096114b6f176e4fffea2ece07a582523",
+        "canonical_left_sha256": "2a9389a69fc25cd8b7a4c80f608f2e73b8ec48326ce4897942c734de72d6729c",
+        "canonical_right_sha256": "2a9389a69fc25cd8b7a4c80f608f2e73b8ec48326ce4897942c734de72d6729c",
+        "left": {
+          "local_identifiers": 885,
+          "attribute_groups": 7,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 885,
+          "attribute_groups": 7,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-NN-32",
+            "plan": "base",
+            "block": "1",
+            "ratios": [
+              1.0000007695918853,
+              1.0003679107901,
+              0.9998776646410804
+            ],
+            "speedup": 1.0001208259260115
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882032-sources",
+        "configuration": "base-3",
+        "equal": true,
+        "left_sha256": "69d1220ce1c28ec5ad1736d7f46e949a8feb1d74332890dfb96222ee01dbe9c4",
+        "right_sha256": "fb08e779685be33f7a5d326103d8242d07c649341430fedc206e49f72175082c",
+        "canonical_left_sha256": "ce3505b2360b89bda2f8a5e898f38507b482cc292efc5239cce28f26e9f2e534",
+        "canonical_right_sha256": "ce3505b2360b89bda2f8a5e898f38507b482cc292efc5239cce28f26e9f2e534",
+        "left": {
+          "local_identifiers": 910,
+          "attribute_groups": 7,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 910,
+          "attribute_groups": 7,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-NN-32",
+            "plan": "base",
+            "block": "3",
+            "ratios": [
+              1.0000016516531396,
+              0.9997342940556134,
+              1.0
+            ],
+            "speedup": 1.0000016516531396
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882032-sources",
+        "configuration": "base-3x5",
+        "equal": true,
+        "left_sha256": "5ee60ab3f63dcce8b91cc8d9bbf5ed2bc6b668d668188261bd18d8c270585227",
+        "right_sha256": "28d2d9cd1d8fdb6e415d35817dbc4075725e6e2bc2228f9c99a00249c2525834",
+        "canonical_left_sha256": "b8af49890717c08ecdbc496f24cba34307b4d70b27aac59ec4dbbc7d11ba133c",
+        "canonical_right_sha256": "b8af49890717c08ecdbc496f24cba34307b4d70b27aac59ec4dbbc7d11ba133c",
+        "left": {
+          "local_identifiers": 925,
+          "attribute_groups": 7,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 925,
+          "attribute_groups": 7,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-NN-32",
+            "plan": "base",
+            "block": "3x5",
+            "ratios": [
+              1.0014908266405322,
+              1.0,
+              0.99933644375324
+            ],
+            "speedup": 1.0
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882032-sources",
+        "configuration": "base-48",
+        "equal": true,
+        "left_sha256": "3030ac54e440d64dc21d1b91c50514d28ea80ff35068980705f280a3cc8ed2fe",
+        "right_sha256": "eeb25c2ac9ad8f0b715a28cc8665560a352e5c58c2733cd5e09127fd7f76ef2a",
+        "canonical_left_sha256": "88587e8fd805cddfac3dde352c52174ee4a75a3588aa9f967a42a990a94bb03d",
+        "canonical_right_sha256": "88587e8fd805cddfac3dde352c52174ee4a75a3588aa9f967a42a990a94bb03d",
+        "left": {
+          "local_identifiers": 910,
+          "attribute_groups": 7,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 910,
+          "attribute_groups": 7,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-NN-32",
+            "plan": "base",
+            "block": "48",
+            "ratios": [
+              1.0,
+              0.9999943337639673,
+              0.9981811382334943
+            ],
+            "speedup": 0.9990990684707962
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882032-sources",
+        "configuration": "base-4x4x8",
+        "equal": true,
+        "left_sha256": "57f3999ed71799a88f634162ef873b71736e78f2a0c53cb544ba118494d89e6d",
+        "right_sha256": "11ba76ebb8fe57ba64ff38ed66ea1c707d044d9c60e7d2991f0bb6a9fd81eee9",
+        "canonical_left_sha256": "5b275b5e57c8274b7813226a3b60c0d92a8561eccb84547332b8d1783a6336cd",
+        "canonical_right_sha256": "5b275b5e57c8274b7813226a3b60c0d92a8561eccb84547332b8d1783a6336cd",
+        "left": {
+          "local_identifiers": 935,
+          "attribute_groups": 7,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 935,
+          "attribute_groups": 7,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-NN-32",
+            "plan": "base",
+            "block": "4x4x8",
+            "ratios": [
+              0.9989658605517552,
+              0.9989776431781794,
+              0.9979445411509285
+            ],
+            "speedup": 0.9979509644598319
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882032-sources",
+        "configuration": "full-1",
+        "equal": true,
+        "left_sha256": "81bea11362498e418d5a9ceada496e7810c270a999bb1fefd9cf1f90959f7fe5",
+        "right_sha256": "9efa0b24c3dbae84aead1420a4e37aad1db2ec4e3991c03184b474dee67c41e1",
+        "canonical_left_sha256": "9831d070c026e2846fb8a653d44d346d7797abef1c15a7cc2693dce3f3ae7edf",
+        "canonical_right_sha256": "9831d070c026e2846fb8a653d44d346d7797abef1c15a7cc2693dce3f3ae7edf",
+        "left": {
+          "local_identifiers": 512,
+          "attribute_groups": 6,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 512,
+          "attribute_groups": 6,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-NN-32",
+            "plan": "full",
+            "block": "1",
+            "ratios": [
+              0.9998721423822431,
+              1.0,
+              1.0001262761483536
+            ],
+            "speedup": 1.0
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882032-sources",
+        "configuration": "full-3",
+        "equal": true,
+        "left_sha256": "07253defe7224220e7405f69e376559284bd261d3e3ed527e87106f1523ff30d",
+        "right_sha256": "6834bbca32ba01463b87f31a8137e556d481eb4ef470d7c6658fadef5240cf1b",
+        "canonical_left_sha256": "4f25d8cb3a3150a8bfd20cc6b2a061f9c6384188800113ade6e4aa6e9c46f99c",
+        "canonical_right_sha256": "4f25d8cb3a3150a8bfd20cc6b2a061f9c6384188800113ade6e4aa6e9c46f99c",
+        "left": {
+          "local_identifiers": 524,
+          "attribute_groups": 6,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 524,
+          "attribute_groups": 6,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-NN-32",
+            "plan": "full",
+            "block": "3",
+            "ratios": [
+              0.9993798593831151,
+              0.9993784983668641,
+              0.9999980614557304
+            ],
+            "speedup": 0.999686053812702
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882032-sources",
+        "configuration": "full-3x5",
+        "equal": true,
+        "left_sha256": "3671e02dd843a750dab5cbb335e08d15d0011ee507dd6fbbbad704d9acde62f2",
+        "right_sha256": "ea445c99cfb3b7c943ca7d9ea42dce94126b6c81b3183d0d300afe3fdf90300a",
+        "canonical_left_sha256": "56dcec9a636ac03bbaa21176b9b4549e34d6df6f2490ca2db1f6fed7cd97210b",
+        "canonical_right_sha256": "56dcec9a636ac03bbaa21176b9b4549e34d6df6f2490ca2db1f6fed7cd97210b",
+        "left": {
+          "local_identifiers": 547,
+          "attribute_groups": 6,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 547,
+          "attribute_groups": 6,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-NN-32",
+            "plan": "full",
+            "block": "3x5",
+            "ratios": [
+              1.000488070565101,
+              0.9988758643118734,
+              1.0022816975262714
+            ],
+            "speedup": 1.000488070565101
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882032-sources",
+        "configuration": "full-48",
+        "equal": true,
+        "left_sha256": "350184018735db11b831976ca3ad3846c73464db9948da4db733ed8d48836b28",
+        "right_sha256": "3057bdf69d9e2ceba867f8be590f77262d1116441ddd42a75c2a60942e8caf48",
+        "canonical_left_sha256": "3aedcb23b721b3234111127589d45bd66ababd18a49969bd2411451b3e0d68c6",
+        "canonical_right_sha256": "3aedcb23b721b3234111127589d45bd66ababd18a49969bd2411451b3e0d68c6",
+        "left": {
+          "local_identifiers": 524,
+          "attribute_groups": 6,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 524,
+          "attribute_groups": 6,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-NN-32",
+            "plan": "full",
+            "block": "48",
+            "ratios": [
+              1.0,
+              1.0000142692027796,
+              1.0022882967920939
+            ],
+            "speedup": 1.0000142692027796
+          }
+        ]
+      },
+      {
+        "directory": "wave64-matrix",
+        "source": "wave64-22882032-sources",
+        "configuration": "full-4x4x8",
+        "equal": true,
+        "left_sha256": "0243b1131976c490b7751855086ea6b98706b377fb5c546019d123d6e574b3bb",
+        "right_sha256": "a979ace2ce7f51be9b15b72ad043be20fbab68e6129245cc3c063102c0f5869c",
+        "canonical_left_sha256": "7ba47ceeda442c4d24fb1a7d928d1ac6e5b4e364f763a5c69fb461d4e7b886bb",
+        "canonical_right_sha256": "7ba47ceeda442c4d24fb1a7d928d1ac6e5b4e364f763a5c69fb461d4e7b886bb",
+        "left": {
+          "local_identifiers": 555,
+          "attribute_groups": 6,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 555,
+          "attribute_groups": 6,
+          "metadata_nodes": 30,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "fallback-NN-32",
+            "plan": "full",
+            "block": "4x4x8",
+            "ratios": [
+              1.004237175922248,
+              1.0,
+              1.004237175922248
+            ],
+            "speedup": 1.004237175922248
+          }
+        ]
+      },
+      {
+        "directory": "wave64-extended",
+        "source": "wave64-22898368-sources",
+        "configuration": "no_accumulator-128",
+        "equal": false,
+        "left_sha256": "c10da86490e9b6eb3b9162fe945d66fa946d39d3aa58d9cde07cd49e705cc057",
+        "right_sha256": "c4f338054422f8c4adfb7e60cb9708a13e4665039622ce6255f44bebdccc6d77",
+        "canonical_left_sha256": "50f14acee556f79c455acdf7dafff0e36353becd67db95b5a7c0da9cbf88110d",
+        "canonical_right_sha256": "4d96d154d3d38f129426833f4ae9bc3ae774d4d435d1c4e197c9bcff3dd2387c",
+        "left": {
+          "local_identifiers": 390,
+          "attribute_groups": 6,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 565,
+          "attribute_groups": 6,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [
+          "--- \n",
+          "+++ \n",
+          "@@ -43,479 +43,689 @@\n",
+          " %v26 = icmp ult i64 %v25, 2147483648",
+          " call void @llvm.assume(i1 %v26), !noalias !m2",
+          "-%v27 = call i64 @__ockl_get_local_id(i32 noundef 0) #a5",
+          "-%v28 = icmp eq i64 %v27, 0",
+          "+%v27 = call i64 @__ockl_get_group_id(i32 noundef 2) #a5",
+          "+%v28 = icmp ult i64 %v27, 16777215",
+          " call void @llvm.assume(i1 %v28)",
+          "-%v29 = call i64 @__ockl_get_local_id(i32 noundef 1) #a5",
+          "-%v30 = icmp eq i64 %v29, 0",
+          "-call void @llvm.assume(i1 %v30)",
+          "-%v31 = call i64 @__ockl_get_local_id(i32 noundef 2) #a5",
+          "-%v32 = icmp ult i64 %v31, 128",
+          "-call void @llvm.assume(i1 %v32)",
+          "-%v33 = call noundef i32 @llvm.amdgcn.groupstaticsize()",
+          "-%v34 = inttoptr i32 %v33 to ptr addrspace(3)",
+          "-%v35 = trunc i64 %v31 to i32",
+          "-%v36 = getelementptr inbounds float, ptr addrspace(3) %v34, i32 %v35",
+          "-store float 0.000000e+00, ptr addrspace(3) %v36, align 4, !tbaa !m3",
+          "+%v29 = trunc i64 %v27 to i32",
+          "+%v30 = call i64 @__ockl_get_local_id(i32 noundef 0) #a5",
+          "+%v31 = icmp eq i64 %v30, 0",
+          "+call void @llvm.assume(i1 %v31)",
+          "+%v32 = call i64 @__ockl_get_local_id(i32 noundef 1) #a5",
+          "+%v33 = icmp eq i64 %v32, 0",
+          "+call void @llvm.assume(i1 %v33)",
+          "+%v34 = call i64 @__ockl_get_local_id(i32 noundef 2) #a5",
+          "+%v35 = icmp ult i64 %v34, 128",
+          "+call void @llvm.assume(i1 %v35)",
+          "+%v36 = shl nuw i32 %v29, 8",
+          "+%v37 = sext i32 %v5 to i64",
+          "+%v38 = sext i32 %v3 to i64",
+          "+%v39 = sext i32 %v36 to i64",
+          "+%v40 = call noundef i32 @llvm.amdgcn.groupstaticsize()",
+          "+%v41 = inttoptr i32 %v40 to ptr addrspace(3)",
+          "+%v42 = getelementptr inbounds i8, ptr addrspace(3) %v41, i32 512",
+          "+%v43 = and i64 %v34, 7",
+          "+%v44 = icmp slt i64 %v43, %v38",
+          "+br label %v45",
+          "+%v46:",
+          " fence syncscope(\"workgroup\") release",
+          " call void @llvm.amdgcn.s.barrier()",
+          " fence syncscope(\"workgroup\") acquire",
+          "-%v37 = call i64 @__ockl_get_group_id(i32 noundef 2) #a5",
+          "-%v38 = icmp ult i64 %v37, 16777215",
+          "-call void @llvm.assume(i1 %v38)",
+          "-%v39 = trunc i64 %v37 to i32",
+          "-%v40 = call i64 @__ockl_get_local_id(i32 noundef 0) #a5",
+          "-%v41 = icmp eq i64 %v40, 0",
+          "-call void @llvm.assume(i1 %v41)",
+          "-%v42 = call i64 @__ockl_get_local_id(i32 noundef 1) #a5",
+          "-%v43 = icmp eq i64 %v42, 0",
+          "-call void @llvm.assume(i1 %v43)",
+          "-%v44 = call i64 @__ockl_get_local_id(i32 noundef 2) #a5",
+          "-%v45 = icmp ult i64 %v44, 128",
+          "-call void @llvm.assume(i1 %v45)",
+          "-%v46 = shl nuw i32 %v39, 8",
+          "-%v47 = sext i32 %v5 to i64"
+        ],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "standalone",
+            "plan": "no_accumulator",
+            "block": "128",
+            "ratios": [
+              1.0373434298903037,
+              1.0330578512396693,
+              1.0287949357968142
+            ],
+            "speedup": 1.0330578512396693
+          }
+        ]
+      },
+      {
+        "directory": "wave64-extended",
+        "source": "wave64-22898368-sources",
+        "configuration": "no_accumulator-256",
+        "equal": false,
+        "left_sha256": "835e870c6148a3f0ec22dc7e8ec8b20538510e26272fcd0496ad497576c77e32",
+        "right_sha256": "9fe7d9bd4a4138d4f5db777ef764aee51c760f27d93add73c778e847d8f70652",
+        "canonical_left_sha256": "ccb440c160d7336db9835e808456c61b829750c30c3128ce89b0d33a44997418",
+        "canonical_right_sha256": "01b21d9bdea94069e4225bccc61fd2f76c831b9a2bd2328bcec215238e11caf3",
+        "left": {
+          "local_identifiers": 383,
+          "attribute_groups": 6,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 558,
+          "attribute_groups": 6,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [
+          "--- \n",
+          "+++ \n",
+          "@@ -9,506 +9,713 @@\n",
+          " declare hidden float @__ocml_ldexp_f32(float noundef, i32 noundef) local_unnamed_addr #a2",
+          " declare i32 @llvm.amdgcn.groupstaticsize() #a3",
+          "-define amdgpu_kernel void @ENTRY(ptr addrspace(1) %v0, ptr addrspace(1) %v1, ptr addrspace(1) %v2, i32 %v3, i32 %v4, i32 %v5) #a4 {",
+          "-%v6 = addrspacecast ptr addrspace(1) %v0 to ptr",
+          "-%v7 = addrspacecast ptr addrspace(1) %v1 to ptr",
+          "-%v8 = addrspacecast ptr addrspace(1) %v2 to ptr",
+          "-call void @llvm.assume(i1 true) [ \"align\"(ptr %v8, i64 32) ]",
+          "+define amdgpu_kernel void @ENTRY(ptr addrspace(1) nocapture readonly %v0, ptr addrspace(1) %v1, ptr addrspace(1) %v2, i32 %v3, i32 %v4, i32 %v5) #a4 {",
+          "+%v6 = addrspacecast ptr addrspace(1) %v1 to ptr",
+          "+%v7 = addrspacecast ptr addrspace(1) %v2 to ptr",
+          " call void @llvm.assume(i1 true) [ \"align\"(ptr %v7, i64 32) ]",
+          " call void @llvm.assume(i1 true) [ \"align\"(ptr %v6, i64 32) ]",
+          "-%v9 = call i64 @__ockl_get_group_id(i32 noundef 2) #a5, !noalias !m0",
+          "-%v10 = icmp ult i64 %v9, 8388607",
+          "-call void @llvm.assume(i1 %v10), !noalias !m0",
+          "-%v11 = call i64 @__ockl_get_group_id(i32 noundef 1) #a5, !noalias !m0",
+          "-%v12 = icmp ult i64 %v11, 2147483647",
+          "-call void @llvm.assume(i1 %v12), !noalias !m0",
+          "-%v13 = call i64 @__ockl_get_group_id(i32 noundef 0) #a5, !noalias !m0",
+          "-%v14 = icmp ult i64 %v13, 2147483647",
+          "-call void @llvm.assume(i1 %v14), !noalias !m0",
+          "-%v15 = call i64 @__ockl_get_local_id(i32 noundef 2) #a5, !noalias !m1",
+          "-%v16 = icmp ult i64 %v15, 256",
+          "-call void @llvm.assume(i1 %v16), !noalias !m1",
+          "-%v17 = call i64 @__ockl_get_local_id(i32 noundef 1) #a5, !noalias !m1",
+          "-%v18 = icmp eq i64 %v17, 0",
+          "-call void @llvm.assume(i1 %v18), !noalias !m1",
+          "-%v19 = call i64 @__ockl_get_local_id(i32 noundef 0) #a5, !noalias !m1",
+          "-%v20 = icmp eq i64 %v19, 0",
+          "-call void @llvm.assume(i1 %v20), !noalias !m1",
+          "-%v21 = call i64 @__ockl_get_num_groups(i32 noundef 2) #a5, !noalias !m2",
+          "-%v22 = icmp ult i64 %v21, 8388608",
+          "-call void @llvm.assume(i1 %v22), !noalias !m2",
+          "-%v23 = call i64 @__ockl_get_num_groups(i32 noundef 1) #a5, !noalias !m2",
+          "-%v24 = icmp ult i64 %v23, 2147483648",
+          "-call void @llvm.assume(i1 %v24), !noalias !m2",
+          "-%v25 = call i64 @__ockl_get_num_groups(i32 noundef 0) #a5, !noalias !m2",
+          "-%v26 = icmp ult i64 %v25, 2147483648",
+          "-call void @llvm.assume(i1 %v26), !noalias !m2",
+          "-%v27 = call i64 @__ockl_get_local_id(i32 noundef 0) #a5",
+          "-%v28 = icmp eq i64 %v27, 0",
+          "-call void @llvm.assume(i1 %v28)",
+          "-%v29 = call i64 @__ockl_get_local_id(i32 noundef 1) #a5",
+          "-%v30 = icmp eq i64 %v29, 0",
+          "-call void @llvm.assume(i1 %v30)",
+          "-%v31 = call i64 @__ockl_get_local_id(i32 noundef 2) #a5",
+          "-%v32 = icmp ult i64 %v31, 256",
+          "-call void @llvm.assume(i1 %v32)",
+          "-%v33 = icmp ult i64 %v31, 128",
+          "-br i1 %v33, label %v34, label %v35",
+          "-%v34:",
+          "+%v8 = call i64 @__ockl_get_group_id(i32 noundef 2) #a5, !noalias !m0",
+          "+%v9 = icmp ult i64 %v8, 8388607",
+          "+call void @llvm.assume(i1 %v9), !noalias !m0",
+          "+%v10 = call i64 @__ockl_get_group_id(i32 noundef 1) #a5, !noalias !m0",
+          "+%v11 = icmp ult i64 %v10, 2147483647",
+          "+call void @llvm.assume(i1 %v11), !noalias !m0"
+        ],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "standalone",
+            "plan": "no_accumulator",
+            "block": "256",
+            "ratios": [
+              1.0416654610688347,
+              1.0368663594470047,
+              1.0368556032619658
+            ],
+            "speedup": 1.0373742904071694
+          }
+        ]
+      },
+      {
+        "directory": "wave64-extended",
+        "source": "wave64-22898368-sources",
+        "configuration": "no_accumulator-48",
+        "equal": false,
+        "left_sha256": "d18be6433bb3f58c12f996444319c0aa018faf113abab7047eb593471b698c8a",
+        "right_sha256": "bafbb3c5c9fa50c8c40babd9c304c238db7c20ec3bee3c74308808186da8e2b8",
+        "canonical_left_sha256": "e1fcc4fa928c82cae5d638369145fc5078eff514c13411db10ceab93688ea1a2",
+        "canonical_right_sha256": "f897e598f01767f7220f985149244b8b0969873423e3381537c076b649037001",
+        "left": {
+          "local_identifiers": 401,
+          "attribute_groups": 6,
+          "metadata_nodes": 33,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 572,
+          "attribute_groups": 6,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [
+          "--- \n",
+          "+++ \n",
+          "@@ -43,202 +43,178 @@\n",
+          " %v26 = icmp ult i64 %v25, 2147483648",
+          " call void @llvm.assume(i1 %v26), !noalias !m2",
+          "-%v27 = call i64 @__ockl_get_local_id(i32 noundef 0) #a5",
+          "-%v28 = icmp eq i64 %v27, 0",
+          "+%v27 = call i64 @__ockl_get_group_id(i32 noundef 2) #a5",
+          "+%v28 = icmp ult i64 %v27, 44739242",
+          " call void @llvm.assume(i1 %v28)",
+          "-%v29 = call i64 @__ockl_get_local_id(i32 noundef 1) #a5",
+          "-%v30 = icmp eq i64 %v29, 0",
+          "-call void @llvm.assume(i1 %v30)",
+          "-%v31 = call i64 @__ockl_get_local_id(i32 noundef 2) #a5",
+          "-%v32 = icmp ult i64 %v31, 48",
+          "-call void @llvm.assume(i1 %v32)",
+          "-%v33 = call noundef i32 @llvm.amdgcn.groupstaticsize()",
+          "-%v34 = inttoptr i32 %v33 to ptr addrspace(3)",
+          "-br label %v35",
+          "-%v36:",
+          "+%v29 = trunc i64 %v27 to i32",
+          "+%v30 = call i64 @__ockl_get_local_id(i32 noundef 0) #a5",
+          "+%v31 = icmp eq i64 %v30, 0",
+          "+call void @llvm.assume(i1 %v31)",
+          "+%v32 = call i64 @__ockl_get_local_id(i32 noundef 1) #a5",
+          "+%v33 = icmp eq i64 %v32, 0",
+          "+call void @llvm.assume(i1 %v33)",
+          "+%v34 = call i64 @__ockl_get_local_id(i32 noundef 2) #a5",
+          "+%v35 = icmp ult i64 %v34, 48",
+          "+call void @llvm.assume(i1 %v35)",
+          "+%v36 = shl i32 %v29, 8",
+          "+%v37 = sext i32 %v5 to i64",
+          "+%v38 = sext i32 %v3 to i64",
+          "+%v39 = sext i32 %v36 to i64",
+          "+%v40 = call noundef i32 @llvm.amdgcn.groupstaticsize()",
+          "+%v41 = inttoptr i32 %v40 to ptr addrspace(3)",
+          "+%v42 = getelementptr inbounds i8, ptr addrspace(3) %v41, i32 512",
+          "+%v43 = and i64 %v34, 7",
+          "+%v44 = icmp slt i64 %v43, %v38",
+          "+br label %v45",
+          "+%v46:",
+          " fence syncscope(\"workgroup\") release",
+          " call void @llvm.amdgcn.s.barrier()",
+          " fence syncscope(\"workgroup\") acquire",
+          "-%v37 = call i64 @__ockl_get_group_id(i32 noundef 2) #a5",
+          "-%v38 = icmp ult i64 %v37, 44739242",
+          "-call void @llvm.assume(i1 %v38)",
+          "-%v39 = trunc i64 %v37 to i32",
+          "-%v40 = call i64 @__ockl_get_local_id(i32 noundef 0) #a5",
+          "-%v41 = icmp eq i64 %v40, 0",
+          "-call void @llvm.assume(i1 %v41)",
+          "-%v42 = call i64 @__ockl_get_local_id(i32 noundef 1) #a5",
+          "-%v43 = icmp eq i64 %v42, 0",
+          "-call void @llvm.assume(i1 %v43)",
+          "-%v44 = call i64 @__ockl_get_local_id(i32 noundef 2) #a5",
+          "-%v45 = icmp ult i64 %v44, 48",
+          "-call void @llvm.assume(i1 %v45)",
+          "-%v46 = shl i32 %v39, 8",
+          "-%v47 = sext i32 %v5 to i64",
+          "-%v48 = sext i32 %v3 to i64"
+        ],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "standalone",
+            "plan": "no_accumulator",
+            "block": "48",
+            "ratios": [
+              1.0619400524648444,
+              1.0689645263717475,
+              1.0666513412163618
+            ],
+            "speedup": 1.0666513412163618
+          }
+        ]
+      },
+      {
+        "directory": "wave64-extended",
+        "source": "wave64-22898368-sources",
+        "configuration": "no_init-128",
+        "equal": true,
+        "left_sha256": "e66cafb2f720838ec96a4d618d29b15948f12252b58408c0e005896ee40a95d6",
+        "right_sha256": "e611c73348ac97bb31b9ec6ffd7ea795e469c0f85b75d74877fab46e172396d4",
+        "canonical_left_sha256": "4258c16b83b032400c46fc184d4f5338387c976a3d817f6a4b4a7bd9ee1c17a6",
+        "canonical_right_sha256": "4258c16b83b032400c46fc184d4f5338387c976a3d817f6a4b4a7bd9ee1c17a6",
+        "left": {
+          "local_identifiers": 576,
+          "attribute_groups": 6,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 576,
+          "attribute_groups": 6,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "standalone",
+            "plan": "no_init",
+            "block": "128",
+            "ratios": [
+              1.0041839910044192,
+              1.0,
+              1.0037085062240665
+            ],
+            "speedup": 1.0000259336099586
+          }
+        ]
+      },
+      {
+        "directory": "wave64-extended",
+        "source": "wave64-22898368-sources",
+        "configuration": "no_init-256",
+        "equal": true,
+        "left_sha256": "2e6534d9b44b43cc9116e0a244debc51c17f3ed9e11d123a247ca6960a3dcbc1",
+        "right_sha256": "2fc96c36726d2755757ddfc6039fd5846bee390c540fb561ab02e21f2ea19a68",
+        "canonical_left_sha256": "ed08b8e33683afec680c62ab44d2eb5e247821109f36b6479df9a3ee3751abe4",
+        "canonical_right_sha256": "ed08b8e33683afec680c62ab44d2eb5e247821109f36b6479df9a3ee3751abe4",
+        "left": {
+          "local_identifiers": 570,
+          "attribute_groups": 6,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 570,
+          "attribute_groups": 6,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "standalone",
+            "plan": "no_init",
+            "block": "256",
+            "ratios": [
+              0.9908256880733946,
+              1.0000288018433179,
+              0.9953843066425848
+            ],
+            "speedup": 0.9954128440366973
+          }
+        ]
+      },
+      {
+        "directory": "wave64-extended",
+        "source": "wave64-22898368-sources",
+        "configuration": "no_init-48",
+        "equal": true,
+        "left_sha256": "2ec1f8ca0e7c1880ecbda60470687d63664cdccb6189e96ba5d4812356dca841",
+        "right_sha256": "2b712c6fee74c51ba986cec39cd64edad38dc20bb4d2da6ff055c3a95cef84ff",
+        "canonical_left_sha256": "6469e3dc00fc19a823fbddc9f773a8867e841563fa6349df24445e96cd0b55cd",
+        "canonical_right_sha256": "6469e3dc00fc19a823fbddc9f773a8867e841563fa6349df24445e96cd0b55cd",
+        "left": {
+          "local_identifiers": 587,
+          "attribute_groups": 6,
+          "metadata_nodes": 33,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 587,
+          "attribute_groups": 6,
+          "metadata_nodes": 33,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "standalone",
+            "plan": "no_init",
+            "block": "48",
+            "ratios": [
+              0.9977169275552575,
+              1.0,
+              1.0045788856137137
+            ],
+            "speedup": 1.0
+          }
+        ]
+      },
+      {
+        "directory": "wave64-extended",
+        "source": "wave64-22898369-sources",
+        "configuration": "no_staging-128",
+        "equal": true,
+        "left_sha256": "d33fac5da57ca140943dfbedb19b8b0c04046f2776ac260e06de6c99ac62b080",
+        "right_sha256": "6bce9dbfdd174eb26cf31cf113c1a24c4140b190897fb78854e372f2c64196de",
+        "canonical_left_sha256": "1f9db4f9088b5ec346c91cbf7088465457128135d2729ad91d4dba8c8a88fa99",
+        "canonical_right_sha256": "1f9db4f9088b5ec346c91cbf7088465457128135d2729ad91d4dba8c8a88fa99",
+        "left": {
+          "local_identifiers": 669,
+          "attribute_groups": 7,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 669,
+          "attribute_groups": 7,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "unroll-staging",
+            "plan": "no_staging",
+            "block": "128",
+            "ratios": [
+              0.9989055767404084,
+              1.0011000948831836,
+              1.0
+            ],
+            "speedup": 1.0
+          }
+        ]
+      },
+      {
+        "directory": "wave64-extended",
+        "source": "wave64-22898369-sources",
+        "configuration": "no_staging-256",
+        "equal": true,
+        "left_sha256": "976ab6f21814090e76358dc9540844fea3a43e35968a97dde11c8e60ccabfd44",
+        "right_sha256": "5afd3108e8674af009a23caeaffdae4f3665524dd209b53c2ebbdcccf69d0cf0",
+        "canonical_left_sha256": "ff52b8d0c2cb83a75fc5e13911b095fb129c05884ce4b3c58b4947a4312555d3",
+        "canonical_right_sha256": "ff52b8d0c2cb83a75fc5e13911b095fb129c05884ce4b3c58b4947a4312555d3",
+        "left": {
+          "local_identifiers": 667,
+          "attribute_groups": 7,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 667,
+          "attribute_groups": 7,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "unroll-staging",
+            "plan": "no_staging",
+            "block": "256",
+            "ratios": [
+              0.9989052258144981,
+              1.0,
+              0.9977827358268316
+            ],
+            "speedup": 0.9988913679134158
+          }
+        ]
+      },
+      {
+        "directory": "wave64-extended",
+        "source": "wave64-22898369-sources",
+        "configuration": "no_staging-48",
+        "equal": true,
+        "left_sha256": "a326102aa8299ef4296d279afbf1be18182ccddbea95d2664ece46accfea1caf",
+        "right_sha256": "53b0a6acf4b2b535f393f1fb0b3a2eec0969a2e23c78b6187239d3b8768f8fad",
+        "canonical_left_sha256": "c194f2ee3a9d3f153f366c635b1dbd343687dfb703b6aa31cde099275555b641",
+        "canonical_right_sha256": "c194f2ee3a9d3f153f366c635b1dbd343687dfb703b6aa31cde099275555b641",
+        "left": {
+          "local_identifiers": 676,
+          "attribute_groups": 7,
+          "metadata_nodes": 33,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 676,
+          "attribute_groups": 7,
+          "metadata_nodes": 33,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "unroll-staging",
+            "plan": "no_staging",
+            "block": "48",
+            "ratios": [
+              1.0009717995906293,
+              1.0029186893203883,
+              1.0009708620041018
+            ],
+            "speedup": 1.0009830097087378
+          }
+        ]
+      },
+      {
+        "directory": "wave64-extended",
+        "source": "wave64-22898369-sources",
+        "configuration": "no_unroll-128",
+        "equal": true,
+        "left_sha256": "799d99e6e4d6e98059212e5fa9321a3afc6acb0af232910cd7182f078cacb430",
+        "right_sha256": "58b6f74c3ea28a18c0c7fe2ae949eef41407fc5d19e344d178ef437e0e2482e7",
+        "canonical_left_sha256": "886496d07da85d1722ef4d5ebc2559480f97459106d09491e152dad85b704f66",
+        "canonical_right_sha256": "886496d07da85d1722ef4d5ebc2559480f97459106d09491e152dad85b704f66",
+        "left": {
+          "local_identifiers": 379,
+          "attribute_groups": 6,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 379,
+          "attribute_groups": 6,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "unroll-staging",
+            "plan": "no_unroll",
+            "block": "128",
+            "ratios": [
+              0.9959438775510204,
+              1.008230240991744,
+              1.0
+            ],
+            "speedup": 1.0
+          }
+        ]
+      },
+      {
+        "directory": "wave64-extended",
+        "source": "wave64-22898369-sources",
+        "configuration": "no_unroll-256",
+        "equal": true,
+        "left_sha256": "8d69f7f23f68fcd644f2516c2ffca27ddca3f7bf680ada70e467e09abb04a6e8",
+        "right_sha256": "d3ac2cc4c4f2fc80b10fb8bb6d5e39652ec10a3f38dbb15b43b95b281660a29c",
+        "canonical_left_sha256": "d29736135ab481bc91ab0e38ed93b7f99c71aaacf659d67d29cbde55af77d100",
+        "canonical_right_sha256": "d29736135ab481bc91ab0e38ed93b7f99c71aaacf659d67d29cbde55af77d100",
+        "left": {
+          "local_identifiers": 372,
+          "attribute_groups": 6,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 372,
+          "attribute_groups": 6,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "unroll-staging",
+            "plan": "no_unroll",
+            "block": "256",
+            "ratios": [
+              0.9910716776875645,
+              0.9955158207449343,
+              0.9955158207449343
+            ],
+            "speedup": 0.9955158207449343
+          }
+        ]
+      },
+      {
+        "directory": "wave64-extended",
+        "source": "wave64-22898369-sources",
+        "configuration": "no_unroll-48",
+        "equal": true,
+        "left_sha256": "08731844c4452b4110a37675bfa1d9dfb6a665ccc51a242f4ee15d040a9555c4",
+        "right_sha256": "ce8072adadd3bd65b3270b47a1b0821be6e849adb0084775319750f66d961fe4",
+        "canonical_left_sha256": "efad13c3be409de462fbd8553e43156f90dd49cd120db8e821ca356883f64da9",
+        "canonical_right_sha256": "efad13c3be409de462fbd8553e43156f90dd49cd120db8e821ca356883f64da9",
+        "left": {
+          "local_identifiers": 386,
+          "attribute_groups": 6,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 386,
+          "attribute_groups": 6,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "unroll-staging",
+            "plan": "no_unroll",
+            "block": "48",
+            "ratios": [
+              1.0,
+              1.0044052256989855,
+              1.0
+            ],
+            "speedup": 1.0
+          }
+        ]
+      },
+      {
+        "directory": "wave64-extended",
+        "source": "wave64-22898370-sources",
+        "configuration": "no_reuse-128",
+        "equal": true,
+        "left_sha256": "988cf64cfab19fec2c8f8ef00113a62df3e238c766ebc93723fe7e2c3bc67f3f",
+        "right_sha256": "5b94a8b622142f5765bda356b7f23048477116910b33fcd9afc96f9128411498",
+        "canonical_left_sha256": "4d96d154d3d38f129426833f4ae9bc3ae774d4d435d1c4e197c9bcff3dd2387c",
+        "canonical_right_sha256": "4d96d154d3d38f129426833f4ae9bc3ae774d4d435d1c4e197c9bcff3dd2387c",
+        "left": {
+          "local_identifiers": 565,
+          "attribute_groups": 6,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 565,
+          "attribute_groups": 6,
+          "metadata_nodes": 31,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "reuse-fusion",
+            "plan": "no_reuse",
+            "block": "128",
+            "ratios": [
+              1.0041578410606418,
+              0.9958334418374521,
+              1.0
+            ],
+            "speedup": 0.9999739590114841
+          },
+          {
+            "kind": "launch",
+            "label": "reuse-fusion",
+            "plan": "no_fusion",
+            "block": "128",
+            "ratios": [
+              1.0083070753365797,
+              1.0,
+              1.008341832065061
+            ],
+            "speedup": 1.0041405171740319,
+            "ir_reused_from_identical_source": "no_reuse-128"
+          }
+        ]
+      },
+      {
+        "directory": "wave64-extended",
+        "source": "wave64-22898370-sources",
+        "configuration": "no_reuse-256",
+        "equal": true,
+        "left_sha256": "2af1a4e5afa3b8110c10cee6dd66ee4cba311b6f66cacd970be1fd4ec7e0440b",
+        "right_sha256": "e398c0355dd4950589fb2be6203902e1dd5ad26e66e7da68ee45b196d7eda007",
+        "canonical_left_sha256": "01b21d9bdea94069e4225bccc61fd2f76c831b9a2bd2328bcec215238e11caf3",
+        "canonical_right_sha256": "01b21d9bdea94069e4225bccc61fd2f76c831b9a2bd2328bcec215238e11caf3",
+        "left": {
+          "local_identifiers": 558,
+          "attribute_groups": 6,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 558,
+          "attribute_groups": 6,
+          "metadata_nodes": 29,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "reuse-fusion",
+            "plan": "no_reuse",
+            "block": "256",
+            "ratios": [
+              0.9953993055555556,
+              1.0,
+              0.9953917050691244
+            ],
+            "speedup": 1.0
+          },
+          {
+            "kind": "launch",
+            "label": "reuse-fusion",
+            "plan": "no_fusion",
+            "block": "256",
+            "ratios": [
+              1.0000286705467474,
+              0.9907834101382489,
+              1.0
+            ],
+            "speedup": 0.9954205069124424,
+            "ir_reused_from_identical_source": "no_reuse-256"
+          }
+        ]
+      },
+      {
+        "directory": "wave64-extended",
+        "source": "wave64-22898370-sources",
+        "configuration": "no_reuse-48",
+        "equal": true,
+        "left_sha256": "05b74d99b150bb9055ac1aa48e500cca3a288a429b1412b78158b0c55ed5c258",
+        "right_sha256": "525311d441c2c6e4cec730ef2f8473c67410197aa250c833d9737dcc6075cf16",
+        "canonical_left_sha256": "f897e598f01767f7220f985149244b8b0969873423e3381537c076b649037001",
+        "canonical_right_sha256": "f897e598f01767f7220f985149244b8b0969873423e3381537c076b649037001",
+        "left": {
+          "local_identifiers": 572,
+          "attribute_groups": 6,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "right": {
+          "local_identifiers": 572,
+          "attribute_groups": 6,
+          "metadata_nodes": 32,
+          "excluded_dead_kernel_annotations": [
+            "!{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{null, !\"hipsycl_kernel_dimension\", i32 3}",
+            "distinct !{ptr undef, !\"hipsycl_kernel_dimension\", i32 3}"
+          ]
+        },
+        "difference": [],
+        "timing": [
+          {
+            "kind": "launch",
+            "label": "reuse-fusion",
+            "plan": "no_reuse",
+            "block": "48",
+            "ratios": [
+              1.0023041142840685,
+              1.0092233079776562,
+              1.0045938278538615
+            ],
+            "speedup": 1.0045938278538615
+          },
+          {
+            "kind": "launch",
+            "label": "reuse-fusion",
+            "plan": "no_fusion",
+            "block": "48",
+            "ratios": [
+              0.9976868148446143,
+              0.9954271788990826,
+              1.0046044370029301
+            ],
+            "speedup": 0.9977011824542751,
+            "ir_reused_from_identical_source": "no_reuse-48"
+          }
+        ]
+      }
+    ]
+  },
+  "compile_cost": [
+    {
+      "k": 16,
+      "plan": "base",
+      "baseline_seconds": 0.7768425494432449,
+      "enabled_seconds": 0.7517665084451437,
+      "ratio": 0.9677205618872537
+    },
+    {
+      "k": 16,
+      "plan": "full",
+      "baseline_seconds": 0.7656421530991793,
+      "enabled_seconds": 0.7935498747974634,
+      "ratio": 1.0364500851805492
+    },
+    {
+      "k": 32,
+      "plan": "base",
+      "baseline_seconds": 0.7853057645261288,
+      "enabled_seconds": 0.7737764474004507,
+      "ratio": 0.9853186903159495
+    },
+    {
+      "k": 32,
+      "plan": "full",
+      "baseline_seconds": 0.7708660196512938,
+      "enabled_seconds": 0.7606549449265003,
+      "ratio": 0.9867537620488026
+    },
+    {
+      "k": 128,
+      "plan": "base",
+      "baseline_seconds": 0.7666635438799858,
+      "enabled_seconds": 0.7658066432923079,
+      "ratio": 0.99888229902867
+    },
+    {
+      "k": 128,
+      "plan": "full",
+      "baseline_seconds": 0.7791766915470362,
+      "enabled_seconds": 0.7901128977537155,
+      "ratio": 1.014035592087548
+    }
+  ],
+  "preservation_source_hashes": 15,
+  "clean_diagnostics": {
+    "cases": 4,
+    "required_exit": 1,
+    "source_sha256": "6d9fd14e0253bc30b20625164eb2c30af29e7481f962dc0a5157f07d3a657f5d"
+  },
+  "acceptance_scope": "gfx906 device events and exact outputs; fallback timing is retained, with LLVM equality or measured SSA-enabling evidence, not a universal performance claim"
+}

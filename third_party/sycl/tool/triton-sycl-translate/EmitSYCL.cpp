@@ -9,6 +9,8 @@
 #include "Utils/EmitUtils.h"
 #include "Utils/EmitNumericSupport.h"
 #include "llvm/Support/CommandLine.h"
+#include <functional>
+#include <optional>
 
 using namespace mlir;
 
@@ -239,8 +241,12 @@ void ModuleEmitter::emitScfIf(scf::IfOp op) {
     }
   }
 
-  indent() << "if (";
-  emitValue(op.getCondition());
+  if (twoColumnLaunchLimit && op->hasAttr("sycl.two_column_launch_guard"))
+    indent() << "if constexpr (triton_sycl_two_column";
+  else {
+    indent() << "if (";
+    emitValue(op.getCondition());
+  }
   os << ") {";
   emitInfoAndNewLine(op);
 
@@ -1466,10 +1472,71 @@ void ModuleEmitter::planLocalBuffers(func::FuncOp func) {
      << " -> " << bytes << " bytes (pipeline phase reuse)\n";
 }
 
+// Code generation consumes the launch condition proved and recorded by the
+// pipeline. It must not turn an arbitrary tagged device predicate into a host
+// decision. In particular, every local dimension occurs exactly once.
+static std::optional<uint64_t> launchGuardLimit(scf::IfOp guard) {
+  auto limit =
+      guard->getAttrOfType<IntegerAttr>("sycl.two_column_launch_guard");
+  auto compare = guard.getCondition().getDefiningOp<arith::CmpIOp>();
+  if (!limit || limit.getInt() <= 0 || !compare ||
+      compare.getPredicate() != arith::CmpIPredicate::eq ||
+      guard.getNumResults() || !guard.getThenRegion().hasOneBlock() ||
+      !guard.getElseRegion().hasOneBlock())
+    return std::nullopt;
+  auto constant = compare.getRhs().getDefiningOp<arith::ConstantIndexOp>();
+  if (!constant || constant.value() != limit.getInt())
+    return std::nullopt;
+  SmallVector<gpu::Dimension> dimensions;
+  std::function<bool(Value)> product = [&](Value value) {
+    if (auto dim = value.getDefiningOp<gpu::BlockDimOp>()) {
+      if (llvm::is_contained(dimensions, dim.getDimension()))
+        return false;
+      dimensions.push_back(dim.getDimension());
+      return true;
+    }
+    auto mul = value.getDefiningOp<arith::MulIOp>();
+    return mul && product(mul.getLhs()) && product(mul.getRhs());
+  };
+  if (!product(compare.getLhs()) || dimensions.size() != 3 ||
+      !llvm::is_contained(dimensions, gpu::Dimension::x) ||
+      !llvm::is_contained(dimensions, gpu::Dimension::y) ||
+      !llvm::is_contained(dimensions, gpu::Dimension::z))
+    return std::nullopt;
+  return static_cast<uint64_t>(limit.getInt());
+}
+
 void ModuleEmitter::emitFunction(func::FuncOp func) {
   if (func.getBlocks().size() != 1) {
     emitError(func, "needs exactly one basic block");
     return;
+  }
+  twoColumnLaunchLimit = 0;
+  if (state.target == EmitTarget::SYCL) {
+    bool invalid = false;
+    func.walk([&](scf::IfOp guard) {
+      if (!guard->hasAttr("sycl.two_column_launch_guard"))
+        return;
+      auto limit = launchGuardLimit(guard);
+      if (!limit ||
+          (twoColumnLaunchLimit && twoColumnLaunchLimit != *limit)) {
+        emitError(guard, "needs a consistent local-size launch guard");
+        invalid = true;
+        return;
+      }
+      twoColumnLaunchLimit = *limit;
+    });
+    if (twoColumnLaunchLimit) {
+      auto module = func->getParentOfType<ModuleOp>();
+      module.walk([&](func::CallOp call) {
+        if (call.getCallee() == func.getName()) {
+          emitError(call, "launch-specialized kernels must be direct entries");
+          invalid = true;
+        }
+      });
+    }
+    if (invalid)
+      return;
   }
 
   // For SYCL, scan for local allocations first
@@ -1485,6 +1552,8 @@ void ModuleEmitter::emitFunction(func::FuncOp func) {
   planLocalBuffers(func);
 
   // Emit function signature.
+  if (twoColumnLaunchLimit)
+    os << "template <bool triton_sycl_two_column>\n";
   if (state.target == EmitTarget::SYCL)
     os << "inline void " << func.getName() << "(\n";
   else if (state.target == EmitTarget::SYCL)
@@ -1653,50 +1722,75 @@ void ModuleEmitter::emitHostWrapper(func::FuncOp func) {
              << "blockZ > max_axis[2] || blockX > max_group/blockY || blockX*blockY > max_group/blockZ) "
              << "throw std::runtime_error(\"SYCL local range exceeds device limit\");\n";
 
-    if (profile)
-      indent() << "sycl::event kernel_event = q->submit([&](sycl::handler &h) {\n";
-    else
-      indent() << "q->submit([&](sycl::handler &h) {\n";
-    addIndent();
+    auto emitSubmission = [&](std::optional<bool> specialization) {
+      if (profile) {
+        indent();
+        if (!twoColumnLaunchLimit) os << "sycl::event ";
+        os << "kernel_event = q->submit([&](sycl::handler &h) {\n";
+      } else
+        indent() << "q->submit([&](sycl::handler &h) {\n";
+      addIndent();
 
-    for (auto allocOp : hostLocalAllocs) {
-      indent();
-      auto memrefType = allocOp.getType();
-      auto elemType = memrefType.getElementType();
-      auto rank = getSYCLAccessorRank(memrefType);
-      os << "sycl::local_accessor<" << getDataTypeName(elemType, state.target)
-         << ", " << rank << "> " << getName(allocOp.getResult())
-         << "(sycl::range<" << rank << ">(";
-      auto shape = memrefType.getShape();
-      if (memrefType.getRank() == 0) {
-        os << "1";
-      } else {
-        for (unsigned i = 0; i < rank; ++i) {
-          os << shape[i];
-          if (i != rank - 1)
-            os << ", ";
+      for (auto allocOp : hostLocalAllocs) {
+        indent();
+        auto memrefType = allocOp.getType();
+        auto elemType = memrefType.getElementType();
+        auto rank = getSYCLAccessorRank(memrefType);
+        os << "sycl::local_accessor<" << getDataTypeName(elemType, state.target)
+           << ", " << rank << "> " << getName(allocOp.getResult())
+           << "(sycl::range<" << rank << ">(";
+        auto shape = memrefType.getShape();
+        if (memrefType.getRank() == 0) {
+          os << "1";
+        } else {
+          for (unsigned i = 0; i < rank; ++i) {
+            os << shape[i];
+            if (i != rank - 1)
+              os << ", ";
+          }
         }
+        os << "), h);\n";
       }
-      os << "), h);\n";
+
+      indent()
+          << "h.parallel_for(sycl::nd_range<3>(sycl::range<3>(gridX, gridY, gridZ) "
+             "* sycl::range<3>(blockX, blockY, blockZ), sycl::range<3>(blockX, "
+             "blockY, blockZ)), [=](sycl::nd_item<3> item) {\n";
+      addIndent();
+
+      indent() << func.getName();
+      if (specialization.has_value())
+        os << (*specialization ? "<true>" : "<false>");
+      os << "(item";
+      for (auto &arg : func.getArguments())
+        os << ", " << getName(arg);
+      for (auto allocOp : hostLocalAllocs)
+        os << ", " << getName(allocOp.getResult());
+      os << ");\n";
+
+      reduceIndent();
+      indent() << "});\n";
+      reduceIndent();
+      indent() << "});\n";
+    };
+    if (twoColumnLaunchLimit) {
+      // Each call site is a distinct kernel. The pass's untiled alternative
+      // does not share register allocation or instruction scheduling with
+      // its tiled alternative, and dispatch is outside the device event.
+      if (profile) indent() << "sycl::event kernel_event;\n";
+      indent() << "if (blockX * blockY * blockZ == "
+               << twoColumnLaunchLimit << "ULL) {\n";
+      addIndent();
+      emitSubmission(true);
+      reduceIndent();
+      indent() << "} else {\n";
+      addIndent();
+      emitSubmission(false);
+      reduceIndent();
+      indent() << "}\n";
+    } else {
+      emitSubmission(std::nullopt);
     }
-
-    indent()
-        << "h.parallel_for(sycl::nd_range<3>(sycl::range<3>(gridX, gridY, gridZ) "
-           "* sycl::range<3>(blockX, blockY, blockZ), sycl::range<3>(blockX, "
-           "blockY, blockZ)), [=](sycl::nd_item<3> item) {\n";
-    addIndent();
-
-    indent() << func.getName() << "(item";
-    for (auto &arg : func.getArguments())
-      os << ", " << getName(arg);
-    for (auto allocOp : hostLocalAllocs)
-      os << ", " << getName(allocOp.getResult());
-    os << ");\n";
-
-    reduceIndent();
-    indent() << "});\n";
-    reduceIndent();
-    indent() << "});\n";
     if (profile) {
       indent() << "kernel_event.wait_and_throw();\n";
       indent() << "*elapsed_ns = kernel_event.get_profiling_info<"

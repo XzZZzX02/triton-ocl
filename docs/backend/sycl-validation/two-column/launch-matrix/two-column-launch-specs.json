@@ -1,0 +1,62 @@
+[
+  {
+    "layout": "NN",
+    "k": 16,
+    "args": [
+      "--layout",
+      "NN",
+      "--k",
+      "16"
+    ]
+  },
+  {
+    "layout": "TT",
+    "k": 16,
+    "args": [
+      "--layout",
+      "TT",
+      "--k",
+      "16"
+    ]
+  },
+  {
+    "layout": "NN",
+    "k": 32,
+    "args": [
+      "--layout",
+      "NN",
+      "--k",
+      "32"
+    ]
+  },
+  {
+    "layout": "TT",
+    "k": 32,
+    "args": [
+      "--layout",
+      "TT",
+      "--k",
+      "32"
+    ]
+  },
+  {
+    "layout": "NT",
+    "k": 64,
+    "args": [
+      "--layout",
+      "NT",
+      "--k",
+      "64"
+    ]
+  },
+  {
+    "layout": "TN",
+    "k": 128,
+    "args": [
+      "--layout",
+      "TN",
+      "--k",
+      "128"
+    ]
+  }
+]

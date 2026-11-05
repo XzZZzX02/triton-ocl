@@ -37,6 +37,9 @@ void init_triton_sycl_passes_lair(py::module &&m) {
 }
 
 void init_triton_sycl_passes_memir(py::module &&m) {
+  m.def("two_column_launch_guard", [](mlir::PassManager &pm) {
+    pm.addPass(mlir::triton::sycl::createTwoColumnLaunchGuardPass());
+  });
   m.def("half_store_distribution", [](mlir::PassManager &pm) {
     pm.addPass(mlir::triton::sycl::createHalfStoreDistributionPass());
   });
@@ -61,9 +64,9 @@ void init_triton_sycl_passes_memir(py::module &&m) {
   m.def("work_distribution", [](mlir::PassManager &pm) {
     pm.addPass(mlir::triton::sycl::createWorkDistributionPass());
   });
-  m.def("matmul_register_tiling", [](mlir::PassManager &pm) {
-    pm.addPass(mlir::triton::sycl::createMatmulRegisterTilingPass());
-  });
+  m.def("matmul_register_tiling", [](mlir::PassManager &pm, bool twoColumnFallback) {
+    pm.addPass(mlir::triton::sycl::createMatmulRegisterTilingPass(twoColumnFallback));
+  }, py::arg("pm"), py::arg("two_column_fallback") = false);
   m.def("register_accumulator", [](mlir::PassManager &pm) {
     pm.addPass(mlir::triton::sycl::createRegisterAccumulatorPass());
   });
