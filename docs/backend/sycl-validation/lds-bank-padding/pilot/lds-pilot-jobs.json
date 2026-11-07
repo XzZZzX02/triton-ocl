@@ -1,0 +1,77 @@
+[
+  {
+    "label": "NN-8-16-64",
+    "args": [
+      "--shape",
+      "8",
+      "16",
+      "64",
+      "--layout",
+      "NN",
+      "--plans",
+      "raw",
+      "promoted",
+      "tiled",
+      "full",
+      "--blocks",
+      "64",
+      "128",
+      "256",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ],
+    "jobid": "23034642"
+  },
+  {
+    "label": "TT-32-64-64",
+    "args": [
+      "--shape",
+      "32",
+      "64",
+      "64",
+      "--layout",
+      "TT",
+      "--plans",
+      "tiled",
+      "full",
+      "no_unroll",
+      "no_staging",
+      "--blocks",
+      "64",
+      "128",
+      "256",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ],
+    "jobid": "23034644"
+  },
+  {
+    "label": "NN-64-32-64",
+    "args": [
+      "--shape",
+      "64",
+      "32",
+      "64",
+      "--layout",
+      "NN",
+      "--plans",
+      "tiled",
+      "full",
+      "no_reuse",
+      "no_init",
+      "--blocks",
+      "64",
+      "128",
+      "256",
+      "--rounds",
+      "3",
+      "--repeats",
+      "31"
+    ],
+    "jobid": "23034645"
+  }
+]

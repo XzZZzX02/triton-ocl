@@ -1,0 +1,401 @@
+#include "sycl/include/Conversion/LinalgToAffineLoops/Passes.h"
+#include "mlir/Dialect/Affine/IR/AffineOps.h"
+#include "mlir/Dialect/Arith/IR/Arith.h"
+#include "mlir/Dialect/Func/IR/FuncOps.h"
+#include "mlir/Dialect/MemRef/IR/MemRef.h"
+#include "mlir/Dialect/SCF/IR/SCF.h"
+#include "llvm/ADT/DenseMap.h"
+#include "llvm/ADT/STLExtras.h"
+#include <algorithm>
+#include <array>
+#include <optional>
+#include <set>
+
+using namespace mlir;
+namespace {
+// A target-specific scalar-access estimate, not a model-name/shape table.
+// Distinct words in each bank count; reads of the same word can broadcast.
+// Never transfer CK's b128/MFMA lane groups to this scalar gfx906 schedule.
+struct LinearIndex {
+  int64_t constant = 0;
+  llvm::DenseMap<Value, int64_t> terms;
+  explicit LinearIndex(int64_t value = 0) : constant(value) {}
+  static LinearIndex variable(Value value) {
+    LinearIndex result;
+    result.terms[value] = 1;
+    return result;
+  }
+};
+struct LoopDomain {
+  Value iv;
+  int64_t lower, upper, step;
+};
+static constexpr int64_t maxDomain = 65536;
+static constexpr uint64_t maxAnalysis = 4 * 1024 * 1024;
+static bool bounded(LinearIndex &a, const LinearIndex &b, bool multiply) {
+  auto safe = [](int64_t value) { return value >= 0 && value <= maxDomain; };
+  if (!safe(a.constant) || !safe(b.constant)) return false;
+  if (multiply) {
+    if (!b.terms.empty() || a.constant * b.constant > maxDomain) return false;
+    a.constant *= b.constant;
+    for (auto &term : a.terms) {
+      if (!safe(term.second) || term.second * b.constant > maxDomain) return false;
+      term.second *= b.constant;
+    }
+  } else {
+    if (a.constant + b.constant > maxDomain) return false;
+    a.constant += b.constant;
+    for (auto [iv, scale] : b.terms) {
+      if (!safe(scale) || !safe(a.terms.lookup(iv)) ||
+          a.terms.lookup(iv) + scale > maxDomain) return false;
+      a.terms[iv] += scale;
+    }
+  }
+  return true;
+}
+
+static std::optional<LinearIndex> expression(Value value, unsigned depth = 0);
+static std::optional<LinearIndex> affineExpression(AffineExpr expr,
+                                                   ValueRange operands,
+                                                   unsigned dims,
+                                                   unsigned depth) {
+  if (depth > 24)
+    return std::nullopt;
+  if (auto c = dyn_cast<AffineConstantExpr>(expr))
+    return LinearIndex(c.getValue());
+  if (auto d = dyn_cast<AffineDimExpr>(expr))
+    return expression(operands[d.getPosition()], depth + 1);
+  if (auto s = dyn_cast<AffineSymbolExpr>(expr))
+    return expression(operands[dims + s.getPosition()], depth + 1);
+  auto binary = dyn_cast<AffineBinaryOpExpr>(expr);
+  if (!binary)
+    return std::nullopt;
+  auto a = affineExpression(binary.getLHS(), operands, dims, depth + 1);
+  auto b = affineExpression(binary.getRHS(), operands, dims, depth + 1);
+  if (!a || !b)
+    return std::nullopt;
+  if (expr.getKind() == AffineExprKind::Add) {
+    return bounded(*a, *b, false) ? a : std::nullopt;
+  }
+  if (expr.getKind() == AffineExprKind::Mul && b->terms.empty() &&
+      b->constant >= 0 && b->constant <= maxDomain) {
+    return bounded(*a, *b, true) ? a : std::nullopt;
+  }
+  return std::nullopt;
+}
+static std::optional<LinearIndex> expression(Value value, unsigned depth) {
+  if (depth > 24)
+    return std::nullopt;
+  if (auto arg = dyn_cast<BlockArgument>(value)) {
+    auto parent = arg.getOwner()->getParentOp();
+    if (auto loop = dyn_cast<affine::AffineForOp>(parent)) {
+      if (value == loop.getInductionVar())
+        return LinearIndex::variable(value);
+    } else if (auto loop = dyn_cast<scf::ForOp>(parent)) {
+      if (value == loop.getInductionVar())
+        return LinearIndex::variable(value);
+    }
+    return std::nullopt;
+  }
+  if (auto constant = value.getDefiningOp<arith::ConstantIndexOp>())
+    return LinearIndex(constant.value());
+  if (auto apply = value.getDefiningOp<affine::AffineApplyOp>())
+    return affineExpression(apply.getAffineMap().getResult(0),
+                            apply.getMapOperands(),
+                            apply.getAffineMap().getNumDims(), depth + 1);
+  if (auto add = value.getDefiningOp<arith::AddIOp>()) {
+    auto a = expression(add.getLhs(), depth + 1);
+    auto b = expression(add.getRhs(), depth + 1);
+    if (!a || !b)
+      return std::nullopt;
+    return bounded(*a, *b, false) ? a : std::nullopt;
+  }
+  return std::nullopt;
+}
+
+static std::optional<LoopDomain> domain(Operation *op) {
+  LoopDomain result;
+  if (auto loop = dyn_cast<affine::AffineForOp>(op)) {
+    if (!loop.hasConstantBounds() || loop.getStep() != 1)
+      return std::nullopt;
+    result = {loop.getInductionVar(), loop.getConstantLowerBound(),
+              loop.getConstantUpperBound(), 1};
+  } else if (auto loop = dyn_cast<scf::ForOp>(op)) {
+    auto lo = loop.getLowerBound().getDefiningOp<arith::ConstantIndexOp>();
+    auto hi = loop.getUpperBound().getDefiningOp<arith::ConstantIndexOp>();
+    auto step = loop.getStep().getDefiningOp<arith::ConstantIndexOp>();
+    if (!lo || !hi || !step)
+      return std::nullopt;
+    result = {loop.getInductionVar(), lo.value(), hi.value(), step.value()};
+  } else
+    return std::nullopt;
+  if (result.lower < 0 || result.upper <= result.lower ||
+      result.upper > maxDomain || result.step <= 0 ||
+      result.step > result.upper - result.lower)
+    return std::nullopt;
+  return result;
+}
+
+struct Access {
+  Operation *op;
+  SmallVector<LinearIndex> indices;
+  SmallVector<LoopDomain> loops;
+  unsigned distributed = 0;
+  bool read, reduction = false;
+};
+static std::optional<Access> analyzeAccess(Operation *op, MemRefType type) {
+  Access access;
+  access.op = op;
+  // A changed row pitch may invalidate an explicit alignment or a custom
+  // memory contract. Only the indexing map and an inert default hint are known.
+  for (auto attr : op->getAttrs()) {
+    if (attr.getName() == "map")
+      continue;
+    auto flag = dyn_cast<BoolAttr>(attr.getValue());
+    if (attr.getName() == "nontemporal" && flag && !flag.getValue())
+      continue;
+    return std::nullopt;
+  }
+  ValueRange operands;
+  AffineMap map;
+  if (auto load = dyn_cast<memref::LoadOp>(op)) {
+    access.read = true;
+    operands = load.getIndices();
+  } else if (auto store = dyn_cast<memref::StoreOp>(op)) {
+    access.read = false;
+    operands = store.getIndices();
+  } else if (auto load = dyn_cast<affine::AffineLoadOp>(op)) {
+    access.read = true;
+    operands = load.getMapOperands();
+    map = load.getAffineMap();
+  } else if (auto store = dyn_cast<affine::AffineStoreOp>(op)) {
+    access.read = false;
+    operands = store.getMapOperands();
+    map = store.getAffineMap();
+  } else
+    return std::nullopt;
+  if (map && !map.isIdentity())
+    return std::nullopt;
+  if (operands.size() != static_cast<unsigned>(type.getRank()))
+    return std::nullopt;
+  for (Value index : operands) {
+    auto expr = expression(index);
+    // Bounded nonnegative forms avoid overflow in the address estimator.
+    if (!expr || expr->constant < 0 || expr->constant > maxDomain ||
+        llvm::any_of(expr->terms, [](auto t) {
+          return t.second < 0 || t.second > maxDomain;
+        }))
+      return std::nullopt;
+    access.indices.push_back(*expr);
+  }
+  Operation *parent = op->getParentOp();
+  for (; parent && !isa<func::FuncOp>(parent); parent = parent->getParentOp()) {
+    // The later two-column launch pass creates a second schedule. Decline
+    // until both branch geometries are modeled, preserving that existing gain.
+    if (parent->hasAttr("sycl.two_column_candidate"))
+      return std::nullopt;
+    auto bounds = domain(parent);
+    if (!bounds)
+      return std::nullopt;
+    access.loops.push_back(*bounds);
+    access.reduction |= parent->hasAttr("sycl.reduction") ||
+                        parent->hasAttr("sycl.register_accumulator");
+  }
+  if (!parent || access.loops.empty())
+    return std::nullopt;
+  std::reverse(access.loops.begin(), access.loops.end());
+  auto outer = op;
+  while (outer->getParentOp() != parent)
+    outer = outer->getParentOp();
+  if (outer->hasAttr("sycl.distribute")) {
+    auto attr = outer->getAttrOfType<IntegerAttr>("sycl.distribution_depth");
+    if (!attr || attr.getInt() < 1 ||
+        attr.getInt() > static_cast<int64_t>(access.loops.size()))
+      return std::nullopt;
+    access.distributed = attr.getInt();
+    Operation *current = outer;
+    for (unsigned i = 0; i < access.distributed; ++i) {
+      const auto &loop = access.loops[i];
+      if (!current->hasAttr("sycl.parallel") || loop.lower || loop.step != 1)
+        return std::nullopt;
+      if (i + 1 < access.distributed) {
+        auto affine = dyn_cast<affine::AffineForOp>(current);
+        if (!affine || affine.getBody()->getOperations().size() != 2)
+          return std::nullopt;
+        current = &affine.getBody()->front();
+      }
+    }
+  }
+  for (auto [index, extent] : llvm::zip(access.indices, type.getShape())) {
+    int64_t maximum = index.constant;
+    for (auto [iv, scale] : index.terms) {
+      auto found = llvm::find_if(access.loops, [&](const auto &loop) { return loop.iv == iv; });
+      if (found == access.loops.end())
+        return std::nullopt;
+      int64_t last = found->lower +
+          (found->upper - found->lower - 1) / found->step * found->step;
+      maximum += scale * last;
+    }
+    if (maximum >= extent)
+      return std::nullopt;
+  }
+  return access;
+}
+
+// Enumerate the entire bounded logical domain, not just lane zero or one K.
+// Exhaustion/unknown ownership declines optimization without changing IR.
+static std::optional<uint64_t> cost(const Access &access, ArrayRef<int64_t> shape,
+                                    int64_t bytes, uint64_t &budget) {
+  if (!access.distributed)
+    return uint64_t{0};
+  uint64_t points = 1, serial = 1;
+  for (auto [i, loop] : llvm::enumerate(access.loops)) {
+    auto &product = i < access.distributed ? points : serial;
+    auto count = (loop.upper - loop.lower + loop.step - 1) / loop.step;
+    if (product > maxAnalysis / count)
+      return std::nullopt;
+    product *= count;
+  }
+  if (serial > maxAnalysis / points || points * serial > budget)
+    return std::nullopt;
+  budget -= points * serial;
+  uint64_t sum = 0;
+  llvm::DenseMap<Value, int64_t> values;
+  for (uint64_t iteration = 0; iteration < serial; ++iteration) {
+    uint64_t remaining = iteration;
+    for (unsigned i = access.loops.size(); i-- > access.distributed;) {
+      const auto &loop = access.loops[i];
+      uint64_t count = (loop.upper - loop.lower + loop.step - 1) / loop.step;
+      values[loop.iv] = loop.lower + (remaining % count) * loop.step;
+      remaining /= count;
+    }
+    for (uint64_t base = 0; base < points; base += 32) {
+      std::array<std::set<uint64_t>, 32> banks;
+      for (uint64_t lane = base; lane < std::min(base + 32, points); ++lane) {
+        remaining = lane;
+        for (unsigned i = access.distributed; i-- > 0;) {
+          const auto &loop = access.loops[i];
+          values[loop.iv] = remaining % loop.upper;
+          remaining /= loop.upper;
+        }
+        uint64_t offset = 0;
+        for (auto [index, extent] : llvm::zip(access.indices, shape)) {
+          int64_t subscript = index.constant;
+          for (auto [iv, scale] : index.terms)
+            subscript += scale * values.lookup(iv);
+          offset = offset * extent + subscript;
+        }
+        uint64_t word = offset * bytes / 4;
+        banks[word % 32].insert(word);
+      }
+      size_t degree = 0;
+      for (const auto &bank : banks)
+        degree = std::max(degree, bank.size());
+      sum += degree;
+    }
+  }
+  return sum;
+}
+
+static std::optional<uint64_t> storage(func::FuncOp function) {
+  uint64_t bytes = 0;
+  bool valid = true;
+  function.walk([&](memref::AllocOp alloc) {
+    auto type = alloc.getType();
+    Type element = type.getElementType();
+    if (!type.hasStaticShape() ||
+        (!isa<IntegerType, FloatType, IndexType>(element))) {
+      valid = false; return;
+    }
+    uint64_t size = element.isIndex() ? 8 :
+        std::max<unsigned>(8, type.getElementTypeBitWidth()) / 8;
+    for (auto extent : type.getShape()) {
+      if (extent <= 0 || size > 65536 / extent) { valid = false; return; }
+      size *= extent;
+    }
+    bytes += size;
+    if (bytes > 65536) valid = false;
+  });
+  return valid ? std::optional<uint64_t>{bytes} : std::nullopt;
+}
+
+struct LDSBankPaddingPass
+    : PassWrapper<LDSBankPaddingPass, OperationPass<ModuleOp>> {
+  MLIR_DEFINE_EXPLICIT_INTERNAL_INLINE_TYPE_ID(LDSBankPaddingPass)
+  StringRef getArgument() const final { return "sycl-lds-bank-padding"; }
+  StringRef getDescription() const final {
+    return "Pad owned contraction inputs only when bounded scalar bank analysis improves";
+  }
+  void runOnOperation() override {
+    for (auto function : getOperation().getOps<func::FuncOp>()) {
+      auto total = storage(function);
+      if (!total || !*total) continue;
+      bool changed = false;
+      SmallVector<memref::AllocOp> candidates;
+      function.walk([&](memref::AllocOp alloc) { candidates.push_back(alloc); });
+      for (auto alloc : candidates) {
+        auto type = alloc.getType();
+        if (alloc->getBlock() != &function.front() ||
+            alloc->hasAttr("sycl.lds_bank_padding") ||
+            type.getRank() < 2 || type.getRank() > 3 ||
+            !type.hasStaticShape() || !type.getLayout().isIdentity() ||
+            (!type.getElementType().isF16() && !type.getElementType().isF32()) ||
+            alloc->getNumOperands())
+          continue;
+        SmallVector<Access> accesses;
+        bool valid = true, contraction = false, written = false;
+        for (Operation *user : alloc.getResult().getUsers()) {
+          if (isa<memref::DeallocOp>(user)) continue;
+          auto access = analyzeAccess(user, type);
+          if (!access || (!access->read && access->reduction)) { valid = false; break; }
+          contraction |= access->read && access->reduction && access->distributed;
+          written |= !access->read;
+          accesses.push_back(*access);
+        }
+        if (!valid || !contraction || !written) continue;
+        SmallVector<int64_t> shape(type.getShape());
+        int64_t bytes = type.getElementTypeBitWidth() / 8;
+        shape.back() += 4 / bytes;
+        uint64_t extra = 4;
+        for (auto extent : type.getShape().drop_back()) extra *= extent;
+        auto residency = [](uint64_t bytes) {
+          return std::min<uint64_t>(16, 65536 / ((bytes + 511) / 512 * 512));
+        };
+        if (*total + extra > 65536 || residency(*total) != residency(*total + extra))
+          continue;
+        uint64_t budget = maxAnalysis, before = 0, after = 0;
+        for (const auto &access : accesses) {
+          auto oldCost = cost(access, type.getShape(), bytes, budget);
+          auto newCost = cost(access, shape, bytes, budget);
+          if (!oldCost || !newCost || *newCost > *oldCost) { valid = false; break; }
+          before += *oldCost; after += *newCost;
+        }
+        if (!valid || after >= before) continue;
+        OpBuilder builder(alloc);
+        auto padded = builder.create<memref::AllocOp>(
+            alloc.getLoc(), MemRefType::get(shape, type.getElementType(),
+                MemRefLayoutAttrInterface{}, type.getMemorySpace()));
+        padded->setAttrs(alloc->getAttrs());
+        padded->setAttr("sycl.lds_bank_padding", builder.getI64IntegerAttr(4 / bytes));
+        padded->setAttr("sycl.lds_bank_cost_before", builder.getI64IntegerAttr(before));
+        padded->setAttr("sycl.lds_bank_cost_after", builder.getI64IntegerAttr(after));
+        alloc.getResult().replaceAllUsesWith(padded.getResult());
+        alloc.erase();
+        *total += extra;
+        changed = true;
+      }
+      // A late layout change must not destroy an earlier storage-coloring
+      // decision by making equal logical buffers appear differently typed.
+      // Keep its before/reused counts and update only actual retained bytes.
+      if (changed && function->hasAttr("sycl.local_bytes_after"))
+        function->setAttr("sycl.local_bytes_after",
+            IntegerAttr::get(IntegerType::get(&getContext(), 64), *total));
+    }
+  }
+};
+} // namespace
+namespace mlir::triton::sycl {
+std::unique_ptr<OperationPass<ModuleOp>> createLDSBankPaddingPass() {
+  return std::make_unique<LDSBankPaddingPass>();
+}
+} // namespace mlir::triton::sycl

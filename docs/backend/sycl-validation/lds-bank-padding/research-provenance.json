@@ -1,0 +1,14 @@
+[
+  {
+    "label": "iree",
+    "url": "https://raw.githubusercontent.com/iree-org/iree/main/compiler/src/iree/compiler/Codegen/Common/GPU/GPUReduceBankConflicts.cpp",
+    "sha256": "41aabd5e1345201fd255b1c6eb839180679fab2c6ae627b91368e3e954ab2a60",
+    "retrieved": "2026-11-08"
+  },
+  {
+    "label": "ck-lds",
+    "url": "https://rocmdocs.amd.com/projects/composable_kernel/en/latest/conceptual/ck_tile/hardware/lds_bank_conflicts.html",
+    "sha256": "4340ecb453072c53222cf47b370c60fbb79cc721cb2a13bfb835397a99c2b60b",
+    "retrieved": "2026-11-08"
+  }
+]

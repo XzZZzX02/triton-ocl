@@ -1,0 +1,12 @@
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+Traceback (most recent call last):
+  File "/tmp/lds-bank-layouts.py", line 209, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/tmp/lds-bank-layouts.py", line 194, in main
+    check(list(out.c_array),expected)
+  File "/work1/dtune/zzx/triton/triton-ocl/python/test/sycl/cooperative_staging_semantics.py", line 48, in check
+    assert (math.isnan(a) if math.isnan(b) else fbits(a) == fbits(b)), (index, a, b)
+                                                ^^^^^^^^^^^^^^^^^^^^
+AssertionError: (3, -0.25000008940696716, -0.25000011920928955)

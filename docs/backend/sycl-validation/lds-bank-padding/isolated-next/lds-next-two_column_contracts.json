@@ -1,0 +1,1532 @@
+[
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": false,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": true,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": false,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      16
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": true,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": false,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": true,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": false,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": true,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": false,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": true,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": false,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": true,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      12,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      12,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      12,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": false,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      12,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": true,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      12,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      12,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      12,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": false,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      12,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": true,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": false,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": true,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": false,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      15,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": true,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": false,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": true,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": false,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": true,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": false,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": true,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": false,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      16,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": true,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": false,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": true,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": false,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": true,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": false,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": true,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": false,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      32,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": true,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      4,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      4,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      4,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      4,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      4,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      4,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      4,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      4,
+      16,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      8,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      8,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      8,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      8,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      8,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      8,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      8,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      8,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      18,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      18,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      18,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      18,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      18,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      18,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      18,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      18,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": false,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      32
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": true,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": false,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      20,
+      32
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": true,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      8
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      8
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      8
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      8
+    ],
+    "batches": null,
+    "promote": false,
+    "allow": true,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      8
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      8
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      8
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      8
+    ],
+    "batches": null,
+    "promote": true,
+    "allow": true,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "allow": true,
+    "init": false,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": false,
+    "allow": true,
+    "init": true,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "allow": false,
+    "init": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "allow": false,
+    "init": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "allow": true,
+    "init": false,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 1,
+    "promote": true,
+    "allow": true,
+    "init": true,
+    "tile": 2,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 2,
+    "promote": false,
+    "allow": false,
+    "init": false,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 2,
+    "promote": false,
+    "allow": false,
+    "init": true,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 2,
+    "promote": false,
+    "allow": true,
+    "init": false,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 2,
+    "promote": false,
+    "allow": true,
+    "init": true,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 2,
+    "promote": true,
+    "allow": false,
+    "init": false,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 2,
+    "promote": true,
+    "allow": false,
+    "init": true,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 2,
+    "promote": true,
+    "allow": true,
+    "init": false,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "batches": 2,
+    "promote": true,
+    "allow": true,
+    "init": true,
+    "tile": 4,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "variant": "alias",
+    "promoted": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "variant": "alias",
+    "promoted": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "variant": "permuted",
+    "promoted": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "variant": "permuted",
+    "promoted": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "variant": "plain",
+    "promoted": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "variant": "plain",
+    "promoted": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "variant": "alias",
+    "promoted": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "variant": "alias",
+    "promoted": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "variant": "permuted",
+    "promoted": false,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "variant": "permuted",
+    "promoted": true,
+    "tile": 0,
+    "status": "PASS"
+  },
+  {
+    "case": "cache_default",
+    "status": "PASS"
+  }
+]

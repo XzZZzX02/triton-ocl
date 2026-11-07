@@ -1,0 +1,722 @@
+[
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "raw",
+    "enabled": false,
+    "round": 0,
+    "seconds": 2.1077864561229944,
+    "padded": 0,
+    "source_bytes": 17871,
+    "source_sha256": "12a5dae15c5c1d183a0dc22f0349aab1637c301868e2ed7ae7aa179178e352b5",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "raw",
+    "enabled": true,
+    "round": 0,
+    "seconds": 0.8303314056247473,
+    "padded": 1,
+    "source_bytes": 17871,
+    "source_sha256": "c4d30f7341ddf28ee0c2b14338d3e5668655c5347eb61667d8744a83248a4a99",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": false,
+    "round": 0,
+    "seconds": 2.1530486457049847,
+    "padded": 0,
+    "source_bytes": 18513,
+    "source_sha256": "03955bd79a659ad8f84ff1fddf030d851404dbecf92a74cae8a13e3cefcef188",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": true,
+    "round": 0,
+    "seconds": 0.8894119504839182,
+    "padded": 1,
+    "source_bytes": 18513,
+    "source_sha256": "4803475cf2666bcb848b5308d1b363efefc0cd3f1c274b8b11682c431dde2903",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      16,
+      32,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "raw",
+    "enabled": false,
+    "round": 0,
+    "seconds": 0.8898794166743755,
+    "padded": 0,
+    "source_bytes": 17880,
+    "source_sha256": "225916fb47bde5d59a0bcf5f87f5e81403d4c50a6d317c6475b40bcc24e18610",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      16,
+      32,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "raw",
+    "enabled": true,
+    "round": 0,
+    "seconds": 1.7315475642681122,
+    "padded": 0,
+    "source_bytes": 17880,
+    "source_sha256": "225916fb47bde5d59a0bcf5f87f5e81403d4c50a6d317c6475b40bcc24e18610",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      16,
+      32,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": false,
+    "round": 0,
+    "seconds": 0.8829636704176664,
+    "padded": 0,
+    "source_bytes": 21730,
+    "source_sha256": "853c90ea97df34f9e770ed8626aa9946466396be108a7f0b3756b29da87bdbcd",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      16,
+      32,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": true,
+    "round": 0,
+    "seconds": 0.7909692358225584,
+    "padded": 0,
+    "source_bytes": 21730,
+    "source_sha256": "853c90ea97df34f9e770ed8626aa9946466396be108a7f0b3756b29da87bdbcd",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      32,
+      64,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "raw",
+    "enabled": false,
+    "round": 0,
+    "seconds": 0.8398026693612337,
+    "padded": 0,
+    "source_bytes": 17757,
+    "source_sha256": "79f88a76136c9e340e0582b6e9dda6e5837c80ac297b3df11088b0a6ecf956c1",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      32,
+      64,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "raw",
+    "enabled": true,
+    "round": 0,
+    "seconds": 0.9625803474336863,
+    "padded": 0,
+    "source_bytes": 17757,
+    "source_sha256": "79f88a76136c9e340e0582b6e9dda6e5837c80ac297b3df11088b0a6ecf956c1",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      32,
+      64,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": false,
+    "round": 0,
+    "seconds": 0.7888413872569799,
+    "padded": 0,
+    "source_bytes": 21608,
+    "source_sha256": "4b522f5bfcd57d37b9a79078fdbadea02e9b47fd77ac32d542d08185c489de3c",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      32,
+      64,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": true,
+    "round": 0,
+    "seconds": 0.9371702075004578,
+    "padded": 1,
+    "source_bytes": 21608,
+    "source_sha256": "cf64e6a2a1c956eb58293467bd4443875a155d93705a9f915e2fe65a7c57f39c",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      32,
+      64,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": true,
+    "round": 1,
+    "seconds": 0.9181327875703573,
+    "padded": 1,
+    "source_bytes": 21608,
+    "source_sha256": "cf64e6a2a1c956eb58293467bd4443875a155d93705a9f915e2fe65a7c57f39c",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      32,
+      64,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": false,
+    "round": 1,
+    "seconds": 0.8234412539750338,
+    "padded": 0,
+    "source_bytes": 21608,
+    "source_sha256": "4b522f5bfcd57d37b9a79078fdbadea02e9b47fd77ac32d542d08185c489de3c",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      32,
+      64,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "raw",
+    "enabled": true,
+    "round": 1,
+    "seconds": 0.9469104595482349,
+    "padded": 0,
+    "source_bytes": 17757,
+    "source_sha256": "79f88a76136c9e340e0582b6e9dda6e5837c80ac297b3df11088b0a6ecf956c1",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      32,
+      64,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "raw",
+    "enabled": false,
+    "round": 1,
+    "seconds": 0.8094177152961493,
+    "padded": 0,
+    "source_bytes": 17757,
+    "source_sha256": "79f88a76136c9e340e0582b6e9dda6e5837c80ac297b3df11088b0a6ecf956c1",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      16,
+      32,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": true,
+    "round": 1,
+    "seconds": 0.7907330449670553,
+    "padded": 0,
+    "source_bytes": 21730,
+    "source_sha256": "853c90ea97df34f9e770ed8626aa9946466396be108a7f0b3756b29da87bdbcd",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      16,
+      32,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": false,
+    "round": 1,
+    "seconds": 0.7999657914042473,
+    "padded": 0,
+    "source_bytes": 21730,
+    "source_sha256": "853c90ea97df34f9e770ed8626aa9946466396be108a7f0b3756b29da87bdbcd",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      16,
+      32,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "raw",
+    "enabled": true,
+    "round": 1,
+    "seconds": 0.7876246254891157,
+    "padded": 0,
+    "source_bytes": 17880,
+    "source_sha256": "225916fb47bde5d59a0bcf5f87f5e81403d4c50a6d317c6475b40bcc24e18610",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      16,
+      32,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "raw",
+    "enabled": false,
+    "round": 1,
+    "seconds": 0.7735037766396999,
+    "padded": 0,
+    "source_bytes": 17880,
+    "source_sha256": "225916fb47bde5d59a0bcf5f87f5e81403d4c50a6d317c6475b40bcc24e18610",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": true,
+    "round": 1,
+    "seconds": 0.836599089205265,
+    "padded": 1,
+    "source_bytes": 18513,
+    "source_sha256": "4803475cf2666bcb848b5308d1b363efefc0cd3f1c274b8b11682c431dde2903",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": false,
+    "round": 1,
+    "seconds": 0.7909978684037924,
+    "padded": 0,
+    "source_bytes": 18513,
+    "source_sha256": "03955bd79a659ad8f84ff1fddf030d851404dbecf92a74cae8a13e3cefcef188",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "raw",
+    "enabled": true,
+    "round": 1,
+    "seconds": 0.8240731917321682,
+    "padded": 1,
+    "source_bytes": 17871,
+    "source_sha256": "c4d30f7341ddf28ee0c2b14338d3e5668655c5347eb61667d8744a83248a4a99",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "raw",
+    "enabled": false,
+    "round": 1,
+    "seconds": 0.8757425863295794,
+    "padded": 0,
+    "source_bytes": 17871,
+    "source_sha256": "12a5dae15c5c1d183a0dc22f0349aab1637c301868e2ed7ae7aa179178e352b5",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "raw",
+    "enabled": false,
+    "round": 2,
+    "seconds": 0.7797986809164286,
+    "padded": 0,
+    "source_bytes": 17871,
+    "source_sha256": "12a5dae15c5c1d183a0dc22f0349aab1637c301868e2ed7ae7aa179178e352b5",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "raw",
+    "enabled": true,
+    "round": 2,
+    "seconds": 0.8083082158118486,
+    "padded": 1,
+    "source_bytes": 17871,
+    "source_sha256": "c4d30f7341ddf28ee0c2b14338d3e5668655c5347eb61667d8744a83248a4a99",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": false,
+    "round": 2,
+    "seconds": 0.8151475209742785,
+    "padded": 0,
+    "source_bytes": 18513,
+    "source_sha256": "03955bd79a659ad8f84ff1fddf030d851404dbecf92a74cae8a13e3cefcef188",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      8,
+      16,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": true,
+    "round": 2,
+    "seconds": 0.8411188721656799,
+    "padded": 1,
+    "source_bytes": 18513,
+    "source_sha256": "4803475cf2666bcb848b5308d1b363efefc0cd3f1c274b8b11682c431dde2903",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      16,
+      32,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "raw",
+    "enabled": false,
+    "round": 2,
+    "seconds": 0.7909813579171896,
+    "padded": 0,
+    "source_bytes": 17880,
+    "source_sha256": "225916fb47bde5d59a0bcf5f87f5e81403d4c50a6d317c6475b40bcc24e18610",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      16,
+      32,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "raw",
+    "enabled": true,
+    "round": 2,
+    "seconds": 0.8040032424032688,
+    "padded": 0,
+    "source_bytes": 17880,
+    "source_sha256": "225916fb47bde5d59a0bcf5f87f5e81403d4c50a6d317c6475b40bcc24e18610",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      16,
+      32,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": false,
+    "round": 2,
+    "seconds": 0.8457137830555439,
+    "padded": 0,
+    "source_bytes": 21730,
+    "source_sha256": "853c90ea97df34f9e770ed8626aa9946466396be108a7f0b3756b29da87bdbcd",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      16,
+      32,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": true,
+    "round": 2,
+    "seconds": 0.8199155312031507,
+    "padded": 0,
+    "source_bytes": 21730,
+    "source_sha256": "853c90ea97df34f9e770ed8626aa9946466396be108a7f0b3756b29da87bdbcd",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      32,
+      64,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "raw",
+    "enabled": false,
+    "round": 2,
+    "seconds": 0.8179253805428743,
+    "padded": 0,
+    "source_bytes": 17757,
+    "source_sha256": "79f88a76136c9e340e0582b6e9dda6e5837c80ac297b3df11088b0a6ecf956c1",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      32,
+      64,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "raw",
+    "enabled": true,
+    "round": 2,
+    "seconds": 0.9607318881899118,
+    "padded": 0,
+    "source_bytes": 17757,
+    "source_sha256": "79f88a76136c9e340e0582b6e9dda6e5837c80ac297b3df11088b0a6ecf956c1",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      32,
+      64,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": false,
+    "round": 2,
+    "seconds": 0.8169003278017044,
+    "padded": 0,
+    "source_bytes": 21608,
+    "source_sha256": "4b522f5bfcd57d37b9a79078fdbadea02e9b47fd77ac32d542d08185c489de3c",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  },
+  {
+    "status": "PASS",
+    "stage": "cold Triton-to-SYCL, excluding imports and C++ compilation",
+    "shape": [
+      32,
+      64,
+      64
+    ],
+    "layout": "NN",
+    "dtype": "f16",
+    "plan": "full",
+    "enabled": true,
+    "round": 2,
+    "seconds": 0.9094982761889696,
+    "padded": 1,
+    "source_bytes": 21608,
+    "source_sha256": "cf64e6a2a1c956eb58293467bd4443875a155d93705a9f915e2fe65a7c57f39c",
+    "libtriton_sha256": "1db5ca90b947443daae66d1997da1b13871b98d796cbfb412436554e80a6e823",
+    "compiler_sha256": "1f3da1b749b93b9025cfb85f1aafe620e837e98afff4e3e9bf1a017e6152a5fb"
+  }
+]

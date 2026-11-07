@@ -1,0 +1,1339 @@
+[
+  {
+    "dtype": "f16",
+    "k": 16,
+    "n": 16,
+    "promote": false,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 16,
+    "n": 16,
+    "promote": false,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 16,
+    "n": 16,
+    "promote": false,
+    "tile": true,
+    "unroll": false,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 16,
+    "n": 16,
+    "promote": false,
+    "tile": true,
+    "unroll": true,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 16,
+    "n": 16,
+    "promote": true,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 16,
+    "n": 16,
+    "promote": true,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 16,
+    "n": 16,
+    "promote": true,
+    "tile": true,
+    "unroll": false,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 16,
+    "n": 16,
+    "promote": true,
+    "tile": true,
+    "unroll": true,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 16,
+    "n": 32,
+    "promote": false,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 16,
+    "n": 32,
+    "promote": false,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 16,
+    "n": 32,
+    "promote": false,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 16,
+    "n": 32,
+    "promote": false,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 16,
+    "n": 32,
+    "promote": true,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 16,
+    "n": 32,
+    "promote": true,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 16,
+    "n": 32,
+    "promote": true,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 16,
+    "n": 32,
+    "promote": true,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 32,
+    "n": 16,
+    "promote": false,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 32,
+    "n": 16,
+    "promote": false,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 32,
+    "n": 16,
+    "promote": false,
+    "tile": true,
+    "unroll": false,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 32,
+    "n": 16,
+    "promote": false,
+    "tile": true,
+    "unroll": true,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 32,
+    "n": 16,
+    "promote": true,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 32,
+    "n": 16,
+    "promote": true,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 32,
+    "n": 16,
+    "promote": true,
+    "tile": true,
+    "unroll": false,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 32,
+    "n": 16,
+    "promote": true,
+    "tile": true,
+    "unroll": true,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 32,
+    "n": 32,
+    "promote": false,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 32,
+    "n": 32,
+    "promote": false,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 32,
+    "n": 32,
+    "promote": false,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 32,
+    "n": 32,
+    "promote": false,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 32,
+    "n": 32,
+    "promote": true,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 32,
+    "n": 32,
+    "promote": true,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 32,
+    "n": 32,
+    "promote": true,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 32,
+    "n": 32,
+    "promote": true,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 64,
+    "n": 16,
+    "promote": false,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 64,
+    "n": 16,
+    "promote": false,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 64,
+    "n": 16,
+    "promote": false,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 64,
+    "n": 16,
+    "promote": false,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 64,
+    "n": 16,
+    "promote": true,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 64,
+    "n": 16,
+    "promote": true,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 64,
+    "n": 16,
+    "promote": true,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 64,
+    "n": 16,
+    "promote": true,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 64,
+    "n": 32,
+    "promote": false,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 64,
+    "n": 32,
+    "promote": false,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 64,
+    "n": 32,
+    "promote": false,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 64,
+    "n": 32,
+    "promote": false,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 64,
+    "n": 32,
+    "promote": true,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 64,
+    "n": 32,
+    "promote": true,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 64,
+    "n": 32,
+    "promote": true,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 64,
+    "n": 32,
+    "promote": true,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 128,
+    "n": 16,
+    "promote": false,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 128,
+    "n": 16,
+    "promote": false,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 128,
+    "n": 16,
+    "promote": false,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 128,
+    "n": 16,
+    "promote": false,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 128,
+    "n": 16,
+    "promote": true,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 128,
+    "n": 16,
+    "promote": true,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 128,
+    "n": 16,
+    "promote": true,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 128,
+    "n": 16,
+    "promote": true,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 128,
+    "n": 32,
+    "promote": false,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 128,
+    "n": 32,
+    "promote": false,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 128,
+    "n": 32,
+    "promote": false,
+    "tile": true,
+    "unroll": false,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 128,
+    "n": 32,
+    "promote": false,
+    "tile": true,
+    "unroll": true,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 128,
+    "n": 32,
+    "promote": true,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 128,
+    "n": 32,
+    "promote": true,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 128,
+    "n": 32,
+    "promote": true,
+    "tile": true,
+    "unroll": false,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f16",
+    "k": 128,
+    "n": 32,
+    "promote": true,
+    "tile": true,
+    "unroll": true,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 16,
+    "n": 16,
+    "promote": false,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 16,
+    "n": 16,
+    "promote": false,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 16,
+    "n": 16,
+    "promote": false,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 16,
+    "n": 16,
+    "promote": false,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 16,
+    "n": 16,
+    "promote": true,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 16,
+    "n": 16,
+    "promote": true,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 16,
+    "n": 16,
+    "promote": true,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 16,
+    "n": 16,
+    "promote": true,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 16,
+    "n": 32,
+    "promote": false,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 16,
+    "n": 32,
+    "promote": false,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 16,
+    "n": 32,
+    "promote": false,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 16,
+    "n": 32,
+    "promote": false,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 16,
+    "n": 32,
+    "promote": true,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 16,
+    "n": 32,
+    "promote": true,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 16,
+    "n": 32,
+    "promote": true,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 16,
+    "n": 32,
+    "promote": true,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 32,
+    "n": 16,
+    "promote": false,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 32,
+    "n": 16,
+    "promote": false,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 32,
+    "n": 16,
+    "promote": false,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 32,
+    "n": 16,
+    "promote": false,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 32,
+    "n": 16,
+    "promote": true,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 32,
+    "n": 16,
+    "promote": true,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 32,
+    "n": 16,
+    "promote": true,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 32,
+    "n": 16,
+    "promote": true,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 32,
+    "n": 32,
+    "promote": false,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 32,
+    "n": 32,
+    "promote": false,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 32,
+    "n": 32,
+    "promote": false,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 32,
+    "n": 32,
+    "promote": false,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 32,
+    "n": 32,
+    "promote": true,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 32,
+    "n": 32,
+    "promote": true,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 32,
+    "n": 32,
+    "promote": true,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 32,
+    "n": 32,
+    "promote": true,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 64,
+    "n": 16,
+    "promote": false,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 64,
+    "n": 16,
+    "promote": false,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 64,
+    "n": 16,
+    "promote": false,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 64,
+    "n": 16,
+    "promote": false,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 64,
+    "n": 16,
+    "promote": true,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 64,
+    "n": 16,
+    "promote": true,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 64,
+    "n": 16,
+    "promote": true,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 64,
+    "n": 16,
+    "promote": true,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 64,
+    "n": 32,
+    "promote": false,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 64,
+    "n": 32,
+    "promote": false,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 64,
+    "n": 32,
+    "promote": false,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 64,
+    "n": 32,
+    "promote": false,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 64,
+    "n": 32,
+    "promote": true,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 64,
+    "n": 32,
+    "promote": true,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 64,
+    "n": 32,
+    "promote": true,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 64,
+    "n": 32,
+    "promote": true,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 128,
+    "n": 16,
+    "promote": false,
+    "tile": false,
+    "unroll": false,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 128,
+    "n": 16,
+    "promote": false,
+    "tile": false,
+    "unroll": true,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 128,
+    "n": 16,
+    "promote": false,
+    "tile": true,
+    "unroll": false,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 128,
+    "n": 16,
+    "promote": false,
+    "tile": true,
+    "unroll": true,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 128,
+    "n": 16,
+    "promote": true,
+    "tile": false,
+    "unroll": false,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 128,
+    "n": 16,
+    "promote": true,
+    "tile": false,
+    "unroll": true,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 128,
+    "n": 16,
+    "promote": true,
+    "tile": true,
+    "unroll": false,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 128,
+    "n": 16,
+    "promote": true,
+    "tile": true,
+    "unroll": true,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 128,
+    "n": 32,
+    "promote": false,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 128,
+    "n": 32,
+    "promote": false,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 128,
+    "n": 32,
+    "promote": false,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 128,
+    "n": 32,
+    "promote": false,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 128,
+    "n": 32,
+    "promote": true,
+    "tile": false,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 128,
+    "n": 32,
+    "promote": true,
+    "tile": false,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 128,
+    "n": 32,
+    "promote": true,
+    "tile": true,
+    "unroll": false,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "dtype": "f32",
+    "k": 128,
+    "n": 32,
+    "promote": true,
+    "tile": true,
+    "unroll": true,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "case": "no_distribution",
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "case": "uninitialized",
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "case": "shape_observed",
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "case": "escaping",
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "case": "view",
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "case": "conditional",
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "case": "two_column",
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "case": "rank3",
+    "batches": 1,
+    "padded": 1,
+    "status": "PASS"
+  },
+  {
+    "case": "rank3",
+    "batches": 2,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "case": "rank3",
+    "batches": 3,
+    "padded": 0,
+    "status": "PASS"
+  },
+  {
+    "case": "cache_default",
+    "status": "PASS"
+  }
+]

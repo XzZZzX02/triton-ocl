@@ -72,10 +72,18 @@ and all-on schedules; preserve source hashes and failed experiments. Avoid
 claiming pass independence when the transformations do not both match the
 tested program.
 
-The next research candidate is LDS bank-conflict reduction for proven owned,
-non-escaping contraction inputs. It is not implemented in the two-column
-iteration. Preserve storage-capacity and reuse accounting, and require its
-own legality, correctness and paired gfx906 performance cycle before committing.
+The 2026-11-08 LDS bank-padding candidate is rejected and withdrawn from the
+production build/pipeline. Its three gfx906 jobs completed correctly, but no
+stable general benefit emerged and the small full-stack/local=128 context
+regressed in all three rounds. Exact sources, 216 device configurations, 6,696
+event samples, CPU/structural evidence and the storage-coloring revision are
+preserved in sycl-validation/lds-bank-padding/. See sycl-lds-bank-padding-report.md.
+
+The expanded rank-three f32 CPU check also exposed implicit downstream FMA
+contraction on the disabled baseline. Preserve separate product rounding before
+further performance acceptance; this numerical repair is tracked separately.
+Further LDS layout work requires an instruction-aware model and its own
+correctness/profitability cycle, rather than transferring the rejected rule.
 
 The 8x16x16 f16 tiling regression is handled by the output-parallelism gate:
 require at least 64 distributed output points after the four-column tile.
