@@ -1,0 +1,131 @@
+{
+  "status": "PASS",
+  "scope": "separate rounded products, explicit contraction authorization and exact widening; no performance gain claimed over incorrect arithmetic",
+  "totals": {
+    "completed_device_jobs": 7,
+    "device_records": 196,
+    "device_pass_records": 142,
+    "reproduced_bad_baseline_records": 54,
+    "device_exact_comparisons": 43842,
+    "reproduced_baseline_attempted_comparisons": 10746,
+    "device_event_samples": 930,
+    "cpu_records": 40,
+    "cpu_exact_comparisons": 5572,
+    "cpu_baseline_mismatch_records": 12,
+    "structural_contracts": 2964
+  },
+  "device_timing": [
+    {
+      "case": "f32",
+      "baseline_correct": false,
+      "identical_source": false,
+      "ratios": [
+        1.0403225806451613,
+        1.047244094488189,
+        1.0236895161290323
+      ],
+      "baseline_ns": 20640,
+      "guarded_ns": 19840,
+      "speed_ratio": 1.0403225806451613,
+      "interpretation": "correctness repair cost; incorrect baseline is not an optimization comparator"
+    },
+    {
+      "case": "f64",
+      "baseline_correct": false,
+      "identical_source": false,
+      "ratios": [
+        0.7417916140958305,
+        0.7570093457943925,
+        0.7452610477285457
+      ],
+      "baseline_ns": 25281,
+      "guarded_ns": 34081,
+      "speed_ratio": 0.7417916140958305,
+      "interpretation": "correctness repair cost; incorrect baseline is not an optimization comparator"
+    },
+    {
+      "case": "bf16",
+      "baseline_correct": false,
+      "identical_source": false,
+      "ratios": [
+        0.9971971240055013,
+        0.9972222704466936,
+        0.9999649859943978
+      ],
+      "baseline_ns": 57280,
+      "guarded_ns": 57441,
+      "speed_ratio": 0.9971971240055013,
+      "interpretation": "correctness repair cost; incorrect baseline is not an optimization comparator"
+    },
+    {
+      "case": "half",
+      "baseline_correct": true,
+      "identical_source": true,
+      "ratios": [
+        1.0,
+        0.999981671890178,
+        0.9970845481049563
+      ],
+      "baseline_ns": 54561,
+      "guarded_ns": 54561,
+      "speed_ratio": 1.0,
+      "interpretation": "identical-code timing control"
+    },
+    {
+      "case": "widened_f32",
+      "baseline_correct": true,
+      "identical_source": true,
+      "ratios": [
+        1.0126582278481013,
+        1.0,
+        1.0
+      ],
+      "baseline_ns": 25440,
+      "guarded_ns": 25281,
+      "speed_ratio": 1.0062893081761006,
+      "interpretation": "identical-code timing control"
+    }
+  ],
+  "historical_f16_hashes": 15,
+  "f16_layout_schedule_hashes": 44,
+  "compiled_layout_cases": 44,
+  "cpu_llvm": [
+    {
+      "enabled": 0,
+      "multiply_count": 1,
+      "contract_count": 1,
+      "status": "REPRODUCED_BASELINE_MISMATCH",
+      "mismatch_count": 39
+    },
+    {
+      "enabled": 1,
+      "multiply_count": 1,
+      "contract_count": 0,
+      "status": "PASS",
+      "mismatch_count": 0
+    }
+  ],
+  "production_fingerprints": {
+    "python/triton/_C/libtriton.so": "2b473a47e771180bacc0ab6c5b5b81d659be817b2a98e944f2b2ef8bd3ec72d9",
+    "python/triton/_C/triton-sycl-translate": "6d22ebb0a80fb76e58a96b6a692ac8817a3b9ede2fd323de7458778522c6c943",
+    "third_party/sycl/backend/compiler.py": "e0212b6da594765d9f0500b7853a06a98772a62ece1aa144de8314855340706c",
+    "third_party/sycl/include/Conversion/LinalgToAffineLoops/Passes.h": "9259d62bad7f9566b5b4501c3b14ee4c03e3385baf81dbd32ef3cdf2707f53f9",
+    "third_party/sycl/lib/Conversion/LinalgToAffineLoops/CMakeLists.txt": "e1797f56e80ce51a3da369367f92be9170bcae17cb6fbea1c65f7b93240f4bee",
+    "third_party/sycl/lib/Conversion/LinalgToAffineLoops/FPContractGuard.cpp": "08abeca8012b34dcf3009946d6a9d8bcbdd1f2f44be8efb7fb21b686a11c27f4",
+    "third_party/sycl/tool/triton-sycl-translate/EmitSYCL.cpp": "abcc475724d6c2ea11ffbebaea93fe1a708f99430f8bf95b823011c813909436",
+    "third_party/sycl/triton_sycl.cc": "f215bb46c4d7926d2d1f09ef5728269c2f090ad628feb4f56ed6c772c5901fee",
+    "python/test/sycl/fp_contract_semantics.py": "0c4b078975148311fda0a340e73852d2b5fb23958fc8812dcc1e65dbe92d286b",
+    "python/test/sycl/dtype_semantics.py": "150d6e0dacaf5a3077762c4dfeb5aa3a1841b34510ad9b0c023310110427db2a",
+    "third_party/sycl/backend/sycl_utils.py": "b74f87b4b7576640c7a016a1a93d924f0ea40b9e0710493885177ef14fb11e00"
+  },
+  "contract_source_sha256": "b633f2d179e67450a7fe8c6d1ef121ef3b669397116bcb5e25de1f9a090baabf",
+  "dtype_helper": {
+    "measured_sha256": "150d6e0dacaf5a3077762c4dfeb5aa3a1841b34510ad9b0c023310110427db2a",
+    "file_identity_claimed": false,
+    "imported_definitions_sha256": {
+      "DTYPES": "ca9ea108b54793a16b83261d26baf24de40761db4c837a51af44c073f6b8ba8f",
+      "pack_value": "32e1ebeafc3462d9ba9332c6383e3115e281a41721c5149225f6a2b0670c7256",
+      "unpack_value": "ac0dfcedc0e9aff89b447f6414e158d09fcba8cdf6273e45e960a88bfe3d5b3e"
+    }
+  }
+}

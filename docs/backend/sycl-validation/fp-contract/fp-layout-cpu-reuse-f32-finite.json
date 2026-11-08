@@ -1,0 +1,142 @@
+[
+  {
+    "status": "PASS",
+    "case": "reuse",
+    "dtype": "f32",
+    "data": "finite",
+    "bounds": "tail",
+    "plan": "raw",
+    "reuse": 1,
+    "enabled": false,
+    "padded": 0,
+    "reused_slots": 1,
+    "round": 0,
+    "samples_ns": [],
+    "median_ns": null,
+    "profile_block": "64",
+    "allocations": 3,
+    "shape": [
+      1,
+      32,
+      64,
+      64
+    ],
+    "grid": 3,
+    "blocks": [
+      "1",
+      "48",
+      "3x5",
+      "64"
+    ],
+    "compile_only": false,
+    "elements_checked": 24604,
+    "late_elements_checked": 24604,
+    "source_sha256": "1c140a8a34a3669cfd1328d8fc539cff6f35d65a82d0e6ecab522e7e8a3f637e",
+    "ordered_unroll": 0
+  },
+  {
+    "status": "PASS",
+    "case": "reuse",
+    "dtype": "f32",
+    "data": "finite",
+    "bounds": "tail",
+    "plan": "raw",
+    "reuse": 1,
+    "enabled": true,
+    "padded": 0,
+    "reused_slots": 1,
+    "round": 0,
+    "samples_ns": [],
+    "median_ns": null,
+    "profile_block": "64",
+    "allocations": 3,
+    "shape": [
+      1,
+      32,
+      64,
+      64
+    ],
+    "grid": 3,
+    "blocks": [
+      "1",
+      "48",
+      "3x5",
+      "64"
+    ],
+    "compile_only": false,
+    "elements_checked": 24604,
+    "late_elements_checked": 24604,
+    "source_sha256": "1c140a8a34a3669cfd1328d8fc539cff6f35d65a82d0e6ecab522e7e8a3f637e",
+    "ordered_unroll": 0
+  },
+  {
+    "status": "PASS",
+    "case": "reuse",
+    "dtype": "f32",
+    "data": "finite",
+    "bounds": "tail",
+    "plan": "full",
+    "reuse": 1,
+    "enabled": false,
+    "padded": 0,
+    "reused_slots": 1,
+    "round": 0,
+    "samples_ns": [],
+    "median_ns": null,
+    "profile_block": "64",
+    "allocations": 3,
+    "shape": [
+      1,
+      32,
+      64,
+      64
+    ],
+    "grid": 3,
+    "blocks": [
+      "1",
+      "48",
+      "3x5",
+      "64"
+    ],
+    "compile_only": false,
+    "elements_checked": 24604,
+    "late_elements_checked": 24604,
+    "source_sha256": "59ec4322a80010ad978eb7d1713f6c7202294caaf056cfbb3fb5707f844717dd",
+    "ordered_unroll": 1
+  },
+  {
+    "status": "PASS",
+    "case": "reuse",
+    "dtype": "f32",
+    "data": "finite",
+    "bounds": "tail",
+    "plan": "full",
+    "reuse": 1,
+    "enabled": true,
+    "padded": 0,
+    "reused_slots": 1,
+    "round": 0,
+    "samples_ns": [],
+    "median_ns": null,
+    "profile_block": "64",
+    "allocations": 3,
+    "shape": [
+      1,
+      32,
+      64,
+      64
+    ],
+    "grid": 3,
+    "blocks": [
+      "1",
+      "48",
+      "3x5",
+      "64"
+    ],
+    "compile_only": false,
+    "elements_checked": 24604,
+    "late_elements_checked": 24604,
+    "source_sha256": "59ec4322a80010ad978eb7d1713f6c7202294caaf056cfbb3fb5707f844717dd",
+    "ordered_unroll": 1
+  }
+]

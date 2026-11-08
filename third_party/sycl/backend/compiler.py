@@ -169,6 +169,7 @@ class SYCLBackend(BaseBackend):
                 # opportunity, including a K=16 reduction.
                 sycl.passes.memir.ordered_reduction_unroll(pm, opt.reduction_unroll)
                 passes.common.add_cse(pm)
+        sycl.passes.memir.fp_contract_guard(pm)
         sycl.passes.memir.serial_half_copy_guard(pm)
         pm.run(mod)
         return mod

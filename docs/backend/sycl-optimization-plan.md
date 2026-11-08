@@ -80,8 +80,14 @@ event samples, CPU/structural evidence and the storage-coloring revision are
 preserved in sycl-validation/lds-bank-padding/. See sycl-lds-bank-padding-report.md.
 
 The expanded rank-three f32 CPU check also exposed implicit downstream FMA
-contraction on the disabled baseline. Preserve separate product rounding before
-further performance acceptance; this numerical repair is tracked separately.
+contraction on the disabled baseline. The mandatory sycl-fp-contract-guard
+repair now passes 409 new plus 2,555 preceding structural checks and seven
+completed gfx906 jobs, including real NN/NT/TN/TT frontend dots. Exact-product
+type/range proofs retain all 44 measured f16 layout-schedule hashes. Native f64
+separate rounding costs about 34.81% versus its incorrect fused baseline; that
+correctness cost is disclosed, not presented as a performance gain.
+See sycl-fp-contract-report.md. Future performance comparisons must use the
+corrected arithmetic as the baseline.
 Further LDS layout work requires an instruction-aware model and its own
 correctness/profitability cycle, rather than transferring the rejected rule.
 

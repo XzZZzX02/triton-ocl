@@ -1,0 +1,366 @@
+[
+  {
+    "status": "REPRODUCED_BASELINE_MISMATCH",
+    "case": "bf16",
+    "enabled": 0,
+    "round": 0,
+    "block": "1",
+    "grid": 3,
+    "count": 64,
+    "mismatches": [
+      {
+        "index": 9,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 19,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 29,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 39,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 49,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 59,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 69,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 79,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 89,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 99,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 109,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 119,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      }
+    ],
+    "mismatch_count": 19,
+    "elements_checked": 199,
+    "source_sha256": "e7be0fba11e5f973896b750eddc509e6f54698b0820ed3f702f0b754f591c9cd",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "status": "REPRODUCED_BASELINE_MISMATCH",
+    "case": "bf16",
+    "enabled": 0,
+    "round": 0,
+    "block": "48",
+    "grid": 3,
+    "count": 64,
+    "mismatches": [
+      {
+        "index": 9,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 19,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 29,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 39,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 49,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 59,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 69,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 79,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 89,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 99,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 109,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 119,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      }
+    ],
+    "mismatch_count": 19,
+    "elements_checked": 199,
+    "source_sha256": "e7be0fba11e5f973896b750eddc509e6f54698b0820ed3f702f0b754f591c9cd",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "status": "REPRODUCED_BASELINE_MISMATCH",
+    "case": "bf16",
+    "enabled": 0,
+    "round": 0,
+    "block": "64",
+    "grid": 3,
+    "count": 64,
+    "mismatches": [
+      {
+        "index": 9,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 19,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 29,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 39,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 49,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 59,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 69,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 79,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 89,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 99,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 109,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 119,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      }
+    ],
+    "mismatch_count": 19,
+    "elements_checked": 199,
+    "source_sha256": "e7be0fba11e5f973896b750eddc509e6f54698b0820ed3f702f0b754f591c9cd",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "status": "REPRODUCED_BASELINE_MISMATCH",
+    "case": "bf16",
+    "enabled": 0,
+    "round": 0,
+    "block": "3x5",
+    "grid": 3,
+    "count": 64,
+    "mismatches": [
+      {
+        "index": 9,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 19,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 29,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 39,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 49,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 59,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 69,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 79,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 89,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 99,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 109,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      },
+      {
+        "index": 119,
+        "actual": 1.6814736174920146e+38,
+        "expected": Infinity
+      }
+    ],
+    "mismatch_count": 19,
+    "elements_checked": 199,
+    "source_sha256": "e7be0fba11e5f973896b750eddc509e6f54698b0820ed3f702f0b754f591c9cd",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "status": "PASS",
+    "case": "bf16",
+    "enabled": 1,
+    "round": 0,
+    "block": "1",
+    "grid": 3,
+    "count": 64,
+    "mismatches": [],
+    "mismatch_count": 0,
+    "elements_checked": 199,
+    "source_sha256": "5923830437331f9aa647e723a1baa5beb24da68e9b5f526d231d27d9a735c8e0",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "status": "PASS",
+    "case": "bf16",
+    "enabled": 1,
+    "round": 0,
+    "block": "48",
+    "grid": 3,
+    "count": 64,
+    "mismatches": [],
+    "mismatch_count": 0,
+    "elements_checked": 199,
+    "source_sha256": "5923830437331f9aa647e723a1baa5beb24da68e9b5f526d231d27d9a735c8e0",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "status": "PASS",
+    "case": "bf16",
+    "enabled": 1,
+    "round": 0,
+    "block": "64",
+    "grid": 3,
+    "count": 64,
+    "mismatches": [],
+    "mismatch_count": 0,
+    "elements_checked": 199,
+    "source_sha256": "5923830437331f9aa647e723a1baa5beb24da68e9b5f526d231d27d9a735c8e0",
+    "samples_ns": [],
+    "median_ns": null
+  },
+  {
+    "status": "PASS",
+    "case": "bf16",
+    "enabled": 1,
+    "round": 0,
+    "block": "3x5",
+    "grid": 3,
+    "count": 64,
+    "mismatches": [],
+    "mismatch_count": 0,
+    "elements_checked": 199,
+    "source_sha256": "5923830437331f9aa647e723a1baa5beb24da68e9b5f526d231d27d9a735c8e0",
+    "samples_ns": [],
+    "median_ns": null
+  }
+]

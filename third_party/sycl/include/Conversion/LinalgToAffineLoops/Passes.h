@@ -16,6 +16,7 @@ namespace triton::sycl {
 
 std::unique_ptr<OperationPass<ModuleOp>> createLinalgToAffineLoopsPass();
 std::unique_ptr<OperationPass<ModuleOp>> createLocalMemoryReusePass();
+std::unique_ptr<OperationPass<ModuleOp>> createFPContractGuardPass();
 std::unique_ptr<OperationPass<ModuleOp>> createElementwiseFusionPass();
 std::unique_ptr<OperationPass<ModuleOp>> createGroupReductionPass();
 std::unique_ptr<OperationPass<ModuleOp>> createRegisterAccumulatorPass();

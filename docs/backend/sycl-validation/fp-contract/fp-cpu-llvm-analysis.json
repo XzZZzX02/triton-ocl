@@ -1,0 +1,16 @@
+[
+  {
+    "enabled": 0,
+    "multiply_count": 1,
+    "contract_count": 1,
+    "status": "REPRODUCED_BASELINE_MISMATCH",
+    "mismatch_count": 39
+  },
+  {
+    "enabled": 1,
+    "multiply_count": 1,
+    "contract_count": 0,
+    "status": "PASS",
+    "mismatch_count": 0
+  }
+]

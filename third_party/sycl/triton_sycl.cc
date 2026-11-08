@@ -37,6 +37,9 @@ void init_triton_sycl_passes_lair(py::module &&m) {
 }
 
 void init_triton_sycl_passes_memir(py::module &&m) {
+  m.def("fp_contract_guard", [](mlir::PassManager &pm) {
+    pm.addPass(mlir::triton::sycl::createFPContractGuardPass());
+  });
   m.def("two_column_launch_guard", [](mlir::PassManager &pm) {
     pm.addPass(mlir::triton::sycl::createTwoColumnLaunchGuardPass());
   });

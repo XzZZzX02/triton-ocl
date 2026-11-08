@@ -1,0 +1,58 @@
+[
+  {
+    "status": "PASS",
+    "case": "rank3",
+    "dtype": "f32",
+    "data": "finite",
+    "bounds": "tail",
+    "plan": "raw",
+    "reuse": 1,
+    "enabled": false,
+    "padded": 0,
+    "reused_slots": 0,
+    "allocations": 3,
+    "shape": [
+      2,
+      4,
+      8,
+      32
+    ],
+    "grid": 3,
+    "blocks": [
+      "1"
+    ],
+    "compile_only": false,
+    "elements_checked": 199,
+    "late_elements_checked": 775,
+    "source_sha256": "d481ced55b53c502f07ba6759208168b4e9ffa6b6e9d9c53079e449d4321de96",
+    "ordered_unroll": 0
+  },
+  {
+    "status": "PASS",
+    "case": "rank3",
+    "dtype": "f32",
+    "data": "finite",
+    "bounds": "tail",
+    "plan": "raw",
+    "reuse": 1,
+    "enabled": true,
+    "padded": 1,
+    "reused_slots": 0,
+    "allocations": 3,
+    "shape": [
+      2,
+      4,
+      8,
+      32
+    ],
+    "grid": 3,
+    "blocks": [
+      "1"
+    ],
+    "compile_only": false,
+    "elements_checked": 199,
+    "late_elements_checked": 775,
+    "source_sha256": "c44f9686eda2b53262855f669e8a61175a0398313d2c6ec97576f929fd163775",
+    "ordered_unroll": 0
+  }
+]

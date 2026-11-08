@@ -208,3 +208,26 @@ Historical `audit_two_column.py` and `audit_two_column_launch.py` concern older
 experiments; they do not accept the final guard. The unguarded launch audit is
 expected to fail. See docs/backend/sycl-two-column-tiling-report.md for the
 complete 37-job evidence, scope, compile costs and interaction limits.
+
+
+Separate rounded products through native SYCL compilation:
+
+    python-triton fp_contract_contracts.py --output fp-contracts.json
+    python-triton fp_contract_semantics.py --case f32 --guards 0 1 --output fp-numerics.json --dump-dir fp-sources
+    python-triton fp_contract_dot.py --shape 8 16 32 --layout TT --dtype f32 --data rounding --plans raw full --blocks 1 64 3x5 --output fp-dot.json --dump-dir fp-dot-sources
+    python3 audit_fp_contract.py ../../../docs/backend/sycl-validation/fp-contract --repo ../../.. --output fp-analysis.json
+
+The mandatory `sycl-fp-contract-guard` pass preserves ordinary native f32/f64
+product rounding when C++ compilation would otherwise introduce implicit FMA.
+The renderer consumes a per-product marker using a scoped contraction directive.
+A significand/exponent proof retains exact widened products, including f16
+to f32 dot paths. Explicit contraction requires permission on the product and
+all its direct add/sub consumers. The guard runs after optimization scheduling;
+hand-authored MemIR tests invoke it explicitly.
+
+In the direct runner, `--guards 0` intentionally bypasses the pass. The known
+f32/f64/bf16 errors have status `REPRODUCED_BASELINE_MISMATCH` and are not
+correctness passes. Guarded cases use exact rounded references. Timing versus
+wrong arithmetic is repair cost, with an observed f64 increase reported in
+docs/backend/sycl-fp-contract-report.md. Source-identical half/widened-f32
+controls and 44 preserved f16 layout schedule hashes bound preservation claims.

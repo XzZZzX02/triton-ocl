@@ -1,0 +1,3 @@
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"status": "PASS", "case": "f32", "enabled": 1, "round": 0, "block": "64", "grid": 3, "count": 64, "mismatches": [], "mismatch_count": 0, "elements_checked": 199, "source_sha256": "395227827dd6c79b640341fedc112d0e36f0c0df3b35ae3f3c8f5ba95b508ae3", "samples_ns": [], "median_ns": null}

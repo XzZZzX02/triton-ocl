@@ -1,0 +1,749 @@
+two-column-guard.mlir:12:7: error: cannot recover the independent untiled recurrence
+#map = affine_map<(d0) -> (d0)>
+#map1 = affine_map<(d0) -> (d0 + 8)>
+module {
+  func.func @matmul() {
+    %cst = arith.constant 0.000000e+00 : f32
+    %alloc = memref.alloc() : memref<8x32xf16>
+    %alloc_0 = memref.alloc() : memref<32x16xf16>
+    %alloc_1 = memref.alloc() : memref<8x16xf32>
+    affine.for %arg0 = 0 to 8 {
+      affine.for %arg1 = 0 to 8 {
+        %0 = affine.apply #map(%arg1)
+        %1 = affine.apply #map1(%arg1)
+        %c0 = arith.constant 0 : index
+        %c32 = arith.constant 32 : index
+        %c1 = arith.constant 1 : index
+        %c4 = arith.constant 4 : index
+        %2:2 = scf.for %arg2 = %c0 to %c32 step %c4 iter_args(%arg3 = %cst, %arg4 = %cst) -> (f32, f32) {
+          %3 = memref.load %alloc[%arg0, %arg2] : memref<8x32xf16>
+          %4 = memref.load %alloc_0[%arg2, %0] : memref<32x16xf16>
+          %5 = arith.extf %3 : f16 to f32
+          %6 = arith.extf %4 : f16 to f32
+          %7 = arith.mulf %5, %6 : f32
+          %8 = arith.addf %arg3, %7 : f32
+          %9 = memref.load %alloc[%arg0, %arg2] : memref<8x32xf16>
+          %10 = memref.load %alloc_0[%arg2, %1] : memref<32x16xf16>
+          %11 = arith.extf %9 : f16 to f32
+          %12 = arith.extf %10 : f16 to f32
+          %13 = arith.mulf %11, %12 : f32
+          %14 = arith.addf %arg4, %13 : f32
+          %c1_2 = arith.constant 1 : index
+          %15 = arith.addi %arg2, %c1_2 : index
+          %16 = memref.load %alloc[%arg0, %15] : memref<8x32xf16>
+          %17 = memref.load %alloc_0[%15, %0] : memref<32x16xf16>
+          %18 = arith.extf %16 : f16 to f32
+          %19 = arith.extf %17 : f16 to f32
+          %20 = arith.mulf %18, %19 : f32
+          %21 = arith.addf %8, %20 : f32
+          %22 = memref.load %alloc[%arg0, %15] : memref<8x32xf16>
+          %23 = memref.load %alloc_0[%15, %1] : memref<32x16xf16>
+          %24 = arith.extf %22 : f16 to f32
+          %25 = arith.extf %23 : f16 to f32
+          %26 = arith.mulf %24, %25 : f32
+          %27 = arith.addf %14, %26 : f32
+          %c2 = arith.constant 2 : index
+          %28 = arith.addi %arg2, %c2 : index
+          %29 = memref.load %alloc[%arg0, %28] : memref<8x32xf16>
+          %30 = memref.load %alloc_0[%28, %0] : memref<32x16xf16>
+          %31 = arith.extf %29 : f16 to f32
+          %32 = arith.extf %30 : f16 to f32
+          %33 = arith.mulf %31, %32 : f32
+          %34 = arith.addf %21, %33 : f32
+          %35 = memref.load %alloc[%arg0, %28] : memref<8x32xf16>
+          %36 = memref.load %alloc_0[%28, %1] : memref<32x16xf16>
+          %37 = arith.extf %35 : f16 to f32
+          %38 = arith.extf %36 : f16 to f32
+          %39 = arith.mulf %37, %38 : f32
+          %40 = arith.addf %27, %39 : f32
+          %c3 = arith.constant 3 : index
+          %41 = arith.addi %arg2, %c3 : index
+          %42 = memref.load %alloc[%arg0, %41] : memref<8x32xf16>
+          %43 = memref.load %alloc_0[%41, %0] : memref<32x16xf16>
+          %44 = arith.extf %42 : f16 to f32
+          %45 = arith.extf %43 : f16 to f32
+          %46 = arith.mulf %44, %45 : f32
+          %47 = arith.addf %34, %46 : f32
+          %48 = memref.load %alloc[%arg0, %41] : memref<8x32xf16>
+          %49 = memref.load %alloc_0[%41, %1] : memref<32x16xf16>
+          %50 = arith.extf %48 : f16 to f32
+          %51 = arith.extf %49 : f16 to f32
+          %52 = arith.mulf %50, %51 : f32
+          %53 = arith.addf %40, %52 : f32
+          scf.yield %47, %47 : f32, f32
+        } {sycl.ordered_reduction_unroll = 4 : i64, sycl.register_accumulator, sycl.register_tile_composed_accumulator, sycl.thread_private}
+        memref.store %2#0, %alloc_1[%arg0, %0] : memref<8x16xf32>
+        memref.store %2#1, %alloc_1[%arg0, %1] : memref<8x16xf32>
+      } {sycl.parallel, sycl.register_tile = 2 : i64, sycl.two_column_candidate}
+    } {sycl.accumulator_init_forwarded, sycl.distribute, sycl.distribution_depth = 2 : i64, sycl.parallel}
+    return
+  }
+}
+
+{-#
+  external_resources: {
+    mlir_reproducer: {
+      pipeline: "builtin.module(sycl-two-column-launch-guard)",
+      disable_threading: false,
+      verify_each: true
+    }
+  }
+#-}
+two-column-guard.mlir:1:1: error: Failures have been detected while processing an MLIR pass pipeline
+two-column-guard.mlir:1:1: note: Pipeline failed while executing [`(anonymous namespace)::TwoColumnLaunchGuardPass` on 'builtin.module' operation]: reproducer generated at `std::errs, please share the reproducer above with Triton project.`
+two-column-guard.mlir:12:7: error: cannot recover the independent untiled recurrence
+#map = affine_map<(d0) -> (d0)>
+#map1 = affine_map<(d0) -> (d0 + 8)>
+module {
+  func.func @matmul() {
+    %cst = arith.constant 0.000000e+00 : f32
+    %alloc = memref.alloc() : memref<8x32xf16>
+    %alloc_0 = memref.alloc() : memref<32x16xf16>
+    %alloc_1 = memref.alloc() : memref<8x16xf32>
+    affine.for %arg0 = 0 to 8 {
+      affine.for %arg1 = 0 to 8 {
+        %0 = affine.apply #map(%arg1)
+        %1 = affine.apply #map1(%arg1)
+        %c0 = arith.constant 0 : index
+        %c32 = arith.constant 32 : index
+        %c1 = arith.constant 1 : index
+        %c4 = arith.constant 4 : index
+        %2:2 = scf.for %arg2 = %c0 to %c32 step %c4 iter_args(%arg3 = %cst, %arg4 = %cst) -> (f32, f32) {
+          %3 = memref.load %alloc[%arg0, %arg2] : memref<8x32xf16>
+          %4 = memref.load %alloc_0[%arg2, %0] : memref<32x16xf16>
+          %5 = arith.extf %3 : f16 to f32
+          %6 = arith.extf %4 : f16 to f32
+          %7 = arith.mulf %5, %6 : f32
+          %8 = arith.addf %arg3, %7 : f32
+          %9 = memref.load %alloc[%arg0, %arg2] : memref<8x32xf16>
+          %10 = memref.load %alloc_0[%arg2, %1] : memref<32x16xf16>
+          %11 = arith.extf %9 : f16 to f32
+          %12 = arith.extf %10 : f16 to f32
+          %13 = arith.mulf %11, %12 : f32
+          %14 = arith.addf %arg4, %13 : f32
+          %c1_2 = arith.constant 1 : index
+          %15 = arith.addi %arg2, %c1_2 : index
+          %16 = memref.load %alloc[%arg0, %15] : memref<8x32xf16>
+          %17 = memref.load %alloc_0[%15, %0] : memref<32x16xf16>
+          %18 = arith.extf %16 : f16 to f32
+          %19 = arith.extf %17 : f16 to f32
+          %20 = arith.mulf %18, %19 : f32
+          %21 = arith.addf %8, %20 : f32
+          %22 = memref.load %alloc[%arg0, %15] : memref<8x32xf16>
+          %23 = memref.load %alloc_0[%15, %1] : memref<32x16xf16>
+          %24 = arith.extf %22 : f16 to f32
+          %25 = arith.extf %23 : f16 to f32
+          %26 = arith.mulf %24, %25 : f32
+          %27 = arith.addf %14, %26 : f32
+          %c2 = arith.constant 2 : index
+          %28 = arith.addi %arg2, %c2 : index
+          %29 = memref.load %alloc[%arg0, %28] : memref<8x32xf16>
+          %30 = memref.load %alloc_0[%28, %0] : memref<32x16xf16>
+          %31 = arith.extf %29 : f16 to f32
+          %32 = arith.extf %30 : f16 to f32
+          %33 = arith.mulf %31, %32 : f32
+          %34 = arith.addf %21, %33 : f32
+          %35 = memref.load %alloc[%arg0, %28] : memref<8x32xf16>
+          %36 = memref.load %alloc_0[%28, %1] : memref<32x16xf16>
+          %37 = arith.extf %35 : f16 to f32
+          %38 = arith.extf %36 : f16 to f32
+          %39 = arith.mulf %37, %38 : f32
+          %40 = arith.addf %27, %39 : f32
+          %c3 = arith.constant 3 : index
+          %41 = arith.addi %arg2, %c3 : index
+          %42 = memref.load %alloc[%arg0, %41] : memref<8x32xf16>
+          %43 = memref.load %alloc_0[%41, %0] : memref<32x16xf16>
+          %44 = arith.extf %42 : f16 to f32
+          %45 = arith.extf %43 : f16 to f32
+          %46 = arith.mulf %44, %45 : f32
+          %47 = arith.addf %34, %46 : f32
+          %48 = memref.load %alloc[%arg0, %41] : memref<8x32xf16>
+          %49 = memref.load %alloc_0[%41, %1] : memref<32x16xf16>
+          %50 = arith.extf %48 : f16 to f32
+          %51 = arith.extf %49 : f16 to f32
+          %52 = arith.mulf %50, %51 : f32
+          %53 = arith.addf %40, %52 : f32
+          scf.yield %53, %47 : f32, f32
+        } {sycl.ordered_reduction_unroll = 4 : i64, sycl.register_accumulator, sycl.register_tile_composed_accumulator, sycl.thread_private}
+        memref.store %2#0, %alloc_1[%arg0, %0] : memref<8x16xf32>
+        memref.store %2#1, %alloc_1[%arg0, %1] : memref<8x16xf32>
+      } {sycl.parallel, sycl.register_tile = 2 : i64, sycl.two_column_candidate}
+    } {sycl.accumulator_init_forwarded, sycl.distribute, sycl.distribution_depth = 2 : i64, sycl.parallel}
+    return
+  }
+}
+
+{-#
+  external_resources: {
+    mlir_reproducer: {
+      pipeline: "builtin.module(sycl-two-column-launch-guard)",
+      disable_threading: false,
+      verify_each: true
+    }
+  }
+#-}
+two-column-guard.mlir:1:1: error: Failures have been detected while processing an MLIR pass pipeline
+two-column-guard.mlir:1:1: note: Pipeline failed while executing [`(anonymous namespace)::TwoColumnLaunchGuardPass` on 'builtin.module' operation]: reproducer generated at `std::errs, please share the reproducer above with Triton project.`
+two-column-guard.mlir:12:7: error: two-column launch guard needs a distributed root
+#map = affine_map<(d0) -> (d0)>
+#map1 = affine_map<(d0) -> (d0 + 8)>
+module {
+  func.func @matmul() {
+    %cst = arith.constant 0.000000e+00 : f32
+    %alloc = memref.alloc() : memref<8x32xf16>
+    %alloc_0 = memref.alloc() : memref<32x16xf16>
+    %alloc_1 = memref.alloc() : memref<8x16xf32>
+    affine.for %arg0 = 0 to 8 {
+      affine.for %arg1 = 0 to 8 {
+        %0 = affine.apply #map(%arg1)
+        %1 = affine.apply #map1(%arg1)
+        %c0 = arith.constant 0 : index
+        %c32 = arith.constant 32 : index
+        %c1 = arith.constant 1 : index
+        %c4 = arith.constant 4 : index
+        %2:2 = scf.for %arg2 = %c0 to %c32 step %c4 iter_args(%arg3 = %cst, %arg4 = %cst) -> (f32, f32) {
+          %3 = memref.load %alloc[%arg0, %arg2] : memref<8x32xf16>
+          %4 = memref.load %alloc_0[%arg2, %0] : memref<32x16xf16>
+          %5 = arith.extf %3 : f16 to f32
+          %6 = arith.extf %4 : f16 to f32
+          %7 = arith.mulf %5, %6 : f32
+          %8 = arith.addf %arg3, %7 : f32
+          %9 = memref.load %alloc[%arg0, %arg2] : memref<8x32xf16>
+          %10 = memref.load %alloc_0[%arg2, %1] : memref<32x16xf16>
+          %11 = arith.extf %9 : f16 to f32
+          %12 = arith.extf %10 : f16 to f32
+          %13 = arith.mulf %11, %12 : f32
+          %14 = arith.addf %arg4, %13 : f32
+          %c1_2 = arith.constant 1 : index
+          %15 = arith.addi %arg2, %c1_2 : index
+          %16 = memref.load %alloc[%arg0, %15] : memref<8x32xf16>
+          %17 = memref.load %alloc_0[%15, %0] : memref<32x16xf16>
+          %18 = arith.extf %16 : f16 to f32
+          %19 = arith.extf %17 : f16 to f32
+          %20 = arith.mulf %18, %19 : f32
+          %21 = arith.addf %8, %20 : f32
+          %22 = memref.load %alloc[%arg0, %15] : memref<8x32xf16>
+          %23 = memref.load %alloc_0[%15, %1] : memref<32x16xf16>
+          %24 = arith.extf %22 : f16 to f32
+          %25 = arith.extf %23 : f16 to f32
+          %26 = arith.mulf %24, %25 : f32
+          %27 = arith.addf %14, %26 : f32
+          %c2 = arith.constant 2 : index
+          %28 = arith.addi %arg2, %c2 : index
+          %29 = memref.load %alloc[%arg0, %28] : memref<8x32xf16>
+          %30 = memref.load %alloc_0[%28, %0] : memref<32x16xf16>
+          %31 = arith.extf %29 : f16 to f32
+          %32 = arith.extf %30 : f16 to f32
+          %33 = arith.mulf %31, %32 : f32
+          %34 = arith.addf %21, %33 : f32
+          %35 = memref.load %alloc[%arg0, %28] : memref<8x32xf16>
+          %36 = memref.load %alloc_0[%28, %1] : memref<32x16xf16>
+          %37 = arith.extf %35 : f16 to f32
+          %38 = arith.extf %36 : f16 to f32
+          %39 = arith.mulf %37, %38 : f32
+          %40 = arith.addf %27, %39 : f32
+          %c3 = arith.constant 3 : index
+          %41 = arith.addi %arg2, %c3 : index
+          %42 = memref.load %alloc[%arg0, %41] : memref<8x32xf16>
+          %43 = memref.load %alloc_0[%41, %0] : memref<32x16xf16>
+          %44 = arith.extf %42 : f16 to f32
+          %45 = arith.extf %43 : f16 to f32
+          %46 = arith.mulf %44, %45 : f32
+          %47 = arith.addf %34, %46 : f32
+          %48 = memref.load %alloc[%arg0, %41] : memref<8x32xf16>
+          %49 = memref.load %alloc_0[%41, %1] : memref<32x16xf16>
+          %50 = arith.extf %48 : f16 to f32
+          %51 = arith.extf %49 : f16 to f32
+          %52 = arith.mulf %50, %51 : f32
+          %53 = arith.addf %40, %52 : f32
+          scf.yield %47, %53 : f32, f32
+        } {sycl.ordered_reduction_unroll = 4 : i64, sycl.register_accumulator, sycl.register_tile_composed_accumulator, sycl.thread_private}
+        memref.store %2#0, %alloc_1[%arg0, %0] : memref<8x16xf32>
+        memref.store %2#1, %alloc_1[%arg0, %1] : memref<8x16xf32>
+      } {sycl.parallel, sycl.register_tile = 2 : i64, sycl.two_column_candidate}
+    } {sycl.accumulator_init_forwarded, sycl.distribution_depth = 2 : i64, sycl.parallel}
+    return
+  }
+}
+
+{-#
+  external_resources: {
+    mlir_reproducer: {
+      pipeline: "builtin.module(sycl-two-column-launch-guard)",
+      disable_threading: false,
+      verify_each: true
+    }
+  }
+#-}
+two-column-guard.mlir:1:1: error: Failures have been detected while processing an MLIR pass pipeline
+two-column-guard.mlir:1:1: note: Pipeline failed while executing [`(anonymous namespace)::TwoColumnLaunchGuardPass` on 'builtin.module' operation]: reproducer generated at `std::errs, please share the reproducer above with Triton project.`
+two-column-guard.mlir:12:7: error: two-column launch guard needs a distributed root
+#map = affine_map<(d0) -> (d0)>
+#map1 = affine_map<(d0) -> (d0 + 8)>
+module {
+  func.func @matmul() {
+    %cst = arith.constant 0.000000e+00 : f32
+    %alloc = memref.alloc() : memref<8x32xf16>
+    %alloc_0 = memref.alloc() : memref<32x16xf16>
+    %alloc_1 = memref.alloc() : memref<8x16xf32>
+    affine.for %arg0 = 0 to 8 {
+      affine.for %arg1 = 0 to 8 {
+        %0 = affine.apply #map(%arg1)
+        %1 = affine.apply #map1(%arg1)
+        %c0 = arith.constant 0 : index
+        %c32 = arith.constant 32 : index
+        %c1 = arith.constant 1 : index
+        %c4 = arith.constant 4 : index
+        %2:2 = scf.for %arg2 = %c0 to %c32 step %c4 iter_args(%arg3 = %cst, %arg4 = %cst) -> (f32, f32) {
+          %3 = memref.load %alloc[%arg0, %arg2] : memref<8x32xf16>
+          %4 = memref.load %alloc_0[%arg2, %0] : memref<32x16xf16>
+          %5 = arith.extf %3 : f16 to f32
+          %6 = arith.extf %4 : f16 to f32
+          %7 = arith.mulf %5, %6 : f32
+          %8 = arith.addf %arg3, %7 : f32
+          %9 = memref.load %alloc[%arg0, %arg2] : memref<8x32xf16>
+          %10 = memref.load %alloc_0[%arg2, %1] : memref<32x16xf16>
+          %11 = arith.extf %9 : f16 to f32
+          %12 = arith.extf %10 : f16 to f32
+          %13 = arith.mulf %11, %12 : f32
+          %14 = arith.addf %arg4, %13 : f32
+          %c1_2 = arith.constant 1 : index
+          %15 = arith.addi %arg2, %c1_2 : index
+          %16 = memref.load %alloc[%arg0, %15] : memref<8x32xf16>
+          %17 = memref.load %alloc_0[%15, %0] : memref<32x16xf16>
+          %18 = arith.extf %16 : f16 to f32
+          %19 = arith.extf %17 : f16 to f32
+          %20 = arith.mulf %18, %19 : f32
+          %21 = arith.addf %8, %20 : f32
+          %22 = memref.load %alloc[%arg0, %15] : memref<8x32xf16>
+          %23 = memref.load %alloc_0[%15, %1] : memref<32x16xf16>
+          %24 = arith.extf %22 : f16 to f32
+          %25 = arith.extf %23 : f16 to f32
+          %26 = arith.mulf %24, %25 : f32
+          %27 = arith.addf %14, %26 : f32
+          %c2 = arith.constant 2 : index
+          %28 = arith.addi %arg2, %c2 : index
+          %29 = memref.load %alloc[%arg0, %28] : memref<8x32xf16>
+          %30 = memref.load %alloc_0[%28, %0] : memref<32x16xf16>
+          %31 = arith.extf %29 : f16 to f32
+          %32 = arith.extf %30 : f16 to f32
+          %33 = arith.mulf %31, %32 : f32
+          %34 = arith.addf %21, %33 : f32
+          %35 = memref.load %alloc[%arg0, %28] : memref<8x32xf16>
+          %36 = memref.load %alloc_0[%28, %1] : memref<32x16xf16>
+          %37 = arith.extf %35 : f16 to f32
+          %38 = arith.extf %36 : f16 to f32
+          %39 = arith.mulf %37, %38 : f32
+          %40 = arith.addf %27, %39 : f32
+          %c3 = arith.constant 3 : index
+          %41 = arith.addi %arg2, %c3 : index
+          %42 = memref.load %alloc[%arg0, %41] : memref<8x32xf16>
+          %43 = memref.load %alloc_0[%41, %0] : memref<32x16xf16>
+          %44 = arith.extf %42 : f16 to f32
+          %45 = arith.extf %43 : f16 to f32
+          %46 = arith.mulf %44, %45 : f32
+          %47 = arith.addf %34, %46 : f32
+          %48 = memref.load %alloc[%arg0, %41] : memref<8x32xf16>
+          %49 = memref.load %alloc_0[%41, %1] : memref<32x16xf16>
+          %50 = arith.extf %48 : f16 to f32
+          %51 = arith.extf %49 : f16 to f32
+          %52 = arith.mulf %50, %51 : f32
+          %53 = arith.addf %40, %52 : f32
+          scf.yield %47, %53 : f32, f32
+        } {sycl.ordered_reduction_unroll = 4 : i64, sycl.register_accumulator, sycl.register_tile_composed_accumulator, sycl.thread_private}
+        memref.store %2#0, %alloc_1[%arg0, %0] : memref<8x16xf32>
+        memref.store %2#1, %alloc_1[%arg0, %1] : memref<8x16xf32>
+      } {sycl.parallel, sycl.register_tile = 2 : i64, sycl.two_column_candidate}
+    } {sycl.accumulator_init_forwarded, sycl.distribute, sycl.distribution_depth = 1 : i64, sycl.parallel}
+    return
+  }
+}
+
+{-#
+  external_resources: {
+    mlir_reproducer: {
+      pipeline: "builtin.module(sycl-two-column-launch-guard)",
+      disable_threading: false,
+      verify_each: true
+    }
+  }
+#-}
+two-column-guard.mlir:1:1: error: Failures have been detected while processing an MLIR pass pipeline
+two-column-guard.mlir:1:1: note: Pipeline failed while executing [`(anonymous namespace)::TwoColumnLaunchGuardPass` on 'builtin.module' operation]: reproducer generated at `std::errs, please share the reproducer above with Triton project.`
+two-column-guard.mlir:12:7: error: cannot recover the independent untiled recurrence
+#map = affine_map<(d0) -> (d0)>
+#map1 = affine_map<(d0) -> (d0 + 8)>
+module {
+  func.func @matmul() {
+    %cst = arith.constant 0.000000e+00 : f32
+    %alloc = memref.alloc() : memref<8x32xf16>
+    %alloc_0 = memref.alloc() : memref<32x16xf16>
+    %alloc_1 = memref.alloc() : memref<8x16xf32>
+    affine.for %arg0 = 0 to 8 {
+      affine.for %arg1 = 0 to 8 {
+        %0 = affine.apply #map(%arg1)
+        %1 = affine.apply #map1(%arg1)
+        %c0 = arith.constant 0 : index
+        %c32 = arith.constant 32 : index
+        %c1 = arith.constant 1 : index
+        %c4 = arith.constant 4 : index
+        %2:2 = scf.for %arg2 = %c0 to %c32 step %c4 iter_args(%arg3 = %cst, %arg4 = %cst) -> (f32, f32) {
+          %3 = memref.load %alloc[%arg0, %arg2] : memref<8x32xf16>
+          %4 = memref.load %alloc_0[%arg2, %0] : memref<32x16xf16>
+          %5 = arith.extf %3 : f16 to f32
+          %6 = arith.extf %4 : f16 to f32
+          %7 = arith.mulf %5, %6 : f32
+          %8 = arith.addf %arg3, %7 : f32
+          %9 = memref.load %alloc[%arg0, %arg2] : memref<8x32xf16>
+          %10 = memref.load %alloc_0[%arg2, %1] : memref<32x16xf16>
+          %11 = arith.extf %9 : f16 to f32
+          %12 = arith.extf %10 : f16 to f32
+          %13 = arith.mulf %11, %12 : f32
+          %14 = arith.addf %arg4, %13 : f32
+          %c1_2 = arith.constant 1 : index
+          %15 = arith.addi %arg2, %c1_2 : index
+          %16 = memref.load %alloc[%arg0, %15] : memref<8x32xf16>
+          %17 = memref.load %alloc_0[%15, %0] : memref<32x16xf16>
+          %18 = arith.extf %16 : f16 to f32
+          %19 = arith.extf %17 : f16 to f32
+          %20 = arith.mulf %18, %19 : f32
+          %21 = arith.addf %8, %20 : f32
+          %22 = memref.load %alloc[%arg0, %15] : memref<8x32xf16>
+          %23 = memref.load %alloc_0[%15, %1] : memref<32x16xf16>
+          %24 = arith.extf %22 : f16 to f32
+          %25 = arith.extf %23 : f16 to f32
+          %26 = arith.mulf %24, %25 : f32
+          %27 = arith.addf %14, %26 : f32
+          %c2 = arith.constant 2 : index
+          %28 = arith.addi %arg2, %c2 : index
+          %29 = memref.load %alloc[%arg0, %28] : memref<8x32xf16>
+          %30 = memref.load %alloc_0[%28, %0] : memref<32x16xf16>
+          %31 = arith.extf %29 : f16 to f32
+          %32 = arith.extf %30 : f16 to f32
+          %33 = arith.mulf %31, %32 : f32
+          %34 = arith.addf %21, %33 : f32
+          %35 = memref.load %alloc[%arg0, %28] : memref<8x32xf16>
+          %36 = memref.load %alloc_0[%28, %1] : memref<32x16xf16>
+          %37 = arith.extf %35 : f16 to f32
+          %38 = arith.extf %36 : f16 to f32
+          %39 = arith.mulf %37, %38 : f32
+          %40 = arith.addf %27, %39 : f32
+          %c3 = arith.constant 3 : index
+          %41 = arith.addi %arg2, %c3 : index
+          %42 = memref.load %alloc[%arg0, %41] : memref<8x32xf16>
+          %43 = memref.load %alloc_0[%41, %0] : memref<32x16xf16>
+          %44 = arith.extf %42 : f16 to f32
+          %45 = arith.extf %43 : f16 to f32
+          %46 = arith.mulf %44, %45 : f32
+          %47 = arith.addf %34, %46 : f32
+          %48 = memref.load %alloc[%arg0, %41] : memref<8x32xf16>
+          %49 = memref.load %alloc_0[%41, %1] : memref<32x16xf16>
+          %50 = arith.extf %48 : f16 to f32
+          %51 = arith.extf %49 : f16 to f32
+          %52 = arith.mulf %50, %51 : f32
+          %53 = arith.addf %40, %52 : f32
+          gpu.barrier
+          scf.yield %47, %53 : f32, f32
+        } {sycl.ordered_reduction_unroll = 4 : i64, sycl.register_accumulator, sycl.register_tile_composed_accumulator, sycl.thread_private}
+        memref.store %2#0, %alloc_1[%arg0, %0] : memref<8x16xf32>
+        memref.store %2#1, %alloc_1[%arg0, %1] : memref<8x16xf32>
+      } {sycl.parallel, sycl.register_tile = 2 : i64, sycl.two_column_candidate}
+    } {sycl.accumulator_init_forwarded, sycl.distribute, sycl.distribution_depth = 2 : i64, sycl.parallel}
+    return
+  }
+}
+
+{-#
+  external_resources: {
+    mlir_reproducer: {
+      pipeline: "builtin.module(sycl-two-column-launch-guard)",
+      disable_threading: false,
+      verify_each: true
+    }
+  }
+#-}
+two-column-guard.mlir:1:1: error: Failures have been detected while processing an MLIR pass pipeline
+two-column-guard.mlir:1:1: note: Pipeline failed while executing [`(anonymous namespace)::TwoColumnLaunchGuardPass` on 'builtin.module' operation]: reproducer generated at `std::errs, please share the reproducer above with Triton project.`
+two-column-guard.mlir:12:7: error: cannot recover the independent untiled recurrence
+#map = affine_map<(d0) -> (d0)>
+#map1 = affine_map<(d0) -> (d0 + 8)>
+module {
+  func.func @matmul() {
+    %cst = arith.constant 0.000000e+00 : f32
+    %alloc = memref.alloc() : memref<8x32xf16>
+    %alloc_0 = memref.alloc() : memref<32x16xf16>
+    %alloc_1 = memref.alloc() : memref<8x16xf32>
+    affine.for %arg0 = 0 to 8 {
+      affine.for %arg1 = 0 to 8 {
+        %0 = affine.apply #map(%arg1)
+        %1 = affine.apply #map1(%arg1)
+        %c0 = arith.constant 0 : index
+        %c32 = arith.constant 32 : index
+        %c1 = arith.constant 1 : index
+        %c4 = arith.constant 4 : index
+        %2:2 = scf.for %arg2 = %c0 to %c32 step %c4 iter_args(%arg3 = %cst, %arg4 = %cst) -> (f32, f32) {
+          %3 = memref.load %alloc[%arg0, %arg2] : memref<8x32xf16>
+          %4 = memref.load %alloc_0[%arg2, %0] : memref<32x16xf16>
+          %5 = arith.extf %3 : f16 to f32
+          %6 = arith.extf %4 : f16 to f32
+          %7 = arith.mulf %5, %6 : f32
+          %8 = arith.addf %arg3, %7 : f32
+          %9 = memref.load %alloc[%arg0, %arg2] : memref<8x32xf16>
+          %10 = memref.load %alloc_0[%arg2, %1] : memref<32x16xf16>
+          %11 = arith.extf %9 : f16 to f32
+          %12 = arith.extf %10 : f16 to f32
+          %13 = arith.mulf %11, %12 : f32
+          %14 = arith.addf %arg4, %13 : f32
+          %c1_2 = arith.constant 1 : index
+          %15 = arith.addi %arg2, %c1_2 : index
+          %16 = memref.load %alloc[%arg0, %15] : memref<8x32xf16>
+          %17 = memref.load %alloc_0[%15, %0] : memref<32x16xf16>
+          %18 = arith.extf %16 : f16 to f32
+          %19 = arith.extf %17 : f16 to f32
+          %20 = arith.mulf %18, %19 : f32
+          %21 = arith.addf %8, %20 : f32
+          %22 = memref.load %alloc[%arg0, %15] : memref<8x32xf16>
+          %23 = memref.load %alloc_0[%15, %1] : memref<32x16xf16>
+          %24 = arith.extf %22 : f16 to f32
+          %25 = arith.extf %23 : f16 to f32
+          %26 = arith.mulf %24, %25 : f32
+          %27 = arith.addf %14, %26 : f32
+          %c2 = arith.constant 2 : index
+          %28 = arith.addi %arg2, %c2 : index
+          %29 = memref.load %alloc[%arg0, %28] : memref<8x32xf16>
+          %30 = memref.load %alloc_0[%28, %0] : memref<32x16xf16>
+          %31 = arith.extf %29 : f16 to f32
+          %32 = arith.extf %30 : f16 to f32
+          %33 = arith.mulf %31, %32 : f32
+          %34 = arith.addf %21, %33 : f32
+          %35 = memref.load %alloc[%arg0, %28] : memref<8x32xf16>
+          %36 = memref.load %alloc_0[%28, %1] : memref<32x16xf16>
+          %37 = arith.extf %35 : f16 to f32
+          %38 = arith.extf %36 : f16 to f32
+          %39 = arith.mulf %37, %38 : f32
+          %40 = arith.addf %27, %39 : f32
+          %c3 = arith.constant 3 : index
+          %41 = arith.addi %arg2, %c3 : index
+          %42 = memref.load %alloc[%arg0, %41] : memref<8x32xf16>
+          %43 = memref.load %alloc_0[%41, %0] : memref<32x16xf16>
+          %44 = arith.extf %42 : f16 to f32
+          %45 = arith.extf %43 : f16 to f32
+          %46 = arith.mulf %44, %45 : f32
+          %47 = arith.addf %34, %46 : f32
+          %48 = memref.load %alloc[%arg0, %41] : memref<8x32xf16>
+          %49 = memref.load %alloc_0[%41, %1] : memref<32x16xf16>
+          %50 = arith.extf %48 : f16 to f32
+          %51 = arith.extf %49 : f16 to f32
+          %52 = arith.mulf %50, %51 : f32
+          %53 = arith.addf %40, %52 : f32
+          scf.yield %47, %53 : f32, f32
+        } {sycl.ordered_reduction_unroll = 4 : i64, sycl.register_accumulator, sycl.register_tile_composed_accumulator, sycl.thread_private}
+        memref.store %2#0, %alloc_1[%arg0, %0] : memref<8x16xf32>
+        memref.store %2#1, %alloc_1[%arg0, %1] : memref<8x16xf32>
+      } {sycl.parallel, sycl.register_tile = 4 : i64, sycl.two_column_candidate}
+    } {sycl.accumulator_init_forwarded, sycl.distribute, sycl.distribution_depth = 2 : i64, sycl.parallel}
+    return
+  }
+}
+
+{-#
+  external_resources: {
+    mlir_reproducer: {
+      pipeline: "builtin.module(sycl-two-column-launch-guard)",
+      disable_threading: false,
+      verify_each: true
+    }
+  }
+#-}
+two-column-guard.mlir:1:1: error: Failures have been detected while processing an MLIR pass pipeline
+two-column-guard.mlir:1:1: note: Pipeline failed while executing [`(anonymous namespace)::TwoColumnLaunchGuardPass` on 'builtin.module' operation]: reproducer generated at `std::errs, please share the reproducer above with Triton project.`
+two-column-guard.mlir:12:7: error: cannot recover the independent untiled recurrence
+#map = affine_map<(d0) -> (d0)>
+#map1 = affine_map<(d0) -> (d0 + 8)>
+module {
+  func.func @matmul() {
+    %cst = arith.constant 1.000000e+00 : f32
+    %cst_0 = arith.constant 0.000000e+00 : f32
+    %alloc = memref.alloc() : memref<8x32xf16>
+    %alloc_1 = memref.alloc() : memref<32x16xf16>
+    %alloc_2 = memref.alloc() : memref<8x16xf32>
+    affine.for %arg0 = 0 to 8 {
+      affine.for %arg1 = 0 to 8 {
+        %0 = affine.apply #map(%arg1)
+        %1 = affine.apply #map1(%arg1)
+        %c0 = arith.constant 0 : index
+        %c32 = arith.constant 32 : index
+        %c1 = arith.constant 1 : index
+        %c4 = arith.constant 4 : index
+        %2:2 = scf.for %arg2 = %c0 to %c32 step %c4 iter_args(%arg3 = %cst_0, %arg4 = %cst) -> (f32, f32) {
+          %3 = memref.load %alloc[%arg0, %arg2] : memref<8x32xf16>
+          %4 = memref.load %alloc_1[%arg2, %0] : memref<32x16xf16>
+          %5 = arith.extf %3 : f16 to f32
+          %6 = arith.extf %4 : f16 to f32
+          %7 = arith.mulf %5, %6 : f32
+          %8 = arith.addf %arg3, %7 : f32
+          %9 = memref.load %alloc[%arg0, %arg2] : memref<8x32xf16>
+          %10 = memref.load %alloc_1[%arg2, %1] : memref<32x16xf16>
+          %11 = arith.extf %9 : f16 to f32
+          %12 = arith.extf %10 : f16 to f32
+          %13 = arith.mulf %11, %12 : f32
+          %14 = arith.addf %arg4, %13 : f32
+          %c1_3 = arith.constant 1 : index
+          %15 = arith.addi %arg2, %c1_3 : index
+          %16 = memref.load %alloc[%arg0, %15] : memref<8x32xf16>
+          %17 = memref.load %alloc_1[%15, %0] : memref<32x16xf16>
+          %18 = arith.extf %16 : f16 to f32
+          %19 = arith.extf %17 : f16 to f32
+          %20 = arith.mulf %18, %19 : f32
+          %21 = arith.addf %8, %20 : f32
+          %22 = memref.load %alloc[%arg0, %15] : memref<8x32xf16>
+          %23 = memref.load %alloc_1[%15, %1] : memref<32x16xf16>
+          %24 = arith.extf %22 : f16 to f32
+          %25 = arith.extf %23 : f16 to f32
+          %26 = arith.mulf %24, %25 : f32
+          %27 = arith.addf %14, %26 : f32
+          %c2 = arith.constant 2 : index
+          %28 = arith.addi %arg2, %c2 : index
+          %29 = memref.load %alloc[%arg0, %28] : memref<8x32xf16>
+          %30 = memref.load %alloc_1[%28, %0] : memref<32x16xf16>
+          %31 = arith.extf %29 : f16 to f32
+          %32 = arith.extf %30 : f16 to f32
+          %33 = arith.mulf %31, %32 : f32
+          %34 = arith.addf %21, %33 : f32
+          %35 = memref.load %alloc[%arg0, %28] : memref<8x32xf16>
+          %36 = memref.load %alloc_1[%28, %1] : memref<32x16xf16>
+          %37 = arith.extf %35 : f16 to f32
+          %38 = arith.extf %36 : f16 to f32
+          %39 = arith.mulf %37, %38 : f32
+          %40 = arith.addf %27, %39 : f32
+          %c3 = arith.constant 3 : index
+          %41 = arith.addi %arg2, %c3 : index
+          %42 = memref.load %alloc[%arg0, %41] : memref<8x32xf16>
+          %43 = memref.load %alloc_1[%41, %0] : memref<32x16xf16>
+          %44 = arith.extf %42 : f16 to f32
+          %45 = arith.extf %43 : f16 to f32
+          %46 = arith.mulf %44, %45 : f32
+          %47 = arith.addf %34, %46 : f32
+          %48 = memref.load %alloc[%arg0, %41] : memref<8x32xf16>
+          %49 = memref.load %alloc_1[%41, %1] : memref<32x16xf16>
+          %50 = arith.extf %48 : f16 to f32
+          %51 = arith.extf %49 : f16 to f32
+          %52 = arith.mulf %50, %51 : f32
+          %53 = arith.addf %40, %52 : f32
+          scf.yield %47, %53 : f32, f32
+        } {sycl.ordered_reduction_unroll = 4 : i64, sycl.register_accumulator, sycl.register_tile_composed_accumulator, sycl.thread_private}
+        memref.store %2#0, %alloc_2[%arg0, %0] : memref<8x16xf32>
+        memref.store %2#1, %alloc_2[%arg0, %1] : memref<8x16xf32>
+      } {sycl.parallel, sycl.register_tile = 2 : i64, sycl.two_column_candidate}
+    } {sycl.accumulator_init_forwarded, sycl.distribute, sycl.distribution_depth = 2 : i64, sycl.parallel}
+    return
+  }
+}
+
+{-#
+  external_resources: {
+    mlir_reproducer: {
+      pipeline: "builtin.module(sycl-two-column-launch-guard)",
+      disable_threading: false,
+      verify_each: true
+    }
+  }
+#-}
+two-column-guard.mlir:1:1: error: Failures have been detected while processing an MLIR pass pipeline
+two-column-guard.mlir:1:1: note: Pipeline failed while executing [`(anonymous namespace)::TwoColumnLaunchGuardPass` on 'builtin.module' operation]: reproducer generated at `std::errs, please share the reproducer above with Triton project.`
+two-column-guard.mlir:12:7: error: cannot recover the independent untiled recurrence
+#map = affine_map<(d0) -> (d0)>
+#map1 = affine_map<(d0) -> (d0 + 8)>
+module {
+  func.func @matmul() {
+    %cst = arith.constant 0.000000e+00 : f32
+    %alloc = memref.alloc() : memref<8x32xf16>
+    %alloc_0 = memref.alloc() : memref<32x16xf16>
+    %alloc_1 = memref.alloc() : memref<8x16xf32>
+    affine.for %arg0 = 0 to 8 {
+      affine.for %arg1 = 0 to 8 {
+        %0 = affine.apply #map(%arg1)
+        %1 = affine.apply #map1(%arg1)
+        %c0 = arith.constant 0 : index
+        %c32 = arith.constant 32 : index
+        %c1 = arith.constant 1 : index
+        %c4 = arith.constant 4 : index
+        %2:2 = scf.for %arg2 = %c0 to %c32 step %c4 iter_args(%arg3 = %cst, %arg4 = %cst) -> (f32, f32) {
+          %3 = memref.load %alloc[%arg0, %arg2] : memref<8x32xf16>
+          %4 = memref.load %alloc_0[%arg2, %1] : memref<32x16xf16>
+          %5 = arith.extf %3 : f16 to f32
+          %6 = arith.extf %4 : f16 to f32
+          %7 = arith.mulf %5, %6 : f32
+          %8 = arith.addf %arg3, %7 : f32
+          %9 = memref.load %alloc[%arg0, %arg2] : memref<8x32xf16>
+          %10 = memref.load %alloc_0[%arg2, %1] : memref<32x16xf16>
+          %11 = arith.extf %9 : f16 to f32
+          %12 = arith.extf %10 : f16 to f32
+          %13 = arith.mulf %11, %12 : f32
+          %14 = arith.addf %arg4, %13 : f32
+          %c1_2 = arith.constant 1 : index
+          %15 = arith.addi %arg2, %c1_2 : index
+          %16 = memref.load %alloc[%arg0, %15] : memref<8x32xf16>
+          %17 = memref.load %alloc_0[%15, %0] : memref<32x16xf16>
+          %18 = arith.extf %16 : f16 to f32
+          %19 = arith.extf %17 : f16 to f32
+          %20 = arith.mulf %18, %19 : f32
+          %21 = arith.addf %8, %20 : f32
+          %22 = memref.load %alloc[%arg0, %15] : memref<8x32xf16>
+          %23 = memref.load %alloc_0[%15, %1] : memref<32x16xf16>
+          %24 = arith.extf %22 : f16 to f32
+          %25 = arith.extf %23 : f16 to f32
+          %26 = arith.mulf %24, %25 : f32
+          %27 = arith.addf %14, %26 : f32
+          %c2 = arith.constant 2 : index
+          %28 = arith.addi %arg2, %c2 : index
+          %29 = memref.load %alloc[%arg0, %28] : memref<8x32xf16>
+          %30 = memref.load %alloc_0[%28, %0] : memref<32x16xf16>
+          %31 = arith.extf %29 : f16 to f32
+          %32 = arith.extf %30 : f16 to f32
+          %33 = arith.mulf %31, %32 : f32
+          %34 = arith.addf %21, %33 : f32
+          %35 = memref.load %alloc[%arg0, %28] : memref<8x32xf16>
+          %36 = memref.load %alloc_0[%28, %1] : memref<32x16xf16>
+          %37 = arith.extf %35 : f16 to f32
+          %38 = arith.extf %36 : f16 to f32
+          %39 = arith.mulf %37, %38 : f32
+          %40 = arith.addf %27, %39 : f32
+          %c3 = arith.constant 3 : index
+          %41 = arith.addi %arg2, %c3 : index
+          %42 = memref.load %alloc[%arg0, %41] : memref<8x32xf16>
+          %43 = memref.load %alloc_0[%41, %0] : memref<32x16xf16>
+          %44 = arith.extf %42 : f16 to f32
+          %45 = arith.extf %43 : f16 to f32
+          %46 = arith.mulf %44, %45 : f32
+          %47 = arith.addf %34, %46 : f32
+          %48 = memref.load %alloc[%arg0, %41] : memref<8x32xf16>
+          %49 = memref.load %alloc_0[%41, %1] : memref<32x16xf16>
+          %50 = arith.extf %48 : f16 to f32
+          %51 = arith.extf %49 : f16 to f32
+          %52 = arith.mulf %50, %51 : f32
+          %53 = arith.addf %40, %52 : f32
+          scf.yield %47, %53 : f32, f32
+        } {sycl.ordered_reduction_unroll = 4 : i64, sycl.register_accumulator, sycl.register_tile_composed_accumulator, sycl.thread_private}
+        memref.store %2#0, %alloc_1[%arg0, %0] : memref<8x16xf32>
+        memref.store %2#1, %alloc_1[%arg0, %1] : memref<8x16xf32>
+      } {sycl.parallel, sycl.register_tile = 2 : i64, sycl.two_column_candidate}
+    } {sycl.accumulator_init_forwarded, sycl.distribute, sycl.distribution_depth = 2 : i64, sycl.parallel}
+    return
+  }
+}
+
+{-#
+  external_resources: {
+    mlir_reproducer: {
+      pipeline: "builtin.module(sycl-two-column-launch-guard)",
+      disable_threading: false,
+      verify_each: true
+    }
+  }
+#-}
+two-column-guard.mlir:1:1: error: Failures have been detected while processing an MLIR pass pipeline
+two-column-guard.mlir:1:1: note: Pipeline failed while executing [`(anonymous namespace)::TwoColumnLaunchGuardPass` on 'builtin.module' operation]: reproducer generated at `std::errs, please share the reproducer above with Triton project.`
+DEBUG: Attempting to import triton.backends.sycl
+DEBUG: Successfully imported triton.backends.sycl
+{"status": "PASS", "count": 218}

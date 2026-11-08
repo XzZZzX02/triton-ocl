@@ -1,0 +1,44 @@
+[
+  {
+    "status": "PASS",
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f32",
+    "data": "special",
+    "bounds": "full",
+    "plan": "raw",
+    "fp_guards": 1,
+    "blocks": [
+      "1",
+      "64",
+      "3x5"
+    ],
+    "elements_checked": 1173,
+    "source_sha256": "510b1198f683ce1baaba4123faac9420f1badc619502c03bf8630d929e6f60a1"
+  },
+  {
+    "status": "PASS",
+    "shape": [
+      8,
+      16,
+      32
+    ],
+    "layout": "NT",
+    "dtype": "f32",
+    "data": "special",
+    "bounds": "full",
+    "plan": "full",
+    "fp_guards": 4,
+    "blocks": [
+      "1",
+      "64",
+      "3x5"
+    ],
+    "elements_checked": 1173,
+    "source_sha256": "cdf45321a2e427940db923ec1a86881241c33d0be7641440e8ef0d7d5253253c"
+  }
+]

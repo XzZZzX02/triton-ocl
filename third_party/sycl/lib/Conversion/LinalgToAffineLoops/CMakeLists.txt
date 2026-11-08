@@ -2,6 +2,7 @@ if(NOT TARGET LinalgToAffineLoopsSYCL)
 add_triton_library(LinalgToAffineLoopsSYCL
   LinalgToAffineLoops.cpp
   LocalMemoryReuse.cpp
+  FPContractGuard.cpp
   ElementwiseFusion.cpp
   GroupReduction.cpp
   RegisterAccumulator.cpp

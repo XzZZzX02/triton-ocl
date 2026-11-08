@@ -237,3 +237,48 @@ Primary sources checked again while closing the two-column iteration:
 The completed iteration remains opt-in. Its 37-job gfx906 evidence and failed
 cost-rule candidates are in sycl-two-column-tiling-report.md. LDS bank padding
 remains the next independent candidate and is not part of this acceptance.
+
+## 2026-11-09: Separate Product Rounding and Next Candidate Review
+
+The LDS padding candidate is rejected after its three gfx906 jobs completed:
+the bank-count/resource estimate does not predict stable benefit and permits
+a repeatable full-stack/local=128 loss. Its source, actual raw events and
+revised storage-coloring interaction remain archived. See
+sycl-lds-bank-padding-report.md; the candidate is absent from production.
+
+The expanded tests exposed an independent implicit-FMA defect. The numerical
+repair draws on primary source rules checked on 2026-11-08:
+
+- LLVM Language Reference, fast-math rewrite flags:
+  https://llvm.org/docs/LangRef.html#fast-math-flags
+  A contraction rewrite requires permission on its participating operations.
+  The final pipeline pass records native products needing separate rounding;
+  the source renderer disables contraction only around those products.
+- Clang floating-point controls:
+  https://clang.llvm.org/docs/UsersManual.html#controlling-floating-point-behavior
+  Lexical contraction controls motivate a narrowly scoped directive rather
+  than turning off floating-point optimizations for the whole translation.
+  Saved LLVM and actual CPU/gfx906 counterexamples establish the behavior of
+  this configured AdaptiveCpp toolchain, rather than assuming current Clang
+  defaults apply to it.
+
+The exact-product exception is based on source/destination floating semantics,
+including full significand/exponent bounds, preserving the measured f16 dot
+paths. Timing versus a known-incorrect FMA baseline is recorded as repair cost,
+not an optimization gain. See sycl-fp-contract-report.md and its complete audit.
+
+Sources revisited for the next independent performance experiment on 2026-11-09:
+
+- MLIR pass catalogue, affine loop fusion and invariant subset hoisting:
+  https://mlir.llvm.org/docs/Passes/
+  Structured dependencies and dataflow determine whether memory traffic or
+  repeated work can be removed. A requested option alone does not prove that
+  the workload contains an opportunity.
+- LLVM SimpleLoopUnswitch:
+  https://llvm.org/docs/doxygen/SimpleLoopUnswitch_8cpp_source.html
+  https://www.llvm.org/doxygen/classllvm_1_1SimpleLoopUnswitchPass.html
+  Loop-invariant predicates can be moved out by specializing loop versions,
+  but duplication needs a size bound. For this backend, investigate only
+  validated static work-ownership plans and uniform conditions, retaining
+  the existing fallback and arithmetic order. This is a candidate review,
+  not an implementation or gfx906 profitability claim.

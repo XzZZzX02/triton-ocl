@@ -1356,6 +1356,19 @@ void ModuleEmitter::emitUnary(Operation *op, const char *syntax) {
 
 void ModuleEmitter::emitBinary(Operation *op, const char *syntax, bool unsignedOperands) {
   auto rank = emitNestedLoopHeader(op->getResult(0));
+  bool noContract = state.target == EmitTarget::SYCL &&
+      isa<arith::MulFOp>(op) && op->hasAttr("sycl.fp_contract_off");
+  if (noContract) {
+    // The pipeline records which products may lose a rounding step through
+    // implicit FMA. Scope the C++ directive to that product alone so unrelated
+    // exact-product contractions and existing schedules remain available.
+    indent();
+    emitValue(op->getResult(0), rank);
+    os << ";\n";
+    indent() << "{\n";
+    addIndent();
+    indent() << "#pragma clang fp contract(off)\n";
+  }
   indent();
   emitValue(op->getResult(0), rank);
   os << " = ";
@@ -1369,6 +1382,10 @@ void ModuleEmitter::emitBinary(Operation *op, const char *syntax, bool unsignedO
   operand(1);
   os << ";";
   emitInfoAndNewLine(op);
+  if (noContract) {
+    reduceIndent();
+    indent() << "}\n";
+  }
   emitNestedLoopFooter(rank);
 }
 
